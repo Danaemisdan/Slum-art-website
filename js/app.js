@@ -595,17 +595,19 @@
     if (elements.donationModal) elements.donationModal.classList.add('active');
   };
 
-  // Guinness World Record Comic Book Project Tier Selection
-  window.selectComicTier = function (amount, cardEl) {
-    const cards = document.querySelectorAll('.gwr-tier-card');
+  // Guinness World Record Comic Book Project Tier Selection ($1 Movement)
+  window.selectComicTier = function (amount, cardEl, label = null, ctaText = null) {
+    const cards = document.querySelectorAll('.gwr-pledge-tier-pill, .gwr-tier-card');
     cards.forEach((c) => c.classList.remove('active'));
     if (cardEl) {
       cardEl.classList.add('active');
     }
     const btn = document.getElementById('gwrBackNowBtn');
-    if (btn) {
-      btn.innerHTML = `<i class="fas fa-heart text-amber"></i> Back This Project ($${amount}) <i class="fas fa-arrow-right gwr-arrow-icon"></i>`;
-      btn.href = 'https://paystack.shop/pay/lk0hlrdlun';
+    const btnText = document.getElementById('gwrBackNowBtnText');
+    if (btnText && ctaText) {
+      btnText.innerHTML = ctaText;
+    } else if (btn) {
+      btn.innerHTML = `<i class="fas fa-heart"></i> <span>Pledge $${amount} &amp; Educate Children</span> <i class="fas fa-arrow-right gwr-arrow-icon"></i>`;
     }
   };
 

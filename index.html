@@ -740,120 +740,115 @@
     <div class="container">
       <div class="gwr-crowdfund-layout">
         
-        <!-- Left: Mission, Real-time Funding Engine, Tiers & Contribution CTAs -->
+        <!-- Left: The $1 Movement & High-Converting Contribution Engine -->
         <div class="gwr-campaign-main">
           
           <!-- Official Verification Badges -->
           <div class="gwr-badge-cluster">
-            <span class="gwr-kicker"><i class="fas fa-trophy text-amber"></i> GUINNESS WORLD RECORDS™ ATTEMPT • RC: 139169</span>
+            <span class="gwr-kicker"><i class="fas fa-certificate text-amber"></i> OFFICIAL GUINNESS WORLD RECORDS™ ATTEMPT • RC: 139169</span>
             <span class="gwr-live-status"><span class="gwr-status-pulse"></span> Backing Live</span>
           </div>
 
-          <!-- Headline -->
-          <h2 class="gwr-main-title">Back the World's Largest <span class="gwr-title-highlight">Collaborative Comic Book</span></h2>
+          <!-- Headline (Direct, Urgent, Inspiring) -->
+          <h2 class="gwr-main-title">
+            <span class="gwr-title-highlight">Just $1 Can Educate a Slum Child.</span><br>
+            Back the World's Largest Collaborative Comic Book.
+          </h2>
           
           <p class="gwr-main-description">
-            5,000 youth creators and children across Ijora Badia are co-authoring history with 4× Guinness World Record holder Adetunwase Adenle. Back this global milestone to fund fine art masterclasses, archival drawing supplies, and 36 PET bottle classrooms.
+            5,000 children across Ijora Badia &amp; Makoko are co-authoring history with 4× Guinness World Record holder Adetunwase Adenle. You don’t need hundreds of dollars to transform a young life—a single $1 pledge puts your name directly into the official world record book and funds fine art supplies, daily nutrition, and classroom tuition for a street child.
           </p>
 
-          <!-- Real-Time Crowdfunding Metric Dashboard -->
-          <div class="gwr-funding-dashboard">
-            <div class="gwr-metric-header">
-              <div class="gwr-metric-raised">
-                <span class="gwr-amount-large">$18,450</span>
-                <span class="gwr-amount-sub">raised of $25,000 goal</span>
+          <!-- The Heroic $1 Action Box (Eliminates the clunky progress card) -->
+          <div class="gwr-pledge-engine-card">
+            <div class="gwr-pledge-card-header">
+              <div class="gwr-pledge-card-tag">
+                <i class="fas fa-bolt text-amber"></i>
+                <span>THE $1 WORLD RECORD MOVEMENT</span>
               </div>
-              <div class="gwr-metric-stats">
-                <div class="gwr-mini-stat">
-                  <span class="stat-number">3,820</span>
-                  <span class="stat-label">Creators Backed</span>
+              <span class="gwr-tax-badge"><i class="fas fa-shield-halved text-emerald"></i> 100% Tax-Deductible Non-Profit</span>
+            </div>
+
+            <!-- Impact Tiers with $1 as the Heroic Centerpiece -->
+            <div class="gwr-pledge-tiers-grid">
+              <!-- Tier $1 (Hero Default) -->
+              <button type="button" class="gwr-pledge-tier-pill active" data-amount="1" onclick="window.selectComicTier(1, this, '$1', 'Pledge $1 &amp; Educate 1 Child')">
+                <span class="pledge-tier-ribbon">MOST DIRECT</span>
+                <span class="pledge-tier-val">$1</span>
+                <span class="pledge-tier-title">Educate 1 Child</span>
+                <span class="pledge-tier-sub">Tuition kit &amp; name in credits</span>
+              </button>
+
+              <!-- Tier $5 -->
+              <button type="button" class="gwr-pledge-tier-pill" data-amount="5" onclick="window.selectComicTier(5, this, '$5', 'Pledge $5 &amp; Educate 5 Children')">
+                <span class="pledge-tier-val">$5</span>
+                <span class="pledge-tier-title">Educate 5 Children</span>
+                <span class="pledge-tier-sub">Sponsors full learning table</span>
+              </button>
+
+              <!-- Tier $10 -->
+              <button type="button" class="gwr-pledge-tier-pill" data-amount="10" onclick="window.selectComicTier(10, this, '$10', 'Pledge $10 &amp; Sponsor a Workshop')">
+                <span class="pledge-tier-val">$10</span>
+                <span class="pledge-tier-title">Artist Workshop</span>
+                <span class="pledge-tier-sub">Archival paints &amp; brush kit</span>
+              </button>
+
+              <!-- Tier $25 -->
+              <button type="button" class="gwr-pledge-tier-pill" data-amount="25" onclick="window.selectComicTier(25, this, '$25', 'Pledge $25 &amp; Get Hardcover Book')">
+                <span class="pledge-tier-val">$25</span>
+                <span class="pledge-tier-title">Collector Hardcover</span>
+                <span class="pledge-tier-sub">Physical book shipped worldwide</span>
+              </button>
+            </div>
+
+            <!-- Primary High-Impact CTA Row -->
+            <div class="gwr-action-row">
+              <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-gwr-pledge-hero" id="gwrBackNowBtn">
+                <i class="fas fa-heart"></i>
+                <span id="gwrBackNowBtnText">Pledge $1 &amp; Educate 1 Child</span>
+                <i class="fas fa-arrow-right gwr-arrow-icon"></i>
+              </a>
+
+              <button type="button" class="btn btn-preview-comic" onclick="window.openComicBookReader(0)">
+                <i class="fas fa-book-open"></i> Read 7 Sample Pages Free
+              </button>
+
+              <a href="COMIC BOOK.pdf" download="Slum-Art-Collaborative-Comic-Book.pdf" class="btn btn-download-pdf" title="Download High-Res PDF">
+                <i class="fas fa-file-pdf"></i> PDF
+              </a>
+            </div>
+
+            <!-- 3 Concrete Proof Points (Why your $1 acts immediately) -->
+            <div class="gwr-impact-proof-grid">
+              <div class="gwr-proof-item">
+                <div class="gwr-proof-icon"><i class="fas fa-palette"></i></div>
+                <div class="gwr-proof-text">
+                  <strong>Direct Tuition &amp; Meals</strong>
+                  <span>100% of your $1 funds classroom supplies, kits and daily nutrition.</span>
                 </div>
-                <div class="gwr-mini-stat">
-                  <span class="stat-number">74%</span>
-                  <span class="stat-label">Funded</span>
+              </div>
+              <div class="gwr-proof-item">
+                <div class="gwr-proof-icon"><i class="fas fa-file-signature"></i></div>
+                <div class="gwr-proof-text">
+                  <strong>Name in Guinness History</strong>
+                  <span>Your name printed in the official collaborative backer index.</span>
                 </div>
-                <div class="gwr-mini-stat">
-                  <span class="stat-number">18</span>
-                  <span class="stat-label">Days to Adjudication</span>
+              </div>
+              <div class="gwr-proof-item">
+                <div class="gwr-proof-icon"><i class="fas fa-certificate"></i></div>
+                <div class="gwr-proof-text">
+                  <strong>Instant Digital Pass</strong>
+                  <span>Immediate access to high-res digital release &amp; backer certificate.</span>
                 </div>
               </div>
             </div>
 
-            <!-- Glowing Progress Bar with Milestones -->
-            <div class="gwr-progress-track">
-              <div class="gwr-progress-fill" style="width: 73.8%;">
-                <span class="gwr-progress-glow"></span>
-              </div>
+            <!-- Live Trust Bar -->
+            <div class="gwr-trust-bar">
+              <span><i class="fas fa-lock text-emerald"></i> Bank-grade 256-bit Paystack Escrow</span>
+              <span><i class="fas fa-users text-amber"></i> 3,820+ Global Citizens Pledged</span>
+              <span><i class="fas fa-clock text-blue"></i> Instant Tax Receipt &amp; Backer Certificate</span>
             </div>
-
-            <div class="gwr-milestone-points">
-              <span class="milestone completed"><i class="fas fa-check-circle"></i> $5K Tools &amp; Inks</span>
-              <span class="milestone completed"><i class="fas fa-check-circle"></i> $12K Story Workshop</span>
-              <span class="milestone current"><i class="fas fa-dot-circle text-amber"></i> $20K Hardcover Offset</span>
-              <span class="milestone pending"><i class="far fa-circle"></i> $25K Guinness Record Day</span>
-            </div>
-          </div>
-
-          <!-- Interactive Contribution Tiers -->
-          <div class="gwr-tier-selector-label">
-            <span>Select Your Contribution Tier:</span>
-            <span class="tier-tax-note"><i class="fas fa-shield-halved text-emerald"></i> 100% Tax-Deductible Non-Profit</span>
-          </div>
-
-          <div class="gwr-tiers-grid" id="gwrTiersGrid">
-            
-            <!-- Tier 1: $10 -->
-            <div class="gwr-tier-card" data-tier-amount="10" onclick="window.selectComicTier(10, this)">
-              <div class="tier-top-row">
-                <span class="tier-name">Artist Kit</span>
-                <span class="tier-price">$10</span>
-              </div>
-              <p class="tier-desc">Sponsors fine art markers, watercolours &amp; archival paper for 1 youth creator.</p>
-              <div class="tier-perk"><i class="fas fa-check text-amber"></i> Digital Comic Edition + Supporter Certificate</div>
-            </div>
-
-            <!-- Tier 2: $25 (Featured / Popular) -->
-            <div class="gwr-tier-card is-popular active" data-tier-amount="25" onclick="window.selectComicTier(25, this)">
-              <div class="tier-badge-ribbon"><i class="fas fa-star"></i> MOST POPULAR</div>
-              <div class="tier-top-row">
-                <span class="tier-name">Page Sponsor</span>
-                <span class="tier-price">$25</span>
-              </div>
-              <p class="tier-desc">Funds 1 full collaborative comic page. Sponsors 3 young artists in workshop.</p>
-              <div class="tier-perk"><i class="fas fa-check text-amber"></i> <strong>Physical Collector's Hardcover</strong> + Name in Official Credits</div>
-            </div>
-
-            <!-- Tier 3: $50 -->
-            <div class="gwr-tier-card" data-tier-amount="50" onclick="window.selectComicTier(50, this)">
-              <div class="tier-top-row">
-                <span class="tier-name">Guild Patron</span>
-                <span class="tier-price">$50</span>
-              </div>
-              <p class="tier-desc">Sponsors a full week of fine art masterclasses for a classroom cohort of 15 children.</p>
-              <div class="tier-perk"><i class="fas fa-check text-amber"></i> Hardcover + VIP Ceremony Invitation + Framed Print</div>
-            </div>
-
-          </div>
-
-          <!-- Backing Actions -->
-          <div class="gwr-action-row">
-            <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-luxury-contribute" id="gwrBackNowBtn">
-              <i class="fas fa-heart text-amber"></i> Back This Project ($25)
-              <i class="fas fa-arrow-right gwr-arrow-icon"></i>
-            </a>
-            <button type="button" class="btn btn-preview-comic" onclick="window.openComicBookReader(0)">
-              <i class="fas fa-book-open"></i> Preview 7 Sample Pages
-            </button>
-            <a href="COMIC BOOK.pdf" download="Slum-Art-Collaborative-Comic-Book.pdf" class="btn btn-download-pdf" title="Download High-Res PDF">
-              <i class="fas fa-file-pdf"></i> PDF
-            </a>
-          </div>
-
-          <!-- Trust & Impact Assurance Footer -->
-          <div class="gwr-trust-bar">
-            <span><i class="fas fa-lock text-emerald"></i> Bank-grade 256-bit Paystack rail</span>
-            <span><i class="fas fa-hands-holding-child text-amber"></i> Direct Academy tuition &amp; materials</span>
-            <span><i class="fas fa-clock"></i> Immediate official receipt &amp; backer badge</span>
           </div>
 
         </div>
