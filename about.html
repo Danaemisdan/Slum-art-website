@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us • Slum Art Foundation | Adetunwase Adenle & Pet Bottle School</title>
+  <meta name="description" content="Discover the story of Slum Art Foundation, founder Adetunwase Adenle (4-Time Guinness World Records holder), and the renowned Pet Bottle School in Lagos, Nigeria.">
+  
+  <link rel="icon" type="image/png" href="assets/images/slumart-logo.png">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-info">
+        <a href="tel:+2348059994834"><i class="fas fa-phone"></i> +234 805 999 4834</a>
+        <a href="mailto:info@slumart.org"><i class="fas fa-envelope"></i> info@slumart.org</a>
+        <span><i class="fas fa-map-marker-alt text-amber"></i> Ijora Badia, Lagos, Nigeria</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" style="color: #4ade80; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600;">
+          <i class="fab fa-whatsapp"></i> Join WhatsApp
+        </a>
+        <div class="currency-toggle" title="Switch Currency">
+          <button class="currency-btn active" data-currency="NGN">₦ NGN</button>
+          <button class="currency-btn" data-currency="USD">$ USD</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo-light.png" alt="Slum Art Foundation">
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link active">About & Founder</a></li>
+          <li><a href="shop.html" class="nav-link">Art Shop & Gallery</a></li>
+          <li><a href="register.html" class="nav-link" style="color: var(--color-amber); font-weight: 600;">Guinness Record</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="cart-trigger" title="View Art Bag" aria-label="Shopping Bag">
+          <i class="fas fa-bag-shopping"></i>
+          <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+        </button>
+        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-primary btn-sm">
+          <i class="fas fa-heart"></i> Donate Now
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <img src="assets/images/logo-light.png" alt="Slum Art" style="height: 42px;">
+      </div>
+      <button class="modal-close-btn" id="mobileDrawerClose" style="position: static;"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About & Founder</a></li>
+      <li><a href="shop.html">Art Shop & Gallery</a></li>
+      <li><a href="register.html">Guinness Record Project</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- Page Banner -->
+  <section style="background: linear-gradient(135deg, #0b111e 0%, #1e1b4b 100%); color: #ffffff; padding: 4.5rem 0 3.5rem; text-align: center;">
+    <div class="container">
+      <div class="section-tag dark"><i class="fas fa-landmark"></i> Who We Are</div>
+      <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 1rem; color: #ffffff;">Our Story, Vision & Leadership</h1>
+      <p style="font-size: 1.15rem; color: #cbd5e1; max-width: 680px; margin: 0 auto;">
+        Transforming underserved communities across Africa through art, education, technology, and community development.
+      </p>
+    </div>
+  </section>
+
+  <!-- Core Mission & Vision -->
+  <section style="padding: 5rem 0; background: #ffffff;">
+    <div class="container container-narrow">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 4rem;">
+        <div style="background: var(--bg-page); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.5rem 2rem;">
+          <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1rem;">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Our Vision</h3>
+          <p style="color: #475569; line-height: 1.7; font-size: 0.95rem;">
+            To build a world where every child and young person, regardless of where they come from or their socioeconomic circumstances, has the opportunity to discover their talent, develop their creative potential, and build a meaningful, self-reliant future.
+          </p>
+        </div>
+
+        <div style="background: var(--bg-page); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.5rem 2rem;">
+          <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--color-emerald-light); color: var(--color-emerald); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1rem;">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Our Mission</h3>
+          <p style="color: #475569; line-height: 1.7; font-size: 0.95rem;">
+            To use art, creativity, education, technology, and community action to empower underserved communities, unlock human potential, create economic opportunities, and develop sustainable solutions to social challenges—starting in Africa and reaching communities around the world.
+          </p>
+        </div>
+      </div>
+
+      <!-- In-Depth Founder Biography -->
+      <div style="border-top: 1px solid var(--border-light); padding-top: 4rem;">
+        <div style="display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; align-items: center; margin-bottom: 3rem;">
+          <div style="border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-xl); background: #0b111e;">
+            <img src="assets/images/team/founder_1.png" alt="Adetunwase Adenle" style="width: 100%;">
+          </div>
+          <div>
+            <div class="section-tag"><i class="fas fa-award"></i> Founder & Lead Visionary</div>
+            <h2 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Adetunwase Adenle</h2>
+            <div style="font-size: 1rem; color: var(--color-primary); font-weight: 700; margin-bottom: 1.25rem;">
+              Social Entrepreneur • Artist • Innovator • 4-Time Guinness World Records™ Holder
+            </div>
+            <p style="color: #475569; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem;">
+              Adetunwase Adenle is a passionate teacher and community advocate dedicated to bridging educational inequality in Nigeria. Born with an intense creative calling, he realized early that conventional schooling often leaves slum children behind due to poverty and lack of infrastructure.
+            </p>
+            <p style="color: #475569; line-height: 1.7; font-size: 0.95rem;">
+              He holds <strong>four official Guinness World Records</strong>—including orchestrating the largest painting in the world created by the greatest number of children. Through his visionary leadership, thousands of children have discovered their creative gifts and accessed education.
+            </p>
+          </div>
+        </div>
+
+        <!-- The Pet Bottle School Story -->
+        <div style="background: var(--bg-subtle); border-radius: var(--radius-xl); padding: 3rem; margin-bottom: 4rem;">
+          <div class="section-tag" style="background: #ffffff;"><i class="fas fa-recycle"></i> Eco-Architectural Innovation</div>
+          <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">The Slum Art Pet Bottle School</h3>
+          <p style="color: #334155; line-height: 1.8; font-size: 1rem; margin-bottom: 1.5rem;">
+            Located in the heart of Ijora Badia, Lagos, the <strong>Pet Bottle School</strong> is an internationally acclaimed structure built using thousands of recycled plastic bottles, discarded bottle caps, and sand. Instead of letting plastic trash pollute local lagoons and canals, Adenle and community youth upcycled the waste into durable, insulated walls for a bright learning hub.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+            <div style="background: #ffffff; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+              <div style="font-size: 1.6rem; font-weight: 800; color: var(--color-primary);">10,000+</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Plastic bottles diverted from waterways</div>
+            </div>
+            <div style="background: #ffffff; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+              <div style="font-size: 1.6rem; font-weight: 800; color: var(--color-emerald);">100% Free</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Art and skills tuition for local children</div>
+            </div>
+            <div style="background: #ffffff; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+              <div style="font-size: 1.6rem; font-weight: 800; color: var(--color-amber);">Global Press</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Featured on international news and documentaries</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Global Leadership Team -->
+        <div style="margin-top: 4rem;">
+          <div class="section-header">
+            <div class="section-tag"><i class="fas fa-users"></i> Global Leadership</div>
+            <h2 class="section-title">Meet Our Team</h2>
+            <p class="section-desc">Guiding operations, international partnerships, and grassroots empowerment.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+            <!-- Founder -->
+            <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
+              <img src="assets/images/team/founder_1.png" alt="Adetunwase Adenle" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;">
+              <div style="padding: 1.5rem;">
+                <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Adetunwase Adenle</h4>
+                <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Founder & Lead Visionary</div>
+                <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Social entrepreneur, artist, educator, and 4-time Guinness World Records™ holder.</p>
+              </div>
+            </div>
+
+            <!-- Natalie Gilbert -->
+            <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
+              <img src="assets/images/team/team_natalie_gilbert.jpeg" alt="Natalie Gilbert" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
+              <div style="padding: 1.5rem;">
+                <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Natalie Gilbert</h4>
+                <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Country Manager — USA</div>
+                <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Directing philanthropic relations, institutional outreach, and North American partnerships.</p>
+              </div>
+            </div>
+
+            <!-- Oyindamola Sulaimon -->
+            <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
+              <img src="assets/images/team/team_oyindamola_sulaimon.jpeg" alt="Oyindamola Sulaimon" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
+              <div style="padding: 1.5rem;">
+                <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Oyindamola Sulaimon</h4>
+                <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Country Manager — United Kingdom</div>
+                <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Leading UK community partnerships, youth art exhibitions, and European donor development.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section style="background: var(--bg-dark); color: #ffffff; padding: 4.5rem 0; text-align: center;">
+    <div class="container">
+      <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 1rem;">Ready to Make a Direct Difference?</h2>
+      <p style="color: #cbd5e1; max-width: 580px; margin: 0 auto 2rem; font-size: 1.05rem;">
+        Explore our original youth art collection or make a direct contribution via Paystack.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="shop.html" class="btn btn-primary btn-lg"><i class="fas fa-palette"></i> Browse Art Shop</a>
+        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-outline-white btn-lg"><i class="fas fa-heart"></i> Donate Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <!-- ===================================================================
+       SKIPER39 CANVAS CROWD FOOTER (21ST.DEV COMPONENT)
+       =================================================================== -->
+  <!-- ===================================================================
+       SKIPER39 CANVAS CROWD FOOTER (21ST.DEV COMPONENT)
+       - People Walking Graphics IS the footer itself!
+       =================================================================== -->
+  <footer class="skiper39-footer" id="mainFooter">
+    <div class="skiper-backdrop-grid"></div>
+
+    <!-- Giant Watermark Typography (Behind the Crowd) -->
+    <div class="skiper-giant-watermark">
+      SLUM ART FOUNDATION
+    </div>
+
+    <!-- Skiper39 Interactive Canvas Crowd Component (Full 440px height) -->
+    <div class="skiper-canvas-wrap">
+      <canvas id="skiperCrowdCanvas"></canvas>
+    </div>
+
+    <!-- Minimalist Glass Bottom Bar -->
+    <div class="skiper-footer-bottom">
+      <div class="container skiper-bottom-flex">
+        <div class="skiper-bottom-brand">
+          <img src="assets/images/logo-light.png" alt="Slum Art Foundation" style="height: 34px; width: auto;">
+          <span>&copy; 2026 Slum Art Foundation • Ijora Badia &amp; Makoko, Lagos, Nigeria</span>
+        </div>
+        <div class="skiper-bottom-links">
+          <a href="about.html"><i class="fas fa-circle-info"></i> Founder &amp; Vision</a>
+          <a href="shop.html"><i class="fas fa-palette"></i> Art Gallery</a>
+          <a href="register.html"><i class="fas fa-trophy"></i> Guinness Record</a>
+          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="footer-donate-pill"><i class="fas fa-heart text-amber"></i> Donate Paystack</a>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
+            <i class="fas fa-arrow-up"></i> Top
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-In Cart Drawer -->
+  <div class="drawer-backdrop" id="cartDrawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <i class="fas fa-bag-shopping text-amber" style="font-size: 1.25rem;"></i>
+        <h3 style="font-size: 1.2rem;">Your Art Bag</h3>
+      </div>
+      <button class="modal-close-btn" id="cartDrawerClose" style="position: static;"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-drawer-items" id="cartDrawerItems"></div>
+    <div class="cart-drawer-foot">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
+        <span style="font-weight: 700; color: var(--text-muted);">Total:</span>
+        <span style="font-size: 1.5rem; font-weight: 800; color: var(--color-primary);" id="cartTotalDisplay">₦0 NGN</span>
+      </div>
+      <a href="https://paystack.shop/pay/lk0hlrdlun" id="cartCheckoutBtn" target="_blank" class="btn btn-primary btn-lg" style="width: 100%;">
+        <i class="fas fa-lock"></i> Checkout via Paystack
+      </a>
+    </div>
+  </aside>
+
+  <div class="toast-container" id="toastContainer"></div>
+    <!-- GSAP 3.12.5 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/rough.min.js"></script>
+  <script src="js/sketch-textarea.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/canvas-crowd.js"></script>
+</body>
+</html>

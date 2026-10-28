@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Volunteer • Slum Art Foundation</title>
+  <meta name="description" content="Get in touch with Slum Art Foundation or apply as a volunteer to empower children in underserved communities across Lagos, Nigeria.">
+  
+  <link rel="icon" type="image/png" href="assets/images/slumart-logo.png">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-info">
+        <a href="tel:+2348059994834"><i class="fas fa-phone"></i> +234 805 999 4834</a>
+        <a href="mailto:info@slumart.org"><i class="fas fa-envelope"></i> info@slumart.org</a>
+        <span><i class="fas fa-map-marker-alt text-amber"></i> Ijora Badia, Lagos, Nigeria</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" style="color: #4ade80; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600;">
+          <i class="fab fa-whatsapp"></i> Join WhatsApp
+        </a>
+        <div class="currency-toggle" title="Switch Currency">
+          <button class="currency-btn active" data-currency="NGN">₦ NGN</button>
+          <button class="currency-btn" data-currency="USD">$ USD</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo-light.png" alt="Slum Art Foundation">
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About & Founder</a></li>
+          <li><a href="shop.html" class="nav-link">Art Shop & Gallery</a></li>
+          <li><a href="register.html" class="nav-link" style="color: var(--color-amber); font-weight: 600;">Guinness Record</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="cart-trigger" title="View Art Bag" aria-label="Shopping Bag">
+          <i class="fas fa-bag-shopping"></i>
+          <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+        </button>
+        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-primary btn-sm">
+          <i class="fas fa-heart"></i> Donate Now
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <img src="assets/images/logo-light.png" alt="Slum Art" style="height: 42px;">
+      </div>
+      <button class="modal-close-btn" id="mobileDrawerClose" style="position: static;"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About & Founder</a></li>
+      <li><a href="shop.html">Art Shop & Gallery</a></li>
+      <li><a href="register.html">Guinness Record Project</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- Banner -->
+  <section style="background: linear-gradient(135deg, #090d16 0%, #1e293b 100%); color: #ffffff; padding: 4.5rem 0 3.5rem; text-align: center;">
+    <div class="container">
+      <div class="section-tag dark"><i class="fas fa-headset"></i> Connect With Us</div>
+      <h1 style="font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 1rem; color: #ffffff;">Let's Make a Lasting Difference</h1>
+      <p style="font-size: 1.15rem; color: #cbd5e1; max-width: 680px; margin: 0 auto;">
+        Have an inquiry, partnership proposal, or want to volunteer with our creative team in Lagos? We would love to hear from you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact & Volunteer Section -->
+  <section style="padding: 5rem 0; background: var(--bg-page);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1.25fr; gap: 3.5rem;">
+        
+        <!-- Contact Information Column -->
+        <div>
+          <div class="section-tag"><i class="fas fa-id-card"></i> Direct Coordinates</div>
+          <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Reach Out to Our Team</h2>
+          <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem;">
+            We operate out of the Slum Art Studio & Pet Bottle School in Ijora Badia, Lagos, Nigeria, with active support networks across North America and Europe.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2.5rem;">
+            <div style="display: flex; align-items: flex-start; gap: 1rem; background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.25rem;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">
+                <i class="fas fa-map-pin"></i>
+              </div>
+              <div>
+                <strong style="display: block; font-size: 0.95rem; margin-bottom: 0.2rem;">Physical Studio & Center</strong>
+                <span style="font-size: 0.88rem; color: #475569;">Slum Art Pet Bottle School, Ijora Badia, Lagos, Nigeria</span>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 1rem; background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.25rem;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--color-emerald-light); color: var(--color-emerald); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">
+                <i class="fas fa-phone-volume"></i>
+              </div>
+              <div>
+                <strong style="display: block; font-size: 0.95rem; margin-bottom: 0.2rem;">Official Phone / WhatsApp</strong>
+                <a href="tel:+2348059994834" style="font-size: 0.88rem; color: var(--color-primary); font-weight: 600;">+234 805 999 4834</a>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 1rem; background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.25rem;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--color-indigo-light); color: var(--color-indigo); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <strong style="display: block; font-size: 0.95rem; margin-bottom: 0.2rem;">General Inquiries & Partnerships</strong>
+                <a href="mailto:info@slumart.org" style="font-size: 0.88rem; color: var(--color-primary); font-weight: 600;">info@slumart.org</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg" style="width: 100%; color: #15803d; border-color: #86efac;">
+            <i class="fab fa-whatsapp"></i> Join Official Community WhatsApp Group
+          </a>
+        </div>
+
+        <!-- Volunteer & Message Form -->
+        <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 3rem 2.5rem; box-shadow: var(--shadow-md);">
+          <div class="section-tag"><i class="fas fa-hand-holding-hand"></i> Volunteer & Inquire</div>
+          <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Join Our Mission</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem;">
+            Whether you want to volunteer your artistic talents, sponsor a child, or request exhibition collaborations, send us a note.
+          </p>
+
+          <form onsubmit="handleContactPageForm(event)">
+            <div style="margin-bottom: 1.2rem;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Full Name *</label>
+              <input type="text" name="name" required placeholder="Blessing Adeleke" style="width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem; outline: none;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem;">
+              <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Email Address *</label>
+                <input type="email" name="email" required placeholder="blessing@example.com" style="width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem; outline: none;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Phone / WhatsApp *</label>
+                <input type="tel" name="phone" required placeholder="+234 801 234 5678" style="width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem; outline: none;">
+              </div>
+            </div>
+
+            <div style="margin-bottom: 1.2rem;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Purpose of Contact *</label>
+              <select name="purpose" style="width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem; background: #ffffff; outline: none;">
+                <option value="Volunteer as Mentor / Educator">Volunteer as Mentor / Educator</option>
+                <option value="Artwork Acquisition & Shipping Inquiry">Artwork Acquisition & Shipping Inquiry</option>
+                <option value="Corporate CSR / Foundation Partnership">Corporate CSR / Foundation Partnership</option>
+                <option value="Guinness World Records Collaboration">Guinness World Records Collaboration</option>
+                <option value="Media & Press Inquiries">Media & Press Inquiries</option>
+              </select>
+            </div>
+
+            <div class="sketch-textarea-group">
+              <label class="sketch-label" for="contactMessage">
+                <span>Your Message / Proposal *</span>
+                <span class="sketch-badge"><i class="fas fa-pen-nib"></i> Doodle & Share</span>
+              </label>
+              <div class="sketch-textarea-wrap" data-max-chars="1000">
+                <svg class="sketch-textarea-svg" aria-hidden="true"></svg>
+                <textarea id="contactMessage" name="message" rows="4" required placeholder="Tell us how you would like to collaborate with Slum Art Foundation..." class="sketch-textarea"></textarea>
+                <div class="sketch-textarea-footer">
+                  <span class="sketch-hint"><i class="fas fa-paint-brush text-amber"></i> Hand-drawn note: your message connects a child with art</span>
+                  <span class="sketch-char-count"><span class="sketch-current">0</span> / 1000</span>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SKIPER39 CANVAS CROWD FOOTER (21ST.DEV COMPONENT)
+       =================================================================== -->
+  <!-- ===================================================================
+       SKIPER39 CANVAS CROWD FOOTER (21ST.DEV COMPONENT)
+       - People Walking Graphics IS the footer itself!
+       =================================================================== -->
+  <footer class="skiper39-footer" id="mainFooter">
+    <div class="skiper-backdrop-grid"></div>
+
+    <!-- Giant Watermark Typography (Behind the Crowd) -->
+    <div class="skiper-giant-watermark">
+      SLUM ART FOUNDATION
+    </div>
+
+    <!-- Skiper39 Interactive Canvas Crowd Component (Full 440px height) -->
+    <div class="skiper-canvas-wrap">
+      <canvas id="skiperCrowdCanvas"></canvas>
+    </div>
+
+    <!-- Minimalist Glass Bottom Bar -->
+    <div class="skiper-footer-bottom">
+      <div class="container skiper-bottom-flex">
+        <div class="skiper-bottom-brand">
+          <img src="assets/images/logo-light.png" alt="Slum Art Foundation" style="height: 34px; width: auto;">
+          <span>&copy; 2026 Slum Art Foundation • Ijora Badia &amp; Makoko, Lagos, Nigeria</span>
+        </div>
+        <div class="skiper-bottom-links">
+          <a href="about.html"><i class="fas fa-circle-info"></i> Founder &amp; Vision</a>
+          <a href="shop.html"><i class="fas fa-palette"></i> Art Gallery</a>
+          <a href="register.html"><i class="fas fa-trophy"></i> Guinness Record</a>
+          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="footer-donate-pill"><i class="fas fa-heart text-amber"></i> Donate Paystack</a>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
+            <i class="fas fa-arrow-up"></i> Top
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="js/data.js"></script>
+  <script>
+    function handleContactPageForm(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value;
+      alert(`Thank you, ${name}! Your message has been received. Our coordination team in Lagos will respond within 24-48 hours.`);
+      form.reset();
+    }
+  </script>
+  <script src="js/app.js"></script>
+  <!-- GSAP 3.12.5 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/rough.min.js"></script>
+  <script src="js/sketch-textarea.js"></script>
+  <script src="js/canvas-crowd.js"></script>
+</body>
+</html>

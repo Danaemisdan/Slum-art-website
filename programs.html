@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programs & Welfare Initiatives • Slum Art Foundation</title>
+  <meta name="description" content="Explore the 13 Creative & Skills Programs and 6 Community Welfare Initiatives by Slum Art Foundation, empowering underserved youth in Lagos, Nigeria.">
+  
+  <link rel="icon" type="image/png" href="assets/images/slumart-logo.png">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-info">
+        <a href="tel:+2348059994834"><i class="fas fa-phone"></i> +234 805 999 4834</a>
+        <a href="mailto:info@slumart.org"><i class="fas fa-envelope"></i> info@slumart.org</a>
+        <span><i class="fas fa-map-marker-alt text-amber"></i> Ijora Badia, Lagos, Nigeria</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" style="color: #4ade80; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600;">
+          <i class="fab fa-whatsapp"></i> Join WhatsApp
+        </a>
+        <div class="currency-toggle" title="Switch Currency">
+          <button class="currency-btn active" data-currency="NGN">₦ NGN</button>
+          <button class="currency-btn" data-currency="USD">$ USD</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo-light.png" alt="Slum Art Foundation">
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About & Founder</a></li>
+          <li><a href="shop.html" class="nav-link">Art Shop & Gallery</a></li>
+          <li><a href="register.html" class="nav-link" style="color: var(--color-amber); font-weight: 600;">Guinness Record</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="cart-trigger" title="View Art Bag" aria-label="Shopping Bag">
+          <i class="fas fa-bag-shopping"></i>
+          <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+        </button>
+        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-primary btn-sm">
+          <i class="fas fa-heart"></i> Donate Now
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <img src="assets/images/logo-light.png" alt="Slum Art" style="height: 42px;">
+      </div>
+      <button class="modal-close-btn" id="mobileDrawerClose" style="position: static;"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About & Founder</a></li>
+      <li><a href="shop.html">Art Shop & Gallery</a></li>
+      <li><a href="register.html">Guinness Record Project</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- Banner -->
+  <section style="background: linear-gradient(135deg, #064e3b 0%, #0b111e 100%); color: #ffffff; padding: 4.5rem 0 3.5rem; text-align: center;">
+    <div class="container">
+      <div class="section-tag dark"><i class="fas fa-cubes"></i> 19 Comprehensive Pillars</div>
+      <h1 style="font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 1rem; color: #ffffff;">Our Programs & Welfare Initiatives</h1>
+      <p style="font-size: 1.15rem; color: #cbd5e1; max-width: 720px; margin: 0 auto;">
+        From fine arts, cinematography, and coding to nutritional care and dignity grooming—empowering children across mind, body, and soul.
+      </p>
+    </div>
+  </section>
+
+  <!-- 13 Programs Section -->
+    <!-- 13 Creative & Skills Programs (21st.dev CTA with Vertical Text Marquee) -->
+  <section class="programs-section" id="programs">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <div class="section-tag"><i class="fas fa-paintbrush"></i> Creative & Skills Foundation</div>
+        <h2 class="section-title">The 13 Creative Programs</h2>
+        <p class="section-desc">Practical skills training that unlocks career pathways and gives children a loud, proud voice.</p>
+      </div>
+
+      <!-- 21st.dev View Switcher -->
+      <div class="programs-view-switcher">
+        <button class="view-switch-btn active" id="viewSwitchMarquee" onclick="window.toggleProgramsView('marquee')">
+          <i class="fas fa-arrows-up-down"></i> Interactive Marquee Inspector
+        </button>
+        <button class="view-switch-btn" id="viewSwitchGrid" onclick="window.toggleProgramsView('grid')">
+          <i class="fas fa-border-all"></i> Browse All 13 Cards
+        </button>
+      </div>
+
+      <!-- 21st.dev CTA With Vertical Text Marquee View -->
+      <div class="cta-vertical-marquee-section" id="programsMarqueeView">
+        <div class="program-inspector-card" id="programInspectorCard">
+          <!-- Injected dynamically via JS with active program details -->
+        </div>
+
+        <div class="vertical-marquee-container" id="verticalMarqueeContainer">
+          <div class="vertical-marquee-mask-top"></div>
+          <div class="vertical-marquee-track" id="verticalMarqueeTrack">
+            <!-- Injected dynamically via JS with clickable items -->
+          </div>
+          <div class="vertical-marquee-mask-bottom"></div>
+        </div>
+      </div>
+
+      <!-- Classic Grid View -->
+      <div class="programs-grid" id="programsGridView" style="display: none; margin-top: 1.5rem;">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 Welfare Initiatives Section -->
+  <section class="welfare-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i class="fas fa-heart"></i> Grassroots Dignity</div>
+        <h2 class="section-title">6 Community Welfare Initiatives</h2>
+        <p class="section-desc">Meeting foundational human needs with love, respect, and celebratory solidarity.</p>
+      </div>
+
+      <div class="welfare-grid" id="welfareGridContainer">
+        <!-- Rendered from data -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: var(--bg-dark); color: #ffffff; padding: 5rem 0; text-align: center;">
+    <div class="container">
+      <h2 style="font-size: 2.2rem; margin-bottom: 1rem; color: #ffffff;">Partner With Our Programs</h2>
+      <p style="color: #cbd5e1; max-width: 600px; margin: 0 auto 2rem; font-size: 1.05rem;">
+        Whether you are a donor, volunteer mentor, or corporate sponsor, your support directly fuels these 19 impact pillars.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-primary btn-lg"><i class="fas fa-heart"></i> Support Programs via Paystack</a>
+        <a href="contact.html" class="btn btn-outline-white btn-lg"><i class="fas fa-hands-helping"></i> Become a Mentor / Volunteer</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       21ST.DEV TIDELINE CTA (THE COMIC PROJECT • 5,000 AMBASSADORS)
+       (Inspired by @ham7a311/tideline-cta)
+       =================================================================== -->
+  <section class="tlc-section" id="comicTidelineCta" style="--tlc-target: 0.74;">
+    <!-- Dry Layer (Before tide reaches) -->
+    <div class="tlc__layer tlc__layer--dry">
+      <div class="tlc__inner">
+        <p class="tlc__eyebrow"><i class="fas fa-sparkles text-amber"></i> The Comic Project • Viral Ambassador Surge</p>
+        <h2 class="tlc__headline">We Are Onboarding 5,000 Volunteers.</h2>
+        <p class="tlc__sub">
+          The volunteers are social media ambassadors. We will teach them how to edit and post videos. We give them pre-edited CapCut video template files, they record a short clip of themselves, insert it into the file, and post at a specific synchronized time tagging our social media handles.
+        </p>
+
+        <div class="tlc__details-grid">
+          <div class="tlc__detail-card">
+            <h5><i class="fas fa-video text-amber"></i> CapCut Video Templates</h5>
+            <p>We supply pre-edited video files and teach you video editing. Just drop in your 5-second selfie and publish!</p>
+          </div>
+          <div class="tlc__detail-card">
+            <h5><i class="fas fa-users-viewfinder text-primary"></i> 3×3 Viral Multiplication</h5>
+            <p>Each volunteer is to influence and onboard 3 people. All the onboarded will onboard another 3 people each!</p>
+          </div>
+          <div class="tlc__detail-card">
+            <h5><i class="fas fa-book-open-reader text-emerald"></i> $1/Mo & Daily Web Comic</h5>
+            <p>Each agrees to make a $1 donation monthly (≈₦1,250) to fund slum schooling while enjoying the daily web comic.</p>
+          </div>
+        </div>
+
+        <div class="tlc__level-line">
+          <span class="tlc__level-pill"><i class="fas fa-water"></i> 3,720 of 5,000 Ambassadors Onboarded (74% Level)</span>
+          <span style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600;">Synchronized drops tagging @adetunwaseadenle</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Water Back Wave -->
+    <div class="tlc__water tlc__water--back" aria-hidden="true"></div>
+
+    <!-- Water Layer with Animated Wave Mask (Inverting text as tide rises!) -->
+    <div class="tlc__water tlc__layer" aria-hidden="true" inert>
+      <div class="tlc__inner">
+        <p class="tlc__eyebrow"><i class="fas fa-sparkles text-amber"></i> The Comic Project • Viral Ambassador Surge</p>
+        <h2 class="tlc__headline">We Are Onboarding 5,000 Volunteers.</h2>
+        <p class="tlc__sub">
+          The volunteers are social media ambassadors. We will teach them how to edit and post videos. We give them pre-edited CapCut video template files, they record a short clip of themselves, insert it into the file, and post at a specific synchronized time tagging our social media handles.
+        </p>
+
+        <div class="tlc__details-grid">
+          <div class="tlc__detail-card">
+            <h5><i class="fas fa-video text-amber"></i> CapCut Video Templates</h5>
+            <p>We supply pre-edited video files and teach you video editing. Just drop in your 5-second selfie and publish!</p>
+          </div>
+          <div class="tlc__detail-card">
+            <h5><i class="fas fa-users-viewfinder text-primary"></i> 3×3 Viral Multiplication</h5>
+            <p>Each volunteer is to influence and onboard 3 people. All the onboarded will onboard another 3 people each!</p>
+          </div>
+          <div class="tlc__detail-card">
+            <h5><i class="fas fa-book-open-reader text-emerald"></i> $1/Mo & Daily Web Comic</h5>
+            <p>Each agrees to make a $1 donation monthly (≈₦1,250) to fund slum schooling while enjoying the daily web comic.</p>
+          </div>
+        </div>
+
+        <div class="tlc__level-line">
+          <span class="tlc__level-pill"><i class="fas fa-water"></i> 3,720 of 5,000 Ambassadors Onboarded (74% Level)</span>
+          <span style="font-size: 0.88rem; color: rgba(255,255,255,0.7); font-weight: 600;">Synchronized drops tagging @adetunwaseadenle</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Buoy on Waterline -->
+    <a href="javascript:void(0)" class="tlc__buoy" onclick="window.openComicAmbassadorModal()">
+      <span>Onboard as Ambassador ($1/mo)</span>
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </section>
+
+  <!-- ===================================================================
+       SKIPER39 CANVAS CROWD FOOTER (21ST.DEV COMPONENT)
+       =================================================================== -->
+  <!-- ===================================================================
+       SKIPER39 CANVAS CROWD FOOTER (21ST.DEV COMPONENT)
+       - People Walking Graphics IS the footer itself!
+       =================================================================== -->
+  <footer class="skiper39-footer" id="mainFooter">
+    <div class="skiper-backdrop-grid"></div>
+
+    <!-- Giant Watermark Typography (Behind the Crowd) -->
+    <div class="skiper-giant-watermark">
+      SLUM ART FOUNDATION
+    </div>
+
+    <!-- Skiper39 Interactive Canvas Crowd Component (Full 440px height) -->
+    <div class="skiper-canvas-wrap">
+      <canvas id="skiperCrowdCanvas"></canvas>
+    </div>
+
+    <!-- Minimalist Glass Bottom Bar -->
+    <div class="skiper-footer-bottom">
+      <div class="container skiper-bottom-flex">
+        <div class="skiper-bottom-brand">
+          <img src="assets/images/logo-light.png" alt="Slum Art Foundation" style="height: 34px; width: auto;">
+          <span>&copy; 2026 Slum Art Foundation • Ijora Badia &amp; Makoko, Lagos, Nigeria</span>
+        </div>
+        <div class="skiper-bottom-links">
+          <a href="about.html"><i class="fas fa-circle-info"></i> Founder &amp; Vision</a>
+          <a href="shop.html"><i class="fas fa-palette"></i> Art Gallery</a>
+          <a href="register.html"><i class="fas fa-trophy"></i> Guinness Record</a>
+          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="footer-donate-pill"><i class="fas fa-heart text-amber"></i> Donate Paystack</a>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
+            <i class="fas fa-arrow-up"></i> Top
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-In Cart Drawer -->
+  <div class="drawer-backdrop" id="cartDrawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <i class="fas fa-bag-shopping text-amber" style="font-size: 1.25rem;"></i>
+        <h3 style="font-size: 1.2rem;">Your Art Bag</h3>
+      </div>
+      <button class="modal-close-btn" id="cartDrawerClose" style="position: static;"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-drawer-items" id="cartDrawerItems"></div>
+    <div class="cart-drawer-foot">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
+        <span style="font-weight: 700; color: var(--text-muted);">Total:</span>
+        <span style="font-size: 1.5rem; font-weight: 800; color: var(--color-primary);" id="cartTotalDisplay">₦0 NGN</span>
+      </div>
+      <a href="https://paystack.shop/pay/lk0hlrdlun" id="cartCheckoutBtn" target="_blank" class="btn btn-primary btn-lg" style="width: 100%;">
+        <i class="fas fa-lock"></i> Checkout via Paystack
+      </a>
+    </div>
+  </aside>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="js/data.js"></script>
+  <script>
+    // Inline rendering for programs & welfare on this dedicated page
+    document.addEventListener('DOMContentLoaded', () => {
+      const pGrid = document.getElementById('programsGridView');
+      if (pGrid && window.SLUM_DATA) {
+        pGrid.innerHTML = window.SLUM_DATA.programs.map(p => `
+          <div class="program-card" style="--card-color: ${p.color};">
+            <div class="program-card-head">
+              <div class="program-icon-wrap"><i class="fas ${p.icon}"></i></div>
+              <span class="program-num">${p.num}</span>
+            </div>
+            <div class="program-cat">${p.category}</div>
+            <h3 class="program-title">${p.title}</h3>
+            <p class="program-desc">${p.desc}</p>
+          </div>
+        `).join('');
+      }
+
+      const wGrid = document.getElementById('welfareGridContainer');
+      if (wGrid && window.SLUM_DATA) {
+        wGrid.innerHTML = window.SLUM_DATA.welfare.map(w => `
+          <div class="welfare-card" style="--card-color: ${w.color};">
+            <div class="welfare-card-top">
+              <div class="welfare-icon"><i class="fas ${w.icon}"></i></div>
+              <div>
+                <span class="welfare-badge-step">Pillar ${w.num}</span>
+                <h3 class="welfare-title">${w.title}</h3>
+                <div class="welfare-subtitle">${w.subtitle}</div>
+              </div>
+            </div>
+            <p class="welfare-desc">${w.desc}</p>
+          </div>
+        `).join('');
+      }
+    });
+  </script>
+  <!-- Volunteer Application Modal -->
+  <div class="modal-overlay" id="volunteerModal">
+    <div class="modal-card" style="max-width: 580px;">
+      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <div style="padding: 2.5rem 2rem;">
+        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-hands-holding-child"></i> Get Involved</div>
+        <h2 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Become a Volunteer</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+          Bring your skills, passion, and heart to Slum Art Foundation. Teach art, tech, music, or assist with community welfare.
+        </p>
+
+        <form onsubmit="window.handleVolunteerSubmit(event)">
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Full Name *</label>
+            <input type="text" name="fullName" required placeholder="Blessing Adeleke" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem;">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Email Address *</label>
+              <input type="email" name="email" required placeholder="blessing@example.com" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Phone / WhatsApp *</label>
+              <input type="tel" name="phone" required placeholder="+234 801 234 5678" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem;">
+            </div>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Area of Interest *</label>
+            <select name="interest" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; background: #ffffff;">
+              <option value="Teaching Art / Painting">Teaching Art / Painting</option>
+              <option value="Music / Performance Coaching">Music / Performance Coaching</option>
+              <option value="Coding & Tech Literacy">Coding & Tech Literacy</option>
+              <option value="Community Welfare (Food Clinic, Hair-Port)">Community Welfare (Food Clinic, Hair-Port)</option>
+              <option value="Photography / Videography">Photography / Videography</option>
+              <option value="International Outreach & Fundraising">International Outreach & Fundraising</option>
+            </select>
+          </div>
+          <div class="sketch-textarea-group">
+            <label class="sketch-label" for="volunteerMessagePrograms">
+              <span>Short Message / Background</span>
+              <span class="sketch-badge"><i class="fas fa-feather-pointed"></i> Artist Note</span>
+            </label>
+            <div class="sketch-textarea-wrap" data-max-chars="500">
+              <svg class="sketch-textarea-svg" aria-hidden="true"></svg>
+              <textarea id="volunteerMessagePrograms" name="message" rows="3" placeholder="Tell us a little bit about yourself and why you want to volunteer with Slum Art..." class="sketch-textarea"></textarea>
+              <div class="sketch-textarea-footer">
+                <span class="sketch-hint"><i class="fas fa-palette text-amber"></i> Tell us your skills & passion</span>
+                <span class="sketch-char-count"><span class="sketch-current">0</span> / 500</span>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            <i class="fas fa-paper-plane"></i> Submit Volunteer Application
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comic Ambassador Onboarding Modal -->
+  <div class="modal-overlay" id="comicAmbassadorModal">
+    <div class="modal-card" style="max-width: 620px;">
+      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <div style="padding: 2.75rem 2rem;">
+        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-bullhorn text-amber"></i> The Comic Project • Social Media Ambassador</div>
+        <h2 style="font-size: 1.7rem; margin-bottom: 0.5rem;">Join the 5,000 Ambassador Movement</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.6;">
+          Become an official ambassador! We will teach you how to edit videos, supply pre-edited CapCut templates, and coordinate your synchronized drops. Onboard 3 people and commit $1/month to support slum youth education while enjoying the daily web comic.
+        </p>
+
+        <form onsubmit="window.handleComicAmbassadorSubmit(event)">
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Full Name *</label>
+            <input type="text" name="fullName" required placeholder="Blessing Adeleke" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Email Address *</label>
+              <input type="email" name="email" required placeholder="blessing@example.com" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">WhatsApp Number *</label>
+              <input type="tel" name="phone" required placeholder="+234 801 234 5678" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Social Media Handle (TikTok / Instagram / X) *</label>
+            <input type="text" name="socialHandle" required placeholder="@yourhandle" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
+          </div>
+
+          <div class="sketch-textarea-group">
+            <label class="sketch-label" for="ambassadorBioPrograms">
+              <span>Why do you want to join? (Optional)</span>
+              <span class="sketch-badge"><i class="fas fa-bullhorn"></i> Ambassador Voice</span>
+            </label>
+            <div class="sketch-textarea-wrap" data-max-chars="400">
+              <svg class="sketch-textarea-svg" aria-hidden="true"></svg>
+              <textarea id="ambassadorBioPrograms" name="ambassadorBio" rows="3" placeholder="Tell us how you plan to share the comic project or your audience reach..." class="sketch-textarea"></textarea>
+              <div class="sketch-textarea-footer">
+                <span class="sketch-hint"><i class="fas fa-sparkles text-amber"></i> Help us empower 5,000 youth</span>
+                <span class="sketch-char-count"><span class="sketch-current">0</span> / 400</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-subtle); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.25rem;">
+            <label style="display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.84rem; color: #334155; cursor: pointer;">
+              <input type="checkbox" required style="margin-top: 0.2rem;">
+              <span>I agree to influence and onboard <strong>3 people</strong>, post synchronized CapCut videos tagging <strong>@adetunwaseadenle</strong>, and commit to the <strong>$1/month</strong> donation for the daily web comic pass.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            <i class="fas fa-check-circle"></i> Onboard Me as Ambassador ($1/mo)
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/rough.min.js"></script>
+  <script src="js/sketch-textarea.js"></script>
+  <script src="js/vinyl-halftone.js"></script>
+  <script src="js/app.js"></script>
+  <!-- GSAP 3.12.5 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/canvas-crowd.js"></script>
+</body>
+</html>

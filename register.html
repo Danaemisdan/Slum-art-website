@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guinness World Records Registration • Largest Collaborative Comic Book Project</title>
+  <meta name="description" content="Official registration for the Largest Collaborative Comic Book Project Guinness World Records attempt by Slum Art Foundation. Be a part of history.">
+  
+  <link rel="icon" type="image/png" href="assets/images/slumart-logo.png">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-info">
+        <a href="tel:+2348059994834"><i class="fas fa-phone"></i> +234 805 999 4834</a>
+        <a href="mailto:info@slumart.org"><i class="fas fa-envelope"></i> info@slumart.org</a>
+        <span><i class="fas fa-map-marker-alt text-amber"></i> Ijora Badia, Lagos, Nigeria</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" style="color: #4ade80; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600;">
+          <i class="fab fa-whatsapp"></i> Join WhatsApp
+        </a>
+        <div class="currency-toggle" title="Switch Currency">
+          <button class="currency-btn active" data-currency="NGN">₦ NGN</button>
+          <button class="currency-btn" data-currency="USD">$ USD</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo-light.png" alt="Slum Art Foundation">
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About & Founder</a></li>
+          <li><a href="shop.html" class="nav-link">Art Shop & Gallery</a></li>
+          <li><a href="register.html" class="nav-link active" style="color: var(--color-amber); font-weight: 600;">Guinness Record</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="cart-trigger" title="View Art Bag" aria-label="Shopping Bag">
+          <i class="fas fa-bag-shopping"></i>
+          <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+        </button>
+        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-primary btn-sm">
+          <i class="fas fa-heart"></i> Donate Now
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <img src="assets/images/logo-light.png" alt="Slum Art" style="height: 42px;">
+      </div>
+      <button class="modal-close-btn" id="mobileDrawerClose" style="position: static;"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About & Founder</a></li>
+      <li><a href="shop.html">Art Shop & Gallery</a></li>
+      <li><a href="register.html">Guinness Record Project</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- Banner -->
+  <section style="background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); color: #ffffff; padding: 4.5rem 0 3.5rem; text-align: center;">
+    <div class="container">
+      <div class="section-tag dark"><i class="fas fa-trophy"></i> Guinness World Records™ Official Attempt</div>
+      <h1 style="font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; color: #ffffff;">Largest Collaborative Comic Book Project</h1>
+      <p style="font-size: 1.15rem; color: #cbd5e1; max-width: 720px; margin: 0 auto;">
+        Join 4-Time Guinness World Record holder Adetunwase Adenle and hundreds of slum children to create history.
+      </p>
+    </div>
+  </section>
+
+  <!-- Registration Form Section -->
+  <section style="padding: 5rem 0; background: var(--bg-page);">
+    <div class="container container-narrow">
+      <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 3rem 2.5rem; box-shadow: var(--shadow-lg);" id="regFormContainer">
+        
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-light);">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: #fef3c7; color: #d97706; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div>
+            <h3 style="font-size: 1.4rem; margin-bottom: 0.25rem;">Participant Accreditation Form</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Please fill out accurate information. Your name will appear on official accreditation registries.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; background: rgba(224, 105, 39, 0.08); border: 1px dashed rgba(224, 105, 39, 0.4); border-radius: var(--radius-md); padding: 0.85rem 1.25rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i class="fas fa-compact-disc text-amber" style="font-size: 1.4rem;"></i>
+            <div>
+              <strong style="font-size: 0.92rem; color: var(--text-dark);">Original Story: The Pet Bottle School in Onigbongbo</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">By 4x Guinness Record Holder Adetunwase Adenle</div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm" onclick="window.openComicBookReader(0)">
+            <i class="fas fa-book-open"></i> Read Comic Book (7 Pages)
+          </button>
+        </div>
+
+        <form id="standaloneGwrForm" onsubmit="handleStandaloneGwr(event)">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.25rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem;">Full Legal Name *</label>
+              <input type="text" name="fullName" required placeholder="e.g. Oluwaseun Adeleke" style="width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem; outline: none;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem;">Date of Birth *</label>
+              <input type="date" name="dob" required style="width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem; outline: none; background: #fff;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem;">Email Address *</label>
+              <input type="email" name="email" required placeholder="seun@example.com" style="width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem; outline: none;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem;">Phone / WhatsApp *</label>
+              <input type="tel" name="phone" required placeholder="08012345678" style="width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem; outline: none;">
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1.75rem;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.75rem;">Select Edition & Participation Mode *</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <label style="border: 2px solid var(--border-light); border-radius: var(--radius-md); padding: 1.25rem; cursor: pointer; display: flex; flex-direction: column; gap: 0.5rem; transition: border-color 0.2s ease;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <span style="font-weight: 700; font-size: 1rem;">Digital Edition (PDF)</span>
+                  <input type="radio" name="edition" value="Digital Edition (PDF)" checked>
+                </div>
+                <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+                  Instant digital download upon Guinness World Records verification. Full name credited in official record book PDF.
+                </p>
+              </label>
+
+              <label style="border: 2px solid var(--border-light); border-radius: var(--radius-md); padding: 1.25rem; cursor: pointer; display: flex; flex-direction: column; gap: 0.5rem; transition: border-color 0.2s ease;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <span style="font-weight: 700; font-size: 1rem;">Limited Hardcover Print</span>
+                  <input type="radio" name="edition" value="Limited Print Edition">
+                </div>
+                <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+                  Official commemorative collector's print signed by the visionary team and shipped worldwide.
+                </p>
+              </label>
+            </div>
+          </div>
+
+          <div class="sketch-textarea-group">
+            <label class="sketch-label" for="gwrDedication">
+              <span>Personal Dedication / Note for Archive (Optional)</span>
+              <span class="sketch-badge"><i class="fas fa-scroll"></i> Record Archives</span>
+            </label>
+            <div class="sketch-textarea-wrap" data-max-chars="500">
+              <svg class="sketch-textarea-svg" aria-hidden="true"></svg>
+              <textarea id="gwrDedication" name="dedication" rows="3" placeholder="Leave a short quote, dedication to a loved one, or your message to future generations..." class="sketch-textarea"></textarea>
+              <div class="sketch-textarea-footer">
+                <span class="sketch-hint"><i class="fas fa-trophy text-amber"></i> Preserved in the official Guinness record archive</span>
+                <span class="sketch-char-count"><span class="sketch-current">0</span> / 500</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer; font-size: 0.88rem; color: #475569;">
+              <input type="checkbox" required style="margin-top: 0.25rem;">
+              <span>I confirm my registration for the Largest Collaborative Comic Book Project Guinness World Records™ attempt and consent to the official participation guidelines.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            <i class="fas fa-trophy"></i> Complete Official Registration
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       21ST.DEV TIDELINE CTA (THE COMIC PROJECT • 5,000 AMBASSADORS)
+       (Inspired by @ham7a311/tideline-cta)
+       =================================================================== -->
+  <section class="tlc-section" id="comicTidelineCta" style="--tlc-target: 0.74;">
+    <!-- Dry Layer (Before tide reaches) -->
+    <div class="tlc__layer tlc__layer--dry">
+      <div class="tlc__inner">
+        <p class="tlc__eyebrow"><i class="fas fa-sparkles text-amber"></i> The Comic Project • Viral Ambassador Surge</p>
+        <h2 class="tlc__headline">We Are Onboarding 5,000 Volunteers.</h2>
+        <p class="tlc__sub">
+          The volunteers are social media ambassadors. We will teach them how to edit and post videos. We give them pre-edited CapCut video template files, they record a short clip of themselves, insert it into the file, and post at a specific synchronized time tagging our social media handles.
+        </p>
+
+        <div class="tlc__details-grid">
+          <div class="tlc__detail-card">
+            <h5><i class="fas fa-video text-amber"></i> CapCut Video Templates</h5>
+            <p>We supply pre-edited video files and teach you video editing. Just drop in your 5-second selfie and publish!</p>
+          </div>
+          <div class="tlc__detail-card">
+            <h5><i class="fas fa-users-viewfinder text-primary"></i> 3×3 Viral Multiplication</h5>
+            <p>Each volunteer is to influence and onboard 3 people. All the onboarded will onboard another 3 people each!</p>
+          </div>
+          <div class="tlc__detail-card">
+            <h5><i class="fas fa-book-open-reader text-emerald"></i> $1/Mo & Daily Web Comic</h5>
+            <p>Each agrees to make a $1 donation monthly (≈₦1,250) to fund slum schooling while enjoying the daily web comic.</p>
+          </div>
+        </div>
+
+        <div class="tlc__level-line">
+          <span class="tlc__level-pill"><i class="fas fa-water"></i> 3,720 of 5,000 Ambassadors Onboarded (74% Level)</span>
+          <span style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600;">Synchronized drops tagging @adetunwaseadenle</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Water Back Wave -->
+    <div class="tlc__water tlc__water--back" aria-hidden="true"></div>
+
+    <!-- Water Layer with Animated Wave Mask (Inverting text as tide rises!) -->
+    <div class="tlc__water tlc__layer" aria-hidden="true" inert>
+      <div class="tlc__inner">
+        <p class="tlc__eyebrow"><i class="fas fa-sparkles text-amber"></i> The Comic Project • Viral Ambassador Surge</p>
+        <h2 class="tlc__headline">We Are Onboarding 5,000 Volunteers.</h2>
+        <p class="tlc__sub">
+          The volunteers are social media ambassadors. We will teach them how to edit and post videos. We give them pre-edited CapCut video template files, they record a short clip of themselves, insert it into the file, and post at a specific synchronized time tagging our social media handles.
+        </p>
+
+        <div class="tlc__details-grid">
+          <div class="tlc__detail-card">
+            <h5><i class="fas fa-video text-amber"></i> CapCut Video Templates</h5>
+            <p>We supply pre-edited video files and teach you video editing. Just drop in your 5-second selfie and publish!</p>
+          </div>
+          <div class="tlc__detail-card">
+            <h5><i class="fas fa-users-viewfinder text-primary"></i> 3×3 Viral Multiplication</h5>
+            <p>Each volunteer is to influence and onboard 3 people. All the onboarded will onboard another 3 people each!</p>
+          </div>
+          <div class="tlc__detail-card">
+            <h5><i class="fas fa-book-open-reader text-emerald"></i> $1/Mo & Daily Web Comic</h5>
+            <p>Each agrees to make a $1 donation monthly (≈₦1,250) to fund slum schooling while enjoying the daily web comic.</p>
+          </div>
+        </div>
+
+        <div class="tlc__level-line">
+          <span class="tlc__level-pill"><i class="fas fa-water"></i> 3,720 of 5,000 Ambassadors Onboarded (74% Level)</span>
+          <span style="font-size: 0.88rem; color: rgba(255,255,255,0.7); font-weight: 600;">Synchronized drops tagging @adetunwaseadenle</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Buoy on Waterline -->
+    <a href="javascript:void(0)" class="tlc__buoy" onclick="window.openComicAmbassadorModal()">
+      <span>Onboard as Ambassador ($1/mo)</span>
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </section>
+
+  <!-- ===================================================================
+       SKIPER39 CANVAS CROWD FOOTER (21ST.DEV COMPONENT)
+       =================================================================== -->
+  <!-- ===================================================================
+       SKIPER39 CANVAS CROWD FOOTER (21ST.DEV COMPONENT)
+       - People Walking Graphics IS the footer itself!
+       =================================================================== -->
+  <footer class="skiper39-footer" id="mainFooter">
+    <div class="skiper-backdrop-grid"></div>
+
+    <!-- Giant Watermark Typography (Behind the Crowd) -->
+    <div class="skiper-giant-watermark">
+      SLUM ART FOUNDATION
+    </div>
+
+    <!-- Skiper39 Interactive Canvas Crowd Component (Full 440px height) -->
+    <div class="skiper-canvas-wrap">
+      <canvas id="skiperCrowdCanvas"></canvas>
+    </div>
+
+    <!-- Minimalist Glass Bottom Bar -->
+    <div class="skiper-footer-bottom">
+      <div class="container skiper-bottom-flex">
+        <div class="skiper-bottom-brand">
+          <img src="assets/images/logo-light.png" alt="Slum Art Foundation" style="height: 34px; width: auto;">
+          <span>&copy; 2026 Slum Art Foundation • Ijora Badia &amp; Makoko, Lagos, Nigeria</span>
+        </div>
+        <div class="skiper-bottom-links">
+          <a href="about.html"><i class="fas fa-circle-info"></i> Founder &amp; Vision</a>
+          <a href="shop.html"><i class="fas fa-palette"></i> Art Gallery</a>
+          <a href="register.html"><i class="fas fa-trophy"></i> Guinness Record</a>
+          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="footer-donate-pill"><i class="fas fa-heart text-amber"></i> Donate Paystack</a>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
+            <i class="fas fa-arrow-up"></i> Top
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="js/data.js"></script>
+  <script>
+    function handleStandaloneGwr(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.fullName.value;
+      const email = form.email.value;
+      const edition = form.edition ? form.edition.value : 'Digital Edition';
+      const refId = 'SLUM-GWR-' + Math.floor(1000 + Math.random() * 9000);
+
+      const container = document.getElementById('regFormContainer');
+      container.innerHTML = `
+        <div style="text-align: center; padding: 2rem 1rem;">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background: #fef3c7; color: #d97706; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="section-tag" style="margin-bottom: 0.75rem;">Registration Verified</div>
+          <h2 style="font-size: 2.2rem; margin-bottom: 0.75rem;">You're In The Record Books!</h2>
+          <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 580px; margin: 0 auto 1.5rem; line-height: 1.6;">
+            Congratulations, <strong>${name}</strong>! Your registration for the <strong>Largest Collaborative Comic Book Project</strong> has been recorded in our official participant ledger.
+          </p>
+          <div style="background: var(--bg-subtle); border: 2px dashed var(--color-amber); border-radius: var(--radius-lg); padding: 2rem; max-width: 440px; margin: 0 auto 2rem;">
+            <div style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.05em;">Participant Accreditation Code</div>
+            <div style="font-size: 2.2rem; font-weight: 800; color: var(--text-main); font-family: monospace; margin: 0.5rem 0;">${refId}</div>
+            <div style="font-size: 0.9rem; color: var(--color-primary-dark); font-weight: 600;">Edition: ${edition} • Official Guinness Candidate</div>
+          </div>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 2rem;">
+            A confirmation has been logged for <strong>${email}</strong>. We look forward to creating world history together!
+          </p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-secondary" onclick="window.print()"><i class="fas fa-print"></i> Print Accreditation Card</button>
+            <a href="index.html" class="btn btn-primary">Return to Homepage</a>
+          </div>
+        </div>
+      `;
+    }
+  </script>
+  <!-- Comic Ambassador Onboarding Modal -->
+  <div class="modal-overlay" id="comicAmbassadorModal">
+    <div class="modal-card" style="max-width: 620px;">
+      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <div style="padding: 2.75rem 2rem;">
+        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-bullhorn text-amber"></i> The Comic Project • Social Media Ambassador</div>
+        <h2 style="font-size: 1.7rem; margin-bottom: 0.5rem;">Join the 5,000 Ambassador Movement</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.6;">
+          Become an official ambassador! We will teach you how to edit videos, supply pre-edited CapCut templates, and coordinate your synchronized drops. Onboard 3 people and commit $1/month to support slum youth education while enjoying the daily web comic.
+        </p>
+
+        <form onsubmit="window.handleComicAmbassadorSubmit(event)">
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Full Name *</label>
+            <input type="text" name="fullName" required placeholder="Blessing Adeleke" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Email Address *</label>
+              <input type="email" name="email" required placeholder="blessing@example.com" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">WhatsApp Number *</label>
+              <input type="tel" name="phone" required placeholder="+234 801 234 5678" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Social Media Handle (TikTok / Instagram / X) *</label>
+            <input type="text" name="socialHandle" required placeholder="@yourhandle" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
+          </div>
+
+          <div class="sketch-textarea-group">
+            <label class="sketch-label" for="ambassadorBioRegister">
+              <span>Why do you want to join? (Optional)</span>
+              <span class="sketch-badge"><i class="fas fa-bullhorn"></i> Ambassador Voice</span>
+            </label>
+            <div class="sketch-textarea-wrap" data-max-chars="400">
+              <svg class="sketch-textarea-svg" aria-hidden="true"></svg>
+              <textarea id="ambassadorBioRegister" name="ambassadorBio" rows="3" placeholder="Tell us how you plan to share the comic project or your audience reach..." class="sketch-textarea"></textarea>
+              <div class="sketch-textarea-footer">
+                <span class="sketch-hint"><i class="fas fa-sparkles text-amber"></i> Help us empower 5,000 youth</span>
+                <span class="sketch-char-count"><span class="sketch-current">0</span> / 400</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-subtle); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.25rem;">
+            <label style="display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.84rem; color: #334155; cursor: pointer;">
+              <input type="checkbox" required style="margin-top: 0.2rem;">
+              <span>I agree to influence and onboard <strong>3 people</strong>, post synchronized CapCut videos tagging <strong>@adetunwaseadenle</strong>, and commit to the <strong>$1/month</strong> donation for the daily web comic pass.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            <i class="fas fa-check-circle"></i> Onboard Me as Ambassador ($1/mo)
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/rough.min.js"></script>
+  <script src="js/sketch-textarea.js"></script>
+  <script src="js/vinyl-halftone.js"></script>
+  <script src="js/app.js"></script>
+  <!-- GSAP 3.12.5 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/canvas-crowd.js"></script>
+</body>
+</html>
