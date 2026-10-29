@@ -3,199 +3,614 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slum Art Foundation • Activating Creative Potential Inside Communities</title>
-  <meta name="description" content="Slum Art Foundation empowers street-vulnerable children in Lagos slums through fine art education, sustainable PET bottle classrooms, and 100% formal school tuition escrow.">
+  <title>Slum Art Foundation • Buy An Artwork and Send a Kid to School</title>
+  <meta name="description" content="Slum Art Foundation empowers youth in underserved communities through creative expression, art, and education. Buy an artwork to send a child to school.">
+  
+  <!-- Favicons -->
   <link rel="icon" type="image/png" href="assets/images/slumart-logo.png">
-
-  <!-- Google Font: DM Sans (Exact World Connect typography) -->
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Modern Stylesheet (Cache-Busted) -->
+  <link rel="stylesheet" href="css/style.css?v=20261028_v34">
+  <link rel="stylesheet" href="css/tactile-client-plates.css?v=20261028_v34">
 
-  <!-- World Connect Inspired Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=20261028_wc1">
+  <!-- Immediate Inline Navigation Scroll Handler -->
+  <script>
+    (function() {
+      function updateNav() {
+        var scrollY = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || 0;
+        var navbar = document.querySelector('.navbar');
+        if (!navbar) return;
+        if (scrollY > 60) {
+          document.body.classList.add('scrolled-past-hero');
+          navbar.classList.add('navbar-visible');
+        } else {
+          document.body.classList.remove('scrolled-past-hero');
+          navbar.classList.remove('navbar-visible');
+        }
+      }
+      window.addEventListener('scroll', updateNav, { passive: true });
+      window.addEventListener('DOMContentLoaded', updateNav);
+      if (document.readyState !== 'loading') updateNav();
+    })();
+  </script>
 </head>
-<body>
+<body class="has-hero-nav">
 
-  <!-- ===================================================================
-       HEADER & NAVIGATION (Clean, minimal, World Connect style)
-       =================================================================== -->
-  <header class="wc-header" id="mainHeader">
-    <div class="container wc-header-inner">
-      <a href="index.html" class="wc-brand">
-        <img src="assets/images/slumart_logo_clean.png" alt="Slum Art Foundation" class="wc-brand-logo">
-        <div class="wc-brand-text">
-          <span class="wc-brand-title">SLUM ART</span>
-          <span class="wc-brand-sub">Foundation</span>
+  <!-- Top Announcement & Verification Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-info">
+        <a href="tel:+2348059994834"><i class="fas fa-phone"></i> +234 805 999 4834</a>
+        <a href="mailto:info@slumart.org"><i class="fas fa-envelope"></i> info@slumart.org</a>
+        <span><i class="fas fa-map-marker-alt text-amber"></i> Ijora Badia, Lagos, Nigeria</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" style="color: #4ade80; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600;">
+          <i class="fab fa-whatsapp"></i> Join WhatsApp
+        </a>
+        <!-- Currency Switcher -->
+        <div class="currency-toggle" title="Switch Currency">
+          <button class="currency-btn active" data-currency="NGN">₦ NGN</button>
+          <button class="currency-btn" data-currency="USD">$ USD</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo-light.png" alt="Slum Art Foundation">
       </a>
 
-      <!-- Desktop Nav Links -->
-      <nav class="wc-nav">
-        <ul class="wc-nav-links">
-          <li><a href="#approach" class="wc-nav-link">Our Approach</a></li>
-          <li><a href="#how-it-works" class="wc-nav-link">How It Works</a></li>
-          <li><a href="#impact" class="wc-nav-link">Our Impact</a></li>
-          <li><a href="#gallery" class="wc-nav-link">Art Gallery</a></li>
-          <li><a href="#comic-project" class="wc-nav-link">Comic Project</a></li>
-          <li><a href="#founder" class="wc-nav-link">Who We Are</a></li>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="#who-we-are" class="nav-link">Who We Are</a></li>
+          <li><a href="about.html" class="nav-link">About & Founder</a></li>
+          <li><a href="shop.html" class="nav-link">Art Shop & Gallery</a></li>
+          <li><a href="register.html" class="nav-link" style="color: var(--color-amber); font-weight: 600;">Guinness Record</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
-      <!-- Action Button -->
-      <div class="wc-header-actions">
-        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="wc-btn-primary">
-          Donate
+      <div class="nav-actions">
+        <!-- Cart Trigger -->
+        <button class="cart-trigger" title="View Art Bag" aria-label="Shopping Bag">
+          <i class="fas fa-bag-shopping"></i>
+          <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+        </button>
+
+        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+          <i class="fas fa-heart"></i> Donate Now
         </a>
-        <button type="button" class="wc-menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">
           <i class="fas fa-bars"></i>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- ===================================================================
-       HERO SECTION
-       Full-Bleed Rounded Photography with Inspiring Headline
-       =================================================================== -->
-  <section class="wc-hero">
-    <div class="container">
-      <div class="wc-hero-card">
-        <img 
-          src="assets/images/gallery/gallery_05.jpg" 
-          alt="Young artist painting in the Makoko floating studio" 
-          class="wc-hero-bg"
-          loading="eager"
-        >
-        <div class="wc-hero-overlay"></div>
-        <div class="wc-hero-content">
-          <span class="wc-kicker" style="color: #ffffff; opacity: 0.9;">
-            <i class="fas fa-certificate text-primary"></i> REGISTERED NONPROFIT • RC: 139169
-          </span>
-          <h1 class="wc-hero-title">
-            Activating creative genius inside communities.
-          </h1>
-          <p class="wc-hero-desc">
-            Slum Art Foundation backs children living in Lagos slums with creative education, sustainable PET bottle classrooms, and 100% formal school tuition escrow funded by their fine art.
-          </p>
-          <div class="wc-hero-btn-group">
-            <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="wc-btn-primary">
-              Donate
-            </a>
-            <a href="#approach" class="wc-btn-white">
-              Our Approach
-            </a>
-          </div>
-        </div>
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <img src="assets/images/logo-light.png" alt="Slum Art" style="height: 42px;">
       </div>
+      <button class="modal-close-btn" id="mobileDrawerClose" style="position: static;"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#who-we-are">Who We Are</a></li>
+      <li><a href="about.html">About Founder & Mission</a></li>
+      <li><a href="shop.html">Official Art Gallery & Shop</a></li>
+      <li><a href="register.html">Guinness World Record Comic Book Project</a></li>
+      <li><a href="contact.html">Contact & Volunteer</a></li>
+    </ul>
+    <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; gap: 0.75rem;">
+      <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-primary">
+        <i class="fas fa-heart"></i> Donate via Paystack
+      </a>
+      <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" class="btn btn-whatsapp">
+        <i class="fab fa-whatsapp"></i> Join Community Group
+      </a>
+    </div>
+  </aside>
+
+  <!-- ===================================================================
+       HERO: OFFICIAL 21ST.DEV ANIMATOR TITLE PRELOADER
+       Component by Kedhareswer Naidu (@kedhareswer)
+       Customized for: "The Comic Project • Ijora Badia & Makoko"
+       =================================================================== -->
+  <section class="hero-section hero-atp-stage hero-light-stage" id="hero" style="background-color: #faf8f5 !important; color: #0f172a !important; padding: 0;">
+    <div class="container hero-atp-container" style="max-width: 100% !important; padding: 0 !important; margin: 0 !important;">
+      <!-- Full Edge-to-Edge 21st.dev Kedhareswer Animator Title Preloader (Light Studio Paper) -->
+      <div id="heroAnimatorPreloaderMount" style="width: 100%;"></div>
     </div>
   </section>
 
   <!-- ===================================================================
-       SECTION 1: OUR APPROACH (Two-Column Editorial)
+       PARALLAX WAVE TRANSITION: LIGHT ATELIER (#faf8f5) → DARK MIDNIGHT (#060911)
+       Seamless animated fluid transition between the Light Hero & Dark Story
        =================================================================== -->
-  <section class="wc-approach" id="approach">
-    <div class="container">
-      <div class="wc-approach-grid">
-        <div class="wc-approach-content">
-          <span class="wc-kicker">OUR APPROACH</span>
-          <h2 class="wc-heading">
-            Accelerating youth potential through art and trust.
-          </h2>
-          <p class="wc-subheading" style="margin-bottom: 1.25rem;">
-            Over 100,000 children in Lagos waterfront slums face hazardous shoreline scrap labor and lack access to formal schools. Slum Art Foundation operates on a community-first co-investment model: we provide fine-art training, safe floating classrooms, and mentorship.
-          </p>
-          <p class="wc-subheading">
-            When a child paints, 100% of the proceeds from their artwork are placed in a formal education escrow that pays their primary and secondary school tuition, books, uniforms, and hot daily meals.
-          </p>
-          <a href="#how-it-works" class="wc-text-link">
-            <span>Learn How It Works</span>
+  <div class="hero-to-dark-wave" aria-hidden="true">
+    <svg class="hero-waves-animated" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="hero-fluid-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="hero-wave-parallax">
+        <use xlink:href="#hero-fluid-wave" x="48" y="0" fill="rgba(6, 9, 17, 0.3)" />
+        <use xlink:href="#hero-fluid-wave" x="48" y="2" fill="rgba(6, 9, 17, 0.55)" />
+        <use xlink:href="#hero-fluid-wave" x="48" y="4" fill="rgba(6, 9, 17, 0.8)" />
+        <use xlink:href="#hero-fluid-wave" x="48" y="6" fill="#060911" />
+      </g>
+    </svg>
+  </div>
+
+  <!-- ===================================================================
+       21ST.DEV MINIMALIST HERO (SECOND PAGE - EXACT 100VH VIEWPORT FIT)
+       Component Inspiration: @ravikatiyar162/components/minimalist-hero
+       Image: User Uploaded Makoko Student Scholar (Transparent Studio Cutout)
+       Overlapping Warm Golden Sun Disc + Monumental Typography
+       =================================================================== -->
+  <section class="minimalist-hero-section" id="who-we-are">
+    <!-- Main 3-Column Minimalist Stage -->
+    <div class="m-hero-stage">
+      <!-- Col 1: Direct Human Copy & Interactive Donation Thingy -->
+      <div class="m-hero-col m-hero-col--left">
+        <span class="m-hero-eyebrow">URGENT HUMANITARIAN NEED</span>
+        <p class="m-hero-text">
+          In Makoko’s floating lagoon, over 100,000 children are forced into shoreline trash labor. 
+          A single gift of <strong>$35</strong> takes a child off the water and pays 100% of their primary school tuition, uniform kit, and daily hot meals.
+        </p>
+
+        <!-- 21st.dev Interactive Donation Thingy -->
+        <div class="m-hero-donation-box">
+          <div class="m-hero-donation-top">
+            <span class="m-hero-donation-label"><i class="fas fa-hand-holding-heart text-amber"></i> CHOOSE SPONSORSHIP</span>
+            <div class="m-hero-curr-tray" role="group" aria-label="Select currency">
+              <button type="button" class="m-hero-curr-btn active" data-curr="USD" id="mHeroCurrUsd">$ USD</button>
+              <button type="button" class="m-hero-curr-btn" data-curr="NGN" id="mHeroCurrNgn">₦ NGN</button>
+            </div>
+          </div>
+
+          <!-- 4 Tactile Tiers -->
+          <div class="m-hero-tiers-grid" role="radiogroup" aria-label="Donation tiers">
+            <button type="button" class="m-hero-tier-btn" data-amount="10" data-label-usd="$10" data-label-ngn="₦12.5k" data-title-usd="Sponsor Meals &amp; Art ($10)" data-title-ngn="Sponsor Meals &amp; Art (₦12,500)">
+              <span class="m-tier-val">$10</span>
+              <span class="m-tier-name">Meals</span>
+            </button>
+            <button type="button" class="m-hero-tier-btn active" data-amount="35" data-label-usd="$35" data-label-ngn="₦43.7k" data-title-usd="Sponsor 1 Child's Tuition ($35)" data-title-ngn="Sponsor 1 Child's Tuition (₦43,750)">
+              <span class="m-tier-badge">Most Direct</span>
+              <span class="m-tier-val">$35</span>
+              <span class="m-tier-name">1 Term</span>
+            </button>
+            <button type="button" class="m-hero-tier-btn" data-amount="100" data-label-usd="$100" data-label-ngn="₦125k" data-title-usd="Sponsor Full Year ($100)" data-title-ngn="Sponsor Full Year (₦125,000)">
+              <span class="m-tier-val">$100</span>
+              <span class="m-tier-name">Full Year</span>
+            </button>
+            <button type="button" class="m-hero-tier-btn" data-amount="250" data-label-usd="$250" data-label-ngn="₦312k" data-title-usd="Sponsor Fellowship ($250)" data-title-ngn="Sponsor Fellowship (₦312,500)">
+              <span class="m-tier-val">$250</span>
+              <span class="m-tier-name">Fellowship</span>
+            </button>
+          </div>
+
+          <!-- Machined Paystack Giving Button -->
+          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="m-hero-primary-btn" id="mHeroDonateBtn">
+            <span id="mHeroDonateText">Sponsor 1 Child's Tuition ($35)</span>
             <i class="fas fa-arrow-right"></i>
           </a>
-        </div>
 
-        <div class="wc-approach-media">
+          <div class="m-hero-trust-line">
+            <span><i class="fas fa-shield-check text-emerald"></i> Official Paystack Escrow</span>
+            <span>&bull;</span>
+            <span>100% Direct Model</span>
+            <span>&bull;</span>
+            <span>RC: 139169</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 2: Golden Sun Disc + Transparent Student Cutout -->
+      <div class="m-hero-col m-hero-col--center">
+        <div class="m-hero-sun-disc" aria-hidden="true"></div>
+        <div class="m-hero-img-wrap">
           <img 
-            src="assets/images/gallery/gallery_04.jpg" 
-            alt="Founder Adetunwase mentoring children at their easels" 
-            class="wc-approach-img"
-            loading="lazy"
+            src="assets/images/gallery/makoko_student_cutout.png" 
+            alt="Makoko child student scholar standing inside floating classroom" 
+            class="m-hero-cutout-img"
+            loading="eager"
           >
         </div>
       </div>
+
+      <!-- Col 3: Monumental 3-Line Stacked Headline -->
+      <div class="m-hero-col m-hero-col--right">
+        <h2 class="m-hero-headline">
+          <span class="m-hero-word">from</span>
+          <span class="m-hero-word">slum</span>
+          <span class="m-hero-word m-hero-word--highlight">to school.</span>
+        </h2>
+      </div>
     </div>
+
+    <!-- Bottom Meta / Coordinates -->
+    <footer class="m-hero-footer">
+      <div class="m-hero-socials">
+        <a href="https://instagram.com/slumartfoundation" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com/slumart_org" target="_blank" rel="noopener noreferrer" title="X / Twitter" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://linkedin.com/company/slum-art-foundation" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://youtube.com/@slumartfoundation" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+
+      <a href="#giving-stage" class="m-hero-scroll-pill">
+        <span>Explore Giving Stage</span>
+        <i class="fas fa-chevron-down"></i>
+      </a>
+
+      <div class="m-hero-coords">
+        <span>Makoko Lagoon, Lagos, Nigeria</span>
+        <span class="m-hero-dot-sep">&bull;</span>
+        <span>5,000+ Enrolled Scholars</span>
+      </div>
+    </footer>
   </section>
 
   <!-- ===================================================================
-       SECTION 2: HOW IT WORKS (4 Story Cards with Images)
+       DIRECT GIVING STAGE & TACTILE IMPACT LEDGER (SECTION 3 - EXACT 100VH)
+       - 100% fits within 1 page on desktop without requiring scrolling
+       - Pure positive impact: Kehinde verified enrolled scholar case study
+       - 21st.dev Tactile Giving Console
+       Official Paystack: https://paystack.shop/pay/lk0hlrdlun
        =================================================================== -->
-  <section class="wc-steps" id="how-it-works">
+  <!-- ===================================================================
+       UI LAYOUT FEATURE BENTO (SECTION 3)
+       Design Blueprint: @uilayout.contact/components/feature-bento on 21st.dev
+       - Asymmetric 6-card squircle bento grid with 24px rounded corners
+       - Edge-to-edge cinematic looping video & authentic Makoko photography
+       - Spacious typography, ambient glowing gradients, live radar pulse
+       - Strict 1-Page Viewport Fit (calc(100vh - 72px))
+       =================================================================== -->
+  <section class="ui-bento-section" id="giving-stage">
+    <div class="ui-bento-container">
+      
+      <!-- Section Editorial Header -->
+      <div class="ui-bento-header">
+        <div class="ui-bento-pill">
+          <span class="ui-pulse-dot"></span>
+          <span>VERIFIED PHILANTHROPIC IMPACT</span>
+        </div>
+        <h2 class="ui-bento-title">Real Lives. Certified Impact.</h2>
+        <p class="ui-bento-sub">From shoreline scrap labor into accredited schooling, master fine-art mentorship, and solar-powered floating studios.</p>
+      </div>
+
+      <!-- 6-Card Feature Bento Grid -->
+      <div class="ui-bento-grid">
+
+        <!-- CARD 1: Large Hero Media Card (spans 2 cols, 2 rows) - Automatic Storytelling Loop -->
+        <div class="ui-bento-card card--hero" id="heroScholarStoryCard">
+          <!-- Background Crossfading Photos (Cycles automatically with each child) -->
+          <div class="ui-hero-bg-slider" id="heroBgSlider">
+            <div class="hero-bg-slide active" data-slide="0" style="background-image: url('assets/images/gallery/gallery_05.jpg');"></div>
+            <div class="hero-bg-slide" data-slide="1" style="background-image: url('assets/images/gallery/gallery_07.jpg');"></div>
+            <div class="hero-bg-slide" data-slide="2" style="background-image: url('assets/images/gallery/gallery_03.jpg');"></div>
+            <div class="hero-bg-slide" data-slide="3" style="background-image: url('assets/images/gallery/gallery_06.jpg');"></div>
+          </div>
+          <!-- Gradient Scrim for Contrast -->
+          <div class="ui-bento-scrim"></div>
+
+          <!-- Hero Content -->
+          <div class="ui-hero-content">
+            <div class="ui-hero-top-row">
+              <div class="ui-tag-pill" id="scholarStoryTag">
+                <span class="ui-pulse-dot pulse--green"></span>
+                <span>Live Studio &bull; Makoko Floating Lagoon</span>
+              </div>
+
+              <!-- Interactive Scholar Stories Switcher with Auto-Progress Trackers -->
+              <div class="scholar-story-tabs" id="scholarStoryTabs">
+                <button type="button" class="story-tab active" onclick="selectScholarStory(0, true)" data-story="0" title="Kehinde's Journey">
+                  <img src="assets/images/gallery/kehinde_portrait.jpg" alt="Kehinde">
+                  <span>Kehinde (11)</span>
+                  <div class="tab-progress-track"><div class="tab-progress-fill"></div></div>
+                </button>
+                <button type="button" class="story-tab" onclick="selectScholarStory(1, true)" data-story="1" title="Blessing's Journey">
+                  <img src="assets/images/resources/prof_2.png" alt="Blessing">
+                  <span>Blessing (13)</span>
+                  <div class="tab-progress-track"><div class="tab-progress-fill"></div></div>
+                </button>
+                <button type="button" class="story-tab" onclick="selectScholarStory(2, true)" data-story="2" title="Samuel's Journey">
+                  <img src="assets/images/resources/prof_3.png" alt="Samuel">
+                  <span>Samuel (10)</span>
+                  <div class="tab-progress-track"><div class="tab-progress-fill"></div></div>
+                </button>
+                <button type="button" class="story-tab" onclick="selectScholarStory(3, true)" data-story="3" title="Taiwo's Journey">
+                  <img src="assets/images/gallery/gallery_02.jpg" alt="Taiwo">
+                  <span>Taiwo (11)</span>
+                  <div class="tab-progress-track"><div class="tab-progress-fill"></div></div>
+                </button>
+              </div>
+            </div>
+
+            <div class="scholar-story-body" id="scholarStoryBody">
+              <h3 class="ui-hero-title" id="scholarStoryTitle">
+                From Shoreline Labor<br>to Fine Art Mastery
+              </h3>
+
+              <p class="ui-hero-desc" id="scholarStoryDesc">
+                &ldquo;Before Slum Art, my days were spent fishing plastic from the water. Today my paintings pay my school tuition and I have a seat in a real classroom.&rdquo;
+              </p>
+            </div>
+
+            <div class="ui-hero-footer" id="scholarStoryFooter">
+              <div class="ui-scholar-badge">
+                <img src="assets/images/gallery/kehinde_portrait.jpg" alt="Scholar portrait" class="scholar-thumb" id="scholarStoryAvatar">
+                <div class="scholar-info">
+                  <span class="scholar-name" id="scholarStoryName">Kehinde, Age 11</span>
+                  <span class="scholar-role" id="scholarStoryRole">Scholar #042 &bull; Bright Achievers Primary</span>
+                </div>
+              </div>
+              <div class="ui-outcomes-pill" id="scholarStoryOutcomes">
+                <span>100% Tuition Escrow</span>
+                <span class="dot-sep">&bull;</span>
+                <span>Crested Kit</span>
+                <span class="dot-sep">&bull;</span>
+                <span>Daily Meals</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: Top Right - 100% Escrow Stat Card (col 3, row 1) -->
+        <div class="ui-bento-card card--stat-blue">
+          <div class="ui-ambient-glow glow--tr"></div>
+          <div class="ui-card-inner">
+            <div class="ui-icon-box box--blue">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <div class="ui-stat-row">
+              <h4 class="ui-stat-huge">100%</h4>
+              <p class="ui-stat-caption">Direct Educational Escrow</p>
+            </div>
+            <p class="ui-card-sub text-white-90">
+              Zero admin overhead taken. Every gift is deployed directly into school fees, books, uniforms, and daily nutrition.
+            </p>
+          </div>
+        </div>
+
+        <!-- CARD 3: Middle Right - 4x Guinness Record Feature Card (col 3, row 2) -->
+        <div class="ui-bento-card card--feature-dark">
+          <div class="ui-card-inner">
+            <div class="ui-icon-box box--amber">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="ui-feature-text">
+              <h4 class="ui-feature-title">4&times; Guinness World Records</h4>
+              <p class="ui-card-sub text-muted">
+                Trained daily by master artist Adetunwase Adenle, elevating shoreline labor into world-class exhibitions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4: Bottom Left - 50,000+ Bottles Upcycled (col 1, row 3) -->
+        <div class="ui-bento-card card--action-eco">
+          <div class="ui-card-bg-img" style="background-image: url('assets/images/donation/hue_4.png');"></div>
+          <div class="ui-card-img-scrim"></div>
+
+          <div class="ui-action-inner">
+            <div class="ui-action-top">
+              <span class="ui-tag-pill pill--translucent">50,000+ Bottles</span>
+              <a href="#art-shop" class="ui-arrow-btn" aria-label="View Art Gallery">↗</a>
+            </div>
+            <div class="ui-action-bottom">
+              <h4 class="ui-action-title">Upcycled Into<br>Classrooms</h4>
+              <p class="ui-card-sub text-white-85">Solar-powered floating academy built from lagoon waste.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 5: Bottom Center - 5,000+ Children Educated (col 2, row 3) -->
+        <div class="ui-bento-card card--stat-dark">
+          <div class="ui-ping-beacon">
+            <span class="ping-wave"></span>
+            <span class="ping-point"></span>
+          </div>
+          <div class="ui-card-inner ui-center-content">
+            <span class="ui-gradient-stat">5,000+</span>
+            <p class="ui-stat-label">CHILDREN ELEVATED</p>
+            <p class="ui-card-sub text-muted">Transitioned off shoreline scrap labor into accredited schools across Lagos.</p>
+          </div>
+        </div>
+
+        <!-- CARD 6: Bottom Right - 0% Dropout Rate (col 3, row 3) -->
+        <div class="ui-bento-card card--stat-accent">
+          <div class="ui-ambient-glow glow--br"></div>
+          <div class="ui-card-inner ui-center-content">
+            <div class="ui-stat-huge text-white">0%</div>
+            <p class="ui-stat-label text-blue-100">DROPOUT RATE</p>
+            <p class="ui-card-sub text-blue-50">100% scholar retention with verified year-over-year graduation tracking.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Animated Parallax Water Wave Transition: Dark Bento (#07090e) -> Light Fine Art Atelier (#faf8f5) -->
+  <div class="shop-wave-divider" aria-hidden="true">
+    <svg class="shop-waves-animated" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="shop-fluid-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="shop-wave-parallax">
+        <use xlink:href="#shop-fluid-wave" x="48" y="0" fill="rgba(250, 248, 245, 0.3)" />
+        <use xlink:href="#shop-fluid-wave" x="48" y="2" fill="rgba(250, 248, 245, 0.55)" />
+        <use xlink:href="#shop-fluid-wave" x="48" y="4" fill="rgba(250, 248, 245, 0.8)" />
+        <use xlink:href="#shop-fluid-wave" x="48" y="6" fill="#faf8f5" />
+      </g>
+    </svg>
+  </div>
+
+  <!-- Official Fine Art Gallery & Curated Sales Atelier (Sales Priority #1) -->
+  <section class="shop-section" id="art-shop">
     <div class="container">
-      <div class="wc-steps-header">
-        <span class="wc-kicker">HOW IT WORKS</span>
-        <h2 class="wc-heading">It starts with creativity.</h2>
-        <p class="wc-subheading">
-          Four simple steps that turn waste materials and raw youth talent into lifelong education, dignity, and independence.
+      <!-- Section Header & Provenance Proof Bar -->
+      <div class="section-header shop-section-header">
+        <div class="gallery-salon-tag">
+          <i class="fas fa-crown text-amber"></i>
+          <span>The Permanent Collection &bull; Certified Masterpieces</span>
+        </div>
+        <h2 class="section-title">Buy an Artwork and Send a Kid to School</h2>
+        <p class="section-desc">
+          Browse certified original canvases, charcoal studies, and recycled mixed-media works crafted by children (ages 8–15) living in Lagos slum communities. Each acquisition includes an embossed Certificate of Provenance signed by founder Adetunwase Adenle. 100% of proceeds fund school fees, nutritional feeding, and fine art materials.
         </p>
+
+        <!-- Luxury 4-Column Proof & Trust Console -->
+        <div class="shop-sales-ticker">
+          <div class="sales-ticker-item">
+            <div class="ticker-icon-box">
+              <i class="fas fa-fire-flame-curved"></i>
+            </div>
+            <div class="ticker-item-content">
+              <span class="ticker-stat">$54,820 USD</span>
+              <span class="ticker-label">Raised For Slum Youth</span>
+            </div>
+          </div>
+
+          <div class="sales-ticker-item">
+            <div class="ticker-icon-box">
+              <i class="fas fa-palette"></i>
+            </div>
+            <div class="ticker-item-content">
+              <span class="ticker-stat">142 Canvases</span>
+              <span class="ticker-label">Sold Worldwide</span>
+            </div>
+          </div>
+
+          <div class="sales-ticker-item">
+            <div class="ticker-icon-box">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <div class="ticker-item-content">
+              <span class="ticker-stat">1-of-1 Original</span>
+              <span class="ticker-label">Signed by Youth</span>
+            </div>
+          </div>
+
+          <div class="sales-ticker-item">
+            <div class="ticker-icon-box">
+              <i class="fas fa-truck-fast"></i>
+            </div>
+            <div class="ticker-item-content">
+              <span class="ticker-stat">DHL Express</span>
+              <span class="ticker-label">Free Worldwide Delivery</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="wc-steps-grid">
-        <!-- Step 1 -->
-        <div class="wc-step-card">
-          <div class="wc-step-media">
-            <img src="assets/images/gallery/gallery_02.jpg" alt="Children gathering in creative sanctuary" class="wc-step-img" loading="lazy">
+      <!-- Luxury Curator Console & Filter Bar -->
+      <div class="shop-filter-bar">
+        <div class="shop-filter-top">
+          <div class="search-box-wrap">
+            <i class="fas fa-magnifying-glass text-amber"></i>
+            <input type="text" id="shopSearchInput" class="search-input" placeholder="Search archive by title, young artist, or medium (e.g. Kehinde, Acrylic, Charcoal)...">
           </div>
-          <div class="wc-step-body">
-            <span class="wc-step-number">Step 01</span>
-            <h3 class="wc-step-title">Safe creative haven</h3>
-            <p class="wc-step-desc">
-              We welcome street-vulnerable children in Ijora Badia &amp; Makoko into a safe studio environment away from shoreline scrap scavenging.
-            </p>
+
+          <div class="sort-select-wrap">
+            <label for="sortSelect"><i class="fas fa-arrow-down-wide-short text-amber"></i> Sort Archive:</label>
+            <select id="sortSelect" class="sort-select">
+              <option value="default">Curator's Highlights</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="title">Title: A to Z</option>
+            </select>
           </div>
         </div>
 
-        <!-- Step 2 -->
-        <div class="wc-step-card">
-          <div class="wc-step-media">
-            <img src="assets/images/gallery/gallery_01.jpg" alt="The PET bottle classroom" class="wc-step-img" loading="lazy">
-          </div>
-          <div class="wc-step-body">
-            <span class="wc-step-number">Step 02</span>
-            <h3 class="wc-step-title">Upcycling the lagoon</h3>
-            <p class="wc-step-desc">
-              Repurposing 50,000+ plastic bottles into Makoko’s first solar-powered floating classroom and community learning sanctuary.
-            </p>
-          </div>
+        <!-- Curated Collection Pills -->
+        <div class="category-pills">
+          <button class="cat-pill active" data-category="all"><i class="fas fa-layer-group"></i> All Works (36)</button>
+          <button class="cat-pill" data-category="Vibrant Acrylics"><i class="fas fa-palette"></i> Vibrant Acrylics</button>
+          <button class="cat-pill" data-category="Charcoal & Pencil"><i class="fas fa-pencil"></i> Charcoal &amp; Pencil</button>
+          <button class="cat-pill" data-category="Recycled Media"><i class="fas fa-recycle"></i> Recycled Media</button>
+          <button class="cat-pill" data-category="Story Canvases"><i class="fas fa-book-open"></i> Story Canvases</button>
+          <button class="cat-pill" data-category="Little Masters"><i class="fas fa-award"></i> Little Masters</button>
+        </div>
+      </div>
+
+      <!-- Museum Artworks Grid -->
+      <div class="artworks-grid" id="artworksGrid">
+        <!-- Injected dynamically via JS with luxury museum matting & provenance -->
+      </div>
+
+      <!-- Collapsible Artworks Toggle Container -->
+      <div id="artworksToggleContainer" class="artworks-toggle-container"></div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       ART GALLERY IMPACT & PROVENANCE STRIP
+       Changing Lives Through Fine Art • 4 Core Foundation Verification Metrics
+       =================================================================== -->
+  <section class="art-impact-strip" id="provenance-impact">
+    <div class="container">
+      <div class="art-impact-inner">
+        <div class="art-impact-header text-center">
+          <span class="art-impact-kicker"><i class="fas fa-heart text-amber"></i> CHANGING LIVES THROUGH ART</span>
+          <h3 class="art-impact-heading">Every Brushstroke Fuels a Child’s Future</h3>
+          <p class="art-impact-sub">Slum Art Foundation operates on a 100% direct-allocation model in Ijora Badia &amp; Makoko.</p>
         </div>
 
-        <!-- Step 3 -->
-        <div class="wc-step-card">
-          <div class="wc-step-media">
-            <img src="assets/images/gallery/gallery_07.jpg" alt="Young scholars learning fine art" class="wc-step-img" loading="lazy">
+        <div class="art-impact-metrics-grid">
+          <div class="impact-metric-card">
+            <div class="impact-metric-icon"><i class="fas fa-trophy"></i></div>
+            <div class="impact-metric-body">
+              <span class="impact-metric-num count-up" data-target="4" data-suffix="x">4x</span>
+              <span class="impact-metric-label">Guinness World Records</span>
+              <span class="impact-metric-hint">Official Global Laureate</span>
+            </div>
           </div>
-          <div class="wc-step-body">
-            <span class="wc-step-number">Step 03</span>
-            <h3 class="wc-step-title">Fine art mastery</h3>
-            <p class="wc-step-desc">
-              Mentored by 4× Guinness World Record holder Adetunwase Adenle in acrylics, charcoal, mosaic sculpture, and narrative enterprise.
-            </p>
-          </div>
-        </div>
 
-        <!-- Step 4 -->
-        <div class="wc-step-card">
-          <div class="wc-step-media">
-            <img src="assets/images/gallery/gallery_08.jpg" alt="Nutritional meals and tuition care" class="wc-step-img" loading="lazy">
+          <div class="impact-metric-card">
+            <div class="impact-metric-icon"><i class="fas fa-certificate"></i></div>
+            <div class="impact-metric-body">
+              <span class="impact-metric-num count-up" data-target="36" data-suffix="+">36+</span>
+              <span class="impact-metric-label">Certified Artworks</span>
+              <span class="impact-metric-hint">Museum-Grade Provenance</span>
+            </div>
           </div>
-          <div class="wc-step-body">
-            <span class="wc-step-number">Step 04</span>
-            <h3 class="wc-step-title">100% Tuition Escrow</h3>
-            <p class="wc-step-desc">
-              Sales from original artworks and comic book pledges go directly into an escrow paying 100% of school tuition, books, and daily hot meals.
-            </p>
+
+          <div class="impact-metric-card">
+            <div class="impact-metric-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="impact-metric-body">
+              <span class="impact-metric-num count-up" data-target="1000" data-suffix="+">1,000+</span>
+              <span class="impact-metric-label">Children Reached</span>
+              <span class="impact-metric-hint">In Slum Art Academies</span>
+            </div>
+          </div>
+
+          <div class="impact-metric-card">
+            <div class="impact-metric-icon"><i class="fas fa-shield-halved"></i></div>
+            <div class="impact-metric-body">
+              <span class="impact-metric-num count-up" data-target="100" data-suffix="%">100%</span>
+              <span class="impact-metric-label">Slum Youth Allocation</span>
+              <span class="impact-metric-hint">Tuition &amp; Supplies Escrow</span>
+            </div>
           </div>
         </div>
       </div>
@@ -203,428 +618,889 @@
   </section>
 
   <!-- ===================================================================
-       SECTION 3: OUR IMPACT (Soft Peach Sand with Bold Counters)
+       ENGRAVED CLIENT PLATES • 21ST.DEV COMPONENT (CIPRIAN TITIRE / TACTILE UI)
+       Industrial Anodised Graphite Nameplates with Drifting Belt & Engraved Cuts
        =================================================================== -->
-  <section class="wc-impact" id="impact">
-    <div class="container">
-      <div class="wc-impact-grid">
-        <div class="wc-impact-content">
-          <span class="wc-kicker">OUR IMPACT</span>
-          <h2 class="wc-heading">
-            Direct, sustained progress from inside the community.
-          </h2>
-          <p class="wc-subheading" style="margin-bottom: 2rem;">
-            Slum Art investments deliver quick, tangible impact and self-reliance. This leads to growth in skills, trust, and community pride—advancing development and readying children for brighter futures.
-          </p>
-          <div>
-            <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="wc-btn-primary">
-              Support A Child
-            </a>
-          </div>
-        </div>
-
-        <div class="wc-impact-metrics">
-          <div class="wc-metric-card">
-            <span class="wc-metric-num">4x</span>
-            <span class="wc-metric-label">Guinness World Records</span>
-            <span class="wc-metric-sub">Certified global records achieved by founder and slum youth cohorts.</span>
-          </div>
-
-          <div class="wc-metric-card">
-            <span class="wc-metric-num">1,000+</span>
-            <span class="wc-metric-label">Children Reached</span>
-            <span class="wc-metric-sub">Vulnerable street youth brought off shoreline labor and into classrooms.</span>
-          </div>
-
-          <div class="wc-metric-card">
-            <span class="wc-metric-num">50,000+</span>
-            <span class="wc-metric-label">Plastic Bottles Upcycled</span>
-            <span class="wc-metric-sub">Lagoon waste transformed into Africa's first floating eco-classrooms.</span>
-          </div>
-
-          <div class="wc-metric-card">
-            <span class="wc-metric-num">100%</span>
-            <span class="wc-metric-label">Slum Youth Allocation</span>
-            <span class="wc-metric-sub">Every artwork acquisition directly funds formal school tuition and meals.</span>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section class="tactile-plates-section" id="partners" data-finish="graphite">
+    <div id="engravedPlatesMount"></div>
   </section>
 
-  <!-- ===================================================================
-       SECTION 4: ORIGINAL YOUTH ARTWORKS GALLERY
-       =================================================================== -->
-  <section class="wc-gallery" id="gallery">
-    <div class="container">
-      <div class="wc-gallery-header">
-        <div>
-          <span class="wc-kicker">CERTIFIED ARTWORKS</span>
-          <h2 class="wc-heading" style="margin-bottom: 0.5rem;">Original paintings by slum youth.</h2>
-          <p class="wc-subheading">
-            Each piece comes with an official certificate of authenticity signed by founder Adetunwase Adenle.
-          </p>
-        </div>
-
-        <div class="wc-gallery-filters">
-          <button type="button" class="wc-filter-pill active" onclick="filterGallery('All', this)">All Works</button>
-          <button type="button" class="wc-filter-pill" onclick="filterGallery('Acrylic', this)">Acrylics</button>
-          <button type="button" class="wc-filter-pill" onclick="filterGallery('Charcoal', this)">Charcoal</button>
-          <button type="button" class="wc-filter-pill" onclick="filterGallery('Recycled', this)">Recycled Media</button>
-        </div>
-      </div>
-
-      <!-- Artworks Grid (Injected dynamically from data_artworks.json) -->
-      <div class="wc-artworks-grid" id="artworksContainer">
-        <!-- Rendered via JS -->
-      </div>
-
-      <div style="text-align: center;">
-        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="wc-btn-secondary">
-          <span>Browse All Available Works on Paystack</span>
-          <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </div>
-  </section>
+  <script type="module">
+    import { mount } from './js/tactile-client-plates.mjs?v=20261028_v30';
+    const mountEl = document.getElementById('engravedPlatesMount');
+    if (mountEl) {
+      mount(mountEl, {
+        label: 'Institutional Patrons & Allies',
+        title: 'Recognized & Supported By',
+        note: 'Global cultural institutions, foundations, and philanthropic partners backing Slum Art Foundation.',
+        count: 8,
+        stats: true,
+        fixing: 'mixed',
+        motion: 'drift',
+        speed: 35,
+        finish: 'graphite',
+      });
+      // Ensure any pause button is eradicated
+      const removePause = () => {
+        mountEl.querySelectorAll('[data-f="pause"], .cpl-key').forEach(el => el.remove());
+      };
+      removePause();
+      setTimeout(removePause, 100);
+      setTimeout(removePause, 500);
+    }
+  </script>
 
   <!-- ===================================================================
-       SECTION 5: THE $1 COMIC BOOK PROJECT SPOTLIGHT
+       FOUNDER SPOTLIGHT: REFINED EDITORIAL PROFILE
+       Adetunwase Adenle • 4-Time Guinness World Record Holder & Eco-Artist
+       Clean, human typography • Museum matting • Zero AI clutter
        =================================================================== -->
-  <section class="wc-comic" id="comic-project">
+  <section class="founder-section" id="founder">
     <div class="container">
-      <div class="wc-comic-card">
-        <div class="wc-comic-content">
-          <span class="wc-kicker">
-            <i class="fas fa-trophy text-primary"></i> OFFICIAL GUINNESS WORLD RECORD ATTEMPT
-          </span>
-          <h2 class="wc-heading">
-            Just $1 can educate a child &amp; put your name in history.
-          </h2>
-          <p class="wc-subheading" style="margin-bottom: 1.5rem;">
-            5,000 children across Lagos slums are co-authoring the world’s largest collaborative comic book with 4× Guinness World Record holder Adetunwase Adenle. You don’t need hundreds of dollars to change a child’s life—a single $1 micro-pledge puts your name directly into the official world record book and funds fine art supplies, daily nutrition, and classroom tuition.
-          </p>
-
-          <!-- 4 Simple Pledge Pills -->
-          <div class="wc-pledge-selector">
-            <button type="button" class="wc-pledge-pill active" onclick="selectPledge(1, this, 'Pledge $1 &amp; Educate 1 Child')">
-              <span class="wc-pill-amount">$1</span>
-              <span class="wc-pill-label">Educate 1 Child</span>
-            </button>
-            <button type="button" class="wc-pledge-pill" onclick="selectPledge(5, this, 'Pledge $5 &amp; Educate 5 Children')">
-              <span class="wc-pill-amount">$5</span>
-              <span class="wc-pill-label">Educate 5 Kids</span>
-            </button>
-            <button type="button" class="wc-pledge-pill" onclick="selectPledge(10, this, 'Pledge $10 &amp; Sponsor a Workshop')">
-              <span class="wc-pill-amount">$10</span>
-              <span class="wc-pill-label">Art Workshop</span>
-            </button>
-            <button type="button" class="wc-pledge-pill" onclick="selectPledge(25, this, 'Pledge $25 &amp; Get Hardcover Book')">
-              <span class="wc-pill-amount">$25</span>
-              <span class="wc-pill-label">Hardcover Book</span>
-            </button>
+      <div class="founder-editorial-card">
+        
+        <!-- Left: Gallery Matting Portrait -->
+        <div class="founder-photo-stage">
+          <div class="founder-photo-frame">
+            <img src="assets/images/team/founder_1.png" alt="Adetunwase Adenle - Founder, Slum Art Foundation" loading="lazy">
           </div>
-
-          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-            <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="wc-btn-primary" id="comicPledgeBtn">
-              <i class="fas fa-heart"></i>
-              <span id="comicPledgeBtnText">Pledge $1 &amp; Educate 1 Child</span>
-            </a>
-            <button type="button" class="wc-btn-secondary" onclick="window.openComicBookReader(0)">
-              <i class="fas fa-book-open"></i> Read 7 Sample Pages Free
-            </button>
+          <div class="founder-photo-caption">
+            <strong class="caption-name">Adetunwase Adenle</strong>
+            <span class="caption-role">Lagos, Nigeria &bull; Registered Nonprofit RC: 139169</span>
           </div>
         </div>
 
-        <div class="wc-comic-media">
-          <img 
-            src="assets/images/comic/comic_poster_opt.jpg" 
-            alt="The Pet Bottle School Comic Book - Guinness Record Edition" 
-            class="wc-comic-img"
-            onclick="window.openComicBookReader(0)"
-            style="cursor: pointer;"
-            title="Click to preview sample pages"
-          >
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- Right: Editorial Narrative -->
+        <div class="founder-narrative">
+          
+          <div class="founder-kicker">
+            <span class="kicker-line"></span>
+            <span class="kicker-text">FOUNDER &amp; VISIONARY</span>
+          </div>
 
-  <!-- ===================================================================
-       SECTION 6: FOUNDER & VISIONARY SPOTLIGHT
-       =================================================================== -->
-  <section class="wc-founder" id="founder">
-    <div class="container">
-      <div class="wc-founder-grid">
-        <div class="wc-founder-media">
-          <img 
-            src="assets/images/team/founder_1.png" 
-            alt="Adetunwase Adenle - Founder, Slum Art Foundation" 
-            class="wc-founder-img"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="wc-founder-content">
-          <span class="wc-kicker">FOUNDER &amp; VISIONARY</span>
-          <h2 class="wc-heading" style="margin-bottom: 0.5rem;">Adetunwase Adenle</h2>
-          <p style="font-size: 1.1rem; color: var(--color-primary); font-weight: 700; margin-bottom: 1.5rem;">
+          <h2 class="founder-name-hero">Adetunwase Adenle</h2>
+          
+          <p class="founder-tagline">
             Educator, Visual Artist &amp; 4-Time Guinness World Record Holder
           </p>
-          <blockquote class="wc-founder-quote">
-            Talent exists in every corner of the world, but opportunity does not. We ensure a child born in a slum never feels their dreams are capped by their environment.
+
+          <blockquote class="founder-quote">
+            &ldquo;Talent exists in every corner of the world, but opportunity does not. We ensure a child born in a slum never feels their dreams are capped by their environment.&rdquo;
           </blockquote>
-          <p class="wc-subheading" style="margin-bottom: 1.5rem;">
-            In 2018, Adetunwase began clearing thousands of discarded plastic bottles choking the Lagos lagoon. Upcycling 50,000+ bottles into Makoko’s first solar-powered floating art academy, he created a sanctuary where street-vulnerable youth master fine art—using artwork sales to fund 100% of their formal primary and secondary schooling.
+
+          <p class="founder-bio">
+            In 2018, Adetunwase began clearing thousands of discarded plastic bottles choking the Lagos lagoon. Upcycling 50,000+ bottles into Makoko’s first solar-powered floating art academy, he created a sanctuary where street-vulnerable youth master fine art and enterprise—using artwork sales to fund 100% of their formal primary and secondary schooling.
           </p>
-          <a href="about.html" class="wc-btn-secondary">
-            <span>Read Full Foundation Story</span>
-            <i class="fas fa-arrow-right"></i>
-          </a>
+
+          <!-- Clean 3-Metric Horizontal Rule -->
+          <div class="founder-metrics-rule">
+            <div class="metric-item">
+              <span class="metric-num">4x</span>
+              <span class="metric-lbl">Guinness World Records</span>
+            </div>
+            <div class="metric-sep"></div>
+            <div class="metric-item">
+              <span class="metric-num">50,000+</span>
+              <span class="metric-lbl">Plastic Bottles Upcycled</span>
+            </div>
+            <div class="metric-sep"></div>
+            <div class="metric-item">
+              <span class="metric-num">5,000+</span>
+              <span class="metric-lbl">Scholars Mentored</span>
+            </div>
+          </div>
+
+          <!-- Refined Action Row -->
+          <div class="founder-action-wrap">
+            <a href="about.html" class="founder-tactile-btn">
+              <span>Read Full Foundation Story</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <button type="button" class="founder-ghost-btn" onclick="window.openGwrModal()">
+              <i class="fas fa-trophy"></i>
+              <span>Guinness Project Details</span>
+            </button>
+          </div>
+
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- ===================================================================
-       FOOTER (Direct World Connect Layout)
+       GUINNESS WORLD RECORD COLLABORATIVE COMIC BOOK
+       High-Impact Crowdfunding & Contribution Engine • RC: 139169
        =================================================================== -->
-  <footer class="wc-footer">
+  <section class="gwr-backing-section" id="guinness-record">
+    <!-- Ambient Obsidian Atmosphere Glow -->
+    <div class="gwr-ambient-glow gwr-glow-top"></div>
+    <div class="gwr-ambient-glow gwr-glow-bottom"></div>
+
     <div class="container">
-      <!-- Top Row: Mission & Newsletter -->
-      <div class="wc-footer-top">
-        <div>
-          <a href="index.html" class="wc-brand" style="margin-bottom: 1.25rem;">
-            <img src="assets/images/slumart_logo_clean.png" alt="Slum Art Foundation" class="wc-brand-logo">
-            <div class="wc-brand-text">
-              <span class="wc-brand-title">SLUM ART</span>
-              <span class="wc-brand-sub">Foundation</span>
+      <div class="gwr-crowdfund-layout">
+        
+        <!-- Left: The $1 Movement & High-Converting Contribution Engine -->
+        <div class="gwr-campaign-main">
+          
+          <!-- Official Verification Badges -->
+          <div class="gwr-badge-cluster">
+            <span class="gwr-kicker"><i class="fas fa-certificate text-amber"></i> OFFICIAL GUINNESS WORLD RECORDS™ ATTEMPT • RC: 139169</span>
+            <span class="gwr-live-status"><span class="gwr-status-pulse"></span> Backing Live</span>
+          </div>
+
+          <!-- Headline (Direct, Urgent, Inspiring) -->
+          <h2 class="gwr-main-title">
+            <span class="gwr-title-highlight">Just $1 Can Educate a Slum Child.</span><br>
+            Back the World's Largest Collaborative Comic Book.
+          </h2>
+          
+          <p class="gwr-main-description">
+            5,000 children across Ijora Badia &amp; Makoko are co-authoring history with 4× Guinness World Record holder Adetunwase Adenle. You don’t need hundreds of dollars to transform a young life—a single $1 pledge puts your name directly into the official world record book and funds fine art supplies, daily nutrition, and classroom tuition for a street child.
+          </p>
+
+          <!-- The Heroic $1 Action Box (Eliminates the clunky progress card) -->
+          <div class="gwr-pledge-engine-card">
+            <div class="gwr-pledge-card-header">
+              <div class="gwr-pledge-card-tag">
+                <i class="fas fa-bolt text-amber"></i>
+                <span>THE $1 WORLD RECORD MOVEMENT</span>
+              </div>
+              <span class="gwr-tax-badge"><i class="fas fa-shield-halved text-emerald"></i> 100% Tax-Deductible Non-Profit</span>
             </div>
+
+            <!-- Impact Tiers with $1 as the Heroic Centerpiece -->
+            <div class="gwr-pledge-tiers-grid">
+              <!-- Tier $1 (Hero Default) -->
+              <button type="button" class="gwr-pledge-tier-pill active" data-amount="1" onclick="window.selectComicTier(1, this, '$1', 'Pledge $1 &amp; Educate 1 Child')">
+                <span class="pledge-tier-ribbon">MOST DIRECT</span>
+                <span class="pledge-tier-val">$1</span>
+                <span class="pledge-tier-title">Educate 1 Child</span>
+                <span class="pledge-tier-sub">Tuition kit &amp; name in credits</span>
+              </button>
+
+              <!-- Tier $5 -->
+              <button type="button" class="gwr-pledge-tier-pill" data-amount="5" onclick="window.selectComicTier(5, this, '$5', 'Pledge $5 &amp; Educate 5 Children')">
+                <span class="pledge-tier-val">$5</span>
+                <span class="pledge-tier-title">Educate 5 Children</span>
+                <span class="pledge-tier-sub">Sponsors full learning table</span>
+              </button>
+
+              <!-- Tier $10 -->
+              <button type="button" class="gwr-pledge-tier-pill" data-amount="10" onclick="window.selectComicTier(10, this, '$10', 'Pledge $10 &amp; Sponsor a Workshop')">
+                <span class="pledge-tier-val">$10</span>
+                <span class="pledge-tier-title">Artist Workshop</span>
+                <span class="pledge-tier-sub">Archival paints &amp; brush kit</span>
+              </button>
+
+              <!-- Tier $25 -->
+              <button type="button" class="gwr-pledge-tier-pill" data-amount="25" onclick="window.selectComicTier(25, this, '$25', 'Pledge $25 &amp; Get Hardcover Book')">
+                <span class="pledge-tier-val">$25</span>
+                <span class="pledge-tier-title">Collector Hardcover</span>
+                <span class="pledge-tier-sub">Physical book shipped worldwide</span>
+              </button>
+            </div>
+
+            <!-- Primary High-Impact CTA Row -->
+            <div class="gwr-action-row">
+              <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-gwr-pledge-hero" id="gwrBackNowBtn">
+                <i class="fas fa-heart"></i>
+                <span id="gwrBackNowBtnText">Pledge $1 &amp; Educate 1 Child</span>
+                <i class="fas fa-arrow-right gwr-arrow-icon"></i>
+              </a>
+
+              <button type="button" class="btn btn-preview-comic" onclick="window.openComicBookReader(0)">
+                <i class="fas fa-book-open"></i> Read 7 Sample Pages Free
+              </button>
+
+              <a href="COMIC BOOK.pdf" download="Slum-Art-Collaborative-Comic-Book.pdf" class="btn btn-download-pdf" title="Download High-Res PDF">
+                <i class="fas fa-file-pdf"></i> PDF
+              </a>
+            </div>
+
+            <!-- 3 Concrete Proof Points (Why your $1 acts immediately) -->
+            <div class="gwr-impact-proof-grid">
+              <div class="gwr-proof-item">
+                <div class="gwr-proof-icon"><i class="fas fa-palette"></i></div>
+                <div class="gwr-proof-text">
+                  <strong>Direct Tuition &amp; Meals</strong>
+                  <span>100% of your $1 funds classroom supplies, kits and daily nutrition.</span>
+                </div>
+              </div>
+              <div class="gwr-proof-item">
+                <div class="gwr-proof-icon"><i class="fas fa-file-signature"></i></div>
+                <div class="gwr-proof-text">
+                  <strong>Name in Guinness History</strong>
+                  <span>Your name printed in the official collaborative backer index.</span>
+                </div>
+              </div>
+              <div class="gwr-proof-item">
+                <div class="gwr-proof-icon"><i class="fas fa-certificate"></i></div>
+                <div class="gwr-proof-text">
+                  <strong>Instant Digital Pass</strong>
+                  <span>Immediate access to high-res digital release &amp; backer certificate.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Trust Bar -->
+            <div class="gwr-trust-bar">
+              <span><i class="fas fa-lock text-emerald"></i> Bank-grade 256-bit Paystack Escrow</span>
+              <span><i class="fas fa-users text-amber"></i> 3,820+ Global Citizens Pledged</span>
+              <span><i class="fas fa-clock text-blue"></i> Instant Tax Receipt &amp; Backer Certificate</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Luxury 3D Collector's Hardcover Showcase -->
+        <div class="gwr-showcase-column">
+          <div class="gwr-collector-stage">
+            
+            <!-- 3D Collector Hardcover Book Presentation -->
+            <div class="gwr-3d-book-rig" onclick="window.openComicBookReader(0)" title="Click to open Comic Book Sample Reader">
+              <div class="gwr-book-spine"></div>
+              <div class="gwr-book-cover-wrap">
+                <img src="assets/images/comic/comic_poster_opt.jpg" alt="The Pet Bottle School in Onigbongbo - Guinness World Record Edition" class="gwr-book-cover-img">
+                <div class="gwr-book-cover-foil-overlay"></div>
+                <div class="gwr-book-gwr-seal">
+                  <i class="fas fa-award"></i>
+                  <span>OFFICIAL GUINNESS RECORD EDITION</span>
+                </div>
+                <div class="gwr-book-tap-hint">
+                  <i class="fas fa-book-open"></i> Tap to Flip Pages
+                </div>
+              </div>
+              <div class="gwr-book-pages-side"></div>
+              <div class="gwr-book-shadow"></div>
+            </div>
+
+            <!-- Page Preview Mini Strip -->
+            <div class="gwr-preview-strip">
+              <div class="strip-label">
+                <span><i class="fas fa-images text-amber"></i> Sample Pages Preview</span>
+                <span class="strip-count">7 Pages</span>
+              </div>
+              <div class="strip-thumbs">
+                <div class="strip-thumb-wrap" onclick="window.openComicBookReader(0)" title="Page 1 - The Ijora Badia Story">
+                  <img src="assets/images/comic/thumb_1.jpg" alt="Page 1" class="strip-thumb-item">
+                  <span class="strip-thumb-pg">P.1</span>
+                </div>
+                <div class="strip-thumb-wrap" onclick="window.openComicBookReader(1)" title="Page 2 - Building with PET Bottles">
+                  <img src="assets/images/comic/thumb_2.jpg" alt="Page 2" class="strip-thumb-item">
+                  <span class="strip-thumb-pg">P.2</span>
+                </div>
+                <div class="strip-thumb-wrap" onclick="window.openComicBookReader(2)" title="Page 3 - Classroom Life">
+                  <img src="assets/images/comic/thumb_3.jpg" alt="Page 3" class="strip-thumb-item">
+                  <span class="strip-thumb-pg">P.3</span>
+                </div>
+                <div class="strip-thumb-wrap" onclick="window.openComicBookReader(3)" title="Page 4 - Creative Renaissance">
+                  <img src="assets/images/comic/thumb_4.jpg" alt="Page 4" class="strip-thumb-item">
+                  <span class="strip-thumb-pg">P.4</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hardcover Collector Spec Box -->
+            <div class="gwr-collector-spec-box">
+              <div class="spec-row">
+                <span class="spec-key"><i class="fas fa-book text-amber"></i> Volume</span>
+                <span class="spec-val">120-Page Archival Hardcover</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key"><i class="fas fa-users text-amber"></i> Authors</span>
+                <span class="spec-val">5,000 Slum Art Academy Children</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key"><i class="fas fa-user-astronaut text-amber"></i> Director</span>
+                <span class="spec-val">Adetunwase Adenle (4× Record Holder)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key"><i class="fas fa-gem text-amber"></i> Print Run</span>
+                <span class="spec-val">1,000 Gold Foil Numbered Copies</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       DUAL SPLIT IMPACT CALL-TO-ACTION BANNER (Inspired by slumart.org)
+       "Become Volunteer" & "View Our Works" with Central Slum Art Heart Emblem
+       =================================================================== -->
+  <section class="dual-split-cta-section" id="volunteer-and-shop">
+    <div class="split-cta-grid">
+      
+      <!-- Left Split: Become Volunteer (Warm Terracotta / Crimson) -->
+      <div class="split-cta-card split--volunteer">
+        <div class="split-card-bg" style="background-image: url('assets/images/gallery/gallery_02.jpg');"></div>
+        <div class="split-card-scrim scrim--crimson"></div>
+        
+        <div class="split-card-content">
+          <span class="split-script-title">Become Volunteer</span>
+          <p class="split-desc">
+            Are you looking for a way to make a positive impact? Join us as a volunteer today.
+          </p>
+          <button type="button" class="btn btn-split-white" onclick="window.openVolunteerModal()">
+            Join
+          </button>
+        </div>
+      </div>
+
+      <!-- Center Actual Heart Emblem -->
+      <div class="split-center-emblem" aria-hidden="true">
+        <div class="emblem-heart-circle">
+          <i class="fas fa-heart emblem-actual-heart"></i>
+        </div>
+      </div>
+
+      <!-- Right Split: View Our Works (Deep Ocean Teal) -->
+      <div class="split-cta-card split--works">
+        <div class="split-card-bg" style="background-image: url('assets/images/gallery/gallery_04.jpg');"></div>
+        <div class="split-card-scrim scrim--teal"></div>
+        
+        <div class="split-card-content">
+          <span class="split-script-title">View Our Works</span>
+          <p class="split-desc">
+            At Slum Art, we empower children in slums by teaching them art skills that help them express their stories and transform their futures.
+          </p>
+          <a href="#art-shop" class="btn btn-split-amber">
+            View Gallery &amp; Shop
           </a>
-          <p style="font-size: 0.95rem; color: var(--color-text-muted); max-width: 380px; line-height: 1.55; margin-bottom: 1rem;">
-            Transforming the lives of children living in Lagos slums through creative fine art, sustainable PET bottle classrooms, and primary education escrow.
-          </p>
-          <p style="font-size: 0.85rem; color: var(--color-text-light);">
-            Registered Non-Profit • RC: 139169<br>
-            Ijora Badia &amp; Makoko Waterfront, Lagos, Nigeria
-          </p>
-        </div>
-
-        <div>
-          <h4 class="wc-footer-newsletter-title">Sign up for updates</h4>
-          <p class="wc-footer-newsletter-desc">
-            Stay informed on our floating classrooms, youth art masterclasses, and global Guinness World Record initiatives.
-          </p>
-          <form class="wc-newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Slum Art updates!'); this.reset();">
-            <input type="email" required placeholder="Enter your email address" class="wc-newsletter-input">
-            <button type="submit" class="wc-btn-primary">Subscribe</button>
-          </form>
         </div>
       </div>
 
-      <!-- Links Grid -->
-      <div class="wc-footer-links-grid">
-        <div>
-          <h5 class="wc-footer-col-title">Navigation</h5>
-          <ul class="wc-footer-link-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#approach">Our Approach</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#impact">Our Impact</a></li>
-            <li><a href="#gallery">Art Gallery</a></li>
-            <li><a href="#comic-project">Comic Book Project</a></li>
-          </ul>
-        </div>
+    </div>
+  </section>
 
-        <div>
-          <h5 class="wc-footer-col-title">Who We Are</h5>
-          <ul class="wc-footer-link-list">
-            <li><a href="about.html">About Founder &amp; Vision</a></li>
-            <li><a href="about.html#team">Leadership Team</a></li>
-            <li><a href="programs.html">13 Creative Programs</a></li>
-            <li><a href="register.html">Guinness Record Attempt</a></li>
-            <li><a href="contact.html">Contact &amp; Volunteer</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h5 class="wc-footer-col-title">Take Action</h5>
-          <ul class="wc-footer-link-list">
-            <li><a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 700;"><i class="fas fa-heart"></i> Donate via Paystack</a></li>
-            <li><a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp text-emerald"></i> WhatsApp Community</a></li>
-            <li><a href="shop.html">Browse Certified Art Shop</a></li>
-            <li><a href="COMIC BOOK.pdf" download>Download Comic PDF</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Bottom Bar -->
-      <div class="wc-footer-bottom">
-        <p>
-          &copy; 2026 Slum Art Foundation. All Rights Reserved. RC: 139169.
+  <!-- ===================================================================
+       CHANGING LIVES: COMMUNITY DOCUMENTARY GALLERY
+       Authentic Life at Ijora Badia & The Pet Bottle School
+       Clean, Beautiful, Responsive Photographic Showcase
+       =================================================================== -->
+  <section class="changing-lives-section" id="field-gallery">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header text-center" style="margin-bottom: 2.25rem;">
+        <div class="section-tag"><i class="fas fa-heart text-amber"></i> Changing Lives Through Creative Education</div>
+        <h2 class="section-title">Life at Ijora Badia &amp; The Pet Bottle School</h2>
+        <p class="section-desc" style="max-width: 720px; margin: 0 auto;">
+          Step into our living creative sanctuary in Lagos. Documenting daily community life, the Pet Bottle School, mentor-led masterclasses, and children transforming scrap materials into global art.
         </p>
-        <button type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="font-size: 0.88rem; font-weight: 600; color: var(--color-text-muted);">
-          Back to Top <i class="fas fa-arrow-up" style="margin-left: 0.25rem;"></i>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="cl-filter-bar">
+        <button type="button" class="cl-filter-btn active" data-cat="all" onclick="window.filterChangingLives('all', this)">
+          <i class="fas fa-layer-group"></i> All Stories (8)
         </button>
+        <button type="button" class="cl-filter-btn" data-cat="school" onclick="window.filterChangingLives('school', this)">
+          <i class="fas fa-school"></i> Pet Bottle School
+        </button>
+        <button type="button" class="cl-filter-btn" data-cat="sanctuary" onclick="window.filterChangingLives('sanctuary', this)">
+          <i class="fas fa-palette"></i> Creative Sanctuary
+        </button>
+        <button type="button" class="cl-filter-btn" data-cat="upcycling" onclick="window.filterChangingLives('upcycling', this)">
+          <i class="fas fa-recycle"></i> Upcycled Waste-to-Art
+        </button>
+        <button type="button" class="cl-filter-btn" data-cat="prodigies" onclick="window.filterChangingLives('prodigies', this)">
+          <i class="fas fa-user-graduate"></i> Young Scholars
+        </button>
+      </div>
+
+      <!-- 8-Card Documentary Grid -->
+      <div class="changing-lives-grid">
+        
+        <!-- Photo 1: Pet Bottle School -->
+        <div class="changing-lives-card" data-category="school">
+          <div class="cl-card-media-wrap">
+            <img src="assets/images/gallery/gallery_01.jpg" alt="The Pet Bottle School in Ijora Badia" class="cl-card-img" loading="lazy">
+            <span class="cl-card-tag"><i class="fas fa-leaf"></i> Eco-Architecture</span>
+          </div>
+          <div class="cl-card-content">
+            <h3 class="cl-card-title">The Pet Bottle Classroom</h3>
+            <p class="cl-card-desc">
+              Engineered from 10,000 discarded plastic bottles into an eco-haven under the bridge in Ijora Badia.
+            </p>
+          </div>
+        </div>
+
+        <!-- Photo 2: Creative Sanctuary -->
+        <div class="changing-lives-card" data-category="sanctuary">
+          <div class="cl-card-media-wrap">
+            <img src="assets/images/gallery/gallery_02.jpg" alt="Creative Sanctuary under the bridge" class="cl-card-img" loading="lazy">
+            <span class="cl-card-tag"><i class="fas fa-shield-heart"></i> Creative Sanctuary</span>
+          </div>
+          <div class="cl-card-content">
+            <h3 class="cl-card-title">Safe Harbor Under the Bridge</h3>
+            <p class="cl-card-desc">
+              Daily fine-art workshops offering safety, nutrition, and creative mentorship away from shoreline scrap labor.
+            </p>
+          </div>
+        </div>
+
+        <!-- Photo 3: Collaborative Genius -->
+        <div class="changing-lives-card" data-category="sanctuary">
+          <div class="cl-card-media-wrap">
+            <img src="assets/images/gallery/gallery_03.jpg" alt="Collaborative Canvas Project" class="cl-card-img" loading="lazy">
+            <span class="cl-card-tag"><i class="fas fa-users"></i> Collaborative Genius</span>
+          </div>
+          <div class="cl-card-content">
+            <h3 class="cl-card-title">Expansive Collaborative Canvases</h3>
+            <p class="cl-card-desc">
+              Young creators working side-by-side to co-create expansive landscapes reflecting their dreams and culture.
+            </p>
+          </div>
+        </div>
+
+        <!-- Photo 4: Master Mentorship -->
+        <div class="changing-lives-card" data-category="prodigies">
+          <div class="cl-card-media-wrap">
+            <img src="assets/images/gallery/gallery_04.jpg" alt="Adetunwase Adenle training youth artists" class="cl-card-img" loading="lazy">
+            <span class="cl-card-tag"><i class="fas fa-award"></i> World Record Mentorship</span>
+          </div>
+          <div class="cl-card-content">
+            <h3 class="cl-card-title">Guidance from 4× Record Holder</h3>
+            <p class="cl-card-desc">
+              Founder Adetunwase Adenle coaching children in fine acrylic brushwork, portraiture, and narrative structure.
+            </p>
+          </div>
+        </div>
+
+        <!-- Photo 5: Kehinde at the Easel -->
+        <div class="changing-lives-card" data-category="prodigies">
+          <div class="cl-card-media-wrap">
+            <img src="assets/images/gallery/gallery_05.jpg" alt="Kehinde painting at his easel" class="cl-card-img" loading="lazy">
+            <span class="cl-card-tag"><i class="fas fa-paint-brush"></i> Kehinde (Age 11)</span>
+          </div>
+          <div class="cl-card-content">
+            <h3 class="cl-card-title">From Shoreline Labor to Mastery</h3>
+            <p class="cl-card-desc">
+              Once scavenging shoreline plastic; today Kehinde's original canvases fund his education at Bright Achievers.
+            </p>
+          </div>
+        </div>
+
+        <!-- Photo 6: Upcycled Waste Art -->
+        <div class="changing-lives-card" data-category="upcycling">
+          <div class="cl-card-media-wrap">
+            <img src="assets/images/gallery/gallery_06.jpg" alt="Bottle cap and mixed media mosaics" class="cl-card-img" loading="lazy">
+            <span class="cl-card-tag"><i class="fas fa-recycle"></i> Waste-to-Art</span>
+          </div>
+          <div class="cl-card-content">
+            <h3 class="cl-card-title">Bottle Cap Mosaic Fine Art</h3>
+            <p class="cl-card-desc">
+              Transforming thousands of discarded bottle caps into museum-grade mosaics that tour global galleries.
+            </p>
+          </div>
+        </div>
+
+        <!-- Photo 7: Empowered Scholars -->
+        <div class="changing-lives-card" data-category="prodigies">
+          <div class="cl-card-media-wrap">
+            <img src="assets/images/gallery/gallery_07.jpg" alt="Girls in Creative Leadership" class="cl-card-img" loading="lazy">
+            <span class="cl-card-tag"><i class="fas fa-sparkles"></i> Female Leadership</span>
+          </div>
+          <div class="cl-card-content">
+            <h3 class="cl-card-title">Empowered Female Scholars</h3>
+            <p class="cl-card-desc">
+              Nurturing girls with self-confidence, secondary school scholarships, and public exhibition platforms.
+            </p>
+          </div>
+        </div>
+
+        <!-- Photo 8: Holistic Nutrition & Tuition -->
+        <div class="changing-lives-card" data-category="school">
+          <div class="cl-card-media-wrap">
+            <img src="assets/images/gallery/gallery_08.jpg" alt="Nutritional meals and tuition care" class="cl-card-img" loading="lazy">
+            <span class="cl-card-tag"><i class="fas fa-utensils"></i> Holistic Support</span>
+          </div>
+          <div class="cl-card-content">
+            <h3 class="cl-card-title">Tuition, Nutrition &amp; Healthcare</h3>
+            <p class="cl-card-desc">
+              100% of art acquisitions fund classroom tuition, crested school kits, medical care, and hot daily meals.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Gallery Bottom Callout -->
+      <div class="cl-bottom-callout">
+        <div class="cl-callout-text">
+          <strong>Support this community transformation directly:</strong>
+          <span>Acquiring an original painting sponsors full annual tuition, books, and daily meals for a young artist.</span>
+        </div>
+        <a href="#art-shop" class="btn btn-primary btn-sm">
+          <i class="fas fa-shopping-bag"></i> Browse Art Shop
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ===================================================================
+       SERVICES TO HUMANITY: VIDEO HIGHLIGHT & INSPIRING FINALE
+       Exact match for media_1793190851887
+       =================================================================== -->
+  <section class="services-humanity-section" id="services-humanity">
+    <!-- Orange Paint Brush Splatter Accent in Top-Left (Exact match for screenshot) -->
+    <div class="services-brush-splash" aria-hidden="true">
+      <svg viewBox="0 0 450 320" class="services-splatter-svg">
+        <defs>
+          <linearGradient id="brushGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ea580c" />
+            <stop offset="60%" stop-color="#e06927" />
+            <stop offset="100%" stop-color="#f59e0b" />
+          </linearGradient>
+        </defs>
+        <path d="M-20,-20 L240,-20 C270,10 260,35 220,55 C190,70 230,85 280,100 C310,110 300,135 250,145 C200,155 180,175 140,195 C110,210 95,240 60,260 C30,275 10,285 -20,290 Z" fill="url(#brushGrad)" />
+        <path d="M120,40 C170,30 290,65 340,85 C370,98 330,110 290,105 C250,100 200,85 150,75 Z" fill="url(#brushGrad)" opacity="0.9" />
+        <path d="M90,95 C160,90 270,130 330,155 C355,165 315,175 270,168 C220,160 170,140 120,130 Z" fill="url(#brushGrad)" opacity="0.95" />
+        <path d="M40,150 C110,155 220,205 280,230 C305,240 270,250 230,242 C180,230 130,205 80,190 Z" fill="url(#brushGrad)" opacity="0.9" />
+        <path d="M10,210 C70,215 170,265 220,285 C240,293 210,302 175,295 C130,285 90,260 40,245 Z" fill="url(#brushGrad)" opacity="0.85" />
+        <circle cx="365" cy="92" r="5" fill="#ea580c" />
+        <circle cx="385" cy="110" r="3.5" fill="#e06927" />
+        <circle cx="350" cy="130" r="6" fill="#f59e0b" />
+        <circle cx="370" cy="165" r="4" fill="#ea580c" />
+        <circle cx="340" cy="185" r="7" fill="#e06927" />
+        <circle cx="360" cy="210" r="3" fill="#f59e0b" />
+        <circle cx="305" cy="250" r="5.5" fill="#ea580c" />
+        <circle cx="260" cy="275" r="4.5" fill="#e06927" />
+        <circle cx="280" cy="300" r="3" fill="#f59e0b" />
+        <circle cx="205" cy="315" r="5" fill="#ea580c" />
+      </svg>
+    </div>
+
+    <!-- Right Translucent Heart Watermark -->
+    <div class="services-heart-watermark" aria-hidden="true">
+      <svg viewBox="0 0 200 180" class="services-watermark-svg">
+        <path d="M100,165 C40,115 10,80 10,48 C10,21 31,4 58,4 C76,4 90,14 100,28 C110,14 124,4 142,4 C169,4 190,21 190,48 C190,80 160,115 100,165 Z" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="4" />
+        <path d="M70,95 C62,80 46,84 50,98 C54,112 68,122 78,130 L98,144 L92,130 C88,116 76,106 70,95 Z" fill="rgba(255,255,255,0.18)" />
+        <path d="M130,95 C138,80 154,84 150,98 C146,112 132,122 122,130 L102,144 L108,130 C112,116 124,106 130,95 Z" fill="rgba(255,255,255,0.18)" />
+      </svg>
+    </div>
+
+    <!-- Central Editorial Content -->
+    <div class="services-content-wrap">
+      <!-- Circular Video Play Trigger Button -->
+      <button type="button" class="services-play-btn" onclick="window.openVideoModal()" aria-label="Watch Our Video Highlight">
+        <i class="fas fa-play"></i>
+      </button>
+
+      <!-- Script Subtitle -->
+      <span class="services-script-sub">Watch Our Video Highlight</span>
+
+      <!-- Main Headline -->
+      <h2 class="services-title">Services to humanity</h2>
+
+      <!-- Description -->
+      <p class="services-desc">
+        At Slum Art, we empower children in slums by teaching them art skills that help them express their stories and transform their futures.
+      </p>
+
+      <!-- Action Button & Golden Orbit Dot -->
+      <div class="services-btn-row">
+        <a href="about.html" class="btn btn-services-discover">Discover More</a>
+        <span class="services-orbit-ring" aria-hidden="true">
+          <span class="services-orbit-dot"></span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Bottom Torn Paper / Organic Edge Divider into Simple Footer -->
+    <div class="services-torn-divider" aria-hidden="true">
+      <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,0 L0,32 Q15,48 35,28 T70,36 T105,22 T140,42 T175,25 T210,38 T245,18 T280,44 T315,26 T350,37 T385,20 T420,46 T455,24 T490,39 T525,18 T560,42 T595,25 T630,36 T665,19 T700,45 T735,23 T770,38 T805,17 T840,43 T875,26 T910,36 T945,21 T980,46 T1015,24 T1050,39 T1085,19 T1120,44 T1155,27 T1200,35 L1200,60 L0,60 Z" fill="#06080e" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SKIPER39 CANVAS CROWD FOOTER (21ST.DEV COMPONENT)
+       Interactive Community Walk • Giant Watermark & Prestigious Navigation
+       =================================================================== -->
+  <footer class="skiper39-footer" id="mainFooter">
+    <div class="skiper-backdrop-grid"></div>
+
+    <!-- Giant Watermark Typography (Behind the Crowd) -->
+    <div class="skiper-giant-watermark" aria-hidden="true">
+      SLUM ART FOUNDATION
+    </div>
+
+    <!-- Skiper39 Interactive Canvas Crowd Component (Full 440px height) -->
+    <div class="skiper-canvas-wrap">
+      <canvas id="skiperCrowdCanvas"></canvas>
+    </div>
+
+    <!-- Minimalist Glass Bottom Bar -->
+    <div class="skiper-footer-bottom">
+      <div class="container skiper-bottom-flex">
+        <div class="skiper-bottom-brand">
+          <img src="assets/images/logo-light.png" alt="Slum Art Foundation" style="height: 34px; width: auto;">
+          <span>&copy; 2026 Slum Art Foundation • Ijora Badia &amp; Makoko, Lagos, Nigeria</span>
+        </div>
+        <div class="skiper-bottom-links">
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          <a href="about.html"><i class="fas fa-circle-info"></i> Founder &amp; Vision</a>
+          <a href="shop.html"><i class="fas fa-palette"></i> Art Gallery</a>
+          <a href="register.html"><i class="fas fa-trophy"></i> Guinness Record</a>
+          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="footer-donate-pill"><i class="fas fa-heart text-amber"></i> Donate Paystack</a>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
+            <i class="fas fa-arrow-up"></i> Top
+          </button>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Sample Comic Book Flip Reader Script -->
-  <script src="js/vinyl-halftone.js"></script>
+  <!-- Quick View Artwork Modal -->
+  <div class="modal-overlay" id="quickviewModal">
+    <div class="modal-card" style="max-width: 860px;">
+      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <div class="quickview-grid">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
 
-  <!-- Lightweight Inline Gallery & Pledge Controller -->
-  <script>
-    // Sample certified artworks from data repository
-    const FEATURED_ARTWORKS = [
-      {
-        id: "art-1",
-        title: "Visions of Makoko Sunshine",
-        artist: "Kehinde (Age 11)",
-        medium: "Acrylic on Canvas",
-        category: "Acrylic",
-        price_ngn: "₦25,000",
-        price_usd: "$20 USD",
-        image: "assets/images/artworks/WhatsApp%20Image%202023-12-02%20at%2007.25.10_fba6a240.jpg",
-        link: "https://paystack.shop/pay/lk0hlrdlun"
-      },
-      {
-        id: "art-2",
-        title: "Echoes of the Lagoon",
-        artist: "Taiwo (Age 11)",
-        medium: "Charcoal on Paper",
-        category: "Charcoal",
-        price_ngn: "₦30,000",
-        price_usd: "$25 USD",
-        image: "assets/images/artworks/WhatsApp%20Image%202023-12-02%20at%2007.25.11_9aec461e.jpg",
-        link: "https://paystack.shop/pay/lk0hlrdlun"
-      },
-      {
-        id: "art-3",
-        title: "Harmony in Discarded Caps",
-        artist: "Samuel (Age 10)",
-        medium: "Recycled Bottle Caps",
-        category: "Recycled",
-        price_ngn: "₦40,000",
-        price_usd: "$32 USD",
-        image: "assets/images/artworks/WhatsApp%20Image%202023-12-02%20at%2007.25.11_fb52f2e6.jpg",
-        link: "https://paystack.shop/pay/lk0hlrdlun"
-      },
-      {
-        id: "art-4",
-        title: "Lagoon Reflections",
-        artist: "Blessing (Age 13)",
-        medium: "Acrylic on Canvas",
-        category: "Acrylic",
-        price_ngn: "₦35,000",
-        price_usd: "$28 USD",
-        image: "assets/images/artworks/WhatsApp%20Image%202023-12-02%20at%2007.25.12_135cbe59.jpg",
-        link: "https://paystack.shop/pay/lk0hlrdlun"
-      },
-      {
-        id: "art-5",
-        title: "Whispers of Ijora Badia",
-        artist: "Ayomide (Age 12)",
-        medium: "Charcoal & Pastel",
-        category: "Charcoal",
-        price_ngn: "₦28,000",
-        price_usd: "$22 USD",
-        image: "assets/images/artworks/WhatsApp%20Image%202023-12-02%20at%2007.25.13_9aa10b6f.jpg",
-        link: "https://paystack.shop/pay/lk0hlrdlun"
-      },
-      {
-        id: "art-6",
-        title: "Colors of Resilience",
-        artist: "Chidinma (Age 14)",
-        medium: "Mixed Media Mosaic",
-        category: "Recycled",
-        price_ngn: "₦45,000",
-        price_usd: "$36 USD",
-        image: "assets/images/artworks/WhatsApp%20Image%202023-12-02%20at%2007.25.14_03b2ee89.jpg",
-        link: "https://paystack.shop/pay/lk0hlrdlun"
-      }
-    ];
+  <!-- Video Documentary Modal -->
+  <div class="modal-overlay" id="videoModal">
+    <div class="modal-card" style="max-width: 800px; padding: 0; background: #000; overflow: hidden;">
+      <button class="modal-close-btn" onclick="window.closeVideoModal()" style="color: #ffffff; background: rgba(255,255,255,0.2);"><i class="fas fa-times"></i></button>
+      <div style="aspect-ratio: 16/9; width: 100%;">
+        <iframe id="videoFrame" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 
-    function renderArtworks(items) {
-      const container = document.getElementById('artworksContainer');
-      if (!container) return;
-      container.innerHTML = items.map(art => `
-        <div class="wc-art-card">
-          <div class="wc-art-media">
-            <img src="${art.image}" alt="${art.title}" class="wc-art-img" loading="lazy">
+  <!-- Guinness World Record Registration Modal -->
+  <div class="modal-overlay" id="gwrModal">
+    <div class="modal-card" style="max-width: 600px;">
+      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <div style="padding: 2.5rem 2rem;">
+        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-trophy"></i> Guinness World Records™ Registration</div>
+        <h2 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Largest Collaborative Comic Book Project</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+          Register as an official participant or supporter. You will receive an official record code and verification certificate.
+        </p>
+
+        <form onsubmit="window.handleGwrSubmit(event)">
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Full Name *</label>
+            <input type="text" name="fullName" required placeholder="e.g. Oluwaseun Adeleke" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
           </div>
-          <div class="wc-art-body">
-            <div class="wc-art-meta">
-              <span>${art.medium}</span>
-              <span>100% Tuition Escrow</span>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Email Address *</label>
+              <input type="email" name="email" required placeholder="seun@example.com" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
             </div>
-            <h3 class="wc-art-title">${art.title}</h3>
-            <p class="wc-art-artist">by ${art.artist}</p>
-            <div class="wc-art-footer">
-              <div>
-                <span class="wc-art-price">${art.price_ngn}</span>
-                <span class="wc-art-price-usd">(${art.price_usd})</span>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Phone / WhatsApp *</label>
+              <input type="tel" name="phone" required placeholder="08012345678" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem;">Select Comic Edition Choice *</label>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: var(--radius-sm); cursor: pointer;">
+                <input type="radio" name="comicMode" value="Digital Edition (PDF)" checked style="margin-top: 0.25rem;">
+                <div>
+                  <strong>Digital Edition (PDF)</strong>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">High-res instant download upon record confirmation. Includes complete credits.</div>
+                </div>
+              </label>
+              <label style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: var(--radius-sm); cursor: pointer;">
+                <input type="radio" name="comicMode" value="Limited Print Edition" style="margin-top: 0.25rem;">
+                <div>
+                  <strong>Limited Print Edition</strong>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">Official collector's hardcover print signed by the visionary team.</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            <i class="fas fa-check-circle"></i> Confirm Official Registration
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Volunteer Application Modal -->
+  <div class="modal-overlay" id="volunteerModal">
+    <div class="modal-card" style="max-width: 580px;">
+      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <div style="padding: 2.5rem 2rem;">
+        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-hands-holding-child"></i> Get Involved</div>
+        <h2 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Become a Volunteer</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+          Bring your skills, passion, and heart to Slum Art Foundation. Teach art, tech, music, or assist with community welfare.
+        </p>
+
+        <form onsubmit="window.handleVolunteerSubmit(event)">
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Full Name *</label>
+            <input type="text" name="fullName" required placeholder="Blessing Adeleke" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem;">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Email Address *</label>
+              <input type="email" name="email" required placeholder="blessing@example.com" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Phone / WhatsApp *</label>
+              <input type="tel" name="phone" required placeholder="+234 801 234 5678" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem;">
+            </div>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Area of Interest *</label>
+            <select name="interest" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; background: #ffffff;">
+              <option value="Teaching Art / Painting">Teaching Art / Painting</option>
+              <option value="Music / Performance Coaching">Music / Performance Coaching</option>
+              <option value="Coding & Tech Literacy">Coding & Tech Literacy</option>
+              <option value="Community Welfare (Food Clinic, Hair-Port)">Community Welfare (Food Clinic, Hair-Port)</option>
+              <option value="Photography / Videography">Photography / Videography</option>
+              <option value="International Outreach & Fundraising">International Outreach & Fundraising</option>
+            </select>
+          </div>
+          <div class="sketch-textarea-group">
+            <label class="sketch-label" for="volunteerMessage">
+              <span>Short Message / Background</span>
+              <span class="sketch-badge"><i class="fas fa-feather-pointed"></i> Artist Note</span>
+            </label>
+            <div class="sketch-textarea-wrap" data-max-chars="500">
+              <svg class="sketch-textarea-svg" aria-hidden="true"></svg>
+              <textarea id="volunteerMessage" name="message" rows="3" placeholder="Tell us a little bit about yourself and why you want to volunteer with Slum Art..." class="sketch-textarea"></textarea>
+              <div class="sketch-textarea-footer">
+                <span class="sketch-hint"><i class="fas fa-palette text-amber"></i> Tell us your skills & passion</span>
+                <span class="sketch-char-count"><span class="sketch-current">0</span> / 500</span>
               </div>
-              <a href="${art.link}" target="_blank" rel="noopener noreferrer" class="wc-btn-acquire">
-                Acquire
-              </a>
             </div>
           </div>
-        </div>
-      `).join('');
-    }
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            <i class="fas fa-paper-plane"></i> Submit Volunteer Application
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
 
-    function filterGallery(category, btn) {
-      document.querySelectorAll('.wc-filter-pill').forEach(p => p.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      if (category === 'All') {
-        renderArtworks(FEATURED_ARTWORKS);
-      } else {
-        renderArtworks(FEATURED_ARTWORKS.filter(a => a.category === category));
-      }
-    }
+  <!-- Slide-In Art Bag / Cart Drawer -->
+  <div class="drawer-backdrop" id="cartDrawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <i class="fas fa-bag-shopping text-amber" style="font-size: 1.25rem;"></i>
+        <h3 style="font-size: 1.2rem;">Your Art Bag</h3>
+      </div>
+      <button class="modal-close-btn" id="cartDrawerClose" style="position: static;"><i class="fas fa-times"></i></button>
+    </div>
 
-    function selectPledge(amount, pill, ctaText) {
-      document.querySelectorAll('.wc-pledge-pill').forEach(p => p.classList.remove('active'));
-      if (pill) pill.classList.add('active');
-      const textEl = document.getElementById('comicPledgeBtnText');
-      if (textEl && ctaText) {
-        textEl.textContent = ctaText;
-      }
-    }
+    <div class="cart-drawer-items" id="cartDrawerItems">
+      <!-- Injected dynamically via JS -->
+    </div>
 
-    // Header scroll elevation
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('mainHeader');
-      if (header) {
-        header.classList.toggle('is-scrolled', window.scrollY > 20);
-      }
-    });
+    <div class="cart-drawer-foot">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
+        <span style="font-weight: 700; color: var(--text-muted);">Total Impact Value:</span>
+        <span style="font-size: 1.5rem; font-weight: 800; color: var(--color-primary);" id="cartTotalDisplay">₦0 NGN</span>
+      </div>
+      <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 1rem;">
+        100% of your acquisition funds school fees, nutritious feeding, and materials for our young artists.
+      </p>
+      <a href="https://paystack.shop/pay/lk0hlrdlun" id="cartCheckoutBtn" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="width: 100%;">
+        <i class="fas fa-lock"></i> Proceed to Paystack Checkout
+      </a>
+    </div>
+  </aside>
 
-    // Mobile nav toggle
-    const menuToggle = document.getElementById('menuToggle');
-    if (menuToggle) {
-      menuToggle.addEventListener('click', () => {
-        const nav = document.querySelector('.wc-nav');
-        if (nav) {
-          const isVisible = nav.style.display === 'flex';
-          nav.style.display = isVisible ? 'none' : 'flex';
-          nav.style.flexDirection = 'column';
-          nav.style.position = 'absolute';
-          nav.style.top = '80px';
-          nav.style.left = '0';
-          nav.style.right = '0';
-          nav.style.backgroundColor = '#ffffff';
-          nav.style.padding = '1.5rem';
-          nav.style.boxShadow = '0 10px 25px rgba(33, 24, 18, 0.1)';
-        }
-      });
-    }
+  <!-- Comic Ambassador Onboarding Modal -->
+  <div class="modal-overlay" id="comicAmbassadorModal">
+    <div class="modal-card" style="max-width: 620px;">
+      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <div style="padding: 2.75rem 2rem;">
+        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-bullhorn text-amber"></i> The Comic Project • Social Media Ambassador</div>
+        <h2 style="font-size: 1.7rem; margin-bottom: 0.5rem;">Join the 5,000 Ambassador Movement</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.6;">
+          Become an official ambassador! We will teach you how to edit videos, supply pre-edited CapCut templates, and coordinate your synchronized drops. Onboard 3 people and commit $1/month to support slum youth education while enjoying the daily web comic.
+        </p>
 
-    // Initial render
-    document.addEventListener('DOMContentLoaded', () => {
-      renderArtworks(FEATURED_ARTWORKS);
-    });
-  </script>
+        <form onsubmit="window.handleComicAmbassadorSubmit(event)">
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Full Name *</label>
+            <input type="text" name="fullName" required placeholder="Blessing Adeleke" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Email Address *</label>
+              <input type="email" name="email" required placeholder="blessing@example.com" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">WhatsApp Number *</label>
+              <input type="tel" name="phone" required placeholder="+234 801 234 5678" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Social Media Handle (TikTok / Instagram / X) *</label>
+            <input type="text" name="socialHandle" required placeholder="@yourhandle" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
+          </div>
+
+          <div class="sketch-textarea-group">
+            <label class="sketch-label" for="ambassadorBio">
+              <span>Why do you want to join? (Optional)</span>
+              <span class="sketch-badge"><i class="fas fa-bullhorn"></i> Ambassador Voice</span>
+            </label>
+            <div class="sketch-textarea-wrap" data-max-chars="400">
+              <svg class="sketch-textarea-svg" aria-hidden="true"></svg>
+              <textarea id="ambassadorBio" name="ambassadorBio" rows="3" placeholder="Tell us how you plan to share the comic project or your audience reach..." class="sketch-textarea"></textarea>
+              <div class="sketch-textarea-footer">
+                <span class="sketch-hint"><i class="fas fa-sparkles text-amber"></i> Help us empower 5,000 youth</span>
+                <span class="sketch-char-count"><span class="sketch-current">0</span> / 400</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-subtle); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.25rem;">
+            <label style="display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.84rem; color: #334155; cursor: pointer;">
+              <input type="checkbox" required style="margin-top: 0.2rem;">
+              <span>I agree to influence and onboard <strong>3 people</strong>, post synchronized CapCut videos tagging <strong>@adetunwaseadenle</strong>, and commit to the <strong>$1/month</strong> donation for the daily web comic pass.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            <i class="fas fa-check-circle"></i> Onboard Me as Ambassador ($1/mo)
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- GSAP 3.12.5 (Required for Skiper39 Canvas Crowd Walk Timelines) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- Core Data, App & Skiper39 Canvas Crowd Scripts (Cache-Busted) -->
+  <script src="js/data.js?v=20261027_v14"></script>
+  <script src="js/rough.min.js?v=20261027_v14"></script>
+  <script src="js/sketch-textarea.js?v=20261027_v14"></script>
+  <script src="js/vinyl-halftone.js?v=20261027_v14"></script>
+  <script src="js/animator-title-preloader.bundle.js?v=20261027_v18"></script>
+  <script src="js/app.js?v=20261028_v34"></script>
+  <script src="js/canvas-crowd.js?v=20261028_v35"></script>
 </body>
 </html>
