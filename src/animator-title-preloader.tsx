@@ -164,8 +164,8 @@ export const ATP_SANS = "7737A 7F6G7H8G7F|:636: >3>:|==/6O C/<O 6<D< 5BCB|<:/:L 
 
 /** Official Slum Art brush stroke swoosh paths extracted from brand mark */
 export const SLUM_LOGO_SWIPES = {
-  lower: "M 0,9 L 0,11 L 3,14 L 12,20 L 22,24 L 31,26 L 53,26 L 59,24 L 85,24 L 93,26 L 101,26 L 105,28 L 112,28 L 107,23 L 100,19 L 76,13 L 63,13 L 62,14 L 51,14 L 50,15 L 10,15 L 4,13 Z",
-  upper: "M 59,4 L 59,5 L 69,4 L 76,6 L 83,6 L 87,8 L 92,8 L 95,10 L 99,10 L 109,14 L 119,16 L 122,18 L 126,18 L 129,20 L 135,20 L 139,22 L 151,22 L 156,20 L 161,20 L 164,18 L 168,18 L 168,16 L 166,17 L 147,17 L 140,15 L 134,15 L 130,13 L 120,11 L 105,5 L 103,3 L 99,3 L 95,1 L 73,0 L 72,1 L 66,1 Z",
+  lower: "M 0,12 L 3,14 L 6,16 L 8,18 L 10,18 L 12,20 L 14,20 L 16,22 L 21,24 L 26,25 L 30,26 L 53,26 L 60,24 L 82,24 L 91,26 L 100,26 L 104,28 L 111,28 L 107,23 L 104,21 L 102,21 L 100,19 L 97,18 L 88,15 L 82,15 L 77,13 L 62,13 L 45,15 L 12,15 L 7,14 L 3,12 L 1,9 Z",
+  upper: "M 72,0 L 66,1 L 62,3 L 59,3 L 60,5 L 68,4 L 74,5 L 81,6 L 86,8 L 91,8 L 95,10 L 100,10 L 106,13 L 112,14 L 115,16 L 119,16 L 122,18 L 129,20 L 138,22 L 152,22 L 156,20 L 161,20 L 165,18 L 168,17 L 166,16 L 164,16 L 149,17 L 142,16 L 134,15 L 130,13 L 126,13 L 123,11 L 120,11 L 118,9 L 115,9 L 108,5 L 105,5 L 103,3 L 96,1 L 90,0 Z",
 }
 
 /** Small fast seeded PRNG (mulberry32): same seed, same wobble. */
@@ -389,47 +389,158 @@ const SWIRLS = [
   arc(62, 62, 9, 1, 4),
 ].join(" ")
 
-// [x0, y, length, thickness], pinky → index.
-const FINGERS = [
-  [-182, 58, 150, 40],
-  [-182, 20, 172, 44],
-  [-182, -22, 184, 46],
-  [-186, -64, 180, 46],
-]
-const SLEEVE = "M-2100 -176 L-256 -118 Q-228 -116 -228 -96 L-220 104 Q-220 124 -244 124 L-2100 190 Z"
-const SLEEVE_LIGHT = "M-2100 -176 L-256 -118 Q-238 -117 -232 -108 L-2100 -150 Z"
-const PALM = "M-212 -96 Q-150 -112 -60 -100 L-40 70 Q-120 96 -212 90 Z"
-const THUMB = "M-196 -92 C-150 -128 -90 -136 -30 -126 C-6 -122 4 -110 0 -98 C-4 -86 -18 -82 -34 -86 C-90 -96 -140 -86 -176 -58 Z"
-
+// Child's hand holding card, drawn in local units
 function Hand({ id, side }: { id: string; side: "l" | "r" }) {
   return (
     <g filter={"url(#" + id + "-paint)"} transform={side === "r" ? "scale(-1 1)" : undefined}>
-      <path d={SLEEVE} fill={"url(#" + id + "-sleeve)"} />
-      <path d={SLEEVE} fill={"url(#" + id + "-swirl)"} />
-      <path d={SLEEVE_LIGHT} fill="#fff" opacity=".16" />
-      <path d={PALM} fill="var(--atp-skin2)" />
-      {FINGERS.map(([x0, y, len, h], i) => (
-        <g key={i}>
-          <path d={handFinger(x0, y, len, h)} fill={"url(#" + id + "-skin)"} />
-          <path d={handNail(x0 + len, y, h)} fill="var(--atp-nail)" opacity=".78" />
-          <path
-            d={"M" + r1(x0 + len * 0.42) + " " + r1(y - h * 0.36) + " q" + r1(len * 0.12) + " " + r1(-h * 0.08) + " " + r1(len * 0.26) + " " + r1(-h * 0.02)}
-            fill="none" stroke="var(--atp-nail)" strokeWidth="3.2" strokeLinecap="round" opacity=".8"
-          />
-          <path
-            d={"M" + r1(x0 + len * 0.62) + " " + r1(y - h * 0.3) + " q-4 " + r1(h * 0.3) + " 0 " + r1(h * 0.6)}
-            fill="none" stroke="var(--atp-skin2)" strokeWidth="2.6" strokeLinecap="round" opacity=".7"
-          />
-        </g>
-      ))}
-      <g className="atp-thumb">
-        <path d={THUMB} fill="var(--atp-skin0)" />
-        <path d="M-150 -116 C-110 -128 -70 -130 -34 -124" fill="none" stroke="var(--atp-nail)" strokeWidth="3.5" strokeLinecap="round" opacity=".85" />
-        <path d={handNail(0, -106, 34)} fill="var(--atp-nail)" opacity=".85" />
+      {/* Sleeve extending back */}
+      <path
+        d="M -2200 -140 L -210 -80 Q -185 -78 -185 -66 L -180 72 Q -180 84 -205 84 L -2200 150 Z"
+        fill={"url(#" + id + "-sleeve)"}
+      />
+      {/* Subtle organic pattern overlay */}
+      <path
+        d="M -2200 -140 L -210 -80 Q -185 -78 -185 -66 L -180 72 Q -180 84 -205 84 L -2200 150 Z"
+        fill={"url(#" + id + "-swirl)"}
+        opacity="0.25"
+      />
+      {/* Soft light highlight on sleeve top */}
+      <path
+        d="M -2200 -140 L -210 -80 Q -195 -79 -190 -72 L -2200 -115 Z"
+        fill="#ffffff"
+        opacity="0.14"
+      />
+
+      {/* Sleeve Cuff: Soft, organic ribbed sweater cuff */}
+      <path
+        d="M -226 -84 C -204 -84 -184 -80 -184 -66 L -179 72 C -179 84 -199 88 -226 88 C -236 88 -242 82 -242 72 L -247 -66 C -247 -78 -240 -84 -226 -84 Z"
+        fill="var(--atp-cuff)"
+      />
+      {/* Cuff ribbing texture lines */}
+      <path
+        d="M -222 -78 L -218 82 M -206 -76 L -202 80 M -193 -72 L -189 76"
+        stroke="#ffffff"
+        strokeWidth="2"
+        strokeLinecap="round"
+        opacity="0.16"
+      />
+
+      {/* Child's Slender Wrist & Palm (natural soft organic contours) */}
+      <path
+        d="M -188 -62 C -148 -72 -112 -74 -65 -66 C -50 -36 -46 22 -55 50 C -92 68 -142 72 -188 64 Z"
+        fill={"url(#" + id + "-palm-grad)"}
+      />
+
+      {/* 4 Child Fingers: Little (Pinky), Ring, Middle, Index - delicate child proportions */}
+      {/* Pinky (bottom) */}
+      <g>
+        <path
+          d="M -118 42 C -78 40 -38 43 -12 43 C -2 43 5 49 4 56 C 3 63 -4 68 -15 67 C -45 66 -78 67 -118 63 Z"
+          fill={"url(#" + id + "-skin)"}
+        />
+        <path
+          d="M -8 47 C -4 47 -2 50 -3 55 C -4 59 -7 61 -10 61 C -12 61 -13 58 -12 54 C -11 49 -10 47 -8 47 Z"
+          fill="var(--atp-nail)"
+          opacity="0.88"
+        />
+        <path
+          d="M -44 45 C -41 53 -41 57 -44 64"
+          stroke="var(--atp-skin2)"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          opacity="0.45"
+        />
       </g>
-      <rect x="-268" y="-128" width="78" height="258" rx="28" fill="var(--atp-cuff)" />
-      <rect x="-254" y="-124" width="12" height="250" rx="6" fill="#fff" opacity=".2" />
-      <rect x="-216" y="-124" width="8" height="250" rx="4" fill="#000" opacity=".22" />
+
+      {/* Ring Finger */}
+      <g>
+        <path
+          d="M -122 10 C -78 9 -35 11 8 11 C 19 11 26 18 25 26 C 24 34 16 39 5 38 C -35 37 -78 37 -122 34 Z"
+          fill={"url(#" + id + "-skin)"}
+        />
+        <path
+          d="M 10 16 C 15 16 17 20 16 26 C 15 31 11 34 7 33 C 4 33 3 29 4 24 C 5 18 7 16 10 16 Z"
+          fill="var(--atp-nail)"
+          opacity="0.88"
+        />
+        <path
+          d="M -28 14 C -25 22 -25 28 -28 35"
+          stroke="var(--atp-skin2)"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          opacity="0.45"
+        />
+      </g>
+
+      {/* Middle Finger (longest child finger) */}
+      <g>
+        <path
+          d="M -124 -22 C -74 -24 -24 -22 18 -22 C 30 -22 38 -14 37 -6 C 36 3 27 9 15 8 C -24 7 -74 6 -124 3 Z"
+          fill={"url(#" + id + "-skin)"}
+        />
+        <path
+          d="M 20 -17 C 26 -17 28 -13 27 -6 C 26 0 21 4 16 3 C 13 3 12 -1 13 -7 C 14 -13 16 -17 20 -17 Z"
+          fill="var(--atp-nail)"
+          opacity="0.88"
+        />
+        <path
+          d="M -18 -19 C -15 -11 -15 -5 -18 5"
+          stroke="var(--atp-skin2)"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          opacity="0.45"
+        />
+      </g>
+
+      {/* Index Finger */}
+      <g>
+        <path
+          d="M -128 -54 C -78 -56 -28 -53 10 -53 C 21 -53 28 -46 27 -38 C 26 -30 18 -25 7 -25 C -28 -25 -78 -25 -128 -24 Z"
+          fill={"url(#" + id + "-skin)"}
+        />
+        <path
+          d="M 12 -48 C 17 -48 19 -44 18 -38 C 17 -32 12 -29 8 -29 C 5 -29 4 -33 5 -39 C 6 -45 8 -48 12 -48 Z"
+          fill="var(--atp-nail)"
+          opacity="0.88"
+        />
+        <path
+          d="M -24 -50 C -21 -42 -21 -36 -24 -28"
+          stroke="var(--atp-skin2)"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          opacity="0.45"
+        />
+      </g>
+
+      {/* Child's Thumb: Natural gentle grip wrapping over the card from the top */}
+      <g className="atp-thumb">
+        <path
+          d="M -146 -70 C -116 -98 -76 -106 -26 -98 C -2 -94 8 -82 2 -72 C -3 -62 -18 -60 -32 -64 C -74 -74 -108 -66 -136 -46 Z"
+          fill={"url(#" + id + "-skin)"}
+        />
+        {/* Soft thumb highlight & thumbnail */}
+        <path
+          d="M -6 -90 C 0 -90 3 -86 1 -78 C -1 -71 -6 -68 -11 -69 C -13 -69 -14 -73 -13 -79 C -11 -86 -9 -90 -6 -90 Z"
+          fill="var(--atp-nail)"
+          opacity="0.88"
+        />
+        <path
+          d="M -70 -94 C -50 -98 -25 -94 -6 -88"
+          stroke="var(--atp-skin0)"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          opacity="0.75"
+          fill="none"
+        />
+        <path
+          d="M -58 -78 C -50 -84 -40 -86 -30 -84"
+          stroke="var(--atp-skin2)"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          opacity="0.4"
+          fill="none"
+        />
+      </g>
     </g>
   )
 }
@@ -718,64 +829,27 @@ const ATP_CSS = `
 }
 
 /* Multi-Layer Exact Outline Pencil Sketches surrounding each letter */
-.atp-ch .atp-sketch-ghost {
-  position: absolute; inset: 0; color: transparent;
-  -webkit-text-stroke: max(6.8px, 0.05em) var(--atp-ghost, #f43f5e);
-  transform: translate(3.2px, 2.8px);
-  opacity: 0.9;
-  filter: var(--atp-boil-filter);
-  pointer-events: none;
-  z-index: 1;
-  animation: atp-sketch-boil-alt 0.38s steps(2, end) infinite alternate;
-}
-.atp-ch .atp-sketch-rough {
-  position: absolute; inset: 0; color: transparent;
-  -webkit-text-stroke: max(8.2px, 0.06em) var(--atp-rough, #38bdf8);
-  filter: var(--atp-boil-filter);
-  pointer-events: none;
-  z-index: 2;
-  animation: atp-sketch-boil 0.32s steps(2, start) infinite alternate;
-}
+.atp-ch .atp-sketch-ghost,
+.atp-ch .atp-sketch-rough,
 .atp-ch .atp-sketch-line {
-  position: absolute; inset: 0; color: transparent;
-  -webkit-text-stroke: max(3.5px, 0.025em) #67e8f9;
-  transform: translate(-1.8px, -1.4px);
-  opacity: 0.85;
-  filter: var(--atp-boil-filter);
-  pointer-events: none;
-  z-index: 3;
-  animation: atp-sketch-boil-fine 0.28s steps(2, start) infinite alternate;
-}
-@keyframes atp-sketch-boil {
-  0% { transform: translate(-1.2px, -0.8px) rotate(-0.4deg); }
-  50% { transform: translate(1.4px, 0.6px) rotate(0.45deg); }
-  100% { transform: translate(-0.6px, 1.3px) rotate(-0.3deg); }
-}
-@keyframes atp-sketch-boil-alt {
-  0% { transform: translate(2.2px, 1.8px) rotate(0.4deg); }
-  50% { transform: translate(3.2px, 1.2px) rotate(-0.45deg); }
-  100% { transform: translate(1.8px, 2.8px) rotate(0.3deg); }
-}
-@keyframes atp-sketch-boil-fine {
-  0% { transform: translate(-1.6px, -1.2px) rotate(-0.25deg); }
-  50% { transform: translate(0.8px, -0.4px) rotate(0.3deg); }
-  100% { transform: translate(-1.0px, 0.6px) rotate(-0.2deg); }
+  display: none !important;
 }
 
 .atp-ink {
   position: relative; z-index: 4;
-  -webkit-text-stroke: max(1.5px, 0.014em) var(--atp-ink); color: transparent;
-  transition: -webkit-text-stroke-color 600ms ease;
+  color: #000000;
+  -webkit-text-stroke: 0;
+  transition: opacity 300ms ease;
 }
 .atp-paint {
   position: absolute; left: 0; top: 0; pointer-events: none; z-index: 5;
-  background: linear-gradient(90deg, var(--atp-word0), var(--atp-word1) 55%, var(--atp-word2));
-  background-size: var(--atp-ww, 100%) 100%; background-position: var(--atp-gx, 0) 0;
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: #000000;
+  -webkit-text-fill-color: #000000;
+  background: none;
   clip-path: inset(100% -10% -10% -10%); transition: clip-path 760ms cubic-bezier(.6,0,.2,1);
 }
 .atp-ch[data-paint="1"] .atp-paint { clip-path: inset(-10% -10% -10% -10%); }
-.atp-ch[data-paint="1"] .atp-ink { -webkit-text-stroke-color: transparent; transition-delay: 500ms; }
+.atp-ch[data-paint="1"] .atp-ink { opacity: 1; }
 .atp-rough { display: none; }
 .atp-handslot { position: absolute; z-index: 1; width: 0; height: 0; }
 .atp-hand { position: absolute; left: 0; top: 0; will-change: transform; }
@@ -947,17 +1021,12 @@ const ATP_CSS = `
   background-clip: text !important;
   color: transparent !important;
 }
-.atp-stage[data-light="1"] .atp-sub-meta {
-  background: rgba(255, 255, 255, 0.92) !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04) !important;
-  color: #475569 !important;
-}
-.atp-stage[data-light="1"] .atp-sub-author {
-  color: #0f172a !important;
-}
-.atp-stage[data-light="1"] .atp-sub-cred {
-  color: #d97706 !important;
+.atp-stage[data-light="1"] .atp-word,
+.atp-stage[data-light="1"] .atp-ink,
+.atp-stage[data-light="1"] .atp-paint {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  -webkit-text-stroke-color: transparent !important;
 }
 .atp-stage[data-light="1"] .atp-backdrop {
   background: #faf8f5 !important;
@@ -1054,13 +1123,13 @@ export default function AnimatorTitlePreloader({
   loop = false,
   progress,
   durationMs = 7000,
-  kicker = "An Animation",
+  kicker = "",
   kickerStyle = "editorial",
   showLogoSwipe = true,
-  title = "Portfolio",
+  title = "slum art",
   subtitle = "",
-  connector = "of",
-  name = "Kedhareswer",
+  connector = "",
+  name = "",
   meta = "Showreel · 2026",
   scene = "Sc. 01 — Title card",
   frames = 120,
@@ -1155,16 +1224,14 @@ export default function AnimatorTitlePreloader({
       return { left: 0, top: 0, width: 0, height: 0 }
     }
     const boxes = metrics.boxes
-    // Target letter 'M' (index 3 in "SLUM ART") or roughly 38% into the title
-    const mBox = boxes[3] || boxes[Math.min(boxes.length - 1, Math.floor(boxes.length * 0.38))]
+    // In "slum art", the swipe begins right above letter 'm' (index 3) and arches across 'art'
+    const mBox = boxes[3] || boxes[Math.min(boxes.length - 1, Math.floor(boxes.length * 0.36))]
     const lastBox = boxes[boxes.length - 1]
-    const left = mBox ? mBox.x - mBox.w * 0.08 : metrics.ww * 0.38
-    const right = lastBox ? lastBox.x + lastBox.w * 1.02 : metrics.ww
+    const left = mBox ? mBox.x - mBox.w * 0.04 : metrics.ww * 0.36
+    const right = lastBox ? lastBox.x + lastBox.w * 0.98 : metrics.ww
     const width = Math.max(20, right - left)
-    // Sleek proportional height matching the logo (approx 36% of font size)
-    const height = Math.max(16, metrics.size * 0.36)
-    // Position arching over the top edge of the letters
-    const top = -(height * 0.55)
+    const height = Math.max(14, metrics.size * 0.28)
+    const top = -(height * 0.6)
     return { left, top, width, height }
   }, [metrics])
 
@@ -1627,30 +1694,27 @@ export default function AnimatorTitlePreloader({
                   </feTurbulence>
                   <feDisplacementMap in="SourceGraphic" in2="n" scale={metrics ? Math.max(3, metrics.size * 0.03) : 3.5} xChannelSelector="R" yChannelSelector="G" />
                 </filter>
-                <filter id={uid + "-paint"} x="-5%" y="-15%" width="110%" height="130%">
-                  <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3" result="n" />
-                  <feColorMatrix in="n" type="matrix" values="0 0 0 0 .1  0 0 0 0 0  0 0 0 0 .02  0 0 0 -1.7 1.08" result="dark" />
-                  <feComposite in="dark" in2="SourceGraphic" operator="in" result="grain" />
-                  <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="5" result="w" />
-                  <feDisplacementMap in="SourceGraphic" in2="w" scale="5" xChannelSelector="R" yChannelSelector="G" result="wob" />
-                  <feMerge>
-                    <feMergeNode in="wob" />
-                    <feMergeNode in="grain" />
-                  </feMerge>
+                <filter id={uid + "-paint"} x="-10%" y="-20%" width="120%" height="140%">
+                  <feDropShadow dx="2" dy="5" stdDeviation="5" floodColor="#000000" floodOpacity="0.18" />
                 </filter>
                 <filter id={uid + "-grain"} x="0" y="0" width="100%" height="100%">
                   <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" result="n" />
                   <feColorMatrix in="n" type="saturate" values="0" />
                 </filter>
+                <linearGradient id={uid + "-palm-grad"} x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stopColor={colors.skin2} />
+                  <stop offset="1" stopColor={colors.skin1} />
+                </linearGradient>
                 <linearGradient id={uid + "-sleeve"} x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0" stopColor={colors.sleeve0} />
                   <stop offset=".5" stopColor={colors.sleeve1} />
                   <stop offset="1" stopColor={colors.sleeve2} />
                 </linearGradient>
-                <linearGradient id={uid + "-skin"} x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stopColor={colors.skin0} />
-                  <stop offset=".55" stopColor={colors.skin1} />
-                  <stop offset="1" stopColor={colors.skin2} />
+                <linearGradient id={uid + "-skin"} x1="0" y1="0.2" x2="1" y2="0.8">
+                  <stop offset="0" stopColor={colors.skin2} />
+                  <stop offset="0.45" stopColor={colors.skin1} />
+                  <stop offset="0.8" stopColor={colors.skin0} />
+                  <stop offset="1" stopColor="#b56e3f" />
                 </linearGradient>
                 <pattern id={uid + "-swirl"} width="124" height="124" patternUnits="userSpaceOnUse" patternTransform="rotate(-6)">
                   <path d={SWIRLS} fill="none" stroke={colors.pattern} strokeWidth="4.5" strokeLinecap="round" opacity=".55" />
@@ -1775,20 +1839,14 @@ export default function AnimatorTitlePreloader({
                     >
                       <defs>
                         <linearGradient id={uid + "-swipe-grad"} x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#f59e0b" />
-                          <stop offset="45%" stopColor="#fbbf24" />
-                          <stop offset="85%" stopColor="#f97316" />
-                          <stop offset="100%" stopColor="#ef4444" />
+                          <stop offset="0%" stopColor="#ffbc00" />
+                          <stop offset="50%" stopColor="#ffc72c" />
+                          <stop offset="100%" stopColor="#ffb100" />
                         </linearGradient>
-                        <filter id={uid + "-swipe-glow"} x="-20%" y="-20%" width="140%" height="140%">
-                          <feDropShadow dx="0" dy="2" stdDeviation="3.5" floodColor="#f59e0b" floodOpacity="0.65" />
-                        </filter>
                       </defs>
                       <g filter={"url(#" + uid + "-boil)"}>
-                        <g filter={"url(#" + uid + "-swipe-glow)"}>
-                          <path d={SLUM_LOGO_SWIPES.lower} fill={"url(#" + uid + "-swipe-grad)"} />
-                          <path d={SLUM_LOGO_SWIPES.upper} fill={"url(#" + uid + "-swipe-grad)"} />
-                        </g>
+                        <path d={SLUM_LOGO_SWIPES.lower} fill={"url(#" + uid + "-swipe-grad)"} />
+                        <path d={SLUM_LOGO_SWIPES.upper} fill={"url(#" + uid + "-swipe-grad)"} />
                       </g>
                     </svg>
                   </div>
@@ -1819,11 +1877,6 @@ export default function AnimatorTitlePreloader({
                   <h2 className="atp-sub-volume">
                     Transforming Underserved Communities <span className="atp-accent">Through Art, Education &amp; Creativity</span>
                   </h2>
-                  <div className="atp-sub-meta">
-                    <span>Empowering Slum Youth in <strong className="atp-sub-author">Makoko &amp; Ijora Badia</strong></span>
-                    <span className="atp-sub-sep">•</span>
-                    <span className="atp-sub-cred"><span style={{ color: "#fbbf24" }}>✦</span> 100% Direct Educational Impact</span>
-                  </div>
                 </div>
               ) : (
                 <>
