@@ -37,7 +37,7 @@ function HeroAnimatorApp() {
           connector=""
           name=""
           showLogoSwipe={true}
-          subtitle="Transforming Underserved Communities Through Art, Education & Creativity"
+          subtitle="Transforming Underserved Communities Through sustainable Creative Art & Education"
           preset="ember"
           palette={SLUM_PALETTE}
           hands={true}

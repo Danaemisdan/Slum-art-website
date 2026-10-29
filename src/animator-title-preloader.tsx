@@ -744,10 +744,20 @@ const ATP_CSS = `
   letter-spacing: -0.015em;
   text-transform: none;
   color: #ffffff;
-  max-width: min(920px, 92vw);
+  max-width: min(960px, 92vw);
   text-align: center;
-  line-height: 1.32;
+  line-height: 1.35;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.18em;
+}
+.atp-sub-line1 {
+  display: block;
+}
+.atp-sub-line2 {
+  display: block;
 }
 .atp-sub-volume strong,
 .atp-sub-volume .atp-accent {
@@ -1896,7 +1906,8 @@ export default function AnimatorTitlePreloader({
               {subtitle ? (
                 <div className="atp-subrow" data-on={pct >= 35 || final ? "1" : "0"}>
                   <h2 className="atp-sub-volume">
-                    Transforming Underserved Communities <span className="atp-accent">Through Art, Education &amp; Creativity</span>
+                    <span className="atp-sub-line1">Transforming Underserved Communities</span>
+                    <span className="atp-sub-line2 atp-accent">Through sustainable Creative Art &amp; Education</span>
                   </h2>
                 </div>
               ) : (
