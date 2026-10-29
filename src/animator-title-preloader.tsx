@@ -811,7 +811,7 @@ const ATP_CSS = `
 .atp-titlewrap { position: relative; margin: 0.56em 0 0.05em; }
 .atp-word {
   position: relative; z-index: 2; display: block; white-space: nowrap; margin: 0;
-  font-family: var(--atp-display); font-weight: 900; line-height: 0.92; letter-spacing: -0.015em;
+  font-family: var(--atp-display); line-height: 0.92; letter-spacing: -0.015em;
   font-size: var(--atp-word-size); color: transparent; transform-origin: 50% 60%;
 }
 .atp-gate[data-phase="grip"] .atp-word { animation: atp-squeeze 520ms cubic-bezier(.3,0,.3,1) both; }
@@ -820,6 +820,17 @@ const ATP_CSS = `
 @keyframes atp-stretch { 0% { transform: scale(.985, 1.015); } 22% { transform: scale(.94, 1.07); } 55% { transform: scale(1.05, .95); } 100% { transform: none; } }
 .atp-ch { position: relative; display: inline-block; opacity: 0; transform-origin: 50% 85%; }
 .atp-ch[data-ink="1"] { opacity: 1; animation: atp-pop 640ms cubic-bezier(.2,.9,.3,1) both; }
+.atp-ch.atp-ch-bold,
+.atp-ch.atp-ch-bold .atp-ink,
+.atp-ch.atp-ch-bold .atp-paint {
+  font-weight: 900 !important;
+}
+.atp-ch.atp-ch-light,
+.atp-ch.atp-ch-light .atp-ink,
+.atp-ch.atp-ch-light .atp-paint {
+  font-weight: 400 !important;
+  letter-spacing: -0.01em;
+}
 @keyframes atp-pop {
   0% { opacity: 0; transform: translateY(-0.18em) scale(.55, 1.45); }
   38% { opacity: 1; transform: translateY(0.02em) scale(1.22, .78); }
@@ -1028,6 +1039,16 @@ const ATP_CSS = `
   -webkit-text-fill-color: #000000 !important;
   -webkit-text-stroke-color: transparent !important;
 }
+.atp-stage[data-light="1"] .atp-ch.atp-ch-bold,
+.atp-stage[data-light="1"] .atp-ch.atp-ch-bold .atp-ink,
+.atp-stage[data-light="1"] .atp-ch.atp-ch-bold .atp-paint {
+  font-weight: 900 !important;
+}
+.atp-stage[data-light="1"] .atp-ch.atp-ch-light,
+.atp-stage[data-light="1"] .atp-ch.atp-ch-light .atp-ink,
+.atp-stage[data-light="1"] .atp-ch.atp-ch-light .atp-paint {
+  font-weight: 400 !important;
+}
 .atp-stage[data-light="1"] .atp-backdrop {
   background: #faf8f5 !important;
 }
@@ -1224,14 +1245,14 @@ export default function AnimatorTitlePreloader({
       return { left: 0, top: 0, width: 0, height: 0 }
     }
     const boxes = metrics.boxes
-    // In "slum art", the swipe begins right above letter 'm' (index 3) and arches across 'art'
+    // In "slum art", the swipe begins 26% inside letter 'm' (index 3) and ends at the vertical stem of 't' (last index):
     const mBox = boxes[3] || boxes[Math.min(boxes.length - 1, Math.floor(boxes.length * 0.36))]
     const lastBox = boxes[boxes.length - 1]
-    const left = mBox ? mBox.x - mBox.w * 0.04 : metrics.ww * 0.36
-    const right = lastBox ? lastBox.x + lastBox.w * 0.98 : metrics.ww
+    const left = mBox ? mBox.x + mBox.w * 0.26 : metrics.ww * 0.40
+    const right = lastBox ? lastBox.x + lastBox.w * 0.30 : metrics.ww * 0.92
     const width = Math.max(20, right - left)
-    const height = Math.max(14, metrics.size * 0.28)
-    const top = -(height * 0.6)
+    const height = Math.max(14, metrics.size * 0.30)
+    const top = -(height * 0.95)
     return { left, top, width, height }
   }, [metrics])
 
@@ -1801,17 +1822,15 @@ export default function AnimatorTitlePreloader({
                   {letters.map((ch, i) => {
                     const beat = atpBeats(i, n)
                     const box = metrics && metrics.boxes[i]
+                    const isArt = title.toLowerCase().includes("slum") && i >= 4
                     return (
                       <span
                         key={i}
-                        className="atp-ch"
+                        className={"atp-ch " + (isArt ? "atp-ch-light" : "atp-ch-bold")}
                         data-ink={pct >= beat.ink || final ? "1" : "0"}
                         data-paint={pct >= beat.paint || final ? "1" : "0"}
                         style={box ? ({ "--atp-gx": -box.x + "px" } as React.CSSProperties) : undefined}
                       >
-                        <span className="atp-sketch-ghost" aria-hidden="true">{ch === " " ? " " : ch}</span>
-                        <span className="atp-sketch-rough" aria-hidden="true">{ch === " " ? " " : ch}</span>
-                        <span className="atp-sketch-line" aria-hidden="true">{ch === " " ? " " : ch}</span>
                         <span className="atp-ink">{ch === " " ? " " : ch}</span>
                         <span className="atp-paint">{ch === " " ? " " : ch}</span>
                       </span>
@@ -1823,7 +1842,7 @@ export default function AnimatorTitlePreloader({
                 {showLogoSwipe && metrics ? (
                   <div
                     className="atp-logo-swipes-wrap"
-                    data-on={pct >= 55 || final ? "1" : "0"}
+                    data-on={pct >= 40 || final ? "1" : "0"}
                     style={{
                       left: swipeBounds.left,
                       top: swipeBounds.top,
@@ -1839,12 +1858,14 @@ export default function AnimatorTitlePreloader({
                     >
                       <defs>
                         <linearGradient id={uid + "-swipe-grad"} x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#ffbc00" />
-                          <stop offset="50%" stopColor="#ffc72c" />
-                          <stop offset="100%" stopColor="#ffb100" />
+                          <stop offset="0%" stopColor="#d97706" />
+                          <stop offset="18%" stopColor="#f59e0b" />
+                          <stop offset="50%" stopColor="#ffb703" />
+                          <stop offset="82%" stopColor="#f59e0b" />
+                          <stop offset="100%" stopColor="#d97706" />
                         </linearGradient>
                       </defs>
-                      <g filter={"url(#" + uid + "-boil)"}>
+                      <g>
                         <path d={SLUM_LOGO_SWIPES.lower} fill={"url(#" + uid + "-swipe-grad)"} />
                         <path d={SLUM_LOGO_SWIPES.upper} fill={"url(#" + uid + "-swipe-grad)"} />
                       </g>
