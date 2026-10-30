@@ -126,6 +126,43 @@
           <button class="cat-pill" data-category="Recycled Media">Recycled Media</button>
           <button class="cat-pill" data-category="Story Canvases">Story Canvases</button>
           <button class="cat-pill" data-category="Little Masters">Little Masters</button>
+          <button type="button" class="cat-pill cat-pill-custom" onclick="window.openCustomPortraitModal()">
+            <i class="fas fa-wand-magic-sparkles text-amber"></i> Commission Custom Portrait <span class="custom-badge-spark">Custom</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bespoke Custom Portrait Commission Showcase -->
+      <div class="custom-portrait-callout">
+        <div class="cpc-inner">
+          <div class="cpc-content">
+            <div class="cpc-tag">
+              <i class="fas fa-crown text-amber"></i>
+              <span>Bespoke Commission Atelier &bull; Handcrafted from Your Photo</span>
+            </div>
+            <h3 class="cpc-title">Commission a 1-of-1 Custom Portrait</h3>
+            <p class="cpc-desc">
+              Have our talented youth artists and master mentors handcraft an original museum-grade portrait from your favorite photo — Vibrant Acrylic on Canvas, Classic Charcoal, or Signature Recycled Collage. <strong>100% of proceeds fund full-year school tuition, fine art supplies, and daily meals for children in Nigeria.</strong>
+            </p>
+            <div class="cpc-features">
+              <span class="cpc-feat-item"><i class="fas fa-check-circle text-amber"></i> Hand-painted from your photo</span>
+              <span class="cpc-feat-item"><i class="fas fa-check-circle text-amber"></i> Embossed Certificate of Authenticity</span>
+              <span class="cpc-feat-item"><i class="fas fa-check-circle text-amber"></i> Free DHL Worldwide Express Delivery</span>
+            </div>
+          </div>
+          <div class="cpc-actions">
+            <div class="cpc-price-tag">
+              <span class="cpc-price-label">Commissions From</span>
+              <span class="cpc-price-val">$150 USD <small>/ ₦220,000</small></span>
+              <span class="cpc-price-sub"><i class="fas fa-graduation-cap"></i> Funds 1 Year School Tuition</span>
+            </div>
+            <button type="button" class="btn btn-luxury-commission" onclick="window.openCustomPortraitModal()">
+              <i class="fas fa-paintbrush"></i> Request Custom Portrait <i class="fas fa-arrow-right"></i>
+            </button>
+            <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art%20Foundation,%20I%20would%20like%20to%20commission%20a%20custom%20portrait!" target="_blank" rel="noopener noreferrer" class="cpc-wa-link">
+              <i class="fab fa-whatsapp"></i> Quick Inquiry on WhatsApp
+            </a>
+          </div>
         </div>
       </div>
 
@@ -203,6 +240,152 @@
       </div>
     </div>
   </footer>
+
+  <!-- Custom Portrait Commission Request Modal -->
+  <div class="modal-overlay" id="customPortraitModal">
+    <div class="modal-card" style="max-width: 680px; max-height: 90vh; overflow-y: auto;">
+      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <div class="custom-portrait-modal-body" style="padding: 2.2rem 2rem;">
+        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-palette"></i> Bespoke Commission Atelier</div>
+        <h2 style="font-size: 1.75rem; margin-bottom: 0.4rem; color: var(--text-main);">Commission a Custom Portrait</h2>
+        <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.55;">
+          Our master artist mentors and talented youth in Nigeria will handcraft an original museum-grade portrait from your photo. Every commission funds school tuition, uniform, learning supplies, and daily meals for children in need.
+        </p>
+
+        <form id="customPortraitForm" onsubmit="window.handleCustomPortraitSubmit(event)">
+          <!-- Row 1: Contact Details -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Your Full Name *</label>
+              <input type="text" name="fullName" required placeholder="e.g. David Adeleke" class="modal-form-input">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Email Address *</label>
+              <input type="email" name="email" required placeholder="david@example.com" class="modal-form-input">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">WhatsApp / Phone Number *</label>
+              <input type="tel" name="phone" required placeholder="+234 or +1 ..." class="modal-form-input">
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 3px;">For sketch previews &amp; progress updates</span>
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Delivery City &amp; Country *</label>
+              <input type="text" name="location" required placeholder="e.g. London, UK or Lagos, Nigeria" class="modal-form-input">
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 3px;">Free worldwide DHL shipping included</span>
+            </div>
+          </div>
+
+          <!-- Row 2: Portrait Subject & Medium -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Portrait Subject *</label>
+              <select name="subjectType" required class="modal-form-select">
+                <option value="Single Individual Portrait">Single Individual Portrait</option>
+                <option value="Couple / Duo Portrait">Couple / Duo Portrait</option>
+                <option value="Family / Group Portrait">Family / Group Portrait</option>
+                <option value="Pet Portrait (Dog, Cat, etc.)">Pet Portrait (Dog, Cat, etc.)</option>
+                <option value="Memorial / Legacy Tribute">Memorial / Legacy Tribute</option>
+                <option value="Icon / Leader Portrait">Icon / Historical Leader</option>
+              </select>
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Preferred Medium *</label>
+              <select name="medium" required class="modal-form-select">
+                <option value="Vibrant Acrylic on Canvas">Vibrant Acrylic on Canvas (Bold &amp; Colorful)</option>
+                <option value="Fine Charcoal & Soft Pastel">Fine Charcoal &amp; Pastel (Timeless Monochrome)</option>
+                <option value="Signature Recycled Media Collage">Signature Recycled Media Collage</option>
+                <option value="Oil Pastel on Archival Board">Oil Pastel on Archival Board</option>
+                <option value="Artist's Choice">Artist's Choice (Youth &amp; Mentors Decide)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Row 3: Size & Impact Tier -->
+          <div style="margin-bottom: 1.25rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem;">Select Canvas Size &amp; Impact Tier *</label>
+            <div class="cpc-size-grid">
+              <label class="cpc-size-card">
+                <input type="radio" name="sizeTier" value="Standard Studio (12×16 in / 30×40 cm) • $150 / ₦220,000" checked>
+                <div class="cpc-size-box">
+                  <div class="cpc-size-header">
+                    <strong>Standard Studio</strong>
+                    <span class="cpc-size-dim">12" × 16" (30×40 cm)</span>
+                  </div>
+                  <div class="cpc-size-price">$150 USD <small>/ ₦220k</small></div>
+                  <div class="cpc-size-impact"><i class="fas fa-graduation-cap text-amber"></i> Funds 1 Full Term School</div>
+                </div>
+              </label>
+
+              <label class="cpc-size-card">
+                <input type="radio" name="sizeTier" value="Classic Exhibition (16×20 in / 40×50 cm) • $250 / ₦360,000">
+                <div class="cpc-size-box">
+                  <div class="cpc-size-header">
+                    <strong>Classic Exhibition</strong>
+                    <span class="cpc-size-dim">16" × 20" (40×50 cm)</span>
+                  </div>
+                  <div class="cpc-size-price">$250 USD <small>/ ₦360k</small></div>
+                  <div class="cpc-size-impact"><i class="fas fa-graduation-cap text-amber"></i> Funds 2 Terms + Uniform</div>
+                </div>
+              </label>
+
+              <label class="cpc-size-card">
+                <input type="radio" name="sizeTier" value="Monumental Statement (24×36 in / 60×90 cm) • $450 / ₦650,000">
+                <div class="cpc-size-box">
+                  <div class="cpc-size-header">
+                    <strong>Monumental Statement</strong>
+                    <span class="cpc-size-dim">24" × 36" (60×90 cm)</span>
+                  </div>
+                  <div class="cpc-size-price">$450 USD <small>/ ₦650k</small></div>
+                  <div class="cpc-size-impact"><i class="fas fa-graduation-cap text-amber"></i> Funds 1 Full Year + Meals</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Photo Upload / Reference Box -->
+          <div style="margin-bottom: 1.25rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">
+              Photo Reference *
+            </label>
+            <div class="cpc-upload-dropzone" onclick="document.getElementById('portraitPhotoInput').click()">
+              <input type="file" id="portraitPhotoInput" accept="image/*" style="display: none;" onchange="window.handlePortraitPhotoSelect(this)">
+              <div id="cpcUploadPrompt">
+                <i class="fas fa-cloud-arrow-up text-amber" style="font-size: 1.8rem; margin-bottom: 0.5rem; display: block;"></i>
+                <div style="font-weight: 700; font-size: 0.92rem; color: var(--text-main);">Click to Select or Drop Your Reference Photo</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">JPEG, PNG, or WEBP. High-resolution preferred.</div>
+              </div>
+              <div id="cpcUploadSuccess" style="display: none; align-items: center; justify-content: center; gap: 12px;">
+                <img id="cpcThumbPreview" src="" alt="Thumbnail" style="width: 48px; height: 48px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border-light);">
+                <div style="text-align: left;">
+                  <strong id="cpcFileName" style="font-size: 0.88rem; color: #059669; display: block;">photo.jpg</strong>
+                  <span style="font-size: 0.78rem; color: var(--text-muted);">Photo attached &bull; Click to change</span>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 0.78rem; color: var(--text-muted); white-space: nowrap;">Or cloud link:</span>
+              <input type="url" name="photoLink" placeholder="Google Drive, Dropbox, or iCloud link (optional)" class="modal-form-input" style="padding: 0.45rem 0.75rem; font-size: 0.82rem; flex: 1;">
+            </div>
+          </div>
+
+          <!-- Notes & Special Requests -->
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">
+              Artistic Vision &amp; Notes (Optional)
+            </label>
+            <textarea name="notes" rows="2" placeholder="Tell us about color preferences, background style, dedication text, or if this is for a specific deadline / gift occasion..." class="modal-form-input" style="resize: vertical;"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 0.95rem;">
+            <i class="fas fa-paper-plane"></i> Submit Custom Portrait Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <div class="toast-container" id="toastContainer"></div>
     <!-- GSAP 3.12.5 -->

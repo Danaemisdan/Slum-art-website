@@ -677,6 +677,121 @@
     }
   };
 
+  // Custom Portrait Commission Modal & Handlers
+  window.openCustomPortraitModal = function () {
+    const modal = document.getElementById('customPortraitModal');
+    if (modal) {
+      modal.classList.add('active');
+    }
+  };
+
+  window.handlePortraitPhotoSelect = function (input) {
+    if (!input || !input.files || !input.files[0]) return;
+    const file = input.files[0];
+    const promptEl = document.getElementById('cpcUploadPrompt');
+    const successEl = document.getElementById('cpcUploadSuccess');
+    const nameEl = document.getElementById('cpcFileName');
+    const thumbEl = document.getElementById('cpcThumbPreview');
+
+    if (nameEl) nameEl.textContent = file.name;
+    if (thumbEl) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        thumbEl.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+    if (promptEl) promptEl.style.display = 'none';
+    if (successEl) successEl.style.display = 'flex';
+  };
+
+  window.handleCustomPortraitSubmit = function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.fullName ? form.fullName.value : 'Patron';
+    const email = form.email ? form.email.value : '';
+    const phone = form.phone ? form.phone.value : '';
+    const location = form.location ? form.location.value : '';
+    const subject = form.subjectType ? form.subjectType.value : 'Custom Portrait';
+    const medium = form.medium ? form.medium.value : 'Vibrant Acrylic';
+    const sizeTier = form.sizeTier ? form.sizeTier.value : 'Standard Studio';
+    const photoLink = form.photoLink ? form.photoLink.value : '';
+    const notes = form.notes ? form.notes.value : '';
+
+    const refId = 'PORTRAIT-NG-' + Math.floor(1000 + Math.random() * 9000);
+
+    // Save commission draft to localStorage
+    try {
+      const existing = JSON.parse(localStorage.getItem('slum_custom_portraits') || '[]');
+      existing.push({
+        refId,
+        name,
+        email,
+        phone,
+        location,
+        subject,
+        medium,
+        sizeTier,
+        photoLink,
+        notes,
+        createdAt: new Date().toISOString()
+      });
+      localStorage.setItem('slum_custom_portraits', JSON.stringify(existing));
+    } catch (err) {
+      console.warn('LocalStorage save error:', err);
+    }
+
+    const modal = document.getElementById('customPortraitModal');
+    if (modal) {
+      const card = modal.querySelector('.modal-card');
+      if (card) {
+        const waText = encodeURIComponent(
+          `Hello Slum Art Foundation! I just submitted a Custom Portrait Commission request (Ref: ${refId}).\n\nName: ${name}\nSubject: ${subject}\nMedium: ${medium}\nSize: ${sizeTier}\nDelivery: ${location}\n\nI am sending my reference photo directly here on WhatsApp!`
+        );
+        const waLink = `https://wa.me/2348059994834?text=${waText}`;
+
+        card.innerHTML = `
+          <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+          <div style="padding: 2.75rem 2rem; text-align: center;">
+            <div style="width: 76px; height: 76px; border-radius: 50%; background: #ecfdf5; color: #059669; margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; box-shadow: 0 8px 24px rgba(5, 150, 105, 0.2);">
+              <i class="fas fa-check"></i>
+            </div>
+            <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-sparkles text-amber"></i> Commission Received &bull; 100% Impact</div>
+            <h2 style="font-size: 1.85rem; margin-bottom: 0.6rem; color: var(--text-main);">Your Custom Portrait Is in the Works!</h2>
+            <p style="color: var(--text-muted); max-width: 520px; margin: 0 auto 1.5rem; line-height: 1.6; font-size: 0.95rem;">
+              Thank you, <strong>${name}</strong>! Our master artist mentors and talented youth scholars in Nigeria are honored to create your 1-of-1 original masterpiece.
+            </p>
+
+            <div style="background: var(--bg-subtle, #f8fafc); border: 2px dashed #f59e0b; border-radius: var(--radius-lg, 16px); padding: 1.4rem 1.5rem; max-width: 480px; margin: 0 auto 1.75rem; text-align: left;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.06); padding-bottom: 0.5rem;">
+                <span style="font-size: 0.76rem; text-transform: uppercase; font-weight: 800; color: #64748b; letter-spacing: 0.05em;">Commission Order Ref</span>
+                <span style="font-size: 1.15rem; font-weight: 900; color: #b45309; font-family: monospace;">${refId}</span>
+              </div>
+              <div style="font-size: 0.88rem; color: #334155; line-height: 1.55;">
+                <div><strong>Subject:</strong> ${subject}</div>
+                <div><strong>Medium:</strong> ${medium}</div>
+                <div><strong>Tier:</strong> ${sizeTier}</div>
+                <div><strong>Delivery to:</strong> ${location} (Free Worldwide DHL Express)</div>
+              </div>
+            </div>
+
+            <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 1rem 1.25rem; max-width: 480px; margin: 0 auto 1.75rem; text-align: left; font-size: 0.85rem; color: #92400e; line-height: 1.5;">
+              <i class="fas fa-camera text-amber" style="margin-right: 6px;"></i> <strong>Next Step (Important):</strong> If you haven't attached high-res photos, please send them directly to our master artist atelier on WhatsApp quoting ref <strong>${refId}</strong>.
+            </div>
+
+            <div style="display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap;">
+              <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="background: #25D366; border-color: #25D366; color: #ffffff;">
+                <i class="fab fa-whatsapp"></i> Send Photos via WhatsApp
+              </a>
+              <button class="btn btn-secondary" onclick="window.print()"><i class="fas fa-print"></i> Print Receipt</button>
+              <button class="btn btn-secondary" onclick="window.closeAllModals()">Done</button>
+            </div>
+          </div>
+        `;
+      }
+    }
+  };
+
   // Close All Modals
   window.closeAllModals = function () {
     document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
