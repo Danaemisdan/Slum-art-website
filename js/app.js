@@ -558,6 +558,15 @@
     }
   };
 
+  // Smooth Scroll to Guinness World Record Comic Book Section
+  window.scrollToGuinnessRecord = function (e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const target = document.getElementById('guinness-record') || document.querySelector('.gwr-backing-section');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   // Volunteer Modal
   window.openVolunteerModal = function () {
     if (elements.volunteerModal) elements.volunteerModal.classList.add('active');

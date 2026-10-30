@@ -53,12 +53,14 @@ function HeroAnimatorApp() {
           type="button"
           className="hero-scroll-cue"
           aria-label="Register for Guinness World Record"
-          onClick={() => {
-            const comicSection = document.getElementById("guinness-record") || document.querySelector(".gwr-backing-section");
-            if (comicSection) {
-              comicSection.scrollIntoView({ behavior: "smooth" });
+          onClick={(e) => {
+            e.preventDefault();
+            if (typeof (window as any).scrollToGuinnessRecord === "function") {
+              (window as any).scrollToGuinnessRecord(e);
             } else {
-              window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+              const comic = document.getElementById("guinness-record") || document.querySelector(".gwr-backing-section");
+              if (comic) comic.scrollIntoView({ behavior: "smooth", block: "start" });
+              else window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
             }
           }}
         >

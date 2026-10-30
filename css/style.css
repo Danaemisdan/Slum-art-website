@@ -6349,6 +6349,18 @@ body.scrolled-past-hero .navbar,
   }
 }
 
+@media (max-width: 480px) {
+  .hero-light-stage .hero-scroll-cue {
+    bottom: 60px !important;
+    padding: 6px 12px !important;
+    gap: 8px !important;
+    max-width: 92vw !important;
+  }
+  .hsc-label {
+    font-size: 11.5px !important;
+  }
+}
+
 /* ===================================================================
    21ST.DEV MINIMALIST HERO (SECTION 2 - EXACT 100VH VIEWPORT FIT)
    Component Inspiration: @ravikatiyar162/components/minimalist-hero
