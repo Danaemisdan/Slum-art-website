@@ -24457,13 +24457,17 @@
         return { left: 0, top: 0, width: 0, height: 0 };
       }
       const boxes = metrics.boxes;
-      const aBox = boxes[5] || boxes[Math.min(boxes.length - 1, Math.floor(boxes.length * 0.58))];
+      // Exact alignment from official "Slum Art Mentorship Logo.png":
+      // Swipes start right between 'l' and 'u' (19.5% of text width)
+      // and end right over 't' (90.9% of text width), width = 71.4% of text width
+      const uBox = boxes[2];
+      const lBox = boxes[1];
       const tBox = boxes[boxes.length - 1];
-      const left = aBox ? aBox.x - aBox.w * 0.15 : metrics.ww * 0.58;
-      const right = tBox ? tBox.x + tBox.w * 1.05 : metrics.ww * 0.96;
-      const width = Math.max(30, right - left);
-      const height2 = width / 4.18;
-      const top = -(height2 * 0.72);
+      const left = uBox && lBox ? (lBox.x + lBox.w + uBox.x) / 2 : metrics.ww * 0.195;
+      const right = tBox ? tBox.x + tBox.w * 0.15 : metrics.ww * 0.909;
+      const width = Math.max(40, right - left);
+      const height2 = width / 5.1258; // exact 774 / 151 aspect ratio
+      const top = -(height2 * 0.78);
       return { left, top, width, height: height2 };
     }, [metrics]);
     React.useLayoutEffect(() => {
@@ -24911,14 +24915,14 @@
             /* @__PURE__ */ React.createElement(
               "img",
               {
-                src: "assets/images/official_slum_swipes_exact_4x.png",
+                src: "assets/images/official_slum_swipes_exact_4x.png?v=20261031_exact4",
                 alt: "Slum Art Brand Swipes",
                 style: {
                   width: "100%",
                   height: "100%",
                   objectFit: "fill",
                   display: "block",
-                  filter: "drop-shadow(0 2px 8px rgba(217, 119, 6, 0.2))",
+                  filter: "none",
                   pointerEvents: "none"
                 }
               }
