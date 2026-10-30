@@ -7119,10 +7119,10 @@ body.scrolled-past-hero .navbar,
   z-index: 2;
   background: linear-gradient(
     to top,
-    rgba(7, 10, 19, 0.96) 0%,
-    rgba(7, 10, 19, 0.72) 42%,
-    rgba(7, 10, 19, 0.3) 75%,
-    rgba(7, 10, 19, 0.15) 100%
+    rgba(7, 10, 19, 0.92) 0%,
+    rgba(7, 10, 19, 0.45) 28%,
+    rgba(7, 10, 19, 0.06) 55%,
+    transparent 75%
   );
   pointer-events: none;
 }
@@ -7130,12 +7130,11 @@ body.scrolled-past-hero .navbar,
 .ui-hero-content {
   position: relative;
   z-index: 5;
-  padding: clamp(1rem, 2vh, 1.75rem) clamp(1.2rem, 2.2vw, 2rem);
+  padding: clamp(1rem, 2vh, 1.5rem) clamp(1.2rem, 2.2vw, 1.75rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  gap: clamp(8px, 1.2vh, 16px);
 }
 
 .ui-hero-top-row {
@@ -7144,6 +7143,14 @@ body.scrolled-past-hero .navbar,
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+.ui-hero-bottom-group {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.2vh, 12px);
+  max-width: 640px;
 }
 
 /* Hero Card Background Crossfade Slider */
@@ -7160,9 +7167,10 @@ body.scrolled-past-hero .navbar,
   background-size: cover;
   background-position: center 25%;
   opacity: 0;
-  transform: scale(1.06);
+  transform: scale(1.04);
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 5s ease-out;
   pointer-events: none;
+  filter: brightness(0.98) contrast(1.04);
 }
 
 .hero-bg-slide.active {
@@ -7170,86 +7178,10 @@ body.scrolled-past-hero .navbar,
   transform: scale(1);
 }
 
-.scholar-story-tabs {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: rgba(0, 0, 0, 0.55);
-  padding: 4px 6px;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-
-.story-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: none;
-  padding: 4px 11px 4px 4px;
-  border-radius: 9999px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.85);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.25s ease;
-}
-
-.story-tab img {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
-  flex-shrink: 0;
-}
-
-.story-tab:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.story-tab.active {
-  color: #ffffff;
-  background: rgba(224, 105, 39, 0.85);
-  box-shadow: 0 2px 12px rgba(224, 105, 39, 0.5);
-  font-weight: 800;
-}
-
-.story-tab.active img {
-  border-color: #ffffff;
-}
-
-.tab-progress-track {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2.5px;
-  background: rgba(255, 255, 255, 0.2);
-  overflow: hidden;
-}
-
-.tab-progress-fill {
-  width: 0%;
-  height: 100%;
-  background: #ffffff;
-}
-
-@keyframes tabProgressFill {
-  from { width: 0%; }
-  to { width: 100%; }
-}
-
 .scholar-story-body {
   display: flex;
   flex-direction: column;
-  gap: clamp(4px, 0.8vh, 8px);
+  gap: 4px;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
@@ -7271,23 +7203,23 @@ body.scrolled-past-hero .navbar,
 
 .ui-hero-title {
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(1.35rem, 2.3vw, 2.15rem);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
   color: #ffffff;
   margin: 0;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .ui-hero-desc {
-  font-size: clamp(0.78rem, 0.95vw, 0.92rem);
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
   margin: 0;
-  max-width: 620px;
+  max-width: 520px;
   font-style: italic;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
 }
 
 .ui-hero-footer {
@@ -7619,7 +7551,7 @@ body.scrolled-past-hero .navbar,
     grid-row: auto !important;
   }
   .card--hero {
-    min-height: 380px;
+    min-height: 460px;
   }
 }
 

@@ -1434,7 +1434,7 @@
       avatar: "assets/images/gallery/kehinde_portrait.jpg",
       bgImage: "assets/images/gallery/gallery_05.jpg",
       tagText: "Live Studio &bull; Makoko Floating Lagoon",
-      title: "From Shoreline Labor<br>to Fine Art Mastery",
+      title: "From Shoreline Labor to Fine Art Mastery",
       desc: "Before Slum Art, my days were spent fishing plastic from the water. Today my paintings pay my school tuition and I have a seat in a real classroom.",
       outcomes: "<span>100% Tuition Escrow</span><span class=\"dot-sep\">&bull;</span><span>Crested Kit</span><span class=\"dot-sep\">&bull;</span><span>Daily Meals</span>"
     },
@@ -1444,7 +1444,7 @@
       avatar: "assets/images/resources/prof_2.png",
       bgImage: "assets/images/gallery/gallery_07.jpg",
       tagText: "Secondary Scholar &bull; Floating Atelier",
-      title: "Finding My Creative Voice<br>on the Floating Easel",
+      title: "Finding My Creative Voice on the Floating Easel",
       desc: "Painting on the lagoon gave me confidence and hope. My artwork helped fund our solar-powered library, and now I am excelling in secondary school.",
       outcomes: "<span>Secondary Scholarship</span><span class=\"dot-sep\">&bull;</span><span>Art Supplies</span><span class=\"dot-sep\">&bull;</span><span>Hot Lunch</span>"
     },
@@ -1454,7 +1454,7 @@
       avatar: "assets/images/resources/prof_3.png",
       bgImage: "assets/images/gallery/gallery_03.jpg",
       tagText: "Eco-Art Academy &bull; Ijora Badia",
-      title: "Upcycling Waste<br>into Global Exhibitions",
+      title: "Upcycling Waste into Global Exhibitions",
       desc: "I used to collect scrap bottles. Now under Guinness record mentor Adenle, I sculpt them into art that travels to international exhibitions.",
       outcomes: "<span>Full School Sponsorship</span><span class=\"dot-sep\">&bull;</span><span>Mentorship</span><span class=\"dot-sep\">&bull;</span><span>Medical Care</span>"
     },
@@ -1464,7 +1464,7 @@
       avatar: "assets/images/gallery/gallery_02.jpg",
       bgImage: "assets/images/gallery/gallery_06.jpg",
       tagText: "Charcoal & Pastels &bull; Under-Bridge Studio",
-      title: "From Informal Dumpsites<br>to Gallery Showcases",
+      title: "From Informal Dumpsites to Gallery Showcases",
       desc: "Drawing portraits with charcoal taught me that my hands can build something beautiful. Our art is breaking generations of poverty right here under the bridge.",
       outcomes: "<span>Tuition Escrow</span><span class=\"dot-sep\">&bull;</span><span>Studio Easel Kit</span><span class=\"dot-sep\">&bull;</span><span>Academic Tutoring</span>"
     }
