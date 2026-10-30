@@ -6170,130 +6170,170 @@ body.modal-open {
 }
 
 /* ===================================================================
-   LUXURY ART GALLERY PROOF & TRUST METRIC BAR
+   CURATORIAL PROVENANCE & PHILANTHROPIC TRUST BAR
+   Bespoke Fine Art Provenance Strip (Replaces generic SaaS cards)
    =================================================================== */
 
+.shop-provenance-strip,
 .shop-sales-ticker {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto 3.25rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
+  background: #ffffff;
+  border: 1px solid rgba(226, 215, 195, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(45, 30, 15, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
   box-sizing: border-box;
 }
 
+.provenance-pillar,
 .sales-ticker-item {
-  background: #ffffff;
-  border: 1.5px solid rgba(226, 232, 240, 0.95);
-  border-radius: 20px;
-  padding: 1.2rem 1.25rem;
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(226, 215, 195, 0.7);
+  border-radius: 0;
+  padding: 1.35rem 1.45rem;
   display: flex;
   align-items: center;
-  gap: 0.95rem;
+  gap: 1rem;
   text-align: left;
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s ease;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05), 0 2px 6px rgba(0, 0, 0, 0.02);
+  overflow: visible;
+  box-shadow: none;
   min-width: 0;
+  transition: background-color 0.25s ease;
 }
 
-.sales-ticker-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #ea580c 0%, #f59e0b 50%, #fbbf24 100%);
-  opacity: 0.85;
-  transition: opacity 0.3s ease, height 0.3s ease;
+.provenance-pillar:last-child,
+.sales-ticker-item:last-child {
+  border-right: none;
 }
 
+.provenance-pillar:hover,
 .sales-ticker-item:hover {
-  transform: translateY(-5px);
-  border-color: rgba(245, 158, 11, 0.65);
-  box-shadow: 0 20px 44px rgba(245, 158, 11, 0.16), 0 6px 18px rgba(15, 23, 42, 0.08);
+  background-color: #faf7f2;
+  transform: none;
+  box-shadow: none;
 }
 
-.sales-ticker-item:hover::before {
-  opacity: 1;
-  height: 5px;
+.provenance-pillar::before,
+.sales-ticker-item::before {
+  display: none !important;
 }
 
+.provenance-icon-seal,
 .ticker-icon-box {
-  width: 52px;
-  height: 52px;
-  border-radius: 15px;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(217, 119, 6, 0.08) 100%);
-  border: 1.5px solid rgba(245, 158, 11, 0.35);
-  color: #d97706;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  color: #b45309;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.18rem;
   flex-shrink: 0;
-  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.16);
-  transition: transform 0.35s ease, background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: none;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
 }
 
+.provenance-pillar:hover .provenance-icon-seal,
 .sales-ticker-item:hover .ticker-icon-box {
-  transform: scale(1.08) rotate(4deg);
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  transform: scale(1.06);
+  background: #f59e0b;
   color: #ffffff;
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
+  border-color: #f59e0b;
 }
 
+.provenance-content,
 .ticker-item-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 3px;
+  gap: 2px;
   min-width: 0;
   flex: 1;
 }
 
+.provenance-kicker,
+.ticker-badge {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #b45309;
+  line-height: 1.2;
+}
+
+.provenance-value,
 .ticker-stat {
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(1.15rem, 1.35vw, 1.42rem);
+  font-size: clamp(1.15rem, 1.35vw, 1.45rem);
   font-weight: 800;
   color: #0f172a;
-  line-height: 1.15;
+  line-height: 1.2;
   letter-spacing: -0.02em;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: normal;
 }
 
+.provenance-caption,
 .ticker-label {
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: #64748b;
-  line-height: 1.25;
-  white-space: nowrap;
+  line-height: 1.3;
+  white-space: normal;
+  word-break: normal;
 }
 
-@media (max-width: 1140px) {
+@media (max-width: 1100px) {
+  .shop-provenance-strip,
   .shop-sales-ticker {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.15rem;
+  }
+  .provenance-pillar:nth-child(1),
+  .provenance-pillar:nth-child(2),
+  .sales-ticker-item:nth-child(1),
+  .sales-ticker-item:nth-child(2) {
+    border-bottom: 1px solid rgba(226, 215, 195, 0.7);
+  }
+  .provenance-pillar:nth-child(2n),
+  .sales-ticker-item:nth-child(2n) {
+    border-right: none;
   }
 }
 
 @media (max-width: 640px) {
+  .shop-provenance-strip,
   .shop-sales-ticker {
     grid-template-columns: 1fr;
-    gap: 0.85rem;
+    border-radius: 16px;
   }
+  .provenance-pillar,
   .sales-ticker-item {
-    padding: 1.1rem 1.25rem;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(226, 215, 195, 0.7);
+    padding: 1.15rem 1.25rem;
     gap: 0.85rem;
   }
-  .ticker-icon-box {
-    width: 48px;
-    height: 48px;
-    font-size: 1.25rem;
+  .provenance-pillar:last-child,
+  .sales-ticker-item:last-child {
+    border-bottom: none;
   }
+  .provenance-icon-seal,
+  .ticker-icon-box {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+  .provenance-value,
   .ticker-stat {
     font-size: 1.25rem;
   }
