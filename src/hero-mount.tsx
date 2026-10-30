@@ -12,7 +12,7 @@ const SLUM_PALETTE = {
   skin1: "#743e1d",
   skin2: "#4a240e",
   cuff: "#1e293b",
-  nail: "#dfad99",
+  nail: "#8e533c",
   word0: "#000000",
   word1: "#000000",
   word2: "#000000",
@@ -64,10 +64,13 @@ function HeroAnimatorApp() {
             }
           }}
         >
-          <span className="hsc-pulse-dot" aria-hidden="true">
-            <span className="hsc-pulse-ring"></span>
-            <span className="hsc-pulse-core"></span>
-          </span>
+          <img
+            src="assets/images/gwr-logo.svg"
+            alt="Guinness World Records"
+            className="hsc-gwr-logo"
+            width="24"
+            height="24"
+          />
           <span className="hsc-label">Register for Guinness World Record</span>
           <span className="hsc-icon-bubble" aria-hidden="true">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

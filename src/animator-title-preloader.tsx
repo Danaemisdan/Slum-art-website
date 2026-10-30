@@ -162,10 +162,10 @@ const ARM_DEG_TALL = 52
 export const ATP_SCRIPT = "8:3947@ :47@ :3;47@ 5F4G5H6G5F|;937: :37: B3@: C3@:|==/6O C/<O 6<D< 5BCB|=>/6L C/;L D7C8D9E8E7D5C4@3<39476788:9;@?BA 789:@>A?BABDAF@G=H9H6G5F4D4C5B6C5D|>G35H :3<5<7;99:7:58566483:3<4?5B5E4G3 CAAB@D@FBHDHFGGEGCEACA|?I;H<I=J<J;I:H:F;D=?E=G;H8H5G4E4C5A6@8?==?<A:B8B6A4?3=4<6<9=?>B@EBGDHFHGFGE 8H6G5E5C6A7@== <9=>>A@DBFDGFGGF|8:594:3;4;5:789|:A/=2:5886<5A5E6J7M8O =2:68:7=6B6G7L8O|9;/<1=4>9>==B;F9I6L2O ;/<2=7=<<A;D9H6L|;<3<? 76A< A67<|??6?H 6?H?|85H4G5F6G6H5J3L|?6?H?|77F6G7H8G7F|=J/0O|=>3;496796<5@5C6F7G9H;H>G@EBBC?D;D8C5B4@3>3 >3<4:6897<6@6C7F9H ;H=G?EABB?C;C8B5@3|=>79H @3:H @3=6:889 ?6;889|=97:899888795:4=3@3C4D6D8C:A<>>:@7B5D3H @3B4C6C8B:@<:@ 4F5E7E<G?GAFBD 7E<H?HAGBD|=97:899888795:4=3@3C4D6D8C:@<== @3B4C6C8B:@< ;===@>A?BABDAF@G=H9H6G5F4D4C5B6C5D ==?>@?AAAD@F?G=H|=B4<H C3=H C34BDB|=;36= ;3E3 ;4@4E3 6=7<:;=;@<A=B?BBAE?G<H9H6G5F4D4C5B6C5D =;?<@=A?AB@E>G<H|=C6B7C8D7D6C4A3>3;496796<5@5D6F7G9H<H?GAEBCB@A>@=><;<9=7?6A >3<4:6897<6@6E7G <H>G@EACA?@=|=8369 E3D6B9=?;B:D9H B9<?:B9D8H 76:3<3A6 85:4<4A6C6D5E3|==3:495878:9<;=>=B<C;D9D6C4@3=3 =3;4:5979::<;= >=A<B;C9C6B4@3 ;=7>5@4B4E5G8H<H@GAFBDBAA?@>>= ;=8>6@5B5E6G8H <H?G@FADA@@>|=C:B<@>>?;?9>8=7;7886:4=3@3B4C5D7D;C?BB@E>G;H8H6G5E5D6C7D6E 9>8<8896;4=3 B4C6C;B?AB?E=G;H|88:7;8<9;8: 5F4G5H6G|88:7;8<9;8: 5H4G5F6G6H5J3L|>F66?FH|?6<H< 6BHB|>66F?6H|=97:899888795:4=3A3D4E6E8D:C;==;>;@<A>A A3C4D6D8C:B;@< :F9G:H;G:F|@D;C9A8>8<9;::=:@;B=C@CBBC@ >8<:;=;@<B=C D8C@CBECGCIAJ>J<I9H7F5D4A3>3;49577695<5?6B7D9F;G>HAHDGFFGE E8D@DBEC|;2H4G7D:@>9A3AH@E>B<@9>7>6?6A7C9E<G?HDH|=?5@6@9?=>@=B;E9G7H6H5G5D6?7<8::7<5>4A3D3F4G6G8F:E;C<@= ?=@=C>D?EAEDDFCGAH>H<G;E|<>9>:?;A;C:D8D6C4A3>3;496796;5?5C6F7G9H;H>G@EAC|>?3=4<6;::@9C8E6G4H2H1G1E2D4D6E8G;H>HAGCEEAF<F8E5D4B3?3=5=7>:@=B?EAGB|<@7@8A9C9D8D6C4@3<39486899;:<==:=7>6?5A5D6F7G:H=H@GBECC|<<9:9887684;3>3B4E4G3 B4@;>A<E:G8H6H4G3E3C4B6B8C ;=D=|>2H4G8C;><;=7=4<3;3:49699:;<<@<C;D:E8E>DCCEAG>H:H7G5E4C4A|>9:7967667493:3<4=6=8<<:B8F6H4H3G3E 9?B<D;G9I7J5J4I3H3F5D9B?ADAGBHCHEGFFHC|:@C>A<>;<:9:6;4<3>3?4@6@9?>=C<E:G8H6H4G3E3C4B6B8C|9<K:H8C7=7784:3<3=4>7>:=?:H8N7Q6S4T3S3Q4N6K8I;G?E|>9:7967667493:3<4=6=8<<:B8F6H4H3G3E J6J4I3H3F4D6B9@;><<< ><?>?E@GAHBHDGEFGC|<6?8?<>?<A:B8B5A3?3>4=6<;;@:C9E7G5H3H2G2E3D5D7E:G=H?HBGDE|A7:594746547383:4;6;8:=9A7H 9A<9>5?4A3B3D4E6E8D=CAAH CAF9H5I4K3L3N4O6O8N=LDLGMHNHPGQFSC|=7:594746547383:4;6;8:=9A7H 9A<9>5?4A3C3E4F6F8E=CDCGDHEHGGHFJC|=>3;496796;5?5C6F7G9H;H>G@EBBC@D<D8C5B4@3>3<5<8=;?>A@DBFC|??5@6@9?=>@=B;E9G7H6H5G5D6?7<8::7<5>4A3F3H4I5J7J:I<H=F>C>A=@<|>?9>;=<;=9=8;8996;4>3A3C4D6D:C=A@=D:F8G5H3H2G2E3D5D7E:G=H@HCGEE|??5@6@9?=>@=B;E9G7H6H5G5D6?7<8::7<5>4A3E3G4H5I7I:H<G=E>B>?=@>A@AEBGDHFGGFIC|<2H4G6E9A;>=:>7>4=3<3;4:6:8;:=<@>B@CBCDBFAG>H:H7G5E4C4A|;<9:9887684;3>3B4E4G3 B4@;>A<E:G8H6H4G3E3C4B6B8C|=7:594746547383:4;6;8:<9?8C8E9G;H=H?G@FBBE:G3 E:D>CDCGDHEHGGHFJC|=7:594746547383:4;6;8:<9?8C8F9H;H=G@DBAD=E:F6F4E3D3C4B6B8C;E=G>|?7:594746547383:4;6;9:H D3:H D3BH P3N4K7H;EABH|>:989787684:3<3>4?6?9=B=E>G@HBHDGEEECDBBB I6I4H3F3D4B6@9<B:E8G6H4H3G3E|=7:594746547383:4;6;8:<9?8C8E9G:H<H>G@EBBC@E: G3E:BD@J>O<S:T9S9Q:N<K?HBFGC|=?9>;=<;=9=8;8996;4>3A3C4D6D:C=AA>D:G8H5H4G4E5D8D:E;F<H<K;N:P8S6T5S5Q6N8K;H>FDC|96/6O 7/7O 6/=/ 6O=O|923@K|9;/;O </<O 5/</ 5O<O|:89:6<9 5<:7?< :7:H|:2JBJ|8;395878899:897|<;B:@8?6?4@3A2C2E3G5H7H9G:E<?;D;G<H=H?G@FBC|;2C4@7;8996948364564:3A3G4H5H7G9E:B:?;C<D>D@C|89A9@8?6?4@3A2C2E3G5H8H;F=C|<;B:@8?6?4@3A2C2E3G5H7H9G:E@3 <?;D;G<H=H?G@FBC|83F5E6D7B7@6?5?3@2B2E3G5H7H9G:F<C|72C6>8;99:6:49374664>1G.N-Q-S.T0S1P2G3H5H7G8F:C|;;B:@8?6?4@3A2C2E3G5H7H9G:F <?:F6Q5S3T2S2Q3N6K9I;H>FAC|<2C4@7;8996948364564:3@2H 2H3E4C6@8?:?;@;B:E:G;H<H>G?FAC|75:5;6;6:5: 2C4?2E2G3H4H6G7F9C|75:5;6;6:5: 2C4?.Q-S+T*S*Q+N.K1I3H6F9C|;2C4@7;8996948364564:3@2H 2H3E4C6@8?:?;@;B9C6C 6C8D9G:H;H=G>F@C|72C4@7;8996948364564:3A3G4H5H7G8F:C|>2C4@6?7@7A6E5H 6E7C9@;?=?>@>A=E<H =E>C@@B?D?E@EBDEDGEHFHHGIFKC|<2C4@6?7@7A6E5H 6E7C9@;?=?>@>B=E=G>H?HAGBFDC|:8?6?4@3A2C2E3G5H7H9G:F;D;B:@8?7@7B8D:E=E?D@C|:2C4@5>4B.T 4B5@7?9?;@<B<D;F:G8H 4G6H9H<G>FAC|;;B:@8?6?4@3A2C2E3G5H7H9G <?;B9G6N5Q5S6T8S9P9I;H>FAC|:2C4@5>5@8@9A9C8F8G9H:H<G=F?C|92C4@5>5@7C8E8G6H 2G4H8H:G;F=C|82C4@6< 933E3G4H6H8G9F;C 3;:;|;2C4?2E2G3H5H7G9E;B <?:E:G;H<H>G?FAC|;2C4?3D3G4H5H8G:E;B;? ;?<C=D?DAC|>5?3A2D2F3H5H7G9E ;?9E9G:H<H>G@EABA? A?BCCDEDGC|:2C4@6?8?9@9G:H=H@FBC ?@>?<?;@7G6H4H3G|;2C4?2E2G3H5H7G9E;B <?6Q5S3T2S2Q3N6K9I;H>FAC|:2C4@6?8?:A:C9E7G4H6I7K7N6Q5S3T2S2Q3N6K9I=F@C|9;/908173758798:::<8> 90828496:7;9;;:=6?:A;C;E:G9H8J8L9N 8@:B:D9F8G7I7K8M9N;O|66/6O|97/90:1;3;5:7988:8<:> 90:2:49687797;8=<?8A7C7E8G9H:J:L9N :@8B8D9F:G;I;K:M9N7O|>5B5@6=8<:<<=@@BADAF@G> 5@6>8=:=<>@ABBDBFAG>G<"
 export const ATP_SANS = "7737A 7F6G7H8G7F|:636: >3>:|==/6O C/<O 6<D< 5BCB|<:/:L >/>L C6A4>3:37456586:7;9<?>A?B@CBCEAG>H:H7G5E|>G35H :3<5<7;99:7:58566483:3<4?5B5E4G3 CAAB@D@FBHDHFGGEGCEACA|?I<I;H:G:F;E=CBAE?G=H9H7G6F5D5B6@7?>;?:@8@6?4=3;4:6:8;;=>BEDGFHHHIGIF|775647384867869|9=/;194786=6A7F9J;M=O|95/7194;8<=<A;F9J7M5O|::9:E 5<?B ?<5B|??6?H 6?H?|67D6E5D6C7D7F5H|?6?H?|66C5D6E7D6C|=F/4O|<;384675<5?6D8G;H=H@GBDC?C<B7@4=3;3|<87:6=3=H|<68677584:3>3@4A5B7B9A;?>5HCH|<73B3<;?;A<B=C@CBBE@G=H:H7G6F5D|<?35ADA ?3?H|<A3736<7;::=:@;B=C@CBBE@G=H:H7G6F5D|<B6A4>3<394776<6A7E9G<H=H@GBECBCAB>@<=;<;9<7>6A|<C39H 53C3|<:37466687:9;=<@=B?CACDBFAG>H:H7G6F5D5A6?8=;<?;A:B8B6A4>3:3|<B:A=??<@;@8?6=5:596684;3<3?4A6B:B?AD?G<H:H7G6E|66<5=6>7=6< 6C5D6E7D6C|66<5=6>7=6< 7D6E5D6C7D7F5H|>F66?FH|?6<H< 6BHB|>66F?6H|;5857657493=3?4@5A7A9@;?<;>;A ;F:G;H<G;F|@D;C9A8>8<9;::=:@;B=C@CBBC@ >8<:;=;@<B=C D8C@CBECGCIAJ>J<I9H7F5D4A3>3;49577695<5?6B7D9F;G>HAHDGFFGE E8D@DBEC|;;33H ;3CH 6A@A|<636H 63?3B4C5D7D9C;B<?= 6=?=B>C?DADDCFBG?H6H|=D8C6A4?3;39476685;5@6C7E9G;H?HAGCEDC|<636H 63=3@4B6C8D;D@CCBE@G=H6H|;636H 63C3 6=>= 6HCH|:636H 63C3 6=>=|=D8C6A4?3;39476685;5@6C7E9G;H?HAGCEDCD@ ?@D@|=636H D3DH 6=D=|6636H|:>3>C=F<G:H8H6G5F4C4A|<636H D36A ;<DH|9636H 6HBH|>636H 63>H F3>H F3FH|=636H 63DH D3DH|=;39476685;5@6C7E9G;H?HAGCEDCE@E;D8C6A4?3;3|<636H 63?3B4C5D7D:C<B=?>6>|=;39476685;5@6C7E9G;H?HAGCEDCE@E;D8C6A4?3;3 >DDJ|<636H 63?3B4C5D7D9C;B<?=6= ==DH|<C6A4>3:37456586:7;9<?>A?B@CBCEAG>H:H7G5E|::3:H 33A3|=636B7E9G<H>HAGCEDBD3|;33;H C3;H|>439H >39H >3CH H3CH|<53CH C35H|;33;=;H C3;=|<C35H 53C3 5HCH|96/6O 7/7O 6/=/ 6O=O|923@K|9;/;O </<O 5/</ 5O<O|::12? :1B?|;2ODO|6785:5<6=7<6;5<|<A:AH A=?;=:::8;6=5@5B6E8G:H=H?GAE|;636H 6=8;::=:?;A=B@BBAE?G=H:H8G6E|;A=?;=:::8;6=5@5B6E8G:H=H?GAE|<A3AH A=?;=:::8;6=5@5B6E8G:H=H?GAE|;5@A@A>@<?;=:::8;6=5@5B6E8G:H=H?GAE|9<3:384777H 4:;:|<A:AJ@M?N=O:O8N A=?;=:::8;6=5@5B6E8G:H=H?GAE|<636H 6>9;;:>:@;A>AH|65364736253 6:6H|77384938273 8:8K7N5O3O|:636H @:6D :@AH|6636H|A6:6H 6>9;;:>:@;A>AH A>D;F:I:K;L>LH|<6:6H 6>9;;:>:@;A>AH|<::8;6=5@5B6E8G:H=H?GAEBBB@A=?;=:::|;6:6O 6=8;::=:?;A=B@BBAE?G=H:H8G6E|<A:AO A=?;=:::8;6=5@5B6E8G:H=H?GAE|86:6H 6@7=9;;:>:|;@=?;<:9:6;5=6?8@=A?B@D@E?G<H9H6G5E|9737D8G:H<H 4:;:|<6:6D7G9H<H>GAD A:AH|:4::H @::H|=5:9H =:9H =:AH E:AH|;5:@H @:5H|:4::H @::H8L6N4O3O|;@:5H 5:@: 5H@H|9;/908173758798:::<8> 90828496:7;9;;:=6?:A;C;E:G9H8J8L9N 8@:B:D9F8G7I7K8M9N;O|66/6O|97/90:1;3;5:7988:8<:> 90:2:49687797;8=<?8A7C7E8G9H:J:L9N :@8B8D9F:G;I;K:M9N7O|>5B5@6=8<:<<=@@BADAF@G> 5@6>8=:=<>@ABBDBFAG>G<"
 
-/** Official Slum Art brush stroke swoosh paths extracted from brand mark */
+/** Official Slum Art brush stroke swoosh paths extracted exactly from brand mark (84x14 coordinate space) */
 export const SLUM_LOGO_SWIPES = {
-  lower: "M 0,12 L 3,14 L 6,16 L 8,18 L 10,18 L 12,20 L 14,20 L 16,22 L 21,24 L 26,25 L 30,26 L 53,26 L 60,24 L 82,24 L 91,26 L 100,26 L 104,28 L 111,28 L 107,23 L 104,21 L 102,21 L 100,19 L 97,18 L 88,15 L 82,15 L 77,13 L 62,13 L 45,15 L 12,15 L 7,14 L 3,12 L 1,9 Z",
-  upper: "M 72,0 L 66,1 L 62,3 L 59,3 L 60,5 L 68,4 L 74,5 L 81,6 L 86,8 L 91,8 L 95,10 L 100,10 L 106,13 L 112,14 L 115,16 L 119,16 L 122,18 L 129,20 L 138,22 L 152,22 L 156,20 L 161,20 L 165,18 L 168,17 L 166,16 L 164,16 L 149,17 L 142,16 L 134,15 L 130,13 L 126,13 L 123,11 L 120,11 L 118,9 L 115,9 L 108,5 L 105,5 L 103,3 L 96,1 L 90,0 Z",
+  lower: "M 0,4.5 C 3,7.5 8,10.5 18,12.2 C 30,12.5 42,11.8 51,12.6 C 53.5,13.0 54.5,13.5 55.5,13.5 C 53.0,11.2 48.0,9.2 43.0,7.5 C 35.0,6.0 18.0,6.0 6.0,6.6 C 2.5,6.2 0.8,5.2 0,4.5 Z",
+  upper: "M 30.0,1.5 C 35.0,0.4 40.0,0.0 46.0,0.0 C 56.0,1.8 68.0,6.2 83.5,8.2 C 77.0,10.4 67.0,10.4 55.0,6.2 C 44.0,3.2 36.0,2.2 30.0,1.5 Z",
 }
 
 /** Small fast seeded PRNG (mulberry32): same seed, same wobble. */
@@ -389,155 +389,208 @@ const SWIRLS = [
   arc(62, 62, 9, 1, 4),
 ].join(" ")
 
-// Child's hand holding card, drawn in local units
+// Child's hand holding card, drawn with authentic child anatomy and natural shading
 function Hand({ id, side }: { id: string; side: "l" | "r" }) {
   return (
     <g filter={"url(#" + id + "-paint)"} transform={side === "r" ? "scale(-1 1)" : undefined}>
       {/* Sleeve extending back */}
       <path
-        d="M -2200 -140 L -210 -80 Q -185 -78 -185 -66 L -180 72 Q -180 84 -205 84 L -2200 150 Z"
+        d="M -2400 -130 L -210 -75 Q -185 -72 -185 -58 L -180 68 Q -180 80 -205 82 L -2400 140 Z"
         fill={"url(#" + id + "-sleeve)"}
       />
       {/* Subtle organic pattern overlay */}
       <path
-        d="M -2200 -140 L -210 -80 Q -185 -78 -185 -66 L -180 72 Q -180 84 -205 84 L -2200 150 Z"
+        d="M -2400 -130 L -210 -75 Q -185 -72 -185 -58 L -180 68 Q -180 80 -205 82 L -2400 140 Z"
         fill={"url(#" + id + "-swirl)"}
         opacity="0.25"
       />
       {/* Soft light highlight on sleeve top */}
       <path
-        d="M -2200 -140 L -210 -80 Q -195 -79 -190 -72 L -2200 -115 Z"
+        d="M -2400 -130 L -210 -75 Q -195 -74 -190 -66 L -2400 -105 Z"
         fill="#ffffff"
-        opacity="0.14"
+        opacity="0.10"
       />
 
       {/* Sleeve Cuff: Soft, organic ribbed sweater cuff */}
       <path
-        d="M -226 -84 C -204 -84 -184 -80 -184 -66 L -179 72 C -179 84 -199 88 -226 88 C -236 88 -242 82 -242 72 L -247 -66 C -247 -78 -240 -84 -226 -84 Z"
+        d="M -226 -80 C -204 -80 -184 -75 -184 -60 L -179 66 C -179 78 -199 82 -226 82 C -236 82 -242 76 -242 66 L -247 -60 C -247 -74 -240 -80 -226 -80 Z"
         fill="var(--atp-cuff)"
       />
       {/* Cuff ribbing texture lines */}
       <path
-        d="M -222 -78 L -218 82 M -206 -76 L -202 80 M -193 -72 L -189 76"
+        d="M -220 -74 L -216 76 M -206 -72 L -202 74 M -194 -68 L -190 70"
         stroke="#ffffff"
         strokeWidth="2"
         strokeLinecap="round"
-        opacity="0.16"
+        opacity="0.15"
       />
 
-      {/* Child's Slender Wrist & Palm (natural soft organic contours) */}
+      {/* Child's Wrist & Plump Palm with soft natural contours */}
       <path
-        d="M -188 -62 C -148 -72 -112 -74 -65 -66 C -50 -36 -46 22 -55 50 C -92 68 -142 72 -188 64 Z"
-        fill={"url(#" + id + "-palm-grad)"}
+        d="M -186 -58 C -144 -68 -105 -70 -52 -58 C -36 -24 -32 28 -46 56 C -86 74 -138 74 -186 64 Z"
+        fill={"url(#" + id + "-palm-radial)"}
       />
 
-      {/* 4 Child Fingers: Little (Pinky), Ring, Middle, Index - delicate child proportions */}
-      {/* Pinky (bottom) */}
-      <g>
+      {/* 4 Child Fingers: Pinky, Ring, Middle, Index - anatomically soft child proportions */}
+      {/* 1. Pinky (little finger, soft and curving inward) */}
+      <g filter={"url(#" + id + "-finger-shadow)"}>
         <path
-          d="M -118 42 C -78 40 -38 43 -12 43 C -2 43 5 49 4 56 C 3 63 -4 68 -15 67 C -45 66 -78 67 -118 63 Z"
+          d="M -96 46 C -62 43 -22 47 4 51 C 13 54 16 61 12 67 C 8 73 -1 75 -9 71 C -36 68 -68 66 -104 63 Z"
           fill={"url(#" + id + "-skin)"}
         />
         <path
-          d="M -8 47 C -4 47 -2 50 -3 55 C -4 59 -7 61 -10 61 C -12 61 -13 58 -12 54 C -11 49 -10 47 -8 47 Z"
-          fill="var(--atp-nail)"
-          opacity="0.88"
-        />
-        <path
-          d="M -44 45 C -41 53 -41 57 -44 64"
-          stroke="var(--atp-skin2)"
-          strokeWidth="1.6"
+          d="M -80 47 C -48 46 -15 48 4 52"
+          stroke={"url(#" + id + "-dorsal-hi)"}
+          strokeWidth="3"
           strokeLinecap="round"
-          opacity="0.45"
         />
-      </g>
-
-      {/* Ring Finger */}
-      <g>
+        {/* Subtle, translucent natural child nail blending into cuticle */}
         <path
-          d="M -122 10 C -78 9 -35 11 8 11 C 19 11 26 18 25 26 C 24 34 16 39 5 38 C -35 37 -78 37 -122 34 Z"
-          fill={"url(#" + id + "-skin)"}
+          d="M -1 53 C 4 53 7 56 6 61 C 5 65 1 67 -3 66 C -6 66 -7 63 -6 59 C -5 55 -3 53 -1 53 Z"
+          fill={"url(#" + id + "-real-nail)"}
         />
         <path
-          d="M 10 16 C 15 16 17 20 16 26 C 15 31 11 34 7 33 C 4 33 3 29 4 24 C 5 18 7 16 10 16 Z"
-          fill="var(--atp-nail)"
-          opacity="0.88"
-        />
-        <path
-          d="M -28 14 C -25 22 -25 28 -28 35"
-          stroke="var(--atp-skin2)"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          opacity="0.45"
-        />
-      </g>
-
-      {/* Middle Finger (longest child finger) */}
-      <g>
-        <path
-          d="M -124 -22 C -74 -24 -24 -22 18 -22 C 30 -22 38 -14 37 -6 C 36 3 27 9 15 8 C -24 7 -74 6 -124 3 Z"
-          fill={"url(#" + id + "-skin)"}
-        />
-        <path
-          d="M 20 -17 C 26 -17 28 -13 27 -6 C 26 0 21 4 16 3 C 13 3 12 -1 13 -7 C 14 -13 16 -17 20 -17 Z"
-          fill="var(--atp-nail)"
-          opacity="0.88"
-        />
-        <path
-          d="M -18 -19 C -15 -11 -15 -5 -18 5"
-          stroke="var(--atp-skin2)"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          opacity="0.45"
-        />
-      </g>
-
-      {/* Index Finger */}
-      <g>
-        <path
-          d="M -128 -54 C -78 -56 -28 -53 10 -53 C 21 -53 28 -46 27 -38 C 26 -30 18 -25 7 -25 C -28 -25 -78 -25 -128 -24 Z"
-          fill={"url(#" + id + "-skin)"}
-        />
-        <path
-          d="M 12 -48 C 17 -48 19 -44 18 -38 C 17 -32 12 -29 8 -29 C 5 -29 4 -33 5 -39 C 6 -45 8 -48 12 -48 Z"
-          fill="var(--atp-nail)"
-          opacity="0.88"
-        />
-        <path
-          d="M -24 -50 C -21 -42 -21 -36 -24 -28"
-          stroke="var(--atp-skin2)"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          opacity="0.45"
-        />
-      </g>
-
-      {/* Child's Thumb: Natural gentle grip wrapping over the card from the top */}
-      <g className="atp-thumb">
-        <path
-          d="M -146 -70 C -116 -98 -76 -106 -26 -98 C -2 -94 8 -82 2 -72 C -3 -62 -18 -60 -32 -64 C -74 -74 -108 -66 -136 -46 Z"
-          fill={"url(#" + id + "-skin)"}
-        />
-        {/* Soft thumb highlight & thumbnail */}
-        <path
-          d="M -6 -90 C 0 -90 3 -86 1 -78 C -1 -71 -6 -68 -11 -69 C -13 -69 -14 -73 -13 -79 C -11 -86 -9 -90 -6 -90 Z"
-          fill="var(--atp-nail)"
-          opacity="0.88"
-        />
-        <path
-          d="M -70 -94 C -50 -98 -25 -94 -6 -88"
-          stroke="var(--atp-skin0)"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          opacity="0.75"
+          d="M -3 55 C 0 54 3 55 2 59"
+          stroke="#ecc7b2"
+          strokeWidth="0.75"
           fill="none"
+          opacity="0.4"
+        />
+        {/* Soft child knuckle crease */}
+        <path
+          d="M -36 49 C -33 55 -33 59 -36 65"
+          stroke="var(--atp-skin2)"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          opacity="0.32"
+        />
+      </g>
+
+      {/* 2. Ring Finger (natural curve grasping card) */}
+      <g filter={"url(#" + id + "-finger-shadow)"}>
+        <path
+          d="M -106 14 C -66 12 -18 16 18 21 C 29 25 33 33 29 40 C 25 46 15 47 5 43 C -24 38 -64 36 -108 34 Z"
+          fill={"url(#" + id + "-skin)"}
         />
         <path
-          d="M -58 -78 C -50 -84 -40 -86 -30 -84"
-          stroke="var(--atp-skin2)"
-          strokeWidth="1.6"
+          d="M -90 16 C -50 15 -8 17 18 22"
+          stroke={"url(#" + id + "-dorsal-hi)"}
+          strokeWidth="4"
           strokeLinecap="round"
+        />
+        <path
+          d="M 12 24 C 18 24 22 28 21 34 C 20 39 15 42 10 41 C 6 41 5 37 6 32 C 7 27 9 24 12 24 Z"
+          fill={"url(#" + id + "-real-nail)"}
+        />
+        <path
+          d="M 9 26 C 13 25 16 27 15 32"
+          stroke="#ecc7b2"
+          strokeWidth="0.85"
+          fill="none"
           opacity="0.4"
+        />
+        <path
+          d="M -24 18 C -21 24 -21 30 -24 37"
+          stroke="var(--atp-skin2)"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          opacity="0.35"
+        />
+      </g>
+
+      {/* 3. Middle Finger (longest child finger, active gentle grip) */}
+      <g filter={"url(#" + id + "-finger-shadow)"}>
+        <path
+          d="M -112 -20 C -62 -22 -6 -18 32 -13 C 44 -9 50 0 46 8 C 42 15 32 17 20 14 C -12 10 -60 9 -112 5 Z"
+          fill={"url(#" + id + "-skin)"}
+        />
+        <path
+          d="M -96 -18 C -40 -19 10 -17 32 -12"
+          stroke={"url(#" + id + "-dorsal-hi)"}
+          strokeWidth="4.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M 26 -8 C 33 -8 37 -3 36 3 C 34 9 29 13 23 12 C 18 12 17 7 18 1 C 19 -5 21 -8 26 -8 Z"
+          fill={"url(#" + id + "-real-nail)"}
+        />
+        <path
+          d="M 22 -6 C 27 -7 30 -4 29 2"
+          stroke="#ecc7b2"
+          strokeWidth="0.95"
+          fill="none"
+          opacity="0.4"
+        />
+        <path
+          d="M -16 -16 C -13 -9 -13 -3 -16 6"
+          stroke="var(--atp-skin2)"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          opacity="0.35"
+        />
+      </g>
+
+      {/* 4. Index Finger (curving softly onto card edge) */}
+      <g filter={"url(#" + id + "-finger-shadow)"}>
+        <path
+          d="M -116 -54 C -66 -56 -10 -52 22 -47 C 34 -43 40 -35 36 -27 C 32 -19 22 -17 10 -19 C -16 -22 -64 -23 -116 -22 Z"
+          fill={"url(#" + id + "-skin)"}
+        />
+        <path
+          d="M -100 -52 C -45 -54 10 -51 22 -46"
+          stroke={"url(#" + id + "-dorsal-hi)"}
+          strokeWidth="4.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M 16 -42 C 23 -42 27 -37 26 -30 C 24 -24 19 -21 14 -21 C 9 -21 8 -25 9 -32 C 10 -38 12 -42 16 -42 Z"
+          fill={"url(#" + id + "-real-nail)"}
+        />
+        <path
+          d="M 12 -40 C 17 -41 20 -38 19 -32"
+          stroke="#ecc7b2"
+          strokeWidth="0.95"
+          fill="none"
+          opacity="0.4"
+        />
+        <path
+          d="M -20 -50 C -17 -42 -17 -35 -20 -27"
+          stroke="var(--atp-skin2)"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          opacity="0.35"
+        />
+      </g>
+
+      {/* Child's Thumb: Natural gentle opposing grip resting from above */}
+      <g className="atp-thumb" filter={"url(#" + id + "-finger-shadow)"}>
+        <path
+          d="M -148 -66 C -118 -94 -78 -102 -28 -96 C -1 -92 9 -81 3 -71 C -3 -61 -18 -59 -32 -63 C -74 -74 -108 -66 -138 -44 Z"
+          fill={"url(#" + id + "-skin)"}
+        />
+        <path
+          d="M -115 -84 C -75 -96 -35 -90 -2 -84"
+          stroke={"url(#" + id + "-dorsal-hi)"}
+          strokeWidth="4"
+          strokeLinecap="round"
+        />
+        <path
+          d="M -4 -88 C 2 -88 5 -84 3 -77 C 1 -71 -3 -67 -9 -68 C -12 -68 -14 -72 -13 -78 C -11 -84 -8 -88 -4 -88 Z"
+          fill={"url(#" + id + "-real-nail)"}
+        />
+        <path
+          d="M -9 -84 C -5 -86 -2 -84 -3 -79"
+          stroke="#ecc7b2"
+          strokeWidth="0.85"
+          fill="none"
+          opacity="0.4"
+        />
+        <path
+          d="M -54 -76 C -46 -82 -36 -84 -26 -82"
+          stroke="var(--atp-skin2)"
+          strokeWidth="1.3"
+          strokeLinecap="round"
+          opacity="0.35"
           fill="none"
         />
       </g>
@@ -726,8 +779,8 @@ const ATP_CSS = `
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 0.6em;
-  gap: 10px;
+  margin-top: 0.38em;
+  gap: 4px;
   clip-path: inset(0 100% 0 0);
   transition: clip-path 1200ms cubic-bezier(0.16, 1, 0.3, 1), opacity 500ms ease;
   opacity: 0;
@@ -746,18 +799,24 @@ const ATP_CSS = `
   color: #ffffff;
   max-width: min(960px, 92vw);
   text-align: center;
-  line-height: 1.35;
+  line-height: 1.15;
+  margin: 0;
+  padding: 0;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.95);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.18em;
+  gap: 2px;
 }
 .atp-sub-line1 {
   display: block;
+  line-height: 1.15;
+  margin: 0;
 }
 .atp-sub-line2 {
   display: block;
+  line-height: 1.15;
+  margin: 0;
 }
 .atp-sub-volume strong,
 .atp-sub-volume .atp-accent {
@@ -1255,14 +1314,14 @@ export default function AnimatorTitlePreloader({
       return { left: 0, top: 0, width: 0, height: 0 }
     }
     const boxes = metrics.boxes
-    // In "slum art", the swipe begins 26% inside letter 'm' (index 3) and ends at the vertical stem of 't' (last index):
+    // In "slum art", the swipe begins at the left edge of letter 'm' (index 3) and spans to over 'r' (index 6) / 't' (index 7):
     const mBox = boxes[3] || boxes[Math.min(boxes.length - 1, Math.floor(boxes.length * 0.36))]
-    const lastBox = boxes[boxes.length - 1]
-    const left = mBox ? mBox.x + mBox.w * 0.26 : metrics.ww * 0.40
-    const right = lastBox ? lastBox.x + lastBox.w * 0.30 : metrics.ww * 0.92
+    const rBox = boxes[6] || boxes[boxes.length - 1]
+    const left = mBox ? mBox.x : metrics.ww * 0.35
+    const right = rBox ? rBox.x + rBox.w * 0.75 : metrics.ww * 0.90
     const width = Math.max(20, right - left)
-    const height = Math.max(14, metrics.size * 0.30)
-    const top = -(height * 0.95)
+    const height = width / 6.0 // 84x14 aspect ratio matching official brand mark
+    const top = -(height * 0.88)
     return { left, top, width, height }
   }, [metrics])
 
@@ -1725,27 +1784,47 @@ export default function AnimatorTitlePreloader({
                   </feTurbulence>
                   <feDisplacementMap in="SourceGraphic" in2="n" scale={metrics ? Math.max(3, metrics.size * 0.03) : 3.5} xChannelSelector="R" yChannelSelector="G" />
                 </filter>
-                <filter id={uid + "-paint"} x="-10%" y="-20%" width="120%" height="140%">
-                  <feDropShadow dx="2" dy="5" stdDeviation="5" floodColor="#000000" floodOpacity="0.18" />
+                <filter id={uid + "-paint"} x="-25%" y="-25%" width="150%" height="150%">
+                  <feDropShadow dx="-2" dy="5" stdDeviation="6" floodColor="#0a0301" floodOpacity="0.25" />
+                </filter>
+                <filter id={uid + "-finger-shadow"} x="-20%" y="-20%" width="140%" height="150%">
+                  <feDropShadow dx="-1" dy="3" stdDeviation="2.5" floodColor="#140602" floodOpacity="0.45" />
                 </filter>
                 <filter id={uid + "-grain"} x="0" y="0" width="100%" height="100%">
                   <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" result="n" />
                   <feColorMatrix in="n" type="saturate" values="0" />
                 </filter>
+                <radialGradient id={uid + "-palm-radial"} cx="45%" cy="40%" r="55%">
+                  <stop offset="0%" stopColor={colors.skin0} />
+                  <stop offset="45%" stopColor={colors.skin1} />
+                  <stop offset="80%" stopColor={colors.skin2} />
+                  <stop offset="100%" stopColor="#250d04" />
+                </radialGradient>
                 <linearGradient id={uid + "-palm-grad"} x1="0" y1="0" x2="1" y2="0">
                   <stop offset="0" stopColor={colors.skin2} />
                   <stop offset="1" stopColor={colors.skin1} />
+                </linearGradient>
+                <linearGradient id={uid + "-dorsal-hi"} x1="0%" y1="0%" x2="100%" y2="50%">
+                  <stop offset="0%" stopColor="#ffffff" stopOpacity={0.22} />
+                  <stop offset="45%" stopColor="#f5b88c" stopOpacity={0.18} />
+                  <stop offset="100%" stopColor="#ffffff" stopOpacity={0} />
+                </linearGradient>
+                <linearGradient id={uid + "-real-nail"} x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor={colors.skin1} stopOpacity={0.7} />
+                  <stop offset="40%" stopColor={colors.nail} stopOpacity={0.8} />
+                  <stop offset="75%" stopColor="#a86e56" stopOpacity={0.75} />
+                  <stop offset="100%" stopColor={colors.skin2} stopOpacity={0.8} />
                 </linearGradient>
                 <linearGradient id={uid + "-sleeve"} x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0" stopColor={colors.sleeve0} />
                   <stop offset=".5" stopColor={colors.sleeve1} />
                   <stop offset="1" stopColor={colors.sleeve2} />
                 </linearGradient>
-                <linearGradient id={uid + "-skin"} x1="0" y1="0.2" x2="1" y2="0.8">
-                  <stop offset="0" stopColor={colors.skin2} />
-                  <stop offset="0.45" stopColor={colors.skin1} />
-                  <stop offset="0.8" stopColor={colors.skin0} />
-                  <stop offset="1" stopColor="#b56e3f" />
+                <linearGradient id={uid + "-skin"} x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor={colors.skin0} />
+                  <stop offset="30%" stopColor={colors.skin1} />
+                  <stop offset="70%" stopColor={colors.skin2} />
+                  <stop offset="100%" stopColor="#250d04" />
                 </linearGradient>
                 <pattern id={uid + "-swirl"} width="124" height="124" patternUnits="userSpaceOnUse" patternTransform="rotate(-6)">
                   <path d={SWIRLS} fill="none" stroke={colors.pattern} strokeWidth="4.5" strokeLinecap="round" opacity=".55" />
@@ -1862,16 +1941,15 @@ export default function AnimatorTitlePreloader({
                     aria-hidden="true"
                   >
                     <svg
-                      viewBox="0 0 170 30"
+                      viewBox="0 0 84 14"
                       preserveAspectRatio="none"
                       style={{ width: "100%", height: "100%", overflow: "visible" }}
                     >
                       <defs>
                         <linearGradient id={uid + "-swipe-grad"} x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#d97706" />
-                          <stop offset="18%" stopColor="#f59e0b" />
-                          <stop offset="50%" stopColor="#ffb703" />
-                          <stop offset="82%" stopColor="#f59e0b" />
+                          <stop offset="0%" stopColor="#f59e0b" />
+                          <stop offset="35%" stopColor="#fbbf24" />
+                          <stop offset="70%" stopColor="#f59e0b" />
                           <stop offset="100%" stopColor="#d97706" />
                         </linearGradient>
                       </defs>
