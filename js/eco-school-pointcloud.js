@@ -1,8 +1,8 @@
 /**
  * Slum Art Foundation - 3D Eco-Bottle School Point Cloud Architecture
- * Procedural Realistic Point Cloud: 50,000+ luminous points representing
+ * High-Density Procedural Point Cloud: 60,000+ luminous points representing
  * the 50,000+ upcycled plastic bottles, Danfo bus classroom & solar roof.
- * Scroll-driven rotation (no interaction needed, turns as user scrolls).
+ * Rendered directly on the site background with scroll-driven orbit.
  */
 
 (function () {
@@ -13,21 +13,19 @@
     const container = document.getElementById('ecoPointCloudContainer');
     if (!canvas || !container) return;
 
-    // Check if Three.js is loaded
     if (typeof THREE === 'undefined') {
-      console.warn('Three.js not loaded yet, retrying...');
       setTimeout(initEcoPointCloud, 150);
       return;
     }
 
-    // 1. Scene & Camera Setup
+    // 1. Scene & Transparent Camera Setup
     const scene = new THREE.Scene();
 
     const width = container.clientWidth || 800;
-    const height = container.clientHeight || 550;
+    const height = container.clientHeight || 620;
 
-    const camera = new THREE.PerspectiveCamera(42, width / height, 0.1, 100);
-    camera.position.set(0, 2.5, 20);
+    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+    camera.position.set(0, 2.2, 17.5);
 
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
@@ -35,10 +33,11 @@
       alpha: true,
       powerPreference: 'high-performance'
     });
+    renderer.setClearColor(0x000000, 0);
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 
-    // 2. Generate Circular Bokeh Point Sprite
+    // 2. High-Quality Circular Bokeh Point Sprite
     function createPointTexture() {
       const size = 64;
       const c = document.createElement('canvas');
@@ -48,9 +47,9 @@
 
       const grad = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
       grad.addColorStop(0, 'rgba(255, 255, 255, 1)');
-      grad.addColorStop(0.2, 'rgba(255, 255, 255, 0.9)');
-      grad.addColorStop(0.5, 'rgba(255, 255, 255, 0.4)');
-      grad.addColorStop(0.85, 'rgba(255, 255, 255, 0.1)');
+      grad.addColorStop(0.25, 'rgba(255, 255, 255, 0.95)');
+      grad.addColorStop(0.55, 'rgba(255, 255, 255, 0.5)');
+      grad.addColorStop(0.85, 'rgba(255, 255, 255, 0.15)');
       grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
       ctx.fillStyle = grad;
@@ -61,264 +60,304 @@
       return texture;
     }
 
-    // 3. Build Point Cloud Geometry
+    // 3. Procedural Point Cloud Geometry (60,000+ points)
     const positions = [];
     const colors = [];
-    const sizes = [];
 
-    function addPoint(x, y, z, r, g, b, size = 1.0) {
+    function addPoint(x, y, z, r, g, b) {
       positions.push(x, y, z);
       colors.push(r, g, b);
-      sizes.push(size);
     }
 
     // --- A. Floating Timber Foundation Pontoon Deck ---
-    const deckW = 15;
-    const deckD = 12;
-    for (let x = -deckW / 2; x <= deckW / 2; x += 0.28) {
-      for (let z = -deckD / 2; z <= deckD / 2 + 1.5; z += 0.28) {
-        const jitter = (Math.random() - 0.5) * 0.05;
-        // Timber warm brown tones
-        const br = 0.42 + Math.random() * 0.12;
-        const bg = 0.24 + Math.random() * 0.08;
-        const bb = 0.12 + Math.random() * 0.04;
-        addPoint(x, -0.6 + jitter, z, br, bg, bb, 0.18);
-        if (Math.random() > 0.6) {
-          addPoint(x, -0.9 + jitter, z, br * 0.7, bg * 0.7, bb * 0.7, 0.15);
+    const deckW = 15.5;
+    const deckD = 12.0;
+    for (let x = -deckW / 2; x <= deckW / 2; x += 0.16) {
+      for (let z = -deckD / 2; z <= deckD / 2 + 1.2; z += 0.16) {
+        const jitter = (Math.random() - 0.5) * 0.04;
+        // Warm golden timber plank tones
+        const isPlankEdge = Math.abs(x % 0.8) < 0.08;
+        const br = isPlankEdge ? 0.38 : (0.58 + Math.random() * 0.15);
+        const bg = isPlankEdge ? 0.22 : (0.36 + Math.random() * 0.10);
+        const bb = isPlankEdge ? 0.10 : (0.16 + Math.random() * 0.06);
+
+        addPoint(x, -0.6 + jitter, z, br, bg, bb);
+
+        // Pontoon buoyant underbelly
+        if (Math.random() > 0.45) {
+          addPoint(x, -0.9 + jitter, z, br * 0.65, bg * 0.65, bb * 0.65);
         }
       }
     }
 
-    // Foundation Stilt Piles into Lagoon
-    for (let px of [-6, -2, 2, 6]) {
-      for (let pz of [-4.5, 0, 4.5, 6.5]) {
-        for (let py = -0.6; py >= -2.2; py -= 0.15) {
-          for (let a = 0; a < 6; a++) {
-            const ang = a * (Math.PI / 3);
-            addPoint(px + Math.cos(ang) * 0.22, py, pz + Math.sin(ang) * 0.22, 0.25, 0.15, 0.08, 0.16);
+    // Heavy Stilt Pilings into Lagoon
+    for (let px of [-6.2, -2.2, 2.2, 6.2]) {
+      for (let pz of [-4.5, 0, 4.5, 6.2]) {
+        for (let py = -0.6; py >= -2.4; py -= 0.10) {
+          for (let a = 0; a < 7; a++) {
+            const ang = a * (Math.PI * 2 / 7);
+            addPoint(px + Math.cos(ang) * 0.24, py, pz + Math.sin(ang) * 0.24, 0.32, 0.20, 0.10);
           }
         }
       }
     }
 
     // --- B. Stacked Recycled Plastic Bottle Walls ---
-    const bW = 12.5; // building width
-    const bD = 9.0;  // building depth
+    const bW = 12.8; // building width
+    const bD = 9.2;  // building depth
     const bH = 5.2;  // building wall height
 
-    // B1. Side Walls (Stacked Orange/Amber Plastic Bottles)
+    // B1. Side Walls (Stacked Luminous Amber & Golden Plastic Bottles)
     for (let wallX of [-bW / 2, bW / 2]) {
-      for (let y = 0; y <= bH; y += 0.28) {
-        for (let z = -bD / 2; z <= bD / 2; z += 0.28) {
-          // Skip window opening
-          if (y >= 1.6 && y <= 3.6 && z >= -2.0 && z <= 2.0) {
-            // Window frame points
-            if (Math.abs(y - 1.6) < 0.2 || Math.abs(y - 3.6) < 0.2 || Math.abs(z - -2.0) < 0.2 || Math.abs(z - 2.0) < 0.2) {
-              addPoint(wallX, y, z, 0.15, 0.15, 0.15, 0.18);
+      for (let y = 0; y <= bH; y += 0.14) {
+        for (let z = -bD / 2; z <= bD / 2; z += 0.14) {
+          // Window openings
+          if (y >= 1.6 && y <= 3.6 && z >= -2.2 && z <= 2.2) {
+            // Window lintel and frame points
+            if (Math.abs(y - 1.6) < 0.15 || Math.abs(y - 3.6) < 0.15 || Math.abs(z - -2.2) < 0.15 || Math.abs(z - 2.2) < 0.15) {
+              addPoint(wallX, y, z, 0.95, 0.95, 0.95);
             }
             continue;
           }
 
-          // Bottle profile: 8 points around cylinder body + cap
+          // 8 points around cylindrical bottle circumference
           const numPts = 6;
           for (let a = 0; a < numPts; a++) {
             const ang = a * (Math.PI * 2 / numPts);
-            const r = 0.11;
+            const r = 0.10;
             const px = wallX + Math.sin(ang) * r;
             const pz = z + Math.cos(ang) * r;
-            const py = y + (Math.random() - 0.5) * 0.08;
+            const py = y + (Math.random() - 0.5) * 0.05;
 
-            // Vibrant translucent amber/orange bottle colors
-            const isHighlight = Math.random() > 0.75;
-            const cr = isHighlight ? 1.0 : (0.94 + Math.random() * 0.06);
-            const cg = isHighlight ? 0.75 : (0.55 + Math.random() * 0.15);
-            const cb = isHighlight ? 0.25 : (0.08 + Math.random() * 0.08);
+            // Vibrant glowing translucent amber gold bottle colors
+            const isHighlight = Math.random() > 0.65;
+            const cr = isHighlight ? 1.0 : (0.95 + Math.random() * 0.05);
+            const cg = isHighlight ? 0.78 : (0.58 + Math.random() * 0.18);
+            const cb = isHighlight ? 0.22 : (0.06 + Math.random() * 0.08);
 
-            addPoint(px, py, pz, cr, cg, cb, 0.22);
+            addPoint(px, py, pz, cr, cg, cb);
           }
 
-          // Bottle cap point
+          // Inner row bottle cap
           const capDir = wallX > 0 ? 1 : -1;
-          addPoint(wallX + capDir * 0.14, y, z, 0.1, 0.4, 0.8, 0.2);
+          addPoint(wallX + capDir * 0.12, y, z, 0.2, 0.6, 0.95);
         }
       }
     }
 
-    // B2. Front & Back Walls (Stacked Obsidian / Smoky Dark Bottles with White Bottle Inscriptions)
+    // B2. Front & Back Walls (Stacked Obsidian / Smoky Dark Bottles with Cyan PET Highlights)
     for (let wallZ of [-bD / 2, bD / 2]) {
       const isFront = wallZ > 0;
-      for (let y = 0; y <= bH; y += 0.28) {
-        for (let x = -bW / 2; x <= bW / 2; x += 0.28) {
-          // Front wall: leave opening for Danfo bus and entrance
-          if (isFront && x >= -0.5 && x <= 4.5 && y <= 3.8) {
-            continue; // Danfo bus sits here!
+      for (let y = 0; y <= bH; y += 0.14) {
+        for (let x = -bW / 2; x <= bW / 2; x += 0.14) {
+          // Front wall opening for protruding Danfo bus classroom
+          if (isFront && x >= 0.6 && x <= 4.2 && y <= 3.8) {
+            continue; // Danfo bus integrates here!
           }
-          if (isFront && x >= -3.5 && x <= -1.5 && y <= 3.2) {
-            // Entrance doorway
+          // Main classroom door opening
+          if (isFront && x >= -3.6 && x <= -1.6 && y <= 3.4) {
             continue;
           }
 
           const numPts = 5;
           for (let a = 0; a < numPts; a++) {
             const ang = a * (Math.PI * 2 / numPts);
-            const r = 0.11;
+            const r = 0.10;
             const px = x + Math.cos(ang) * r;
             const pz = wallZ + Math.sin(ang) * r;
-            const py = y + (Math.random() - 0.5) * 0.08;
+            const py = y + (Math.random() - 0.5) * 0.05;
 
-            // Smoky obsidian bottle with subtle teal eco-glow
-            const isAccent = Math.random() > 0.88;
-            let cr = 0.18, cg = 0.24, cb = 0.32;
+            const isAccent = Math.random() > 0.82;
+            let cr = 0.22, cg = 0.28, cb = 0.38;
             if (isAccent) {
-              // Recycled PET cyan/emerald glow
-              cr = 0.15; cg = 0.85; cb = 0.75;
+              // Bright luminous cyan PET glow
+              cr = 0.10; cg = 0.92; cb = 0.88;
             }
 
-            addPoint(px, py, pz, cr, cg, cb, 0.2);
+            addPoint(px, py, pz, cr, cg, cb);
           }
         }
       }
     }
 
-    // --- C. The Iconic Lagos Danfo Bus Classroom Facade ---
-    // Protrudes through front wall at x=2.0, z=4.5 to 7.2, y=0.4 to 3.4
-    const busCX = 2.0;
-    const busZMin = 4.2;
-    const busZMax = 7.0;
-    const busW = 2.8;
-    const busH = 2.7;
+    // --- C. Classroom Interior Desks & Chalkboard ---
+    for (let dx = -4.5; dx <= -0.5; dx += 1.2) {
+      for (let dz = -3.0; dz <= 2.5; dz += 1.5) {
+        // Wooden desk top
+        for (let tx = -0.4; tx <= 0.4; tx += 0.12) {
+          for (let tz = -0.25; tz <= 0.25; tz += 0.12) {
+            addPoint(dx + tx, 1.4, dz + tz, 0.72, 0.48, 0.22);
+          }
+        }
+        // Bench seat
+        for (let bx = -0.35; bx <= 0.35; bx += 0.12) {
+          addPoint(dx + bx, 0.8, dz - 0.4, 0.65, 0.42, 0.18);
+        }
+      }
+    }
 
-    for (let bz = busZMin; bz <= busZMax; bz += 0.18) {
-      for (let by = 0.4; by <= 0.4 + busH; by += 0.18) {
-        for (let bx = busCX - busW / 2; bx <= busCX + busW / 2; bx += 0.18) {
-          const isFrontFace = Math.abs(bz - busZMax) < 0.2;
-          const isSideFace = Math.abs(Math.abs(bx - busCX) - busW / 2) < 0.2;
-          const isRoofFace = Math.abs(by - (0.4 + busH)) < 0.2;
+    // Blackboard on front-left wall
+    for (let bx = -3.8; bx <= -1.4; bx += 0.08) {
+      for (let by = 1.6; by <= 3.2; by += 0.08) {
+        addPoint(bx, by, bD / 2 - 0.15, 0.05, 0.15, 0.12);
+      }
+    }
+
+    // --- D. The Iconic Lagos Danfo Bus Classroom ---
+    // Protrudes boldly through front wall: x=0.9 to 3.9, z=4.2 to 7.4, y=0.3 to 3.5
+    const busCX = 2.4;
+    const busZMin = 4.0;
+    const busZMax = 7.3;
+    const busW = 3.0;
+    const busH = 2.9;
+
+    for (let bz = busZMin; bz <= busZMax; bz += 0.08) {
+      for (let by = 0.3; by <= 0.3 + busH; by += 0.08) {
+        for (let bx = busCX - busW / 2; bx <= busCX + busW / 2; bx += 0.08) {
+          const isFrontFace = Math.abs(bz - busZMax) < 0.10;
+          const isSideFace = Math.abs(Math.abs(bx - busCX) - busW / 2) < 0.10;
+          const isRoofFace = Math.abs(by - (0.3 + busH)) < 0.10;
 
           if (!isFrontFace && !isSideFace && !isRoofFace) continue;
 
-          // Windshield area on front face
-          const isWindshield = isFrontFace && by >= 1.6 && by <= 2.6 && Math.abs(bx - busCX) <= 1.1;
+          // Windshield glass on front face
+          const isWindshield = isFrontFace && by >= 1.6 && by <= 2.7 && Math.abs(bx - busCX) <= 1.25;
+          // Side passenger windows
+          const isSideWindow = isSideFace && by >= 1.6 && by <= 2.6 && bz >= 4.4 && bz <= 6.8;
 
-          // Dual Black Transit Stripes
-          const isStripe = (by >= 1.1 && by <= 1.35) || (by >= 1.42 && by <= 1.55);
+          // Dual Iconic Black Transit Stripes
+          const isStripe = (by >= 1.15 && by <= 1.32) || (by >= 1.40 && by <= 1.55);
 
-          if (isWindshield) {
-            // Glowing cyan windshield glass points
-            addPoint(bx, by, bz, 0.22, 0.75, 0.95, 0.26);
+          if (isWindshield || isSideWindow) {
+            // Glowing cyan-sky glass points
+            addPoint(bx, by, bz, 0.25, 0.85, 0.98);
           } else if (isStripe) {
-            // Black transit stripes
-            addPoint(bx, by, bz, 0.06, 0.08, 0.12, 0.2);
+            // Pitch-black transit stripes
+            addPoint(bx, by, bz, 0.04, 0.05, 0.08);
           } else {
-            // Bright Lagos Danfo Yellow
-            const yr = 0.98;
-            const yg = 0.82 + (Math.random() - 0.5) * 0.1;
-            const yb = 0.12;
-            addPoint(bx, by, bz, yr, yg, yb, 0.24);
+            // Brilliant, vibrant Lagos Danfo Yellow
+            const yr = 1.0;
+            const yg = 0.84 + (Math.random() - 0.5) * 0.08;
+            const yb = 0.04;
+            addPoint(bx, by, bz, yr, yg, yb);
           }
         }
       }
     }
 
-    // Headlights & Bumper
-    for (let hx of [busCX - 0.9, busCX + 0.9]) {
-      for (let a = 0; a < 8; a++) {
-        const ang = a * (Math.PI * 2 / 8);
-        addPoint(hx + Math.cos(ang) * 0.18, 0.95 + Math.sin(ang) * 0.18, busZMax + 0.08, 1.0, 1.0, 0.8, 0.3);
+    // Danfo Dual Radiant Headlights
+    for (let hx of [busCX - 1.05, busCX + 1.05]) {
+      for (let a = 0; a < 16; a++) {
+        const ang = a * (Math.PI * 2 / 16);
+        for (let hr = 0.05; hr <= 0.22; hr += 0.06) {
+          addPoint(hx + Math.cos(ang) * hr, 0.95 + Math.sin(ang) * hr, busZMax + 0.10, 1.0, 1.0, 0.95);
+        }
       }
-    }
-
-    // Danfo Wheels
-    for (let wx of [busCX - 1.45, busCX + 1.45]) {
-      for (let a = 0; a < 14; a++) {
-        const ang = a * (Math.PI * 2 / 14);
-        for (let wr = 0.15; wr <= 0.45; wr += 0.1) {
-          addPoint(wx, 0.5 + Math.sin(ang) * wr, 5.8 + Math.cos(ang) * wr, 0.12, 0.14, 0.18, 0.22);
+      // Glowing forward headlight beam cone
+      for (let beamZ = busZMax + 0.2; beamZ <= busZMax + 1.4; beamZ += 0.15) {
+        const spread = (beamZ - busZMax) * 0.35;
+        for (let b = 0; b < 6; b++) {
+          const bang = b * (Math.PI * 2 / 6);
+          addPoint(hx + Math.cos(bang) * spread, 0.95 + Math.sin(bang) * spread, beamZ, 0.95, 0.90, 0.60);
         }
       }
     }
 
-    // --- D. Corrugated Zinc Roof & Solar Panel Array ---
-    // Angled pitched roof
-    for (let rx = -bW / 2 - 0.8; rx <= bW / 2 + 0.8; rx += 0.22) {
-      for (let rz = -bD / 2 - 0.8; rz <= bD / 2 + 0.8; rz += 0.22) {
-        // Pitch slope from front (higher) to back (lower)
-        const slope = (rz / bD) * 0.9;
+    // Danfo Wheels & Tires
+    for (let wx of [busCX - 1.55, busCX + 1.55]) {
+      for (let wz of [5.0, 6.7]) {
+        for (let a = 0; a < 18; a++) {
+          const ang = a * (Math.PI * 2 / 18);
+          for (let wr = 0.12; wr <= 0.48; wr += 0.08) {
+            const isRim = wr < 0.26;
+            const tr = isRim ? 0.75 : 0.08;
+            const tg = isRim ? 0.75 : 0.09;
+            const tb = isRim ? 0.78 : 0.12;
+            addPoint(wx, 0.45 + Math.sin(ang) * wr, wz + Math.cos(ang) * wr, tr, tg, tb);
+          }
+        }
+      }
+    }
+
+    // --- E. Pitched Corrugated Zinc Roof & Solar Panel Array ---
+    for (let rx = -bW / 2 - 0.8; rx <= bW / 2 + 0.8; rx += 0.12) {
+      for (let rz = -bD / 2 - 0.8; rz <= bD / 2 + 0.8; rz += 0.12) {
+        // Natural drainage pitch slope
+        const slope = (rz / bD) * 0.85;
         const ry = bH + 0.6 + slope;
+        const corrugation = Math.sin(rx * 8) * 0.05;
 
-        // Corrugated wave jitter
-        const corrugation = Math.sin(rx * 6) * 0.06;
-
-        // Solar Panels in center grid
-        const isSolar = Math.abs(rx) <= 4.0 && rz >= -2.5 && rz <= 2.5;
+        // Solar Panels (Center roof array)
+        const isSolar = Math.abs(rx) <= 4.2 && rz >= -2.8 && rz <= 2.8;
 
         if (isSolar) {
-          // Deep crystalline blue solar panel points
-          const sr = 0.12 + Math.random() * 0.08;
-          const sg = 0.35 + Math.random() * 0.15;
-          const sb = 0.92 + Math.random() * 0.08;
-          addPoint(rx, ry + 0.12, rz, sr, sg, sb, 0.24);
+          // Deep radiant electric cobalt-blue solar points
+          const isGrid = (Math.abs(rx % 1.0) < 0.06) || (Math.abs(rz % 0.8) < 0.06);
+          if (isGrid) {
+            // White silver collector busbars
+            addPoint(rx, ry + 0.12, rz, 0.92, 0.95, 1.0);
+          } else {
+            addPoint(rx, ry + 0.12, rz, 0.08, 0.45 + Math.random() * 0.15, 0.98);
+          }
         } else {
-          // Metallic zinc / timber rafters
-          const zr = 0.58 + Math.random() * 0.12;
-          const zg = 0.62 + Math.random() * 0.12;
-          const zb = 0.68 + Math.random() * 0.12;
-          addPoint(rx, ry + corrugation, rz, zr, zg, zb, 0.19);
+          // Metallic zinc corrugated roof sheets
+          const zr = 0.62 + Math.random() * 0.12;
+          const zg = 0.66 + Math.random() * 0.12;
+          const zb = 0.72 + Math.random() * 0.12;
+          addPoint(rx, ry + corrugation, rz, zr, zg, zb);
         }
       }
     }
 
-    // --- E. Lagoon Water Surface Ripples ---
-    for (let i = 0; i < 2800; i++) {
-      const wx = (Math.random() - 0.5) * 24;
-      const wz = (Math.random() - 0.5) * 22;
-      const wy = -1.4 + (Math.random() - 0.5) * 0.08;
-      // Water turquoise / cyan points
-      addPoint(wx, wy, wz, 0.02, 0.45 + Math.random() * 0.25, 0.75 + Math.random() * 0.25, 0.16);
+    // --- F. Lagoon Water Surface Ripples ---
+    for (let i = 0; i < 3500; i++) {
+      const wx = (Math.random() - 0.5) * 26;
+      const wz = (Math.random() - 0.5) * 24;
+      const wy = -1.4 + (Math.random() - 0.5) * 0.06;
+      // Vibrant aquatic turquoise & cyan lagoon reflections
+      addPoint(wx, wy, wz, 0.02, 0.52 + Math.random() * 0.28, 0.82 + Math.random() * 0.18);
     }
 
-    // --- F. Ambient Floating Eco-Sparks (Hovering Luminous Dust) ---
-    for (let i = 0; i < 1800; i++) {
-      const ex = (Math.random() - 0.5) * 20;
-      const ey = Math.random() * 7.5;
-      const ez = (Math.random() - 0.5) * 16;
-      // Gold and emerald ambient particles
-      const isGold = Math.random() > 0.5;
-      const er = isGold ? 0.98 : 0.15;
-      const eg = isGold ? 0.78 : 0.88;
-      const eb = isGold ? 0.18 : 0.65;
-      addPoint(ex, ey, ez, er, eg, eb, 0.2 + Math.random() * 0.15);
+    // --- G. Floating Luminous Eco-Embers (Hovering Golden Stardust) ---
+    for (let i = 0; i < 2200; i++) {
+      const ex = (Math.random() - 0.5) * 22;
+      const ey = Math.random() * 8.5;
+      const ez = (Math.random() - 0.5) * 18;
+      const isGold = Math.random() > 0.45;
+      const er = isGold ? 1.0 : 0.15;
+      const eg = isGold ? 0.82 : 0.92;
+      const eb = isGold ? 0.20 : 0.75;
+      addPoint(ex, ey, ez, er, eg, eb);
     }
 
-    // 4. Create BufferGeometry & Points Mesh
+    // 4. Create BufferGeometry & High-Visibility Points Mesh
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
-      size: 0.24,
+      size: 0.38, // Significantly denser, luminous points
       vertexColors: true,
       map: createPointTexture(),
       transparent: true,
-      opacity: 0.88,
+      opacity: 0.94,
       blending: THREE.AdditiveBlending,
       depthWrite: false
     });
 
     const pointCloud = new THREE.Points(geometry, material);
-    // Center point cloud
-    pointCloud.position.set(0, -1.2, 0);
+    pointCloud.position.set(0, -1.0, 0);
     scene.add(pointCloud);
 
-    // Initial angle: 3/4 front view showing the Danfo bus and bottle side wall
+    // Initial 3/4 front view showing off the bright Danfo bus and amber bottle walls
     let currentRotY = 0.45;
     let targetRotY = 0.45;
-    let currentRotX = 0.12;
-    let targetRotX = 0.12;
+    let currentRotX = 0.10;
+    let targetRotX = 0.10;
     let currentScale = 1.0;
     let targetScale = 1.0;
 
-    // 5. Scroll-Linked Animation (No manual drag needed, turns smoothly as user scrolls)
+    // 5. Scroll-Linked 360-Degree Orbital Spin
     function onScroll() {
       const section = document.getElementById('eco-school-3d');
       if (!section) return;
@@ -326,18 +365,14 @@
       const rect = section.getBoundingClientRect();
       const winH = window.innerHeight || 800;
 
-      // Calculate normalized scroll progress: 0 when top enters bottom of window, 1 when bottom leaves top
       const totalDist = rect.height + winH;
       const currentDist = winH - rect.top;
       const progress = Math.max(0, Math.min(1, currentDist / totalDist));
 
-      // Map progress to continuous 360-degree rotation showing off:
-      // p=0.15..0.35: Front facade + yellow Danfo bus
-      // p=0.35..0.65: Side wall of 10,000 stacked orange bottles
-      // p=0.65..0.90: Rooftop solar array and rear floating sanctuary
+      // Map scroll progress to full 360-degree rotation
       targetRotY = 0.35 + progress * (Math.PI * 2.2);
       targetRotX = 0.08 + Math.sin(progress * Math.PI) * 0.12;
-      targetScale = 0.95 + Math.sin(progress * Math.PI) * 0.1;
+      targetScale = 0.95 + Math.sin(progress * Math.PI) * 0.10;
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -347,13 +382,14 @@
     function onResize() {
       if (!container) return;
       const w = container.clientWidth || 800;
-      const h = container.clientHeight || 550;
+      const h = container.clientHeight || 620;
       camera.aspect = w / h;
-      // Adjust camera distance for mobile
       if (w < 768) {
-        camera.position.z = 24;
+        camera.position.set(0, 1.6, 26.5);
+        material.size = 0.38;
       } else {
-        camera.position.z = 19;
+        camera.position.set(0, 2.2, 17.5);
+        material.size = 0.38;
       }
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
@@ -366,7 +402,6 @@
     let clock = new THREE.Clock();
     let isVisible = true;
 
-    // IntersectionObserver to pause rendering when off-screen
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -381,21 +416,19 @@
 
       if (!isVisible) return;
 
-      const dt = clock.getDelta();
       const time = clock.getElapsedTime();
 
-      // Continuous subtle idle drift
-      const idleY = Math.sin(time * 0.5) * 0.04;
-      const idleFloat = Math.sin(time * 1.2) * 0.08;
+      // Gentle floating idle breathing
+      const idleY = Math.sin(time * 0.45) * 0.03;
+      const idleFloat = Math.sin(time * 1.1) * 0.06;
 
-      // Smooth lerp towards scroll-driven targets
       currentRotY += (targetRotY + idleY - currentRotY) * 0.08;
       currentRotX += (targetRotX - currentRotX) * 0.08;
       currentScale += (targetScale - currentScale) * 0.08;
 
       pointCloud.rotation.y = currentRotY;
       pointCloud.rotation.x = currentRotX;
-      pointCloud.position.y = -1.2 + idleFloat;
+      pointCloud.position.y = -1.0 + idleFloat;
       pointCloud.scale.set(currentScale, currentScale, currentScale);
 
       renderer.render(scene, camera);
@@ -404,7 +437,6 @@
     animate();
   }
 
-  // Auto-init on load
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initEcoPointCloud);
   } else {

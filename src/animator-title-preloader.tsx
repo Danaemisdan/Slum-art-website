@@ -394,13 +394,23 @@ function Hand({ id, side }: { id: string; side: "l" | "r" }) {
   if (side === "l") {
     return (
       <g filter={"url(#" + id + "-paint)"}>
-        {/* Natural photographic Nigerian child open hand with naturally proportioned forearm sleeve */}
+        {/* Continuous sleeve path extending down to bottom-left screen edge */}
+        <path
+          d="M -362 380 C -420 700 -700 1500 -1400 2800 L -800 2800 C -350 1500 -210 700 -177 380 Z"
+          fill={"url(#" + id + "-left-sleeve-grad)"}
+        />
+        <path
+          d="M -362 380 C -420 700 -700 1500 -1400 2800 L -1320 2800 C -650 1500 -380 700 -330 380 Z"
+          fill="#3b567d"
+          opacity="0.18"
+        />
+        {/* Natural photorealistic Nigerian child open hand */}
         <image
           href="assets/images/child_hand_left_realistic.png"
-          x="-474"
-          y="-401"
-          width="475"
-          height="682"
+          x="-420"
+          y="-200"
+          width="450"
+          height="648"
         />
       </g>
     )
@@ -408,13 +418,23 @@ function Hand({ id, side }: { id: string; side: "l" | "r" }) {
 
   return (
     <g filter={"url(#" + id + "-paint)"}>
-      {/* Natural photographic Nigerian child open hand with naturally proportioned forearm sleeve */}
+      {/* Continuous sleeve path extending down to bottom-right screen edge */}
+      <path
+        d="M 180 380 C 210 700 350 1500 800 2800 L 1400 2800 C 700 1500 420 700 363 380 Z"
+        fill={"url(#" + id + "-right-sleeve-grad)"}
+      />
+      <path
+        d="M 363 380 C 420 700 700 1500 1400 2800 L 1320 2800 C 650 1500 380 700 330 380 Z"
+        fill="#3b567d"
+        opacity="0.18"
+      />
+      {/* Natural photorealistic Nigerian child open hand */}
       <image
         href="assets/images/child_hand_right_realistic.png"
-        x="0"
-        y="-393"
-        width="483"
-        height="679"
+        x="-55"
+        y="-210"
+        width="470"
+        height="648"
       />
     </g>
   )
@@ -1611,14 +1631,14 @@ export default function AnimatorTitlePreloader({
                   <feDropShadow dx="-2" dy="5" stdDeviation="6" floodColor="#0a0301" floodOpacity="0.25" />
                 </filter>
                 <linearGradient id={uid + "-left-sleeve-grad"} x1="50%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#121e2d" />
-                  <stop offset="25%" stopColor="#0c1521" />
+                  <stop offset="0%" stopColor="#122035" />
+                  <stop offset="25%" stopColor="#0d1726" />
                   <stop offset="60%" stopColor="#080e18" />
                   <stop offset="100%" stopColor="#03060a" />
                 </linearGradient>
                 <linearGradient id={uid + "-right-sleeve-grad"} x1="50%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#121e2d" />
-                  <stop offset="25%" stopColor="#0c1521" />
+                  <stop offset="0%" stopColor="#122035" />
+                  <stop offset="25%" stopColor="#0d1726" />
                   <stop offset="60%" stopColor="#080e18" />
                   <stop offset="100%" stopColor="#03060a" />
                 </linearGradient>
