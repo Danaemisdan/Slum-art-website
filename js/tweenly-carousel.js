@@ -1,7 +1,7 @@
 /**
  * ===================================================================
  * 21ST.DEV TWEENLY CURVED CAROUSEL (Designed by @mirukullacode)
- * 3D Cylindrical Field Gallery • Life at Ijora Badia & Pet Bottle School
+ * 3D Cylindrical Field Gallery • Life in Nigeria & Pet Bottle School
  * ===================================================================
  * Features:
  * - True 3D Cylindrical Ring Projection (rotateY, translate3d, perspective)
@@ -20,7 +20,7 @@
     {
       src: 'assets/images/gallery/gallery_01.jpg',
       title: 'The Pet Bottle Classroom',
-      caption: 'Engineered from 10,000 discarded plastic bottles into an eco-haven in Ijora Badia, Lagos.',
+      caption: 'Engineered from 10,000 discarded plastic bottles into an eco-haven in Nigeria.',
       tag: 'Eco-Architecture'
     },
     {
@@ -49,7 +49,7 @@
     },
     {
       src: 'assets/images/gallery/gallery_06.jpg',
-      title: 'Makoko Waterside Outreach',
+      title: 'Nigeria Waterside Outreach',
       caption: 'Outreach canoes bringing art materials, paper, and nutritious hot meals to floating stilt settlements.',
       tag: 'Slum Outreach'
     },

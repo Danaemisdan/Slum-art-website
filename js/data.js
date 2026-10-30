@@ -14,7 +14,7 @@ window.SLUM_DATA = {
   artworks: [
   {
     "id": "art-1",
-    "title": "Visions of Makoko Sunshine",
+    "title": "Visions of Nigeria Sunshine",
     "artist": "Kehinde",
     "age": "Age 11",
     "medium": "Acrylic on Canvas",
@@ -564,7 +564,7 @@ window.SLUM_DATA = {
       "Dignified Street Documentary",
       "Digital Editing & Exhibition Printing"
     ],
-    "outcome": "Capturing daily life, resilience, and beauty in Makoko and Ijora Badia, creating powerful photo essays that change perceptions.",
+    "outcome": "Capturing daily life, resilience, and beauty across Nigeria, creating powerful photo essays that change perceptions.",
     "stats": "140+ Photographers \u2022 5 Photo Exhibitions"
   },
   {
@@ -683,7 +683,7 @@ window.SLUM_DATA = {
       "Introductory Python & Robotics",
       "Web Literacy, AI & Internet Safety"
     ],
-    "outcome": "Demolishing the digital divide in Ijora Badia, providing children their first laptop access and foundational software engineering skills.",
+    "outcome": "Demolishing the digital divide in Nigeria, providing children their first laptop access and foundational software engineering skills.",
     "stats": "200+ Tech Students \u2022 25 Reconditioned Laptops"
   },
   {
@@ -769,7 +769,7 @@ window.SLUM_DATA = {
     "id": "girls-hygiene",
     "title": "Girls Hygiene Initiatives",
     "tag": "Health & Dignity",
-    "desc": "In partnership with Adlaiheroes Foundation: Empowering teenage girls in Ijora Badia with health and hygiene education, sanitary kit provision, and reproductive awareness.",
+    "desc": "In partnership with Adlaiheroes Foundation: Empowering teenage girls in Nigeria with health and hygiene education, sanitary kit provision, and reproductive awareness.",
     "goal_usd": 4000,
     "raised_usd": 1280,
     "percent": 32,
@@ -779,7 +779,7 @@ window.SLUM_DATA = {
     "id": "doodle-dreams",
     "title": "Doodle Dreams Project",
     "tag": "Youth Expression",
-    "desc": "Launched in Ijora Badia and inspired by Joe Whale (the UK's world-famous 'Doodle Boy'). Transforming blank spaces into whimsical coloring books and monumental murals.",
+    "desc": "Launched in Nigeria and inspired by Joe Whale (the UK's world-famous 'Doodle Boy'). Transforming blank spaces into whimsical coloring books and monumental murals.",
     "goal_usd": 6500,
     "raised_usd": 1950,
     "percent": 30,
@@ -857,7 +857,7 @@ window.SLUM_DATA = {
   contact: {
     phone: "+2348059994834",
     email: "info@slumart.org",
-    location: "Ijora Badia, Lagos, Nigeria",
+    location: "Lagos, Nigeria",
     whatsapp: "https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4",
     donatePaystack: "https://paystack.shop/pay/lk0hlrdlun"
   }

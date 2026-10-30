@@ -1085,7 +1085,7 @@ function NsibidiCulturalBackdrop({ uid }: { uid: string }) {
       {/* 1. Dramatic Volumetric Studio Spotlight Halo */}
       <div className="atp-spotlight-core" />
 
-      {/* 2. Flowing Makoko Lagoon Current Ribbons (Smooth, Organic, Non-repeating) */}
+      {/* 2. Flowing Lagoon Current Ribbons (Smooth, Organic, Non-repeating) */}
       <div className="atp-nsibidi-canvas">
         <svg className="atp-cultural-waves" viewBox="0 0 1440 900" preserveAspectRatio="none" fill="none">
           <defs>

@@ -174,7 +174,7 @@
         </div>
         <div class="artwork-card-body">
           <div class="artwork-provenance-meta">
-            <span class="artwork-atelier"><i class="fas fa-location-dot text-amber"></i> Ijora Badia Atelier</span>
+            <span class="artwork-atelier"><i class="fas fa-location-dot text-amber"></i> Nigeria Atelier</span>
             <span class="artwork-curator-code">REF: ${item.id.toUpperCase()}</span>
           </div>
           <h4 class="artwork-title">${item.title}</h4>
@@ -277,7 +277,7 @@
           <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
             <span style="font-size: 1.05rem; font-weight: 700; color: #0f172a;">Created by <strong>${item.artist}</strong></span>
             <span class="artist-age-badge">${item.age}</span>
-            <span style="font-size: 0.85rem; color: #64748b; font-weight: 600;">• Ijora Badia Atelier</span>
+            <span style="font-size: 0.85rem; color: #64748b; font-weight: 600;">• Nigeria Atelier</span>
           </div>
 
           <div class="luxury-dossier-grid">
@@ -291,7 +291,7 @@
             </div>
             <div class="dossier-item">
               <span class="dossier-lbl">Origin & Community:</span>
-              <span class="dossier-val">Pet Bottle School, Ijora Badia, Lagos</span>
+              <span class="dossier-val">Pet Bottle School, Lagos, Nigeria</span>
             </div>
             <div class="dossier-item">
               <span class="dossier-lbl">Curatorial Category:</span>
@@ -825,7 +825,7 @@
 
         <div class="insp-stats-line">
           <i class="fas fa-chart-line text-amber"></i>
-          <span>${prog.stats || 'Active across Makoko and Ijora Badia studios'}</span>
+          <span>${prog.stats || 'Active across community studios in Nigeria'}</span>
         </div>
 
         <div class="insp-actions">
@@ -1211,7 +1211,7 @@
     school: {
       num: '50k+',
       title: 'Plastic Bottles to Classrooms',
-      desc: 'Pioneered the famous Pet Bottle School in Ijora Badia & Makoko—clearing over 50,000 discarded bottles from lagoon gutters and upcycling them into solar-powered floating studios.'
+      desc: 'Pioneered the famous Pet Bottle School in Nigeria—clearing over 50,000 discarded bottles from lagoon gutters and upcycling them into solar-powered floating studios.'
     },
     mentorship: {
       num: '5,000+',
@@ -1433,14 +1433,14 @@
       role: "Scholar #042 &bull; Bright Achievers Primary",
       avatar: "assets/images/gallery/kehinde_portrait.jpg",
       bgImage: "assets/images/gallery/gallery_05.jpg",
-      tagText: "Live Studio &bull; Makoko Floating Lagoon",
+      tagText: "Live Studio &bull; Floating Lagoon Studio, Nigeria",
       title: "From Shoreline Labor to Fine Art Mastery",
       desc: "Before Slum Art, my days were spent fishing plastic from the water. Today my paintings pay my school tuition and I have a seat in a real classroom.",
       outcomes: "<span>100% Tuition Escrow</span><span class=\"dot-sep\">&bull;</span><span>Crested Kit</span><span class=\"dot-sep\">&bull;</span><span>Daily Meals</span>"
     },
     {
       name: "Blessing, Age 13",
-      role: "Scholar #078 &bull; Makoko Waterfront Academy",
+      role: "Scholar #078 &bull; Waterfront Academy, Nigeria",
       avatar: "assets/images/resources/prof_2.png",
       bgImage: "assets/images/gallery/gallery_07.jpg",
       tagText: "Secondary Scholar &bull; Floating Atelier",
@@ -1450,10 +1450,10 @@
     },
     {
       name: "Samuel, Age 10",
-      role: "Scholar #105 &bull; Ijora Badia Learning Center",
+      role: "Scholar #105 &bull; Nigeria Learning Center",
       avatar: "assets/images/resources/prof_3.png",
       bgImage: "assets/images/gallery/gallery_03.jpg",
-      tagText: "Eco-Art Academy &bull; Ijora Badia",
+      tagText: "Eco-Art Academy &bull; Nigeria",
       title: "Upcycling Waste into Global Exhibitions",
       desc: "I used to collect scrap bottles. Now under Guinness record mentor Adenle, I sculpt them into art that travels to international exhibitions.",
       outcomes: "<span>Full School Sponsorship</span><span class=\"dot-sep\">&bull;</span><span>Mentorship</span><span class=\"dot-sep\">&bull;</span><span>Medical Care</span>"
