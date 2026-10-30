@@ -830,6 +830,18 @@ window.SLUM_DATA = {
     "img": "assets/images/team/founder_1.png"
   },
   {
+    "name": "Yana Good Nigen",
+    "role": "Founder & Executive Director (Wrap)",
+    "bio": "Founder and Executive Director of WRAP, leading global strategic partnerships and social impact initiatives for underserved communities.",
+    "img": "assets/images/team/founder_3.png"
+  },
+  {
+    "name": "Monka Cilmi",
+    "role": "Co-Founder",
+    "bio": "Co-Founder of Slum Art Foundation, championing sustainable creative development, art education, and youth empowerment.",
+    "img": "assets/images/team/founder_2.png"
+  },
+  {
     "name": "Natalie Gilbert",
     "role": "Country Manager \u2014 United States",
     "bio": "Spearheading international partnerships, donor relations, and global outreach across the Americas.",

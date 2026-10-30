@@ -4543,6 +4543,35 @@ body.scrolled-past-hero .navbar,
   transform: translateX(4px);
 }
 
+.btn-gwr-volunteer {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  padding: 1.05rem 1.75rem;
+  border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.btn-gwr-volunteer:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.btn-gwr-volunteer:active {
+  transform: translateY(0);
+}
+
 .btn-preview-comic {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -4893,6 +4922,7 @@ body.scrolled-past-hero .navbar,
     align-items: stretch;
   }
   .btn-gwr-pledge-hero,
+  .btn-gwr-volunteer,
   .btn-preview-comic,
   .btn-download-pdf {
     width: 100%;

@@ -52,18 +52,21 @@ function HeroAnimatorApp() {
         <button
           type="button"
           className="hero-scroll-cue"
-          aria-label="Scroll to discover who we are"
+          aria-label="Register for Guinness World Record"
           onClick={() => {
-            const next = document.getElementById("who-we-are") || document.getElementById("art-shop") || document.querySelector("section:nth-of-type(2)")
-            if (next) next.scrollIntoView({ behavior: "smooth" })
-            else window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+            const comicSection = document.getElementById("guinness-record") || document.querySelector(".gwr-backing-section");
+            if (comicSection) {
+              comicSection.scrollIntoView({ behavior: "smooth" });
+            } else {
+              window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+            }
           }}
         >
           <span className="hsc-pulse-dot" aria-hidden="true">
             <span className="hsc-pulse-ring"></span>
             <span className="hsc-pulse-core"></span>
           </span>
-          <span className="hsc-label">Discover Who We Are</span>
+          <span className="hsc-label">Register for Guinness World Record</span>
           <span className="hsc-icon-bubble" aria-hidden="true">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="12" y1="5" x2="12" y2="19"></line>
