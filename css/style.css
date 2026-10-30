@@ -6324,7 +6324,7 @@ body.scrolled-past-hero .navbar,
    Component Inspiration: @ravikatiyar162/components/minimalist-hero
    - Fits 100% in 1 page (100vh) with zero vertical scroll cut-off
    - Golden Sun Disc with Transparent Makoko Scholar Cutout Overlap
-   - Monumental 3-Line Stacked Headline: from / slum / to school.
+   - Monumental Stacked Headline: Mentorship and support
    - Machined Tactile Direct Giving CTA & Discrete Impact Metadata
    =================================================================== */
 
@@ -6580,7 +6580,6 @@ body.scrolled-past-hero .navbar,
   padding: 0;
   display: flex;
   flex-direction: column;
-  text-transform: lowercase;
 }
 
 .m-hero-word {
