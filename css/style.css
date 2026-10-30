@@ -5447,6 +5447,7 @@ body.modal-open {
 
 .art-impact-header {
   margin-bottom: 2.75rem;
+  text-align: left;
 }
 
 .art-impact-kicker {
@@ -5474,14 +5475,17 @@ body.modal-open {
   color: #ffffff;
   margin-bottom: 0.65rem;
   line-height: 1.15;
+  text-align: left;
 }
 
 .art-impact-sub {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(0.92rem, 1.1vw, 1.05rem);
   color: #94a3b8;
-  max-width: 640px;
-  margin: 0 auto;
+  max-width: 760px;
+  margin: 0;
+  text-align: left;
+  line-height: 1.6;
 }
 
 .art-impact-metrics-grid {
@@ -8526,7 +8530,7 @@ button[data-f="pause"],
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fbbf24;
-  margin: 0.35rem auto 1rem;
+  margin: 0.35rem 0 1rem;
   box-shadow: 0 4px 14px rgba(245, 158, 11, 0.12), inset 0 0 12px rgba(245, 158, 11, 0.08);
 }
 
