@@ -681,6 +681,7 @@
   window.openCustomPortraitModal = function () {
     const modal = document.getElementById('customPortraitModal');
     if (modal) {
+      document.body.classList.add('modal-open');
       modal.classList.add('active');
     }
   };
@@ -795,6 +796,7 @@
   // Close All Modals
   window.closeAllModals = function () {
     document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+    document.body.classList.remove('modal-open');
     window.closeVideoModal();
     toggleCartDrawer(false);
   };

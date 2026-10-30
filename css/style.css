@@ -2578,16 +2578,31 @@ body.scrolled-past-hero .navbar,
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(11, 17, 30, 0.75);
-  backdrop-filter: blur(8px);
-  z-index: 2000;
+  background: rgba(8, 12, 22, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 100000 !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 3.5rem 1.25rem 2.5rem !important;
   opacity: 0;
   visibility: hidden;
-  transition: all var(--transition-normal);
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+body.modal-open .navbar,
+body:has(.modal-overlay.active) .navbar {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-100%) !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+body.modal-open {
+  overflow: hidden !important;
 }
 
 .modal-overlay.active {
@@ -2597,15 +2612,17 @@ body.scrolled-past-hero .navbar,
 
 .modal-card {
   background: #ffffff;
-  border-radius: var(--radius-xl);
+  border-radius: 24px;
   max-width: 720px;
   width: 100%;
-  max-height: 90vh;
+  max-height: calc(100vh - 6rem) !important;
   overflow-y: auto;
-  box-shadow: var(--shadow-xl);
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.12);
   position: relative;
-  transform: scale(0.94);
-  transition: transform var(--transition-normal);
+  z-index: 2;
+  margin: auto;
+  transform: scale(0.96) translateY(12px);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.24s ease;
 }
 
 .modal-overlay.active .modal-card {
@@ -8081,16 +8098,21 @@ button[data-f="pause"],
   transition: all 0.2s ease;
 }
 
-/* Custom Portrait Showcase Callout */
+/* ===================================================================
+   AUTHENTIC HANDCRAFTED CUSTOM PORTRAIT SHOWCASE (ATELIER SUITE)
+   Grounded in fine-art atelier warmth, authentic canvas showcase,
+   natural typography, zero generic SaaS buzzwords or dark neon blocks
+   =================================================================== */
+
 .custom-portrait-callout {
-  margin: 1.5rem auto 2.5rem;
-  max-width: 1200px;
-  background: linear-gradient(135deg, #090d16 0%, #151d30 55%, #0d1424 100%);
-  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  margin: 2.25rem auto 3rem;
+  max-width: 1280px;
+  background: #ffffff;
+  border: 1.5px solid rgba(226, 232, 240, 0.95);
   border-radius: 24px;
-  padding: 2.2rem 2.5rem;
-  color: #ffffff;
-  box-shadow: 0 16px 40px rgba(9, 13, 22, 0.25), 0 0 35px rgba(245, 158, 11, 0.08);
+  padding: 2.25rem 2.5rem;
+  color: #0f172a;
+  box-shadow: 0 14px 38px rgba(15, 23, 42, 0.05), 0 2px 6px rgba(0, 0, 0, 0.02);
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -8099,182 +8121,289 @@ button[data-f="pause"],
 .custom-portrait-callout::before {
   content: '';
   position: absolute;
-  top: -40%;
-  right: -15%;
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.custom-portrait-callout::after {
-  content: '';
-  position: absolute;
-  bottom: -40%;
-  left: 10%;
-  width: 360px;
-  height: 360px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ea580c 0%, #f59e0b 50%, #fbbf24 100%);
+  opacity: 0.9;
 }
 
 .cpc-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 260px 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 2.5rem;
   position: relative;
   z-index: 1;
 }
 
+/* Visual Canvas Showcase */
+.cpc-visual-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
+.cpc-frame-wrap {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 4px solid #ffffff;
+  outline: 1px solid rgba(226, 232, 240, 0.8);
+  background: #f8fafc;
+  aspect-ratio: 4 / 5;
+}
+
+.cpc-showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cpc-frame-wrap:hover .cpc-showcase-img {
+  transform: scale(1.04);
+}
+
+.cpc-frame-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.86);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.cpc-frame-badge i {
+  color: #fbbf24;
+}
+
+.cpc-artist-caption {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.74rem;
+  color: #64748b;
+  line-height: 1.35;
+  padding: 0 4px;
+}
+
+.cpc-caption-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  flex-shrink: 0;
+}
+
+/* Content Column */
 .cpc-content {
-  flex: 1;
-  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .cpc-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.78rem;
+  gap: 6px;
+  font-size: 0.76rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #fbbf24;
-  background: rgba(245, 158, 11, 0.15);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  padding: 0.35rem 0.85rem;
+  color: #d97706;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  padding: 4px 12px;
   border-radius: 9999px;
-  margin-bottom: 0.85rem;
+  width: fit-content;
 }
 
 .cpc-title {
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-  font-weight: 900;
-  color: #ffffff;
+  font-size: clamp(1.45rem, 2.2vw, 1.95rem);
+  font-weight: 800;
+  color: #0f172a;
   letter-spacing: -0.025em;
-  margin-bottom: 0.65rem;
   line-height: 1.2;
+  margin: 0;
 }
 
 .cpc-desc {
-  font-size: 0.96rem;
-  color: #cbd5e1;
+  font-size: 0.95rem;
+  color: #475569;
   line-height: 1.6;
-  margin-bottom: 1.25rem;
-  max-width: 680px;
+  margin: 0;
+  max-width: 720px;
 }
 
-.cpc-desc strong {
-  color: #fbbf24;
-}
-
-.cpc-features {
+/* 3-Step Process Row */
+.cpc-process-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-}
-
-.cpc-feat-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 0.84rem;
-  color: #e2e8f0;
-  font-weight: 600;
-}
-
-.cpc-actions {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 0.85rem;
-  flex-shrink: 0;
-  min-width: 260px;
-}
-
-.cpc-price-tag {
-  text-align: center;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.85rem 1.15rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 16px;
-  padding: 0.75rem 1.25rem;
-  width: 100%;
-  box-sizing: border-box;
+  margin: 0.35rem 0;
+  width: fit-content;
+  max-width: 100%;
 }
 
-.cpc-price-label {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #94a3b8;
+.cpc-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.cpc-price-val {
-  display: block;
-  font-size: 1.65rem;
-  font-weight: 900;
-  color: #fbbf24;
-  line-height: 1.1;
-  margin: 0.15rem 0;
-}
-
-.cpc-price-val small {
-  font-size: 0.95rem;
-  color: #cbd5e1;
-  font-weight: 600;
-}
-
-.cpc-price-sub {
-  display: block;
-  font-size: 0.76rem;
-  color: #4ade80;
-  font-weight: 700;
-}
-
-.btn-luxury-commission {
-  width: 100%;
-  justify-content: center;
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  color: #ffffff;
-  font-size: 0.96rem;
+.cpc-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fef3c7;
+  color: #d97706;
+  font-size: 0.75rem;
   font-weight: 800;
-  padding: 0.85rem 1.4rem;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
-  transition: all 0.25s ease;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.btn-luxury-commission:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(245, 158, 11, 0.5);
-  background: linear-gradient(135deg, #fbbf24 0%, #ea580c 100%);
-  color: #ffffff;
+.cpc-step-text {
+  display: flex;
+  flex-direction: column;
 }
 
-.cpc-wa-link {
+.cpc-step-text strong {
   font-size: 0.82rem;
-  color: #4ade80;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-weight: 600;
-  transition: color 0.2s ease;
+  color: #0f172a;
+  line-height: 1.2;
 }
 
-.cpc-wa-link:hover {
-  color: #86efac;
-  text-decoration: underline;
+.cpc-step-text span {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.cpc-step-arrow {
+  color: #cbd5e1;
+  font-size: 0.75rem;
+}
+
+/* Actions Row */
+.cpc-actions-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.35rem;
+}
+
+.btn-cpc-order {
+  padding: 0.8rem 1.6rem;
+  font-size: 0.94rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cpc-price-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.55rem 1rem;
+  background: #f1f5f9;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  color: #334155;
+}
+
+.cpc-pill-sep {
+  color: #cbd5e1;
+}
+
+.cpc-wa-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #059669;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.45rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.08);
+  transition: all 0.2s ease;
+}
+
+.cpc-wa-pill:hover {
+  background: rgba(16, 185, 129, 0.16);
+  color: #047857;
+}
+
+/* Responsive adjustments */
+@media (max-width: 980px) {
+  .cpc-inner {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .cpc-visual-showcase {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .custom-portrait-callout {
+    padding: 1.5rem 1.25rem;
+    border-radius: 18px;
+  }
+  .cpc-process-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+    width: 100%;
+  }
+  .cpc-step-arrow {
+    display: none;
+  }
+  .cpc-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .btn-cpc-order {
+    width: 100%;
+    justify-content: center;
+  }
+  .cpc-price-pill {
+    justify-content: center;
+    font-size: 0.78rem;
+  }
+  .cpc-wa-pill {
+    justify-content: center;
+  }
 }
 
 /* Modal Form Styles */
