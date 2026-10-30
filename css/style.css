@@ -5154,19 +5154,29 @@ body.modal-open {
   line-height: 1.7;
   color: #e2e8f0;
   font-style: italic;
-  border-left: 3px solid #f59e0b;
+  border-left: 3px solid #f59e0b !important;
   padding-left: 1.25rem;
   margin-bottom: 1.15rem;
-  background: rgba(245, 158, 11, 0.04);
+  background: rgba(9, 14, 26, 0.75) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   padding: 0.9rem 1.25rem;
   border-radius: 0 12px 12px 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .eco-mission-statement {
   font-size: clamp(0.95rem, 1.12vw, 1.05rem);
   line-height: 1.7;
-  color: #94a3b8;
+  color: #cbd5e1;
   margin: 0;
+  background: rgba(9, 14, 26, 0.65) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  padding: 1rem 1.25rem !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .eco-mission-statement strong {
@@ -5174,42 +5184,45 @@ body.modal-open {
   font-weight: 700;
 }
 
-.eco-pointcloud-stage,
-.eco-3d-stage-card {
-  position: relative;
-  z-index: 2;
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  overflow: visible !important;
-  box-shadow: none !important;
-  margin-bottom: 2rem !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-
-.eco-pointcloud-bar,
-.eco-3d-stage-bar {
-  display: none !important;
-}
-
-.eco-pointcloud-canvas-wrap,
-.eco-3d-canvas-wrap {
+/* Full section point cloud canvas background — direct on site behind text */
+.eco-pointcloud-bg-wrap {
+  position: absolute !important;
+  inset: 0 !important;
   width: 100% !important;
-  height: 620px !important;
-  position: relative !important;
-  background: transparent !important;
-  overflow: visible !important;
+  height: 100% !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
 }
 
 #ecoPointCloudCanvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-  pointer-events: none;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  pointer-events: none !important;
   background: transparent !important;
 }
 
+.eco-pointcloud-spacer {
+  width: 100% !important;
+  height: 560px !important;
+  pointer-events: none !important;
+  margin: 1.5rem 0 !important;
+}
+
+@media (max-width: 768px) {
+  .eco-pointcloud-spacer {
+    height: 420px !important;
+    margin: 1rem 0 !important;
+  }
+}
+
+.eco-pointcloud-stage,
+.eco-3d-stage-card,
+.eco-pointcloud-bar,
+.eco-3d-stage-bar,
 .eco-pointcloud-overlay-vignette {
   display: none !important;
 }

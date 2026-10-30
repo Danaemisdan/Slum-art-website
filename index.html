@@ -1092,7 +1092,7 @@
                 </div>
                 <div class="gwr-monograph-preview-pill">
                   <i class="fas fa-book-open"></i>
-                  <span>Look Inside • 7 Sample Pages</span>
+                  <span>Look Inside</span>
                 </div>
               </div>
               <div class="gwr-monograph-pedestal-shadow"></div>
@@ -1108,9 +1108,6 @@
                 120-page full-color historical archive authored by 5,000 children across Nigeria. Chronicles the journey from discarded PET bottles to community art academies.
               </p>
               <div class="gwr-meta-row">
-                <button type="button" class="btn-gwr-look-inside" onclick="window.openComicBookReader(0)">
-                  <i class="fas fa-book-open text-amber"></i> Read 7 Sample Pages
-                </button>
                 <span class="gwr-meta-note"><i class="fas fa-globe text-amber"></i> Printed &amp; Shipped Worldwide</span>
               </div>
             </div>
@@ -1129,7 +1126,13 @@
        =================================================================== -->
   <section class="eco-bottle-school-section" id="eco-school-3d">
     <div class="eco-ambient-glow"></div>
-    <div class="container">
+    
+    <!-- 3D Point Cloud Canvas directly on the page background behind the text -->
+    <div id="ecoPointCloudContainer" class="eco-pointcloud-bg-wrap">
+      <canvas id="ecoPointCloudCanvas"></canvas>
+    </div>
+
+    <div class="container position-relative" style="z-index: 2;">
       
       <!-- Section Header with High-Empathy Humanitarian Truth -->
       <div class="eco-3d-header">
@@ -1151,12 +1154,8 @@
         </div>
       </div>
 
-      <!-- 3D Realistic Point Cloud Architecture (Directly on Site, Scroll-Driven) -->
-      <div class="eco-pointcloud-stage">
-        <div id="ecoPointCloudContainer" class="eco-pointcloud-canvas-wrap">
-          <canvas id="ecoPointCloudCanvas"></canvas>
-        </div>
-      </div>
+      <!-- Architectural Showcase Window: Point Cloud Academy floats here directly on the site, while ambient particles drift behind text above & below -->
+      <div class="eco-pointcloud-spacer" aria-hidden="true"></div>
 
       <!-- 3 Impact Pillars Connecting Directly to Comic Book Proceeds & Sympathy -->
       <div class="eco-3d-impact-grid">
@@ -1923,6 +1922,7 @@
   <script src="js/canvas-crowd.js?v=20261028_v35"></script>
   <!-- Three.js & Eco-School Point Cloud Architecture -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="js/eco-school-pointcloud.js?v=20261031_v72"></script>
+  <script src="js/logo-points-data.js?v=20261031_v73"></script>
+  <script src="js/eco-school-pointcloud.js?v=20261031_v73"></script>
 </body>
 </html>
