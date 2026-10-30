@@ -5689,8 +5689,8 @@ body.scrolled-past-hero .navbar,
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   background: #060911;
 }
 
@@ -5698,17 +5698,17 @@ body.scrolled-past-hero .navbar,
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
-  min-height: 280px;
+  min-height: 380px;
 }
 
 .split-cta-card {
   position: relative;
-  padding: 3.5rem 3.5rem;
+  padding: 4.5rem 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  min-height: 280px;
+  min-height: 380px;
 }
 
 .split-card-bg {
@@ -5716,107 +5716,151 @@ body.scrolled-past-hero .navbar,
   inset: 0;
   background-size: cover;
   background-position: center;
-  filter: grayscale(25%);
   transform: scale(1.02);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+  filter: saturate(1.2) contrast(1.08) brightness(0.88);
 }
 
 .split-cta-card:hover .split-card-bg {
   transform: scale(1.06);
+  filter: saturate(1.3) contrast(1.1) brightness(0.96);
 }
 
-.split-card-scrim {
+/* Luminous, rich, colorful scrims allowing documentary photos to shine */
+.scrim--volunteer {
   position: absolute;
   inset: 0;
-  transition: opacity 0.3s ease;
+  background: 
+    linear-gradient(135deg, rgba(225, 29, 72, 0.62) 0%, rgba(194, 65, 12, 0.58) 50%, rgba(15, 23, 42, 0.72) 100%),
+    radial-gradient(circle at 20% 30%, rgba(251, 146, 60, 0.4) 0%, transparent 60%);
+  mix-blend-mode: multiply;
+  transition: opacity 0.4s ease;
 }
 
-.scrim--crimson {
-  background: linear-gradient(180deg, rgba(10, 13, 20, 0.65) 0%, rgba(10, 13, 20, 0.94) 100%),
-              linear-gradient(135deg, rgba(194, 84, 27, 0.45) 0%, rgba(10, 13, 20, 0.75) 100%);
+.scrim--works {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(135deg, rgba(14, 116, 144, 0.62) 0%, rgba(30, 58, 138, 0.62) 50%, rgba(15, 23, 42, 0.72) 100%),
+    radial-gradient(circle at 80% 30%, rgba(56, 189, 248, 0.35) 0%, transparent 60%);
+  mix-blend-mode: multiply;
+  transition: opacity 0.4s ease;
 }
 
-.scrim--teal {
-  background: linear-gradient(180deg, rgba(10, 13, 20, 0.65) 0%, rgba(10, 13, 20, 0.94) 100%),
-              linear-gradient(135deg, rgba(14, 116, 144, 0.4) 0%, rgba(10, 13, 20, 0.75) 100%);
+.split-card-scrim-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.55) 100%);
+  pointer-events: none;
+}
+
+.split-cta-card:hover .scrim--volunteer,
+.split-cta-card:hover .scrim--works {
+  opacity: 0.88;
 }
 
 .split-card-content {
   position: relative;
   z-index: 2;
-  max-width: 480px;
+  max-width: 490px;
   text-align: center;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1rem;
 }
 
-.split-script-title {
+.split-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.badge--volunteer { color: #fecdd3; border-color: rgba(254, 205, 211, 0.4); }
+.badge--works { color: #bae6fd; border-color: rgba(186, 230, 253, 0.4); }
+
+.split-title {
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(1.85rem, 2.8vw, 2.4rem);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
   font-weight: 800;
   color: #ffffff;
-  line-height: 1.15;
+  line-height: 1.1;
   letter-spacing: -0.025em;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.9);
+  margin: 0;
 }
 
 .split-desc {
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.95);
   margin: 0;
   font-weight: 500;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.75);
+  max-width: 440px;
 }
 
-.btn-split-white {
+.btn-split-primary {
   background: #ffffff;
   color: #0f172a !important;
   font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.75rem 2.5rem;
+  font-size: 0.98rem;
+  padding: 0.85rem 2.4rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: none;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  margin-top: 0.5rem;
-}
-
-.btn-split-white:hover {
-  background: #f8fafc;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-}
-
-.btn-split-amber {
-  background: #e06927;
-  color: #ffffff !important;
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.75rem 2.25rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.8);
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  box-shadow: 0 4px 16px rgba(224, 105, 39, 0.35);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: 8px;
   margin-top: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-split-primary:hover {
+  background: #f8fafc;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(255, 255, 255, 0.6);
+  color: #c2410c !important;
 }
 
-.btn-split-amber:hover {
-  background: #c2541b;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(224, 105, 39, 0.45);
+.btn-split-orange {
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.98rem;
+  padding: 0.85rem 2.4rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  box-shadow: 0 6px 22px rgba(234, 88, 12, 0.45);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-split-orange:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(234, 88, 12, 0.65);
+  background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
   color: #ffffff !important;
 }
 
-/* Center Emblem */
+/* Center Helping Heart Emblem */
 .split-center-emblem {
   position: absolute;
   top: 50%;
@@ -5824,37 +5868,65 @@ body.scrolled-past-hero .navbar,
   transform: translate(-50%, -50%);
   z-index: 10;
   pointer-events: none;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.emblem-heart-circle {
-  width: 76px;
-  height: 76px;
+.emblem-pulse-ring {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.35) 0%, rgba(245, 158, 11, 0.2) 60%, transparent 80%);
+  animation: emblemPulse 3s ease-in-out infinite;
+}
+
+@keyframes emblemPulse {
+  0%, 100% { transform: scale(0.95); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+.emblem-outer-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f43f5e 0%, #fbbf24 50%, #0ea5e9 100%);
+  padding: 3px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(244, 63, 94, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emblem-inner-circle {
+  width: 86px;
+  height: 86px;
   border-radius: 50%;
   background: #ffffff;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  border: 3px solid rgba(255, 255, 255, 0.6);
+  position: relative;
+  box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.9), inset 0 -3px 8px rgba(0, 0, 0, 0.08);
 }
 
-.emblem-actual-heart {
-  font-size: 2.25rem;
-  color: #e11d48;
-  filter: drop-shadow(0 2px 8px rgba(225, 29, 72, 0.4));
-  animation: emblemHeartBeat 2s ease-in-out infinite;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.emblem-helping-icon {
+  font-size: 2.35rem;
+  background: linear-gradient(135deg, #e11d48 0%, #f97316 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(225, 29, 72, 0.35));
+  animation: helpingHeartFloat 2.6s ease-in-out infinite;
+  display: block;
+  line-height: 1;
 }
 
-@keyframes emblemHeartBeat {
-  0%, 100% { transform: scale(1); }
-  14% { transform: scale(1.15); }
-  28% { transform: scale(1); }
-  42% { transform: scale(1.15); }
-  70% { transform: scale(1); }
+@keyframes helpingHeartFloat {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.08) translateY(-2px); }
 }
 
 @media (max-width: 900px) {
@@ -5862,10 +5934,23 @@ body.scrolled-past-hero .navbar,
     grid-template-columns: 1fr;
   }
   .split-cta-card {
-    padding: 3rem 1.5rem;
+    padding: 3.5rem 1.75rem;
+    min-height: 300px;
   }
   .split-center-emblem {
-    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    width: 74px;
+    height: 74px;
+  }
+  .emblem-inner-circle {
+    width: 70px;
+    height: 70px;
+  }
+  .emblem-helping-icon {
+    font-size: 1.85rem;
   }
 }
 
@@ -8836,11 +8921,35 @@ html, body {
     min-height: 220px !important;
   }
   .split-center-emblem {
-    display: none !important;
+    display: flex !important;
+    width: 68px !important;
+    height: 68px !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 10 !important;
+  }
+  .emblem-inner-circle {
+    width: 64px !important;
+    height: 64px !important;
+  }
+  .emblem-helping-icon {
+    font-size: 1.7rem !important;
   }
 }
 
 @media (max-width: 640px) {
+  .split-center-emblem {
+    width: 58px !important;
+    height: 58px !important;
+  }
+  .emblem-inner-circle {
+    width: 54px !important;
+    height: 54px !important;
+  }
+  .emblem-helping-icon {
+    font-size: 1.45rem !important;
+  }
   .split-cta-card {
     padding: 2.25rem 1.15rem !important;
     min-height: 200px !important;
