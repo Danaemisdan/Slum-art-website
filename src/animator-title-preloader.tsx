@@ -394,23 +394,13 @@ function Hand({ id, side }: { id: string; side: "l" | "r" }) {
   if (side === "l") {
     return (
       <g filter={"url(#" + id + "-paint)"}>
-        {/* Seamless forearm and sleeve continuing naturally down from wrist cuff */}
-        <path
-          d="M -76 280 C -78 460 -180 720 -1800 1350 L -1600 1600 C -120 880 50 480 56 280 Z"
-          fill={"url(#" + id + "-left-sleeve-grad)"}
-        />
-        <path
-          d="M -76 280 C -78 460 -180 720 -1800 1350 L -1750 1350 C -160 720 -70 440 -66 280 Z"
-          fill="#4a6385"
-          opacity="0.25"
-        />
-        {/* High-resolution authentic Nigerian child hand with soft cuff fade */}
+        {/* Natural photographic Nigerian child open hand with naturally proportioned forearm sleeve */}
         <image
           href="assets/images/child_hand_left_realistic.png"
-          x="-80"
-          y="-100"
-          width="210"
-          height="420"
+          x="-474"
+          y="-401"
+          width="475"
+          height="682"
         />
       </g>
     )
@@ -418,23 +408,13 @@ function Hand({ id, side }: { id: string; side: "l" | "r" }) {
 
   return (
     <g filter={"url(#" + id + "-paint)"}>
-      {/* Seamless forearm and sleeve continuing naturally down from wrist cuff */}
-      <path
-        d="M -62 280 C -50 480 120 880 1600 1600 L 1800 1350 C 180 720 78 460 74 280 Z"
-        fill={"url(#" + id + "-right-sleeve-grad)"}
-      />
-      <path
-        d="M 74 280 C 78 460 180 720 1800 1350 L 1750 1350 C 160 720 70 440 64 280 Z"
-        fill="#4a6385"
-        opacity="0.25"
-      />
-      {/* High-resolution authentic Nigerian child hand with soft cuff fade */}
+      {/* Natural photographic Nigerian child open hand with naturally proportioned forearm sleeve */}
       <image
         href="assets/images/child_hand_right_realistic.png"
-        x="-130"
-        y="-100"
-        width="210"
-        height="420"
+        x="0"
+        y="-393"
+        width="483"
+        height="679"
       />
     </g>
   )
@@ -1181,7 +1161,7 @@ export default function AnimatorTitlePreloader({
       const sw = stage.clientWidth
       if (!ww || !sw) return
       const tall = stage.clientHeight > sw * 1.15
-      const room = sw * (tall ? 0.74 : sw > 720 ? 0.6 : 0.7)
+      const room = sw * (tall ? 0.58 : sw > 720 ? 0.6 : 0.7)
       const natural = ww / fitRef.current
       // A portrait screen has height to spare, so the word may grow past its base size there.
       const fit = Math.min(tall ? 1.5 : 1, room / natural)
@@ -1540,11 +1520,11 @@ export default function AnimatorTitlePreloader({
   // Hands hold the word at its ends, scaled to its size.
   const armDeg = metrics && metrics.tall ? ARM_DEG_TALL : ARM_DEG
   armRef.current = armDeg
-  const handScale = metrics ? metrics.size * (metrics.tall ? 0.0050 : 0.0040) : 0
+  const handScale = metrics ? metrics.size * (metrics.tall ? 0.0035 : 0.0030) : 0
   const handY = metrics ? metrics.base - metrics.size * 0.28 : 0
   const firstBox = metrics && metrics.boxes[0]
   const lastBox = metrics && metrics.boxes[metrics.boxes.length - 1]
-  const handOffset = metrics ? metrics.size * (metrics.tall ? 0.72 : 0.88) : 0
+  const handOffset = metrics ? metrics.size * (metrics.tall ? 0.05 : 0.10) : 0
   const handLX = firstBox && metrics ? firstBox.x - handOffset : 0
   const handRX = lastBox && metrics ? lastBox.x + lastBox.w + handOffset : 0
 
@@ -1631,16 +1611,16 @@ export default function AnimatorTitlePreloader({
                   <feDropShadow dx="-2" dy="5" stdDeviation="6" floodColor="#0a0301" floodOpacity="0.25" />
                 </filter>
                 <linearGradient id={uid + "-left-sleeve-grad"} x1="50%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#1a293e" />
-                  <stop offset="25%" stopColor="#152132" />
-                  <stop offset="60%" stopColor="#0e1724" />
-                  <stop offset="100%" stopColor="#080c14" />
+                  <stop offset="0%" stopColor="#121e2d" />
+                  <stop offset="25%" stopColor="#0c1521" />
+                  <stop offset="60%" stopColor="#080e18" />
+                  <stop offset="100%" stopColor="#03060a" />
                 </linearGradient>
                 <linearGradient id={uid + "-right-sleeve-grad"} x1="50%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#1a293e" />
-                  <stop offset="25%" stopColor="#152132" />
-                  <stop offset="60%" stopColor="#0e1724" />
-                  <stop offset="100%" stopColor="#080c14" />
+                  <stop offset="0%" stopColor="#121e2d" />
+                  <stop offset="25%" stopColor="#0c1521" />
+                  <stop offset="60%" stopColor="#080e18" />
+                  <stop offset="100%" stopColor="#03060a" />
                 </linearGradient>
                 <filter id={uid + "-finger-shadow"} x="-20%" y="-20%" width="140%" height="150%">
                   <feDropShadow dx="-1" dy="3" stdDeviation="2.5" floodColor="#140602" floodOpacity="0.45" />

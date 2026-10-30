@@ -166,7 +166,10 @@
           </div>
           <div class="artwork-card-top-badges">
             <span class="card-cat-badge">${item.category}</span>
-            <span class="artwork-provenance-seal"><i class="fas fa-certificate text-amber"></i> Certified Original</span>
+            <span class="artwork-provenance-seal" title="Created by Slum Art scholars under 4× Guinness World Record holder Adetunwase Adenle">
+              <img src="assets/images/gwr-logo.svg" alt="Guinness World Records" class="gwr-card-seal-icon">
+              <span>GWR Certified Original</span>
+            </span>
           </div>
           <button class="card-quickview-btn" title="Private Viewing Lens">
             <i class="fas fa-expand"></i> <span>Private View</span>
@@ -180,7 +183,7 @@
           <h4 class="artwork-title">${item.title}</h4>
           <div class="artwork-artist-info">
             <span class="artist-name">By <strong>${item.artist}</strong></span>
-            <span class="artist-age-badge">${item.age}</span>
+            <span class="artist-age-badge">${item.age.toLowerCase().includes('age') ? item.age : 'Age ' + item.age}</span>
           </div>
           <div class="artwork-medium">
             <i class="fas fa-paintbrush text-amber"></i> ${item.medium}

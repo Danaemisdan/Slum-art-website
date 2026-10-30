@@ -1228,13 +1228,13 @@ body.scrolled-past-hero .navbar,
   gap: 2.25rem;
 }
 
-/* Individual Museum Artwork Card - Light Theme */
+/* Individual Museum Artwork Card - Luxury Platinum & Gold Edition */
 .artwork-card {
   background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(226, 232, 240, 0.95);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
@@ -1278,43 +1278,56 @@ body.scrolled-past-hero .navbar,
 
 .artwork-card-top-badges {
   position: absolute;
-  top: 1.45rem;
-  left: 1.45rem;
-  right: 1.45rem;
+  top: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
   pointer-events: none;
   z-index: 2;
 }
 
 .card-cat-badge {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  color: #b45309;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fbbf24;
   font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.04em;
-  padding: 0.3rem 0.8rem;
+  letter-spacing: 0.03em;
+  padding: 0.32rem 0.8rem;
   border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(245, 158, 11, 0.35);
 }
 
 .artwork-provenance-seal {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  color: #334155;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #0f172a;
   font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  padding: 0.3rem 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 0.32rem 0.75rem;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  gap: 0.4rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.gwr-card-seal-icon {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .card-quickview-btn {
@@ -4252,9 +4265,17 @@ body.modal-open {
    Screenshot 2 Velvet Obsidian & Sun Amber Luxury Atelier
    =================================================================== */
 
+/* ===================================================================
+   GUINNESS WORLD RECORD COLLABORATIVE COMIC BOOK (100VH VIEWPORT FIT)
+   Exact Single-Screen Fit on Desktop/Laptop & Mobile Devices
+   =================================================================== */
+
 .gwr-backing-section {
-  padding: 6rem 0 6.5rem;
-  scroll-margin-top: 100px;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  padding: 0;
+  scroll-margin-top: 80px;
   background-color: #070910;
   background-image: 
     radial-gradient(circle at 75% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 55%),
@@ -4265,6 +4286,21 @@ body.modal-open {
   overflow: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.gwr-backing-section .container {
+  height: 100%;
+  max-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: clamp(0.5rem, 1.5vh, 1.5rem);
+  padding-bottom: clamp(0.5rem, 1.5vh, 1.5rem);
 }
 
 .gwr-ambient-atmosphere {
@@ -4278,54 +4314,65 @@ body.modal-open {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.25fr 0.85fr;
-  gap: 4rem;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: clamp(1.5rem, 3.2vw, 3rem);
   align-items: center;
+  width: 100%;
+  max-height: 94vh;
 }
 
 .gwr-narrative-column {
   max-width: 680px;
 }
 
+/* Official GWR Crest Badge - Premium Frosted Gold with Official Emblem */
 .gwr-crest-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.65rem;
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
   font-size: 0.74rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #f59e0b;
-  background: rgba(245, 158, 11, 0.08);
-  border: 1px solid rgba(245, 158, 11, 0.28);
-  padding: 0.4rem 1rem;
+  color: #fbbf24;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.14) 0%, rgba(15, 23, 42, 0.85) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  padding: 0.45rem 1.15rem 0.45rem 0.6rem;
   border-radius: 9999px;
-  margin-bottom: 1.35rem;
+  margin-bottom: clamp(0.45rem, 1vh, 1rem);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), 0 0 15px rgba(245, 158, 11, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-.gwr-crest-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #f59e0b;
-  box-shadow: 0 0 8px #f59e0b;
-  animation: gwrCrestPulse 2s infinite ease-in-out;
+.gwr-badge-emblem {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  flex-shrink: 0;
+  display: block;
 }
 
-@keyframes gwrCrestPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.45; }
+.gwr-seal-mini-emblem {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 .gwr-editorial-title {
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(2.2rem, 3.8vw, 3.25rem);
+  font-size: clamp(1.65rem, 2.6vw, 2.45rem);
   font-weight: 900;
   line-height: 1.12;
   color: #ffffff;
   letter-spacing: -0.035em;
-  margin-bottom: 1.15rem;
+  margin-bottom: clamp(0.35rem, 0.8vh, 0.65rem);
 }
 
 .gwr-gold-text {
@@ -4337,30 +4384,27 @@ body.modal-open {
 
 .gwr-editorial-subtitle {
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+  font-size: clamp(0.85rem, 1.05vw, 1rem);
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.35;
   color: #f1f5f9;
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.35rem, 0.8vh, 0.65rem);
 }
 
 .gwr-editorial-body {
-  font-size: 0.96rem;
-  line-height: 1.7;
+  font-size: clamp(0.8rem, 0.95vw, 0.88rem);
+  line-height: 1.45;
   color: #94a3b8;
-  margin-bottom: 2rem;
+  margin-bottom: clamp(0.6rem, 1.2vh, 1.15rem);
 }
 
-/* ===================================================================
-   GENUINE INSCRIBED PATRON REGISTRY (No SaaS Pricing Clichés)
-   =================================================================== */
-
+/* Patron Tier Selection Registry */
 .gwr-patron-registry-card {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 1.75rem 2rem;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: clamp(0.85rem, 1.5vh, 1.35rem) clamp(1rem, 1.8vw, 1.6rem);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -4369,9 +4413,9 @@ body.modal-open {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.35rem;
+  margin-bottom: clamp(0.45rem, 0.9vh, 0.85rem);
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .gwr-registry-title {
@@ -4379,7 +4423,7 @@ body.modal-open {
   align-items: center;
   gap: 0.55rem;
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #f59e0b;
@@ -4390,31 +4434,29 @@ body.modal-open {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   color: #34d399;
   font-weight: 700;
 }
 
-/* Tactile Patron Tiers */
 .gwr-pledge-tiers-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  gap: 0.55rem;
+  margin-bottom: clamp(0.65rem, 1.1vh, 1rem);
 }
 
 .gwr-pledge-tier-pill {
   background: rgba(255, 255, 255, 0.03);
   border: 1.5px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
-  padding: 1.15rem 0.65rem 0.95rem;
+  border-radius: 12px;
+  padding: clamp(0.5rem, 1vh, 0.85rem) 0.4rem;
   text-align: center;
   cursor: pointer;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   width: 100%;
 }
 
@@ -4432,63 +4474,62 @@ body.modal-open {
 
 .pledge-tier-val {
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 1.55rem;
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
   font-weight: 900;
   color: #fbbf24;
   line-height: 1;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.2rem;
 }
 
 .pledge-tier-title {
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.82rem;
+  font-size: clamp(0.72rem, 0.85vw, 0.78rem);
   font-weight: 800;
   color: #ffffff;
-  margin-bottom: 0.25rem;
-  line-height: 1.2;
+  margin-bottom: 0.15rem;
+  line-height: 1.15;
 }
 
 .pledge-tier-sub {
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 0.72vw, 0.65rem);
   color: #94a3b8;
-  line-height: 1.35;
+  line-height: 1.25;
 }
 
-/* Action Buttons */
 .gwr-cta-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
-  margin-bottom: 1.35rem;
+  margin-bottom: clamp(0.5rem, 0.9vh, 0.85rem);
 }
 
 .btn-gwr-pledge-action {
   flex: 1.3;
-  min-width: 240px;
+  min-width: 200px;
   background: #f59e0b;
   color: #060911 !important;
-  padding: 1.05rem 1.6rem;
+  padding: clamp(0.65rem, 1.1vh, 0.85rem) 1.25rem;
   border-radius: 12px;
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
   font-weight: 900;
-  font-size: 1.02rem;
+  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
   letter-spacing: -0.01em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
+  gap: 0.55rem;
   border: none;
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.35);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-gwr-pledge-action:hover {
   background: #fbbf24;
   transform: translateY(-2px);
-  box-shadow: 0 14px 35px rgba(245, 158, 11, 0.5);
+  box-shadow: 0 12px 30px rgba(245, 158, 11, 0.5);
   color: #060911 !important;
 }
 
@@ -4504,15 +4545,15 @@ body.modal-open {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #ffffff;
-  padding: 1.05rem 1.75rem;
+  padding: clamp(0.65rem, 1.1vh, 0.85rem) 1.25rem;
   border-radius: 12px;
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: clamp(0.82rem, 0.95vw, 0.9rem);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
+  gap: 0.55rem;
   cursor: pointer;
   transition: all 0.22s ease;
   white-space: nowrap;
@@ -4526,16 +4567,15 @@ body.modal-open {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
-/* Institutional Transparency */
 .gwr-institutional-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.85rem;
-  padding-top: 1.15rem;
+  gap: 0.5rem;
+  padding-top: clamp(0.4rem, 0.8vh, 0.65rem);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   color: #94a3b8;
 }
 
@@ -4545,10 +4585,7 @@ body.modal-open {
   gap: 0.45rem;
 }
 
-/* ===================================================================
-   TANGIBLE MUSEUM HARDCOVER MONOGRAPH SHOWCASE (Right Column)
-   =================================================================== */
-
+/* Right Column: Tangible Museum Monograph Card */
 .gwr-book-column {
   display: flex;
   justify-content: center;
@@ -4558,21 +4595,21 @@ body.modal-open {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: clamp(0.5rem, 1vh, 0.9rem);
   width: 100%;
-  max-width: 380px;
+  max-width: 330px;
 }
 
 .gwr-monograph-display {
   position: relative;
   width: 100%;
-  max-width: 310px;
+  max-width: clamp(190px, 25vw, 260px);
   cursor: pointer;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .gwr-monograph-display:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
 }
 
 .gwr-monograph-frame {
@@ -4584,7 +4621,6 @@ body.modal-open {
   box-shadow: -6px 0 12px rgba(0, 0, 0, 0.4), 16px 24px 50px rgba(0, 0, 0, 0.7);
 }
 
-/* Realistic Bound Hardcover Spine Edge */
 .gwr-monograph-frame::before {
   content: '';
   position: absolute;
@@ -4615,16 +4651,16 @@ body.modal-open {
 
 .gwr-monograph-gwr-seal {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 10px;
+  right: 10px;
   z-index: 3;
   background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
   color: #000000;
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 900;
   letter-spacing: 0.04em;
-  padding: 0.35rem 0.75rem;
+  padding: 0.3rem 0.65rem;
   border-radius: 9999px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
   display: flex;
@@ -4634,20 +4670,20 @@ body.modal-open {
 
 .gwr-monograph-preview-pill {
   position: absolute;
-  bottom: 14px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
-  background: rgba(10, 14, 23, 0.9);
+  background: rgba(10, 14, 23, 0.92);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   color: #ffffff;
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.02em;
-  padding: 0.45rem 1.15rem;
+  padding: 0.4rem 1rem;
   border-radius: 9999px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
   display: flex;
@@ -4661,97 +4697,90 @@ body.modal-open {
   background: #f59e0b;
   color: #060911;
   border-color: #f59e0b;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
 }
 
 .gwr-monograph-pedestal-shadow {
   width: 80%;
-  height: 20px;
-  margin: 10px auto 0;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.75) 0%, transparent 70%);
-  filter: blur(5px);
+  height: 12px;
+  margin: 6px auto 0;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
+  border-radius: 50%;
 }
 
-/* Monograph Archival Meta */
 .gwr-monograph-meta {
-  width: 100%;
-  max-width: 330px;
-  background: rgba(15, 23, 42, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 14px;
-  padding: 1.15rem 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
+  padding: clamp(0.55rem, 0.9vh, 0.8rem) clamp(0.75rem, 1.2vw, 1.1rem);
+  backdrop-filter: blur(12px);
+  width: 100%;
 }
 
 .gwr-meta-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
 .gwr-meta-title {
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.86rem;
+  font-size: 0.82rem;
   font-weight: 800;
   color: #ffffff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .gwr-meta-tag {
-  font-size: 0.66rem;
+  font-size: 0.65rem;
   font-weight: 700;
   color: #f59e0b;
   background: rgba(245, 158, 11, 0.12);
-  padding: 0.2rem 0.5rem;
-  border-radius: 6px;
-  white-space: nowrap;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
 }
 
 .gwr-meta-desc {
-  font-size: 0.78rem;
-  line-height: 1.45;
+  font-size: 0.73rem;
+  line-height: 1.4;
   color: #94a3b8;
-  margin: 0;
+  margin-bottom: 0.45rem;
 }
 
 .gwr-meta-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  padding-top: 0.6rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 0.74rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .btn-gwr-look-inside {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.35);
   color: #ffffff;
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  padding: 0.4rem 0.85rem;
+  padding: 0.35rem 0.75rem;
   border-radius: 8px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.35rem;
   transition: all 0.2s ease;
 }
 
 .btn-gwr-look-inside:hover {
-  background: rgba(245, 158, 11, 0.15);
-  border-color: #f59e0b;
-  color: #fbbf24;
+  background: #f59e0b;
+  color: #060911;
 }
 
 .gwr-meta-note {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   color: #cbd5e1;
   display: inline-flex;
   align-items: center;
@@ -4759,103 +4788,461 @@ body.modal-open {
 }
 
 /* ===================================================================
-   RESPONSIVE GWR BACKING SECTION
+   RESPONSIVE GWR BACKING SECTION - EXACT 100DVH MOBILE FIT
    =================================================================== */
 
 @media (max-width: 991px) {
+  .gwr-backing-section {
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    min-height: 100dvh !important;
+    padding: 72px 0.85rem 10px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+  }
+  .gwr-backing-section .container {
+    height: 100% !important;
+    max-height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
   .gwr-editorial-layout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 0 !important;
   }
   .gwr-narrative-column {
-    max-width: 100%;
+    display: contents !important;
   }
-  .gwr-pledge-tiers-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .gwr-crest-badge {
+    order: 1 !important;
+    font-size: 0.62rem !important;
+    padding: 0.25rem 0.7rem 0.25rem 0.45rem !important;
+    margin-bottom: 0.2rem !important;
+    gap: 0.4rem !important;
   }
-  .gwr-cta-actions {
-    flex-direction: column;
-    align-items: stretch;
+  .gwr-badge-emblem {
+    width: 17px !important;
+    height: 17px !important;
   }
-  .btn-gwr-pledge-action,
-  .btn-gwr-volunteer-action {
-    width: 100%;
-    justify-content: center;
-    min-height: 48px;
+  .gwr-editorial-title {
+    order: 2 !important;
+    font-size: clamp(1.15rem, 4.6vw, 1.35rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.15rem !important;
+    text-align: center !important;
+  }
+  .gwr-editorial-subtitle {
+    order: 3 !important;
+    font-size: 0.72rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.3rem !important;
+    text-align: center !important;
+    opacity: 0.88 !important;
+    max-width: 320px !important;
+  }
+  .gwr-editorial-body {
+    display: none !important;
+  }
+  .gwr-book-column {
+    order: 4 !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0.25rem 0 !important;
   }
   .gwr-monograph-card {
-    max-width: 320px;
-    margin: 0 auto;
+    max-width: 140px !important;
+    gap: 0 !important;
+  }
+  .gwr-monograph-display {
+    max-width: 105px !important;
+  }
+  .gwr-monograph-cover {
+    max-height: 110px !important;
+    object-fit: cover !important;
+  }
+  .gwr-monograph-meta {
+    display: none !important;
+  }
+  .gwr-monograph-gwr-seal {
+    top: 5px !important;
+    right: 5px !important;
+    font-size: 0.48rem !important;
+    padding: 0.15rem 0.4rem !important;
+  }
+  .gwr-seal-mini-emblem {
+    width: 10px !important;
+    height: 10px !important;
+  }
+  .gwr-monograph-preview-pill {
+    bottom: 5px !important;
+    font-size: 0.58rem !important;
+    padding: 0.2rem 0.55rem !important;
+  }
+  .gwr-patron-registry-card {
+    order: 5 !important;
+    padding: 0.5rem 0.65rem !important;
+    border-radius: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .gwr-registry-header {
+    margin-bottom: 0.3rem !important;
+    justify-content: center !important;
+  }
+  .gwr-registry-title {
+    font-size: 0.68rem !important;
+  }
+  .gwr-allocation-tag {
+    display: none !important;
+  }
+  .gwr-pledge-tiers-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.3rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  .gwr-pledge-tier-pill {
+    padding: 0.3rem 0.15rem !important;
+    border-radius: 8px !important;
+  }
+  .pledge-tier-val {
+    font-size: 0.95rem !important;
+    margin-bottom: 0 !important;
+  }
+  .pledge-tier-title {
+    font-size: 0.62rem !important;
+    margin-bottom: 0 !important;
+  }
+  .pledge-tier-sub {
+    display: none !important;
+  }
+  .gwr-cta-actions {
+    flex-direction: row !important;
+    gap: 0.4rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  .btn-gwr-pledge-action {
+    width: 100% !important;
+    font-size: 0.82rem !important;
+    padding: 0.55rem 0.75rem !important;
+    min-height: 38px !important;
+  }
+  .btn-gwr-volunteer-action {
+    display: none !important;
+  }
+  .gwr-institutional-footer {
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    padding-top: 0.25rem !important;
+    font-size: 0.62rem !important;
+  }
+  .gwr-inst-item:not(:first-child) {
+    display: none !important;
+  }
+}
+
+/* ===================================================================
+   PLASTIC BOTTLE ACADEMY - 3D INTERACTIVE ARCHITECTURE SECTION
+   Built from 50,000+ Upcycled PET Bottles | Live WebGL Three.js Model
+   =================================================================== */
+
+.eco-bottle-school-section {
+  padding: 6rem 0 6.5rem;
+  background-color: #06080e;
+  background-image: 
+    radial-gradient(circle at 25% 15%, rgba(245, 158, 11, 0.08) 0%, transparent 55%),
+    radial-gradient(circle at 75% 85%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+    linear-gradient(180deg, #070910 0%, #0c101b 50%, #06080e 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.eco-ambient-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 65%);
+}
+
+.eco-3d-header {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.eco-3d-title {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(2.1rem, 3.8vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #ffffff;
+  letter-spacing: -0.035em;
+  margin: 1.25rem 0 1.25rem;
+}
+
+.eco-story-prose {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.eco-lead-quote {
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  line-height: 1.7;
+  color: #e2e8f0;
+  font-style: italic;
+  border-left: 3px solid #f59e0b;
+  padding-left: 1.25rem;
+  margin-bottom: 1.15rem;
+  background: rgba(245, 158, 11, 0.04);
+  padding: 0.9rem 1.25rem;
+  border-radius: 0 12px 12px 0;
+}
+
+.eco-mission-statement {
+  font-size: clamp(0.95rem, 1.12vw, 1.05rem);
+  line-height: 1.7;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.eco-mission-statement strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.eco-pointcloud-stage,
+.eco-3d-stage-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(9, 13, 22, 0.92);
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), 0 0 50px rgba(245, 158, 11, 0.08);
+  margin-bottom: 3rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.eco-pointcloud-bar,
+.eco-3d-stage-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.6rem;
+  background: rgba(6, 9, 16, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.eco-pointcloud-badge,
+.eco-3d-stage-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.eco-pointcloud-caption,
+.eco-3d-stage-hints {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.eco-pointcloud-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+}
+
+.eco-3d-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: ecoPulse 2s infinite ease-in-out;
+}
+
+@keyframes ecoPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+.eco-hint-sep {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.eco-pointcloud-canvas-wrap,
+.eco-3d-canvas-wrap {
+  width: 100%;
+  height: 580px;
+  position: relative;
+  background: radial-gradient(circle at 50% 50%, #0a1120 0%, #04060b 85%);
+  overflow: hidden;
+}
+
+#ecoPointCloudCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.eco-pointcloud-overlay-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 50%, transparent 65%, rgba(4, 6, 11, 0.7) 100%);
+}
+
+.eco-3d-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.eco-3d-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-bottom: 2.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+.eco-impact-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.eco-impact-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.eco-impact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.eco-impact-icon.icon--emerald {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #10b981;
+}
+
+.eco-impact-icon.icon--gold {
+  background: rgba(234, 179, 8, 0.12);
+  border-color: rgba(234, 179, 8, 0.3);
+  color: #eab308;
+}
+
+.eco-impact-body h4 {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.eco-impact-body p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.eco-3d-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 991px) {
+  .eco-bottle-school-section {
+    padding: 4rem 0;
+  }
+  .eco-pointcloud-canvas-wrap,
+  .eco-3d-canvas-wrap {
+    height: 420px;
+  }
+  .eco-3d-impact-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .eco-pointcloud-caption,
+  .eco-3d-stage-hints {
+    display: none;
   }
 }
 
 @media (max-width: 640px) {
-  .gwr-backing-section {
-    padding: 3.5rem 0 4rem;
+  .eco-pointcloud-canvas-wrap,
+  .eco-3d-canvas-wrap {
+    height: 360px;
   }
-  .gwr-crest-badge {
-    font-size: 0.68rem;
-    padding: 0.35rem 0.75rem;
-    letter-spacing: 0.08em;
+  .eco-pointcloud-bar {
+    padding: 0.75rem 1rem;
   }
-  .gwr-editorial-title {
-    font-size: 1.85rem;
-  }
-  .gwr-editorial-subtitle {
-    font-size: 0.95rem;
-  }
-  .gwr-editorial-body {
-    font-size: 0.88rem;
-    margin-bottom: 1.5rem;
-  }
-  .gwr-patron-registry-card {
-    padding: 1.25rem 1rem;
-    border-radius: 16px;
-  }
-  .gwr-registry-header {
-    margin-bottom: 1rem;
-  }
-  .gwr-pledge-tiers-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.55rem;
-    margin-bottom: 1.25rem;
-  }
-  .gwr-pledge-tier-pill {
-    padding: 0.9rem 0.45rem 0.8rem;
-    border-radius: 10px;
-  }
-  .pledge-tier-val {
-    font-size: 1.35rem;
-  }
-  .pledge-tier-title {
-    font-size: 0.75rem;
-  }
-  .pledge-tier-sub {
-    font-size: 0.64rem;
-  }
-  .btn-gwr-pledge-action {
-    font-size: 0.95rem;
-    padding: 0.85rem 1.25rem;
-  }
-  .btn-gwr-volunteer-action {
-    font-size: 0.9rem;
-    padding: 0.85rem 1.25rem;
-  }
-  .gwr-institutional-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-  .gwr-monograph-display {
-    max-width: 260px;
-  }
-  .gwr-monograph-meta {
-    padding: 1rem;
-    border-radius: 12px;
+  .eco-lead-quote {
+    padding: 0.75rem 1rem;
   }
 }
-
-
 
 /* Comic Book Flip Reader Modal */
 .comic-reader-modal {
