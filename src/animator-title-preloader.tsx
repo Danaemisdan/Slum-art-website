@@ -389,211 +389,53 @@ const SWIRLS = [
   arc(62, 62, 9, 1, 4),
 ].join(" ")
 
-// Child's hand holding card, drawn with authentic child anatomy and natural shading
+// Authentic Child's Hands holding card, using realistic photographic child anatomy
 function Hand({ id, side }: { id: string; side: "l" | "r" }) {
+  if (side === "l") {
+    return (
+      <g filter={"url(#" + id + "-paint)"}>
+        {/* Extended navy wool sweater sleeve reaching down-left towards screen corner */}
+        <path
+          d="M -30 260 C -120 380 -500 750 -1800 1350 L -1600 1600 C -450 900 30 450 82 270 Z"
+          fill={"url(#" + id + "-left-sleeve-grad)"}
+        />
+        <path
+          d="M -30 260 C -120 380 -500 750 -1800 1350 L -1750 1350 C -480 770 -100 400 -20 265 Z"
+          fill="#3b4f6b"
+          opacity="0.35"
+        />
+        {/* High-resolution realistic child hand */}
+        <image
+          href="assets/images/child_hand_left_realistic.png"
+          x="-80"
+          y="-100"
+          width="210"
+          height="420"
+        />
+      </g>
+    )
+  }
+
   return (
-    <g filter={"url(#" + id + "-paint)"} transform={side === "r" ? "scale(-1 1)" : undefined}>
-      {/* Sleeve extending back */}
+    <g filter={"url(#" + id + "-paint)"}>
+      {/* Extended navy wool sweater sleeve reaching down-right towards screen corner */}
       <path
-        d="M -2400 -130 L -210 -75 Q -185 -72 -185 -58 L -180 68 Q -180 80 -205 82 L -2400 140 Z"
-        fill={"url(#" + id + "-sleeve)"}
+        d="M -82 270 C -30 450 450 900 1600 1600 L 1800 1350 C 500 750 120 380 30 260 Z"
+        fill={"url(#" + id + "-right-sleeve-grad)"}
       />
-      {/* Subtle organic pattern overlay */}
       <path
-        d="M -2400 -130 L -210 -75 Q -185 -72 -185 -58 L -180 68 Q -180 80 -205 82 L -2400 140 Z"
-        fill={"url(#" + id + "-swirl)"}
-        opacity="0.25"
+        d="M 30 260 C 120 380 500 750 1800 1350 L 1750 1350 C 480 770 100 400 20 265 Z"
+        fill="#3b4f6b"
+        opacity="0.35"
       />
-      {/* Soft light highlight on sleeve top */}
-      <path
-        d="M -2400 -130 L -210 -75 Q -195 -74 -190 -66 L -2400 -105 Z"
-        fill="#ffffff"
-        opacity="0.10"
+      {/* High-resolution realistic child hand */}
+      <image
+        href="assets/images/child_hand_right_realistic.png"
+        x="-130"
+        y="-100"
+        width="210"
+        height="420"
       />
-
-      {/* Sleeve Cuff: Soft, organic ribbed sweater cuff */}
-      <path
-        d="M -226 -80 C -204 -80 -184 -75 -184 -60 L -179 66 C -179 78 -199 82 -226 82 C -236 82 -242 76 -242 66 L -247 -60 C -247 -74 -240 -80 -226 -80 Z"
-        fill="var(--atp-cuff)"
-      />
-      {/* Cuff ribbing texture lines */}
-      <path
-        d="M -220 -74 L -216 76 M -206 -72 L -202 74 M -194 -68 L -190 70"
-        stroke="#ffffff"
-        strokeWidth="2"
-        strokeLinecap="round"
-        opacity="0.15"
-      />
-
-      {/* Child's Wrist & Plump Palm with soft natural contours */}
-      <path
-        d="M -186 -58 C -144 -68 -105 -70 -52 -58 C -36 -24 -32 28 -46 56 C -86 74 -138 74 -186 64 Z"
-        fill={"url(#" + id + "-palm-radial)"}
-      />
-
-      {/* 4 Child Fingers: Pinky, Ring, Middle, Index - anatomically soft child proportions */}
-      {/* 1. Pinky (little finger, soft and curving inward) */}
-      <g filter={"url(#" + id + "-finger-shadow)"}>
-        <path
-          d="M -96 46 C -62 43 -22 47 4 51 C 13 54 16 61 12 67 C 8 73 -1 75 -9 71 C -36 68 -68 66 -104 63 Z"
-          fill={"url(#" + id + "-skin)"}
-        />
-        <path
-          d="M -80 47 C -48 46 -15 48 4 52"
-          stroke={"url(#" + id + "-dorsal-hi)"}
-          strokeWidth="3"
-          strokeLinecap="round"
-        />
-        {/* Subtle, translucent natural child nail blending into cuticle */}
-        <path
-          d="M -1 53 C 4 53 7 56 6 61 C 5 65 1 67 -3 66 C -6 66 -7 63 -6 59 C -5 55 -3 53 -1 53 Z"
-          fill={"url(#" + id + "-real-nail)"}
-        />
-        <path
-          d="M -3 55 C 0 54 3 55 2 59"
-          stroke="#ecc7b2"
-          strokeWidth="0.75"
-          fill="none"
-          opacity="0.4"
-        />
-        {/* Soft child knuckle crease */}
-        <path
-          d="M -36 49 C -33 55 -33 59 -36 65"
-          stroke="var(--atp-skin2)"
-          strokeWidth="1.1"
-          strokeLinecap="round"
-          opacity="0.32"
-        />
-      </g>
-
-      {/* 2. Ring Finger (natural curve grasping card) */}
-      <g filter={"url(#" + id + "-finger-shadow)"}>
-        <path
-          d="M -106 14 C -66 12 -18 16 18 21 C 29 25 33 33 29 40 C 25 46 15 47 5 43 C -24 38 -64 36 -108 34 Z"
-          fill={"url(#" + id + "-skin)"}
-        />
-        <path
-          d="M -90 16 C -50 15 -8 17 18 22"
-          stroke={"url(#" + id + "-dorsal-hi)"}
-          strokeWidth="4"
-          strokeLinecap="round"
-        />
-        <path
-          d="M 12 24 C 18 24 22 28 21 34 C 20 39 15 42 10 41 C 6 41 5 37 6 32 C 7 27 9 24 12 24 Z"
-          fill={"url(#" + id + "-real-nail)"}
-        />
-        <path
-          d="M 9 26 C 13 25 16 27 15 32"
-          stroke="#ecc7b2"
-          strokeWidth="0.85"
-          fill="none"
-          opacity="0.4"
-        />
-        <path
-          d="M -24 18 C -21 24 -21 30 -24 37"
-          stroke="var(--atp-skin2)"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-          opacity="0.35"
-        />
-      </g>
-
-      {/* 3. Middle Finger (longest child finger, active gentle grip) */}
-      <g filter={"url(#" + id + "-finger-shadow)"}>
-        <path
-          d="M -112 -20 C -62 -22 -6 -18 32 -13 C 44 -9 50 0 46 8 C 42 15 32 17 20 14 C -12 10 -60 9 -112 5 Z"
-          fill={"url(#" + id + "-skin)"}
-        />
-        <path
-          d="M -96 -18 C -40 -19 10 -17 32 -12"
-          stroke={"url(#" + id + "-dorsal-hi)"}
-          strokeWidth="4.5"
-          strokeLinecap="round"
-        />
-        <path
-          d="M 26 -8 C 33 -8 37 -3 36 3 C 34 9 29 13 23 12 C 18 12 17 7 18 1 C 19 -5 21 -8 26 -8 Z"
-          fill={"url(#" + id + "-real-nail)"}
-        />
-        <path
-          d="M 22 -6 C 27 -7 30 -4 29 2"
-          stroke="#ecc7b2"
-          strokeWidth="0.95"
-          fill="none"
-          opacity="0.4"
-        />
-        <path
-          d="M -16 -16 C -13 -9 -13 -3 -16 6"
-          stroke="var(--atp-skin2)"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-          opacity="0.35"
-        />
-      </g>
-
-      {/* 4. Index Finger (curving softly onto card edge) */}
-      <g filter={"url(#" + id + "-finger-shadow)"}>
-        <path
-          d="M -116 -54 C -66 -56 -10 -52 22 -47 C 34 -43 40 -35 36 -27 C 32 -19 22 -17 10 -19 C -16 -22 -64 -23 -116 -22 Z"
-          fill={"url(#" + id + "-skin)"}
-        />
-        <path
-          d="M -100 -52 C -45 -54 10 -51 22 -46"
-          stroke={"url(#" + id + "-dorsal-hi)"}
-          strokeWidth="4.5"
-          strokeLinecap="round"
-        />
-        <path
-          d="M 16 -42 C 23 -42 27 -37 26 -30 C 24 -24 19 -21 14 -21 C 9 -21 8 -25 9 -32 C 10 -38 12 -42 16 -42 Z"
-          fill={"url(#" + id + "-real-nail)"}
-        />
-        <path
-          d="M 12 -40 C 17 -41 20 -38 19 -32"
-          stroke="#ecc7b2"
-          strokeWidth="0.95"
-          fill="none"
-          opacity="0.4"
-        />
-        <path
-          d="M -20 -50 C -17 -42 -17 -35 -20 -27"
-          stroke="var(--atp-skin2)"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-          opacity="0.35"
-        />
-      </g>
-
-      {/* Child's Thumb: Natural gentle opposing grip resting from above */}
-      <g className="atp-thumb" filter={"url(#" + id + "-finger-shadow)"}>
-        <path
-          d="M -148 -66 C -118 -94 -78 -102 -28 -96 C -1 -92 9 -81 3 -71 C -3 -61 -18 -59 -32 -63 C -74 -74 -108 -66 -138 -44 Z"
-          fill={"url(#" + id + "-skin)"}
-        />
-        <path
-          d="M -115 -84 C -75 -96 -35 -90 -2 -84"
-          stroke={"url(#" + id + "-dorsal-hi)"}
-          strokeWidth="4"
-          strokeLinecap="round"
-        />
-        <path
-          d="M -4 -88 C 2 -88 5 -84 3 -77 C 1 -71 -3 -67 -9 -68 C -12 -68 -14 -72 -13 -78 C -11 -84 -8 -88 -4 -88 Z"
-          fill={"url(#" + id + "-real-nail)"}
-        />
-        <path
-          d="M -9 -84 C -5 -86 -2 -84 -3 -79"
-          stroke="#ecc7b2"
-          strokeWidth="0.85"
-          fill="none"
-          opacity="0.4"
-        />
-        <path
-          d="M -54 -76 C -46 -82 -36 -84 -26 -82"
-          stroke="var(--atp-skin2)"
-          strokeWidth="1.3"
-          strokeLinecap="round"
-          opacity="0.35"
-          fill="none"
-        />
-      </g>
     </g>
   )
 }
@@ -779,8 +621,8 @@ const ATP_CSS = `
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 0.38em;
-  gap: 4px;
+  margin-top: 0.28em;
+  gap: 0px;
   clip-path: inset(0 100% 0 0);
   transition: clip-path 1200ms cubic-bezier(0.16, 1, 0.3, 1), opacity 500ms ease;
   opacity: 0;
@@ -799,23 +641,23 @@ const ATP_CSS = `
   color: #ffffff;
   max-width: min(960px, 92vw);
   text-align: center;
-  line-height: 1.15;
+  line-height: 1.05;
   margin: 0;
   padding: 0;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.95);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 0px;
 }
 .atp-sub-line1 {
   display: block;
-  line-height: 1.15;
-  margin: 0;
+  line-height: 1.05;
+  margin: 0 0 1px 0;
 }
 .atp-sub-line2 {
   display: block;
-  line-height: 1.15;
+  line-height: 1.05;
   margin: 0;
 }
 .atp-sub-volume strong,
@@ -1314,14 +1156,14 @@ export default function AnimatorTitlePreloader({
       return { left: 0, top: 0, width: 0, height: 0 }
     }
     const boxes = metrics.boxes
-    // In "slum art", the swipe begins at the left edge of letter 'm' (index 3) and spans to over 'r' (index 6) / 't' (index 7):
-    const mBox = boxes[3] || boxes[Math.min(boxes.length - 1, Math.floor(boxes.length * 0.36))]
-    const rBox = boxes[6] || boxes[boxes.length - 1]
-    const left = mBox ? mBox.x : metrics.ww * 0.35
-    const right = rBox ? rBox.x + rBox.w * 0.75 : metrics.ww * 0.90
-    const width = Math.max(20, right - left)
-    const height = width / 6.0 // 84x14 aspect ratio matching official brand mark
-    const top = -(height * 0.88)
+    // In official brand mark, the swipes sit directly over 'art' (beginning above letter 'a' at box 5, through last box 't')
+    const aBox = boxes[5] || boxes[Math.min(boxes.length - 1, Math.floor(boxes.length * 0.58))]
+    const tBox = boxes[boxes.length - 1]
+    const left = aBox ? aBox.x - aBox.w * 0.15 : metrics.ww * 0.58
+    const right = tBox ? tBox.x + tBox.w * 1.05 : metrics.ww * 0.96
+    const width = Math.max(30, right - left)
+    const height = width / 4.18 // 71x17 official brand mark swipe aspect ratio
+    const top = -(height * 0.72)
     return { left, top, width, height }
   }, [metrics])
 
@@ -1698,12 +1540,12 @@ export default function AnimatorTitlePreloader({
   // Hands hold the word at its ends, scaled to its size.
   const armDeg = metrics && metrics.tall ? ARM_DEG_TALL : ARM_DEG
   armRef.current = armDeg
-  const handScale = metrics ? metrics.size * (metrics.tall ? 0.0046 : 0.0036) : 0
-  const handY = metrics ? metrics.base - metrics.size * 0.3 : 0
+  const handScale = metrics ? metrics.size * (metrics.tall ? 0.0050 : 0.0040) : 0
+  const handY = metrics ? metrics.base - metrics.size * 0.28 : 0
   const firstBox = metrics && metrics.boxes[0]
   const lastBox = metrics && metrics.boxes[metrics.boxes.length - 1]
-  const handLX = firstBox && metrics ? firstBox.x + metrics.size * 0.05 : 0
-  const handRX = lastBox && metrics ? lastBox.x + lastBox.w - metrics.size * 0.04 : 0
+  const handLX = firstBox && metrics ? firstBox.x - metrics.size * 0.12 : 0
+  const handRX = lastBox && metrics ? lastBox.x + lastBox.w + metrics.size * 0.12 : 0
 
   return (
     <div
@@ -1787,6 +1629,16 @@ export default function AnimatorTitlePreloader({
                 <filter id={uid + "-paint"} x="-25%" y="-25%" width="150%" height="150%">
                   <feDropShadow dx="-2" dy="5" stdDeviation="6" floodColor="#0a0301" floodOpacity="0.25" />
                 </filter>
+                <linearGradient id={uid + "-left-sleeve-grad"} x1="50%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#25354a" />
+                  <stop offset="30%" stopColor="#1a2738" />
+                  <stop offset="100%" stopColor="#0b111a" />
+                </linearGradient>
+                <linearGradient id={uid + "-right-sleeve-grad"} x1="50%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#25354a" />
+                  <stop offset="30%" stopColor="#1a2738" />
+                  <stop offset="100%" stopColor="#0b111a" />
+                </linearGradient>
                 <filter id={uid + "-finger-shadow"} x="-20%" y="-20%" width="140%" height="150%">
                   <feDropShadow dx="-1" dy="3" stdDeviation="2.5" floodColor="#140602" floodOpacity="0.45" />
                 </filter>
@@ -1884,7 +1736,7 @@ export default function AnimatorTitlePreloader({
                     <div className="atp-handslot" style={{ left: handLX, top: handY }} aria-hidden="true">
                       <div ref={handLRef} className="atp-hand" style={{ visibility: "hidden" }}>
                         <svg>
-                          <g transform={"scale(" + handScale + ") rotate(" + -armDeg + ")"}>
+                          <g transform={"scale(" + handScale + ")"}>
                             <Hand id={uid} side="l" />
                           </g>
                         </svg>
@@ -1893,7 +1745,7 @@ export default function AnimatorTitlePreloader({
                     <div className="atp-handslot" style={{ left: handRX, top: handY }} aria-hidden="true">
                       <div ref={handRRef} className="atp-hand" style={{ visibility: "hidden" }}>
                         <svg>
-                          <g transform={"scale(" + handScale + ") rotate(" + armDeg + ")"}>
+                          <g transform={"scale(" + handScale + ")"}>
                             <Hand id={uid} side="r" />
                           </g>
                         </svg>
@@ -1940,24 +1792,18 @@ export default function AnimatorTitlePreloader({
                     }}
                     aria-hidden="true"
                   >
-                    <svg
-                      viewBox="0 0 84 14"
-                      preserveAspectRatio="none"
-                      style={{ width: "100%", height: "100%", overflow: "visible" }}
-                    >
-                      <defs>
-                        <linearGradient id={uid + "-swipe-grad"} x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#f59e0b" />
-                          <stop offset="35%" stopColor="#fbbf24" />
-                          <stop offset="70%" stopColor="#f59e0b" />
-                          <stop offset="100%" stopColor="#d97706" />
-                        </linearGradient>
-                      </defs>
-                      <g>
-                        <path d={SLUM_LOGO_SWIPES.lower} fill={"url(#" + uid + "-swipe-grad)"} />
-                        <path d={SLUM_LOGO_SWIPES.upper} fill={"url(#" + uid + "-swipe-grad)"} />
-                      </g>
-                    </svg>
+                    <img
+                      src="assets/images/official_slum_swipes_exact_4x.png"
+                      alt="Slum Art Brand Swipes"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "fill",
+                        display: "block",
+                        filter: "drop-shadow(0 2px 8px rgba(217, 119, 6, 0.2))",
+                        pointerEvents: "none",
+                      }}
+                    />
                   </div>
                 ) : null}
 

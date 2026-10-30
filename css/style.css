@@ -5183,41 +5183,46 @@ body.scrolled-past-hero .navbar,
 
 /* Guinness World Records Official Badge in Hero Scroll Cue */
 .hsc-gwr-logo {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   flex: none;
   display: block;
+  object-fit: contain;
   border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(16, 42, 77, 0.25);
+  box-shadow: 0 2px 8px rgba(16, 42, 77, 0.25);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-scroll-cue:hover .hsc-gwr-logo {
-  transform: scale(1.08) rotate(-4deg);
+  transform: scale(1.1) rotate(-4deg);
 }
 
 /* Tightened Hero Preloader Subtitle Spacing */
 .atp-subrow {
-  margin-top: 0.38em !important;
-  gap: 4px !important;
+  margin-top: 0.28em !important;
+  gap: 0px !important;
 }
 .atp-sub-volume {
-  line-height: 1.15 !important;
-  gap: 2px !important;
+  line-height: 1.05 !important;
+  gap: 0px !important;
   margin: 0 !important;
   padding: 0 !important;
 }
-.atp-sub-line1,
+.atp-sub-line1 {
+  line-height: 1.05 !important;
+  margin: 0 0 1px 0 !important;
+  display: block !important;
+}
 .atp-sub-line2 {
-  line-height: 1.15 !important;
+  line-height: 1.05 !important;
   margin: 0 !important;
   display: block !important;
 }
 
-/* Pulsing Live Beacon Indicator (Fallback / Legacy) */
+/* Pulsing Live Beacon Indicator (Disabled / Removed) */
 .hsc-pulse-dot {
-  position: relative;
-  display: flex;
+  display: none !important;
+}
   align-items: center;
   justify-content: center;
   width: 10px;
@@ -8594,7 +8599,15 @@ html, body {
     padding: 0.85rem 1.35rem !important;
   }
   .hero-scroll-cue {
-    display: none !important;
+    bottom: 56px !important;
+    padding: 6px 12px 6px 14px !important;
+    gap: 8px !important;
+    max-width: 90vw !important;
+    font-size: 0.78rem !important;
+  }
+  .hsc-gwr-logo {
+    width: 20px !important;
+    height: 20px !important;
   }
 }
 
