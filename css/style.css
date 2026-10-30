@@ -8457,3 +8457,193 @@ button[data-f="pause"],
   }
 }
 
+/* ===================================================================
+   RECOGNIZED & SUPPORTED BY: OFFICIAL FULL-COLOR PARTNER LOGOS
+   =================================================================== */
+
+.partners-logo-section {
+  position: relative;
+  background-color: #060911;
+  background: radial-gradient(circle at 50% 50%, #0e1424 0%, #060911 75%, #03050a 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4.5rem 0 3.75rem;
+  overflow: hidden;
+}
+
+.partners-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.partners-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #f59e0b;
+  margin-bottom: 0.5rem;
+}
+
+.partners-title {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.partners-note {
+  max-width: 440px;
+  font-size: 0.95rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.partner-marquee-wrap {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 0.75rem 0 1rem;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+
+.partner-marquee-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  width: max-content;
+  animation: partnerMarquee 42s linear infinite;
+  will-change: transform;
+}
+
+.partner-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes partnerMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.partner-logo-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 224px;
+  flex-shrink: 0;
+}
+
+.partner-logo-card {
+  height: 92px;
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.4rem;
+  box-sizing: border-box;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.partner-logo-item:hover .partner-logo-card {
+  transform: translateY(-5px);
+  border-color: rgba(245, 158, 11, 0.65);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 158, 11, 0.25);
+}
+
+.partner-logo-img {
+  max-height: 48px;
+  max-width: 175px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.partner-logo-img.gwr-logo {
+  max-height: 54px;
+}
+
+.partner-logo-img.paystack-logo {
+  max-height: 28px;
+}
+
+.partner-logo-img.worldconnect-logo {
+  max-height: 38px;
+}
+
+.partner-logo-img.cnn-logo {
+  max-height: 32px;
+}
+
+.partner-logo-img.bbc-logo {
+  max-height: 26px;
+}
+
+.partner-logo-img.ripken-logo {
+  max-height: 48px;
+}
+
+.partner-logo-img.terrakulture-logo {
+  max-height: 44px;
+}
+
+.partner-logo-img.untours-logo {
+  max-height: 38px;
+}
+
+.partner-logo-img.lagos-logo {
+  max-height: 52px;
+}
+
+.partner-logo-caption {
+  text-align: left;
+}
+
+.partner-logo-name {
+  display: block;
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.partner-logo-stat {
+  display: block;
+  font-size: 0.74rem;
+  color: #94a3b8;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .partners-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
