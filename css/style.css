@@ -5934,23 +5934,21 @@ body.modal-open {
    =================================================================== */
 .hero-scroll-cue {
   position: absolute;
-  bottom: 28px;
+  bottom: 38px;
   left: 50%;
   transform: translateX(-50%);
   display: inline-flex;
   flex-direction: row;
   align-items: center;
   gap: 12px;
-  padding: 8px 14px 8px 18px;
+  padding: 10px 18px 10px 14px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(224, 105, 39, 0.3);
+  background: #090d16;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.06),
-    0 2px 10px rgba(224, 105, 39, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 16px 36px -4px rgba(0, 0, 0, 0.42),
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
   cursor: pointer;
   z-index: 20;
   text-decoration: none;
@@ -5960,35 +5958,39 @@ body.modal-open {
 }
 
 .hero-light-stage .hero-scroll-cue {
-  bottom: 135px !important;
-  background: rgba(255, 255, 255, 0.92) !important;
-  border: 1px solid rgba(224, 105, 39, 0.35) !important;
+  bottom: 40px !important;
+  background: #090d16 !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 
+    0 18px 40px -4px rgba(0, 0, 0, 0.45),
+    0 4px 14px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 
 .hero-scroll-cue:hover {
-  transform: translateX(-50%) translateY(-3px) scale(1.02);
-  background: #ffffff !important;
-  border-color: rgba(224, 105, 39, 0.6) !important;
+  transform: translateX(-50%) translateY(-2px) scale(1.02);
+  background: #0f172a !important;
+  border-color: rgba(245, 158, 11, 0.5) !important;
   box-shadow: 
-    0 16px 40px rgba(224, 105, 39, 0.2),
-    0 4px 14px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 #ffffff;
+    0 22px 48px -4px rgba(234, 88, 12, 0.35),
+    0 6px 18px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
 }
 
 .hero-scroll-cue:active {
   transform: translateX(-50%) translateY(0) scale(0.99);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
 
 /* Guinness World Records Official Badge in Hero Scroll Cue */
 .hsc-gwr-logo {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   flex: none;
   display: block;
   object-fit: contain;
   border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(16, 42, 77, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -6056,17 +6058,17 @@ body.modal-open {
 
 /* Text Label */
 .hsc-label {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-heading, 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif);
   font-size: 13.5px;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  color: #0f172a;
+  letter-spacing: -0.01em;
+  color: #f8fafc;
   white-space: nowrap;
   transition: color 0.25s ease;
 }
 
 .hero-scroll-cue:hover .hsc-label {
-  color: #c2410c;
+  color: #fbbf24;
 }
 
 /* Circular Downward Arrow Bubble */
@@ -6074,12 +6076,12 @@ body.modal-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  color: #ea580c;
+  background: rgba(245, 158, 11, 0.2);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  color: #fbbf24;
   flex: none;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -7183,25 +7185,35 @@ body.modal-open {
     height: 65px;
     margin-top: -65px;
   }
-  .hero-light-stage .hero-scroll-cue {
-    bottom: 78px !important;
-    padding: 6px 14px !important;
+  .hero-light-stage .hero-scroll-cue,
+  .hero-scroll-cue {
+    bottom: 38px !important;
+    padding: 8px 15px 8px 12px !important;
+    gap: 10px !important;
+    max-width: 92vw !important;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-light-stage .hero-scroll-cue {
-    bottom: 60px !important;
-    padding: 6px 12px !important;
-    gap: 8px !important;
-    max-width: 92vw !important;
+  .hero-light-stage .hero-scroll-cue,
+  .hero-scroll-cue {
+    bottom: 36px !important;
+    padding: 8px 14px 8px 11px !important;
+    gap: 9px !important;
+    max-width: 94vw !important;
   }
   .hsc-gwr-logo {
-    width: 20px !important;
-    height: 20px !important;
+    width: 22px !important;
+    height: 22px !important;
   }
   .hsc-label {
-    font-size: 11.5px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em !important;
+  }
+  .hsc-icon-bubble {
+    width: 24px !important;
+    height: 24px !important;
   }
 }
 
@@ -9789,16 +9801,21 @@ html, body {
     font-size: 0.95rem !important;
     padding: 0.85rem 1.35rem !important;
   }
-  .hero-scroll-cue {
-    bottom: 56px !important;
-    padding: 6px 12px 6px 14px !important;
-    gap: 8px !important;
-    max-width: 90vw !important;
-    font-size: 0.78rem !important;
+  .atp-sub-volume {
+    font-size: clamp(0.92rem, 4.2vw, 1.25rem) !important;
+    max-width: 340px !important;
+    line-height: 1.26 !important;
+    text-wrap: balance !important;
+    margin: 0 auto !important;
   }
-  .hsc-gwr-logo {
-    width: 20px !important;
-    height: 20px !important;
+  .atp-sub-line1 {
+    display: block !important;
+    margin-bottom: 2px !important;
+    white-space: normal !important;
+  }
+  .atp-sub-line2 {
+    display: block !important;
+    white-space: normal !important;
   }
 }
 
@@ -9806,6 +9823,33 @@ html, body {
 @media (max-width: 640px) {
   .minimalist-hero-section {
     padding: 3.5rem 0 3.75rem !important;
+  }
+  .m-hero-tiers-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.55rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .m-hero-tier-btn {
+    padding: 0.65rem 0.5rem !important;
+    min-height: 56px !important;
+  }
+  .m-hero-tier-amt {
+    font-size: 1.15rem !important;
+  }
+  .m-hero-tier-label {
+    font-size: 0.72rem !important;
+  }
+  .m-hero-donation-box .m-hero-primary-btn {
+    min-height: 48px !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    padding: 0.75rem 1.25rem !important;
+    border-radius: 10px !important;
+  }
+  .m-hero-scroll-pill {
+    padding: 0.5rem 1.15rem !important;
+    font-size: 0.82rem !important;
+    min-height: 38px !important;
   }
   .art-impact-assurance-badge {
     padding: 1rem 1.15rem !important;
@@ -10071,9 +10115,14 @@ html, body {
   .btn-split-white,
   .btn-split-amber {
     width: 100% !important;
-    max-width: 200px !important;
-    padding: 0.75rem 1.5rem !important;
-    font-size: 0.9rem !important;
+    max-width: 260px !important;
+    min-height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.8rem 1.5rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
   }
 }
 
@@ -10123,9 +10172,43 @@ html, body {
   }
   .btn-services-discover {
     width: 100% !important;
-    max-width: 280px !important;
+    max-width: 340px !important;
+    min-height: 50px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     text-align: center !important;
-    padding: 0.85rem 1.75rem !important;
+    padding: 0.85rem 1.5rem !important;
+    font-size: clamp(0.85rem, 3.8vw, 0.98rem) !important;
+    white-space: nowrap !important;
+  }
+
+  /* Custom Products Action Row Mobile Refinements */
+  .cpc-actions-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+  }
+  .btn-cpc-order {
+    width: 100% !important;
+    min-height: 50px !important;
+    font-size: 0.95rem !important;
+    justify-content: center !important;
+  }
+  .cpc-price-pill {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    flex-wrap: wrap !important;
+    padding: 0.65rem 1rem !important;
+    font-size: 0.84rem !important;
+    gap: 0.4rem !important;
+  }
+  .cpc-wa-pill {
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 44px !important;
+    text-align: center !important;
   }
 }
 
