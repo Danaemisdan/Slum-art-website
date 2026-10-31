@@ -68,22 +68,95 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
+  <!-- Mobile Drawer: Berlix UI Menu Vertical -->
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
   <aside class="mobile-drawer" id="mobileDrawer">
     <div class="drawer-header">
       <div class="brand-logo">
         <img src="assets/images/logo-light.png" alt="Slum Art" style="height: 42px;">
       </div>
-      <button class="modal-close-btn" id="mobileDrawerClose" style="position: static;"><i class="fas fa-times"></i></button>
+      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
-    <ul class="drawer-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About & Founder</a></li>
-      <li><a href="shop.html">Art Shop & Gallery</a></li>
-      <li><a href="register.html">Guinness Record Project</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+    <nav class="berlix-menu-vertical" aria-label="Mobile Navigation">
+      <ul class="berlix-menu-list">
+        <li class="berlix-menu-item" style="--item-index: 0;">
+          <a href="index.html" class="berlix-menu-link">
+            <span class="berlix-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+            <span class="berlix-label">Home</span>
+          </a>
+        </li>
+        <li class="berlix-menu-item" style="--item-index: 1;">
+          <a href="index.html#who-we-are" class="berlix-menu-link">
+            <span class="berlix-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+            <span class="berlix-label">Who We Are</span>
+          </a>
+        </li>
+        <li class="berlix-menu-item" style="--item-index: 2;">
+          <a href="about.html" class="berlix-menu-link">
+            <span class="berlix-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+            <span class="berlix-label">About & Founder</span>
+          </a>
+        </li>
+        <li class="berlix-menu-item" style="--item-index: 3;">
+          <a href="shop.html" class="berlix-menu-link">
+            <span class="berlix-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+            <span class="berlix-label">Art Shop & Gallery</span>
+          </a>
+        </li>
+        <li class="berlix-menu-item" style="--item-index: 4;">
+          <a href="register.html" class="berlix-menu-link active">
+            <span class="berlix-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+            <span class="berlix-label">Guinness Record</span>
+          </a>
+        </li>
+        <li class="berlix-menu-item" style="--item-index: 5;">
+          <a href="contact.html" class="berlix-menu-link">
+            <span class="berlix-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+            <span class="berlix-label">Contact & Volunteer</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="drawer-footer-actions">
+      <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        <i class="fas fa-heart"></i> Donate via Paystack
+      </a>
+      <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+        <i class="fab fa-whatsapp"></i> Join Community Group
+      </a>
+    </div>
   </aside>
 
   <!-- Banner -->

@@ -849,23 +849,88 @@
       elements.cartDrawerBackdrop.addEventListener('click', () => toggleCartDrawer(false));
     }
 
-    // Mobile Navigation Drawer
+    // Mobile Navigation Drawer (Berlix UI Menu Vertical)
+    function toggleMobileDrawer(open) {
+      if (elements.mobileDrawer) {
+        if (open) {
+          elements.mobileDrawer.classList.add('open');
+          document.body.classList.add('drawer-open');
+        } else {
+          elements.mobileDrawer.classList.remove('open');
+          document.body.classList.remove('drawer-open');
+        }
+      }
+      if (elements.drawerBackdrop) {
+        if (open) {
+          elements.drawerBackdrop.classList.add('active');
+        } else {
+          elements.drawerBackdrop.classList.remove('active');
+        }
+      }
+    }
+
     if (elements.mobileNavToggle) {
-      elements.mobileNavToggle.addEventListener('click', () => {
-        if (elements.mobileDrawer) elements.mobileDrawer.classList.add('open');
-        if (elements.drawerBackdrop) elements.drawerBackdrop.classList.add('active');
+      elements.mobileNavToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleMobileDrawer(true);
       });
     }
     if (elements.mobileDrawerClose) {
-      elements.mobileDrawerClose.addEventListener('click', () => {
-        if (elements.mobileDrawer) elements.mobileDrawer.classList.remove('open');
-        if (elements.drawerBackdrop) elements.drawerBackdrop.classList.remove('active');
+      elements.mobileDrawerClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleMobileDrawer(false);
       });
     }
     if (elements.drawerBackdrop) {
-      elements.drawerBackdrop.addEventListener('click', () => {
-        if (elements.mobileDrawer) elements.mobileDrawer.classList.remove('open');
-        if (elements.drawerBackdrop) elements.drawerBackdrop.classList.remove('active');
+      elements.drawerBackdrop.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleMobileDrawer(false);
+      });
+    }
+
+    // Enhance Mobile Drawer Links to Berlix UI Menu Vertical
+    if (elements.mobileDrawer) {
+      const drawerLinks = elements.mobileDrawer.querySelectorAll('.drawer-links a, .berlix-menu-vertical a');
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+
+      drawerLinks.forEach((link, idx) => {
+        const parentLi = link.closest('li');
+        if (parentLi) {
+          parentLi.style.setProperty('--item-index', idx);
+        }
+
+        // Structure Berlix motion components if not yet present
+        if (!link.querySelector('.berlix-arrow')) {
+          const rawText = link.textContent.trim();
+          link.innerHTML = `
+            <span class="berlix-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+            <span class="berlix-label">${rawText}</span>
+          `;
+          link.classList.add('berlix-menu-link');
+        }
+
+        // Mark active link
+        const linkHref = link.getAttribute('href') || '';
+        if (linkHref === currentPath || (currentPath === 'index.html' && (linkHref === 'index.html' || linkHref === './'))) {
+          link.classList.add('active');
+        }
+
+        // Smooth closing on click (for anchor navigation)
+        link.addEventListener('click', () => {
+          setTimeout(() => toggleMobileDrawer(false), 140);
+        });
+      });
+
+      // Escape key to dismiss drawer
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && elements.mobileDrawer.classList.contains('open')) {
+          toggleMobileDrawer(false);
+        }
       });
     }
 
