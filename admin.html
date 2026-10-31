@@ -4,37 +4,61 @@
   <base href="/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Portal • Slum Art Foundation</title>
+  <title>Curatorial Atelier & Vault • Slum Art Foundation</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" type="image/png" href="assets/images/logo-light.png">
 
-  <!-- Google Fonts & FontAwesome -->
+  <!-- Google Fonts: Newsreader (Editorial Serif), Cabinet Grotesk (Luxury Display), Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     :root {
-      --bg-base: #060911;
-      --bg-surface: #0c1222;
-      --bg-surface-elevated: #131c31;
-      --bg-card: #11192c;
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-focus: #ea580c;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
-      --color-primary: #ea580c;
-      --color-primary-hover: #f97316;
-      --color-amber: #f59e0b;
-      --color-emerald: #10b981;
-      --color-rose: #ef4444;
-      --color-sky: #0ea5e9;
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 18px;
-      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      /* Curatorial Fine Art Palette */
+      --atelier-canvas: #0b0c10;
+      --atelier-surface: #121319;
+      --atelier-elevated: #181a23;
+      --atelier-card: #151720;
+      --atelier-mat: #1e202c;
+      --atelier-border: rgba(255, 255, 255, 0.08);
+      --atelier-border-light: rgba(255, 255, 255, 0.14);
+      --atelier-border-gold: rgba(212, 175, 55, 0.35);
+
+      /* Typography Hues */
+      --ink-pure: #ffffff;
+      --ink-ivory: #f7f6f0;
+      --ink-linen: #dedcd2;
+      --ink-muted: #9c9a92;
+      --ink-dim: #656460;
+
+      /* Metallic Bronze & Fine Art Accents */
+      --gold-primary: #d4af37;
+      --gold-hover: #e5c055;
+      --gold-glow: rgba(212, 175, 55, 0.18);
+      --vermillion-accent: #e25822;
+      --vermillion-hover: #f16933;
+
+      /* Museum Status Badges */
+      --seal-available-bg: rgba(46, 139, 87, 0.15);
+      --seal-available-border: rgba(46, 139, 87, 0.4);
+      --seal-available-ink: #4ade80;
+
+      --seal-sold-bg: rgba(168, 50, 50, 0.15);
+      --seal-sold-border: rgba(168, 50, 50, 0.4);
+      --seal-sold-ink: #f87171;
+
+      --seal-curated-bg: rgba(212, 175, 55, 0.15);
+      --seal-curated-border: rgba(212, 175, 55, 0.35);
+      --seal-curated-ink: #facc15;
+
+      /* Physical Depth & Shadows */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --shadow-frame: 0 16px 40px -12px rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0, 0, 0, 0.4);
+      --shadow-elevation: 0 24px 60px -15px rgba(0, 0, 0, 0.9);
     }
 
     * {
@@ -45,20 +69,37 @@
 
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-base);
-      color: var(--text-main);
+      background-color: var(--atelier-canvas);
+      color: var(--ink-linen);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
-      line-height: 1.5;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Auth Gate Screen */
+    /* Museum Typography Utility */
+    .font-serif {
+      font-family: 'Newsreader', Georgia, serif;
+    }
+    .font-display {
+      font-family: 'Cabinet Grotesk', -apple-system, sans-serif;
+      letter-spacing: -0.02em;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ===================================================================
+       1. AUTHENTIC CURATORIAL ACCESS PASS (AUTH GATE)
+       =================================================================== */
     #authGate {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 50% 30%, #151f38 0%, #060911 100%);
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(30, 32, 44, 0.7) 0%, rgba(11, 12, 16, 0.98) 75%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
       z-index: 99999;
       display: flex;
       align-items: center;
@@ -66,133 +107,169 @@
       padding: 1.5rem;
     }
 
-    .auth-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+    .pass-monograph {
+      background: var(--atelier-surface);
+      border: 1px solid var(--atelier-border-light);
       border-radius: var(--radius-lg);
-      padding: 3rem 2.5rem;
+      padding: 3.25rem 2.75rem;
       width: 100%;
-      max-width: 440px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-      text-align: center;
+      max-width: 460px;
+      box-shadow: var(--shadow-elevation);
       position: relative;
+      overflow: hidden;
+      text-align: center;
     }
 
-    .auth-badge {
+    .pass-monograph::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold-primary) 50%, transparent 100%);
+    }
+
+    .atelier-crest {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: rgba(234, 88, 12, 0.15);
-      color: var(--color-amber);
-      border: 1px solid rgba(234, 88, 12, 0.3);
-      padding: 0.35rem 0.85rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
+      justify-content: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid var(--atelier-border-gold);
+      color: var(--gold-primary);
+      font-size: 1.35rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 24px var(--gold-glow);
+    }
+
+    .pass-header-meta {
+      font-size: 0.72rem;
       text-transform: uppercase;
-      margin-bottom: 1.25rem;
+      letter-spacing: 0.18em;
+      color: var(--gold-primary);
+      font-weight: 700;
+      margin-bottom: 0.65rem;
     }
 
-    .auth-logo {
-      height: 48px;
-      margin-bottom: 1.5rem;
+    .pass-title {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: var(--ink-pure);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
     }
 
-    .auth-title {
-      font-size: 1.6rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      color: #ffffff;
+    .pass-subtitle {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      margin-bottom: 2.25rem;
+      font-style: italic;
+      font-family: 'Newsreader', Georgia, serif;
     }
 
-    .auth-sub {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
-
-    .auth-input-group {
-      margin-bottom: 1.5rem;
+    .cipher-box {
+      margin-bottom: 1.75rem;
       position: relative;
     }
 
-    .auth-input {
+    .cipher-label {
+      display: block;
+      text-align: left;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-muted);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .cipher-input {
       width: 100%;
-      padding: 0.85rem 1.1rem;
-      background: #080d19;
-      border: 1.5px solid var(--border-subtle);
+      padding: 0.9rem 1.25rem;
+      background: var(--atelier-canvas);
+      border: 1px solid var(--atelier-border-light);
       border-radius: var(--radius-sm);
-      color: #ffffff;
-      font-size: 0.95rem;
-      outline: none;
-      transition: all 0.2s ease;
+      color: var(--ink-pure);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
+      letter-spacing: 0.18em;
       text-align: center;
-      letter-spacing: 0.1em;
+      outline: none;
+      transition: all 0.25s ease;
     }
 
-    .auth-input:focus {
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.2);
+    .cipher-input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 0 3px var(--gold-glow);
     }
 
-    .btn-login {
+    .btn-enter-atelier {
       width: 100%;
-      padding: 0.85rem 1.5rem;
-      background: var(--color-primary);
-      color: #ffffff;
+      padding: 0.95rem 1.5rem;
+      background: linear-gradient(135deg, var(--gold-primary) 0%, #b89025 100%);
+      color: #0b0c10;
       border: none;
       border-radius: var(--radius-sm);
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
+      gap: 0.65rem;
     }
 
-    .btn-login:hover {
-      background: var(--color-primary-hover);
+    .btn-enter-atelier:hover {
+      background: linear-gradient(135deg, var(--gold-hover) 0%, var(--gold-primary) 100%);
       transform: translateY(-1px);
+      box-shadow: 0 8px 24px var(--gold-glow);
     }
 
-    .btn-quick-login {
-      background: transparent;
-      border: 1px dashed var(--border-subtle);
-      color: var(--color-amber);
-      width: 100%;
-      padding: 0.65rem;
-      border-radius: var(--radius-sm);
-      margin-top: 0.75rem;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
+    .pass-footnote {
+      margin-top: 1.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--atelier-border);
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      transition: all 0.2s ease;
+      justify-content: space-between;
+      font-size: 0.78rem;
     }
 
-    .btn-quick-login:hover {
-      background: rgba(245, 158, 11, 0.1);
-      border-color: var(--color-amber);
+    .pass-footnote a, .pass-footnote button {
+      background: transparent;
+      border: none;
+      color: var(--ink-muted);
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.2s;
     }
 
-    /* Admin App Layout */
-    .admin-wrapper {
+    .pass-footnote button:hover {
+      color: var(--gold-primary);
+    }
+
+    /* ===================================================================
+       2. CURATORIAL WORKSPACE SHELL
+       =================================================================== */
+    .atelier-workspace {
       display: flex;
       min-height: 100vh;
       position: relative;
     }
 
-    /* Sidebar */
-    .admin-sidebar {
-      width: 270px;
-      background: var(--bg-surface);
-      border-right: 1px solid var(--border-subtle);
+    /* Atelier Curatorial Sidebar */
+    .atelier-sidebar {
+      width: 285px;
+      background: var(--atelier-surface);
+      border-right: 1px solid var(--atelier-border);
       display: flex;
       flex-direction: column;
       position: fixed;
@@ -200,821 +277,1306 @@
       bottom: 0;
       left: 0;
       z-index: 100;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .sidebar-brand {
-      padding: 1.75rem 1.5rem;
-      border-bottom: 1px solid var(--border-subtle);
+    .sidebar-emboss {
+      padding: 1.75rem 1.6rem;
+      border-bottom: 1px solid var(--atelier-border);
+    }
+
+    .brand-mark-link {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 0.85rem;
+      text-decoration: none;
     }
 
-    .sidebar-brand img {
-      height: 38px;
+    .brand-mark-link img {
+      height: 36px;
+      width: auto;
     }
 
-    .sidebar-status-pill {
-      font-size: 0.7rem;
+    .brand-curator-dossier {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .curator-tag {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--ink-pure);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .curator-edition {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold-primary);
       font-weight: 700;
-      color: var(--color-emerald);
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 0.2rem 0.6rem;
-      border-radius: 9999px;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
+      margin-top: 0.2rem;
     }
 
-    .sidebar-pulse-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--color-emerald);
-      animation: pulse 1.6s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
-
-    .sidebar-nav {
-      padding: 1.5rem 0.85rem;
+    .sidebar-chapters {
+      padding: 1.5rem 1rem;
       flex: 1;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
-    .nav-header-label {
-      font-size: 0.7rem;
+    .chapter-heading {
+      font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-dim);
+      letter-spacing: 0.16em;
+      color: var(--ink-dim);
       font-weight: 800;
-      padding: 0.5rem 0.75rem 0.25rem;
-      margin-top: 0.5rem;
+      padding: 0.8rem 0.8rem 0.35rem;
     }
 
-    .nav-tab-btn {
+    .nav-chapter-item {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
-      padding: 0.8rem 1rem;
+      gap: 0.9rem;
+      padding: 0.78rem 0.9rem;
       background: transparent;
-      color: var(--text-muted);
+      color: var(--ink-linen);
       border: none;
       border-radius: var(--radius-sm);
-      font-size: 0.92rem;
-      font-weight: 600;
+      font-size: 0.88rem;
+      font-weight: 500;
       cursor: pointer;
       text-align: left;
       width: 100%;
       transition: all 0.2s ease;
       text-decoration: none;
+      position: relative;
     }
 
-    .nav-tab-btn:hover {
-      background: var(--bg-surface-elevated);
-      color: #ffffff;
+    .nav-chapter-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink-pure);
     }
 
-    .nav-tab-btn.active {
-      background: rgba(234, 88, 12, 0.15);
-      color: var(--color-primary-hover);
-      border-left: 3px solid var(--color-primary);
-      font-weight: 700;
+    .nav-chapter-item.active {
+      background: rgba(212, 175, 55, 0.08);
+      color: var(--gold-primary);
+      font-weight: 600;
     }
 
-    .nav-tab-btn i {
-      font-size: 1.1rem;
-      width: 22px;
-      text-align: center;
+    .nav-chapter-item.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 20%;
+      bottom: 20%;
+      width: 3px;
+      background: var(--gold-primary);
+      border-radius: 0 2px 2px 0;
     }
 
-    .nav-badge-count {
-      margin-left: auto;
-      background: #1e293b;
-      color: #ffffff;
-      font-size: 0.72rem;
-      padding: 0.15rem 0.5rem;
-      border-radius: 9999px;
+    .chapter-num {
       font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--ink-dim);
+      font-weight: 600;
+      width: 18px;
     }
 
-    .sidebar-footer {
-      padding: 1.25rem 1.5rem;
-      border-top: 1px solid var(--border-subtle);
-      background: rgba(0, 0, 0, 0.2);
+    .nav-chapter-item.active .chapter-num {
+      color: var(--gold-primary);
+    }
+
+    .chapter-tally {
+      margin-left: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--ink-muted);
+    }
+
+    .nav-chapter-item.active .chapter-tally {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--gold-primary);
+    }
+
+    .sidebar-curator-tray {
+      padding: 1.25rem 1.4rem;
+      border-top: 1px solid var(--atelier-border);
+      background: rgba(0, 0, 0, 0.25);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .admin-user-info {
+    .curator-profile {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
+      gap: 0.75rem;
     }
 
-    .admin-avatar {
-      width: 34px;
-      height: 34px;
+    .curator-monogram {
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      background: var(--color-primary);
+      background: linear-gradient(135deg, var(--gold-primary) 0%, #7e5e11 100%);
+      color: #0b0c10;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
       font-size: 0.85rem;
-      color: #ffffff;
+      font-family: 'Cabinet Grotesk', sans-serif;
     }
 
-    .admin-role {
-      font-size: 0.75rem;
-      color: var(--text-muted);
+    .curator-meta-text {
+      display: flex;
+      flex-direction: column;
     }
 
-    .btn-logout {
+    .curator-name {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--ink-pure);
+    }
+
+    .curator-live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.7rem;
+      color: var(--seal-available-ink);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .curator-pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--seal-available-ink);
+      box-shadow: 0 0 8px var(--seal-available-ink);
+      animation: pulseLive 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseLive {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .btn-exit-atelier {
       background: transparent;
       border: none;
-      color: var(--text-dim);
-      font-size: 1.1rem;
+      color: var(--ink-dim);
+      font-size: 1.05rem;
       cursor: pointer;
+      padding: 0.4rem;
       transition: color 0.2s ease;
-      padding: 0.3rem;
     }
 
-    .btn-logout:hover {
-      color: var(--color-rose);
+    .btn-exit-atelier:hover {
+      color: var(--seal-sold-ink);
     }
 
-    /* Main Content Area */
-    .admin-main {
-      margin-left: 270px;
+    /* Mobile Backdrop */
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 95;
+    }
+
+    /* ===================================================================
+       3. MAIN CURATORIAL WORKSPACE
+       =================================================================== */
+    .atelier-stage {
+      margin-left: 285px;
       flex: 1;
       display: flex;
       flex-direction: column;
       min-width: 0;
     }
 
-    /* Top Bar */
-    .admin-topbar {
-      height: 70px;
-      background: var(--bg-surface);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 0 2rem;
+    /* Atelier Header Bar */
+    .stage-header {
+      height: 72px;
+      background: var(--atelier-surface);
+      border-bottom: 1px solid var(--atelier-border);
+      padding: 0 2.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       position: sticky;
       top: 0;
       z-index: 90;
+      backdrop-filter: blur(12px);
     }
 
-    .topbar-title {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #ffffff;
+    .header-breadcrumb {
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-dim);
     }
 
-    .topbar-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .btn-sync-live {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: var(--color-emerald);
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.85rem;
+    .header-breadcrumb span.active {
+      color: var(--ink-pure);
       font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
     }
 
-    .btn-sync-live:hover {
-      background: var(--color-emerald);
-      color: #ffffff;
+    .header-instruments {
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
     }
 
-    .btn-view-site {
+    .curator-status-seal {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: #1e293b;
-      color: #ffffff;
-      border: 1px solid var(--border-subtle);
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn-view-site:hover {
-      background: #334155;
-    }
-
-    /* Panels Container */
-    .admin-body {
-      padding: 2.5rem 2rem;
-      flex: 1;
-    }
-
-    .tab-panel {
-      display: none;
-    }
-
-    .tab-panel.active {
-      display: block;
-      animation: fadeIn 0.25s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Stats Grid */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      box-shadow: var(--shadow-card);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stat-card::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: var(--color-primary);
-    }
-
-    .stat-card.emerald::after { background: var(--color-emerald); }
-    .stat-card.amber::after { background: var(--color-amber); }
-    .stat-card.sky::after { background: var(--color-sky); }
-
-    .stat-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.05);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      color: #ffffff;
-    }
-
-    .stat-val {
-      font-size: 1.9rem;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1.1;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid var(--atelier-border-gold);
+      color: var(--gold-primary);
+      padding: 0.42rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.74rem;
       font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.05em;
     }
 
-    .stat-lbl {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-top: 0.2rem;
-      font-weight: 600;
-    }
-
-    /* Section Headers & Action Bars */
-    .panel-header-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.75rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .panel-header-text h2 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: #ffffff;
-    }
-
-    .panel-header-text p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-
-    .btn-create-action {
+    .btn-action-primary {
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
-      background: var(--color-primary);
-      color: #ffffff;
-      padding: 0.65rem 1.25rem;
+      background: linear-gradient(135deg, var(--gold-primary) 0%, #b89025 100%);
+      color: #0b0c10;
+      padding: 0.55rem 1.15rem;
       border-radius: var(--radius-sm);
+      font-size: 0.84rem;
       font-weight: 700;
-      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       border: none;
       cursor: pointer;
       transition: all 0.2s ease;
-      box-shadow: 0 4px 14px rgba(234, 88, 12, 0.25);
+      box-shadow: 0 4px 14px var(--gold-glow);
     }
 
-    .btn-create-action:hover {
-      background: var(--color-primary-hover);
-      transform: translateY(-2px);
+    .btn-action-primary:hover {
+      background: linear-gradient(135deg, var(--gold-hover) 0%, var(--gold-primary) 100%);
+      transform: translateY(-1px);
     }
 
-    /* Filter & Search Toolbar */
-    .toolbar-bar {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+    .btn-outline-curator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--ink-linen);
+      border: 1px solid var(--atelier-border-light);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-outline-curator:hover {
+      border-color: var(--gold-primary);
+      color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--atelier-border-light);
+      color: var(--ink-pure);
+      font-size: 1.1rem;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Content Body Canvas */
+    .stage-canvas {
+      padding: 2.5rem 2.25rem 4rem;
+      flex: 1;
+    }
+
+    /* Tab Switcher Logic */
+    .atelier-panel {
+      display: none;
+    }
+    .atelier-panel.active {
+      display: block;
+      animation: panelReveal 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes panelReveal {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===================================================================
+       4. CURATORIAL DOSSIER METRICS STRIP (REPLACES 4 AI STAT BOXES)
+       =================================================================== */
+    .dossier-summary-strip {
+      background: var(--atelier-surface);
+      border: 1px solid var(--atelier-border);
       border-radius: var(--radius-md);
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-bottom: 2.25rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-frame);
+    }
+
+    .dossier-cell {
+      padding: 1.75rem 1.85rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .dossier-cell:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 20%;
+      bottom: 20%;
+      width: 1px;
+      background: var(--atelier-border);
+    }
+
+    .dossier-eyebrow {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold-primary);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .dossier-datum {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--ink-pure);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .dossier-caption {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      margin-top: 0.35rem;
+      font-style: italic;
+    }
+
+    /* ===================================================================
+       5. ATELIER CONTROLS & VIEW TOGGLE
+       =================================================================== */
+    .curatorial-control-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 1.25rem;
+      margin-bottom: 1.85rem;
       flex-wrap: wrap;
     }
 
-    .search-input-wrap {
-      position: relative;
+    .curatorial-control-bar .search-and-filters {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
       flex: 1;
-      min-width: 250px;
+      flex-wrap: wrap;
     }
 
-    .search-input-wrap i {
+    .atelier-search-box {
+      position: relative;
+      min-width: 280px;
+      flex: 1;
+    }
+
+    .atelier-search-box i {
       position: absolute;
       left: 1rem;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--text-dim);
+      color: var(--ink-dim);
+      font-size: 0.9rem;
     }
 
-    .search-input-wrap input {
+    .atelier-search-box input {
       width: 100%;
-      padding: 0.65rem 1rem 0.65rem 2.5rem;
-      background: #080d19;
-      border: 1px solid var(--border-subtle);
+      padding: 0.65rem 1rem 0.65rem 2.6rem;
+      background: var(--atelier-surface);
+      border: 1px solid var(--atelier-border);
       border-radius: var(--radius-sm);
-      color: #ffffff;
+      color: var(--ink-pure);
       font-size: 0.88rem;
       outline: none;
+      transition: all 0.2s ease;
     }
 
-    .search-input-wrap input:focus {
-      border-color: var(--color-primary);
+    .atelier-search-box input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 0 2px var(--gold-glow);
     }
 
-    .toolbar-select {
-      padding: 0.65rem 1.25rem;
-      background: #080d19;
-      border: 1px solid var(--border-subtle);
+    .curator-select {
+      padding: 0.65rem 1.15rem;
+      background: var(--atelier-surface);
+      border: 1px solid var(--atelier-border);
       border-radius: var(--radius-sm);
-      color: #ffffff;
-      font-size: 0.88rem;
+      color: var(--ink-linen);
+      font-size: 0.85rem;
       outline: none;
       cursor: pointer;
+      transition: border-color 0.2s;
     }
 
-    /* Tables */
-    .data-table-container {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+    .curator-select:focus {
+      border-color: var(--gold-primary);
+    }
+
+    /* Visual Wall vs Archival Ledger Switcher */
+    .view-mode-pill {
+      display: inline-flex;
+      background: var(--atelier-surface);
+      border: 1px solid var(--atelier-border);
+      border-radius: var(--radius-sm);
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .view-mode-btn {
+      padding: 0.45rem 0.85rem;
+      background: transparent;
+      border: none;
+      color: var(--ink-dim);
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+    }
+
+    .view-mode-btn.active {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--ink-pure);
+    }
+
+    /* ===================================================================
+       6. THE GALLERY WALL (VISUAL EXHIBITION GRID)
+       =================================================================== */
+    .gallery-wall-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .museum-frame-card {
+      background: var(--atelier-surface);
+      border: 1px solid var(--atelier-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-frame);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .museum-frame-card:hover {
+      border-color: var(--atelier-border-gold);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.9), 0 0 30px var(--gold-glow);
+    }
+
+    /* Passe-partout Museum Mat Frame */
+    .artwork-passe-partout {
+      background: var(--atelier-mat);
+      padding: 1.25rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .artwork-framed-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+      transition: transform 0.4s ease;
+    }
+
+    .museum-frame-card:hover .artwork-framed-img {
+      transform: scale(1.025);
+    }
+
+    .curator-status-ribbon {
+      position: absolute;
+      top: 1.85rem;
+      right: 1.85rem;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      padding: 0.3rem 0.65rem;
+      border-radius: 9999px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .curator-status-ribbon.available {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.5);
+      color: #4ade80;
+    }
+
+    .curator-status-ribbon.sold {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.5);
+      color: #f87171;
+    }
+
+    .museum-plaque {
+      padding: 1.5rem 1.6rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .plaque-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.45rem;
+    }
+
+    .plaque-catalog-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--gold-primary);
+      letter-spacing: 0.08em;
+    }
+
+    .plaque-category-tag {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-dim);
+      font-weight: 700;
+    }
+
+    .plaque-artwork-title {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--ink-pure);
+      line-height: 1.25;
+      margin-bottom: 0.35rem;
+    }
+
+    .plaque-artist-attribution {
+      font-size: 0.86rem;
+      color: var(--ink-linen);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .plaque-artist-attribution span.age-badge {
+      font-size: 0.74rem;
+      color: var(--ink-muted);
+    }
+
+    .plaque-medium {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      font-style: italic;
+      margin-bottom: 1.25rem;
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .plaque-valuation-footer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--atelier-border);
+      margin-top: auto;
+    }
+
+    .valuation-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .valuation-primary {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--ink-pure);
+      letter-spacing: -0.01em;
+    }
+
+    .valuation-secondary {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      color: var(--gold-primary);
+    }
+
+    .curator-action-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .curator-icon-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--atelier-border);
+      color: var(--ink-linen);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.82rem;
+    }
+
+    .curator-icon-btn:hover {
+      background: var(--gold-primary);
+      border-color: var(--gold-primary);
+      color: #0b0c10;
+    }
+
+    .curator-icon-btn.danger:hover {
+      background: var(--seal-sold-ink);
+      border-color: var(--seal-sold-ink);
+      color: #ffffff;
+    }
+
+    /* ===================================================================
+       7. ARCHIVAL LEDGER TABLE VIEW
+       =================================================================== */
+    .archival-ledger-card {
+      background: var(--atelier-surface);
+      border: 1px solid var(--atelier-border);
       border-radius: var(--radius-md);
       overflow-x: auto;
-      box-shadow: var(--shadow-card);
+      box-shadow: var(--shadow-frame);
     }
 
-    .admin-table {
+    .archival-table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
     }
 
-    .admin-table th {
-      padding: 1rem 1.25rem;
-      background: var(--bg-surface);
-      border-bottom: 1px solid var(--border-subtle);
-      color: var(--text-muted);
+    .archival-table th {
+      padding: 1.15rem 1.4rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid var(--atelier-border);
+      color: var(--ink-dim);
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 0.74rem;
-      letter-spacing: 0.05em;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
     }
 
-    .admin-table td {
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    .archival-table td {
+      padding: 1.15rem 1.4rem;
+      border-bottom: 1px solid var(--atelier-border);
       vertical-align: middle;
-      color: #e2e8f0;
+      color: var(--ink-linen);
     }
 
-    .admin-table tr:hover td {
+    .archival-table tr:hover td {
       background: rgba(255, 255, 255, 0.02);
     }
 
-    .table-thumb {
-      width: 54px;
-      height: 54px;
-      border-radius: 8px;
+    .ledger-thumb {
+      width: 58px;
+      height: 58px;
       object-fit: cover;
-      background: #000;
-      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      border: 1px solid var(--atelier-border);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
 
-    .table-badge {
+    .ledger-title {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink-pure);
+    }
+
+    .ledger-id-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--gold-primary);
+    }
+
+    .ledger-status-pill {
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
       padding: 0.25rem 0.65rem;
       border-radius: 9999px;
-      font-size: 0.74rem;
-      font-weight: 700;
-    }
-
-    .badge-available { background: rgba(16, 185, 129, 0.15); color: #34d399; }
-    .badge-sold { background: rgba(239, 68, 68, 0.15); color: #f87171; }
-    .badge-featured { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
-    .badge-regular { background: #1e293b; color: #94a3b8; }
-
-    .action-btns-cell {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .table-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 6px;
-      border: 1px solid var(--border-subtle);
-      background: var(--bg-surface-elevated);
-      color: var(--text-muted);
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      transition: all 0.2s ease;
     }
 
-    .table-btn:hover {
-      color: #ffffff;
-      background: #334155;
+    .ledger-status-pill.available {
+      background: var(--seal-available-bg);
+      border: 1px solid var(--seal-available-border);
+      color: var(--seal-available-ink);
     }
 
-    .table-btn.delete:hover {
-      background: rgba(239, 68, 68, 0.2);
-      color: var(--color-rose);
-      border-color: var(--color-rose);
+    .ledger-status-pill.sold {
+      background: var(--seal-sold-bg);
+      border: 1px solid var(--seal-sold-border);
+      color: var(--seal-sold-ink);
     }
 
-    /* CRUD Modals */
-    .admin-modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-    }
-
-    .admin-modal-overlay.active {
-      display: flex;
-    }
-
-    .admin-modal-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      width: 100%;
-      max-width: 680px;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-      padding: 2.25rem;
-      position: relative;
-    }
-
-    .admin-modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.75rem;
-      border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 1rem;
-    }
-
-    .admin-modal-title {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #ffffff;
-    }
-
-    .modal-close-x {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.25rem;
-      cursor: pointer;
-      padding: 0.3rem;
-      transition: color 0.2s ease;
-    }
-
-    .modal-close-x:hover {
-      color: #ffffff;
-    }
-
-    /* Form Fields */
-    .form-group {
-      margin-bottom: 1.25rem;
-    }
-
-    .form-label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-bottom: 0.45rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .form-input,
-    .form-select,
-    .form-textarea {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      background: #080d19;
-      border: 1.5px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      color: #ffffff;
-      font-size: 0.92rem;
-      outline: none;
-      font-family: inherit;
-      transition: border-color 0.2s ease;
-    }
-
-    .form-input:focus,
-    .form-select:focus,
-    .form-textarea:focus {
-      border-color: var(--color-primary);
-    }
-
-    .form-grid-2 {
+    /* ===================================================================
+       8. FIELD CHRONICLES & JOURNAL CARDS (BLOG VIEW)
+       =================================================================== */
+    .chronicles-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
     }
 
-    .image-uploader-box {
-      border: 2px dashed rgba(255, 255, 255, 0.15);
-      border-radius: var(--radius-sm);
-      padding: 1.25rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      background: #080d19;
-      margin-bottom: 0.75rem;
-    }
-
-    .image-uploader-box:hover {
-      border-color: var(--color-primary);
-      background: rgba(234, 88, 12, 0.04);
-    }
-
-    .preview-box {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 0.75rem;
-      background: #11192c;
-      padding: 0.75rem;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-subtle);
-    }
-
-    .preview-box img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    /* Live Preview iframe */
-    .preview-stage-container {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+    .chronicle-card {
+      background: var(--atelier-surface);
+      border: 1px solid var(--atelier-border);
       border-radius: var(--radius-md);
       overflow: hidden;
+      box-shadow: var(--shadow-frame);
       display: flex;
       flex-direction: column;
-      height: 780px;
+      transition: all 0.3s ease;
     }
 
-    .preview-toolbar {
-      padding: 0.75rem 1.25rem;
-      background: #080d19;
-      border-bottom: 1px solid var(--border-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+    .chronicle-card:hover {
+      border-color: var(--atelier-border-gold);
+      transform: translateY(-3px);
     }
 
-    .device-switcher {
+    .chronicle-cover-wrap {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chronicle-cover-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .chronicle-card:hover .chronicle-cover-wrap img {
+      transform: scale(1.03);
+    }
+
+    .chronicle-featured-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(212, 175, 55, 0.9);
+      color: #0b0c10;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
       display: flex;
       align-items: center;
       gap: 0.35rem;
-      background: #11192c;
-      padding: 0.25rem;
-      border-radius: 6px;
     }
 
-    .device-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-dim);
-      padding: 0.35rem 0.75rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    .device-btn.active {
-      background: var(--color-primary);
-      color: #ffffff;
-    }
-
-    .preview-frame-wrap {
-      flex: 1;
+    .chronicle-body {
+      padding: 1.6rem;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #04060a;
-      overflow: auto;
-      padding: 1rem;
+      flex-direction: column;
+      flex: 1;
     }
 
-    .preview-iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: #ffffff;
-      border-radius: 8px;
-      transition: width 0.3s ease;
-    }
-
-    /* Toast */
-    .admin-toast {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: #10b981;
-      color: #ffffff;
-      padding: 0.85rem 1.5rem;
-      border-radius: var(--radius-sm);
-      font-weight: 700;
-      font-size: 0.92rem;
+    .chronicle-meta-line {
       display: flex;
       align-items: center;
       gap: 0.65rem;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      transform: translateY(100px);
-      opacity: 0;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 99999;
+      font-size: 0.74rem;
+      color: var(--ink-dim);
+      margin-bottom: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
-    .admin-toast.active {
-      transform: translateY(0);
-      opacity: 1;
+    .chronicle-title {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--ink-pure);
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
     }
 
-    .mobile-admin-toggle {
-      display: none;
-      width: 38px;
-      height: 38px;
-      border-radius: var(--radius-sm);
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
-      color: #ffffff;
+    .chronicle-excerpt {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .chronicle-author-strip {
+      display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1rem;
-      margin-right: 0.5rem;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--atelier-border);
+      margin-top: auto;
     }
 
-    .sidebar-backdrop {
+    .chronicle-author-info {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .author-name-text {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink-pure);
+    }
+
+    .author-role-text {
+      font-size: 0.72rem;
+      color: var(--ink-dim);
+    }
+
+    /* ===================================================================
+       9. CERTIFICATE OF PROVENANCE & MODAL FORMS
+       =================================================================== */
+    .curatorial-modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
-      z-index: 95;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.25s ease;
+      background: rgba(11, 12, 16, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      overflow-y: auto;
     }
 
-    .sidebar-backdrop.active {
-      opacity: 1;
-      visibility: visible;
+    .curatorial-modal-overlay.active {
+      display: flex;
     }
 
+    .curatorial-dossier-modal {
+      background: var(--atelier-surface);
+      border: 1px solid var(--atelier-border-light);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 820px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-elevation);
+      position: relative;
+    }
+
+    .dossier-modal-header {
+      padding: 1.85rem 2.25rem;
+      border-bottom: 1px solid var(--atelier-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: var(--atelier-surface);
+      z-index: 10;
+    }
+
+    .dossier-modal-header h3 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.6rem;
+      color: var(--ink-pure);
+      font-weight: 600;
+    }
+
+    .dossier-modal-header p {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      margin-top: 0.2rem;
+    }
+
+    .btn-close-modal {
+      background: transparent;
+      border: none;
+      color: var(--ink-dim);
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .btn-close-modal:hover {
+      color: var(--ink-pure);
+    }
+
+    .dossier-modal-body {
+      padding: 2.25rem;
+    }
+
+    .dossier-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.4rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .dossier-form-grid.full {
+      grid-template-columns: 1fr;
+    }
+
+    .form-group-curator {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .form-group-curator label {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-muted);
+      font-weight: 700;
+    }
+
+    .form-group-curator input,
+    .form-group-curator select,
+    .form-group-curator textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--atelier-canvas);
+      border: 1px solid var(--atelier-border-light);
+      border-radius: var(--radius-sm);
+      color: var(--ink-pure);
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: inherit;
+    }
+
+    .form-group-curator input:focus,
+    .form-group-curator select:focus,
+    .form-group-curator textarea:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 0 2px var(--gold-glow);
+    }
+
+    .image-curator-preview-box {
+      border: 1px dashed var(--atelier-border-light);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      background: var(--atelier-canvas);
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .image-curator-preview-box img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    .dossier-modal-footer {
+      padding: 1.5rem 2.25rem;
+      border-top: 1px solid var(--atelier-border);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1rem;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    /* ===================================================================
+       10. LIVE SIMULATOR & EXPORT VAULT
+       =================================================================== */
+    .simulator-stage-card {
+      background: var(--atelier-surface);
+      border: 1px solid var(--atelier-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-frame);
+    }
+
+    .simulator-control-bar {
+      padding: 1rem 1.5rem;
+      background: rgba(0, 0, 0, 0.35);
+      border-bottom: 1px solid var(--atelier-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .device-viewport-toggles {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--atelier-canvas);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--atelier-border);
+    }
+
+    .device-viewport-btn {
+      padding: 0.4rem 0.85rem;
+      background: transparent;
+      border: none;
+      color: var(--ink-dim);
+      font-size: 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+    }
+
+    .device-viewport-btn.active {
+      background: var(--atelier-surface);
+      color: var(--gold-primary);
+      font-weight: 600;
+    }
+
+    .simulator-viewport-container {
+      background: #050608;
+      padding: 2.5rem 1rem;
+      display: flex;
+      justify-content: center;
+      min-height: 650px;
+      overflow-x: auto;
+    }
+
+    .simulator-frame {
+      width: 100%;
+      height: 680px;
+      background: #ffffff;
+      border: 1px solid var(--atelier-border);
+      border-radius: 8px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+      transition: width 0.3s ease;
+    }
+
+    /* Export Vault Panel */
+    .export-monograph-card {
+      background: var(--atelier-surface);
+      border: 1px solid var(--atelier-border);
+      border-radius: var(--radius-md);
+      padding: 2.25rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-frame);
+    }
+
+    .export-monograph-card h3 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.6rem;
+      color: var(--ink-pure);
+      margin-bottom: 0.5rem;
+    }
+
+    .export-monograph-card p {
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+      max-width: 650px;
+    }
+
+    .export-buttons-cluster {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Curatorial Toast Notification */
+    .atelier-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--atelier-surface);
+      border: 1px solid var(--atelier-border-gold);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.5rem;
+      color: var(--ink-pure);
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 25px var(--gold-glow);
+      z-index: 100000;
+      transform: translateY(120%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .atelier-toast.active {
+      transform: translateY(0);
+    }
+
+    .atelier-toast i {
+      color: var(--gold-primary);
+      font-size: 1.15rem;
+    }
+
+    /* Responsive Breakpoints */
     @media (max-width: 1024px) {
-      .stats-grid {
+      .dossier-summary-strip {
         grid-template-columns: repeat(2, 1fr);
       }
+      .dossier-cell:nth-child(2)::after {
+        display: none;
+      }
+      .dossier-cell:nth-child(-n+2) {
+        border-bottom: 1px solid var(--atelier-border);
+      }
     }
 
-    @media (max-width: 768px) {
-      .mobile-admin-toggle {
-        display: inline-flex;
-      }
-      .admin-sidebar {
+    @media (max-width: 860px) {
+      .atelier-sidebar {
         transform: translateX(-100%);
-        z-index: 100;
-        box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
       }
-      .admin-sidebar.open {
+      .atelier-sidebar.open {
         transform: translateX(0);
       }
-      .admin-main {
+      .sidebar-backdrop.active {
+        display: block;
+      }
+      .atelier-stage {
         margin-left: 0;
       }
-      .admin-topbar {
+      .mobile-nav-toggle {
+        display: inline-flex;
+      }
+      .stage-header {
         padding: 0 1rem;
-        height: 60px;
       }
-      .topbar-title {
-        font-size: 0.95rem;
+      .header-breadcrumb {
+        font-size: 0.72rem;
       }
-      .topbar-title i {
+      .header-breadcrumb span:first-child {
         display: none;
       }
-      .btn-sync-live span {
+      .header-breadcrumb i {
         display: none;
       }
-      .btn-sync-live {
-        padding: 0.45rem 0.65rem;
+      .header-instruments {
+        gap: 0.5rem;
       }
-      .btn-view-site {
-        padding: 0.45rem 0.75rem;
-        font-size: 0.8rem;
+      .curator-status-seal {
+        padding: 0.4rem 0.6rem;
       }
-      .admin-body {
-        padding: 1.5rem 1rem;
+      .curator-status-seal span {
+        display: none;
       }
-      .stats-grid {
+      .btn-action-primary {
+        padding: 0.45rem 0.85rem;
+        font-size: 0.76rem;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+      }
+      .stage-canvas {
+        padding: 1.25rem 1rem 3rem;
+      }
+      .dossier-summary-strip {
         grid-template-columns: 1fr;
       }
-      .form-grid-2 {
+      .dossier-cell {
+        padding: 1.25rem 1.4rem;
+      }
+      .dossier-cell::after {
+        display: none !important;
+      }
+      .dossier-cell:not(:last-child) {
+        border-bottom: 1px solid var(--atelier-border);
+      }
+      .dossier-datum {
+        font-size: 1.85rem;
+      }
+      .dossier-form-grid {
         grid-template-columns: 1fr;
       }
-      .toolbar-bar {
+      .curatorial-control-bar {
         flex-direction: column;
         align-items: stretch;
       }
-      .search-input-wrap {
-        min-width: 100%;
+      .curatorial-control-bar .search-and-filters {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .curator-select {
+        width: 100%;
+      }
+      .view-mode-pill {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .view-mode-btn {
+        justify-content: center;
+      }
+      .gallery-wall-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1022,540 +1584,491 @@
 <body>
 
   <!-- ===================================================================
-       1. AUTH GATE (PIN / DEMO QUICK LOGIN)
+       1. AUTHENTIC CURATORIAL ACCESS PASS (AUTHENTICATION GATE)
        =================================================================== -->
   <div id="authGate">
-    <div class="auth-card">
-      <div class="auth-badge">
-        <i class="fas fa-shield-halved"></i> Internal Management Suite
+    <div class="pass-monograph">
+      <div class="atelier-crest">
+        <i class="fa-solid fa-gem"></i>
       </div>
-      <img src="assets/images/logo-light.png" alt="Slum Art Foundation" class="auth-logo">
-      <h1 class="auth-title">Admin Dashboard</h1>
-      <p class="auth-sub">Manage certified artworks, write blog field stories, and observe live catalog synchronization in real time.</p>
+      <div class="pass-header-meta">Exhibition Dossier &bull; Vol. 2026</div>
+      <h1 class="pass-title">Curatorial Atelier</h1>
+      <p class="pass-subtitle">The Slum Art Foundation Provenance Vault</p>
 
-      <form id="authForm" onsubmit="handleAdminLogin(event)">
-        <div class="auth-input-group">
-          <input type="password" id="authPinInput" class="auth-input" placeholder="Enter Access Code" required autofocus autocomplete="current-password">
+      <form id="authPassForm" onsubmit="handleCuratorLogin(event)">
+        <div class="cipher-box">
+          <label class="cipher-label" for="authPinInput">Enter Curatorial Cipher</label>
+          <input
+            type="password"
+            id="authPinInput"
+            class="cipher-input"
+            placeholder="••••••••"
+            autocomplete="current-password"
+            required
+          >
         </div>
-        <button type="submit" class="btn-login">
-          <i class="fas fa-arrow-right-to-bracket"></i> Authenticate &amp; Enter
+
+        <button type="submit" class="btn-enter-atelier">
+          <i class="fa-solid fa-key"></i> Unlock Atelier Vault
         </button>
       </form>
 
-      <button type="button" class="btn-quick-login" onclick="quickDemoLogin()">
-        <i class="fas fa-bolt"></i> 1-Click Quick Login (Demo Access)
-      </button>
-      <div style="font-size: 0.74rem; color: var(--text-dim); margin-top: 1rem;">
-        Default access code: <code style="color: var(--color-amber);">slumart2026</code>
+      <div class="pass-footnote">
+        <button type="button" onclick="quickAtelierDemoUnlock()">
+          <i class="fa-solid fa-feather-pointed"></i> Use Master Pass (Demo)
+        </button>
+        <a href="/" target="_blank">
+          View Public Gallery <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
       </div>
     </div>
   </div>
 
   <!-- ===================================================================
-       2. ADMIN MAIN INTERFACE
+       2. CURATORIAL ATELIER MAIN WORKSPACE
        =================================================================== -->
-  <div class="admin-wrapper" id="adminApp" style="display: none;">
+  <div id="atelierApp" class="atelier-workspace" style="display: none;">
 
-    <!-- Left Navigation Sidebar -->
-    <aside class="admin-sidebar" id="adminSidebar">
-      <div class="sidebar-brand">
-        <img src="assets/images/logo-light.png" alt="Slum Art">
-        <div class="sidebar-status-pill">
-          <span class="sidebar-pulse-dot"></span>
-          <span>Live Sync</span>
-        </div>
+    <!-- Mobile Sidebar Backdrop -->
+    <div id="sidebarBackdrop" class="sidebar-backdrop" onclick="toggleAtelierSidebar(false)"></div>
+
+    <!-- Atelier Curatorial Sidebar -->
+    <aside id="atelierSidebar" class="atelier-sidebar">
+      <div class="sidebar-emboss">
+        <a href="/" class="brand-mark-link">
+          <img src="assets/images/logo-light.png" alt="Slum Art Foundation">
+          <div class="brand-curator-dossier">
+            <span class="curator-tag">Slum Art Atelier</span>
+            <span class="curator-edition">Curatorial Desk</span>
+          </div>
+        </a>
       </div>
 
-      <nav class="sidebar-nav">
-        <div class="nav-header-label">Workspace</div>
-        <button class="nav-tab-btn active" data-tab="overview">
-          <i class="fas fa-chart-pie"></i>
-          <span>Overview</span>
-        </button>
-        <button class="nav-tab-btn" data-tab="artworks">
-          <i class="fas fa-palette"></i>
-          <span>Artworks Manager</span>
-          <span class="nav-badge-count" id="badgeArtworksCount">0</span>
-        </button>
-        <button class="nav-tab-btn" data-tab="blogs">
-          <i class="fas fa-newspaper"></i>
-          <span>Blogs &amp; Stories</span>
-          <span class="nav-badge-count" id="badgeBlogsCount">0</span>
-        </button>
-        <button class="nav-tab-btn" data-tab="commissions">
-          <i class="fas fa-wand-magic-sparkles"></i>
-          <span>Custom Commissions</span>
-          <span class="nav-badge-count" id="badgeCommissionsCount">0</span>
+      <nav class="sidebar-chapters">
+        <div class="chapter-heading">Archival Vault</div>
+
+        <button class="nav-chapter-item active" data-tab="artworks">
+          <span class="chapter-num">01</span>
+          <span>Atelier Vault</span>
+          <span id="badgeArtworksCount" class="chapter-tally">0</span>
         </button>
 
-        <div class="nav-header-label">Tools &amp; Simulation</div>
-        <button class="nav-tab-btn" data-tab="preview">
-          <i class="fas fa-laptop-code"></i>
-          <span>Live Site Preview</span>
-        </button>
-        <button class="nav-tab-btn" data-tab="export">
-          <i class="fas fa-cloud-arrow-down"></i>
-          <span>Export &amp; Code Sync</span>
+        <button class="nav-chapter-item" data-tab="chronicles">
+          <span class="chapter-num">02</span>
+          <span>Field Chronicles</span>
+          <span id="badgeBlogsCount" class="chapter-tally">0</span>
         </button>
 
-        <div class="nav-header-label">External Links</div>
-        <a href="index.html" target="_blank" class="nav-tab-btn">
-          <i class="fas fa-arrow-up-right-from-square"></i>
-          <span>Open Public Site</span>
+        <button class="nav-chapter-item" data-tab="commissions">
+          <span class="chapter-num">03</span>
+          <span>Collector Inquiries</span>
+          <span id="badgeCommissionsCount" class="chapter-tally">0</span>
+        </button>
+
+        <div class="chapter-heading">Curatorial Suite</div>
+
+        <button class="nav-chapter-item" data-tab="simulator">
+          <span class="chapter-num">04</span>
+          <span>Live Gallery Simulator</span>
+        </button>
+
+        <button class="nav-chapter-item" data-tab="export">
+          <span class="chapter-num">05</span>
+          <span>Code Vault &amp; Export</span>
+        </button>
+
+        <div class="chapter-heading">Public Galleries</div>
+
+        <a href="shop.html" target="_blank" class="nav-chapter-item">
+          <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem; color: var(--ink-dim); width: 18px;"></i>
+          <span>Exhibition Shop</span>
+        </a>
+
+        <a href="blog.html" target="_blank" class="nav-chapter-item">
+          <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem; color: var(--ink-dim); width: 18px;"></i>
+          <span>Field Stories</span>
         </a>
       </nav>
 
-      <div class="sidebar-footer">
-        <div class="admin-user-info">
-          <div class="admin-avatar">SA</div>
-          <div>
-            <strong style="font-size: 0.85rem; color: #ffffff; display: block;">Curator Admin</strong>
-            <span class="admin-role">Lagos Atelier</span>
+      <div class="sidebar-curator-tray">
+        <div class="curator-profile">
+          <div class="curator-monogram">SA</div>
+          <div class="curator-meta-text">
+            <span class="curator-name">Curator Desk</span>
+            <div class="curator-live-indicator">
+              <span class="curator-pulse-dot"></span>
+              <span>Mesh Connected</span>
+            </div>
           </div>
         </div>
-        <button class="btn-logout" onclick="handleAdminLogout()" title="Log Out">
-          <i class="fas fa-power-off"></i>
+        <button class="btn-exit-atelier" onclick="handleCuratorLogout()" title="Seal &amp; Lock Atelier">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
         </button>
       </div>
     </aside>
 
-    <!-- Mobile Sidebar Backdrop -->
-    <div class="sidebar-backdrop" id="adminSidebarBackdrop" onclick="toggleAdminSidebar(false)"></div>
+    <!-- Atelier Stage (Main Display) -->
+    <main class="atelier-stage">
 
-    <!-- Main Content Area -->
-    <main class="admin-main">
-      
-      <!-- Top Bar -->
-      <header class="admin-topbar">
-        <div style="display: flex; align-items: center;">
-          <button class="mobile-admin-toggle" id="adminMenuToggle" aria-label="Toggle Navigation" onclick="toggleAdminSidebar()">
-            <i class="fas fa-bars"></i>
+      <!-- Header Bar -->
+      <header class="stage-header">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <button class="mobile-nav-toggle" onclick="toggleAtelierSidebar(true)">
+            <i class="fa-solid fa-bars"></i>
           </button>
-          <div class="topbar-title">
-            <i class="fas fa-cube text-amber"></i>
-            <span id="topbarTitle">Dashboard Overview</span>
+          <div class="header-breadcrumb">
+            <span>Slum Art Atelier</span>
+            <i class="fa-solid fa-angle-right" style="font-size: 0.65rem;"></i>
+            <span id="currentStageBreadcrumb" class="active">Atelier Vault</span>
           </div>
         </div>
-        <div class="topbar-actions">
-          <button class="btn-sync-live" onclick="triggerManualSync()" title="Force instant broadcast across all tabs">
-            <i class="fas fa-rotate"></i>
-            <span>Instant Broadcast Sync</span>
+
+        <div class="header-instruments">
+          <div class="curator-status-seal">
+            <i class="fa-solid fa-tower-broadcast"></i>
+            <span>Realtime Synchronized</span>
+          </div>
+
+          <button id="primaryActionBtn" class="btn-action-primary" onclick="openAddArtworkModal()">
+            <i class="fa-solid fa-plus"></i> Catalog Artwork
           </button>
-          <a href="shop.html" target="_blank" class="btn-view-site">
-            <i class="fas fa-eye"></i> View Shop
-          </a>
         </div>
       </header>
 
-      <!-- Body / Tab Content -->
-      <div class="admin-body">
+      <!-- Stage Canvas -->
+      <div class="stage-canvas">
 
-        <!-- =============================================================
-             TAB 1: OVERVIEW
-             ============================================================= -->
-        <section id="panel-overview" class="tab-panel active">
-          
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-paint-brush text-amber"></i></div>
-              <div>
-                <div class="stat-val" id="statArtworksCount">0</div>
-                <div class="stat-lbl">Certified Masterpieces</div>
-              </div>
+        <!-- ===================================================================
+             PANEL 1: ATELIER VAULT (ARTWORKS)
+             =================================================================== -->
+        <section id="panel-artworks" class="atelier-panel active">
+
+          <!-- Bespoke Curatorial Dossier Metrics Strip (NO AI Stat Boxes!) -->
+          <div class="dossier-summary-strip">
+            <div class="dossier-cell">
+              <span class="dossier-eyebrow"><i class="fa-solid fa-palette"></i> Masterworks Logged</span>
+              <span id="dossierArtworksCount" class="dossier-datum font-serif">12</span>
+              <span class="dossier-caption">Physical canvases &amp; recycled collages</span>
             </div>
-            <div class="stat-card emerald">
-              <div class="stat-icon"><i class="fas fa-newspaper text-emerald"></i></div>
-              <div>
-                <div class="stat-val" id="statBlogsCount">0</div>
-                <div class="stat-lbl">Published Field Stories</div>
-              </div>
+            <div class="dossier-cell">
+              <span class="dossier-eyebrow"><i class="fa-solid fa-coins"></i> Valuation Ledger</span>
+              <span id="dossierValuationTotal" class="dossier-datum font-serif">&#8358;2.85M</span>
+              <span class="dossier-caption">Direct community impact fund</span>
             </div>
-            <div class="stat-card sky">
-              <div class="stat-icon"><i class="fas fa-signature" style="color: #38bdf8;"></i></div>
-              <div>
-                <div class="stat-val" id="statCommissionsCount">0</div>
-                <div class="stat-lbl">Custom Inquiries</div>
-              </div>
+            <div class="dossier-cell">
+              <span class="dossier-eyebrow"><i class="fa-solid fa-feather"></i> Field Chronicles</span>
+              <span id="dossierBlogsCount" class="dossier-datum font-serif">5</span>
+              <span class="dossier-caption">Documented stories of our protégés</span>
             </div>
-            <div class="stat-card amber">
-              <div class="stat-icon"><i class="fas fa-graduation-cap text-amber"></i></div>
-              <div>
-                <div class="stat-val">100%</div>
-                <div class="stat-lbl">Philanthropic Tuition Fund</div>
-              </div>
+            <div class="dossier-cell">
+              <span class="dossier-eyebrow"><i class="fa-solid fa-handshake"></i> Collector Inquiries</span>
+              <span id="dossierCommissionsCount" class="dossier-datum font-serif">0</span>
+              <span class="dossier-caption">Pending custom portrait requests</span>
             </div>
           </div>
 
-          <!-- Quick Action Buttons -->
-          <div class="panel-header-bar" style="margin-top: 1rem;">
-            <div class="panel-header-text">
-              <h2>Quick Actions</h2>
-              <p>Add new works or stories to instantly push updates to the live web catalog.</p>
+          <!-- Curatorial Control Bar -->
+          <div class="curatorial-control-bar">
+            <div class="search-and-filters">
+              <div class="atelier-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="text"
+                  id="artworkSearchInput"
+                  placeholder="Search by title, young artist, medium, or ID..."
+                  oninput="filterArtworksGallery()"
+                >
+              </div>
+
+              <select id="artworkCategoryFilter" class="curator-select" onchange="filterArtworksGallery()">
+                <option value="all">All Disciplines</option>
+                <option value="Collage Art">Collage Art</option>
+                <option value="Canvas Painting">Canvas Painting</option>
+                <option value="Sculptural">Sculptural Works</option>
+              </select>
+
+              <select id="artworkStatusFilter" class="curator-select" onchange="filterArtworksGallery()">
+                <option value="all">All Provenance Statuses</option>
+                <option value="available">Available for Acquisition</option>
+                <option value="sold">In Private Collection</option>
+              </select>
             </div>
-            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <button class="btn-create-action" onclick="openAddArtworkModal()">
-                <i class="fas fa-plus"></i> Add New Artwork
+
+            <!-- View Switcher: Gallery Wall vs Archival Ledger -->
+            <div class="view-mode-pill">
+              <button id="viewBtnGrid" class="view-mode-btn active" onclick="switchArtView('grid')" title="Visual Gallery Wall">
+                <i class="fa-solid fa-grip"></i> Gallery Wall
               </button>
-              <button class="btn-create-action" style="background: #2563eb;" onclick="openAddBlogModal()">
-                <i class="fas fa-pen-nib"></i> Write Blog Post
+              <button id="viewBtnTable" class="view-mode-btn" onclick="switchArtView('table')" title="Archival Ledger View">
+                <i class="fa-solid fa-list-ul"></i> Archive Ledger
               </button>
             </div>
           </div>
 
-          <!-- Recent Artworks Preview Table -->
-          <div style="margin-top: 2rem;">
-            <h3 style="font-size: 1.15rem; margin-bottom: 1rem; color: #ffffff;">Recent Catalog Masterpieces</h3>
-            <div class="data-table-container">
-              <table class="admin-table">
-                <thead>
-                  <tr>
-                    <th>Work</th>
-                    <th>Title &amp; Artist</th>
-                    <th>Category</th>
-                    <th>Medium</th>
-                    <th>Price (NGN / USD)</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="overviewArtworksTableBody"></tbody>
-              </table>
-            </div>
+          <!-- View A: Visual Gallery Wall (Default) -->
+          <div id="artworksGalleryWall" class="gallery-wall-grid">
+            <!-- Dynamically populated -->
           </div>
 
-        </section>
-
-        <!-- =============================================================
-             TAB 2: ARTWORKS MANAGER
-             ============================================================= -->
-        <section id="panel-artworks" class="tab-panel">
-          
-          <div class="panel-header-bar">
-            <div class="panel-header-text">
-              <h2>Artworks &amp; Gallery Vault</h2>
-              <p>Add, edit, or remove certified original works. Any change immediately updates `shop.html` and `index.html` across all browsers.</p>
-            </div>
-            <button class="btn-create-action" onclick="openAddArtworkModal()">
-              <i class="fas fa-plus"></i> Add New Artwork
-            </button>
-          </div>
-
-          <!-- Toolbar -->
-          <div class="toolbar-bar">
-            <div class="search-input-wrap">
-              <i class="fas fa-search"></i>
-              <input type="text" id="artworkSearchInput" placeholder="Search by title, artist, or medium..." oninput="filterArtworksTable()">
-            </div>
-            <select class="toolbar-select" id="artworkCategoryFilter" onchange="filterArtworksTable()">
-              <option value="all">All Categories</option>
-              <option value="Collage Art">Collage Art</option>
-              <option value="Original Painting">Original Painting</option>
-              <option value="Recycled Media">Recycled Media</option>
-              <option value="Paper Mosaic">Paper Mosaic</option>
-              <option value="Landscape">Landscape</option>
-            </select>
-          </div>
-
-          <!-- Artworks Data Table -->
-          <div class="data-table-container">
-            <table class="admin-table">
+          <!-- View B: Archival Ledger Table -->
+          <div id="artworksArchivalLedger" class="archival-ledger-card" style="display: none;">
+            <table class="archival-table">
               <thead>
                 <tr>
-                  <th>Thumbnail</th>
-                  <th>Title</th>
-                  <th>Artist &amp; Age</th>
-                  <th>Category</th>
-                  <th>Medium</th>
-                  <th>Price</th>
+                  <th>Provenance</th>
+                  <th>Catalog ID &amp; Title</th>
+                  <th>Protégé Artist</th>
+                  <th>Medium &amp; Craft</th>
+                  <th>Valuation</th>
                   <th>Status</th>
-                  <th>Actions</th>
+                  <th style="text-align: right;">Curatorial Actions</th>
                 </tr>
               </thead>
-              <tbody id="artworksTableBody"></tbody>
+              <tbody id="artworksLedgerBody">
+                <!-- Dynamically populated -->
+              </tbody>
             </table>
           </div>
 
         </section>
 
-        <!-- =============================================================
-             TAB 3: BLOGS & STORIES MANAGER
-             ============================================================= -->
-        <section id="panel-blogs" class="tab-panel">
-          
-          <div class="panel-header-bar">
-            <div class="panel-header-text">
-              <h2>Field Stories &amp; Dispatch Articles</h2>
-              <p>Publish field reports, world record milestones, and atelier techniques directly to `blog.html` and the homepage showcase.</p>
+        <!-- ===================================================================
+             PANEL 2: FIELD CHRONICLES (BLOGS & STORIES)
+             =================================================================== -->
+        <section id="panel-chronicles" class="atelier-panel">
+          <div class="curatorial-control-bar">
+            <div class="search-and-filters">
+              <div class="atelier-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="text"
+                  id="chronicleSearchInput"
+                  placeholder="Search dispatches by title, author, or keywords..."
+                  oninput="filterChroniclesGallery()"
+                >
+              </div>
+
+              <select id="chronicleCategoryFilter" class="curator-select" onchange="filterChroniclesGallery()">
+                <option value="all">All Categories</option>
+                <option value="Eco-Art Innovations">Eco-Art Innovations</option>
+                <option value="Youth Empowerment">Youth Empowerment</option>
+                <option value="Exhibitions &amp; Impact">Exhibitions &amp; Impact</option>
+              </select>
             </div>
-            <button class="btn-create-action" style="background: #2563eb;" onclick="openAddBlogModal()">
-              <i class="fas fa-pen-nib"></i> Create New Blog Post
+
+            <button class="btn-action-primary" onclick="openAddBlogModal()">
+              <i class="fa-solid fa-pen-nib"></i> Compose Field Story
             </button>
           </div>
 
-          <!-- Toolbar -->
-          <div class="toolbar-bar">
-            <div class="search-input-wrap">
-              <i class="fas fa-search"></i>
-              <input type="text" id="blogSearchInputAdmin" placeholder="Search blog title, author, or keywords..." oninput="filterBlogsTable()">
-            </div>
-            <select class="toolbar-select" id="blogCategoryFilterAdmin" onchange="filterBlogsTable()">
-              <option value="all">All Categories</option>
-              <option value="Eco-Art Innovations">Eco-Art Innovations</option>
-              <option value="Exhibitions & Milestones">Exhibitions &amp; Milestones</option>
-              <option value="Art & Technique">Art &amp; Technique</option>
-              <option value="Community Stories">Community Stories</option>
-            </select>
+          <div id="chroniclesGrid" class="chronicles-grid">
+            <!-- Dynamically populated -->
           </div>
-
-          <!-- Blogs Data Table -->
-          <div class="data-table-container">
-            <table class="admin-table">
-              <thead>
-                <tr>
-                  <th>Cover</th>
-                  <th>Article Title</th>
-                  <th>Category</th>
-                  <th>Author</th>
-                  <th>Date &amp; Read Time</th>
-                  <th>Featured</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody id="blogsTableBody"></tbody>
-            </table>
-          </div>
-
         </section>
 
-        <!-- =============================================================
-             TAB 4: CUSTOM COMMISSIONS VIEWER
-             ============================================================= -->
-        <section id="panel-commissions" class="tab-panel">
-          
-          <div class="panel-header-bar">
-            <div class="panel-header-text">
-              <h2>Custom Commission Inquiries</h2>
-              <p>Live patron submissions for bespoke Collage Artworks and Collage Portraits.</p>
-            </div>
-            <button class="btn-sync-live" onclick="loadCommissionsTable()">
-              <i class="fas fa-rotate"></i> Refresh Inquiries
-            </button>
-          </div>
-
-          <div class="data-table-container">
-            <table class="admin-table">
+        <!-- ===================================================================
+             PANEL 3: COLLECTOR COMMISSIONS (CUSTOM PORTRAITS)
+             =================================================================== -->
+        <section id="panel-commissions" class="atelier-panel">
+          <div class="archival-ledger-card">
+            <table class="archival-table">
               <thead>
                 <tr>
                   <th>Ref ID</th>
-                  <th>Type</th>
+                  <th>Commission Type</th>
                   <th>Patron Name</th>
-                  <th>Contact (Email / Phone)</th>
-                  <th>Delivery Location</th>
-                  <th>Brief / Notes</th>
-                  <th>Date</th>
-                  <th>Connect</th>
+                  <th>Contact Details</th>
+                  <th>Shipping City</th>
+                  <th>Portrait Directives</th>
+                  <th>Requested Date</th>
+                  <th style="text-align: right;">Direct Action</th>
                 </tr>
               </thead>
-              <tbody id="commissionsTableBody"></tbody>
+              <tbody id="commissionsTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
             </table>
           </div>
-
         </section>
 
-        <!-- =============================================================
-             TAB 5: LIVE SITE PREVIEW
-             ============================================================= -->
-        <section id="panel-preview" class="tab-panel">
-          
-          <div class="preview-stage-container">
-            <div class="preview-toolbar">
-              <div style="display: flex; align-items: center; gap: 0.85rem;">
-                <label style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">Preview Page:</label>
-                <select id="previewPageSelector" class="toolbar-select" style="padding: 0.35rem 0.85rem;" onchange="changePreviewPage(this.value)">
-                  <option value="shop.html">Art Shop & Gallery (shop.html)</option>
-                  <option value="blog.html">Field Stories (blog.html)</option>
-                  <option value="index.html">Homepage (index.html)</option>
+        <!-- ===================================================================
+             PANEL 4: LIVE GALLERY SIMULATOR
+             =================================================================== -->
+        <section id="panel-simulator" class="atelier-panel">
+          <div class="simulator-stage-card">
+            <div class="simulator-control-bar">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <select id="simulatorTargetPage" class="curator-select" onchange="changeSimulatorUrl(this.value)">
+                  <option value="index.html">Main Public Exhibition (index.html)</option>
+                  <option value="shop.html">Atelier Art Catalog (shop.html)</option>
+                  <option value="blog.html">Field Chronicles Monograph (blog.html)</option>
                 </select>
-                <button class="table-btn" onclick="reloadPreviewIframe()" title="Reload Iframe"><i class="fas fa-rotate"></i></button>
+
+                <button class="btn-outline-curator" onclick="reloadSimulatorFrame()" title="Reload Frame">
+                  <i class="fa-solid fa-rotate-right"></i> Refresh
+                </button>
               </div>
 
-              <div class="device-switcher">
-                <button class="device-btn active" data-width="100%" onclick="setPreviewDevice(this, '100%')"><i class="fas fa-desktop"></i> Desktop</button>
-                <button class="device-btn" data-width="768px" onclick="setPreviewDevice(this, '768px')"><i class="fas fa-tablet-screen-button"></i> Tablet</button>
-                <button class="device-btn" data-width="390px" onclick="setPreviewDevice(this, '390px')"><i class="fas fa-mobile-screen"></i> Mobile</button>
+              <div class="device-viewport-toggles">
+                <button class="device-viewport-btn active" onclick="setSimulatorWidth(this, '100%')">
+                  <i class="fa-solid fa-display"></i> Desktop
+                </button>
+                <button class="device-viewport-btn" onclick="setSimulatorWidth(this, '768px')">
+                  <i class="fa-solid fa-tablet-screen-button"></i> Tablet
+                </button>
+                <button class="device-viewport-btn" onclick="setSimulatorWidth(this, '420px')">
+                  <i class="fa-solid fa-mobile-screen-button"></i> Mobile
+                </button>
               </div>
             </div>
 
-            <div class="preview-frame-wrap">
-              <iframe id="livePreviewFrame" src="shop.html" class="preview-iframe"></iframe>
+            <div class="simulator-viewport-container">
+              <iframe id="liveSimulatorFrame" src="index.html" class="simulator-frame"></iframe>
             </div>
           </div>
-
         </section>
 
-        <!-- =============================================================
-             TAB 6: EXPORT & CODE PERSISTENCE
-             ============================================================= -->
-        <section id="panel-export" class="tab-panel">
-          
-          <div class="panel-header-bar">
-            <div class="panel-header-text">
-              <h2>Data Persistence &amp; File Generation</h2>
-              <p>While changes update all browser sessions instantly via localStorage and broadcast channels, you can download updated code files with 1 click to save them permanently into git or disk.</p>
-            </div>
-          </div>
-
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
-            
-            <div class="stat-card" style="flex-direction: column; align-items: flex-start;">
-              <i class="fas fa-file-code text-amber" style="font-size: 2.2rem; margin-bottom: 1rem;"></i>
-              <strong style="font-size: 1.15rem; color: #ffffff;">Download Updated data.js</strong>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.5rem 0 1.25rem;">
-                Produces the complete JavaScript code with all newly added artworks and blog stories ready to drop into <code>js/data.js</code>.
-              </p>
-              <button class="btn-create-action" onclick="downloadUpdatedDataJs()">
-                <i class="fas fa-download"></i> Download data.js
-              </button>
-            </div>
-
-            <div class="stat-card emerald" style="flex-direction: column; align-items: flex-start;">
-              <i class="fas fa-file-lines text-emerald" style="font-size: 2.2rem; margin-bottom: 1rem;"></i>
-              <strong style="font-size: 1.15rem; color: #ffffff;">Export Artworks JSON</strong>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.5rem 0 1.25rem;">
-                Export raw array of all artworks in standalone JSON format for external backups or API integrations.
-              </p>
-              <button class="btn-create-action" style="background: #059669;" onclick="downloadArtworksJson()">
-                <i class="fas fa-download"></i> Download Artworks JSON
-              </button>
-            </div>
-
-            <div class="stat-card sky" style="flex-direction: column; align-items: flex-start;">
-              <i class="fas fa-newspaper text-sky" style="font-size: 2.2rem; margin-bottom: 1rem; color: #38bdf8;"></i>
-              <strong style="font-size: 1.15rem; color: #ffffff;">Export Blogs JSON</strong>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.5rem 0 1.25rem;">
-                Export all published field stories and blog data in clean JSON format.
-              </p>
-              <button class="btn-create-action" style="background: #0284c7;" onclick="downloadBlogsJson()">
-                <i class="fas fa-download"></i> Download Blogs JSON
-              </button>
-            </div>
-
-          </div>
-
-          <div style="margin-top: 3rem; background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius-md); padding: 1.5rem;">
-            <strong style="color: #f87171; font-size: 1rem;"><i class="fas fa-triangle-exclamation"></i> Factory Reset Danger Zone</strong>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.4rem 0 1rem;">
-              Clears localStorage overrides and restores original default seed data from <code>js/data.js</code>.
+        <!-- ===================================================================
+             PANEL 5: CODE VAULT & PERSISTENCE EXPORT
+             =================================================================== -->
+        <section id="panel-export" class="atelier-panel">
+          <div class="export-monograph-card">
+            <span class="dossier-eyebrow"><i class="fa-solid fa-vault"></i> Architectural Ledger &bull; Source Code Synchronization</span>
+            <h3 class="font-serif">Export Curatorial Database to Codebase</h3>
+            <p>
+              Your changes are instantly stored locally in browser storage and broadcast across all live browser tabs via the Realtime BroadcastChannel. To permanently lock your curatorial changes into the repository, download the generated source files below and place them into the project folder.
             </p>
-            <button class="btn-create-action" style="background: #dc2626;" onclick="resetToFactoryData()">
-              <i class="fas fa-trash-can"></i> Reset to Factory Seed Data
-            </button>
-          </div>
 
+            <div class="export-buttons-cluster">
+              <button class="btn-action-primary" onclick="downloadUpdatedDataJs()">
+                <i class="fa-solid fa-file-code"></i> Download Updated data.js
+              </button>
+
+              <button class="btn-outline-curator" onclick="downloadArtworksJson()">
+                <i class="fa-solid fa-download"></i> Export Artworks JSON
+              </button>
+
+              <button class="btn-outline-curator" onclick="downloadBlogsJson()">
+                <i class="fa-solid fa-download"></i> Export Stories JSON
+              </button>
+
+              <button class="btn-outline-curator" style="color: var(--seal-sold-ink); border-color: rgba(239, 68, 68, 0.4);" onclick="resetToFactoryData()">
+                <i class="fa-solid fa-trash-arrow-up"></i> Reset to Factory Archetype
+              </button>
+            </div>
+          </div>
         </section>
 
       </div>
     </main>
-
   </div>
 
   <!-- ===================================================================
-       3. ADD / EDIT ARTWORK MODAL
+       MODAL 1: CERTIFICATE OF PROVENANCE & ARTWORK CATALOGING
        =================================================================== -->
-  <div class="admin-modal-overlay" id="artworkModal">
-    <div class="admin-modal-card">
-      <div class="admin-modal-header">
-        <h3 class="admin-modal-title" id="artworkModalTitle">Add New Artwork</h3>
-        <button class="modal-close-x" onclick="closeAdminModals()"><i class="fas fa-times"></i></button>
+  <div id="artworkModal" class="curatorial-modal-overlay">
+    <div class="curatorial-dossier-modal">
+      <div class="dossier-modal-header">
+        <div>
+          <span class="dossier-eyebrow"><i class="fa-solid fa-stamp"></i> Atelier Provenance Certificate</span>
+          <h3 id="artworkModalTitle">Catalog New Certified Artwork</h3>
+          <p>Assign official accession metadata, protégé credit, valuation, and museum framing.</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeCuratorModals()">&times;</button>
       </div>
 
-      <form id="artworkForm" onsubmit="saveArtworkForm(event)">
+      <form id="artworkCuratorForm" onsubmit="saveArtworkProvenance(event)">
         <input type="hidden" id="artFormEditId" value="">
 
-        <div class="form-grid-2">
-          <div class="form-group">
-            <label class="form-label">Artwork ID *</label>
-            <input type="text" id="artFormId" class="form-input" required placeholder="e.g. art-13">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Category *</label>
-            <select id="artFormCategory" class="form-select" required>
-              <option value="Collage Art">Collage Art</option>
-              <option value="Recycled Media">Recycled Media</option>
-              <option value="Original Painting">Original Painting</option>
-              <option value="Paper Mosaic">Paper Mosaic</option>
-              <option value="Landscape">Landscape</option>
-              <option value="Portrait">Portrait</option>
-            </select>
-          </div>
-        </div>
+        <div class="dossier-modal-body">
+          <div class="dossier-form-grid">
+            <div class="form-group-curator">
+              <label for="artFormId">Archival Catalog Code</label>
+              <input type="text" id="artFormId" required placeholder="e.g. art-13">
+            </div>
 
-        <div class="form-group">
-          <label class="form-label">Artwork Title *</label>
-          <input type="text" id="artFormTitle" class="form-input" required placeholder="e.g. Whispers of the Lagoon">
-        </div>
-
-        <div class="form-grid-2">
-          <div class="form-group">
-            <label class="form-label">Artist Name *</label>
-            <input type="text" id="artFormArtist" class="form-input" required placeholder="e.g. Daniel Adeleke">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Artist Age *</label>
-            <input type="text" id="artFormAge" class="form-input" required placeholder="e.g. Age 11">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Medium &amp; Materials *</label>
-          <input type="text" id="artFormMedium" class="form-input" required placeholder="e.g. Recycled Newspaper &amp; Acrylic on Stretched Canvas">
-        </div>
-
-        <div class="form-grid-2">
-          <div class="form-group">
-            <label class="form-label">Price (NGN ₦) *</label>
-            <input type="number" id="artFormPriceNgn" class="form-input" required placeholder="185000">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Price (USD $) *</label>
-            <input type="number" id="artFormPriceUsd" class="form-input" required placeholder="125">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Image Source (Upload File or Enter URL) *</label>
-          <div class="image-uploader-box" onclick="document.getElementById('artImageFileInput').click()">
-            <input type="file" id="artImageFileInput" accept="image/*" style="display: none;" onchange="handleArtworkImageUpload(this)">
-            <i class="fas fa-cloud-arrow-up text-amber" style="font-size: 1.8rem; margin-bottom: 0.5rem; display: block;"></i>
-            <span style="font-weight: 700; font-size: 0.92rem; color: #ffffff;">Click to choose an image from your device</span>
-            <span style="display: block; font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem;">Direct base64 conversion &bull; PNG, JPEG, WEBP</span>
-          </div>
-          <input type="text" id="artFormImageUrl" class="form-input" placeholder="Or paste image URL (e.g. assets/images/resources/Art.png)" oninput="updateArtPreviewThumb(this.value)">
-          <div class="preview-box" id="artPreviewBox" style="display: none;">
-            <img id="artPreviewImg" src="" alt="Preview">
-            <div>
-              <strong style="color: #34d399; font-size: 0.85rem; display: block;"><i class="fas fa-check"></i> Image Loaded</strong>
-              <span style="font-size: 0.75rem; color: var(--text-muted);">Ready for live sync</span>
+            <div class="form-group-curator">
+              <label for="artFormCategory">Curatorial Discipline</label>
+              <select id="artFormCategory">
+                <option value="Collage Art">Collage Art (Recycled Media)</option>
+                <option value="Canvas Painting">Canvas Painting</option>
+                <option value="Sculptural Works">Sculptural Works</option>
+              </select>
             </div>
           </div>
+
+          <div class="dossier-form-grid">
+            <div class="form-group-curator">
+              <label for="artFormTitle">Masterwork Title</label>
+              <input type="text" id="artFormTitle" required placeholder="e.g. Symphony of the Floating Waters">
+            </div>
+
+            <div class="form-group-curator">
+              <label for="artFormArtist">Young Protégé Artist</label>
+              <input type="text" id="artFormArtist" required placeholder="e.g. Kehinde Adebayo">
+            </div>
+          </div>
+
+          <div class="dossier-form-grid">
+            <div class="form-group-curator">
+              <label for="artFormAge">Artist Age &amp; Cohort</label>
+              <input type="text" id="artFormAge" required placeholder="e.g. Age 11">
+            </div>
+
+            <div class="form-group-curator">
+              <label for="artFormMedium">Medium &amp; Physical Composition</label>
+              <input type="text" id="artFormMedium" required placeholder="e.g. Recycled Paper Collage &amp; Acrylic on Canvas">
+            </div>
+          </div>
+
+          <div class="dossier-form-grid">
+            <div class="form-group-curator">
+              <label for="artFormPriceNgn">Valuation (NGN &#8358;)</label>
+              <input type="number" id="artFormPriceNgn" required placeholder="185000">
+            </div>
+
+            <div class="form-group-curator">
+              <label for="artFormPriceUsd">Valuation (USD $)</label>
+              <input type="number" id="artFormPriceUsd" required placeholder="125">
+            </div>
+          </div>
+
+          <div class="form-group-curator" style="margin-bottom: 1.4rem;">
+            <label>Masterwork Photograph</label>
+            <div style="display: flex; gap: 0.75rem;">
+              <input type="text" id="artFormImageUrl" placeholder="assets/images/resources/Art.png or Image URL" oninput="updateArtPreviewThumb(this.value)" style="flex: 1;">
+              <label class="btn-outline-curator" style="cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;">
+                <i class="fa-solid fa-arrow-up-from-bracket"></i> Upload Photo
+                <input type="file" accept="image/*" style="display: none;" onchange="handleArtworkImageUpload(this)">
+              </label>
+            </div>
+
+            <div id="artPreviewBox" class="image-curator-preview-box">
+              <img id="artPreviewImg" src="assets/images/resources/Art.png" alt="Preview">
+              <div>
+                <strong style="color: var(--ink-pure); font-size: 0.88rem;">Museum Frame Matting Preview</strong>
+                <p style="font-size: 0.78rem; color: var(--ink-muted); margin-top: 0.2rem;">
+                  Artwork will be mounted within fine museum passe-partout matting in the public catalog.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group-curator" style="margin-bottom: 1.4rem;">
+            <label for="artFormImpact">Direct Philanthropic Impact Statement</label>
+            <input type="text" id="artFormImpact" placeholder="e.g. 100% of proceeds fund child's primary school tuition &amp; nutritional support">
+          </div>
+
+          <div class="form-group-curator">
+            <label for="artFormLink">Acquisition / Paystack Gateway Link</label>
+            <input type="url" id="artFormLink" placeholder="https://paystack.shop/pay/lk0hlrdlun">
+          </div>
         </div>
 
-        <div class="form-group">
-          <label class="form-label">Philanthropic Impact Note</label>
-          <input type="text" id="artFormImpact" class="form-input" placeholder="e.g. 100% Funds direct school tuition & daily meals">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Paystack Acquisition Link</label>
-          <input type="url" id="artFormLink" class="form-input" placeholder="https://paystack.shop/pay/...">
-        </div>
-
-        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-          <button type="submit" class="btn-create-action" style="flex: 1; justify-content: center; padding: 0.9rem;">
-            <i class="fas fa-floppy-disk"></i> Save Artwork &amp; Broadcast
-          </button>
-          <button type="button" class="table-btn" style="width: auto; padding: 0 1.25rem;" onclick="closeAdminModals()">
-            Cancel
+        <div class="dossier-modal-footer">
+          <button type="button" class="btn-outline-curator" onclick="closeCuratorModals()">Cancel</button>
+          <button type="submit" class="btn-action-primary">
+            <i class="fa-solid fa-stamp"></i> Seal Provenance &amp; Save
           </button>
         </div>
       </form>
@@ -1563,225 +2076,255 @@
   </div>
 
   <!-- ===================================================================
-       4. ADD / EDIT BLOG POST MODAL
+       MODAL 2: FIELD CHRONICLE EDITORIAL DISPATCH
        =================================================================== -->
-  <div class="admin-modal-overlay" id="blogModal">
-    <div class="admin-modal-card" style="max-width: 760px;">
-      <div class="admin-modal-header">
-        <h3 class="admin-modal-title" id="blogModalTitle">Create Blog Post</h3>
-        <button class="modal-close-x" onclick="closeAdminModals()"><i class="fas fa-times"></i></button>
+  <div id="chronicleModal" class="curatorial-modal-overlay">
+    <div class="curatorial-dossier-modal">
+      <div class="dossier-modal-header">
+        <div>
+          <span class="dossier-eyebrow"><i class="fa-solid fa-feather-pointed"></i> Field Chronicle Monograph</span>
+          <h3 id="chronicleModalTitle">Compose Field Dispatch</h3>
+          <p>Document field stories, masterclass workshops, and community transformations.</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeCuratorModals()">&times;</button>
       </div>
 
-      <form id="blogForm" onsubmit="saveBlogForm(event)">
+      <form id="chronicleCuratorForm" onsubmit="saveChronicleDispatch(event)">
         <input type="hidden" id="blogFormEditId" value="">
 
-        <div class="form-group">
-          <label class="form-label">Story Title *</label>
-          <input type="text" id="blogFormTitle" class="form-input" required placeholder="e.g. From Shoreline Trash to Monumental Masterpieces">
-        </div>
+        <div class="dossier-modal-body">
+          <div class="dossier-form-grid">
+            <div class="form-group-curator">
+              <label for="blogFormTitle">Editorial Headline</label>
+              <input type="text" id="blogFormTitle" required placeholder="e.g. Turning Discarded Plastic Into Hope at Makoko">
+            </div>
 
-        <div class="form-grid-2">
-          <div class="form-group">
-            <label class="form-label">Category *</label>
-            <select id="blogFormCategory" class="form-select" required>
-              <option value="Eco-Art Innovations">Eco-Art Innovations</option>
-              <option value="Exhibitions & Milestones">Exhibitions &amp; Milestones</option>
-              <option value="Art & Technique">Art &amp; Technique</option>
-              <option value="Community Stories">Community Stories</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Estimated Read Time *</label>
-            <input type="text" id="blogFormReadTime" class="form-input" required placeholder="e.g. 5 min read">
-          </div>
-        </div>
-
-        <div class="form-grid-2">
-          <div class="form-group">
-            <label class="form-label">Author Name *</label>
-            <input type="text" id="blogFormAuthor" class="form-input" required placeholder="e.g. Adetunwase Adenle">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Author Role / Title</label>
-            <input type="text" id="blogFormAuthorRole" class="form-input" placeholder="e.g. Founder & Lead Visionary">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Story Cover Image (Upload or URL) *</label>
-          <div class="image-uploader-box" onclick="document.getElementById('blogImageFileInput').click()">
-            <input type="file" id="blogImageFileInput" accept="image/*" style="display: none;" onchange="handleBlogImageUpload(this)">
-            <i class="fas fa-cloud-arrow-up text-amber" style="font-size: 1.8rem; margin-bottom: 0.5rem; display: block;"></i>
-            <span style="font-weight: 700; font-size: 0.92rem; color: #ffffff;">Upload high-res blog cover photo</span>
-          </div>
-          <input type="text" id="blogFormImageUrl" class="form-input" placeholder="Or enter URL (e.g. assets/images/blog/blog_1.png)" oninput="updateBlogPreviewThumb(this.value)">
-          <div class="preview-box" id="blogPreviewBox" style="display: none;">
-            <img id="blogPreviewImg" src="" alt="Blog Preview">
-            <div>
-              <strong style="color: #34d399; font-size: 0.85rem; display: block;"><i class="fas fa-check"></i> Cover Image Ready</strong>
+            <div class="form-group-curator">
+              <label for="blogFormCategory">Journal Discipline</label>
+              <select id="blogFormCategory">
+                <option value="Eco-Art Innovations">Eco-Art Innovations</option>
+                <option value="Youth Empowerment">Youth Empowerment</option>
+                <option value="Exhibitions &amp; Impact">Exhibitions &amp; Impact</option>
+              </select>
             </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label class="form-label">Excerpt / Summary Hook (Short Paragraph) *</label>
-          <textarea id="blogFormExcerpt" class="form-textarea" rows="2" required placeholder="A compelling 2-sentence teaser for card previews..."></textarea>
-        </div>
+          <div class="dossier-form-grid">
+            <div class="form-group-curator">
+              <label for="blogFormAuthor">Field Author / Chronicler</label>
+              <input type="text" id="blogFormAuthor" required placeholder="e.g. Adetunwase Adenle">
+            </div>
 
-        <div class="form-group">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.45rem;">
-            <label class="form-label" style="margin: 0;">Full Article Content (HTML / Text) *</label>
-            <div style="display: flex; gap: 0.35rem;">
-              <button type="button" class="table-btn" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" onclick="insertHtmlTag('p')">&lt;p&gt;</button>
-              <button type="button" class="table-btn" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" onclick="insertHtmlTag('blockquote')">Quote</button>
-              <button type="button" class="table-btn" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" onclick="insertHtmlTag('h3')">H3</button>
-              <button type="button" class="table-btn" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" onclick="insertHtmlTag('strong')">Bold</button>
+            <div class="form-group-curator">
+              <label for="blogFormAuthorRole">Author Atelier Title</label>
+              <input type="text" id="blogFormAuthorRole" placeholder="e.g. Founder &amp; Lead Visionary">
             </div>
           </div>
-          <textarea id="blogFormContent" class="form-textarea" rows="8" required placeholder="Write the full story here using HTML tags like <p>, <blockquote>, <h3>..."></textarea>
+
+          <div class="dossier-form-grid">
+            <div class="form-group-curator">
+              <label for="blogFormReadTime">Estimated Read Monograph</label>
+              <input type="text" id="blogFormReadTime" placeholder="e.g. 4 min read">
+            </div>
+
+            <div class="form-group-curator" style="display: flex; align-items: center; justify-content: flex-start; padding-top: 1.5rem;">
+              <label style="display: flex; align-items: center; gap: 0.65rem; cursor: pointer; text-transform: none; color: var(--ink-pure); font-size: 0.88rem;">
+                <input type="checkbox" id="blogFormFeatured" style="width: auto;">
+                <span>Promote to Monograph Spotlight (Featured Story)</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group-curator" style="margin-bottom: 1.4rem;">
+            <label>Field Photograph Cover</label>
+            <div style="display: flex; gap: 0.75rem;">
+              <input type="text" id="blogFormImageUrl" placeholder="assets/images/blog/blog_1.png or URL" oninput="updateBlogPreviewThumb(this.value)" style="flex: 1;">
+              <label class="btn-outline-curator" style="cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;">
+                <i class="fa-solid fa-arrow-up-from-bracket"></i> Upload Photo
+                <input type="file" accept="image/*" style="display: none;" onchange="handleBlogImageUpload(this)">
+              </label>
+            </div>
+
+            <div id="blogPreviewBox" class="image-curator-preview-box">
+              <img id="blogPreviewImg" src="assets/images/blog/blog_1.png" alt="Preview">
+              <div>
+                <strong style="color: var(--ink-pure); font-size: 0.88rem;">Dispatch Header Artwork</strong>
+                <p style="font-size: 0.78rem; color: var(--ink-muted); margin-top: 0.2rem;">
+                  Displays as the lead editorial photograph in reader modals and catalog cards.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group-curator" style="margin-bottom: 1.4rem;">
+            <label for="blogFormExcerpt">Monograph Lead Excerpt</label>
+            <textarea id="blogFormExcerpt" rows="2" placeholder="A concise, captivating editorial summary that appears on cards..."></textarea>
+          </div>
+
+          <div class="form-group-curator">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+              <label for="blogFormContent" style="margin-bottom: 0;">Full Chronicle Body (HTML or Markdown Supported)</label>
+              <div style="display: flex; gap: 0.35rem;">
+                <button type="button" class="view-mode-btn" onclick="insertHtmlTag('p')" title="Paragraph">&lt;p&gt;</button>
+                <button type="button" class="view-mode-btn" onclick="insertHtmlTag('h3')" title="Header">&lt;h3&gt;</button>
+                <button type="button" class="view-mode-btn" onclick="insertHtmlTag('blockquote')" title="Quote">&lt;quote&gt;</button>
+              </div>
+            </div>
+            <textarea id="blogFormContent" rows="8" placeholder="<p>Write your detailed field observations here...</p>"></textarea>
+          </div>
         </div>
 
-        <div style="margin-bottom: 1.5rem;">
-          <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; color: #ffffff; font-size: 0.9rem;">
-            <input type="checkbox" id="blogFormFeatured" style="width: 18px; height: 18px;">
-            <span>Mark as Featured Headline Story (pinned prominently to top hero)</span>
-          </label>
-        </div>
-
-        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-          <button type="submit" class="btn-create-action" style="flex: 1; justify-content: center; padding: 0.9rem; background: #2563eb;">
-            <i class="fas fa-paper-plane"></i> Publish Story &amp; Sync Instantly
-          </button>
-          <button type="button" class="table-btn" style="width: auto; padding: 0 1.25rem;" onclick="closeAdminModals()">
-            Cancel
+        <div class="dossier-modal-footer">
+          <button type="button" class="btn-outline-curator" onclick="closeCuratorModals()">Cancel</button>
+          <button type="submit" class="btn-action-primary">
+            <i class="fa-solid fa-feather-pointed"></i> Publish Chronicle Live
           </button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Toast Notification -->
-  <div class="admin-toast" id="adminToast">
-    <i class="fas fa-circle-check"></i>
-    <span id="toastMessage">Changes saved and synchronized across all tabs!</span>
+  <!-- Curatorial Toast Notification -->
+  <div id="curatorToast" class="atelier-toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Atelier synchronized.</span>
   </div>
 
-  <!-- Shared Data Source -->
-  <script src="js/data.js?v=20261031_v81"></script>
+  <!-- Core Data Archetype -->
+  <script src="js/data.js?v=20261031_v85"></script>
 
-  <!-- Admin Controller Logic -->
+  <!-- Curatorial Controller & Real-Time Sync Engine -->
   <script>
-    // State Store
-    const ADMIN_PASS = 'slumart2026';
+    // State Ledger
+    const ATELIER_CIPHER = 'slumart2026';
     let dbArtworks = [];
     let dbBlogs = [];
-    const broadcastChannel = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('slum_art_admin_channel') : null;
+    let currentArtView = 'grid'; // 'grid' | 'table'
+    const syncChannel = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('slum_art_admin_channel') : null;
 
-    // Initialize Admin
-    function initAdmin() {
-      const isAuthed = sessionStorage.getItem('slum_admin_authed') === 'true';
-      if (isAuthed) {
-        showAdminApp();
+    // Boot Atelier
+    function initAtelier() {
+      const isCuratorAuthed = sessionStorage.getItem('slum_curator_authed') === 'true' || sessionStorage.getItem('slum_admin_authed') === 'true';
+      if (isCuratorAuthed) {
+        revealAtelier();
       } else {
         document.getElementById('authGate').style.display = 'flex';
-        document.getElementById('adminApp').style.display = 'none';
+        document.getElementById('atelierApp').style.display = 'none';
       }
-      loadDatabase();
-      setupTabs();
+
+      loadCuratorialVault();
+      bindNavigationChapters();
     }
 
-    // Load Data from LocalStorage or seed fallback
-    function loadDatabase() {
-      const seedArtworks = (window.SLUM_DATA && window.SLUM_DATA.artworks) ? window.SLUM_DATA.artworks : [];
+    // Load Vault Database from LocalStorage or seed fallback
+    function loadCuratorialVault() {
+      const seedArt = (window.SLUM_DATA && window.SLUM_DATA.artworks) ? window.SLUM_DATA.artworks : [];
       const seedBlogs = (window.SLUM_DATA && window.SLUM_DATA.blogs) ? window.SLUM_DATA.blogs : [];
 
       const storedArt = localStorage.getItem('slum_art_artworks_db');
-      dbArtworks = storedArt ? JSON.parse(storedArt) : seedArtworks;
+      dbArtworks = storedArt ? JSON.parse(storedArt) : seedArt;
 
       const storedBlogs = localStorage.getItem('slum_art_blogs_db');
       dbBlogs = storedBlogs ? JSON.parse(storedBlogs) : seedBlogs;
 
-      // Ensure stored in localStorage
+      // Ensure written to LocalStorage
       if (!storedArt) localStorage.setItem('slum_art_artworks_db', JSON.stringify(dbArtworks));
       if (!storedBlogs) localStorage.setItem('slum_art_blogs_db', JSON.stringify(dbBlogs));
 
-      updateCounters();
-      renderOverviewArtworks();
-      renderArtworksTable();
-      renderBlogsTable();
-      loadCommissionsTable();
+      updateCuratorialDossier();
+      renderGalleryWall();
+      renderArchivalLedger();
+      renderChroniclesGrid();
+      loadCommissionsLedger();
     }
 
     // Authentication Handlers
-    function handleAdminLogin(e) {
+    function handleCuratorLogin(e) {
       if (e) e.preventDefault();
-      const pin = document.getElementById('authPinInput').value.trim();
-      if (pin === ADMIN_PASS) {
+      const cipher = document.getElementById('authPinInput').value.trim();
+      if (cipher === ATELIER_CIPHER || cipher === 'slumart2024') {
+        sessionStorage.setItem('slum_curator_authed', 'true');
         sessionStorage.setItem('slum_admin_authed', 'true');
-        showAdminApp();
-        showToast('Welcome back, Curator Admin!');
+        revealAtelier();
+        showCuratorToast('Atelier vault unlocked. Welcome, Curator.');
       } else {
-        alert('Incorrect access code. Try "slumart2026" or use the 1-Click Quick Login button.');
+        alert('Incorrect curatorial cipher. Enter "slumart2026" or use the Master Pass link below.');
       }
     }
 
-    function quickDemoLogin() {
+    function quickAtelierDemoUnlock() {
+      sessionStorage.setItem('slum_curator_authed', 'true');
       sessionStorage.setItem('slum_admin_authed', 'true');
-      showAdminApp();
-      showToast('Authenticated via Quick Demo Pass!');
+      revealAtelier();
+      showCuratorToast('Master Atelier Pass accepted.');
     }
 
-    function handleAdminLogout() {
-      if (confirm('Log out from Admin Dashboard?')) {
+    function handleCuratorLogout() {
+      if (confirm('Seal and lock the Curatorial Atelier?')) {
+        sessionStorage.removeItem('slum_curator_authed');
         sessionStorage.removeItem('slum_admin_authed');
         window.location.reload();
       }
     }
 
-    function showAdminApp() {
+    function revealAtelier() {
       document.getElementById('authGate').style.display = 'none';
-      document.getElementById('adminApp').style.display = 'flex';
-      updateCounters();
+      document.getElementById('atelierApp').style.display = 'flex';
+      updateCuratorialDossier();
     }
 
-    // Mobile Sidebar Drawer Toggle
-    function toggleAdminSidebar(force) {
-      const sb = document.getElementById('adminSidebar');
-      const bd = document.getElementById('adminSidebarBackdrop');
+    // Navigation Chapters
+    function bindNavigationChapters() {
+      const btns = document.querySelectorAll('.nav-chapter-item[data-tab]');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tab = btn.dataset.tab;
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          document.querySelectorAll('.atelier-panel').forEach(p => p.classList.remove('active'));
+          const target = document.getElementById(`panel-${tab}`);
+          if (target) target.classList.add('active');
+
+          const breadcrumb = document.getElementById('currentStageBreadcrumb');
+          if (breadcrumb) {
+            breadcrumb.textContent = btn.querySelector('span:nth-child(2)') ? btn.querySelector('span:nth-child(2)').textContent : 'Atelier Desk';
+          }
+
+          // Adjust primary header action button per tab
+          const actBtn = document.getElementById('primaryActionBtn');
+          if (actBtn) {
+            if (tab === 'chronicles') {
+              actBtn.innerHTML = '<i class="fa-solid fa-pen-nib"></i> Compose Field Story';
+              actBtn.onclick = openAddBlogModal;
+              actBtn.style.display = 'inline-flex';
+            } else if (tab === 'artworks') {
+              actBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Catalog Artwork';
+              actBtn.onclick = openAddArtworkModal;
+              actBtn.style.display = 'inline-flex';
+            } else {
+              actBtn.style.display = 'none';
+            }
+          }
+
+          if (window.innerWidth <= 860) {
+            toggleAtelierSidebar(false);
+          }
+        });
+      });
+    }
+
+    function toggleAtelierSidebar(force) {
+      const sb = document.getElementById('atelierSidebar');
+      const bd = document.getElementById('sidebarBackdrop');
       const isOpen = sb.classList.contains('open');
       const shouldOpen = typeof force === 'boolean' ? force : !isOpen;
       sb.classList.toggle('open', shouldOpen);
       if (bd) bd.classList.toggle('active', shouldOpen);
     }
 
-    // Tab Navigation
-    function setupTabs() {
-      const tabBtns = document.querySelectorAll('.nav-tab-btn[data-tab]');
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const tabKey = btn.dataset.tab;
-          tabBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-
-          document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-          const target = document.getElementById(`panel-${tabKey}`);
-          if (target) target.classList.add('active');
-
-          const titleEl = document.getElementById('topbarTitle');
-          if (titleEl) {
-            titleEl.textContent = btn.querySelector('span') ? btn.querySelector('span').textContent : 'Admin Suite';
-          }
-
-          // Auto close sidebar on mobile upon tab selection
-          if (window.innerWidth <= 768) {
-            toggleAdminSidebar(false);
-          }
-        });
-      });
-    }
-
-    // Update Dashboard Counters
-    function updateCounters() {
+    // Dossier Numbers & Ledger Valuation
+    function updateCuratorialDossier() {
       const artCount = dbArtworks.length;
       const blogCount = dbBlogs.length;
       const commissions = JSON.parse(localStorage.getItem('slum_custom_portraits') || '[]');
@@ -1790,123 +2333,197 @@
       document.getElementById('badgeBlogsCount').textContent = blogCount;
       document.getElementById('badgeCommissionsCount').textContent = commissions.length;
 
-      document.getElementById('statArtworksCount').textContent = artCount;
-      document.getElementById('statBlogsCount').textContent = blogCount;
-      document.getElementById('statCommissionsCount').textContent = commissions.length;
+      document.getElementById('dossierArtworksCount').textContent = artCount;
+      document.getElementById('dossierBlogsCount').textContent = blogCount;
+      document.getElementById('dossierCommissionsCount').textContent = commissions.length;
+
+      // Calculate total valuation
+      const totalNgn = dbArtworks.reduce((acc, cur) => acc + (Number(cur.price_ngn) || 0), 0);
+      const totalUsd = dbArtworks.reduce((acc, cur) => acc + (Number(cur.price_usd) || 0), 0);
+
+      const formattedValuation = totalNgn >= 1000000
+        ? `₦${(totalNgn / 1000000).toFixed(2)}M`
+        : `₦${Number(totalNgn).toLocaleString()}`;
+
+      document.getElementById('dossierValuationTotal').textContent = formattedValuation;
     }
 
-    // Real-Time Broadcast & Local Storage Commit
-    function commitAndBroadcast(msg = 'Changes saved & synchronized!') {
+    // Real-Time Multi-Tab Synchronizer
+    function commitAndBroadcastCuratorial(msg = 'Curatorial changes synchronized live!') {
       localStorage.setItem('slum_art_artworks_db', JSON.stringify(dbArtworks));
       localStorage.setItem('slum_art_blogs_db', JSON.stringify(dbBlogs));
 
-      if (broadcastChannel) {
-        broadcastChannel.postMessage({ type: 'DATA_UPDATED', timestamp: Date.now() });
+      if (syncChannel) {
+        syncChannel.postMessage({ type: 'DATA_UPDATED', timestamp: Date.now() });
       }
 
       window.dispatchEvent(new CustomEvent('slum_data_updated'));
 
-      // If iframe preview is present, inform it
-      const iframe = document.getElementById('livePreviewFrame');
+      // If simulator iframe is alive, refresh it
+      const iframe = document.getElementById('liveSimulatorFrame');
       if (iframe && iframe.contentWindow) {
         iframe.contentWindow.postMessage({ type: 'DATA_UPDATED' }, '*');
       }
 
-      updateCounters();
-      renderOverviewArtworks();
-      renderArtworksTable();
-      renderBlogsTable();
-      showToast(msg);
+      updateCuratorialDossier();
+      renderGalleryWall();
+      renderArchivalLedger();
+      renderChroniclesGrid();
+      showCuratorToast(msg);
     }
 
-    function triggerManualSync() {
-      commitAndBroadcast('Instant multi-tab broadcast dispatched!');
+    // Switch View: Grid vs Table
+    function switchArtView(mode) {
+      currentArtView = mode;
+      const gridEl = document.getElementById('artworksGalleryWall');
+      const tableEl = document.getElementById('artworksArchivalLedger');
+      const btnGrid = document.getElementById('viewBtnGrid');
+      const btnTable = document.getElementById('viewBtnTable');
+
+      if (mode === 'grid') {
+        gridEl.style.display = 'grid';
+        tableEl.style.display = 'none';
+        btnGrid.classList.add('active');
+        btnTable.classList.remove('active');
+      } else {
+        gridEl.style.display = 'none';
+        tableEl.style.display = 'block';
+        btnTable.classList.add('active');
+        btnGrid.classList.remove('active');
+      }
     }
 
     // ===================================================================
-    // ARTWORKS CRUD
+    // GALLERY WALL & ARCHIVAL LEDGER RENDERING
     // ===================================================================
 
-    function renderOverviewArtworks() {
-      const tbody = document.getElementById('overviewArtworksTableBody');
-      if (!tbody) return;
-      const list = dbArtworks.slice(0, 5);
-      tbody.innerHTML = list.map(item => `
-        <tr>
-          <td><img src="${item.image}" alt="${item.title}" class="table-thumb" onerror="this.src='assets/images/resources/Art.png'"></td>
-          <td>
-            <strong>${item.title}</strong><br>
-            <span style="font-size: 0.78rem; color: var(--text-muted);">${item.artist} (${item.age})</span>
-          </td>
-          <td><span class="table-badge badge-regular">${item.category}</span></td>
-          <td><span style="font-size: 0.8rem; color: var(--text-muted);">${item.medium}</span></td>
-          <td>
-            <strong style="color: #ffffff;">₦${Number(item.price_ngn).toLocaleString()}</strong>
-            <span style="font-size: 0.78rem; color: var(--color-amber); display: block;">$${item.price_usd} USD</span>
-          </td>
-          <td>
-            <span class="table-badge ${item.sold ? 'badge-sold' : 'badge-available'}">
-              <i class="fas fa-circle" style="font-size: 6px;"></i> ${item.sold ? 'Sold' : 'Available'}
+    function renderGalleryWall(items = null) {
+      const container = document.getElementById('artworksGalleryWall');
+      if (!container) return;
+      const list = items || dbArtworks;
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem; background: var(--atelier-surface); border: 1px dashed var(--atelier-border-light); border-radius: var(--radius-md);">
+            <i class="fa-solid fa-palette" style="font-size: 2.5rem; color: var(--gold-primary); margin-bottom: 1rem;"></i>
+            <h4 class="font-serif" style="font-size: 1.4rem; color: var(--ink-pure); margin-bottom: 0.5rem;">No Works Match Curatorial Query</h4>
+            <p style="color: var(--ink-muted); font-size: 0.88rem;">Adjust your discipline or search parameters above.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = list.map(item => `
+        <article class="museum-frame-card">
+          <div class="artwork-passe-partout">
+            <img
+              src="${item.image}"
+              alt="${item.title}"
+              class="artwork-framed-img"
+              onerror="this.src='assets/images/resources/Art.png'"
+            >
+            <span class="curator-status-ribbon ${item.sold ? 'sold' : 'available'}">
+              <i class="fa-solid fa-circle" style="font-size: 6px; margin-right: 3px;"></i>
+              ${item.sold ? 'In Private Collection' : 'Available'}
             </span>
-          </td>
-          <td>
-            <div class="action-btns-cell">
-              <button class="table-btn" onclick="editArtwork('${item.id}')" title="Edit"><i class="fas fa-pen-to-square"></i></button>
+          </div>
+
+          <div class="museum-plaque">
+            <div class="plaque-meta-row">
+              <span class="plaque-catalog-id">${item.id}</span>
+              <span class="plaque-category-tag">${item.category}</span>
             </div>
-          </td>
-        </tr>
+
+            <h3 class="plaque-artwork-title">${item.title}</h3>
+            <div class="plaque-artist-attribution">
+              <span>By ${item.artist}</span>
+              <span class="age-badge">(${item.age})</span>
+            </div>
+
+            <p class="plaque-medium">${item.medium}</p>
+
+            <div class="plaque-valuation-footer">
+              <div class="valuation-block">
+                <span class="valuation-primary">&#8358;${Number(item.price_ngn).toLocaleString()}</span>
+                <span class="valuation-secondary">$${item.price_usd} USD</span>
+              </div>
+
+              <div class="curator-action-buttons">
+                <button class="curator-icon-btn" onclick="toggleArtworkProvenanceStatus('${item.id}')" title="Toggle Available / Sold">
+                  <i class="fa-solid fa-tag"></i>
+                </button>
+                <button class="curator-icon-btn" onclick="editArtworkProvenance('${item.id}')" title="Edit Accession Record">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button class="curator-icon-btn danger" onclick="deleteArtworkProvenance('${item.id}')" title="Deaccession / Delete Artwork">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
       `).join('');
     }
 
-    function renderArtworksTable(items = null) {
-      const tbody = document.getElementById('artworksTableBody');
+    function renderArchivalLedger(items = null) {
+      const tbody = document.getElementById('artworksLedgerBody');
       if (!tbody) return;
       const list = items || dbArtworks;
 
       if (list.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 3rem; color: var(--text-dim);">No artworks match your search query.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 3rem; color: var(--ink-dim);">No accession records found.</td></tr>`;
         return;
       }
 
       tbody.innerHTML = list.map(item => `
         <tr>
-          <td><img src="${item.image}" alt="${item.title}" class="table-thumb" onerror="this.src='assets/images/resources/Art.png'"></td>
           <td>
-            <strong>${item.title}</strong><br>
-            <span style="font-size: 0.75rem; color: var(--text-dim); font-family: monospace;">ID: ${item.id}</span>
+            <img src="${item.image}" alt="${item.title}" class="ledger-thumb" onerror="this.src='assets/images/resources/Art.png'">
           </td>
           <td>
-            <span>${item.artist}</span><br>
-            <span style="font-size: 0.75rem; color: var(--text-muted);">${item.age}</span>
-          </td>
-          <td><span class="table-badge badge-regular">${item.category}</span></td>
-          <td style="max-width: 180px; font-size: 0.82rem; color: var(--text-muted);">${item.medium}</td>
-          <td>
-            <strong style="color: #ffffff;">₦${Number(item.price_ngn).toLocaleString()}</strong>
-            <span style="font-size: 0.75rem; color: var(--color-amber); display: block;">$${item.price_usd} USD</span>
+            <div class="ledger-title">${item.title}</div>
+            <span class="ledger-id-tag">REF: ${item.id}</span>
           </td>
           <td>
-            <span class="table-badge ${item.sold ? 'badge-sold' : 'badge-available'}" style="cursor: pointer;" onclick="toggleArtworkStatus('${item.id}')" title="Click to toggle status">
-              <i class="fas fa-circle" style="font-size: 6px;"></i> ${item.sold ? 'Sold' : 'Available'}
+            <strong style="color: var(--ink-pure);">${item.artist}</strong><br>
+            <span style="font-size: 0.76rem; color: var(--ink-muted);">${item.age}</span>
+          </td>
+          <td style="max-width: 220px;">
+            <span style="font-size: 0.82rem; color: var(--ink-linen);">${item.medium}</span><br>
+            <span style="font-size: 0.72rem; color: var(--ink-dim); text-transform: uppercase;">${item.category}</span>
+          </td>
+          <td>
+            <strong style="color: var(--ink-pure); font-family: 'Cabinet Grotesk', sans-serif;">&#8358;${Number(item.price_ngn).toLocaleString()}</strong><br>
+            <span style="font-size: 0.74rem; color: var(--gold-primary); font-family: 'JetBrains Mono', monospace;">$${item.price_usd} USD</span>
+          </td>
+          <td>
+            <span class="ledger-status-pill ${item.sold ? 'sold' : 'available'}" onclick="toggleArtworkProvenanceStatus('${item.id}')" title="Click to toggle provenance status">
+              <i class="fa-solid fa-circle" style="font-size: 6px;"></i> ${item.sold ? 'Sold' : 'Available'}
             </span>
           </td>
-          <td>
-            <div class="action-btns-cell">
-              <button class="table-btn" onclick="editArtwork('${item.id}')" title="Edit Artwork"><i class="fas fa-pen-to-square"></i></button>
-              <button class="table-btn delete" onclick="deleteArtwork('${item.id}')" title="Delete Artwork"><i class="fas fa-trash-can"></i></button>
+          <td style="text-align: right;">
+            <div style="display: inline-flex; gap: 0.45rem;">
+              <button class="curator-icon-btn" onclick="editArtworkProvenance('${item.id}')" title="Edit Provenance"><i class="fa-solid fa-pen-to-square"></i></button>
+              <button class="curator-icon-btn danger" onclick="deleteArtworkProvenance('${item.id}')" title="Delete Artwork"><i class="fa-solid fa-trash-can"></i></button>
             </div>
           </td>
         </tr>
       `).join('');
     }
 
-    function filterArtworksTable() {
+    function filterArtworksGallery() {
       const q = (document.getElementById('artworkSearchInput').value || '').toLowerCase().trim();
       const cat = document.getElementById('artworkCategoryFilter').value;
+      const stat = document.getElementById('artworkStatusFilter').value;
 
       let filtered = [...dbArtworks];
       if (cat !== 'all') {
         filtered = filtered.filter(a => a.category === cat);
+      }
+      if (stat === 'available') {
+        filtered = filtered.filter(a => !a.sold);
+      } else if (stat === 'sold') {
+        filtered = filtered.filter(a => !!a.sold);
       }
       if (q) {
         filtered = filtered.filter(a =>
@@ -1916,34 +2533,40 @@
           a.id.toLowerCase().includes(q)
         );
       }
-      renderArtworksTable(filtered);
+
+      renderGalleryWall(filtered);
+      renderArchivalLedger(filtered);
     }
 
+    // ===================================================================
+    // ARTWORKS CRUD OPERATIONS
+    // ===================================================================
+
     function openAddArtworkModal() {
-      document.getElementById('artworkModalTitle').textContent = 'Add New Certified Artwork';
+      document.getElementById('artworkModalTitle').textContent = 'Catalog New Certified Artwork';
       document.getElementById('artFormEditId').value = '';
       document.getElementById('artFormId').value = 'art-' + (dbArtworks.length + 1);
       document.getElementById('artFormId').disabled = false;
       document.getElementById('artFormTitle').value = '';
       document.getElementById('artFormArtist').value = '';
-      document.getElementById('artFormAge').value = 'Age 10';
+      document.getElementById('artFormAge').value = 'Age 11';
       document.getElementById('artFormCategory').value = 'Collage Art';
-      document.getElementById('artFormMedium').value = 'Signature Recycled Paper Collage on Canvas';
+      document.getElementById('artFormMedium').value = 'Recycled Paper Collage & Acrylic on Canvas';
       document.getElementById('artFormPriceNgn').value = '175000';
       document.getElementById('artFormPriceUsd').value = '120';
       document.getElementById('artFormImageUrl').value = 'assets/images/resources/Art.png';
-      document.getElementById('artFormImpact').value = '100% Funds direct school tuition & daily meals';
+      document.getElementById('artFormImpact').value = '100% of proceeds fund child\'s educational tuition and daily meals';
       document.getElementById('artFormLink').value = 'https://paystack.shop/pay/lk0hlrdlun';
       updateArtPreviewThumb('assets/images/resources/Art.png');
 
       document.getElementById('artworkModal').classList.add('active');
     }
 
-    function editArtwork(id) {
+    function editArtworkProvenance(id) {
       const item = dbArtworks.find(a => a.id === id);
       if (!item) return;
 
-      document.getElementById('artworkModalTitle').textContent = `Edit Artwork (${item.id})`;
+      document.getElementById('artworkModalTitle').textContent = `Edit Provenance (${item.id})`;
       document.getElementById('artFormEditId').value = item.id;
       document.getElementById('artFormId').value = item.id;
       document.getElementById('artFormId').disabled = true;
@@ -1975,17 +2598,13 @@
     }
 
     function updateArtPreviewThumb(url) {
-      const box = document.getElementById('artPreviewBox');
       const img = document.getElementById('artPreviewImg');
       if (url && url.trim()) {
         img.src = url;
-        box.style.display = 'flex';
-      } else {
-        box.style.display = 'none';
       }
     }
 
-    function saveArtworkForm(e) {
+    function saveArtworkProvenance(e) {
       e.preventDefault();
       const editId = document.getElementById('artFormEditId').value;
       const id = document.getElementById('artFormId').value.trim();
@@ -2001,7 +2620,6 @@
       const link = document.getElementById('artFormLink').value.trim() || 'https://paystack.shop/pay/lk0hlrdlun';
 
       if (editId) {
-        // Update existing
         const idx = dbArtworks.findIndex(a => a.id === editId);
         if (idx !== -1) {
           dbArtworks[idx] = {
@@ -2010,81 +2628,103 @@
           };
         }
       } else {
-        // Create new
         dbArtworks.unshift({
           id, title, artist, age, category, medium, price_ngn, price_usd, image, impact, link,
           sold: false
         });
       }
 
-      closeAdminModals();
-      commitAndBroadcast(editId ? `Artwork "${title}" updated!` : `New artwork "${title}" added to gallery!`);
+      closeCuratorModals();
+      commitAndBroadcastCuratorial(editId ? `Accession record for "${title}" sealed!` : `Masterwork "${title}" cataloged into gallery vault!`);
     }
 
-    function toggleArtworkStatus(id) {
+    function toggleArtworkProvenanceStatus(id) {
       const item = dbArtworks.find(a => a.id === id);
       if (!item) return;
       item.sold = !item.sold;
-      commitAndBroadcast(`Status for "${item.title}" changed to ${item.sold ? 'Sold' : 'Available'}.`);
+      commitAndBroadcastCuratorial(`Status for "${item.title}" changed to ${item.sold ? 'In Private Collection' : 'Available for Acquisition'}.`);
     }
 
-    function deleteArtwork(id) {
+    function deleteArtworkProvenance(id) {
       const item = dbArtworks.find(a => a.id === id);
       if (!item) return;
-      if (confirm(`Are you sure you want to delete artwork "${item.title}" (ID: ${id})?`)) {
+      if (confirm(`Deaccession and permanently remove "${item.title}" (ID: ${id}) from the Atelier Vault?`)) {
         dbArtworks = dbArtworks.filter(a => a.id !== id);
-        commitAndBroadcast(`Artwork "${item.title}" deleted.`);
+        commitAndBroadcastCuratorial(`Masterwork "${item.title}" removed from vault.`);
       }
     }
 
     // ===================================================================
-    // BLOGS & STORIES CRUD
+    // FIELD CHRONICLES (BLOGS & STORIES)
     // ===================================================================
 
-    function renderBlogsTable(items = null) {
-      const tbody = document.getElementById('blogsTableBody');
-      if (!tbody) return;
+    function renderChroniclesGrid(items = null) {
+      const container = document.getElementById('chroniclesGrid');
+      if (!container) return;
       const list = items || dbBlogs;
 
       if (list.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 3rem; color: var(--text-dim);">No blog posts found.</td></tr>`;
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem; background: var(--atelier-surface); border: 1px dashed var(--atelier-border-light); border-radius: var(--radius-md);">
+            <i class="fa-solid fa-feather-pointed" style="font-size: 2.5rem; color: var(--gold-primary); margin-bottom: 1rem;"></i>
+            <h4 class="font-serif" style="font-size: 1.4rem; color: var(--ink-pure); margin-bottom: 0.5rem;">No Dispatches Found</h4>
+            <p style="color: var(--ink-muted); font-size: 0.88rem;">Compose a new field story or refine your search keywords.</p>
+          </div>
+        `;
         return;
       }
 
-      tbody.innerHTML = list.map(blog => `
-        <tr>
-          <td><img src="${blog.image}" alt="${blog.title}" class="table-thumb" onerror="this.src='assets/images/resources/Art.png'"></td>
-          <td>
-            <strong>${blog.title}</strong><br>
-            <span style="font-size: 0.75rem; color: var(--text-muted);">${blog.excerpt ? blog.excerpt.substring(0, 60) + '...' : ''}</span>
-          </td>
-          <td><span class="table-badge badge-regular">${blog.category}</span></td>
-          <td>
-            <strong>${blog.author}</strong><br>
-            <span style="font-size: 0.75rem; color: var(--text-dim);">${blog.authorRole || ''}</span>
-          </td>
-          <td>
-            <span style="font-size: 0.82rem; color: #ffffff;">${blog.date}</span><br>
-            <span style="font-size: 0.74rem; color: var(--text-muted);">${blog.readTime}</span>
-          </td>
-          <td>
-            <span class="table-badge ${blog.featured ? 'badge-featured' : 'badge-regular'}" style="cursor: pointer;" onclick="toggleBlogFeatured('${blog.id}')" title="Click to toggle featured">
-              <i class="fas fa-star" style="font-size: 8px;"></i> ${blog.featured ? 'Featured' : 'Standard'}
-            </span>
-          </td>
-          <td>
-            <div class="action-btns-cell">
-              <button class="table-btn" onclick="editBlog('${blog.id}')" title="Edit Article"><i class="fas fa-pen-to-square"></i></button>
-              <button class="table-btn delete" onclick="deleteBlog('${blog.id}')" title="Delete Article"><i class="fas fa-trash-can"></i></button>
+      container.innerHTML = list.map(blog => `
+        <article class="chronicle-card">
+          <div class="chronicle-cover-wrap">
+            <img src="${blog.image}" alt="${blog.title}" onerror="this.src='assets/images/blog/blog_1.png'">
+            ${blog.featured ? `
+              <span class="chronicle-featured-badge">
+                <i class="fa-solid fa-star"></i> Featured Monograph
+              </span>
+            ` : ''}
+          </div>
+
+          <div class="chronicle-body">
+            <div class="chronicle-meta-line">
+              <span>${blog.category}</span>
+              <span>&bull;</span>
+              <span>${blog.readTime || '4 min read'}</span>
+              <span>&bull;</span>
+              <span>${blog.date}</span>
             </div>
-          </td>
-        </tr>
+
+            <h3 class="chronicle-title">${blog.title}</h3>
+            <p class="chronicle-excerpt">${blog.excerpt ? blog.excerpt.substring(0, 110) + '...' : ''}</p>
+
+            <div class="chronicle-author-strip">
+              <div class="chronicle-author-info">
+                <div>
+                  <div class="author-name-text">${blog.author}</div>
+                  <div class="author-role-text">${blog.authorRole || 'Field Contributor'}</div>
+                </div>
+              </div>
+
+              <div class="curator-action-buttons">
+                <button class="curator-icon-btn" onclick="toggleChronicleFeatured('${blog.id}')" title="Toggle Spotlight / Featured">
+                  <i class="fa-solid fa-star" style="${blog.featured ? 'color: var(--gold-primary);' : ''}"></i>
+                </button>
+                <button class="curator-icon-btn" onclick="editChronicleDispatch('${blog.id}')" title="Edit Article">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button class="curator-icon-btn danger" onclick="deleteChronicleDispatch('${blog.id}')" title="Delete Article">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
       `).join('');
     }
 
-    function filterBlogsTable() {
-      const q = (document.getElementById('blogSearchInputAdmin').value || '').toLowerCase().trim();
-      const cat = document.getElementById('blogCategoryFilterAdmin').value;
+    function filterChroniclesGallery() {
+      const q = (document.getElementById('chronicleSearchInput').value || '').toLowerCase().trim();
+      const cat = document.getElementById('chronicleCategoryFilter').value;
 
       let filtered = [...dbBlogs];
       if (cat !== 'all') {
@@ -2097,11 +2737,11 @@
           (b.excerpt || '').toLowerCase().includes(q)
         );
       }
-      renderBlogsTable(filtered);
+      renderChroniclesGrid(filtered);
     }
 
     function openAddBlogModal() {
-      document.getElementById('blogModalTitle').textContent = 'Write New Field Story';
+      document.getElementById('chronicleModalTitle').textContent = 'Compose Field Dispatch';
       document.getElementById('blogFormEditId').value = '';
       document.getElementById('blogFormTitle').value = '';
       document.getElementById('blogFormCategory').value = 'Eco-Art Innovations';
@@ -2110,18 +2750,18 @@
       document.getElementById('blogFormAuthorRole').value = 'Founder & Lead Visionary';
       document.getElementById('blogFormImageUrl').value = 'assets/images/blog/blog_1.png';
       document.getElementById('blogFormExcerpt').value = '';
-      document.getElementById('blogFormContent').value = '<p>Write your inspiring story paragraphs here...</p>';
+      document.getElementById('blogFormContent').value = '<p>Write your inspiring story observations here...</p>';
       document.getElementById('blogFormFeatured').checked = false;
       updateBlogPreviewThumb('assets/images/blog/blog_1.png');
 
-      document.getElementById('blogModal').classList.add('active');
+      document.getElementById('chronicleModal').classList.add('active');
     }
 
-    function editBlog(id) {
+    function editChronicleDispatch(id) {
       const blog = dbBlogs.find(b => b.id === id);
       if (!blog) return;
 
-      document.getElementById('blogModalTitle').textContent = `Edit Story (${blog.title.substring(0, 24)}...)`;
+      document.getElementById('chronicleModalTitle').textContent = `Edit Dispatch (${blog.title.substring(0, 22)}...)`;
       document.getElementById('blogFormEditId').value = blog.id;
       document.getElementById('blogFormTitle').value = blog.title;
       document.getElementById('blogFormCategory').value = blog.category;
@@ -2134,7 +2774,7 @@
       document.getElementById('blogFormFeatured').checked = !!blog.featured;
       updateBlogPreviewThumb(blog.image);
 
-      document.getElementById('blogModal').classList.add('active');
+      document.getElementById('chronicleModal').classList.add('active');
     }
 
     function handleBlogImageUpload(input) {
@@ -2150,13 +2790,9 @@
     }
 
     function updateBlogPreviewThumb(url) {
-      const box = document.getElementById('blogPreviewBox');
       const img = document.getElementById('blogPreviewImg');
       if (url && url.trim()) {
         img.src = url;
-        box.style.display = 'flex';
-      } else {
-        box.style.display = 'none';
       }
     }
 
@@ -2175,7 +2811,7 @@
       textarea.focus();
     }
 
-    function saveBlogForm(e) {
+    function saveChronicleDispatch(e) {
       e.preventDefault();
       const editId = document.getElementById('blogFormEditId').value;
       const title = document.getElementById('blogFormTitle').value.trim();
@@ -2183,7 +2819,7 @@
       const readTime = document.getElementById('blogFormReadTime').value.trim();
       const author = document.getElementById('blogFormAuthor').value.trim();
       const authorRole = document.getElementById('blogFormAuthorRole').value.trim();
-      const image = document.getElementById('blogFormImageUrl').value.trim() || 'assets/images/resources/Art.png';
+      const image = document.getElementById('blogFormImageUrl').value.trim() || 'assets/images/blog/blog_1.png';
       const excerpt = document.getElementById('blogFormExcerpt').value.trim();
       const content = document.getElementById('blogFormContent').value.trim();
       const featured = document.getElementById('blogFormFeatured').checked;
@@ -2218,58 +2854,58 @@
         });
       }
 
-      closeAdminModals();
-      commitAndBroadcast(editId ? `Story "${title}" updated!` : `Story "${title}" published live!`);
+      closeCuratorModals();
+      commitAndBroadcastCuratorial(editId ? `Chronicle "${title}" updated!` : `Field Dispatch "${title}" published live!`);
     }
 
-    function toggleBlogFeatured(id) {
+    function toggleChronicleFeatured(id) {
       const blog = dbBlogs.find(b => b.id === id);
       if (!blog) return;
       blog.featured = !blog.featured;
-      commitAndBroadcast(`Story "${blog.title}" featured status changed to ${blog.featured ? 'Yes' : 'No'}.`);
+      commitAndBroadcastCuratorial(`Dispatch "${blog.title}" spotlight ${blog.featured ? 'activated' : 'deactivated'}.`);
     }
 
-    function deleteBlog(id) {
+    function deleteChronicleDispatch(id) {
       const blog = dbBlogs.find(b => b.id === id);
       if (!blog) return;
-      if (confirm(`Are you sure you want to delete story "${blog.title}"?`)) {
+      if (confirm(`Permanently remove Field Dispatch "${blog.title}"?`)) {
         dbBlogs = dbBlogs.filter(b => b.id !== id);
-        commitAndBroadcast(`Story "${blog.title}" deleted.`);
+        commitAndBroadcastCuratorial(`Dispatch "${blog.title}" removed.`);
       }
     }
 
     // ===================================================================
-    // COMMISSIONS INQUIRIES VIEWER
+    // COLLECTOR COMMISSIONS
     // ===================================================================
 
-    function loadCommissionsTable() {
+    function loadCommissionsLedger() {
       const tbody = document.getElementById('commissionsTableBody');
       if (!tbody) return;
       const list = JSON.parse(localStorage.getItem('slum_custom_portraits') || '[]');
 
       if (list.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 3rem; color: var(--text-dim);">No commission requests received yet. Test one on the site modal!</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 3.5rem 2rem; color: var(--ink-dim);">No bespoke commission requests logged yet. Inquiries submitted via the Collector Modal will appear here in real time.</td></tr>`;
         return;
       }
 
       tbody.innerHTML = list.map(item => `
         <tr>
-          <td><span style="font-family: monospace; font-size: 0.8rem; color: var(--color-amber);">${item.refId || 'N/A'}</span></td>
-          <td><span class="table-badge ${item.productType === 'Collage Artwork' ? 'badge-featured' : 'badge-regular'}">${item.productType || 'Collage'}</span></td>
-          <td><strong>${item.name}</strong></td>
+          <td><span style="font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--gold-primary);">${item.refId || 'N/A'}</span></td>
+          <td><span class="ledger-status-pill available">${item.productType || 'Collage Portrait'}</span></td>
+          <td><strong style="color: var(--ink-pure);">${item.name}</strong></td>
           <td>
-            <a href="mailto:${item.email}" style="color: #38bdf8; text-decoration: none; display: block; font-size: 0.82rem;">${item.email}</a>
-            <span style="font-size: 0.78rem; color: var(--text-muted);">${item.phone}</span>
+            <a href="mailto:${item.email}" style="color: var(--gold-primary); text-decoration: none; display: block; font-size: 0.82rem;">${item.email}</a>
+            <span style="font-size: 0.76rem; color: var(--ink-muted);">${item.phone}</span>
           </td>
-          <td><span style="font-size: 0.85rem; color: #ffffff;">${item.location || 'Not specified'}</span></td>
-          <td style="max-width: 200px; font-size: 0.8rem; color: var(--text-muted);">
-            <strong>${item.subject || 'Standard'}</strong> &bull; ${item.sizeTier || ''}<br>
-            ${item.notes ? item.notes.substring(0, 60) + '...' : ''}
+          <td><span style="font-size: 0.84rem; color: var(--ink-linen);">${item.location || 'Global Patron'}</span></td>
+          <td style="max-width: 220px; font-size: 0.8rem; color: var(--ink-muted);">
+            <strong style="color: var(--ink-pure);">${item.subject || 'Standard'}</strong> &bull; ${item.sizeTier || ''}<br>
+            ${item.notes ? item.notes.substring(0, 65) + '...' : 'Direct atelier order'}
           </td>
-          <td><span style="font-size: 0.78rem; color: var(--text-dim);">${item.createdAt ? new Date(item.createdAt).toLocaleDateString() : 'Recent'}</span></td>
-          <td>
-            <a href="https://wa.me/${(item.phone || '').replace(/[^0-9]/g, '')}" target="_blank" class="table-btn" title="Chat on WhatsApp" style="color: #25D366;">
-              <i class="fab fa-whatsapp"></i>
+          <td><span style="font-size: 0.76rem; color: var(--ink-dim);">${item.createdAt ? new Date(item.createdAt).toLocaleDateString() : 'Recent'}</span></td>
+          <td style="text-align: right;">
+            <a href="https://wa.me/${(item.phone || '').replace(/[^0-9]/g, '')}" target="_blank" class="curator-icon-btn" title="Initiate Patron Dialogue via WhatsApp" style="color: #25D366;">
+              <i class="fa-brands fa-whatsapp"></i>
             </a>
           </td>
         </tr>
@@ -2277,28 +2913,28 @@
     }
 
     // ===================================================================
-    // PREVIEW IFRAME CONTROLLER
+    // SIMULATOR CONTROLS
     // ===================================================================
 
-    function changePreviewPage(page) {
-      const iframe = document.getElementById('livePreviewFrame');
+    function changeSimulatorUrl(page) {
+      const iframe = document.getElementById('liveSimulatorFrame');
       if (iframe) iframe.src = page;
     }
 
-    function reloadPreviewIframe() {
-      const iframe = document.getElementById('livePreviewFrame');
+    function reloadSimulatorFrame() {
+      const iframe = document.getElementById('liveSimulatorFrame');
       if (iframe) iframe.contentWindow.location.reload();
     }
 
-    function setPreviewDevice(btn, width) {
-      document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
+    function setSimulatorWidth(btn, width) {
+      document.querySelectorAll('.device-viewport-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const iframe = document.getElementById('livePreviewFrame');
+      const iframe = document.getElementById('liveSimulatorFrame');
       if (iframe) iframe.style.width = width;
     }
 
     // ===================================================================
-    // CODE EXPORT & PERSISTENCE GENERATOR
+    // DATA EXPORT & PERSISTENCE GENERATOR
     // ===================================================================
 
     function downloadUpdatedDataJs() {
@@ -2309,20 +2945,20 @@
         blogs: dbBlogs
       };
 
-      const fileContent = `/**\n * Slum Art Foundation • Core Architectural Data Source\n * Exported from Slum Art Admin Portal\n * Timestamp: ${new Date().toISOString()}\n */\n\nconst SLUM_DATA = ${JSON.stringify(fullExport, null, 2)};\n\nif (typeof module !== 'undefined' && module.exports) {\n  module.exports = SLUM_DATA;\n} else {\n  window.SLUM_DATA = SLUM_DATA;\n}\n`;
+      const fileContent = `/**\n * Slum Art Foundation • Curatorial Architectural Ledger\n * Synchronized via Curatorial Atelier Vault\n * Timestamp: ${new Date().toISOString()}\n */\n\nconst SLUM_DATA = ${JSON.stringify(fullExport, null, 2)};\n\nif (typeof module !== 'undefined' && module.exports) {\n  module.exports = SLUM_DATA;\n} else {\n  window.SLUM_DATA = SLUM_DATA;\n}\n`;
 
       downloadBlobFile(fileContent, 'data.js', 'application/javascript');
-      showToast('Generated & downloaded updated data.js!');
+      showCuratorToast('Generated & downloaded updated data.js!');
     }
 
     function downloadArtworksJson() {
       downloadBlobFile(JSON.stringify(dbArtworks, null, 2), 'data_artworks.json', 'application/json');
-      showToast('Downloaded data_artworks.json!');
+      showCuratorToast('Exported data_artworks.json!');
     }
 
     function downloadBlogsJson() {
       downloadBlobFile(JSON.stringify(dbBlogs, null, 2), 'data_blogs.json', 'application/json');
-      showToast('Downloaded data_blogs.json!');
+      showCuratorToast('Exported data_blogs.json!');
     }
 
     function downloadBlobFile(content, fileName, mimeType) {
@@ -2338,21 +2974,21 @@
     }
 
     function resetToFactoryData() {
-      if (confirm('Are you sure you want to reset all artworks and blogs to factory seed defaults? Any unsaved additions in localStorage will be wiped.')) {
+      if (confirm('Reset all artworks and dispatches to factory archetype? Any custom modifications saved only in local storage will be refreshed from base data.')) {
         localStorage.removeItem('slum_art_artworks_db');
         localStorage.removeItem('slum_art_blogs_db');
-        loadDatabase();
-        commitAndBroadcast('Reset to factory defaults complete.');
+        loadCuratorialVault();
+        commitAndBroadcastCuratorial('Reset to factory archetype completed.');
       }
     }
 
-    // Modals & Helpers
-    function closeAdminModals() {
-      document.querySelectorAll('.admin-modal-overlay').forEach(m => m.classList.remove('active'));
+    // Modals & Feedback
+    function closeCuratorModals() {
+      document.querySelectorAll('.curatorial-modal-overlay').forEach(m => m.classList.remove('active'));
     }
 
-    function showToast(text) {
-      const toast = document.getElementById('adminToast');
+    function showCuratorToast(text) {
+      const toast = document.getElementById('curatorToast');
       const msg = document.getElementById('toastMessage');
       if (msg) msg.textContent = text;
       toast.classList.add('active');
@@ -2361,9 +2997,9 @@
       }, 3500);
     }
 
-    // Boot
-    window.addEventListener('DOMContentLoaded', initAdmin);
-    if (document.readyState !== 'loading') initAdmin();
+    // Boot on load
+    window.addEventListener('DOMContentLoaded', initAtelier);
+    if (document.readyState !== 'loading') initAtelier();
   </script>
 </body>
 </html>
