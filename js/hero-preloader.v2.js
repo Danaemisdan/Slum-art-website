@@ -24457,13 +24457,17 @@
         return { left: 0, top: 0, width: 0, height: 0 };
       }
       const boxes = metrics.boxes;
-      const aBox = boxes[5] || boxes[Math.min(boxes.length - 1, Math.floor(boxes.length * 0.58))];
+      // Exact alignment from master "Slum Art Mentorship Logo.png":
+      // Swipes begin between 'l' and 'u' (19.0% of text width)
+      // and end over 't' (91.0% of text width), width = 72.0% of text width
+      const lBox = boxes[1];
+      const uBox = boxes[2];
       const tBox = boxes[boxes.length - 1];
-      const left = aBox ? aBox.x - aBox.w * 0.15 : metrics.ww * 0.58;
-      const right = tBox ? tBox.x + tBox.w * 1.05 : metrics.ww * 0.96;
+      const left = lBox && uBox ? (lBox.x + lBox.w + uBox.x) / 2 : metrics.ww * 0.190;
+      const right = tBox ? tBox.x + tBox.w * 0.90 : metrics.ww * 0.910;
       const width = Math.max(30, right - left);
-      const height2 = width / 4.18;
-      const top = -(height2 * 0.72);
+      const height2 = width / 5.1258; // exact 774/151 aspect ratio
+      const top = -(height2 * 0.85); // dips down to touch the top curve of letters as in the official brand mark
       return { left, top, width, height: height2 };
     }, [metrics]);
     React.useLayoutEffect(() => {
@@ -24794,7 +24798,7 @@
     const handY = metrics ? metrics.base - metrics.size * 0.28 : 0;
     const firstBox = metrics && metrics.boxes[0];
     const lastBox = metrics && metrics.boxes[metrics.boxes.length - 1];
-    const handOffset = metrics ? metrics.size * (metrics.tall ? 0.05 : 0.1) : 0;
+    const handOffset = metrics ? (metrics.tall ? Math.max(22, metrics.size * 0.22) : Math.max(16, metrics.size * 0.12)) : 0;
     const handLX = firstBox && metrics ? firstBox.x - handOffset : 0;
     const handRX = lastBox && metrics ? lastBox.x + lastBox.w + handOffset : 0;
     return /* @__PURE__ */ React.createElement(
@@ -24918,7 +24922,7 @@
                   height: "100%",
                   objectFit: "fill",
                   display: "block",
-                  filter: "drop-shadow(0 2px 8px rgba(217, 119, 6, 0.2))",
+                  filter: "none",
                   pointerEvents: "none"
                 }
               }

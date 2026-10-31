@@ -9801,12 +9801,16 @@ html, body {
     font-size: 0.95rem !important;
     padding: 0.85rem 1.35rem !important;
   }
+  .atp-subrow {
+    margin-top: 0.45em !important;
+  }
   .atp-sub-volume {
-    font-size: clamp(0.92rem, 4.2vw, 1.25rem) !important;
-    max-width: 340px !important;
-    line-height: 1.26 !important;
+    font-size: clamp(0.72rem, 3.2vw, 0.88rem) !important;
+    max-width: 240px !important;
+    line-height: 1.24 !important;
     text-wrap: balance !important;
     margin: 0 auto !important;
+    padding: 0 4px !important;
   }
   .atp-sub-line1 {
     display: block !important;
