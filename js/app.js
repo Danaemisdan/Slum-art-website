@@ -637,20 +637,24 @@
     if (body) {
       body.innerHTML = `
         <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
-        <div style="padding: 3rem 2rem; text-align: center;">
-          <div style="width: 70px; height: 70px; border-radius: 50%; background: #ecfdf5; color: #059669; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
-            <i class="fas fa-heart"></i>
+        <div style="padding: 2.25rem 1.5rem; text-align: center;">
+          <div style="width: 72px; height: 72px; border-radius: 50%; background: #fef3c7; color: #d97706; margin: 0.5rem auto 1.25rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 8px 24px rgba(217, 119, 6, 0.2);">
+            <i class="fas fa-trophy"></i>
           </div>
-          <h2 style="font-size: 1.9rem; margin-bottom: 0.75rem;">Welcome to the Slum Art Family!</h2>
+          <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-certificate text-amber"></i> Guinness World Records™ Official Entry</div>
+          <h2 style="font-size: 1.85rem; margin-bottom: 0.75rem;">Welcome to the Record-Breaking Team!</h2>
           <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 1.5rem; line-height: 1.6;">
-            Thank you, <strong>${name}</strong>! Your passion to uplift young creative minds in underserved slum communities is deeply appreciated.
+            Thank you, <strong>${name}</strong>! You are officially registered to volunteer with Slum Art Foundation on our historic Guinness World Record comic book project empowering 5,000 children.
           </p>
           <p style="font-size: 0.9rem; color: #475569; margin-bottom: 2rem;">
-            Our volunteer coordination team will review your application and reach out via WhatsApp/email within 48 hours.
+            Our volunteer coordination team will review your application and reach out via WhatsApp/email within 48 hours with exhibition dates and atelier workshop schedules.
           </p>
-          <a href="${DATA.contact.whatsapp}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
-            <i class="fab fa-whatsapp"></i> Join Volunteer WhatsApp Group
-          </a>
+          <div style="display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap;">
+            <a href="${DATA.contact.whatsapp}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="background: #25D366; border-color: #25D366; color: #ffffff;">
+              <i class="fab fa-whatsapp"></i> Join Volunteer WhatsApp Group
+            </a>
+            <button class="btn btn-secondary btn-lg" onclick="window.closeAllModals()">Continue Exploring</button>
+          </div>
         </div>
       `;
     }

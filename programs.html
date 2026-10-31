@@ -423,10 +423,10 @@
     <div class="modal-card" style="max-width: 580px;">
       <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
       <div style="padding: 2.5rem 2rem;">
-        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-hands-holding-child"></i> Get Involved</div>
-        <h2 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Become a Volunteer</h2>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
-          Bring your skills, passion, and heart to Slum Art Foundation. Teach art, tech, music, or assist with community welfare.
+        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-trophy text-amber"></i> Guinness World Records™ &bull; Get Involved</div>
+        <h2 style="font-size: 1.65rem; margin-bottom: 0.5rem; line-height: 1.25; color: var(--text-main);">Volunteer to be a part of the Guinness world records</h2>
+        <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.6;">
+          Join our historic movement! Bring your skills, passion, and heart to Slum Art Foundation as we guide 5,000 children to author the world's largest collaborative comic book and set new Guinness World Records™.
         </p>
 
         <form onsubmit="window.handleVolunteerSubmit(event)">
@@ -447,12 +447,14 @@
           <div style="margin-bottom: 1rem;">
             <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Area of Interest *</label>
             <select name="interest" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; background: #ffffff;">
+              <option value="Guinness World Record Facilitation & Mentorship" selected>Guinness World Record Facilitation &amp; Mentorship</option>
+              <option value="Comic Book Drafting & Illustration">Comic Book Drafting &amp; Illustration</option>
               <option value="Teaching Art / Painting">Teaching Art / Painting</option>
-              <option value="Music / Performance Coaching">Music / Performance Coaching</option>
-              <option value="Coding & Tech Literacy">Coding & Tech Literacy</option>
+              <option value="Photography & Documentary Video">Photography &amp; Documentary Video</option>
               <option value="Community Welfare (Food Clinic, Hair-Port)">Community Welfare (Food Clinic, Hair-Port)</option>
-              <option value="Photography / Videography">Photography / Videography</option>
-              <option value="International Outreach & Fundraising">International Outreach & Fundraising</option>
+              <option value="Music / Performance Coaching">Music / Performance Coaching</option>
+              <option value="Coding & Tech Literacy">Coding &amp; Tech Literacy</option>
+              <option value="International Outreach & Fundraising">International Outreach &amp; Fundraising</option>
             </select>
           </div>
           <div class="sketch-textarea-group">
@@ -462,15 +464,15 @@
             </label>
             <div class="sketch-textarea-wrap" data-max-chars="500">
               <svg class="sketch-textarea-svg" aria-hidden="true"></svg>
-              <textarea id="volunteerMessagePrograms" name="message" rows="3" placeholder="Tell us a little bit about yourself and why you want to volunteer with Slum Art..." class="sketch-textarea"></textarea>
+              <textarea id="volunteerMessagePrograms" name="message" rows="3" placeholder="Tell us a little bit about yourself and why you want to volunteer for the Guinness World Record project..." class="sketch-textarea"></textarea>
               <div class="sketch-textarea-footer">
-                <span class="sketch-hint"><i class="fas fa-palette text-amber"></i> Tell us your skills & passion</span>
+                <span class="sketch-hint"><i class="fas fa-trophy text-amber"></i> Help us empower 5,000 scholars</span>
                 <span class="sketch-char-count"><span class="sketch-current">0</span> / 500</span>
               </div>
             </div>
           </div>
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
-            <i class="fas fa-paper-plane"></i> Submit Volunteer Application
+            <i class="fas fa-trophy text-amber"></i> Volunteer for Guinness World Records
           </button>
         </form>
       </div>
