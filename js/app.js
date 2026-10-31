@@ -14,11 +14,14 @@
     cart: JSON.parse(localStorage.getItem('slum_art_cart') || '[]'),
     calculatorAmount: 50, // default USD
     quickviewItem: null,
-    artworksExpanded: false
+    artworksExpanded: false,
+    blogCategory: 'all',
+    blogSearchQuery: ''
   };
 
   const DATA = window.SLUM_DATA || {
     artworks: [],
+    blogs: [],
     programs: [],
     welfare: [],
     causes: [],
@@ -26,6 +29,57 @@
     team: [],
     contact: {}
   };
+
+  // Dynamic synchronization with Admin Dashboard (localStorage & BroadcastChannel)
+  function syncDynamicData() {
+    try {
+      const storedArtworks = localStorage.getItem('slum_art_artworks_db');
+      if (storedArtworks) {
+        DATA.artworks = JSON.parse(storedArtworks);
+      } else if (DATA.artworks && DATA.artworks.length > 0) {
+        localStorage.setItem('slum_art_artworks_db', JSON.stringify(DATA.artworks));
+      }
+
+      const storedBlogs = localStorage.getItem('slum_art_blogs_db');
+      if (storedBlogs) {
+        DATA.blogs = JSON.parse(storedBlogs);
+      } else if (DATA.blogs && DATA.blogs.length > 0) {
+        localStorage.setItem('slum_art_blogs_db', JSON.stringify(DATA.blogs));
+      }
+    } catch (err) {
+      console.warn("Storage sync notice:", err);
+    }
+  }
+  syncDynamicData();
+
+  // Instant reactive synchronization listeners
+  if (typeof BroadcastChannel !== 'undefined') {
+    const adminChannel = new BroadcastChannel('slum_art_admin_channel');
+    adminChannel.onmessage = function (ev) {
+      if (ev.data && ev.data.type === 'DATA_UPDATED') {
+        syncDynamicData();
+        if (typeof renderArtworks === 'function') renderArtworks();
+        if (typeof renderBlogArticles === 'function') renderBlogArticles();
+        if (typeof renderHomeBlogHighlights === 'function') renderHomeBlogHighlights();
+      }
+    };
+  }
+
+  window.addEventListener('storage', function (e) {
+    if (e.key === 'slum_art_artworks_db' || e.key === 'slum_art_blogs_db') {
+      syncDynamicData();
+      if (typeof renderArtworks === 'function') renderArtworks();
+      if (typeof renderBlogArticles === 'function') renderBlogArticles();
+      if (typeof renderHomeBlogHighlights === 'function') renderHomeBlogHighlights();
+    }
+  });
+
+  window.addEventListener('slum_data_updated', function () {
+    syncDynamicData();
+    if (typeof renderArtworks === 'function') renderArtworks();
+    if (typeof renderBlogArticles === 'function') renderBlogArticles();
+    if (typeof renderHomeBlogHighlights === 'function') renderHomeBlogHighlights();
+  });
 
   // DOM Elements cache
   const elements = {
@@ -874,6 +928,252 @@
     }
   };
 
+  // ===================================================================
+  // BLOGS ENGINE & REAL-TIME READER
+  // ===================================================================
+
+  // Render Latest Blogs on Homepage (#homeLatestBlogsGrid)
+  function renderHomeBlogHighlights() {
+    const container = document.getElementById('homeLatestBlogsGrid');
+    if (!container) return;
+
+    const blogs = (DATA.blogs && DATA.blogs.length > 0) ? DATA.blogs : [];
+    if (blogs.length === 0) {
+      container.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
+          <p>No published field stories at the moment.</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Top 3 stories (featured first, then recent)
+    const sorted = [...blogs].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+    const highlights = sorted.slice(0, 3);
+
+    container.innerHTML = highlights.map(blog => `
+      <article class="home-blog-card" onclick="window.openBlogModal('${blog.id}')">
+        <div class="home-blog-thumb">
+          <img src="${blog.image}" alt="${blog.title}" loading="lazy" onerror="this.src='assets/images/resources/Art.png'">
+          <span class="home-blog-tag">${blog.category || 'Field Note'}</span>
+          <span class="home-blog-readtime"><i class="far fa-clock"></i> ${blog.readTime || '4 min'}</span>
+        </div>
+        <div class="home-blog-body">
+          <div class="home-blog-meta">
+            <span class="home-blog-date"><i class="far fa-calendar-alt"></i> ${blog.date}</span>
+            <span class="home-blog-author"><i class="far fa-user"></i> ${blog.author}</span>
+          </div>
+          <h3 class="home-blog-title">${blog.title}</h3>
+          <p class="home-blog-excerpt">${blog.excerpt || ''}</p>
+          <div class="home-blog-footer">
+            <span class="home-blog-read-link">
+              Read Story <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  // Render Blog Catalog on Dedicated Blog Page (blog.html)
+  function renderBlogArticles() {
+    const gridEl = document.getElementById('blogArticlesGrid');
+    const heroEl = document.getElementById('blogFeaturedHero');
+    if (!gridEl && !heroEl) return;
+
+    let list = [...(DATA.blogs || [])];
+
+    // Filter by Category
+    if (state.blogCategory && state.blogCategory !== 'all') {
+      list = list.filter(b => (b.category || '').toLowerCase().trim() === state.blogCategory.toLowerCase().trim());
+    }
+
+    // Filter by Search Query
+    if (state.blogSearchQuery) {
+      const q = state.blogSearchQuery.toLowerCase().trim();
+      list = list.filter(b => 
+        (b.title || '').toLowerCase().includes(q) ||
+        (b.excerpt || '').toLowerCase().includes(q) ||
+        (b.author || '').toLowerCase().includes(q) ||
+        (b.category || '').toLowerCase().includes(q)
+      );
+    }
+
+    // Render Featured Hero if present and on 'all' without search
+    if (heroEl) {
+      if ((!state.blogCategory || state.blogCategory === 'all') && !state.blogSearchQuery && list.length > 0) {
+        const featured = list.find(b => b.featured) || list[0];
+        heroEl.style.display = 'block';
+        heroEl.innerHTML = `
+          <div class="blog-featured-card" onclick="window.openBlogModal('${featured.id}')">
+            <div class="blog-featured-media">
+              <img src="${featured.image}" alt="${featured.title}" onerror="this.src='assets/images/resources/Art.png'">
+              <span class="featured-badge"><i class="fas fa-star text-amber"></i> Featured Milestone</span>
+            </div>
+            <div class="blog-featured-content">
+              <div class="blog-meta-pills">
+                <span class="pill-category">${featured.category}</span>
+                <span class="pill-readtime"><i class="far fa-clock"></i> ${featured.readTime}</span>
+                <span class="pill-date"><i class="far fa-calendar-alt"></i> ${featured.date}</span>
+              </div>
+              <h2 class="blog-featured-title">${featured.title}</h2>
+              <p class="blog-featured-desc">${featured.excerpt}</p>
+              <div class="blog-author-strip">
+                <img src="${featured.authorAvatar || 'assets/images/team/founder_1.png'}" alt="${featured.author}" class="author-avatar-sm" onerror="this.src='assets/images/team/founder_1.png'">
+                <div>
+                  <strong>${featured.author}</strong>
+                  <span class="author-role-sub">${featured.authorRole || 'Slum Art Foundation'}</span>
+                </div>
+              </div>
+              <div class="blog-featured-btn-wrap">
+                <button class="btn btn-primary btn-md"><i class="fas fa-book-open"></i> Read Full Story</button>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        heroEl.style.display = 'none';
+        heroEl.innerHTML = '';
+      }
+    }
+
+    if (!gridEl) return;
+
+    if (list.length === 0) {
+      gridEl.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
+          <i class="fas fa-newspaper" style="font-size: 3rem; margin-bottom: 1rem; color: var(--border-light);"></i>
+          <h3>No articles match your search</h3>
+          <p>Try selecting a different category or clearing your search keywords.</p>
+          <button class="btn btn-secondary btn-sm" style="margin-top: 1rem;" onclick="window.resetBlogFilters()">Reset Filters</button>
+        </div>
+      `;
+      return;
+    }
+
+    gridEl.innerHTML = list.map(blog => `
+      <article class="blog-catalog-card" onclick="window.openBlogModal('${blog.id}')">
+        <div class="blog-card-media">
+          <img src="${blog.image}" alt="${blog.title}" loading="lazy" onerror="this.src='assets/images/resources/Art.png'">
+          <span class="blog-card-cat">${blog.category || 'Story'}</span>
+          <span class="blog-card-time"><i class="far fa-clock"></i> ${blog.readTime || '4 min'}</span>
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta">
+            <span><i class="far fa-calendar"></i> ${blog.date}</span>
+            <span><i class="far fa-user"></i> ${blog.author}</span>
+          </div>
+          <h3 class="blog-card-title">${blog.title}</h3>
+          <p class="blog-card-excerpt">${blog.excerpt || ''}</p>
+          <div class="blog-card-foot">
+            <span class="read-more-accent">Read Full Article <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  // Filter Blog by Category
+  window.filterBlogCategory = function (cat) {
+    state.blogCategory = cat;
+    document.querySelectorAll('.blog-cat-pill').forEach(pill => {
+      pill.classList.toggle('active', pill.dataset.category === cat);
+    });
+    renderBlogArticles();
+  };
+
+  // Reset Blog Filters
+  window.resetBlogFilters = function () {
+    state.blogCategory = 'all';
+    state.blogSearchQuery = '';
+    const searchInput = document.getElementById('blogSearchInput');
+    if (searchInput) searchInput.value = '';
+    document.querySelectorAll('.blog-cat-pill').forEach(p => p.classList.toggle('active', p.dataset.category === 'all'));
+    renderBlogArticles();
+  };
+
+  // Open Full Story Reader Modal
+  window.openBlogModal = function (blogId) {
+    const blog = (DATA.blogs || []).find(b => b.id === blogId);
+    if (!blog) return;
+
+    let modal = document.getElementById('blogReaderModal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.className = 'modal-overlay';
+      modal.id = 'blogReaderModal';
+      modal.innerHTML = `
+        <div class="modal-card blog-reader-card">
+          <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+          <div id="blogReaderContainer" class="blog-reader-body"></div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) window.closeAllModals();
+      });
+    }
+
+    const container = document.getElementById('blogReaderContainer');
+    if (container) {
+      container.innerHTML = `
+        <div class="blog-reader-hero-img-wrap">
+          <img src="${blog.image}" alt="${blog.title}" class="blog-reader-hero-img" onerror="this.src='assets/images/resources/Art.png'">
+          <div class="blog-reader-cat-tag">${blog.category || 'Story'}</div>
+        </div>
+        <div class="blog-reader-inner">
+          <div class="blog-reader-meta-bar">
+            <div class="blog-reader-author-wrap">
+              <img src="${blog.authorAvatar || 'assets/images/team/founder_1.png'}" alt="${blog.author}" class="blog-reader-avatar" onerror="this.src='assets/images/team/founder_1.png'">
+              <div>
+                <strong>${blog.author}</strong>
+                <span class="blog-reader-role">${blog.authorRole || 'Slum Art Foundation'}</span>
+              </div>
+            </div>
+            <div class="blog-reader-date-wrap">
+              <span><i class="far fa-calendar-alt"></i> ${blog.date}</span>
+              <span><i class="far fa-clock"></i> ${blog.readTime || '4 min read'}</span>
+            </div>
+          </div>
+          <h1 class="blog-reader-title">${blog.title}</h1>
+          <div class="blog-reader-lead-excerpt">${blog.excerpt || ''}</div>
+          <div class="blog-reader-divider"></div>
+          <div class="blog-reader-prose">
+            ${blog.content || ''}
+          </div>
+          <div class="blog-reader-impact-banner">
+            <i class="fas fa-hands-holding-child text-amber" style="font-size: 2rem;"></i>
+            <div>
+              <strong>Support the transformation of Makoko's creative youth</strong>
+              <p>Every artwork acquired from our gallery directly finances tuition, meals, and medical care for the children authoring these stories.</p>
+              <div style="margin-top: 0.75rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <a href="shop.html" class="btn btn-primary btn-sm"><i class="fas fa-shopping-bag"></i> Browse Original Artworks</a>
+                <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm"><i class="fas fa-heart text-amber"></i> Donate Paystack</a>
+              </div>
+            </div>
+          </div>
+          <div class="blog-reader-share-bar">
+            <span>Share this story:</span>
+            <div class="share-btns-row">
+              <a href="https://wa.me/?text=${encodeURIComponent(blog.title + ' - ' + window.location.origin + '/blog.html')}" target="_blank" class="share-pill share-whatsapp" title="Share to WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+              <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(window.location.origin + '/blog.html')}" target="_blank" class="share-pill share-x" title="Share to X"><i class="fab fa-x-twitter"></i> X</a>
+              <button class="share-pill share-copy" onclick="navigator.clipboard.writeText(window.location.origin + '/blog.html'); alert('Article link copied to clipboard!');"><i class="fas fa-link"></i> Copy Link</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    document.body.classList.add('modal-open');
+    modal.classList.add('active');
+  };
+
+  // Expose global renderers
+  window.renderArtworks = renderArtworks;
+  window.renderBlogArticles = renderBlogArticles;
+  window.renderHomeBlogHighlights = renderHomeBlogHighlights;
+  window.syncDynamicData = syncDynamicData;
+
   // Close All Modals
   window.closeAllModals = function () {
     document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
@@ -904,6 +1204,15 @@
       elements.shopSearchInput.addEventListener('input', (e) => {
         state.searchQuery = e.target.value;
         renderArtworks();
+      });
+    }
+
+    // Blog Search Input
+    const blogSearchInput = document.getElementById('blogSearchInput');
+    if (blogSearchInput) {
+      blogSearchInput.addEventListener('input', (e) => {
+        state.blogSearchQuery = e.target.value;
+        renderBlogArticles();
       });
     }
 
@@ -1542,6 +1851,8 @@
     });
 
     renderArtworks();
+    renderHomeBlogHighlights();
+    renderBlogArticles();
     updateCartBadge();
     updateCartDrawer();
     updateImpactCalculator();

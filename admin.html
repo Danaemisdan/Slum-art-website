@@ -1,0 +1,2368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal • Slum Art Foundation</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="assets/images/logo-light.png">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-base: #060911;
+      --bg-surface: #0c1222;
+      --bg-surface-elevated: #131c31;
+      --bg-card: #11192c;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-focus: #ea580c;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --color-primary: #ea580c;
+      --color-primary-hover: #f97316;
+      --color-amber: #f59e0b;
+      --color-emerald: #10b981;
+      --color-rose: #ef4444;
+      --color-sky: #0ea5e9;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Auth Gate Screen */
+    #authGate {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, #151f38 0%, #060911 100%);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .auth-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      text-align: center;
+      position: relative;
+    }
+
+    .auth-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(234, 88, 12, 0.15);
+      color: var(--color-amber);
+      border: 1px solid rgba(234, 88, 12, 0.3);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .auth-logo {
+      height: 48px;
+      margin-bottom: 1.5rem;
+    }
+
+    .auth-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+
+    .auth-sub {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .auth-input-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      background: #080d19;
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: #ffffff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+      text-align: center;
+      letter-spacing: 0.1em;
+    }
+
+    .auth-input:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.2);
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 0.85rem 1.5rem;
+      background: var(--color-primary);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .btn-login:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-quick-login {
+      background: transparent;
+      border: 1px dashed var(--border-subtle);
+      color: var(--color-amber);
+      width: 100%;
+      padding: 0.65rem;
+      border-radius: var(--radius-sm);
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-quick-login:hover {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: var(--color-amber);
+    }
+
+    /* Admin App Layout */
+    .admin-wrapper {
+      display: flex;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Sidebar */
+    .admin-sidebar {
+      width: 270px;
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar-brand {
+      padding: 1.75rem 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sidebar-brand img {
+      height: 38px;
+    }
+
+    .sidebar-status-pill {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--color-emerald);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .sidebar-pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-emerald);
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .sidebar-nav {
+      padding: 1.5rem 0.85rem;
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .nav-header-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      font-weight: 800;
+      padding: 0.5rem 0.75rem 0.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .nav-tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.8rem 1rem;
+      background: transparent;
+      color: var(--text-muted);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .nav-tab-btn:hover {
+      background: var(--bg-surface-elevated);
+      color: #ffffff;
+    }
+
+    .nav-tab-btn.active {
+      background: rgba(234, 88, 12, 0.15);
+      color: var(--color-primary-hover);
+      border-left: 3px solid var(--color-primary);
+      font-weight: 700;
+    }
+
+    .nav-tab-btn i {
+      font-size: 1.1rem;
+      width: 22px;
+      text-align: center;
+    }
+
+    .nav-badge-count {
+      margin-left: auto;
+      background: #1e293b;
+      color: #ffffff;
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .sidebar-footer {
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .admin-user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .admin-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: #ffffff;
+    }
+
+    .admin-role {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .btn-logout {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      padding: 0.3rem;
+    }
+
+    .btn-logout:hover {
+      color: var(--color-rose);
+    }
+
+    /* Main Content Area */
+    .admin-main {
+      margin-left: 270px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    /* Top Bar */
+    .admin-topbar {
+      height: 70px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+    }
+
+    .topbar-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-sync-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: var(--color-emerald);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-sync-live:hover {
+      background: var(--color-emerald);
+      color: #ffffff;
+    }
+
+    .btn-view-site {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #1e293b;
+      color: #ffffff;
+      border: 1px solid var(--border-subtle);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-view-site:hover {
+      background: #334155;
+    }
+
+    /* Panels Container */
+    .admin-body {
+      padding: 2.5rem 2rem;
+      flex: 1;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--color-primary);
+    }
+
+    .stat-card.emerald::after { background: var(--color-emerald); }
+    .stat-card.amber::after { background: var(--color-amber); }
+    .stat-card.sky::after { background: var(--color-sky); }
+
+    .stat-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #ffffff;
+    }
+
+    .stat-val {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.1;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-lbl {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      font-weight: 600;
+    }
+
+    /* Section Headers & Action Bars */
+    .panel-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.75rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .panel-header-text h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .panel-header-text p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .btn-create-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: var(--color-primary);
+      color: #ffffff;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.88rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(234, 88, 12, 0.25);
+    }
+
+    .btn-create-action:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Filter & Search Toolbar */
+    .toolbar-bar {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .search-input-wrap i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+    }
+
+    .search-input-wrap input {
+      width: 100%;
+      padding: 0.65rem 1rem 0.65rem 2.5rem;
+      background: #080d19;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: #ffffff;
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    .search-input-wrap input:focus {
+      border-color: var(--color-primary);
+    }
+
+    .toolbar-select {
+      padding: 0.65rem 1.25rem;
+      background: #080d19;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: #ffffff;
+      font-size: 0.88rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Tables */
+    .data-table-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      box-shadow: var(--shadow-card);
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    .admin-table th {
+      padding: 1rem 1.25rem;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      letter-spacing: 0.05em;
+    }
+
+    .admin-table td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      vertical-align: middle;
+      color: #e2e8f0;
+    }
+
+    .admin-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .table-thumb {
+      width: 54px;
+      height: 54px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #000;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .table-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .badge-available { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+    .badge-sold { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+    .badge-featured { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .badge-regular { background: #1e293b; color: #94a3b8; }
+
+    .action-btns-cell {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .table-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface-elevated);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+
+    .table-btn:hover {
+      color: #ffffff;
+      background: #334155;
+    }
+
+    .table-btn.delete:hover {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--color-rose);
+      border-color: var(--color-rose);
+    }
+
+    /* CRUD Modals */
+    .admin-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .admin-modal-overlay.active {
+      display: flex;
+    }
+
+    .admin-modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 680px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      padding: 2.25rem;
+      position: relative;
+    }
+
+    .admin-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1rem;
+    }
+
+    .admin-modal-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .modal-close-x {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      cursor: pointer;
+      padding: 0.3rem;
+      transition: color 0.2s ease;
+    }
+
+    .modal-close-x:hover {
+      color: #ffffff;
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: #080d19;
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: #ffffff;
+      font-size: 0.92rem;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--color-primary);
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .image-uploader-box {
+      border: 2px dashed rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #080d19;
+      margin-bottom: 0.75rem;
+    }
+
+    .image-uploader-box:hover {
+      border-color: var(--color-primary);
+      background: rgba(234, 88, 12, 0.04);
+    }
+
+    .preview-box {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.75rem;
+      background: #11192c;
+      padding: 0.75rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .preview-box img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    /* Live Preview iframe */
+    .preview-stage-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 780px;
+    }
+
+    .preview-toolbar {
+      padding: 0.75rem 1.25rem;
+      background: #080d19;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .device-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #11192c;
+      padding: 0.25rem;
+      border-radius: 6px;
+    }
+
+    .device-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .device-btn.active {
+      background: var(--color-primary);
+      color: #ffffff;
+    }
+
+    .preview-frame-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #04060a;
+      overflow: auto;
+      padding: 1rem;
+    }
+
+    .preview-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #ffffff;
+      border-radius: 8px;
+      transition: width 0.3s ease;
+    }
+
+    /* Toast */
+    .admin-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #10b981;
+      color: #ffffff;
+      padding: 0.85rem 1.5rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 99999;
+    }
+
+    .admin-toast.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-admin-toggle {
+      display: none;
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: #ffffff;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    .sidebar-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 95;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .sidebar-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 1024px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-admin-toggle {
+        display: inline-flex;
+      }
+      .admin-sidebar {
+        transform: translateX(-100%);
+        z-index: 100;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+      }
+      .admin-sidebar.open {
+        transform: translateX(0);
+      }
+      .admin-main {
+        margin-left: 0;
+      }
+      .admin-topbar {
+        padding: 0 1rem;
+        height: 60px;
+      }
+      .topbar-title {
+        font-size: 0.95rem;
+      }
+      .topbar-title i {
+        display: none;
+      }
+      .btn-sync-live span {
+        display: none;
+      }
+      .btn-sync-live {
+        padding: 0.45rem 0.65rem;
+      }
+      .btn-view-site {
+        padding: 0.45rem 0.75rem;
+        font-size: 0.8rem;
+      }
+      .admin-body {
+        padding: 1.5rem 1rem;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .toolbar-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-input-wrap {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================================================================
+       1. AUTH GATE (PIN / DEMO QUICK LOGIN)
+       =================================================================== -->
+  <div id="authGate">
+    <div class="auth-card">
+      <div class="auth-badge">
+        <i class="fas fa-shield-halved"></i> Internal Management Suite
+      </div>
+      <img src="assets/images/logo-light.png" alt="Slum Art Foundation" class="auth-logo">
+      <h1 class="auth-title">Admin Dashboard</h1>
+      <p class="auth-sub">Manage certified artworks, write blog field stories, and observe live catalog synchronization in real time.</p>
+
+      <form id="authForm" onsubmit="handleAdminLogin(event)">
+        <div class="auth-input-group">
+          <input type="password" id="authPinInput" class="auth-input" placeholder="Enter Access Code" required autofocus autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn-login">
+          <i class="fas fa-arrow-right-to-bracket"></i> Authenticate &amp; Enter
+        </button>
+      </form>
+
+      <button type="button" class="btn-quick-login" onclick="quickDemoLogin()">
+        <i class="fas fa-bolt"></i> 1-Click Quick Login (Demo Access)
+      </button>
+      <div style="font-size: 0.74rem; color: var(--text-dim); margin-top: 1rem;">
+        Default access code: <code style="color: var(--color-amber);">slumart2026</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       2. ADMIN MAIN INTERFACE
+       =================================================================== -->
+  <div class="admin-wrapper" id="adminApp" style="display: none;">
+
+    <!-- Left Navigation Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-brand">
+        <img src="assets/images/logo-light.png" alt="Slum Art">
+        <div class="sidebar-status-pill">
+          <span class="sidebar-pulse-dot"></span>
+          <span>Live Sync</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-header-label">Workspace</div>
+        <button class="nav-tab-btn active" data-tab="overview">
+          <i class="fas fa-chart-pie"></i>
+          <span>Overview</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="artworks">
+          <i class="fas fa-palette"></i>
+          <span>Artworks Manager</span>
+          <span class="nav-badge-count" id="badgeArtworksCount">0</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="blogs">
+          <i class="fas fa-newspaper"></i>
+          <span>Blogs &amp; Stories</span>
+          <span class="nav-badge-count" id="badgeBlogsCount">0</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="commissions">
+          <i class="fas fa-wand-magic-sparkles"></i>
+          <span>Custom Commissions</span>
+          <span class="nav-badge-count" id="badgeCommissionsCount">0</span>
+        </button>
+
+        <div class="nav-header-label">Tools &amp; Simulation</div>
+        <button class="nav-tab-btn" data-tab="preview">
+          <i class="fas fa-laptop-code"></i>
+          <span>Live Site Preview</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="export">
+          <i class="fas fa-cloud-arrow-down"></i>
+          <span>Export &amp; Code Sync</span>
+        </button>
+
+        <div class="nav-header-label">External Links</div>
+        <a href="index.html" target="_blank" class="nav-tab-btn">
+          <i class="fas fa-arrow-up-right-from-square"></i>
+          <span>Open Public Site</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="admin-user-info">
+          <div class="admin-avatar">SA</div>
+          <div>
+            <strong style="font-size: 0.85rem; color: #ffffff; display: block;">Curator Admin</strong>
+            <span class="admin-role">Lagos Atelier</span>
+          </div>
+        </div>
+        <button class="btn-logout" onclick="handleAdminLogout()" title="Log Out">
+          <i class="fas fa-power-off"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="adminSidebarBackdrop" onclick="toggleAdminSidebar(false)"></div>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      
+      <!-- Top Bar -->
+      <header class="admin-topbar">
+        <div style="display: flex; align-items: center;">
+          <button class="mobile-admin-toggle" id="adminMenuToggle" aria-label="Toggle Navigation" onclick="toggleAdminSidebar()">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="topbar-title">
+            <i class="fas fa-cube text-amber"></i>
+            <span id="topbarTitle">Dashboard Overview</span>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn-sync-live" onclick="triggerManualSync()" title="Force instant broadcast across all tabs">
+            <i class="fas fa-rotate"></i>
+            <span>Instant Broadcast Sync</span>
+          </button>
+          <a href="shop.html" target="_blank" class="btn-view-site">
+            <i class="fas fa-eye"></i> View Shop
+          </a>
+        </div>
+      </header>
+
+      <!-- Body / Tab Content -->
+      <div class="admin-body">
+
+        <!-- =============================================================
+             TAB 1: OVERVIEW
+             ============================================================= -->
+        <section id="panel-overview" class="tab-panel active">
+          
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-paint-brush text-amber"></i></div>
+              <div>
+                <div class="stat-val" id="statArtworksCount">0</div>
+                <div class="stat-lbl">Certified Masterpieces</div>
+              </div>
+            </div>
+            <div class="stat-card emerald">
+              <div class="stat-icon"><i class="fas fa-newspaper text-emerald"></i></div>
+              <div>
+                <div class="stat-val" id="statBlogsCount">0</div>
+                <div class="stat-lbl">Published Field Stories</div>
+              </div>
+            </div>
+            <div class="stat-card sky">
+              <div class="stat-icon"><i class="fas fa-signature" style="color: #38bdf8;"></i></div>
+              <div>
+                <div class="stat-val" id="statCommissionsCount">0</div>
+                <div class="stat-lbl">Custom Inquiries</div>
+              </div>
+            </div>
+            <div class="stat-card amber">
+              <div class="stat-icon"><i class="fas fa-graduation-cap text-amber"></i></div>
+              <div>
+                <div class="stat-val">100%</div>
+                <div class="stat-lbl">Philanthropic Tuition Fund</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="panel-header-bar" style="margin-top: 1rem;">
+            <div class="panel-header-text">
+              <h2>Quick Actions</h2>
+              <p>Add new works or stories to instantly push updates to the live web catalog.</p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn-create-action" onclick="openAddArtworkModal()">
+                <i class="fas fa-plus"></i> Add New Artwork
+              </button>
+              <button class="btn-create-action" style="background: #2563eb;" onclick="openAddBlogModal()">
+                <i class="fas fa-pen-nib"></i> Write Blog Post
+              </button>
+            </div>
+          </div>
+
+          <!-- Recent Artworks Preview Table -->
+          <div style="margin-top: 2rem;">
+            <h3 style="font-size: 1.15rem; margin-bottom: 1rem; color: #ffffff;">Recent Catalog Masterpieces</h3>
+            <div class="data-table-container">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Work</th>
+                    <th>Title &amp; Artist</th>
+                    <th>Category</th>
+                    <th>Medium</th>
+                    <th>Price (NGN / USD)</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="overviewArtworksTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- =============================================================
+             TAB 2: ARTWORKS MANAGER
+             ============================================================= -->
+        <section id="panel-artworks" class="tab-panel">
+          
+          <div class="panel-header-bar">
+            <div class="panel-header-text">
+              <h2>Artworks &amp; Gallery Vault</h2>
+              <p>Add, edit, or remove certified original works. Any change immediately updates `shop.html` and `index.html` across all browsers.</p>
+            </div>
+            <button class="btn-create-action" onclick="openAddArtworkModal()">
+              <i class="fas fa-plus"></i> Add New Artwork
+            </button>
+          </div>
+
+          <!-- Toolbar -->
+          <div class="toolbar-bar">
+            <div class="search-input-wrap">
+              <i class="fas fa-search"></i>
+              <input type="text" id="artworkSearchInput" placeholder="Search by title, artist, or medium..." oninput="filterArtworksTable()">
+            </div>
+            <select class="toolbar-select" id="artworkCategoryFilter" onchange="filterArtworksTable()">
+              <option value="all">All Categories</option>
+              <option value="Collage Art">Collage Art</option>
+              <option value="Original Painting">Original Painting</option>
+              <option value="Recycled Media">Recycled Media</option>
+              <option value="Paper Mosaic">Paper Mosaic</option>
+              <option value="Landscape">Landscape</option>
+            </select>
+          </div>
+
+          <!-- Artworks Data Table -->
+          <div class="data-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Thumbnail</th>
+                  <th>Title</th>
+                  <th>Artist &amp; Age</th>
+                  <th>Category</th>
+                  <th>Medium</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="artworksTableBody"></tbody>
+            </table>
+          </div>
+
+        </section>
+
+        <!-- =============================================================
+             TAB 3: BLOGS & STORIES MANAGER
+             ============================================================= -->
+        <section id="panel-blogs" class="tab-panel">
+          
+          <div class="panel-header-bar">
+            <div class="panel-header-text">
+              <h2>Field Stories &amp; Dispatch Articles</h2>
+              <p>Publish field reports, world record milestones, and atelier techniques directly to `blog.html` and the homepage showcase.</p>
+            </div>
+            <button class="btn-create-action" style="background: #2563eb;" onclick="openAddBlogModal()">
+              <i class="fas fa-pen-nib"></i> Create New Blog Post
+            </button>
+          </div>
+
+          <!-- Toolbar -->
+          <div class="toolbar-bar">
+            <div class="search-input-wrap">
+              <i class="fas fa-search"></i>
+              <input type="text" id="blogSearchInputAdmin" placeholder="Search blog title, author, or keywords..." oninput="filterBlogsTable()">
+            </div>
+            <select class="toolbar-select" id="blogCategoryFilterAdmin" onchange="filterBlogsTable()">
+              <option value="all">All Categories</option>
+              <option value="Eco-Art Innovations">Eco-Art Innovations</option>
+              <option value="Exhibitions & Milestones">Exhibitions &amp; Milestones</option>
+              <option value="Art & Technique">Art &amp; Technique</option>
+              <option value="Community Stories">Community Stories</option>
+            </select>
+          </div>
+
+          <!-- Blogs Data Table -->
+          <div class="data-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Cover</th>
+                  <th>Article Title</th>
+                  <th>Category</th>
+                  <th>Author</th>
+                  <th>Date &amp; Read Time</th>
+                  <th>Featured</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="blogsTableBody"></tbody>
+            </table>
+          </div>
+
+        </section>
+
+        <!-- =============================================================
+             TAB 4: CUSTOM COMMISSIONS VIEWER
+             ============================================================= -->
+        <section id="panel-commissions" class="tab-panel">
+          
+          <div class="panel-header-bar">
+            <div class="panel-header-text">
+              <h2>Custom Commission Inquiries</h2>
+              <p>Live patron submissions for bespoke Collage Artworks and Collage Portraits.</p>
+            </div>
+            <button class="btn-sync-live" onclick="loadCommissionsTable()">
+              <i class="fas fa-rotate"></i> Refresh Inquiries
+            </button>
+          </div>
+
+          <div class="data-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Ref ID</th>
+                  <th>Type</th>
+                  <th>Patron Name</th>
+                  <th>Contact (Email / Phone)</th>
+                  <th>Delivery Location</th>
+                  <th>Brief / Notes</th>
+                  <th>Date</th>
+                  <th>Connect</th>
+                </tr>
+              </thead>
+              <tbody id="commissionsTableBody"></tbody>
+            </table>
+          </div>
+
+        </section>
+
+        <!-- =============================================================
+             TAB 5: LIVE SITE PREVIEW
+             ============================================================= -->
+        <section id="panel-preview" class="tab-panel">
+          
+          <div class="preview-stage-container">
+            <div class="preview-toolbar">
+              <div style="display: flex; align-items: center; gap: 0.85rem;">
+                <label style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">Preview Page:</label>
+                <select id="previewPageSelector" class="toolbar-select" style="padding: 0.35rem 0.85rem;" onchange="changePreviewPage(this.value)">
+                  <option value="shop.html">Art Shop & Gallery (shop.html)</option>
+                  <option value="blog.html">Field Stories (blog.html)</option>
+                  <option value="index.html">Homepage (index.html)</option>
+                </select>
+                <button class="table-btn" onclick="reloadPreviewIframe()" title="Reload Iframe"><i class="fas fa-rotate"></i></button>
+              </div>
+
+              <div class="device-switcher">
+                <button class="device-btn active" data-width="100%" onclick="setPreviewDevice(this, '100%')"><i class="fas fa-desktop"></i> Desktop</button>
+                <button class="device-btn" data-width="768px" onclick="setPreviewDevice(this, '768px')"><i class="fas fa-tablet-screen-button"></i> Tablet</button>
+                <button class="device-btn" data-width="390px" onclick="setPreviewDevice(this, '390px')"><i class="fas fa-mobile-screen"></i> Mobile</button>
+              </div>
+            </div>
+
+            <div class="preview-frame-wrap">
+              <iframe id="livePreviewFrame" src="shop.html" class="preview-iframe"></iframe>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- =============================================================
+             TAB 6: EXPORT & CODE PERSISTENCE
+             ============================================================= -->
+        <section id="panel-export" class="tab-panel">
+          
+          <div class="panel-header-bar">
+            <div class="panel-header-text">
+              <h2>Data Persistence &amp; File Generation</h2>
+              <p>While changes update all browser sessions instantly via localStorage and broadcast channels, you can download updated code files with 1 click to save them permanently into git or disk.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
+            
+            <div class="stat-card" style="flex-direction: column; align-items: flex-start;">
+              <i class="fas fa-file-code text-amber" style="font-size: 2.2rem; margin-bottom: 1rem;"></i>
+              <strong style="font-size: 1.15rem; color: #ffffff;">Download Updated data.js</strong>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.5rem 0 1.25rem;">
+                Produces the complete JavaScript code with all newly added artworks and blog stories ready to drop into <code>js/data.js</code>.
+              </p>
+              <button class="btn-create-action" onclick="downloadUpdatedDataJs()">
+                <i class="fas fa-download"></i> Download data.js
+              </button>
+            </div>
+
+            <div class="stat-card emerald" style="flex-direction: column; align-items: flex-start;">
+              <i class="fas fa-file-lines text-emerald" style="font-size: 2.2rem; margin-bottom: 1rem;"></i>
+              <strong style="font-size: 1.15rem; color: #ffffff;">Export Artworks JSON</strong>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.5rem 0 1.25rem;">
+                Export raw array of all artworks in standalone JSON format for external backups or API integrations.
+              </p>
+              <button class="btn-create-action" style="background: #059669;" onclick="downloadArtworksJson()">
+                <i class="fas fa-download"></i> Download Artworks JSON
+              </button>
+            </div>
+
+            <div class="stat-card sky" style="flex-direction: column; align-items: flex-start;">
+              <i class="fas fa-newspaper text-sky" style="font-size: 2.2rem; margin-bottom: 1rem; color: #38bdf8;"></i>
+              <strong style="font-size: 1.15rem; color: #ffffff;">Export Blogs JSON</strong>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.5rem 0 1.25rem;">
+                Export all published field stories and blog data in clean JSON format.
+              </p>
+              <button class="btn-create-action" style="background: #0284c7;" onclick="downloadBlogsJson()">
+                <i class="fas fa-download"></i> Download Blogs JSON
+              </button>
+            </div>
+
+          </div>
+
+          <div style="margin-top: 3rem; background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius-md); padding: 1.5rem;">
+            <strong style="color: #f87171; font-size: 1rem;"><i class="fas fa-triangle-exclamation"></i> Factory Reset Danger Zone</strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.4rem 0 1rem;">
+              Clears localStorage overrides and restores original default seed data from <code>js/data.js</code>.
+            </p>
+            <button class="btn-create-action" style="background: #dc2626;" onclick="resetToFactoryData()">
+              <i class="fas fa-trash-can"></i> Reset to Factory Seed Data
+            </button>
+          </div>
+
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ===================================================================
+       3. ADD / EDIT ARTWORK MODAL
+       =================================================================== -->
+  <div class="admin-modal-overlay" id="artworkModal">
+    <div class="admin-modal-card">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="artworkModalTitle">Add New Artwork</h3>
+        <button class="modal-close-x" onclick="closeAdminModals()"><i class="fas fa-times"></i></button>
+      </div>
+
+      <form id="artworkForm" onsubmit="saveArtworkForm(event)">
+        <input type="hidden" id="artFormEditId" value="">
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Artwork ID *</label>
+            <input type="text" id="artFormId" class="form-input" required placeholder="e.g. art-13">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select id="artFormCategory" class="form-select" required>
+              <option value="Collage Art">Collage Art</option>
+              <option value="Recycled Media">Recycled Media</option>
+              <option value="Original Painting">Original Painting</option>
+              <option value="Paper Mosaic">Paper Mosaic</option>
+              <option value="Landscape">Landscape</option>
+              <option value="Portrait">Portrait</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Artwork Title *</label>
+          <input type="text" id="artFormTitle" class="form-input" required placeholder="e.g. Whispers of the Lagoon">
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Artist Name *</label>
+            <input type="text" id="artFormArtist" class="form-input" required placeholder="e.g. Daniel Adeleke">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Artist Age *</label>
+            <input type="text" id="artFormAge" class="form-input" required placeholder="e.g. Age 11">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Medium &amp; Materials *</label>
+          <input type="text" id="artFormMedium" class="form-input" required placeholder="e.g. Recycled Newspaper &amp; Acrylic on Stretched Canvas">
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Price (NGN ₦) *</label>
+            <input type="number" id="artFormPriceNgn" class="form-input" required placeholder="185000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Price (USD $) *</label>
+            <input type="number" id="artFormPriceUsd" class="form-input" required placeholder="125">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Image Source (Upload File or Enter URL) *</label>
+          <div class="image-uploader-box" onclick="document.getElementById('artImageFileInput').click()">
+            <input type="file" id="artImageFileInput" accept="image/*" style="display: none;" onchange="handleArtworkImageUpload(this)">
+            <i class="fas fa-cloud-arrow-up text-amber" style="font-size: 1.8rem; margin-bottom: 0.5rem; display: block;"></i>
+            <span style="font-weight: 700; font-size: 0.92rem; color: #ffffff;">Click to choose an image from your device</span>
+            <span style="display: block; font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem;">Direct base64 conversion &bull; PNG, JPEG, WEBP</span>
+          </div>
+          <input type="text" id="artFormImageUrl" class="form-input" placeholder="Or paste image URL (e.g. assets/images/resources/Art.png)" oninput="updateArtPreviewThumb(this.value)">
+          <div class="preview-box" id="artPreviewBox" style="display: none;">
+            <img id="artPreviewImg" src="" alt="Preview">
+            <div>
+              <strong style="color: #34d399; font-size: 0.85rem; display: block;"><i class="fas fa-check"></i> Image Loaded</strong>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">Ready for live sync</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Philanthropic Impact Note</label>
+          <input type="text" id="artFormImpact" class="form-input" placeholder="e.g. 100% Funds direct school tuition & daily meals">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Paystack Acquisition Link</label>
+          <input type="url" id="artFormLink" class="form-input" placeholder="https://paystack.shop/pay/...">
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+          <button type="submit" class="btn-create-action" style="flex: 1; justify-content: center; padding: 0.9rem;">
+            <i class="fas fa-floppy-disk"></i> Save Artwork &amp; Broadcast
+          </button>
+          <button type="button" class="table-btn" style="width: auto; padding: 0 1.25rem;" onclick="closeAdminModals()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       4. ADD / EDIT BLOG POST MODAL
+       =================================================================== -->
+  <div class="admin-modal-overlay" id="blogModal">
+    <div class="admin-modal-card" style="max-width: 760px;">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="blogModalTitle">Create Blog Post</h3>
+        <button class="modal-close-x" onclick="closeAdminModals()"><i class="fas fa-times"></i></button>
+      </div>
+
+      <form id="blogForm" onsubmit="saveBlogForm(event)">
+        <input type="hidden" id="blogFormEditId" value="">
+
+        <div class="form-group">
+          <label class="form-label">Story Title *</label>
+          <input type="text" id="blogFormTitle" class="form-input" required placeholder="e.g. From Shoreline Trash to Monumental Masterpieces">
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select id="blogFormCategory" class="form-select" required>
+              <option value="Eco-Art Innovations">Eco-Art Innovations</option>
+              <option value="Exhibitions & Milestones">Exhibitions &amp; Milestones</option>
+              <option value="Art & Technique">Art &amp; Technique</option>
+              <option value="Community Stories">Community Stories</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Estimated Read Time *</label>
+            <input type="text" id="blogFormReadTime" class="form-input" required placeholder="e.g. 5 min read">
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Author Name *</label>
+            <input type="text" id="blogFormAuthor" class="form-input" required placeholder="e.g. Adetunwase Adenle">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Author Role / Title</label>
+            <input type="text" id="blogFormAuthorRole" class="form-input" placeholder="e.g. Founder & Lead Visionary">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Story Cover Image (Upload or URL) *</label>
+          <div class="image-uploader-box" onclick="document.getElementById('blogImageFileInput').click()">
+            <input type="file" id="blogImageFileInput" accept="image/*" style="display: none;" onchange="handleBlogImageUpload(this)">
+            <i class="fas fa-cloud-arrow-up text-amber" style="font-size: 1.8rem; margin-bottom: 0.5rem; display: block;"></i>
+            <span style="font-weight: 700; font-size: 0.92rem; color: #ffffff;">Upload high-res blog cover photo</span>
+          </div>
+          <input type="text" id="blogFormImageUrl" class="form-input" placeholder="Or enter URL (e.g. assets/images/blog/blog_1.png)" oninput="updateBlogPreviewThumb(this.value)">
+          <div class="preview-box" id="blogPreviewBox" style="display: none;">
+            <img id="blogPreviewImg" src="" alt="Blog Preview">
+            <div>
+              <strong style="color: #34d399; font-size: 0.85rem; display: block;"><i class="fas fa-check"></i> Cover Image Ready</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Excerpt / Summary Hook (Short Paragraph) *</label>
+          <textarea id="blogFormExcerpt" class="form-textarea" rows="2" required placeholder="A compelling 2-sentence teaser for card previews..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.45rem;">
+            <label class="form-label" style="margin: 0;">Full Article Content (HTML / Text) *</label>
+            <div style="display: flex; gap: 0.35rem;">
+              <button type="button" class="table-btn" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" onclick="insertHtmlTag('p')">&lt;p&gt;</button>
+              <button type="button" class="table-btn" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" onclick="insertHtmlTag('blockquote')">Quote</button>
+              <button type="button" class="table-btn" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" onclick="insertHtmlTag('h3')">H3</button>
+              <button type="button" class="table-btn" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" onclick="insertHtmlTag('strong')">Bold</button>
+            </div>
+          </div>
+          <textarea id="blogFormContent" class="form-textarea" rows="8" required placeholder="Write the full story here using HTML tags like <p>, <blockquote>, <h3>..."></textarea>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; color: #ffffff; font-size: 0.9rem;">
+            <input type="checkbox" id="blogFormFeatured" style="width: 18px; height: 18px;">
+            <span>Mark as Featured Headline Story (pinned prominently to top hero)</span>
+          </label>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+          <button type="submit" class="btn-create-action" style="flex: 1; justify-content: center; padding: 0.9rem; background: #2563eb;">
+            <i class="fas fa-paper-plane"></i> Publish Story &amp; Sync Instantly
+          </button>
+          <button type="button" class="table-btn" style="width: auto; padding: 0 1.25rem;" onclick="closeAdminModals()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="admin-toast" id="adminToast">
+    <i class="fas fa-circle-check"></i>
+    <span id="toastMessage">Changes saved and synchronized across all tabs!</span>
+  </div>
+
+  <!-- Shared Data Source -->
+  <script src="js/data.js?v=20261031_v81"></script>
+
+  <!-- Admin Controller Logic -->
+  <script>
+    // State Store
+    const ADMIN_PASS = 'slumart2026';
+    let dbArtworks = [];
+    let dbBlogs = [];
+    const broadcastChannel = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('slum_art_admin_channel') : null;
+
+    // Initialize Admin
+    function initAdmin() {
+      const isAuthed = sessionStorage.getItem('slum_admin_authed') === 'true';
+      if (isAuthed) {
+        showAdminApp();
+      } else {
+        document.getElementById('authGate').style.display = 'flex';
+        document.getElementById('adminApp').style.display = 'none';
+      }
+      loadDatabase();
+      setupTabs();
+    }
+
+    // Load Data from LocalStorage or seed fallback
+    function loadDatabase() {
+      const seedArtworks = (window.SLUM_DATA && window.SLUM_DATA.artworks) ? window.SLUM_DATA.artworks : [];
+      const seedBlogs = (window.SLUM_DATA && window.SLUM_DATA.blogs) ? window.SLUM_DATA.blogs : [];
+
+      const storedArt = localStorage.getItem('slum_art_artworks_db');
+      dbArtworks = storedArt ? JSON.parse(storedArt) : seedArtworks;
+
+      const storedBlogs = localStorage.getItem('slum_art_blogs_db');
+      dbBlogs = storedBlogs ? JSON.parse(storedBlogs) : seedBlogs;
+
+      // Ensure stored in localStorage
+      if (!storedArt) localStorage.setItem('slum_art_artworks_db', JSON.stringify(dbArtworks));
+      if (!storedBlogs) localStorage.setItem('slum_art_blogs_db', JSON.stringify(dbBlogs));
+
+      updateCounters();
+      renderOverviewArtworks();
+      renderArtworksTable();
+      renderBlogsTable();
+      loadCommissionsTable();
+    }
+
+    // Authentication Handlers
+    function handleAdminLogin(e) {
+      if (e) e.preventDefault();
+      const pin = document.getElementById('authPinInput').value.trim();
+      if (pin === ADMIN_PASS) {
+        sessionStorage.setItem('slum_admin_authed', 'true');
+        showAdminApp();
+        showToast('Welcome back, Curator Admin!');
+      } else {
+        alert('Incorrect access code. Try "slumart2026" or use the 1-Click Quick Login button.');
+      }
+    }
+
+    function quickDemoLogin() {
+      sessionStorage.setItem('slum_admin_authed', 'true');
+      showAdminApp();
+      showToast('Authenticated via Quick Demo Pass!');
+    }
+
+    function handleAdminLogout() {
+      if (confirm('Log out from Admin Dashboard?')) {
+        sessionStorage.removeItem('slum_admin_authed');
+        window.location.reload();
+      }
+    }
+
+    function showAdminApp() {
+      document.getElementById('authGate').style.display = 'none';
+      document.getElementById('adminApp').style.display = 'flex';
+      updateCounters();
+    }
+
+    // Mobile Sidebar Drawer Toggle
+    function toggleAdminSidebar(force) {
+      const sb = document.getElementById('adminSidebar');
+      const bd = document.getElementById('adminSidebarBackdrop');
+      const isOpen = sb.classList.contains('open');
+      const shouldOpen = typeof force === 'boolean' ? force : !isOpen;
+      sb.classList.toggle('open', shouldOpen);
+      if (bd) bd.classList.toggle('active', shouldOpen);
+    }
+
+    // Tab Navigation
+    function setupTabs() {
+      const tabBtns = document.querySelectorAll('.nav-tab-btn[data-tab]');
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tabKey = btn.dataset.tab;
+          tabBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+          const target = document.getElementById(`panel-${tabKey}`);
+          if (target) target.classList.add('active');
+
+          const titleEl = document.getElementById('topbarTitle');
+          if (titleEl) {
+            titleEl.textContent = btn.querySelector('span') ? btn.querySelector('span').textContent : 'Admin Suite';
+          }
+
+          // Auto close sidebar on mobile upon tab selection
+          if (window.innerWidth <= 768) {
+            toggleAdminSidebar(false);
+          }
+        });
+      });
+    }
+
+    // Update Dashboard Counters
+    function updateCounters() {
+      const artCount = dbArtworks.length;
+      const blogCount = dbBlogs.length;
+      const commissions = JSON.parse(localStorage.getItem('slum_custom_portraits') || '[]');
+
+      document.getElementById('badgeArtworksCount').textContent = artCount;
+      document.getElementById('badgeBlogsCount').textContent = blogCount;
+      document.getElementById('badgeCommissionsCount').textContent = commissions.length;
+
+      document.getElementById('statArtworksCount').textContent = artCount;
+      document.getElementById('statBlogsCount').textContent = blogCount;
+      document.getElementById('statCommissionsCount').textContent = commissions.length;
+    }
+
+    // Real-Time Broadcast & Local Storage Commit
+    function commitAndBroadcast(msg = 'Changes saved & synchronized!') {
+      localStorage.setItem('slum_art_artworks_db', JSON.stringify(dbArtworks));
+      localStorage.setItem('slum_art_blogs_db', JSON.stringify(dbBlogs));
+
+      if (broadcastChannel) {
+        broadcastChannel.postMessage({ type: 'DATA_UPDATED', timestamp: Date.now() });
+      }
+
+      window.dispatchEvent(new CustomEvent('slum_data_updated'));
+
+      // If iframe preview is present, inform it
+      const iframe = document.getElementById('livePreviewFrame');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: 'DATA_UPDATED' }, '*');
+      }
+
+      updateCounters();
+      renderOverviewArtworks();
+      renderArtworksTable();
+      renderBlogsTable();
+      showToast(msg);
+    }
+
+    function triggerManualSync() {
+      commitAndBroadcast('Instant multi-tab broadcast dispatched!');
+    }
+
+    // ===================================================================
+    // ARTWORKS CRUD
+    // ===================================================================
+
+    function renderOverviewArtworks() {
+      const tbody = document.getElementById('overviewArtworksTableBody');
+      if (!tbody) return;
+      const list = dbArtworks.slice(0, 5);
+      tbody.innerHTML = list.map(item => `
+        <tr>
+          <td><img src="${item.image}" alt="${item.title}" class="table-thumb" onerror="this.src='assets/images/resources/Art.png'"></td>
+          <td>
+            <strong>${item.title}</strong><br>
+            <span style="font-size: 0.78rem; color: var(--text-muted);">${item.artist} (${item.age})</span>
+          </td>
+          <td><span class="table-badge badge-regular">${item.category}</span></td>
+          <td><span style="font-size: 0.8rem; color: var(--text-muted);">${item.medium}</span></td>
+          <td>
+            <strong style="color: #ffffff;">₦${Number(item.price_ngn).toLocaleString()}</strong>
+            <span style="font-size: 0.78rem; color: var(--color-amber); display: block;">$${item.price_usd} USD</span>
+          </td>
+          <td>
+            <span class="table-badge ${item.sold ? 'badge-sold' : 'badge-available'}">
+              <i class="fas fa-circle" style="font-size: 6px;"></i> ${item.sold ? 'Sold' : 'Available'}
+            </span>
+          </td>
+          <td>
+            <div class="action-btns-cell">
+              <button class="table-btn" onclick="editArtwork('${item.id}')" title="Edit"><i class="fas fa-pen-to-square"></i></button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function renderArtworksTable(items = null) {
+      const tbody = document.getElementById('artworksTableBody');
+      if (!tbody) return;
+      const list = items || dbArtworks;
+
+      if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 3rem; color: var(--text-dim);">No artworks match your search query.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = list.map(item => `
+        <tr>
+          <td><img src="${item.image}" alt="${item.title}" class="table-thumb" onerror="this.src='assets/images/resources/Art.png'"></td>
+          <td>
+            <strong>${item.title}</strong><br>
+            <span style="font-size: 0.75rem; color: var(--text-dim); font-family: monospace;">ID: ${item.id}</span>
+          </td>
+          <td>
+            <span>${item.artist}</span><br>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">${item.age}</span>
+          </td>
+          <td><span class="table-badge badge-regular">${item.category}</span></td>
+          <td style="max-width: 180px; font-size: 0.82rem; color: var(--text-muted);">${item.medium}</td>
+          <td>
+            <strong style="color: #ffffff;">₦${Number(item.price_ngn).toLocaleString()}</strong>
+            <span style="font-size: 0.75rem; color: var(--color-amber); display: block;">$${item.price_usd} USD</span>
+          </td>
+          <td>
+            <span class="table-badge ${item.sold ? 'badge-sold' : 'badge-available'}" style="cursor: pointer;" onclick="toggleArtworkStatus('${item.id}')" title="Click to toggle status">
+              <i class="fas fa-circle" style="font-size: 6px;"></i> ${item.sold ? 'Sold' : 'Available'}
+            </span>
+          </td>
+          <td>
+            <div class="action-btns-cell">
+              <button class="table-btn" onclick="editArtwork('${item.id}')" title="Edit Artwork"><i class="fas fa-pen-to-square"></i></button>
+              <button class="table-btn delete" onclick="deleteArtwork('${item.id}')" title="Delete Artwork"><i class="fas fa-trash-can"></i></button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function filterArtworksTable() {
+      const q = (document.getElementById('artworkSearchInput').value || '').toLowerCase().trim();
+      const cat = document.getElementById('artworkCategoryFilter').value;
+
+      let filtered = [...dbArtworks];
+      if (cat !== 'all') {
+        filtered = filtered.filter(a => a.category === cat);
+      }
+      if (q) {
+        filtered = filtered.filter(a =>
+          a.title.toLowerCase().includes(q) ||
+          a.artist.toLowerCase().includes(q) ||
+          a.medium.toLowerCase().includes(q) ||
+          a.id.toLowerCase().includes(q)
+        );
+      }
+      renderArtworksTable(filtered);
+    }
+
+    function openAddArtworkModal() {
+      document.getElementById('artworkModalTitle').textContent = 'Add New Certified Artwork';
+      document.getElementById('artFormEditId').value = '';
+      document.getElementById('artFormId').value = 'art-' + (dbArtworks.length + 1);
+      document.getElementById('artFormId').disabled = false;
+      document.getElementById('artFormTitle').value = '';
+      document.getElementById('artFormArtist').value = '';
+      document.getElementById('artFormAge').value = 'Age 10';
+      document.getElementById('artFormCategory').value = 'Collage Art';
+      document.getElementById('artFormMedium').value = 'Signature Recycled Paper Collage on Canvas';
+      document.getElementById('artFormPriceNgn').value = '175000';
+      document.getElementById('artFormPriceUsd').value = '120';
+      document.getElementById('artFormImageUrl').value = 'assets/images/resources/Art.png';
+      document.getElementById('artFormImpact').value = '100% Funds direct school tuition & daily meals';
+      document.getElementById('artFormLink').value = 'https://paystack.shop/pay/lk0hlrdlun';
+      updateArtPreviewThumb('assets/images/resources/Art.png');
+
+      document.getElementById('artworkModal').classList.add('active');
+    }
+
+    function editArtwork(id) {
+      const item = dbArtworks.find(a => a.id === id);
+      if (!item) return;
+
+      document.getElementById('artworkModalTitle').textContent = `Edit Artwork (${item.id})`;
+      document.getElementById('artFormEditId').value = item.id;
+      document.getElementById('artFormId').value = item.id;
+      document.getElementById('artFormId').disabled = true;
+      document.getElementById('artFormTitle').value = item.title;
+      document.getElementById('artFormArtist').value = item.artist;
+      document.getElementById('artFormAge').value = item.age;
+      document.getElementById('artFormCategory').value = item.category || 'Collage Art';
+      document.getElementById('artFormMedium').value = item.medium;
+      document.getElementById('artFormPriceNgn').value = item.price_ngn;
+      document.getElementById('artFormPriceUsd').value = item.price_usd;
+      document.getElementById('artFormImageUrl').value = item.image;
+      document.getElementById('artFormImpact').value = item.impact || '';
+      document.getElementById('artFormLink').value = item.link || 'https://paystack.shop/pay/lk0hlrdlun';
+      updateArtPreviewThumb(item.image);
+
+      document.getElementById('artworkModal').classList.add('active');
+    }
+
+    function handleArtworkImageUpload(input) {
+      if (!input.files || !input.files[0]) return;
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const base64 = e.target.result;
+        document.getElementById('artFormImageUrl').value = base64;
+        updateArtPreviewThumb(base64);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function updateArtPreviewThumb(url) {
+      const box = document.getElementById('artPreviewBox');
+      const img = document.getElementById('artPreviewImg');
+      if (url && url.trim()) {
+        img.src = url;
+        box.style.display = 'flex';
+      } else {
+        box.style.display = 'none';
+      }
+    }
+
+    function saveArtworkForm(e) {
+      e.preventDefault();
+      const editId = document.getElementById('artFormEditId').value;
+      const id = document.getElementById('artFormId').value.trim();
+      const title = document.getElementById('artFormTitle').value.trim();
+      const artist = document.getElementById('artFormArtist').value.trim();
+      const age = document.getElementById('artFormAge').value.trim();
+      const category = document.getElementById('artFormCategory').value;
+      const medium = document.getElementById('artFormMedium').value.trim();
+      const price_ngn = Number(document.getElementById('artFormPriceNgn').value) || 0;
+      const price_usd = Number(document.getElementById('artFormPriceUsd').value) || 0;
+      const image = document.getElementById('artFormImageUrl').value.trim() || 'assets/images/resources/Art.png';
+      const impact = document.getElementById('artFormImpact').value.trim();
+      const link = document.getElementById('artFormLink').value.trim() || 'https://paystack.shop/pay/lk0hlrdlun';
+
+      if (editId) {
+        // Update existing
+        const idx = dbArtworks.findIndex(a => a.id === editId);
+        if (idx !== -1) {
+          dbArtworks[idx] = {
+            ...dbArtworks[idx],
+            title, artist, age, category, medium, price_ngn, price_usd, image, impact, link
+          };
+        }
+      } else {
+        // Create new
+        dbArtworks.unshift({
+          id, title, artist, age, category, medium, price_ngn, price_usd, image, impact, link,
+          sold: false
+        });
+      }
+
+      closeAdminModals();
+      commitAndBroadcast(editId ? `Artwork "${title}" updated!` : `New artwork "${title}" added to gallery!`);
+    }
+
+    function toggleArtworkStatus(id) {
+      const item = dbArtworks.find(a => a.id === id);
+      if (!item) return;
+      item.sold = !item.sold;
+      commitAndBroadcast(`Status for "${item.title}" changed to ${item.sold ? 'Sold' : 'Available'}.`);
+    }
+
+    function deleteArtwork(id) {
+      const item = dbArtworks.find(a => a.id === id);
+      if (!item) return;
+      if (confirm(`Are you sure you want to delete artwork "${item.title}" (ID: ${id})?`)) {
+        dbArtworks = dbArtworks.filter(a => a.id !== id);
+        commitAndBroadcast(`Artwork "${item.title}" deleted.`);
+      }
+    }
+
+    // ===================================================================
+    // BLOGS & STORIES CRUD
+    // ===================================================================
+
+    function renderBlogsTable(items = null) {
+      const tbody = document.getElementById('blogsTableBody');
+      if (!tbody) return;
+      const list = items || dbBlogs;
+
+      if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 3rem; color: var(--text-dim);">No blog posts found.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = list.map(blog => `
+        <tr>
+          <td><img src="${blog.image}" alt="${blog.title}" class="table-thumb" onerror="this.src='assets/images/resources/Art.png'"></td>
+          <td>
+            <strong>${blog.title}</strong><br>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">${blog.excerpt ? blog.excerpt.substring(0, 60) + '...' : ''}</span>
+          </td>
+          <td><span class="table-badge badge-regular">${blog.category}</span></td>
+          <td>
+            <strong>${blog.author}</strong><br>
+            <span style="font-size: 0.75rem; color: var(--text-dim);">${blog.authorRole || ''}</span>
+          </td>
+          <td>
+            <span style="font-size: 0.82rem; color: #ffffff;">${blog.date}</span><br>
+            <span style="font-size: 0.74rem; color: var(--text-muted);">${blog.readTime}</span>
+          </td>
+          <td>
+            <span class="table-badge ${blog.featured ? 'badge-featured' : 'badge-regular'}" style="cursor: pointer;" onclick="toggleBlogFeatured('${blog.id}')" title="Click to toggle featured">
+              <i class="fas fa-star" style="font-size: 8px;"></i> ${blog.featured ? 'Featured' : 'Standard'}
+            </span>
+          </td>
+          <td>
+            <div class="action-btns-cell">
+              <button class="table-btn" onclick="editBlog('${blog.id}')" title="Edit Article"><i class="fas fa-pen-to-square"></i></button>
+              <button class="table-btn delete" onclick="deleteBlog('${blog.id}')" title="Delete Article"><i class="fas fa-trash-can"></i></button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function filterBlogsTable() {
+      const q = (document.getElementById('blogSearchInputAdmin').value || '').toLowerCase().trim();
+      const cat = document.getElementById('blogCategoryFilterAdmin').value;
+
+      let filtered = [...dbBlogs];
+      if (cat !== 'all') {
+        filtered = filtered.filter(b => b.category === cat);
+      }
+      if (q) {
+        filtered = filtered.filter(b =>
+          b.title.toLowerCase().includes(q) ||
+          b.author.toLowerCase().includes(q) ||
+          (b.excerpt || '').toLowerCase().includes(q)
+        );
+      }
+      renderBlogsTable(filtered);
+    }
+
+    function openAddBlogModal() {
+      document.getElementById('blogModalTitle').textContent = 'Write New Field Story';
+      document.getElementById('blogFormEditId').value = '';
+      document.getElementById('blogFormTitle').value = '';
+      document.getElementById('blogFormCategory').value = 'Eco-Art Innovations';
+      document.getElementById('blogFormReadTime').value = '4 min read';
+      document.getElementById('blogFormAuthor').value = 'Adetunwase Adenle';
+      document.getElementById('blogFormAuthorRole').value = 'Founder & Lead Visionary';
+      document.getElementById('blogFormImageUrl').value = 'assets/images/blog/blog_1.png';
+      document.getElementById('blogFormExcerpt').value = '';
+      document.getElementById('blogFormContent').value = '<p>Write your inspiring story paragraphs here...</p>';
+      document.getElementById('blogFormFeatured').checked = false;
+      updateBlogPreviewThumb('assets/images/blog/blog_1.png');
+
+      document.getElementById('blogModal').classList.add('active');
+    }
+
+    function editBlog(id) {
+      const blog = dbBlogs.find(b => b.id === id);
+      if (!blog) return;
+
+      document.getElementById('blogModalTitle').textContent = `Edit Story (${blog.title.substring(0, 24)}...)`;
+      document.getElementById('blogFormEditId').value = blog.id;
+      document.getElementById('blogFormTitle').value = blog.title;
+      document.getElementById('blogFormCategory').value = blog.category;
+      document.getElementById('blogFormReadTime').value = blog.readTime;
+      document.getElementById('blogFormAuthor').value = blog.author;
+      document.getElementById('blogFormAuthorRole').value = blog.authorRole || '';
+      document.getElementById('blogFormImageUrl').value = blog.image;
+      document.getElementById('blogFormExcerpt').value = blog.excerpt || '';
+      document.getElementById('blogFormContent').value = blog.content || '';
+      document.getElementById('blogFormFeatured').checked = !!blog.featured;
+      updateBlogPreviewThumb(blog.image);
+
+      document.getElementById('blogModal').classList.add('active');
+    }
+
+    function handleBlogImageUpload(input) {
+      if (!input.files || !input.files[0]) return;
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const base64 = e.target.result;
+        document.getElementById('blogFormImageUrl').value = base64;
+        updateBlogPreviewThumb(base64);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function updateBlogPreviewThumb(url) {
+      const box = document.getElementById('blogPreviewBox');
+      const img = document.getElementById('blogPreviewImg');
+      if (url && url.trim()) {
+        img.src = url;
+        box.style.display = 'flex';
+      } else {
+        box.style.display = 'none';
+      }
+    }
+
+    function insertHtmlTag(tag) {
+      const textarea = document.getElementById('blogFormContent');
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const selected = textarea.value.substring(start, end) || 'text';
+      let insert = '';
+      if (tag === 'blockquote') {
+        insert = `<blockquote>"${selected}"</blockquote>\n`;
+      } else {
+        insert = `<${tag}>${selected}</${tag}>\n`;
+      }
+      textarea.setRangeText(insert, start, end, 'end');
+      textarea.focus();
+    }
+
+    function saveBlogForm(e) {
+      e.preventDefault();
+      const editId = document.getElementById('blogFormEditId').value;
+      const title = document.getElementById('blogFormTitle').value.trim();
+      const category = document.getElementById('blogFormCategory').value;
+      const readTime = document.getElementById('blogFormReadTime').value.trim();
+      const author = document.getElementById('blogFormAuthor').value.trim();
+      const authorRole = document.getElementById('blogFormAuthorRole').value.trim();
+      const image = document.getElementById('blogFormImageUrl').value.trim() || 'assets/images/resources/Art.png';
+      const excerpt = document.getElementById('blogFormExcerpt').value.trim();
+      const content = document.getElementById('blogFormContent').value.trim();
+      const featured = document.getElementById('blogFormFeatured').checked;
+
+      const dateStr = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+      if (editId) {
+        const idx = dbBlogs.findIndex(b => b.id === editId);
+        if (idx !== -1) {
+          dbBlogs[idx] = {
+            ...dbBlogs[idx],
+            title, category, readTime, author, authorRole, image, excerpt, content, featured
+          };
+        }
+      } else {
+        const newId = 'blog-' + Date.now();
+        const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        dbBlogs.unshift({
+          id: newId,
+          slug,
+          title,
+          category,
+          author,
+          authorRole,
+          authorAvatar: 'assets/images/team/founder_1.png',
+          date: dateStr,
+          readTime,
+          image,
+          featured,
+          excerpt,
+          content
+        });
+      }
+
+      closeAdminModals();
+      commitAndBroadcast(editId ? `Story "${title}" updated!` : `Story "${title}" published live!`);
+    }
+
+    function toggleBlogFeatured(id) {
+      const blog = dbBlogs.find(b => b.id === id);
+      if (!blog) return;
+      blog.featured = !blog.featured;
+      commitAndBroadcast(`Story "${blog.title}" featured status changed to ${blog.featured ? 'Yes' : 'No'}.`);
+    }
+
+    function deleteBlog(id) {
+      const blog = dbBlogs.find(b => b.id === id);
+      if (!blog) return;
+      if (confirm(`Are you sure you want to delete story "${blog.title}"?`)) {
+        dbBlogs = dbBlogs.filter(b => b.id !== id);
+        commitAndBroadcast(`Story "${blog.title}" deleted.`);
+      }
+    }
+
+    // ===================================================================
+    // COMMISSIONS INQUIRIES VIEWER
+    // ===================================================================
+
+    function loadCommissionsTable() {
+      const tbody = document.getElementById('commissionsTableBody');
+      if (!tbody) return;
+      const list = JSON.parse(localStorage.getItem('slum_custom_portraits') || '[]');
+
+      if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 3rem; color: var(--text-dim);">No commission requests received yet. Test one on the site modal!</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = list.map(item => `
+        <tr>
+          <td><span style="font-family: monospace; font-size: 0.8rem; color: var(--color-amber);">${item.refId || 'N/A'}</span></td>
+          <td><span class="table-badge ${item.productType === 'Collage Artwork' ? 'badge-featured' : 'badge-regular'}">${item.productType || 'Collage'}</span></td>
+          <td><strong>${item.name}</strong></td>
+          <td>
+            <a href="mailto:${item.email}" style="color: #38bdf8; text-decoration: none; display: block; font-size: 0.82rem;">${item.email}</a>
+            <span style="font-size: 0.78rem; color: var(--text-muted);">${item.phone}</span>
+          </td>
+          <td><span style="font-size: 0.85rem; color: #ffffff;">${item.location || 'Not specified'}</span></td>
+          <td style="max-width: 200px; font-size: 0.8rem; color: var(--text-muted);">
+            <strong>${item.subject || 'Standard'}</strong> &bull; ${item.sizeTier || ''}<br>
+            ${item.notes ? item.notes.substring(0, 60) + '...' : ''}
+          </td>
+          <td><span style="font-size: 0.78rem; color: var(--text-dim);">${item.createdAt ? new Date(item.createdAt).toLocaleDateString() : 'Recent'}</span></td>
+          <td>
+            <a href="https://wa.me/${(item.phone || '').replace(/[^0-9]/g, '')}" target="_blank" class="table-btn" title="Chat on WhatsApp" style="color: #25D366;">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // ===================================================================
+    // PREVIEW IFRAME CONTROLLER
+    // ===================================================================
+
+    function changePreviewPage(page) {
+      const iframe = document.getElementById('livePreviewFrame');
+      if (iframe) iframe.src = page;
+    }
+
+    function reloadPreviewIframe() {
+      const iframe = document.getElementById('livePreviewFrame');
+      if (iframe) iframe.contentWindow.location.reload();
+    }
+
+    function setPreviewDevice(btn, width) {
+      document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const iframe = document.getElementById('livePreviewFrame');
+      if (iframe) iframe.style.width = width;
+    }
+
+    // ===================================================================
+    // CODE EXPORT & PERSISTENCE GENERATOR
+    // ===================================================================
+
+    function downloadUpdatedDataJs() {
+      const currentData = window.SLUM_DATA || {};
+      const fullExport = {
+        ...currentData,
+        artworks: dbArtworks,
+        blogs: dbBlogs
+      };
+
+      const fileContent = `/**\n * Slum Art Foundation • Core Architectural Data Source\n * Exported from Slum Art Admin Portal\n * Timestamp: ${new Date().toISOString()}\n */\n\nconst SLUM_DATA = ${JSON.stringify(fullExport, null, 2)};\n\nif (typeof module !== 'undefined' && module.exports) {\n  module.exports = SLUM_DATA;\n} else {\n  window.SLUM_DATA = SLUM_DATA;\n}\n`;
+
+      downloadBlobFile(fileContent, 'data.js', 'application/javascript');
+      showToast('Generated & downloaded updated data.js!');
+    }
+
+    function downloadArtworksJson() {
+      downloadBlobFile(JSON.stringify(dbArtworks, null, 2), 'data_artworks.json', 'application/json');
+      showToast('Downloaded data_artworks.json!');
+    }
+
+    function downloadBlogsJson() {
+      downloadBlobFile(JSON.stringify(dbBlogs, null, 2), 'data_blogs.json', 'application/json');
+      showToast('Downloaded data_blogs.json!');
+    }
+
+    function downloadBlobFile(content, fileName, mimeType) {
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function resetToFactoryData() {
+      if (confirm('Are you sure you want to reset all artworks and blogs to factory seed defaults? Any unsaved additions in localStorage will be wiped.')) {
+        localStorage.removeItem('slum_art_artworks_db');
+        localStorage.removeItem('slum_art_blogs_db');
+        loadDatabase();
+        commitAndBroadcast('Reset to factory defaults complete.');
+      }
+    }
+
+    // Modals & Helpers
+    function closeAdminModals() {
+      document.querySelectorAll('.admin-modal-overlay').forEach(m => m.classList.remove('active'));
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById('adminToast');
+      const msg = document.getElementById('toastMessage');
+      if (msg) msg.textContent = text;
+      toast.classList.add('active');
+      setTimeout(() => {
+        toast.classList.remove('active');
+      }, 3500);
+    }
+
+    // Boot
+    window.addEventListener('DOMContentLoaded', initAdmin);
+    if (document.readyState !== 'loading') initAdmin();
+  </script>
+</body>
+</html>

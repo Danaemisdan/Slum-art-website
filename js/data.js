@@ -854,6 +854,53 @@ window.SLUM_DATA = {
     "img": "assets/images/team/team_oyindamola_sulaimon.jpeg"
   }
 ],
+  blogs: [
+    {
+      "id": "blog-1",
+      "slug": "from-shoreline-trash-to-monumental-masterpieces",
+      "title": "From Shoreline Trash to Monumental Masterpieces: The Makoko Journey",
+      "category": "Eco-Art Innovations",
+      "author": "Adetunwase Adenle",
+      "authorRole": "Founder & Lead Visionary",
+      "authorAvatar": "assets/images/team/founder_1.png",
+      "date": "October 24, 2026",
+      "readTime": "5 min read",
+      "image": "assets/images/blog/blog_1.png",
+      "featured": true,
+      "excerpt": "How 50,000 discarded plastic bottles and shoreline debris became Nigeria's floating creative sanctuary, lifting hundreds of young scholars out of street labor into accredited schooling.",
+      "content": "<p>In the floating stilt communities of Makoko and along the shorelines of Lagos, waste was once seen as an inevitable consequence of urban density. Children navigated waters thick with plastic bottles, discarded newsprint, and industrial scrap. But what the world discarded, the Slum Art Foundation saw as canvas, raw pigment, and architecture.</p><p>Guided by our founding philosophy of turning environmental vulnerability into artistic mastery, we began collecting PET plastic bottles from the lagoon in 2019. Over three grueling years of community mobilization, more than 50,000 plastic bottles were washed, packed with dry soil and sand, and bound together to build Nigeria’s first solar-powered floating Pet Bottle School atelier.</p><blockquote>\"When you put a paintbrush into the hand of a child who previously spent 12 hours a day collecting plastic scraps, their perception of reality shifts instantly. They realize they are not victims of the shoreline; they are creators of the future.\"</blockquote><p>Today, our scholars do not just attend school; they master complex medium techniques: layered newspaper collage mosaics, acrylic landscapes, and recycled bottle-cap tapestries. 100% of proceeds from every artwork acquired in our gallery funds accredited formal schooling, uniform kits, medical checkups, and two warm daily meals.</p>"
+    },
+    {
+      "id": "blog-2",
+      "slug": "breaking-guinness-world-records-through-children-imagination",
+      "title": "Breaking Guinness World Records™ Through Children's Collective Imagination",
+      "category": "Exhibitions & Milestones",
+      "author": "Yana Good Nigen",
+      "authorRole": "Executive Director",
+      "authorAvatar": "assets/images/team/founder_3.png",
+      "date": "October 15, 2026",
+      "readTime": "4 min read",
+      "image": "assets/images/blog/blog_2.png",
+      "featured": false,
+      "excerpt": "An inside look at how 5,000 young scholars co-authored the world's largest collaborative comic book, setting historic milestones in Nigerian cultural education.",
+      "content": "<p>Records are rarely broken by children living in informal settlements. Yet at Slum Art Foundation, our scholars are now 4-time Guinness World Record holders under the artistic leadership of Adetunwase Adenle. Our latest milestone: co-authoring and illustrating a 120-page museum-grade comic book with 5,000 primary school children.</p><p>The comic book, titled <em>'The Pet Bottle School in Onigbongbo'</em>, chronicles real-life adventures, indigenous folklore, and environmental stewardship through vibrant manga and graphic novel art. Each page represents hours of collective youth drafting, color matching, and narrative writing.</p><p>Patrons across the globe have joined this historic effort through our $1 Inscribed Patron registry on Paystack, permanently preserving their names alongside these remarkable children in the official Guinness record submission.</p>"
+    },
+    {
+      "id": "blog-3",
+      "slug": "the-art-of-recycled-paper-collages-a-masterclass",
+      "title": "The Art of Recycled Paper Collages: Behind the Atelier Techniques",
+      "category": "Art & Technique",
+      "author": "Adetunwase Adenle",
+      "authorRole": "Lead Master Artist",
+      "authorAvatar": "assets/images/team/founder_1.png",
+      "date": "October 02, 2026",
+      "readTime": "6 min read",
+      "image": "assets/images/blog/blog_3.png",
+      "featured": false,
+      "excerpt": "Step into our Lagos studio and discover how discarded vintage newspapers, magazines, and shade-matched paper fragments are handcrafted into gallery-grade portraits.",
+      "content": "<p>Collage art is often misunderstood as simple cut-and-paste scrapbooking. In our Lagos atelier, it is treated as a rigorous, classical fine-art discipline requiring meticulous tonal judgment, archival preservation knowledge, and surgical hand precision.</p><p>Every custom portrait begins with careful value mapping: identifying shadow contours, highlight planes, and mid-tones on a primed stretched museum canvas. Instead of oil or acrylic paint, our scholars sort thousands of paper clippings by density of ink, paper age, and typographic weight.</p><blockquote>\"Vintage 1980s Nigerian newspaper headlines become the deep charcoal shadows of a cheekbone; fashion magazine gloss provides the vibrant ruby highlights of the lips; weathered cardboard forms the architectural grounding.\"</blockquote><p>Once assembled, each piece is sealed with triple-layer UV-resistant archival matte sealant to ensure it endures in international private collections for generations without fading.</p>"
+    }
+  ],
   contact: {
     phone: "+2348059994834",
     email: "info@slumart.org",
