@@ -33,7 +33,6 @@ export const CLIENTS = Object.freeze([
   Object.freeze({ id: 'lagosgov', name: 'Lagos State', kind: 'Education Board', type: 'caps', fix: 'screws', mark: 'cairn', stat: '5,000+ public primary scholars' }),
   Object.freeze({ id: 'petbottle', name: 'Pet Bottle', kind: 'Floating Atelier', type: 'title', fix: 'rivets', mark: 'drop', stat: '50,000+ plastic bottles cleared' }),
   Object.freeze({ id: 'broadcast', name: 'BBC & CNN', kind: 'Global Broadcast', type: 'caps', fix: 'screws', mark: 'hex', stat: '12M+ international viewers' }),
-  Object.freeze({ id: 'terrakulture', name: 'Terra Kulture', kind: 'Cultural Hub', type: 'title', fix: 'rivets', mark: 'fen', stat: 'Curated master gallery showcases' }),
 ]);
 
 /** Engraved marks on a 32 grid: strokes and fills are both cut, so both read the same in either finish. */
