@@ -8925,6 +8925,116 @@ button[data-f="pause"],
   opacity: 0.9;
 }
 
+/* Custom Products Header & Dual Tabs */
+.cpc-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  flex-wrap: wrap;
+}
+
+.cpc-header-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cpc-section-kicker {
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ea580c;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cpc-main-heading {
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.cpc-product-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem;
+  background: #f1f5f9;
+  border-radius: 9999px;
+  border: 1px solid #e2e8f0;
+}
+
+.cpc-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  outline: none;
+}
+
+.cpc-tab-btn:hover {
+  color: #0f172a;
+}
+
+.cpc-tab-btn.active {
+  background: #ffffff;
+  color: #ea580c;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.16), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.cpc-tab-badge {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 8px;
+  background: rgba(234, 88, 12, 0.1);
+  color: #ea580c;
+  font-weight: 800;
+}
+
+.cpc-tab-btn.active .cpc-tab-badge {
+  background: #ea580c;
+  color: #ffffff;
+}
+
+.cpc-product-panel {
+  display: none;
+  animation: cpcPanelFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.cpc-product-panel.active {
+  display: block;
+}
+
+@keyframes cpcPanelFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .cpc-inner {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -9175,6 +9285,29 @@ button[data-f="pause"],
     padding: 1.5rem 1.25rem;
     border-radius: 18px;
   }
+  .cpc-header-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+  }
+  .cpc-product-tabs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 14px;
+    padding: 0.25rem;
+  }
+  .cpc-tab-btn {
+    padding: 0.55rem 0.65rem;
+    font-size: 0.82rem;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  .cpc-tab-badge {
+    display: none;
+  }
   .cpc-process-row {
     flex-direction: column;
     align-items: flex-start;
@@ -9199,6 +9332,63 @@ button[data-f="pause"],
   }
   .cpc-wa-pill {
     justify-content: center;
+  }
+}
+
+/* Modal Product Selector (1. Collage Artwork vs 2. Collage Portrait) */
+.modal-product-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.modal-product-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  border: 2px solid var(--border-light, #e2e8f0);
+  background: #f8fafc;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  user-select: none;
+}
+
+.modal-product-card:hover {
+  border-color: #f59e0b;
+}
+
+.modal-product-card.active {
+  border-color: #ea580c;
+  background: rgba(254, 243, 199, 0.4);
+  box-shadow: 0 4px 16px rgba(234, 88, 12, 0.12);
+}
+
+.modal-product-card strong {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  color: #0f172a;
+  margin-bottom: 0.2rem;
+}
+
+.modal-product-card.active strong {
+  color: #ea580c;
+}
+
+.modal-product-card span {
+  font-size: 0.76rem;
+  color: var(--text-muted, #64748b);
+  line-height: 1.4;
+}
+
+@media (max-width: 540px) {
+  .modal-product-selector {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
   }
 }
 

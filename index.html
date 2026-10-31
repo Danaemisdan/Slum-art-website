@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Modern Stylesheet (Cache-Busted) -->
-  <link rel="stylesheet" href="css/style.css?v=20261031_v76">
+  <link rel="stylesheet" href="css/style.css?v=20261031_v78">
 
   <!-- Immediate Inline Navigation Scroll Handler -->
   <script>
@@ -595,85 +595,180 @@
           <button class="cat-pill" data-category="Recycled Media"><i class="fas fa-recycle"></i> Recycled Media</button>
           <button class="cat-pill" data-category="Story Canvases"><i class="fas fa-book-open"></i> Story Canvases</button>
           <button class="cat-pill" data-category="Little Masters"><i class="fas fa-award"></i> Little Masters</button>
-          <button type="button" class="cat-pill cat-pill-custom" onclick="window.openCustomPortraitModal()">
-            <i class="fas fa-wand-magic-sparkles text-amber"></i> Commission Custom Portrait <span class="custom-badge-spark">Custom</span>
+          <button type="button" class="cat-pill cat-pill-custom" onclick="window.switchCustomProduct('artwork'); window.openCustomProductModal('artwork')">
+            <i class="fas fa-palette text-amber"></i> 1. Collage Artwork <span class="custom-badge-spark">Custom</span>
+          </button>
+          <button type="button" class="cat-pill cat-pill-custom" onclick="window.switchCustomProduct('portrait'); window.openCustomProductModal('portrait')">
+            <i class="fas fa-user-astronaut text-amber"></i> 2. Collage Portrait <span class="custom-badge-spark">Custom</span>
           </button>
         </div>
       </div>
 
-      <!-- Handcrafted Custom Portrait Studio Showcase -->
-      <div class="custom-portrait-callout">
-        <div class="cpc-inner">
-          
-          <!-- Left Visual: Real Handcrafted Artwork Display -->
-          <div class="cpc-visual-showcase">
-            <div class="cpc-frame-wrap">
-              <img src="assets/images/custom_portrait_example.jpg" alt="Handcrafted Custom Portrait by Slum Art youth scholars" class="cpc-showcase-img" loading="lazy">
-              <div class="cpc-frame-badge">
-                <i class="fas fa-palette"></i> Hand-painted on Stretched Canvas
-              </div>
-            </div>
-            <div class="cpc-artist-caption">
-              <span class="cpc-caption-dot"></span>
-              <span>100% of proceeds fund full-year accredited schooling &amp; daily hot meals</span>
-            </div>
+      <!-- Custom Products: Dual Showcase (1. Collage Artwork & 2. Collage Portrait) -->
+      <div class="custom-portrait-callout" id="customProductsSection">
+        
+        <!-- Header & Switcher Tabs -->
+        <div class="cpc-header-bar">
+          <div class="cpc-header-title-wrap">
+            <span class="cpc-section-kicker"><i class="fas fa-wand-magic-sparkles text-amber"></i> BESPOKE COMMISSIONS &bull; 100% DIRECT PHILANTHROPIC IMPACT</span>
+            <h3 class="cpc-main-heading">Custom Products Handcrafted by Young Scholars</h3>
           </div>
-
-          <!-- Right Content: Authentic Human Copy & Simple 3-Step Process -->
-          <div class="cpc-content">
-            <div class="cpc-tag">
-              <i class="fas fa-brush text-amber"></i>
-              <span>Custom Hand-Painted Portraits</span>
-            </div>
-            <h3 class="cpc-title">Turn Your Favorite Photo into an Original Painting</h3>
-            <p class="cpc-desc">
-              Send us a photo of yourself, a family member, or a loved one. Guided daily by 4-time Guinness World Record holder Adetunwase Adenle, our young scholars paint an authentic, museum-grade portrait using acrylic, charcoal, or signature recycled collage on stretched canvas.
-            </p>
-
-            <!-- Natural 3-Step Process (No SaaS Checkmarks) -->
-            <div class="cpc-process-row">
-              <div class="cpc-step">
-                <span class="cpc-step-num">1</span>
-                <div class="cpc-step-text">
-                  <strong>Send Photo</strong>
-                  <span>Upload or WhatsApp</span>
-                </div>
-              </div>
-              <div class="cpc-step-arrow"><i class="fas fa-chevron-right"></i></div>
-              <div class="cpc-step">
-                <span class="cpc-step-num">2</span>
-                <div class="cpc-step-text">
-                  <strong>Hand-Painted</strong>
-                  <span>Acrylic or Charcoal</span>
-                </div>
-              </div>
-              <div class="cpc-step-arrow"><i class="fas fa-chevron-right"></i></div>
-              <div class="cpc-step">
-                <span class="cpc-step-num">3</span>
-                <div class="cpc-step-text">
-                  <strong>Delivered</strong>
-                  <span>Free DHL Worldwide</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Action & Price Row -->
-            <div class="cpc-actions-row">
-              <button type="button" class="btn btn-primary btn-cpc-order" onclick="window.openCustomPortraitModal()">
-                <i class="fas fa-paint-brush"></i> Request a Custom Portrait &rarr;
-              </button>
-              <div class="cpc-price-pill">
-                <span>From <strong>$150 USD</strong> (&#8358;220k)</span>
-                <span class="cpc-pill-sep">&bull;</span>
-                <span class="text-emerald font-semibold"><i class="fas fa-graduation-cap"></i> Funds 1 Year of School</span>
-              </div>
-              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20would%20like%20to%20commission%20a%20custom%20portrait%20from%20my%20photo." target="_blank" rel="noopener noreferrer" class="cpc-wa-pill">
-                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-              </a>
-            </div>
-
+          <div class="cpc-product-tabs" role="tablist">
+            <button type="button" class="cpc-tab-btn active" id="cpcTabArtwork" onclick="window.switchCustomProduct('artwork')" role="tab" aria-selected="true">
+              <i class="fas fa-palette"></i> 1. Collage Artwork <span class="cpc-tab-badge">Thematic Art</span>
+            </button>
+            <button type="button" class="cpc-tab-btn" id="cpcTabPortrait" onclick="window.switchCustomProduct('portrait')" role="tab" aria-selected="false">
+              <i class="fas fa-user-astronaut"></i> 2. Collage Portrait <span class="cpc-tab-badge">From Photo</span>
+            </button>
           </div>
         </div>
+
+        <!-- Product 1 Panel: Collage Artwork -->
+        <div class="cpc-product-panel active" id="cpcPanelArtwork">
+          <div class="cpc-inner">
+            <!-- Visual Display -->
+            <div class="cpc-visual-showcase">
+              <div class="cpc-frame-wrap">
+                <img src="assets/images/custom_portrait_example_2.jpg" alt="Custom Recycled Paper Collage Artwork by Slum Art youth scholars" class="cpc-showcase-img" loading="lazy">
+                <div class="cpc-frame-badge">
+                  <i class="fas fa-recycle"></i> Recycled Media Fine-Art Collage
+                </div>
+              </div>
+              <div class="cpc-artist-caption">
+                <span class="cpc-caption-dot"></span>
+                <span>100% of proceeds fund full-year accredited schooling &amp; daily hot meals</span>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="cpc-content">
+              <div class="cpc-tag">
+                <i class="fas fa-palette text-amber"></i>
+                <span>Custom Product 1 &bull; Collage Artwork</span>
+              </div>
+              <h3 class="cpc-title">Commission an Original Recycled Fine-Art Collage</h3>
+              <p class="cpc-desc">
+                Collaborate with our young master scholars to craft an original bespoke collage artwork. Whether inspired by African cultural motifs, lagoon stilt life, wildlife, abstract color harmonies, or your unique thematic brief, each piece is meticulously assembled from thousands of upcycled paper clippings, newspapers, and reclaimed materials on stretched museum canvas.
+              </p>
+
+              <!-- 3-Step Process -->
+              <div class="cpc-process-row">
+                <div class="cpc-step">
+                  <span class="cpc-step-num">1</span>
+                  <div class="cpc-step-text">
+                    <strong>Share Vision</strong>
+                    <span>Theme, Palette or Mood</span>
+                  </div>
+                </div>
+                <div class="cpc-step-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="cpc-step">
+                  <span class="cpc-step-num">2</span>
+                  <div class="cpc-step-text">
+                    <strong>Artisan Collage</strong>
+                    <span>Layered Recycled Media</span>
+                  </div>
+                </div>
+                <div class="cpc-step-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="cpc-step">
+                  <span class="cpc-step-num">3</span>
+                  <div class="cpc-step-text">
+                    <strong>Delivered</strong>
+                    <span>Free DHL Worldwide</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action & Price Row -->
+              <div class="cpc-actions-row">
+                <button type="button" class="btn btn-primary btn-cpc-order" onclick="window.openCustomProductModal('artwork')">
+                  <i class="fas fa-paint-brush"></i> Commission Collage Artwork &rarr;
+                </button>
+                <div class="cpc-price-pill">
+                  <span>From <strong>$120 USD</strong> (&#8358;180k)</span>
+                  <span class="cpc-pill-sep">&bull;</span>
+                  <span class="text-emerald font-semibold"><i class="fas fa-graduation-cap"></i> Funds 1 Term School</span>
+                </div>
+                <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20would%20like%20to%20commission%20a%20custom%20Collage%20Artwork%20(Thematic/Original)." target="_blank" rel="noopener noreferrer" class="cpc-wa-pill">
+                  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 Panel: Collage Portrait -->
+        <div class="cpc-product-panel" id="cpcPanelPortrait">
+          <div class="cpc-inner">
+            <!-- Visual Display -->
+            <div class="cpc-visual-showcase">
+              <div class="cpc-frame-wrap">
+                <img src="assets/images/custom_portrait_example.jpg" alt="Custom Recycled Paper Collage Portrait by Slum Art youth scholars" class="cpc-showcase-img" loading="lazy">
+                <div class="cpc-frame-badge">
+                  <i class="fas fa-scissors"></i> Signature Recycled Paper Mosaic
+                </div>
+              </div>
+              <div class="cpc-artist-caption">
+                <span class="cpc-caption-dot"></span>
+                <span>100% of proceeds fund full-year accredited schooling &amp; daily hot meals</span>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="cpc-content">
+              <div class="cpc-tag">
+                <i class="fas fa-user-astronaut text-amber"></i>
+                <span>Custom Product 2 &bull; Collage Portrait</span>
+              </div>
+              <h3 class="cpc-title">Turn Your Favorite Photo into a Handcrafted Collage Portrait</h3>
+              <p class="cpc-desc">
+                Send us a photo of yourself, a family member, child, pet, or memorial tribute. Guided daily by 4-time Guinness World Record holder Adetunwase Adenle, our scholars transform your portrait into an astonishing mosaic of hand-torn recycled newsprint, magazines, and shade-matched paper fragments with lifelike emotional depth.
+              </p>
+
+              <!-- 3-Step Process -->
+              <div class="cpc-process-row">
+                <div class="cpc-step">
+                  <span class="cpc-step-num">1</span>
+                  <div class="cpc-step-text">
+                    <strong>Send Photo</strong>
+                    <span>Upload or WhatsApp</span>
+                  </div>
+                </div>
+                <div class="cpc-step-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="cpc-step">
+                  <span class="cpc-step-num">2</span>
+                  <div class="cpc-step-text">
+                    <strong>Paper Mosaic</strong>
+                    <span>Intricate Recycled Layers</span>
+                  </div>
+                </div>
+                <div class="cpc-step-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="cpc-step">
+                  <span class="cpc-step-num">3</span>
+                  <div class="cpc-step-text">
+                    <strong>Delivered</strong>
+                    <span>Free DHL Worldwide</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action & Price Row -->
+              <div class="cpc-actions-row">
+                <button type="button" class="btn btn-primary btn-cpc-order" onclick="window.openCustomProductModal('portrait')">
+                  <i class="fas fa-scissors"></i> Commission Collage Portrait &rarr;
+                </button>
+                <div class="cpc-price-pill">
+                  <span>From <strong>$150 USD</strong> (&#8358;220k)</span>
+                  <span class="cpc-pill-sep">&bull;</span>
+                  <span class="text-emerald font-semibold"><i class="fas fa-graduation-cap"></i> Funds 1 Year School</span>
+                </div>
+                <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20would%20like%20to%20commission%20a%20custom%20Collage%20Portrait%20from%20my%20photo." target="_blank" rel="noopener noreferrer" class="cpc-wa-pill">
+                  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Museum Artworks Grid -->
@@ -1824,16 +1919,33 @@
     </div>
   </div>
 
-  <!-- Custom Portrait Commission Request Modal -->
+  <!-- Custom Portrait & Collage Commission Request Modal -->
   <div class="modal-overlay" id="customPortraitModal">
-    <div class="modal-card" style="max-width: 680px; max-height: calc(100vh - 6rem); overflow-y: auto;">
+    <div class="modal-card" style="max-width: 680px; max-height: calc(100vh - 5rem); overflow-y: auto;">
       <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
       <div class="custom-portrait-modal-body" style="padding: 2.2rem 2rem;">
-        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-palette text-amber"></i> Handcrafted Fine Art Commission</div>
-        <h2 style="font-size: 1.75rem; margin-bottom: 0.4rem; color: var(--text-main);">Order a Custom Hand-Painted Portrait</h2>
-        <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.55;">
-          Our master artist mentors and young scholars in Nigeria will handcraft an original painting from your photo on stretched canvas. Every commission directly funds 1 full year of school tuition, uniform kits, and daily meals for a child in need.
+        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-wand-magic-sparkles text-amber"></i> Bespoke Recycled Media Commission</div>
+        <h2 id="customProductModalTitle" style="font-size: 1.75rem; margin-bottom: 0.4rem; color: var(--text-main);">Order a Custom Collage Commission</h2>
+        <p id="customProductModalDesc" style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.55;">
+          Our master artist mentors and talented young scholars in Nigeria will handcraft an original museum-grade collage on stretched canvas. Every commission directly funds full-year school tuition, uniform kits, and daily hot meals for a child in need.
         </p>
+
+        <!-- Product Selector: 1. Collage Artwork vs 2. Collage Portrait -->
+        <div style="margin-bottom: 1.25rem;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem;">Select Custom Product *</label>
+          <div class="modal-product-selector">
+            <label class="modal-product-card" id="modalCardArtwork" onclick="window.selectModalCustomProduct('artwork')">
+              <input type="radio" name="customProductType" value="Collage Artwork" id="radioProductArtwork" checked style="display: none;">
+              <strong><i class="fas fa-palette text-amber"></i> 1. Collage Artwork</strong>
+              <span>Custom thematic composition: Cultural motifs, Lagoon life, or Abstract brief</span>
+            </label>
+            <label class="modal-product-card active" id="modalCardPortrait" onclick="window.selectModalCustomProduct('portrait')">
+              <input type="radio" name="customProductType" value="Collage Portrait" id="radioProductPortrait" style="display: none;">
+              <strong><i class="fas fa-user-astronaut text-amber"></i> 2. Collage Portrait</strong>
+              <span>Personal paper mosaic portrait of yourself, family, child, or pet from photo</span>
+            </label>
+          </div>
+        </div>
 
         <form id="customPortraitForm" onsubmit="window.handleCustomPortraitSubmit(event)">
           <!-- Row 1: Contact Details -->
@@ -1852,7 +1964,7 @@
             <div>
               <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">WhatsApp / Phone Number *</label>
               <input type="tel" name="phone" required placeholder="+234 or +1 ..." class="modal-form-input">
-              <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 3px;">For sketch previews &amp; progress updates</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 3px;">For preview sketches &amp; progress updates</span>
             </div>
             <div>
               <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Delivery City &amp; Country *</label>
@@ -1861,11 +1973,24 @@
             </div>
           </div>
 
-          <!-- Row 2: Portrait Subject & Medium -->
+          <!-- Dynamic Subject / Theme & Style Row -->
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-            <div>
+            <!-- Shown when Collage Artwork is selected -->
+            <div id="groupArtworkConcept" style="display: none;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Artwork Concept &amp; Theme *</label>
+              <select name="artworkConcept" class="modal-form-select">
+                <option value="African Cultural Heritage & Traditions">African Cultural Heritage &amp; Traditions</option>
+                <option value="Lagos Lagoon Stilt City & Coastal Life">Lagos Lagoon Stilt City &amp; Coastal Life</option>
+                <option value="Abstract Expression & Color Harmony">Abstract Expression &amp; Color Harmony</option>
+                <option value="African Wildlife & Flora">African Wildlife &amp; Flora</option>
+                <option value="Custom Personal Narrative / Client Brief">Custom Story / Personal Client Brief</option>
+              </select>
+            </div>
+
+            <!-- Shown when Collage Portrait is selected -->
+            <div id="groupPortraitSubject">
               <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Portrait Subject *</label>
-              <select name="subjectType" required class="modal-form-select">
+              <select name="subjectType" class="modal-form-select">
                 <option value="Single Individual Portrait">Single Individual Portrait</option>
                 <option value="Couple / Duo Portrait">Couple / Duo Portrait</option>
                 <option value="Family / Group Portrait">Family / Group Portrait</option>
@@ -1874,14 +1999,14 @@
                 <option value="Icon / Leader Portrait">Icon / Historical Leader</option>
               </select>
             </div>
+
             <div>
-              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Preferred Medium *</label>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Recycled Media Style *</label>
               <select name="medium" required class="modal-form-select">
-                <option value="Vibrant Acrylic on Canvas">Vibrant Acrylic on Canvas (Bold &amp; Colorful)</option>
-                <option value="Fine Charcoal & Soft Pastel">Fine Charcoal &amp; Pastel (Timeless Monochrome)</option>
-                <option value="Signature Recycled Media Collage">Signature Recycled Media Collage</option>
-                <option value="Oil Pastel on Archival Board">Oil Pastel on Archival Board</option>
-                <option value="Artist's Choice">Artist's Choice (Youth &amp; Mentors Decide)</option>
+                <option value="Signature Recycled Media Paper Mosaic" selected>Signature Recycled Paper Mosaic (Classic)</option>
+                <option value="Recycled Media with Vibrant Acrylic Touches">Recycled Media with Vibrant Acrylic Touches</option>
+                <option value="Noir & Monochrome Newsprint Collage">Noir &amp; Monochrome Newsprint Collage</option>
+                <option value="Artist's Creative Freedom">Artist's Choice (Youth &amp; Mentors Decide)</option>
               </select>
             </div>
           </div>
@@ -1891,19 +2016,19 @@
             <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem;">Select Canvas Size &amp; Impact Tier *</label>
             <div class="cpc-size-grid">
               <label class="cpc-size-card">
-                <input type="radio" name="sizeTier" value="Standard Studio (12×16 in / 30×40 cm) • $150 / ₦220,000" checked>
+                <input type="radio" name="sizeTier" value="Standard Studio (12×16 in / 30×40 cm) • $120-$150" checked>
                 <div class="cpc-size-box">
                   <div class="cpc-size-header">
                     <strong>Standard Studio</strong>
                     <span class="cpc-size-dim">12" × 16" (30×40 cm)</span>
                   </div>
-                  <div class="cpc-size-price">$150 USD <small>/ ₦220k</small></div>
+                  <div class="cpc-size-price">$120-$150 USD <small>/ ₦180k-220k</small></div>
                   <div class="cpc-size-impact"><i class="fas fa-graduation-cap text-amber"></i> Funds 1 Full Term School</div>
                 </div>
               </label>
 
               <label class="cpc-size-card">
-                <input type="radio" name="sizeTier" value="Classic Exhibition (16×20 in / 40×50 cm) • $250 / ₦360,000">
+                <input type="radio" name="sizeTier" value="Classic Exhibition (16×20 in / 40×50 cm) • $250">
                 <div class="cpc-size-box">
                   <div class="cpc-size-header">
                     <strong>Classic Exhibition</strong>
@@ -1915,7 +2040,7 @@
               </label>
 
               <label class="cpc-size-card">
-                <input type="radio" name="sizeTier" value="Monumental Statement (24×36 in / 60×90 cm) • $450 / ₦650,000">
+                <input type="radio" name="sizeTier" value="Monumental Statement (24×36 in / 60×90 cm) • $450">
                 <div class="cpc-size-box">
                   <div class="cpc-size-header">
                     <strong>Monumental Statement</strong>
@@ -1930,21 +2055,21 @@
 
           <!-- Photo Upload / Reference Box -->
           <div style="margin-bottom: 1.25rem;">
-            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">
+            <label id="cpcUploadLabel" style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">
               Photo Reference *
             </label>
             <div class="cpc-upload-dropzone" onclick="document.getElementById('portraitPhotoInput').click()">
               <input type="file" id="portraitPhotoInput" accept="image/*" style="display: none;" onchange="window.handlePortraitPhotoSelect(this)">
               <div id="cpcUploadPrompt">
                 <i class="fas fa-cloud-arrow-up text-amber" style="font-size: 1.8rem; margin-bottom: 0.5rem; display: block;"></i>
-                <div style="font-weight: 700; font-size: 0.92rem; color: var(--text-main);">Click to Select or Drop Your Reference Photo</div>
+                <div style="font-weight: 700; font-size: 0.92rem; color: var(--text-main);">Click to Select or Drop Your Reference Photo / Sketch</div>
                 <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">JPEG, PNG, or WEBP. High-resolution preferred.</div>
               </div>
               <div id="cpcUploadSuccess" style="display: none; align-items: center; justify-content: center; gap: 12px;">
                 <img id="cpcThumbPreview" src="" alt="Thumbnail" style="width: 48px; height: 48px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border-light);">
                 <div style="text-align: left;">
                   <strong id="cpcFileName" style="font-size: 0.88rem; color: #059669; display: block;">photo.jpg</strong>
-                  <span style="font-size: 0.78rem; color: var(--text-muted);">Photo attached &bull; Click to change</span>
+                  <span style="font-size: 0.78rem; color: var(--text-muted);">Attached &bull; Click to change</span>
                 </div>
               </div>
             </div>
@@ -1963,9 +2088,12 @@
           </div>
 
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 0.95rem;">
-            <i class="fas fa-paper-plane"></i> Submit Custom Portrait Request
+            <i class="fas fa-paper-plane"></i> <span id="cpcSubmitBtnText">Submit Custom Commission Request</span>
           </button>
         </form>
+      </div>
+    </div>
+  </div>
       </div>
     </div>
   </div>
@@ -1982,7 +2110,7 @@
   <script src="js/sketch-textarea.js?v=20261027_v14"></script>
   <script src="js/vinyl-halftone.js?v=20261027_v14"></script>
   <script src="js/hero-preloader.v2.js?v=20261031_v75"></script>
-  <script src="js/app.js?v=20261031_v76"></script>
+  <script src="js/app.js?v=20261031_v78"></script>
   <script src="js/canvas-crowd.js?v=20261028_v35"></script>
   <!-- Three.js & Eco-School Point Cloud Architecture -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

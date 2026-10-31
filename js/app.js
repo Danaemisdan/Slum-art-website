@@ -680,13 +680,84 @@
     }
   };
 
-  // Custom Portrait Commission Modal & Handlers
-  window.openCustomPortraitModal = function () {
+  // Custom Products (1. Collage Artwork & 2. Collage Portrait) Showcase & Modal Handlers
+  window.switchCustomProduct = function (productType) {
+    const tabArtwork = document.getElementById('cpcTabArtwork');
+    const tabPortrait = document.getElementById('cpcTabPortrait');
+    const panelArtwork = document.getElementById('cpcPanelArtwork');
+    const panelPortrait = document.getElementById('cpcPanelPortrait');
+
+    if (productType === 'artwork') {
+      if (tabArtwork) {
+        tabArtwork.classList.add('active');
+        tabArtwork.setAttribute('aria-selected', 'true');
+      }
+      if (tabPortrait) {
+        tabPortrait.classList.remove('active');
+        tabPortrait.setAttribute('aria-selected', 'false');
+      }
+      if (panelArtwork) panelArtwork.classList.add('active');
+      if (panelPortrait) panelPortrait.classList.remove('active');
+    } else {
+      if (tabPortrait) {
+        tabPortrait.classList.add('active');
+        tabPortrait.setAttribute('aria-selected', 'true');
+      }
+      if (tabArtwork) {
+        tabArtwork.classList.remove('active');
+        tabArtwork.setAttribute('aria-selected', 'false');
+      }
+      if (panelPortrait) panelPortrait.classList.add('active');
+      if (panelArtwork) panelArtwork.classList.remove('active');
+    }
+  };
+
+  window.selectModalCustomProduct = function (productType) {
+    const cardArtwork = document.getElementById('modalCardArtwork');
+    const cardPortrait = document.getElementById('modalCardPortrait');
+    const radioArtwork = document.getElementById('radioProductArtwork');
+    const radioPortrait = document.getElementById('radioProductPortrait');
+    const modalTitle = document.getElementById('customProductModalTitle');
+    const modalDesc = document.getElementById('customProductModalDesc');
+    const groupArtwork = document.getElementById('groupArtworkConcept');
+    const groupPortrait = document.getElementById('groupPortraitSubject');
+    const uploadLabel = document.getElementById('cpcUploadLabel');
+    const submitBtnText = document.getElementById('cpcSubmitBtnText');
+
+    if (productType === 'artwork') {
+      if (cardArtwork) cardArtwork.classList.add('active');
+      if (cardPortrait) cardPortrait.classList.remove('active');
+      if (radioArtwork) radioArtwork.checked = true;
+      if (modalTitle) modalTitle.textContent = 'Commission Custom Collage Artwork';
+      if (modalDesc) modalDesc.textContent = 'Commission an original bespoke fine-art collage crafted by our young master scholars using upcycled paper, magazines, and sustainable materials on stretched canvas. Funds accredited tuition & meals for a child in need.';
+      if (groupArtwork) groupArtwork.style.display = 'block';
+      if (groupPortrait) groupPortrait.style.display = 'none';
+      if (uploadLabel) uploadLabel.textContent = 'Reference Image, Sketch, or Moodboard (Optional)';
+      if (submitBtnText) submitBtnText.textContent = 'Request Custom Collage Artwork →';
+    } else {
+      if (cardPortrait) cardPortrait.classList.add('active');
+      if (cardArtwork) cardArtwork.classList.remove('active');
+      if (radioPortrait) radioPortrait.checked = true;
+      if (modalTitle) modalTitle.textContent = 'Order a Custom Collage Portrait';
+      if (modalDesc) modalDesc.textContent = 'Send us a photo of yourself, a family member, child, pet, or memorial tribute. Guided by 4-time Guinness World Record holder Adetunwase Adenle, our scholars transform your photo into an astonishing hand-torn paper mosaic portrait on canvas.';
+      if (groupArtwork) groupArtwork.style.display = 'none';
+      if (groupPortrait) groupPortrait.style.display = 'block';
+      if (uploadLabel) uploadLabel.textContent = 'Photo Reference *';
+      if (submitBtnText) submitBtnText.textContent = 'Request Custom Collage Portrait →';
+    }
+  };
+
+  window.openCustomProductModal = function (productType) {
     const modal = document.getElementById('customPortraitModal');
     if (modal) {
       document.body.classList.add('modal-open');
       modal.classList.add('active');
+      window.selectModalCustomProduct(productType || 'artwork');
     }
+  };
+
+  window.openCustomPortraitModal = function () {
+    window.openCustomProductModal('portrait');
   };
 
   window.handlePortraitPhotoSelect = function (input) {
@@ -712,23 +783,29 @@
   window.handleCustomPortraitSubmit = function (e) {
     e.preventDefault();
     const form = e.target;
+    const productType = form.customProductType ? form.customProductType.value : 'Collage Portrait';
+    const isArtwork = productType === 'Collage Artwork';
     const name = form.fullName ? form.fullName.value : 'Patron';
     const email = form.email ? form.email.value : '';
     const phone = form.phone ? form.phone.value : '';
     const location = form.location ? form.location.value : '';
-    const subject = form.subjectType ? form.subjectType.value : 'Custom Portrait';
-    const medium = form.medium ? form.medium.value : 'Vibrant Acrylic';
+    const subject = isArtwork 
+      ? (form.artworkConcept ? form.artworkConcept.value : 'Original Collage Artwork')
+      : (form.subjectType ? form.subjectType.value : 'Custom Collage Portrait');
+    const palette = isArtwork && form.colorPalette ? form.colorPalette.value : 'Recycled Media Paper Collage';
+    const medium = isArtwork ? `Recycled Media Collage (${palette})` : (form.medium ? form.medium.value : 'Signature Recycled Paper Mosaic');
     const sizeTier = form.sizeTier ? form.sizeTier.value : 'Standard Studio';
     const photoLink = form.photoLink ? form.photoLink.value : '';
     const notes = form.notes ? form.notes.value : '';
 
-    const refId = 'PORTRAIT-NG-' + Math.floor(1000 + Math.random() * 9000);
+    const refId = (isArtwork ? 'COLLAGE-ART-' : 'COLLAGE-PORTRAIT-') + Math.floor(1000 + Math.random() * 9000);
 
     // Save commission draft to localStorage
     try {
       const existing = JSON.parse(localStorage.getItem('slum_custom_portraits') || '[]');
       existing.push({
         refId,
+        productType,
         name,
         email,
         phone,
@@ -750,7 +827,7 @@
       const card = modal.querySelector('.modal-card');
       if (card) {
         const waText = encodeURIComponent(
-          `Hello Slum Art Foundation! I just submitted a Custom Portrait Commission request (Ref: ${refId}).\n\nName: ${name}\nSubject: ${subject}\nMedium: ${medium}\nSize: ${sizeTier}\nDelivery: ${location}\n\nI am sending my reference photo directly here on WhatsApp!`
+          `Hello Slum Art Foundation! I just submitted a Custom Commission request for ${productType} (Ref: ${refId}).\n\nProduct: ${productType}\nName: ${name}\nTheme/Subject: ${subject}\nMedium: ${medium}\nSize: ${sizeTier}\nDelivery: ${location}\n\nI am sharing my details and photos/vision here on WhatsApp!`
         );
         const waLink = `https://wa.me/2348059994834?text=${waText}`;
 
@@ -761,9 +838,9 @@
               <i class="fas fa-check"></i>
             </div>
             <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-sparkles text-amber"></i> Commission Received &bull; 100% Impact</div>
-            <h2 style="font-size: 1.85rem; margin-bottom: 0.6rem; color: var(--text-main);">Your Custom Portrait Is in the Works!</h2>
+            <h2 style="font-size: 1.85rem; margin-bottom: 0.6rem; color: var(--text-main);">Your ${productType} Is in the Works!</h2>
             <p style="color: var(--text-muted); max-width: 520px; margin: 0 auto 1.5rem; line-height: 1.6; font-size: 0.95rem;">
-              Thank you, <strong>${name}</strong>! Our master artist mentors and talented youth scholars in Nigeria are honored to create your 1-of-1 original masterpiece.
+              Thank you, <strong>${name}</strong>! Our master artist mentors and talented youth scholars in Nigeria are honored to create your 1-of-1 original ${productType.toLowerCase()} masterpiece.
             </p>
 
             <div style="background: var(--bg-subtle, #f8fafc); border: 2px dashed #f59e0b; border-radius: var(--radius-lg, 16px); padding: 1.4rem 1.5rem; max-width: 480px; margin: 0 auto 1.75rem; text-align: left;">
@@ -772,7 +849,8 @@
                 <span style="font-size: 1.15rem; font-weight: 900; color: #b45309; font-family: monospace;">${refId}</span>
               </div>
               <div style="font-size: 0.88rem; color: #334155; line-height: 1.55;">
-                <div><strong>Subject:</strong> ${subject}</div>
+                <div><strong>Product:</strong> ${productType}</div>
+                <div><strong>${isArtwork ? 'Concept/Theme' : 'Subject'}:</strong> ${subject}</div>
                 <div><strong>Medium:</strong> ${medium}</div>
                 <div><strong>Tier:</strong> ${sizeTier}</div>
                 <div><strong>Delivery to:</strong> ${location} (Free Worldwide DHL Express)</div>
@@ -780,12 +858,12 @@
             </div>
 
             <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 1rem 1.25rem; max-width: 480px; margin: 0 auto 1.75rem; text-align: left; font-size: 0.85rem; color: #92400e; line-height: 1.5;">
-              <i class="fas fa-camera text-amber" style="margin-right: 6px;"></i> <strong>Next Step (Important):</strong> If you haven't attached high-res photos, please send them directly to our master artist atelier on WhatsApp quoting ref <strong>${refId}</strong>.
+              <i class="fas fa-camera text-amber" style="margin-right: 6px;"></i> <strong>Next Step (Important):</strong> Please connect with our master artist atelier on WhatsApp quoting ref <strong>${refId}</strong> to finalize sketches, references, and delivery details.
             </div>
 
             <div style="display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap;">
               <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="background: #25D366; border-color: #25D366; color: #ffffff;">
-                <i class="fab fa-whatsapp"></i> Send Photos via WhatsApp
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp (Ref ${refId})
               </a>
               <button class="btn btn-secondary" onclick="window.print()"><i class="fas fa-print"></i> Print Receipt</button>
               <button class="btn btn-secondary" onclick="window.closeAllModals()">Done</button>
