@@ -221,10 +221,6 @@
           </div>
           <div class="artwork-card-top-badges">
             <span class="card-cat-badge">${item.category}</span>
-            <span class="artwork-provenance-seal" title="Created by Slum Art scholars under 4× Guinness World Record holder Adetunwase Adenle">
-              <img src="assets/images/gwr-logo.svg" alt="Guinness World Records" class="gwr-card-seal-icon">
-              <span>GWR Certified Original</span>
-            </span>
           </div>
           <button class="card-quickview-btn" title="Private Viewing Lens">
             <i class="fas fa-expand"></i> <span>Private View</span>
