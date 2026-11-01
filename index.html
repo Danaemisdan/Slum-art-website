@@ -19,7 +19,7 @@
   
   <!-- Custom Modern Stylesheet (Cache-Busted) -->
   <link rel="stylesheet" href="css/style.css?v=20261101_v86">
-  <link rel="stylesheet" href="css/picture-rail-gallery.css?v=20261102_v83">
+  <link rel="stylesheet" href="css/picture-rail-gallery.css?v=20261102_v84">
 
   <!-- Immediate Inline Navigation Scroll Handler -->
   <script>
@@ -581,13 +581,8 @@
         </div>
       </div>
 
-      <!-- Interactive Picture Rail Salon Wall (21st.dev Component) -->
-      <div class="picture-rail-section" id="homePictureRailSection" style="margin: 1.5rem 0 2.5rem;">
-        <div id="homePictureRailMount"></div>
-      </div>
-
-      <!-- Luxury Curator Console & Filter Bar -->
-      <div class="shop-filter-bar">
+      <!-- Search, Categories & Custom Commission UP TOP -->
+      <div class="shop-filter-bar shop-filter-bar--rail-top">
         <div class="shop-filter-top">
           <div class="search-box-wrap">
             <i class="fas fa-magnifying-glass text-amber"></i>
@@ -605,7 +600,7 @@
           </div>
         </div>
 
-        <!-- Curated Collection Pills -->
+        <!-- Curated Collection Pills + Custom Commission Button -->
         <div class="category-pills">
           <button class="cat-pill active" data-category="all"><i class="fas fa-layer-group"></i> All Works (36)</button>
           <button class="cat-pill" data-category="Vibrant Acrylics"><i class="fas fa-palette"></i> Vibrant Acrylics</button>
@@ -613,13 +608,15 @@
           <button class="cat-pill" data-category="Recycled Media"><i class="fas fa-recycle"></i> Recycled Media</button>
           <button class="cat-pill" data-category="Story Canvases"><i class="fas fa-book-open"></i> Story Canvases</button>
           <button class="cat-pill" data-category="Little Masters"><i class="fas fa-award"></i> Little Masters</button>
-          <button type="button" class="cat-pill cat-pill-custom" onclick="window.switchCustomProduct('artwork'); window.openCustomProductModal('artwork')">
-            <i class="fas fa-palette text-amber"></i> 1. Collage Artwork <span class="custom-badge-spark">Custom</span>
-          </button>
-          <button type="button" class="cat-pill cat-pill-custom" onclick="window.switchCustomProduct('portrait'); window.openCustomProductModal('portrait')">
-            <i class="fas fa-user-astronaut text-amber"></i> 2. Collage Portrait <span class="custom-badge-spark">Custom</span>
+          <button type="button" class="cat-pill cat-pill-custom-action" onclick="window.openCustomProductModal('artwork')">
+            <i class="fas fa-wand-magic-sparkles text-amber"></i> Commission Custom Artwork / Portrait <span class="custom-badge-spark">Custom</span>
           </button>
         </div>
+      </div>
+
+      <!-- Interactive Picture Rail Salon Wall (21st.dev Component with Full Catalog) -->
+      <div class="picture-rail-section" id="homePictureRailSection" style="margin: 1rem 0 2.5rem;">
+        <div id="homePictureRailMount"></div>
       </div>
 
       <!-- Custom Products: Dual Showcase (1. Collage Artwork & 2. Collage Portrait) -->
@@ -2135,18 +2132,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
   <!-- Core Data, App & Skiper39 Canvas Crowd Scripts (Cache-Busted) -->
-  <script src="js/data.js?v=20261031_v81"></script>
+  <script src="js/data.js?v=20261102_v84"></script>
   <script src="js/rough.min.js?v=20261027_v14"></script>
   <script src="js/sketch-textarea.js?v=20261027_v14"></script>
   <script src="js/vinyl-halftone.js?v=20261027_v14"></script>
   <script src="js/hero-preloader.v2.js?v=20261101_v86"></script>
-  <script src="js/app.js?v=20261102_v83"></script>
+  <script src="js/app.js?v=20261102_v84"></script>
   <script src="js/canvas-crowd.js?v=20261028_v35"></script>
   <!-- Three.js & Eco-School Point Cloud Architecture -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="js/logo-points-data.js?v=20261031_v73"></script>
   <script src="js/eco-school-pointcloud.js?v=20261031_v73"></script>
   <!-- Interactive Picture Rail Gallery System -->
-  <script src="js/picture-rail-gallery.js?v=20261102_v83"></script>
+  <script src="js/picture-rail-gallery.js?v=20261102_v84"></script>
 </body>
 </html>

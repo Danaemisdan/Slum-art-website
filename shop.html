@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css?v=20261031_v80">
-  <link rel="stylesheet" href="css/picture-rail-gallery.css?v=20261102_v83">
+  <link rel="stylesheet" href="css/picture-rail-gallery.css?v=20261102_v84">
 </head>
 <body>
 
@@ -184,26 +184,21 @@
     </div>
   </section>
 
-  <!-- Interactive Curatorial Picture Rail Showcase (21st.dev Component) -->
-  <section class="picture-rail-section" id="pictureRailSection">
-    <div id="pictureRailMount"></div>
-  </section>
-
-  <!-- Shop Catalog Section -->
-  <section class="shop-section">
+  <!-- Interactive Curatorial Picture Rail Showcase (21st.dev Component with Full Catalog) -->
+  <section class="picture-rail-section" id="pictureRailSection" style="padding-top: 2rem;">
     <div class="container">
-      <!-- Filter Bar -->
-      <div class="shop-filter-bar">
+      <!-- Search, Categories & Custom Commission UP TOP -->
+      <div class="shop-filter-bar shop-filter-bar--rail-top">
         <div class="shop-filter-top">
           <div class="search-box-wrap">
             <i class="fas fa-search"></i>
-            <input type="text" id="shopSearchInput" class="search-input" placeholder="Search by title, artist name, medium...">
+            <input type="text" id="shopSearchInput" class="search-input" placeholder="Search archive by title, young artist, or medium (e.g. Kehinde, Acrylic, Charcoal)...">
           </div>
 
           <div class="sort-select-wrap">
-            <label for="sortSelect"><i class="fas fa-arrow-down-wide-short"></i> Sort:</label>
+            <label for="sortSelect"><i class="fas fa-arrow-down-wide-short text-amber"></i> Sort Archive:</label>
             <select id="sortSelect" class="sort-select">
-              <option value="default">Featured Artworks</option>
+              <option value="default">Curator's Highlights</option>
               <option value="price-asc">Price: Low to High</option>
               <option value="price-desc">Price: High to Low</option>
               <option value="title">Title: A to Z</option>
@@ -212,23 +207,26 @@
         </div>
 
         <div class="category-pills">
-          <button class="cat-pill active" data-category="all">All Artworks (36)</button>
-          <button type="button" class="cat-pill" style="border-color: rgba(245, 158, 11, 0.45); color: #fbbf24; background: rgba(245, 158, 11, 0.08);" onclick="document.getElementById('pictureRailSection').scrollIntoView({ behavior: 'smooth' })">
-            <i class="fas fa-wand-magic-sparkles text-amber"></i> Interactive Salon Wall
-          </button>
-          <button class="cat-pill" data-category="Vibrant Acrylics">Vibrant Acrylics</button>
-          <button class="cat-pill" data-category="Charcoal & Pencil">Charcoal & Pencil</button>
-          <button class="cat-pill" data-category="Recycled Media">Recycled Media</button>
-          <button class="cat-pill" data-category="Story Canvases">Story Canvases</button>
-          <button class="cat-pill" data-category="Little Masters">Little Masters</button>
-          <button type="button" class="cat-pill cat-pill-custom" onclick="window.switchCustomProduct('artwork'); window.openCustomProductModal('artwork')">
-            <i class="fas fa-palette text-amber"></i> 1. Collage Artwork <span class="custom-badge-spark">Custom</span>
-          </button>
-          <button type="button" class="cat-pill cat-pill-custom" onclick="window.switchCustomProduct('portrait'); window.openCustomProductModal('portrait')">
-            <i class="fas fa-user-astronaut text-amber"></i> 2. Collage Portrait <span class="custom-badge-spark">Custom</span>
+          <button class="cat-pill active" data-category="all"><i class="fas fa-layer-group"></i> All Artworks (36)</button>
+          <button class="cat-pill" data-category="Vibrant Acrylics"><i class="fas fa-palette"></i> Vibrant Acrylics</button>
+          <button class="cat-pill" data-category="Charcoal & Pencil"><i class="fas fa-pencil"></i> Charcoal &amp; Pencil</button>
+          <button class="cat-pill" data-category="Recycled Media"><i class="fas fa-recycle"></i> Recycled Media</button>
+          <button class="cat-pill" data-category="Story Canvases"><i class="fas fa-book-open"></i> Story Canvases</button>
+          <button class="cat-pill" data-category="Little Masters"><i class="fas fa-award"></i> Little Masters</button>
+          <button type="button" class="cat-pill cat-pill-custom-action" onclick="window.openCustomProductModal('artwork')">
+            <i class="fas fa-wand-magic-sparkles text-amber"></i> Commission Custom Artwork / Portrait <span class="custom-badge-spark">Custom</span>
           </button>
         </div>
       </div>
+    </div>
+
+    <!-- The Full Catalog Picture Rail Mount -->
+    <div id="pictureRailMount"></div>
+  </section>
+
+  <!-- Shop Catalog Section (Grid View & Custom Products) -->
+  <section class="shop-section" style="padding-top: 1rem;">
+    <div class="container">
 
       <!-- Custom Products: Dual Showcase (1. Collage Artwork & 2. Collage Portrait) -->
       <div class="custom-portrait-callout" id="customProductsSection">
@@ -653,10 +651,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="js/rough.min.js"></script>
   <script src="js/sketch-textarea.js"></script>
-  <script src="js/data.js?v=20261102_v83"></script>
-  <script src="js/app.js?v=20261102_v83"></script>
+  <script src="js/data.js?v=20261102_v84"></script>
+  <script src="js/app.js?v=20261102_v84"></script>
   <script src="js/canvas-crowd.js"></script>
   <!-- Picture Rail Gallery System (Auto-Initializing) -->
-  <script src="js/picture-rail-gallery.js?v=20261102_v83"></script>
+  <script src="js/picture-rail-gallery.js?v=20261102_v84"></script>
 </body>
 </html>

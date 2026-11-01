@@ -309,3 +309,74 @@
 .picture-rail-scope .bg-background { background-color: var(--background); }
 .picture-rail-scope .text-foreground { color: var(--foreground); }
 .picture-rail-scope .text-muted-foreground { color: var(--muted-foreground); }
+
+/* Custom Action Button (Bespoke Commission) */
+.btn-rail-custom-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.85rem;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  border-radius: 9999px !important;
+  border: 1.5px solid rgba(245, 158, 11, 0.45) !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.12);
+  transition: all 0.22s ease;
+}
+
+.btn-rail-custom-action:hover {
+  background: #fffbeb !important;
+  border-color: #f59e0b !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.22);
+}
+
+/* Category Pill Custom Action Button */
+.cat-pill-custom-action {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(234, 88, 12, 0.12) 100%) !important;
+  border: 1.5px solid rgba(245, 158, 11, 0.45) !important;
+  color: #b45309 !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.cat-pill-custom-action:hover {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(234, 88, 12, 0.22) 100%) !important;
+  border-color: #f59e0b !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+}
+
+/* Top Filter Bar Tight Spacing Above Rail */
+.shop-filter-bar--rail-top {
+  margin-bottom: 1.5rem !important;
+}
+
+/* Carousel Dots Horizontal Tray */
+.picture-rail-scope div[role="group"]:has(button[aria-current]) {
+  max-width: min(92vw, 520px) !important;
+  margin: 0.5rem auto 0 !important;
+  overflow-x: auto !important;
+  scrollbar-width: none !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 6px 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 6px !important;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.picture-rail-scope div[role="group"]:has(button[aria-current])::-webkit-scrollbar {
+  display: none !important;
+}
+
+.picture-rail-scope div[role="group"]:has(button[aria-current]) button {
+  flex-shrink: 0 !important;
+}

@@ -92,9 +92,34 @@ function renderGallery(mountEl, artworks, currency) {
   _galleryArtworks = artworks;
   if (!_galleryMounts.includes(mountEl)) _galleryMounts.push(mountEl);
 
-  // Top 8 masterpieces for optimal wall spacing & pendulum physics
-  const featured = artworks.slice(0, 8);
-  const items = featured.map((art, idx) => formatArtworkForRail(art, idx, currency));
+  let root = _galleryRoots.get(mountEl);
+  if (!root) {
+    root = s1.createRoot(mountEl);
+    _galleryRoots.set(mountEl, root);
+  }
+
+  if (!artworks || artworks.length === 0) {
+    root.render(M.jsx("div", {
+      className: "picture-rail-scope w-full py-16 px-4 text-center text-foreground",
+      children: M.jsxs("div", {
+        className: "max-w-md mx-auto p-8 rounded-2xl bg-card border border-border shadow-sm",
+        children: [
+          M.jsx("i", { className: "fas fa-search text-3xl text-amber-500 mb-3 block" }),
+          M.jsx("h3", { className: "text-lg font-bold mb-1", children: "No artworks match your search" }),
+          M.jsx("p", { className: "text-sm text-muted-foreground mb-4", children: "Try selecting another category or clearing your keywords." }),
+          M.jsx("button", {
+            type: "button",
+            className: "btn-rail-acquire",
+            onClick: () => { if (typeof window.clearShopFilters === 'function') window.clearShopFilters(); },
+            children: "Reset All Filters"
+          })
+        ]
+      })
+    }));
+    return;
+  }
+
+  const items = artworks.map((art, idx) => formatArtworkForRail(art, idx, currency));
 
   function GalleryApp() {
     return M.jsx("div", {
@@ -103,29 +128,42 @@ function renderGallery(mountEl, artworks, currency) {
         items: items,
         eyebrow: "The Curatorial Picture Rail • 100% Direct Scholar Impact",
         heading: "A gallery wall you can rearrange, right on the page.",
-        caption: "Brush along the rail to light a print, slide it, lift it to see the back.",
+        caption: "Brush along the rail to light a canvas, drag to slide, lift to inspect provenance.",
         autoplay: false,
-        action: M.jsx("button", {
-          type: "button",
-          className: "btn-rail-acquire",
-          onClick: () => {
-            const catalogSec = document.querySelector(".shop-filter-bar, #shopGrid, #art-shop");
-            if (catalogSec) catalogSec.scrollIntoView({ behavior: "smooth" });
-          },
+        action: M.jsxs("div", {
+          className: "flex flex-wrap items-center justify-center gap-3 pt-2",
           children: [
-            M.jsx("i", { className: "fas fa-arrow-down mr-2" }),
-            "Browse Full Catalog (" + artworks.length + " Originals)"
+            M.jsxs("button", {
+              type: "button",
+              className: "btn-rail-acquire",
+              onClick: () => {
+                const grid = document.getElementById("artworksGrid");
+                if (grid) grid.scrollIntoView({ behavior: "smooth" });
+              },
+              children: [
+                M.jsx("i", { className: "fas fa-grip mr-2" }),
+                "View as 3-Column Grid (" + artworks.length + " Works)"
+              ]
+            }),
+            M.jsxs("button", {
+              type: "button",
+              className: "btn-rail-custom-action",
+              onClick: () => {
+                if (typeof window.openCustomProductModal === "function") {
+                  window.openCustomProductModal("artwork");
+                }
+              },
+              children: [
+                M.jsx("i", { className: "fas fa-wand-magic-sparkles text-amber-500 mr-2" }),
+                "Commission Custom Artwork / Portrait"
+              ]
+            })
           ]
         })
       })
     });
   }
 
-  let root = _galleryRoots.get(mountEl);
-  if (!root) {
-    root = s1.createRoot(mountEl);
-    _galleryRoots.set(mountEl, root);
-  }
   root.render(M.jsx(a1.StrictMode, { children: M.jsx(GalleryApp, {}) }));
 }
 
@@ -137,8 +175,10 @@ window.mountPictureRailGallery = function(container, customArtworks = null) {
 
   const currency = (window.localStorage && localStorage.getItem("slum_art_currency")) || (window.currentCurrency || "NGN");
 
-  if (customArtworks && customArtworks.length > 0) {
+  if (customArtworks !== null && Array.isArray(customArtworks)) {
     renderGallery(mountEl, customArtworks, currency);
+  } else if (window.SLUM_DATA && window.SLUM_DATA.artworks && window.SLUM_DATA.artworks.length > 0) {
+    renderGallery(mountEl, window.SLUM_DATA.artworks, currency);
   } else if (window.DATA && window.DATA.artworks && window.DATA.artworks.length > 0) {
     renderGallery(mountEl, window.DATA.artworks, currency);
   } else if (window.DATA_ARTWORKS && window.DATA_ARTWORKS.length > 0) {

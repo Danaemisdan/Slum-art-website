@@ -194,6 +194,16 @@
       list.sort((a, b) => a.title.localeCompare(b.title));
     }
 
+    // Synchronize Picture Rail Gallery Wall with filtered collection
+    if (typeof window.mountPictureRailGallery === 'function') {
+      ['pictureRailMount', 'homePictureRailMount'].forEach(id => {
+        const mount = document.getElementById(id);
+        if (mount) {
+          window.mountPictureRailGallery(mount, list);
+        }
+      });
+    }
+
     if (list.length === 0) {
       elements.artworksGrid.innerHTML = `
         <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
@@ -1193,6 +1203,7 @@
     // Category Filter Pills
     elements.categoryPills.forEach(pill => {
       pill.addEventListener('click', () => {
+        if (!pill.dataset.category) return;
         elements.categoryPills.forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
         state.selectedCategory = pill.dataset.category;
