@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css?v=20261031_v80">
+  <link rel="stylesheet" href="css/picture-rail-gallery.css?v=20261102_v1">
 </head>
 <body>
 
@@ -183,6 +184,28 @@
     </div>
   </section>
 
+  <!-- Interactive Curatorial Picture Rail Showcase (Physical Salon Wall Experience) -->
+  <section class="picture-rail-section" id="pictureRailSection">
+    <div class="picture-rail-wall-backdrop"></div>
+    <div class="picture-rail-header">
+      <div class="picture-rail-salon-tag">
+        <span class="live-beacon"></span>
+        <span>Interactive Salon Wall &bull; Certified 1-of-1 Originals</span>
+      </div>
+      <h2 class="picture-rail-title">The Curatorial Picture Rail</h2>
+      <p class="picture-rail-subtitle">
+        Original acrylics, charcoals, and recycled media suspended on continuous brass picture rails. Drag frames along the rail to rearrange, hover to illuminate spotlights, or lift any piece off the wall to inspect the authenticated provenance.
+      </p>
+      <div class="picture-rail-hints-bar">
+        <span><i class="fas fa-hand-pointer"></i> Drag frames along brass rail</span>
+        <span><i class="fas fa-lightbulb"></i> Hover to activate spotlight</span>
+        <span><i class="fas fa-arrows-rotate"></i> Lift &amp; flip to view certificate</span>
+      </div>
+    </div>
+    
+    <div id="pictureRailMount"></div>
+  </section>
+
   <!-- Shop Catalog Section -->
   <section class="shop-section">
     <div class="container">
@@ -207,6 +230,9 @@
 
         <div class="category-pills">
           <button class="cat-pill active" data-category="all">All Artworks (36)</button>
+          <button type="button" class="cat-pill" style="border-color: rgba(245, 158, 11, 0.45); color: #fbbf24; background: rgba(245, 158, 11, 0.08);" onclick="document.getElementById('pictureRailSection').scrollIntoView({ behavior: 'smooth' })">
+            <i class="fas fa-wand-magic-sparkles text-amber"></i> Interactive Salon Wall
+          </button>
           <button class="cat-pill" data-category="Vibrant Acrylics">Vibrant Acrylics</button>
           <button class="cat-pill" data-category="Charcoal & Pencil">Charcoal & Pencil</button>
           <button class="cat-pill" data-category="Recycled Media">Recycled Media</button>
@@ -647,5 +673,14 @@
   <script src="js/data.js?v=20261031_v81"></script>
   <script src="js/app.js?v=20261031_v81"></script>
   <script src="js/canvas-crowd.js"></script>
+  <!-- Picture Rail Gallery System -->
+  <script src="js/picture-rail-gallery.js?v=20261102_v1"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof window.mountPictureRailGallery === 'function') {
+        window.mountPictureRailGallery('pictureRailMount');
+      }
+    });
+  </script>
 </body>
 </html>

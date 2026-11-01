@@ -159,6 +159,7 @@
     if (typeof updateBentoDonationEngine === 'function') {
       updateBentoDonationEngine(null, newCurr);
     }
+    window.dispatchEvent(new CustomEvent('currencyChanged', { detail: newCurr }));
     showToast(`Currency switched to ${newCurr === 'NGN' ? 'Nigerian Naira (₦)' : 'US Dollar ($)'}`);
   }
 
