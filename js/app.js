@@ -1888,10 +1888,10 @@
     const donateText = document.getElementById('mHeroDonateText');
 
     const TIER_TITLES = {
-      '10': { USD: 'Sponsor Meals & Art ()', NGN: 'Sponsor Meals & Art (₦12,500)' },
-      '35': { USD: "Sponsor 1 Child's Tuition ()", NGN: "Sponsor 1 Child's Tuition (₦43,750)" },
-      '100': { USD: 'Sponsor Full Year ()', NGN: 'Sponsor Full Year (₦125,000)' },
-      '250': { USD: 'Sponsor Fellowship ()', NGN: 'Sponsor Fellowship (₦312,500)' },
+      '10': { USD: 'Sponsor Meals & Art ($10)', NGN: 'Sponsor Meals & Art (₦12,500)' },
+      '35': { USD: "Sponsor 1 Child's Tuition ($35)", NGN: "Sponsor 1 Child's Tuition (₦43,750)" },
+      '100': { USD: 'Sponsor Full Year ($100)', NGN: 'Sponsor Full Year (₦125,000)' },
+      '250': { USD: 'Sponsor Fellowship ($250)', NGN: 'Sponsor Fellowship (₦312,500)' },
     };
 
     function updateView() {

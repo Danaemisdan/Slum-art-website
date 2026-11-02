@@ -8512,53 +8512,81 @@ button[data-f="pause"],
   position: relative;
   width: 100%;
   padding: 8.5rem 1.5rem 9.5rem;
-  background-color: #06080e;
+  background-color: #0e1e1b;
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(6, 8, 14, 0.72) 0%, rgba(6, 8, 14, 0.94) 100%),
-    url('../assets/images/gallery/gallery_01.jpg');
+    radial-gradient(circle at 50% 45%, rgba(6, 14, 12, 0.32) 0%, rgba(6, 14, 12, 0.52) 100%),
+    url('../assets/images/backgrounds/about_banner_2.png');
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 35%;
+  background-repeat: no-repeat;
   color: #ffffff;
   text-align: center;
   overflow: hidden;
   box-sizing: border-box;
 }
 
-/* Orange/Terracotta Paint Brush Splatter Accent in Top-Left */
+/* Authentic Orange Paint Brush Splatter Accent in Top-Left */
 .services-brush-splash {
   position: absolute;
-  top: -20px;
-  left: -20px;
-  width: 420px;
-  max-width: 42vw;
+  top: 0;
+  left: -10px;
+  width: 274px;
+  height: 346px;
+  background-image: url('../assets/images/shapes/video-shape-1.png');
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: contain;
   pointer-events: none;
   z-index: 2;
-  filter: drop-shadow(0 10px 30px rgba(234, 88, 12, 0.4));
+  filter: drop-shadow(0 8px 24px rgba(234, 88, 12, 0.35));
+  animation: servicesShapeMove 4s ease-in-out infinite alternate;
 }
 
-.services-splatter-svg {
-  width: 100%;
-  height: auto;
-  display: block;
+@keyframes servicesShapeMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(12px); }
 }
 
-/* Right Translucent Heart Watermark */
+@media (max-width: 991px) {
+  .services-brush-splash {
+    width: 190px;
+    height: 240px;
+  }
+}
+
+@media (max-width: 576px) {
+  .services-brush-splash {
+    display: none;
+  }
+}
+
+/* Right Translucent Heart Watermark (Authentic Slum Art Shape) */
 .services-heart-watermark {
   position: absolute;
   top: 50%;
-  right: 6%;
+  right: 7%;
   transform: translateY(-50%);
-  width: 260px;
-  height: 240px;
+  width: 242px;
+  height: 230px;
+  background-image: url('../assets/images/shapes/video-shape-2.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.18;
+  opacity: 0.16;
+  animation: servicesTreeMove 5s ease-in-out infinite alternate;
 }
 
-.services-watermark-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
+@keyframes servicesTreeMove {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(5deg) scale(1.04); }
+}
+
+@media (max-width: 991px) {
+  .services-heart-watermark {
+    display: none;
+  }
 }
 
 /* Central Content Container */
@@ -8572,49 +8600,65 @@ button[data-f="pause"],
   align-items: center;
 }
 
-/* Circular Video Play Button */
+/* Circular Video Play Button (Matching Official Slum Art Style) */
 .services-play-btn {
-  width: 76px;
-  height: 76px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 2px solid rgba(255, 255, 255, 0.75);
-  color: #ffffff;
+  background: #ffffff;
+  border: none;
+  color: #122f2a;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.45rem;
-  padding-left: 5px;
+  font-size: 1.5rem;
+  padding-left: 4px;
   cursor: pointer;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
   margin-bottom: 1.25rem;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  animation: servicesPulseRing 2.4s infinite;
+}
+
+.services-play-btn::before,
+.services-play-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.45);
+  animation: servicesRipple 3s infinite;
+  pointer-events: none;
+}
+
+.services-play-btn::after {
+  animation-delay: 0.8s;
 }
 
 .services-play-btn:hover {
-  background: rgba(255, 255, 255, 0.95);
-  color: #06080e;
-  border-color: #ffffff;
+  background: #ffa415;
+  color: #ffffff;
   transform: scale(1.08);
-  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.35);
+  box-shadow: 0 12px 35px rgba(255, 164, 21, 0.5);
 }
 
-@keyframes servicesPulseRing {
-  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.45); }
-  70% { box-shadow: 0 0 0 16px rgba(255, 255, 255, 0); }
+@keyframes servicesRipple {
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55); }
+  70% { box-shadow: 0 0 0 22px rgba(255, 255, 255, 0); }
   100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
 }
 
 /* Script Subtitle */
 .services-script-sub {
   font-family: 'Caveat', cursive, sans-serif;
-  font-size: clamp(1.65rem, 2.5vw, 2.25rem);
+  font-size: clamp(1.8rem, 2.7vw, 2.4rem);
   font-weight: 700;
   color: #ffffff;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
   margin-bottom: 0.35rem;
   display: block;
@@ -8634,13 +8678,13 @@ button[data-f="pause"],
 
 /* Subtitle Description */
 .services-desc {
-  font-size: clamp(0.95rem, 1.15vw, 1.12rem);
+  font-size: clamp(0.98rem, 1.2vw, 1.15rem);
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.95);
   max-width: 680px;
   margin: 0 auto 2.25rem;
   font-weight: 400;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
 }
 
 /* Button & Orbit Ring Container */
@@ -8651,25 +8695,26 @@ button[data-f="pause"],
 }
 
 .btn-services-discover {
-  background: #f59e0b;
+  background: #ffa415;
   color: #ffffff !important;
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.98rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  padding: 0.85rem 2.5rem;
+  padding: 0.95rem 2.8rem;
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+  display: inline-block;
+  box-shadow: 0 6px 20px rgba(255, 164, 21, 0.45);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-services-discover:hover {
-  background: #ea580c;
+  background: #e06927;
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(234, 88, 12, 0.55);
+  box-shadow: 0 10px 28px rgba(224, 105, 39, 0.55);
   color: #ffffff !important;
 }
 
