@@ -161,7 +161,7 @@ window.mountPictureRailGallery = function(container, customArtworks = null) {
     return;
   }
 
-  const currency = (window.localStorage && localStorage.getItem("slum_art_currency")) || (window.currentCurrency || "NGN");
+  const currency = (window.localStorage && localStorage.getItem("slum_art_currency")) || (window.currentCurrency || "USD");
 
   if (customArtworks !== null && Array.isArray(customArtworks)) {
     renderGallery(mountEl, customArtworks, currency);
@@ -202,7 +202,7 @@ if (document.readyState === "loading") {
 window.addEventListener("load", autoInitPictureRails);
 
 window.addEventListener("currencyChanged", (e) => {
-  const newCurr = e.detail || (localStorage.getItem("slum_art_currency") || "NGN");
+  const newCurr = e.detail || (window.currentCurrency || (localStorage.getItem("slum_art_currency") || "USD"));
   _galleryMounts.forEach(el => {
     if (el && _galleryArtworks.length > 0) {
       renderGallery(el, _galleryArtworks, newCurr);

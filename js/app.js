@@ -5,9 +5,35 @@
 (function () {
   'use strict';
 
+  // Smart Location-Aware Currency Initialization
+  function getInitialCurrency() {
+    // 1. If user previously selected a preference, respect it
+    const stored = localStorage.getItem('slum_art_currency');
+    if (stored === 'USD' || stored === 'NGN') {
+      return stored;
+    }
+
+    // 2. Synchronous heuristic based on client timezone & locale (0ms, zero flicker)
+    try {
+      const tz = (Intl && Intl.DateTimeFormat) ? Intl.DateTimeFormat().resolvedOptions().timeZone : '';
+      if (tz && (tz.includes('Lagos') || tz.includes('Nigeria'))) {
+        return 'NGN';
+      }
+      const navLangs = navigator.languages || [navigator.language || ''];
+      if (navLangs.some(l => /-(NG|ng)$|^(yo|ha|ig|pcm)/i.test(l))) {
+        return 'NGN';
+      }
+    } catch (e) {
+      console.debug('Geo heuristic note:', e);
+    }
+
+    // 3. For all international visitors outside Nigeria (US, Europe, UK, Asia, etc.), default to USD
+    return 'USD';
+  }
+
   // State Management
   const state = {
-    currency: localStorage.getItem('slum_art_currency') || 'NGN',
+    currency: getInitialCurrency(),
     selectedCategory: 'all',
     searchQuery: '',
     sortBy: 'default',
@@ -18,6 +44,8 @@
     blogCategory: 'all',
     blogSearchQuery: ''
   };
+
+  window.currentCurrency = state.currency;
 
   const DATA = window.SLUM_DATA || {
     artworks: [],
@@ -146,13 +174,31 @@
     }, 3200);
   }
 
-  // Currency Switcher
-  function setCurrency(newCurr) {
+  // Currency Switcher (Synchronizes Global State, Bento Engine & Minimalist Hero)
+  function setCurrency(newCurr, isManual = true) {
+    if (newCurr !== 'USD' && newCurr !== 'NGN') newCurr = 'USD';
     state.currency = newCurr;
+    window.currentCurrency = newCurr;
     localStorage.setItem('slum_art_currency', newCurr);
+    if (isManual) {
+      localStorage.setItem('slum_art_currency_manual', 'true');
+    }
+
     elements.currencyBtns.forEach(btn => {
       btn.classList.toggle('active', btn.dataset.currency === newCurr);
     });
+
+    // Update Hero Donation View
+    if (typeof updateMHeroDonationView === 'function') {
+      updateMHeroDonationView(newCurr);
+    }
+
+    // Update Hero copy lead amount
+    const heroLeadAmount = document.getElementById('mHeroLeadAmount');
+    if (heroLeadAmount) {
+      heroLeadAmount.textContent = newCurr === 'USD' ? '$35' : '₦43,750';
+    }
+
     renderArtworks();
     updateCartDrawer();
     updateImpactCalculator();
@@ -160,7 +206,51 @@
       updateBentoDonationEngine(null, newCurr);
     }
     window.dispatchEvent(new CustomEvent('currencyChanged', { detail: newCurr }));
-    showToast(`Currency switched to ${newCurr === 'NGN' ? 'Nigerian Naira (₦)' : 'US Dollar ($)'}`);
+    window.dispatchEvent(new CustomEvent('slum_currency_updated', { detail: newCurr }));
+
+    if (isManual) {
+      showToast(`Currency switched to ${newCurr === 'NGN' ? 'Nigerian Naira (₦)' : 'US Dollar ($)'}`);
+    }
+  }
+
+  // Asynchronous Geo-IP Precision Currency Detection (verifies country on initial visit)
+  async function initGeoCurrencyDetection() {
+    // If user has already made an explicit manual choice, do not override
+    if (localStorage.getItem('slum_art_currency_manual')) {
+      return;
+    }
+
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2500);
+      const res = await fetch('https://api.country.is/', { signal: controller.signal });
+      clearTimeout(timeoutId);
+
+      if (res.ok) {
+        const data = await res.json();
+        const detected = (data && data.country === 'NG') ? 'NGN' : 'USD';
+        if (detected !== state.currency && !localStorage.getItem('slum_art_currency_manual')) {
+          setCurrency(detected, false); // silent background update, no toast
+        }
+      }
+    } catch (err) {
+      // Secondary fallback
+      try {
+        const controller2 = new AbortController();
+        const timeoutId2 = setTimeout(() => controller2.abort(), 2000);
+        const res2 = await fetch('https://ipwho.is/', { signal: controller2.signal });
+        clearTimeout(timeoutId2);
+        if (res2.ok) {
+          const data2 = await res2.json();
+          const detected = (data2 && data2.country_code === 'NG') ? 'NGN' : 'USD';
+          if (detected !== state.currency && !localStorage.getItem('slum_art_currency_manual')) {
+            setCurrency(detected, false);
+          }
+        }
+      } catch (e2) {
+        // Silently preserve synchronous heuristic
+      }
+    }
   }
 
   // Render Artworks (Picture Rail Salon Wall Gallery)
@@ -1504,8 +1594,8 @@
         meals: { usd: '$6.50', ngn: '₦8,125' },
         books: { usd: '$3.50', ngn: '₦4,375' }
       },
-      ctaUsd: 'Sponsor Daily Meals ($10)',
-      ctaNgn: 'Sponsor Daily Meals (₦12,500)'
+      ctaUsd: 'Sponsor Daily Meals • $10',
+      ctaNgn: 'Sponsor Daily Meals • ₦12,500'
     },
     '35': {
       usd: 35,
@@ -1522,8 +1612,8 @@
         meals: { usd: '$4.50', ngn: '₦5,625' },
         books: { usd: '$2.50', ngn: '₦3,125' }
       },
-      ctaUsd: "Sponsor 1 Child's Tuition ($35)",
-      ctaNgn: "Sponsor 1 Child's Tuition (₦43,750)"
+      ctaUsd: "Sponsor 1 Child's Tuition • $35",
+      ctaNgn: "Sponsor 1 Child's Tuition • ₦43,750"
     },
     '100': {
       usd: 100,
@@ -1540,8 +1630,8 @@
         meals: { usd: '$12.00', ngn: '₦15,000' },
         books: { usd: '$8.00', ngn: '₦10,000' }
       },
-      ctaUsd: 'Sponsor 1 Full Year ($100)',
-      ctaNgn: 'Sponsor 1 Full Year (₦125,000)'
+      ctaUsd: 'Sponsor 1 Full Year • $100',
+      ctaNgn: 'Sponsor 1 Full Year • ₦125,000'
     },
     '250': {
       usd: 250,
@@ -1558,14 +1648,14 @@
         meals: { usd: '$45.00', ngn: '₦56,250' },
         books: { usd: '$35.00', ngn: '₦43,750' }
       },
-      ctaUsd: 'Sponsor Full Fellowship ($250)',
-      ctaNgn: 'Sponsor Full Fellowship (₦312,500)'
+      ctaUsd: 'Sponsor Full Fellowship • $250',
+      ctaNgn: 'Sponsor Full Fellowship • ₦312,500'
     }
   };
 
   let bentoState = {
     selectedAmount: '35',
-    currency: 'USD'
+    currency: state.currency || 'USD'
   };
 
   function updateBentoDonationEngine(newAmount = null, newCurr = null) {
@@ -1793,6 +1883,7 @@
     initHeroScrollChoreography();
     initMHeroDonationThingy();
     initScholarStoriesAutoCycle();
+    initGeoCurrencyDetection();
   }
 
   // Hero Scroll Choreography: Hero elements glide UPWARDS, next section (#who-we-are) comes to life
@@ -1877,9 +1968,11 @@
   }
 
   
+  let updateMHeroDonationView = null;
+
   // Section 2: Minimalist Hero Donation Thingy
   function initMHeroDonationThingy() {
-    let mCurr = 'USD';
+    let mCurr = state.currency || 'USD';
     let mAmount = '35';
 
     const btnUsd = document.getElementById('mHeroCurrUsd');
@@ -1888,13 +1981,16 @@
     const donateText = document.getElementById('mHeroDonateText');
 
     const TIER_TITLES = {
-      '10': { USD: 'Sponsor Meals & Art ($10)', NGN: 'Sponsor Meals & Art (₦12,500)' },
-      '35': { USD: "Sponsor 1 Child's Tuition ($35)", NGN: "Sponsor 1 Child's Tuition (₦43,750)" },
-      '100': { USD: 'Sponsor Full Year ($100)', NGN: 'Sponsor Full Year (₦125,000)' },
-      '250': { USD: 'Sponsor Fellowship ($250)', NGN: 'Sponsor Fellowship (₦312,500)' },
+      '10': { USD: 'Sponsor Meals & Art • $10', NGN: 'Sponsor Meals & Art • ₦12,500' },
+      '35': { USD: "Sponsor 1 Child's Tuition • $35", NGN: "Sponsor 1 Child's Tuition • ₦43,750" },
+      '100': { USD: 'Sponsor Full Year • $100', NGN: 'Sponsor Full Year • ₦125,000' },
+      '250': { USD: 'Sponsor Fellowship • $250', NGN: 'Sponsor Fellowship • ₦312,500' },
     };
 
-    function updateView() {
+    function updateView(overrideCurr) {
+      if (overrideCurr) mCurr = overrideCurr;
+      else mCurr = state.currency || mCurr;
+
       if (btnUsd && btnNgn) {
         btnUsd.classList.toggle('active', mCurr === 'USD');
         btnNgn.classList.toggle('active', mCurr === 'NGN');
@@ -1913,20 +2009,25 @@
         const titleObj = TIER_TITLES[mAmount] || TIER_TITLES['35'];
         donateText.textContent = mCurr === 'USD' ? titleObj.USD : titleObj.NGN;
       }
+
+      const heroLeadAmount = document.getElementById('mHeroLeadAmount');
+      if (heroLeadAmount) {
+        heroLeadAmount.textContent = mCurr === 'USD' ? '$35' : '₦43,750';
+      }
     }
+
+    updateMHeroDonationView = updateView;
 
     if (btnUsd) {
       btnUsd.addEventListener('click', (e) => {
         e.preventDefault();
-        mCurr = 'USD';
-        updateView();
+        setCurrency('USD', true);
       });
     }
     if (btnNgn) {
       btnNgn.addEventListener('click', (e) => {
         e.preventDefault();
-        mCurr = 'NGN';
-        updateView();
+        setCurrency('NGN', true);
       });
     }
 
@@ -1937,6 +2038,13 @@
         updateView();
       });
     });
+
+    window.addEventListener('currencyChanged', (e) => {
+      updateView(e.detail);
+    });
+
+    // Synchronize initial render with current state.currency
+    updateView(state.currency);
   }
 
   // Interactive Scholar Story Showcase (Bento Hero Card)
