@@ -607,13 +607,16 @@
         <div id="homePictureRailMount"></div>
       </div>
 
-      <!-- Custom Products: Dual Showcase (1. Collage Artwork & 2. Collage Portrait) -->
+      <!-- Custom Products: Bespoke Atelier (Collage Artwork & Collage Portrait) -->
       <div class="custom-portrait-callout" id="customProductsSection">
         
         <!-- Header & Switcher Tabs -->
         <div class="cpc-header-bar">
           <div class="cpc-header-title-wrap">
-            <span class="cpc-section-kicker"><i class="fas fa-wand-magic-sparkles text-amber"></i> BESPOKE COMMISSIONS &bull; 100% DIRECT PHILANTHROPIC IMPACT</span>
+            <div class="cpc-atelier-badge">
+              <span class="cpc-badge-pulse"></span>
+              <span>Bespoke Commission Atelier &bull; 100% Direct Scholar Impact</span>
+            </div>
             <h3 class="cpc-main-heading">Custom Products Handcrafted by Young Scholars</h3>
           </div>
           <div class="cpc-product-tabs" role="tablist">
@@ -629,21 +632,48 @@
         <!-- Product 1 Panel: Collage Artwork -->
         <div class="cpc-product-panel active" id="cpcPanelArtwork">
           <div class="cpc-inner">
-            <!-- Visual Display -->
+            <!-- Clean Luxurious Gallery -->
             <div class="cpc-visual-showcase">
               <div class="cpc-frame-wrap">
-                <img src="assets/images/custom_portrait_example_2.jpg" alt="Custom Recycled Paper Collage Artwork by Slum Art youth scholars" class="cpc-showcase-img" loading="lazy">
+                <img src="assets/images/custom_portrait_example_2.jpg" alt="Bespoke African Cultural &amp; Wildlife Paper Collage Artwork by Slum Art scholars" class="cpc-showcase-img" loading="lazy">
                 <div class="cpc-frame-badge">
-                  <i class="fas fa-recycle"></i> Recycled Media Fine-Art Collage
+                  <i class="fas fa-gem"></i>
+                  <span>Bespoke Fine-Art Collage &bull; Recycled Paper on Board</span>
                 </div>
               </div>
+              
+              <!-- Interactive Minimalist Thumbnails -->
+              <div class="cpc-thumb-gallery">
+                <button type="button" class="cpc-thumb-btn active" onclick="window.switchCustomGalleryImage('artwork', 'assets/images/custom_portrait_example_2.jpg', '100% of proceeds fund full-year accredited schooling &amp; daily hot meals', 'Bespoke Fine-Art Collage &bull; Recycled Paper on Board', this)">
+                  <img src="assets/images/custom_portrait_example_2.jpg" alt="Thematic Composition" class="cpc-thumb-img">
+                  <div class="cpc-thumb-label">
+                    <strong>Thematic</strong>
+                    <span>Masterpiece</span>
+                  </div>
+                </button>
+                <button type="button" class="cpc-thumb-btn" onclick="window.switchCustomGalleryImage('artwork', 'assets/images/gallery/gallery_05.jpg', 'Scholars exhibiting museum-grade collages at Terra Kulture fine art galleries', 'Terra Kulture Exhibition &bull; Museum-Grade Works', this)">
+                  <img src="assets/images/gallery/gallery_05.jpg" alt="Gallery Exhibition" class="cpc-thumb-img">
+                  <div class="cpc-thumb-label">
+                    <strong>Exhibition</strong>
+                    <span>Terra Kulture</span>
+                  </div>
+                </button>
+                <button type="button" class="cpc-thumb-btn" onclick="window.switchCustomGalleryImage('artwork', 'assets/images/gallery/gallery_06.jpg', 'Built from 50,000+ upcycled PET bottles on the floating lagoon community', 'Solar PET Bottle Atelier &bull; Lagos Lagoon', this)">
+                  <img src="assets/images/gallery/gallery_06.jpg" alt="Bottle Atelier" class="cpc-thumb-img">
+                  <div class="cpc-thumb-label">
+                    <strong>Atelier</strong>
+                    <span>Bottle School</span>
+                  </div>
+                </button>
+              </div>
+
               <div class="cpc-artist-caption">
                 <span class="cpc-caption-dot"></span>
                 <span>100% of proceeds fund full-year accredited schooling &amp; daily hot meals</span>
               </div>
             </div>
 
-            <!-- Content -->
+            <!-- Content & Press Dossier -->
             <div class="cpc-content">
               <div class="cpc-tag">
                 <span>Bespoke Collage Artwork</span>
@@ -653,37 +683,57 @@
                 Collaborate with our young master scholars to craft an original bespoke collage artwork. Whether inspired by African cultural motifs, lagoon stilt life, wildlife, abstract color harmonies, or your unique thematic brief, each piece is meticulously assembled from thousands of upcycled paper clippings, newspapers, and reclaimed materials on museum archival board.
               </p>
 
-              <!-- 3-Step Process -->
-              <div class="cpc-process-row">
-                <div class="cpc-step">
-                  <span class="cpc-step-num">1</span>
-                  <div class="cpc-step-text">
-                    <strong>Share Vision</strong>
-                    <span>Theme, Palette or Mood</span>
-                  </div>
+              <!-- Milestone & Press Proof Card (What Has Happened) -->
+              <div class="cpc-milestone-card">
+                <div class="cpc-press-strip">
+                  <span class="cpc-press-chip chip-gold"><i class="fas fa-trophy"></i> Guinness World Records</span>
+                  <span class="cpc-press-chip"><i class="fas fa-newspaper"></i> BBC News</span>
+                  <span class="cpc-press-chip"><i class="fas fa-landmark"></i> Terra Kulture</span>
+                  <span class="cpc-press-chip"><i class="fas fa-city"></i> Lagos State</span>
                 </div>
-                <div class="cpc-step-arrow"><i class="fas fa-chevron-right"></i></div>
-                <div class="cpc-step">
-                  <span class="cpc-step-num">2</span>
-                  <div class="cpc-step-text">
-                    <strong>Artisan Collage</strong>
-                    <span>Layered Recycled Media</span>
-                  </div>
+                <p class="cpc-milestone-text">
+                  &ldquo;From collecting plastic debris off the Lagos lagoon to monumental exhibitions: Guided by 4-time Guinness World Record holder Adetunwase Adenle, student works have broken global creative records and entered prestigious private and civic collections.&rdquo;
+                </p>
+              </div>
+
+              <!-- Quantified Impact Strip (What We Are Accomplishing) -->
+              <div class="cpc-impact-strip">
+                <div class="cpc-impact-box">
+                  <span class="cpc-impact-val">142+ Scholars</span>
+                  <span class="cpc-impact-lbl">Full-Year School Scholarships</span>
                 </div>
-                <div class="cpc-step-arrow"><i class="fas fa-chevron-right"></i></div>
-                <div class="cpc-step">
-                  <span class="cpc-step-num">3</span>
-                  <div class="cpc-step-text">
-                    <strong>Delivered</strong>
-                    <span>Free DHL Worldwide</span>
-                  </div>
+                <div class="cpc-impact-box">
+                  <span class="cpc-impact-val">50,000+</span>
+                  <span class="cpc-impact-lbl">PET Bottles Upcycled into Schools</span>
+                </div>
+                <div class="cpc-impact-box">
+                  <span class="cpc-impact-val">100% Direct</span>
+                  <span class="cpc-impact-lbl">Tuition, Uniforms &amp; Hot Meals</span>
+                </div>
+              </div>
+
+              <!-- Minimalist Process Timeline -->
+              <div class="cpc-process-minimal">
+                <div class="cpc-step-item">
+                  <span class="cpc-step-idx">01</span>
+                  <span>Share Vision Brief</span>
+                </div>
+                <span class="cpc-step-divider">&bull;</span>
+                <div class="cpc-step-item">
+                  <span class="cpc-step-idx">02</span>
+                  <span>Hand-Torn Assemblage</span>
+                </div>
+                <span class="cpc-step-divider">&bull;</span>
+                <div class="cpc-step-item">
+                  <span class="cpc-step-idx">03</span>
+                  <span>Insured Global Delivery</span>
                 </div>
               </div>
 
               <!-- Action & Price Row -->
               <div class="cpc-actions-row">
                 <button type="button" class="btn btn-primary btn-cpc-order" onclick="window.openCustomProductModal('artwork')">
-                  <i class="fas fa-paint-brush"></i> Commission Collage Artwork &rarr;
+                  Commission Collage Artwork &rarr;
                 </button>
                 <div class="cpc-price-pill">
                   <span>From <strong>$120 USD</strong> (&#8358;180k)</span>
@@ -691,7 +741,7 @@
                   <span class="text-emerald font-semibold">Funds 1 Term School</span>
                 </div>
                 <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20would%20like%20to%20commission%20a%20custom%20Collage%20Artwork%20(Thematic/Original)." target="_blank" rel="noopener noreferrer" class="cpc-wa-pill">
-                  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                  <i class="fab fa-whatsapp"></i> Atelier WhatsApp Concierge
                 </a>
               </div>
             </div>
@@ -701,21 +751,48 @@
         <!-- Product 2 Panel: Collage Portrait -->
         <div class="cpc-product-panel" id="cpcPanelPortrait">
           <div class="cpc-inner">
-            <!-- Visual Display -->
+            <!-- Clean Luxurious Gallery -->
             <div class="cpc-visual-showcase">
               <div class="cpc-frame-wrap">
-                <img src="assets/images/custom_portrait_example.jpg" alt="Custom Recycled Paper Collage Portrait by Slum Art youth scholars" class="cpc-showcase-img" loading="lazy">
+                <img src="assets/images/cnn_collage_portrait_adetunwase.jpg" alt="CNN 222 Collage Portraits by Adetunwase Adenle &amp; Slum Art scholars" class="cpc-showcase-img" loading="lazy">
                 <div class="cpc-frame-badge">
-                  <i class="fas fa-scissors"></i> Signature Recycled Paper Mosaic
+                  <i class="fas fa-crown"></i>
+                  <span>CNN #MyFreedomDay &bull; 222 Handcrafted Portraits</span>
                 </div>
               </div>
+              
+              <!-- Interactive Minimalist Thumbnails -->
+              <div class="cpc-thumb-gallery">
+                <button type="button" class="cpc-thumb-btn active" onclick="window.switchCustomGalleryImage('portrait', 'assets/images/cnn_collage_portrait_adetunwase.jpg', '222 Handcrafted Portraits honoring CNN Journalists on #MyFreedomDay by Adetunwase', 'CNN #MyFreedomDay &bull; 222 Handcrafted Portraits', this)">
+                  <img src="assets/images/cnn_collage_portrait_adetunwase.jpg" alt="CNN 222 Wall" class="cpc-thumb-img">
+                  <div class="cpc-thumb-label">
+                    <strong>CNN 222 Wall</strong>
+                    <span>Monumental</span>
+                  </div>
+                </button>
+                <button type="button" class="cpc-thumb-btn" onclick="window.switchCustomGalleryImage('portrait', 'assets/images/cnn_collage_portrait_detail.jpg', 'Intricate hand-torn magazine shading of CNN journalists Christiane Amanpour &amp; Anderson Cooper', 'Hand-Torn Magazine Detail &bull; Archival Mosaic', this)">
+                  <img src="assets/images/cnn_collage_portrait_detail.jpg" alt="Magazine Detail" class="cpc-thumb-img">
+                  <div class="cpc-thumb-label">
+                    <strong>CNN Detail</strong>
+                    <span>Amanpour &amp; Anchors</span>
+                  </div>
+                </button>
+                <button type="button" class="cpc-thumb-btn" onclick="window.switchCustomGalleryImage('portrait', 'assets/images/gallery/gallery_04.jpg', 'Founder Adetunwase Adenle presenting monumental upcycled collage portraits to dignitaries', 'Civic Presentation &bull; Master Collection', this)">
+                  <img src="assets/images/gallery/gallery_04.jpg" alt="Civic Presentation" class="cpc-thumb-img">
+                  <div class="cpc-thumb-label">
+                    <strong>Presentation</strong>
+                    <span>Civic Dignitaries</span>
+                  </div>
+                </button>
+              </div>
+
               <div class="cpc-artist-caption">
                 <span class="cpc-caption-dot"></span>
-                <span>100% of proceeds fund full-year accredited schooling &amp; daily hot meals</span>
+                <span>As featured on CNN, THISDAY &amp; MarketingWorld &bull; 100% Direct Scholar Escrow</span>
               </div>
             </div>
 
-            <!-- Content -->
+            <!-- Content & Press Dossier -->
             <div class="cpc-content">
               <div class="cpc-tag">
                 <span>Bespoke Collage Portrait</span>
@@ -725,37 +802,57 @@
                 Send us a photo of yourself, a family member, child, pet, or memorial tribute. Guided daily by 4-time Guinness World Record holder Adetunwase Adenle, our scholars transform your portrait into an astonishing mosaic of hand-torn recycled newsprint, magazines, and shade-matched paper fragments with lifelike emotional depth.
               </p>
 
-              <!-- 3-Step Process -->
-              <div class="cpc-process-row">
-                <div class="cpc-step">
-                  <span class="cpc-step-num">1</span>
-                  <div class="cpc-step-text">
-                    <strong>Send Photo</strong>
-                    <span>Upload or WhatsApp</span>
-                  </div>
+              <!-- Milestone & Press Proof Card (What Has Happened) -->
+              <div class="cpc-milestone-card">
+                <div class="cpc-press-strip">
+                  <span class="cpc-press-chip chip-gold"><i class="fas fa-tv"></i> CNN Global</span>
+                  <span class="cpc-press-chip"><i class="fas fa-newspaper"></i> THISDAY Live</span>
+                  <span class="cpc-press-chip"><i class="fas fa-bullhorn"></i> MarketingWorld</span>
+                  <span class="cpc-press-chip"><i class="fas fa-award"></i> #MyFreedomDay</span>
                 </div>
-                <div class="cpc-step-arrow"><i class="fas fa-chevron-right"></i></div>
-                <div class="cpc-step">
-                  <span class="cpc-step-num">2</span>
-                  <div class="cpc-step-text">
-                    <strong>Paper Mosaic</strong>
-                    <span>Intricate Recycled Layers</span>
-                  </div>
+                <p class="cpc-milestone-text">
+                  &ldquo;To mark CNN’s #MyFreedomDay, Adetunwase Adenle and Slum Art scholars unveiled 222 hand-crafted collage portraits honoring Christiane Amanpour, Anderson Cooper, Clarissa Ward, and frontline anchors for their reporting exposing human trafficking and modern slavery.&rdquo;
+                </p>
+              </div>
+
+              <!-- Quantified Impact Strip (What We Are Accomplishing) -->
+              <div class="cpc-impact-strip">
+                <div class="cpc-impact-box">
+                  <span class="cpc-impact-val">1st AI Studio</span>
+                  <span class="cpc-impact-lbl">Animation Atelier in Ijora Badia</span>
                 </div>
-                <div class="cpc-step-arrow"><i class="fas fa-chevron-right"></i></div>
-                <div class="cpc-step">
-                  <span class="cpc-step-num">3</span>
-                  <div class="cpc-step-text">
-                    <strong>Delivered</strong>
-                    <span>Free DHL Worldwide</span>
-                  </div>
+                <div class="cpc-impact-box">
+                  <span class="cpc-impact-val">New Bottle School</span>
+                  <span class="cpc-impact-lbl">Classrooms for Slum Youth</span>
+                </div>
+                <div class="cpc-impact-box">
+                  <span class="cpc-impact-val">100% Escrow</span>
+                  <span class="cpc-impact-lbl">Full Schooling &amp; Warm Meals</span>
+                </div>
+              </div>
+
+              <!-- Minimalist Process Timeline -->
+              <div class="cpc-process-minimal">
+                <div class="cpc-step-item">
+                  <span class="cpc-step-idx">01</span>
+                  <span>Send Reference Photo</span>
+                </div>
+                <span class="cpc-step-divider">&bull;</span>
+                <div class="cpc-step-item">
+                  <span class="cpc-step-idx">02</span>
+                  <span>Hand-Torn Paper Mosaic</span>
+                </div>
+                <span class="cpc-step-divider">&bull;</span>
+                <div class="cpc-step-item">
+                  <span class="cpc-step-idx">03</span>
+                  <span>Insured Global Courier</span>
                 </div>
               </div>
 
               <!-- Action & Price Row -->
               <div class="cpc-actions-row">
                 <button type="button" class="btn btn-primary btn-cpc-order" onclick="window.openCustomProductModal('portrait')">
-                  <i class="fas fa-scissors"></i> Commission Collage Portrait &rarr;
+                  Commission Collage Portrait &rarr;
                 </button>
                 <div class="cpc-price-pill">
                   <span>From <strong>$150 USD</strong> (&#8358;220k)</span>
@@ -763,7 +860,7 @@
                   <span class="text-emerald font-semibold">Funds 1 Year School</span>
                 </div>
                 <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20would%20like%20to%20commission%20a%20custom%20Collage%20Portrait%20from%20my%20photo." target="_blank" rel="noopener noreferrer" class="cpc-wa-pill">
-                  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                  <i class="fab fa-whatsapp"></i> Atelier WhatsApp Concierge
                 </a>
               </div>
             </div>

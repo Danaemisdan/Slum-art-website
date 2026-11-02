@@ -757,7 +757,7 @@
     }
   };
 
-  // Custom Products (1. Collage Artwork & 2. Collage Portrait) Showcase & Modal Handlers
+  // Custom Products (Collage Artwork & Collage Portrait) Showcase & Modal Handlers
   window.switchCustomProduct = function (productType) {
     const tabArtwork = document.getElementById('cpcTabArtwork');
     const tabPortrait = document.getElementById('cpcTabPortrait');
@@ -787,6 +787,34 @@
       if (panelPortrait) panelPortrait.classList.add('active');
       if (panelArtwork) panelArtwork.classList.remove('active');
     }
+  };
+
+  // Switch Gallery View in Custom Product Showcase (CNN 222 Wall, Archival Detail, etc.)
+  window.switchCustomGalleryImage = function (panelType, imgUrl, caption, badgeText, btnEl) {
+    const panel = document.getElementById(panelType === 'portrait' ? 'cpcPanelPortrait' : 'cpcPanelArtwork');
+    if (!panel) return;
+
+    const mainImg = panel.querySelector('.cpc-showcase-img');
+    const badgeSpan = panel.querySelector('.cpc-frame-badge span');
+    const captionSpan = panel.querySelector('.cpc-artist-caption span:last-child');
+
+    if (mainImg) {
+      mainImg.style.transition = 'opacity 0.2s ease, transform 0.25s ease';
+      mainImg.style.opacity = '0.2';
+      mainImg.style.transform = 'scale(0.98)';
+      setTimeout(() => {
+        mainImg.src = imgUrl;
+        mainImg.style.opacity = '1';
+        mainImg.style.transform = 'scale(1)';
+      }, 150);
+    }
+
+    if (badgeSpan && badgeText) badgeSpan.textContent = badgeText;
+    if (captionSpan && caption) captionSpan.textContent = caption;
+
+    const thumbs = panel.querySelectorAll('.cpc-thumb-btn');
+    thumbs.forEach(t => t.classList.remove('active'));
+    if (btnEl) btnEl.classList.add('active');
   };
 
   window.selectModalCustomProduct = function (productType) {
