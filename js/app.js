@@ -220,6 +220,7 @@
       showToast(`Currency switched to ${newCurr === 'NGN' ? 'Nigerian Naira (₦)' : 'US Dollar ($)'}`);
     }
   }
+  window.setCurrency = setCurrency;
 
   // Asynchronous Geo-IP Precision Currency Detection (verifies country on initial visit)
   async function initGeoCurrencyDetection() {
@@ -757,65 +758,216 @@
     }
   };
 
-  // Custom Products (Collage Artwork & Collage Portrait) Showcase & Modal Handlers
+  // Atelier Showcase Minimal Carousel (21st.dev hero-10 inspired)
+  const ATELIER_CAROUSEL_DATA = [
+    {
+      img: 'assets/images/cnn_collage_portrait_adetunwase.jpg',
+      alt: 'CNN #MyFreedomDay 222 Collage Portraits by Adetunwase Adenle',
+      caption: 'CNN #MyFreedomDay \u2022 222 Handcrafted Portraits by Adetunwase Adenle'
+    },
+    {
+      img: 'assets/images/cnn_collage_portrait_detail.jpg',
+      alt: 'Christiane Amanpour and CNN Anchors Recycled Magazine Detail',
+      caption: 'Recycled Magazine Shading \u2022 Christiane Amanpour & CNN Anchors Detail'
+    },
+    {
+      img: 'assets/images/gallery/gallery_04.jpg',
+      alt: 'Founder Presenting Monumental Collage Portraits to Dignitaries',
+      caption: 'Founder Presentation \u2022 Framed Collage Portraits to Civic Leaders'
+    },
+    {
+      img: 'assets/images/custom_portrait_example_2.jpg',
+      alt: 'Original Bespoke Paper Collage on Museum Archival Board',
+      caption: 'Original Bespoke Paper Collage \u2022 Museum Archival Board'
+    },
+    {
+      img: 'assets/images/gallery/gallery_05.jpg',
+      alt: 'Slum Art Scholars & Mentors Exhibiting Museum-Grade Collages',
+      caption: 'Terra Kulture Exhibition \u2022 Slum Art Scholars & Mentors'
+    }
+  ];
+
+  let currentAtelierSlide = 0;
+  let atelierSlideTimer = null;
+  let activeCustomProductType = 'portrait';
+
+  function updateAtelierPrice(productType) {
+    if (productType) activeCustomProductType = productType;
+    const priceEls = document.querySelectorAll('#cpcPriceTag, .cpc-price-tag');
+    if (!priceEls || priceEls.length === 0) return;
+    const curr = (typeof state !== 'undefined' && state.currency) || window.currentCurrency || 'USD';
+    const priceText = activeCustomProductType === 'portrait'
+      ? (curr === 'USD' ? 'From $150 USD' : 'From ₦220,000 NGN')
+      : (curr === 'USD' ? 'From $120 USD' : 'From ₦180,000 NGN');
+    priceEls.forEach(el => { el.textContent = priceText; });
+  }
+
+  window.setAtelierSlide = function (idx) {
+    const total = ATELIER_CAROUSEL_DATA.length;
+    currentAtelierSlide = (idx + total) % total;
+
+    // Update slides in any active carousel viewport
+    const viewports = document.querySelectorAll('.cpc-carousel-viewport');
+    viewports.forEach(vp => {
+      const slides = vp.querySelectorAll('.cpc-carousel-slide');
+      slides.forEach((s, i) => {
+        s.classList.toggle('active', i === currentAtelierSlide);
+      });
+    });
+
+    // Update indicators
+    const indicatorBars = document.querySelectorAll('.cpc-indicator-bar');
+    indicatorBars.forEach((bar, i) => {
+      const barIdx = i % total;
+      bar.classList.toggle('active', barIdx === currentAtelierSlide);
+    });
+
+    // Update captions
+    const captions = document.querySelectorAll('#cpcSlideCaption, .cpc-slide-caption');
+    captions.forEach(c => {
+      c.textContent = ATELIER_CAROUSEL_DATA[currentAtelierSlide].caption;
+    });
+
+    // Update slide counters
+    const counters = document.querySelectorAll('#cpcSlideCounter, .cpc-slide-counter');
+    counters.forEach(cnt => {
+      const numStr = String(currentAtelierSlide + 1).padStart(2, '0');
+      cnt.innerHTML = `<strong>${numStr}</strong> / 05`;
+    });
+  };
+
+  window.nextAtelierSlide = function () {
+    window.setAtelierSlide(currentAtelierSlide + 1);
+  };
+
+  window.prevAtelierSlide = function () {
+    window.setAtelierSlide(currentAtelierSlide - 1);
+  };
+
+  function startAtelierAutoplay() {
+    if (atelierSlideTimer) clearInterval(atelierSlideTimer);
+    atelierSlideTimer = setInterval(() => {
+      window.nextAtelierSlide();
+    }, 5000);
+  }
+
+  function stopAtelierAutoplay() {
+    if (atelierSlideTimer) {
+      clearInterval(atelierSlideTimer);
+      atelierSlideTimer = null;
+    }
+  }
+
+  // Switch between Collage Portrait and Thematic Artwork
   window.switchCustomProduct = function (productType) {
-    const tabArtwork = document.getElementById('cpcTabArtwork');
-    const tabPortrait = document.getElementById('cpcTabPortrait');
-    const panelArtwork = document.getElementById('cpcPanelArtwork');
-    const panelPortrait = document.getElementById('cpcPanelPortrait');
+    activeCustomProductType = productType || 'portrait';
+    const isPortrait = activeCustomProductType === 'portrait';
 
-    if (productType === 'artwork') {
-      if (tabArtwork) {
-        tabArtwork.classList.add('active');
-        tabArtwork.setAttribute('aria-selected', 'true');
-      }
-      if (tabPortrait) {
-        tabPortrait.classList.remove('active');
-        tabPortrait.setAttribute('aria-selected', 'false');
-      }
-      if (panelArtwork) panelArtwork.classList.add('active');
-      if (panelPortrait) panelPortrait.classList.remove('active');
+    // Tabs
+    const portraitTabs = document.querySelectorAll('#cpcTabPortrait');
+    const artworkTabs = document.querySelectorAll('#cpcTabArtwork');
+    portraitTabs.forEach(t => {
+      t.classList.toggle('active', isPortrait);
+      t.setAttribute('aria-selected', isPortrait ? 'true' : 'false');
+    });
+    artworkTabs.forEach(t => {
+      t.classList.toggle('active', !isPortrait);
+      t.setAttribute('aria-selected', !isPortrait ? 'true' : 'false');
+    });
+
+    // Eyebrow
+    const eyebrows = document.querySelectorAll('#cpcEyebrow');
+    eyebrows.forEach(eb => {
+      eb.innerHTML = isPortrait
+        ? '<span class="cpc-eyebrow-cnn">CNN</span> As Seen on CNN &bull; Private Atelier'
+        : 'Bespoke Commission Atelier &bull; Fine-Art Masterpiece';
+    });
+
+    // Headings
+    const titles = document.querySelectorAll('#cpcTitle');
+    titles.forEach(t => {
+      t.textContent = isPortrait
+        ? 'Turn Any Photo into a Handcrafted Paper Collage Portrait'
+        : 'Commission an Original Recycled Fine-Art Collage Artwork';
+    });
+
+    // Descriptions
+    const descs = document.querySelectorAll('#cpcDesc');
+    descs.forEach(d => {
+      d.textContent = isPortrait
+        ? '4-time Guinness World Record holder Adetunwase Adenle and our young scholars transform your photo into an original fine-art portrait assembled entirely from hand-torn recycled magazines on archival museum board.'
+        : 'Collaborate directly with our master scholars to craft an original thematic artwork—African cultural heritage, wildlife, lagoon seascapes, or abstract mosaics hand-torn from reclaimed paper on museum board.';
+    });
+
+    // Impact text
+    const impacts = document.querySelectorAll('#cpcImpactText');
+    impacts.forEach(imp => {
+      imp.textContent = isPortrait
+        ? "100% of your commission funds a child's accredited schooling, uniform, and daily meals in Lagos."
+        : "Directly funds accredited schooling and hot meals for vulnerable youth in Ijora Badia, Lagos.";
+    });
+
+    // Primary commission buttons
+    const btns = document.querySelectorAll('#cpcBtnOrder');
+    btns.forEach(b => {
+      b.innerHTML = isPortrait
+        ? 'Commission a Portrait &rarr;'
+        : 'Commission Artwork &rarr;';
+      b.setAttribute('onclick', isPortrait ? "window.openCustomProductModal('portrait')" : "window.openCustomProductModal('artwork')");
+    });
+
+    // WhatsApp links
+    const waLinks = document.querySelectorAll('#cpcWaLink');
+    waLinks.forEach(wa => {
+      wa.href = isPortrait
+        ? 'https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20would%20like%20to%20commission%20a%20custom%20Collage%20Portrait%20from%20my%20photo.'
+        : 'https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20would%20like%20to%20commission%20a%20custom%20Collage%20Artwork.';
+    });
+
+    // Price
+    updateAtelierPrice(productType);
+
+    // Contextual carousel jump
+    if (isPortrait) {
+      window.setAtelierSlide(0);
     } else {
-      if (tabPortrait) {
-        tabPortrait.classList.add('active');
-        tabPortrait.setAttribute('aria-selected', 'true');
-      }
-      if (tabArtwork) {
-        tabArtwork.classList.remove('active');
-        tabArtwork.setAttribute('aria-selected', 'false');
-      }
-      if (panelPortrait) panelPortrait.classList.add('active');
-      if (panelArtwork) panelArtwork.classList.remove('active');
+      window.setAtelierSlide(3); // Shows original artwork collage
     }
   };
 
-  // Switch Gallery View in Custom Product Showcase (CNN 222 Wall, Archival Detail, etc.)
-  window.switchCustomGalleryImage = function (panelType, imgUrl, caption, badgeText, btnEl) {
-    const panel = document.getElementById(panelType === 'portrait' ? 'cpcPanelPortrait' : 'cpcPanelArtwork');
-    if (!panel) return;
+  function initAtelierCarousel() {
+    const viewports = document.querySelectorAll('.cpc-carousel-viewport');
+    if (!viewports.length) return;
 
-    const mainImg = panel.querySelector('.cpc-showcase-img');
-    const badgeSpan = panel.querySelector('.cpc-frame-badge span');
-    const captionSpan = panel.querySelector('.cpc-artist-caption span:last-child');
+    viewports.forEach(vp => {
+      // Pause on hover
+      vp.addEventListener('mouseenter', stopAtelierAutoplay);
+      vp.addEventListener('mouseleave', startAtelierAutoplay);
 
-    if (mainImg) {
-      mainImg.style.transition = 'opacity 0.2s ease, transform 0.25s ease';
-      mainImg.style.opacity = '0.2';
-      mainImg.style.transform = 'scale(0.98)';
-      setTimeout(() => {
-        mainImg.src = imgUrl;
-        mainImg.style.opacity = '1';
-        mainImg.style.transform = 'scale(1)';
-      }, 150);
-    }
+      // Touch swipe support
+      let touchStartX = 0;
+      let touchEndX = 0;
+      vp.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      vp.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchEndX < touchStartX - 40) {
+          window.nextAtelierSlide();
+        } else if (touchEndX > touchStartX + 40) {
+          window.prevAtelierSlide();
+        }
+      }, { passive: true });
+    });
 
-    if (badgeSpan && badgeText) badgeSpan.textContent = badgeText;
-    if (captionSpan && caption) captionSpan.textContent = caption;
+    // Update price on currency changes
+    window.addEventListener('currencyChanged', () => updateAtelierPrice());
+    window.addEventListener('slum_currency_updated', () => updateAtelierPrice());
 
-    const thumbs = panel.querySelectorAll('.cpc-thumb-btn');
-    thumbs.forEach(t => t.classList.remove('active'));
-    if (btnEl) btnEl.classList.add('active');
-  };
+    // Start autoplay
+    startAtelierAutoplay();
+    updateAtelierPrice('portrait');
+  }
 
   window.selectModalCustomProduct = function (productType) {
     const cardArtwork = document.getElementById('modalCardArtwork');
@@ -857,7 +1009,7 @@
     if (modal) {
       document.body.classList.add('modal-open');
       modal.classList.add('active');
-      window.selectModalCustomProduct(productType || 'artwork');
+      window.selectModalCustomProduct(productType || 'portrait');
     }
   };
 
@@ -1920,6 +2072,7 @@
     initMHeroDonationThingy();
     initScholarStoriesAutoCycle();
     initGeoCurrencyDetection();
+    initAtelierCarousel();
   }
 
   // Hero Scroll Choreography: Hero elements glide UPWARDS, next section (#who-we-are) comes to life
