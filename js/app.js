@@ -758,7 +758,7 @@
     }
   };
 
-  // Atelier Showcase Minimal Carousel (21st.dev hero-10 inspired)
+  // Atelier Showcase Minimal Carousel (21st.dev hero-10 inspired) - 100% EXCLUSIVE CNN IMAGES
   const ATELIER_CAROUSEL_DATA = [
     {
       img: 'assets/images/cnn_collage_portrait_adetunwase.jpg',
@@ -766,24 +766,24 @@
       caption: 'CNN #MyFreedomDay \u2022 222 Handcrafted Portraits by Adetunwase Adenle'
     },
     {
+      img: 'assets/images/cnn_portraits_mosaic_panorama.jpg',
+      alt: 'Monumental 222 Portraits CNN Red Emblem and Anchors Mosaic',
+      caption: 'Monumental Recycled Magazine Mosaic \u2022 CNN Red Emblem & Anchors'
+    },
+    {
       img: 'assets/images/cnn_collage_portrait_detail.jpg',
-      alt: 'Christiane Amanpour and CNN Anchors Recycled Magazine Detail',
-      caption: 'Recycled Magazine Shading \u2022 Christiane Amanpour & CNN Anchors Detail'
+      alt: 'Christiane Amanpour, Clarissa Ward & Anderson Cooper Archival Mosaic',
+      caption: 'Christiane Amanpour, Clarissa Ward & Anderson Cooper \u2022 Archival Paper Mosaic'
     },
     {
-      img: 'assets/images/gallery/gallery_04.jpg',
-      alt: 'Founder Presenting Monumental Collage Portraits to Dignitaries',
-      caption: 'Founder Presentation \u2022 Framed Collage Portraits to Civic Leaders'
+      img: 'assets/images/cnn_portraits_left_wing.jpg',
+      alt: 'CNN Frontline Reporters Handcrafted Collage Mosaic in Lagos',
+      caption: 'Investigative Reporters Wall \u2022 Reclaimed Newsprint on Archival Board'
     },
     {
-      img: 'assets/images/custom_portrait_example_2.jpg',
-      alt: 'Original Bespoke Paper Collage on Museum Archival Board',
-      caption: 'Original Bespoke Paper Collage \u2022 Museum Archival Board'
-    },
-    {
-      img: 'assets/images/gallery/gallery_05.jpg',
-      alt: 'Slum Art Scholars & Mentors Exhibiting Museum-Grade Collages',
-      caption: 'Terra Kulture Exhibition \u2022 Slum Art Scholars & Mentors'
+      img: 'assets/images/cnn_portraits_anchors_closeup.jpg',
+      alt: 'Bespoke Paper Mosaic Shading Detail of CNN Anchors',
+      caption: 'Bespoke Paper Mosaic Craftsmanship \u2022 Hand-Torn Newsprint Shading'
     }
   ];
 
@@ -931,7 +931,7 @@
     if (isPortrait) {
       window.setAtelierSlide(0);
     } else {
-      window.setAtelierSlide(3); // Shows original artwork collage
+      window.setAtelierSlide(1); // Shows monumental CNN red emblem mosaic
     }
   };
 
@@ -967,6 +967,125 @@
     // Start autoplay
     startAtelierAutoplay();
     updateAtelierPrice('portrait');
+  }
+
+  // Quick Mission Navigator (Direct 1-Click Access to Key Tasks)
+  window.triggerQuickMission = function (task) {
+    // Close the dropdown menu
+    const dropdown = document.getElementById('quickMissionDropdown');
+    const trigger = document.getElementById('quickMissionBtn');
+    if (dropdown) dropdown.classList.remove('open');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+
+    // Close mobile drawer if open
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const backdrop = document.getElementById('drawerBackdrop');
+    if (mobileDrawer) mobileDrawer.classList.remove('active');
+    if (backdrop) backdrop.classList.remove('active');
+    document.body.classList.remove('drawer-open');
+
+    switch (task) {
+      case 'donation':
+        const donateSection = document.getElementById('donate-section') || document.getElementById('bento-donation-engine') || document.getElementById('crowdfunding');
+        if (donateSection) {
+          donateSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          donateSection.classList.add('section-highlight-pulse');
+          setTimeout(() => donateSection.classList.remove('section-highlight-pulse'), 2500);
+        } else {
+          window.open('https://paystack.shop/pay/lk0hlrdlun', '_blank');
+        }
+        break;
+
+      case 'shop':
+        const shopSection = document.getElementById('art-shop') || document.getElementById('homePictureRailSection') || document.getElementById('shopCatalogMount');
+        if (shopSection) {
+          shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.location.href = 'shop.html';
+        }
+        break;
+
+      case 'portrait':
+        window.openCustomProductModal('portrait');
+        break;
+
+      case 'volunteer':
+        window.openVolunteerModal();
+        break;
+
+      case 'partnership':
+        window.openPartnershipModal();
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  window.openPartnershipModal = function () {
+    const modal = document.getElementById('partnershipModal');
+    if (modal) {
+      document.body.classList.add('modal-open');
+      modal.classList.add('active');
+    }
+  };
+
+  window.handlePartnershipSubmit = function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.partnerName ? form.partnerName.value : 'Partner';
+    const org = form.organization ? form.organization.value : 'Organization';
+    const modal = document.getElementById('partnershipModal');
+    if (modal) {
+      const card = modal.querySelector('.modal-card');
+      if (card) {
+        card.innerHTML = `
+          <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+          <div style="padding: 2.5rem 1.75rem; text-align: center;">
+            <div style="width: 72px; height: 72px; border-radius: 50%; background: rgba(59, 130, 246, 0.12); color: #3b82f6; margin: 0.5rem auto 1.25rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-main);">Partnership Proposal Received</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; max-width: 440px; margin: 0 auto 1.5rem;">
+              Thank you, <strong>${name}</strong> from <strong>${org}</strong>. Our executive leadership and founder Adetunwase Adenle will review your inquiry and follow up within 24 hours.
+            </p>
+            <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20just%20submitted%20a%20partnership%20proposal%20for%20${encodeURIComponent(org)}." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp Concierge
+              </a>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="window.closeAllModals()">Close</button>
+            </div>
+          </div>
+        `;
+      }
+    }
+  };
+
+  function initQuickMission() {
+    const dropdown = document.getElementById('quickMissionDropdown');
+    const trigger = document.getElementById('quickMissionBtn');
+    if (!dropdown || !trigger) return;
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dropdown.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.focus();
+      }
+    });
   }
 
   window.selectModalCustomProduct = function (productType) {
@@ -2073,6 +2192,7 @@
     initScholarStoriesAutoCycle();
     initGeoCurrencyDetection();
     initAtelierCarousel();
+    initQuickMission();
   }
 
   // Hero Scroll Choreography: Hero elements glide UPWARDS, next section (#who-we-are) comes to life

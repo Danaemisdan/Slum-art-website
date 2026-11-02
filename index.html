@@ -84,6 +84,91 @@
       </nav>
 
       <div class="nav-actions">
+        <!-- Direct Mission Navigator Dropdown -->
+        <div class="quick-mission-dropdown" id="quickMissionDropdown">
+          <button type="button" class="quick-mission-btn" id="quickMissionBtn" aria-expanded="false" aria-haspopup="true" aria-label="Quick Actions Navigator">
+            <span class="qm-pulse-dot"></span>
+            <i class="fas fa-compass"></i>
+            <span class="qm-btn-text">Quick Actions</span>
+            <i class="fas fa-chevron-down qm-chevron"></i>
+          </button>
+          
+          <div class="quick-mission-menu" id="quickMissionMenu" role="menu" aria-label="Direct Mission Navigator">
+            <div class="qm-menu-header">
+              <span class="qm-menu-kicker">Direct Mission Navigator</span>
+              <span class="qm-menu-title">What would you like to accomplish?</span>
+            </div>
+            
+            <div class="qm-menu-items">
+              <!-- Task 1: Donation -->
+              <button type="button" class="qm-item" onclick="window.triggerQuickMission('donation')" role="menuitem">
+                <div class="qm-item-icon icon-rose">
+                  <i class="fas fa-heart"></i>
+                </div>
+                <div class="qm-item-text">
+                  <strong class="qm-item-title">Make a Donation</strong>
+                  <span class="qm-item-desc">Fund 100% direct child schooling &amp; daily hot meals</span>
+                </div>
+                <i class="fas fa-arrow-right qm-item-arrow"></i>
+              </button>
+
+              <!-- Task 2: Art Purchase -->
+              <button type="button" class="qm-item" onclick="window.triggerQuickMission('shop')" role="menuitem">
+                <div class="qm-item-icon icon-amber">
+                  <i class="fas fa-palette"></i>
+                </div>
+                <div class="qm-item-text">
+                  <strong class="qm-item-title">Purchase Original Art</strong>
+                  <span class="qm-item-desc">Browse handcrafted recycled collages on salon picture rail</span>
+                </div>
+                <i class="fas fa-arrow-right qm-item-arrow"></i>
+              </button>
+
+              <!-- Task 3: Custom Collage Portrait -->
+              <button type="button" class="qm-item" onclick="window.triggerQuickMission('portrait')" role="menuitem">
+                <div class="qm-item-icon icon-gold">
+                  <i class="fas fa-wand-magic-sparkles"></i>
+                </div>
+                <div class="qm-item-text">
+                  <strong class="qm-item-title">Commission Collage Portrait</strong>
+                  <span class="qm-item-desc">Transform your photo into an original mosaic (As seen on CNN)</span>
+                </div>
+                <i class="fas fa-arrow-right qm-item-arrow"></i>
+              </button>
+
+              <!-- Task 4: Volunteer Sign up -->
+              <button type="button" class="qm-item" onclick="window.triggerQuickMission('volunteer')" role="menuitem">
+                <div class="qm-item-icon icon-emerald">
+                  <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="qm-item-text">
+                  <strong class="qm-item-title">Volunteer Sign Up</strong>
+                  <span class="qm-item-desc">Join our mentor &amp; Guinness World Record team in Lagos</span>
+                </div>
+                <i class="fas fa-arrow-right qm-item-arrow"></i>
+              </button>
+
+              <!-- Task 5: Partnership & CSR -->
+              <button type="button" class="qm-item" onclick="window.triggerQuickMission('partnership')" role="menuitem">
+                <div class="qm-item-icon icon-blue">
+                  <i class="fas fa-handshake"></i>
+                </div>
+                <div class="qm-item-text">
+                  <strong class="qm-item-title">Partnership &amp; CSR</strong>
+                  <span class="qm-item-desc">Sponsor bottle classrooms, studio tech &amp; exhibitions</span>
+                </div>
+                <i class="fas fa-arrow-right qm-item-arrow"></i>
+              </button>
+            </div>
+
+            <div class="qm-menu-footer">
+              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20have%20a%20specific%20question%20or%20mission%20in%20mind." target="_blank" rel="noopener noreferrer" class="qm-footer-link">
+                <i class="fab fa-whatsapp"></i> Speak Directly with Atelier Concierge &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
         <!-- Cart Trigger -->
         <button class="cart-trigger" title="View Art Bag" aria-label="Shopping Bag">
           <i class="fas fa-bag-shopping"></i>
@@ -111,6 +196,33 @@
       <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation">
         <i class="fas fa-times"></i>
       </button>
+    </div>
+
+    <!-- Quick Mission Direct Links in Mobile Drawer -->
+    <div class="mobile-drawer-quick-mission">
+      <span class="md-qm-title"><i class="fas fa-compass text-amber"></i> Quick Actions</span>
+      <div class="md-qm-grid">
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('donation')">
+          <i class="fas fa-heart text-rose"></i>
+          <span>Donate</span>
+        </button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('shop')">
+          <i class="fas fa-palette text-amber"></i>
+          <span>Buy Art</span>
+        </button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('portrait')">
+          <i class="fas fa-wand-magic-sparkles text-gold"></i>
+          <span>Portrait</span>
+        </button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('volunteer')">
+          <i class="fas fa-hands-helping text-emerald"></i>
+          <span>Volunteer</span>
+        </button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('partnership')">
+          <i class="fas fa-handshake text-blue"></i>
+          <span>Partner</span>
+        </button>
+      </div>
     </div>
     <nav class="berlix-menu-vertical" aria-label="Mobile Navigation">
       <ul class="berlix-menu-list">
@@ -637,16 +749,16 @@
                 <img src="assets/images/cnn_collage_portrait_adetunwase.jpg" alt="CNN #MyFreedomDay 222 Collage Portraits by Adetunwase Adenle">
               </div>
               <div class="cpc-carousel-slide" data-index="1">
-                <img src="assets/images/cnn_collage_portrait_detail.jpg" alt="Christiane Amanpour and CNN Anchors Recycled Magazine Detail">
+                <img src="assets/images/cnn_portraits_mosaic_panorama.jpg" alt="Monumental 222 Portraits CNN Red Emblem and Anchors Mosaic">
               </div>
               <div class="cpc-carousel-slide" data-index="2">
-                <img src="assets/images/gallery/gallery_04.jpg" alt="Founder Presenting Monumental Collage Portraits to Dignitaries">
+                <img src="assets/images/cnn_collage_portrait_detail.jpg" alt="Christiane Amanpour, Clarissa Ward and Anderson Cooper Archival Mosaic">
               </div>
               <div class="cpc-carousel-slide" data-index="3">
-                <img src="assets/images/custom_portrait_example_2.jpg" alt="Original Bespoke Paper Collage on Museum Archival Board">
+                <img src="assets/images/cnn_portraits_left_wing.jpg" alt="CNN Frontline Reporters Handcrafted Collage Mosaic in Lagos">
               </div>
               <div class="cpc-carousel-slide" data-index="4">
-                <img src="assets/images/gallery/gallery_05.jpg" alt="Slum Art Scholars &amp; Mentors Exhibiting Museum-Grade Collages">
+                <img src="assets/images/cnn_portraits_anchors_closeup.jpg" alt="Bespoke Paper Mosaic Shading Detail of CNN Anchors">
               </div>
             </div>
 
@@ -1973,6 +2085,65 @@
 
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 0.95rem;">
             <i class="fas fa-paper-plane"></i> <span id="cpcSubmitBtnText">Submit Custom Commission Request</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Corporate Partnership & CSR Inquiry Modal -->
+  <div class="modal-overlay" id="partnershipModal">
+    <div class="modal-card" style="max-width: 600px; max-height: calc(100vh - 5rem); overflow-y: auto;">
+      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <div style="padding: 2.25rem 2rem;">
+        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-handshake text-blue"></i> Corporate &amp; Institutional Partnership</div>
+        <h2 style="font-size: 1.65rem; margin-bottom: 0.4rem; color: var(--text-main);">Partner with Slum Art Foundation</h2>
+        <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.55;">
+          Collaborate with us to sponsor sustainable PET Bottle School classrooms, tech animation studios, exhibition showcases, or child scholarship cohorts in Nigeria.
+        </p>
+
+        <form onsubmit="window.handlePartnershipSubmit(event)">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Contact Name *</label>
+              <input type="text" name="partnerName" required placeholder="e.g. Sarah Jenkins" class="modal-form-input">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Organization / Brand *</label>
+              <input type="text" name="organization" required placeholder="e.g. Acme Foundation" class="modal-form-input">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Official Work Email *</label>
+              <input type="email" name="partnerEmail" required placeholder="sarah@organization.com" class="modal-form-input">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Phone / WhatsApp</label>
+              <input type="tel" name="partnerPhone" placeholder="+1 or +234..." class="modal-form-input">
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Partnership Type / Focus *</label>
+            <select name="partnerType" required class="modal-form-input">
+              <option value="CSR Education & Scholarship Cohorts">CSR Education &amp; Child Scholarship Cohort</option>
+              <option value="PET Bottle School Infrastructure">Eco-Architecture: PET Bottle School Infrastructure</option>
+              <option value="AI Animation Studio Sponsorship">Creative Tech: AI Animation Studio</option>
+              <option value="Art Exhibition & Museum Collaboration">Fine Art: Museum &amp; Exhibition Collaboration</option>
+              <option value="Corporate Gift / Bespoke Collages">Corporate Gifting: Bespoke Collage Commissions</option>
+              <option value="Other Strategic Alliance">Other Strategic Alliance</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Partnership Vision / Brief</label>
+            <textarea name="partnerMessage" rows="3" placeholder="Tell us about your organization's goals or proposed collaboration..." class="modal-form-input" style="height: auto; resize: vertical;"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem 1.5rem;">
+            Submit Partnership Proposal &rarr;
           </button>
         </form>
       </div>
