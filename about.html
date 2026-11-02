@@ -10,9 +10,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -20,13 +18,13 @@
   <div class="top-bar">
     <div class="container">
       <div class="top-bar-info">
-        <a href="tel:+2348059994834"><i class="fas fa-phone"></i> +234 805 999 4834</a>
-        <a href="mailto:info@slumart.org"><i class="fas fa-envelope"></i> info@slumart.org</a>
-        <span><i class="fas fa-map-marker-alt text-amber"></i> Lagos, Nigeria</span>
+        <a href="tel:+2348059994834">+234 805 999 4834</a>
+        <a href="mailto:info@slumart.org">info@slumart.org</a>
+        <span>Lagos, Nigeria</span>
       </div>
       <div class="top-bar-actions">
         <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" style="color: #4ade80; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600;">
-          <i class="fab fa-whatsapp"></i> Join WhatsApp
+          Join WhatsApp
         </a>
         <div class="currency-toggle" title="Switch Currency">
           <button class="currency-btn active" data-currency="NGN">₦ NGN</button>
@@ -58,10 +56,8 @@
         <!-- Direct Mission Navigator Dropdown -->
         <div class="quick-mission-dropdown" id="quickMissionDropdown">
           <button type="button" class="quick-mission-btn" id="quickMissionBtn" aria-expanded="false" aria-haspopup="true" aria-label="Quick Actions Navigator">
-            <span class="qm-pulse-dot"></span>
-            <i class="fas fa-compass"></i>
             <span class="qm-btn-text">Quick Actions</span>
-            <i class="fas fa-chevron-down qm-chevron"></i>
+            <span class="qm-caret">▾</span>
           </button>
           
           <div class="quick-mission-menu" id="quickMissionMenu" role="menu" aria-label="Direct Mission Navigator">
@@ -72,69 +68,56 @@
             
             <div class="qm-menu-items">
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('donation')" role="menuitem">
-                <div class="qm-item-icon icon-rose"><i class="fas fa-heart"></i></div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Make a Donation</strong>
                   <span class="qm-item-desc">Fund 100% direct child schooling &amp; daily hot meals</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
 
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('shop')" role="menuitem">
-                <div class="qm-item-icon icon-amber"><i class="fas fa-palette"></i></div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Purchase Original Art</strong>
                   <span class="qm-item-desc">Browse handcrafted recycled collages on salon picture rail</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
 
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('portrait')" role="menuitem">
-                <div class="qm-item-icon icon-gold"><i class="fas fa-wand-magic-sparkles"></i></div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Commission Collage Portrait</strong>
                   <span class="qm-item-desc">Transform your photo into an original mosaic (As seen on CNN)</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
 
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('volunteer')" role="menuitem">
-                <div class="qm-item-icon icon-emerald"><i class="fas fa-hands-helping"></i></div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Volunteer Sign Up</strong>
                   <span class="qm-item-desc">Join our mentor &amp; Guinness World Record team in Lagos</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
 
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('partnership')" role="menuitem">
-                <div class="qm-item-icon icon-blue"><i class="fas fa-handshake"></i></div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Partnership &amp; CSR</strong>
                   <span class="qm-item-desc">Sponsor bottle classrooms, studio tech &amp; exhibitions</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
             </div>
 
             <div class="qm-menu-footer">
-              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20have%20a%20specific%20question%20or%20mission%20in%20mind." target="_blank" rel="noopener noreferrer" class="qm-footer-link">
-                <i class="fab fa-whatsapp"></i> Speak Directly with Atelier Concierge &rarr;
+              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20have%20a%20specific%20question%20or%20mission%20in%20mind." target="_blank" rel="noopener noreferrer" class="qm-footer-link"> Speak Directly with Atelier Concierge &rarr;
               </a>
             </div>
           </div>
         </div>
 
-        <button class="cart-trigger" title="View Art Bag" aria-label="Shopping Bag">
-          <i class="fas fa-bag-shopping"></i>
+        <button class="cart-trigger" id="cartTrigger" title="View Art Bag" aria-label="Shopping Bag">
+          <span class="cart-btn-label">Bag</span>
           <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
         </button>
         <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-primary btn-sm">
-          <i class="fas fa-heart"></i> Donate Now
+          Donate Now
         </a>
-        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">
-          <i class="fas fa-bars"></i>
-        </button>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">Menu</button>
       </div>
     </div>
   </header>
@@ -146,102 +129,49 @@
       <div class="brand-logo">
         <img src="assets/images/logo-light.png" alt="Slum Art" style="height: 42px;">
       </div>
-      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation">
-        <i class="fas fa-times"></i>
-      </button>
+      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation">&times;</button>
     </div>
 
     <!-- Quick Mission Direct Links in Mobile Drawer -->
     <div class="mobile-drawer-quick-mission">
-      <span class="md-qm-title"><i class="fas fa-compass text-amber"></i> Quick Actions</span>
+      <span class="md-qm-title">Quick Actions</span>
       <div class="md-qm-grid">
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('donation')">
-          <i class="fas fa-heart text-rose"></i>
-          <span>Donate</span>
-        </button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('shop')">
-          <i class="fas fa-palette text-amber"></i>
-          <span>Buy Art</span>
-        </button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('portrait')">
-          <i class="fas fa-wand-magic-sparkles text-gold"></i>
-          <span>Portrait</span>
-        </button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('volunteer')">
-          <i class="fas fa-hands-helping text-emerald"></i>
-          <span>Volunteer</span>
-        </button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('partnership')">
-          <i class="fas fa-handshake text-blue"></i>
-          <span>Partner</span>
-        </button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('donation')">Donate</button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('shop')">Buy Art</button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('portrait')">Portrait</button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('volunteer')">Volunteer</button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('partnership')">Partner</button>
       </div>
     </div>
     <nav class="berlix-menu-vertical" aria-label="Mobile Navigation">
       <ul class="berlix-menu-list">
         <li class="berlix-menu-item" style="--item-index: 0;">
           <a href="index.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Home</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 1;">
           <a href="about.html" class="berlix-menu-link active">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">About & Founder</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 2;">
           <a href="shop.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Art Shop & Gallery</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 3;">
           <a href="register.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Guinness Record</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 4;">
           <a href="blog.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Stories &amp; Blog</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 5;">
           <a href="contact.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Contact &amp; Volunteer</span>
           </a>
         </li>
@@ -249,10 +179,10 @@
     </nav>
     <div class="drawer-footer-actions">
       <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-        <i class="fas fa-heart"></i> Donate via Paystack
+        Donate via Paystack
       </a>
       <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
-        <i class="fab fa-whatsapp"></i> Join Community Group
+        Join Community Group
       </a>
     </div>
   </aside>
@@ -260,7 +190,7 @@
   <!-- Page Banner -->
   <section style="background: linear-gradient(135deg, #0b111e 0%, #1e1b4b 100%); color: #ffffff; padding: 4.5rem 0 3.5rem; text-align: center;">
     <div class="container">
-      <div class="section-tag dark"><i class="fas fa-landmark"></i> Who We Are</div>
+      <div class="section-tag dark">Who We Are</div>
       <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 1rem; color: #ffffff;">Our Story, Vision & Leadership</h1>
       <p style="font-size: 1.15rem; color: #cbd5e1; max-width: 680px; margin: 0 auto;">
         Transforming underserved communities across Africa through art, education, technology, and community development.
@@ -274,8 +204,7 @@
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 4rem;">
         <div style="background: var(--bg-page); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.5rem 2rem;">
           <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1rem;">
-            <i class="fas fa-eye"></i>
-          </div>
+            </div>
           <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Our Vision</h3>
           <p style="color: #475569; line-height: 1.7; font-size: 0.95rem;">
             To build a world where every child and young person, regardless of where they come from or their socioeconomic circumstances, has the opportunity to discover their talent, develop their creative potential, and build a meaningful, self-reliant future.
@@ -284,8 +213,7 @@
 
         <div style="background: var(--bg-page); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.5rem 2rem;">
           <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--color-emerald-light); color: var(--color-emerald); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1rem;">
-            <i class="fas fa-rocket"></i>
-          </div>
+            </div>
           <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Our Mission</h3>
           <p style="color: #475569; line-height: 1.7; font-size: 0.95rem;">
             To use art, creativity, education, technology, and community action to empower underserved communities, unlock human potential, create economic opportunities, and develop sustainable solutions to social challenges—starting in Africa and reaching communities around the world.
@@ -300,7 +228,7 @@
             <img src="assets/images/team/founder_1.png" alt="Adetunwase Adenle" style="width: 100%;">
           </div>
           <div>
-            <div class="section-tag"><i class="fas fa-award"></i> Founder & Lead Visionary</div>
+            <div class="section-tag">Founder & Lead Visionary</div>
             <h2 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Adetunwase Adenle</h2>
             <div style="font-size: 1rem; color: var(--color-primary); font-weight: 700; margin-bottom: 1.25rem;">
               Social Entrepreneur • Artist • Innovator • 4-Time Guinness World Records™ Holder
@@ -316,7 +244,7 @@
 
         <!-- The Pet Bottle School Story -->
         <div style="background: var(--bg-subtle); border-radius: var(--radius-xl); padding: 3rem; margin-bottom: 4rem;">
-          <div class="section-tag" style="background: #ffffff;"><i class="fas fa-recycle"></i> Eco-Architectural Innovation</div>
+          <div class="section-tag" style="background: #ffffff;">Eco-Architectural Innovation</div>
           <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">The Slum Art Pet Bottle School</h3>
           <p style="color: #334155; line-height: 1.8; font-size: 1rem; margin-bottom: 1.5rem;">
             Located in the heart of Lagos, Nigeria, the <strong>Pet Bottle School</strong> is an internationally acclaimed structure built using thousands of recycled plastic bottles, discarded bottle caps, and sand. Instead of letting plastic trash pollute local lagoons and canals, Adenle and community youth upcycled the waste into durable, insulated walls for a bright learning hub.
@@ -340,7 +268,7 @@
         <!-- Global Leadership Team -->
         <div style="margin-top: 4rem;">
           <div class="section-header">
-            <div class="section-tag"><i class="fas fa-users"></i> Global Leadership</div>
+            <div class="section-tag">Global Leadership</div>
             <h2 class="section-title">Meet Our Team</h2>
             <p class="section-desc">Guiding operations, international partnerships, and grassroots empowerment.</p>
           </div>
@@ -409,8 +337,8 @@
         Explore our original youth art collection or make a direct contribution via Paystack.
       </p>
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="shop.html" class="btn btn-primary btn-lg"><i class="fas fa-palette"></i> Browse Art Shop</a>
-        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-outline-white btn-lg"><i class="fas fa-heart"></i> Donate Now</a>
+        <a href="shop.html" class="btn btn-primary btn-lg">Browse Art Shop</a>
+        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-outline-white btn-lg">Donate Now</a>
       </div>
     </div>
   </section>
@@ -444,13 +372,11 @@
           <span>&copy; 2026 Slum Art Foundation • Lagos, Nigeria</span>
         </div>
         <div class="skiper-bottom-links">
-          <a href="about.html"><i class="fas fa-circle-info"></i> Founder &amp; Vision</a>
-          <a href="shop.html"><i class="fas fa-palette"></i> Art Gallery</a>
-          <a href="register.html"><i class="fas fa-trophy"></i> Guinness Record</a>
-          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="footer-donate-pill"><i class="fas fa-heart text-amber"></i> Donate Paystack</a>
-          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
-            <i class="fas fa-arrow-up"></i> Top
-          </button>
+          <a href="about.html">Founder &amp; Vision</a>
+          <a href="shop.html">Art Gallery</a>
+          <a href="register.html">Guinness Record</a>
+          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="footer-donate-pill">Donate Paystack</a>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">Top ↑</button>
         </div>
       </div>
     </div>
@@ -461,10 +387,9 @@
   <aside class="cart-drawer" id="cartDrawer">
     <div class="cart-drawer-header">
       <div style="display: flex; align-items: center; gap: 0.6rem;">
-        <i class="fas fa-bag-shopping text-amber" style="font-size: 1.25rem;"></i>
         <h3 style="font-size: 1.2rem;">Your Art Bag</h3>
       </div>
-      <button class="modal-close-btn" id="cartDrawerClose" style="position: static;"><i class="fas fa-times"></i></button>
+      <button class="modal-close-btn" id="cartDrawerClose" style="position: static;">&times;</button>
     </div>
     <div class="cart-drawer-items" id="cartDrawerItems"></div>
     <div class="cart-drawer-foot">
@@ -473,7 +398,7 @@
         <span style="font-size: 1.5rem; font-weight: 800; color: var(--color-primary);" id="cartTotalDisplay">₦0 NGN</span>
       </div>
       <a href="https://paystack.shop/pay/lk0hlrdlun" id="cartCheckoutBtn" target="_blank" class="btn btn-primary btn-lg" style="width: 100%;">
-        <i class="fas fa-lock"></i> Checkout via Paystack
+        Checkout via Paystack
       </a>
     </div>
   </aside>

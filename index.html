@@ -14,9 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
+  <!-- FontAwesome Icons -->  
   <!-- Custom Modern Stylesheet (Cache-Busted) -->
   <link rel="stylesheet" href="css/style.css?v=20261101_v86">
   <link rel="stylesheet" href="css/picture-rail-gallery.css?v=20261102_v85">
@@ -48,13 +46,13 @@
   <div class="top-bar">
     <div class="container">
       <div class="top-bar-info">
-        <a href="tel:+2348059994834"><i class="fas fa-phone"></i> +234 805 999 4834</a>
-        <a href="mailto:info@slumart.org"><i class="fas fa-envelope"></i> info@slumart.org</a>
-        <span><i class="fas fa-map-marker-alt text-amber"></i> Lagos, Nigeria</span>
+        <a href="tel:+2348059994834">+234 805 999 4834</a>
+        <a href="mailto:info@slumart.org">info@slumart.org</a>
+        <span>Lagos, Nigeria</span>
       </div>
       <div class="top-bar-actions">
         <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" style="color: #4ade80; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600;">
-          <i class="fab fa-whatsapp"></i> Join WhatsApp
+          Join WhatsApp
         </a>
         <!-- Currency Switcher -->
         <div class="currency-toggle" title="Switch Currency">
@@ -87,10 +85,8 @@
         <!-- Direct Mission Navigator Dropdown -->
         <div class="quick-mission-dropdown" id="quickMissionDropdown">
           <button type="button" class="quick-mission-btn" id="quickMissionBtn" aria-expanded="false" aria-haspopup="true" aria-label="Quick Actions Navigator">
-            <span class="qm-pulse-dot"></span>
-            <i class="fas fa-compass"></i>
             <span class="qm-btn-text">Quick Actions</span>
-            <i class="fas fa-chevron-down qm-chevron"></i>
+            <span class="qm-caret">▾</span>
           </button>
           
           <div class="quick-mission-menu" id="quickMissionMenu" role="menu" aria-label="Direct Mission Navigator">
@@ -102,86 +98,63 @@
             <div class="qm-menu-items">
               <!-- Task 1: Donation -->
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('donation')" role="menuitem">
-                <div class="qm-item-icon icon-rose">
-                  <i class="fas fa-heart"></i>
-                </div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Make a Donation</strong>
                   <span class="qm-item-desc">Fund 100% direct child schooling &amp; daily hot meals</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
 
               <!-- Task 2: Art Purchase -->
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('shop')" role="menuitem">
-                <div class="qm-item-icon icon-amber">
-                  <i class="fas fa-palette"></i>
-                </div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Purchase Original Art</strong>
                   <span class="qm-item-desc">Browse handcrafted recycled collages on salon picture rail</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
 
               <!-- Task 3: Custom Collage Portrait -->
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('portrait')" role="menuitem">
-                <div class="qm-item-icon icon-gold">
-                  <i class="fas fa-wand-magic-sparkles"></i>
-                </div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Commission Collage Portrait</strong>
                   <span class="qm-item-desc">Transform your photo into an original mosaic (As seen on CNN)</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
 
               <!-- Task 4: Volunteer Sign up -->
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('volunteer')" role="menuitem">
-                <div class="qm-item-icon icon-emerald">
-                  <i class="fas fa-hands-helping"></i>
-                </div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Volunteer Sign Up</strong>
                   <span class="qm-item-desc">Join our mentor &amp; Guinness World Record team in Lagos</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
 
               <!-- Task 5: Partnership & CSR -->
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('partnership')" role="menuitem">
-                <div class="qm-item-icon icon-blue">
-                  <i class="fas fa-handshake"></i>
-                </div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Partnership &amp; CSR</strong>
                   <span class="qm-item-desc">Sponsor bottle classrooms, studio tech &amp; exhibitions</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
             </div>
 
             <div class="qm-menu-footer">
-              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20have%20a%20specific%20question%20or%20mission%20in%20mind." target="_blank" rel="noopener noreferrer" class="qm-footer-link">
-                <i class="fab fa-whatsapp"></i> Speak Directly with Atelier Concierge &rarr;
+              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20have%20a%20specific%20question%20or%20mission%20in%20mind." target="_blank" rel="noopener noreferrer" class="qm-footer-link"> Speak Directly with Atelier Concierge &rarr;
               </a>
             </div>
           </div>
         </div>
 
         <!-- Cart Trigger -->
-        <button class="cart-trigger" title="View Art Bag" aria-label="Shopping Bag">
-          <i class="fas fa-bag-shopping"></i>
+        <button class="cart-trigger" id="cartTrigger" title="View Art Bag" aria-label="Shopping Bag">
+          <span class="cart-btn-label">Bag</span>
           <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
         </button>
 
         <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-          <i class="fas fa-heart"></i> Donate Now
+          Donate Now
         </a>
 
-        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">
-          <i class="fas fa-bars"></i>
-        </button>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">Menu</button>
       </div>
     </div>
   </header>
@@ -193,102 +166,49 @@
       <div class="brand-logo">
         <img src="assets/images/logo-light.png" alt="Slum Art" style="height: 42px;">
       </div>
-      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation">
-        <i class="fas fa-times"></i>
-      </button>
+      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation">&times;</button>
     </div>
 
     <!-- Quick Mission Direct Links in Mobile Drawer -->
     <div class="mobile-drawer-quick-mission">
-      <span class="md-qm-title"><i class="fas fa-compass text-amber"></i> Quick Actions</span>
+      <span class="md-qm-title">Quick Actions</span>
       <div class="md-qm-grid">
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('donation')">
-          <i class="fas fa-heart text-rose"></i>
-          <span>Donate</span>
-        </button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('shop')">
-          <i class="fas fa-palette text-amber"></i>
-          <span>Buy Art</span>
-        </button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('portrait')">
-          <i class="fas fa-wand-magic-sparkles text-gold"></i>
-          <span>Portrait</span>
-        </button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('volunteer')">
-          <i class="fas fa-hands-helping text-emerald"></i>
-          <span>Volunteer</span>
-        </button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('partnership')">
-          <i class="fas fa-handshake text-blue"></i>
-          <span>Partner</span>
-        </button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('donation')">Donate</button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('shop')">Buy Art</button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('portrait')">Portrait</button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('volunteer')">Volunteer</button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('partnership')">Partner</button>
       </div>
     </div>
     <nav class="berlix-menu-vertical" aria-label="Mobile Navigation">
       <ul class="berlix-menu-list">
         <li class="berlix-menu-item" style="--item-index: 0;">
           <a href="index.html" class="berlix-menu-link active">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Home</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 1;">
           <a href="about.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">About & Founder</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 2;">
           <a href="shop.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Art Shop & Gallery</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 3;">
           <a href="register.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Guinness Record</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 4;">
           <a href="blog.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Stories &amp; Blog</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 5;">
           <a href="contact.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Contact &amp; Volunteer</span>
           </a>
         </li>
@@ -296,10 +216,10 @@
     </nav>
     <div class="drawer-footer-actions">
       <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-        <i class="fas fa-heart"></i> Donate via Paystack
+        Donate via Paystack
       </a>
       <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
-        <i class="fab fa-whatsapp"></i> Join Community Group
+        Join Community Group
       </a>
     </div>
   </aside>
@@ -355,7 +275,7 @@
         <!-- 21st.dev Interactive Donation Thingy -->
         <div class="m-hero-donation-box">
           <div class="m-hero-donation-top">
-            <span class="m-hero-donation-label"><i class="fas fa-hand-holding-heart text-amber"></i> CHOOSE SPONSORSHIP</span>
+            <span class="m-hero-donation-label">CHOOSE SPONSORSHIP</span>
             <div class="m-hero-curr-tray" role="group" aria-label="Select currency">
               <button type="button" class="m-hero-curr-btn active" data-curr="USD" id="mHeroCurrUsd">$ USD</button>
               <button type="button" class="m-hero-curr-btn" data-curr="NGN" id="mHeroCurrNgn">₦ NGN</button>
@@ -386,11 +306,10 @@
           <!-- Machined Paystack Giving Button -->
           <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="m-hero-primary-btn" id="mHeroDonateBtn">
             <span id="mHeroDonateText">Sponsor 1 Child's Tuition • $35</span>
-            <i class="fas fa-arrow-right"></i>
-          </a>
+            </a>
 
           <div class="m-hero-trust-line">
-            <span><i class="fas fa-shield-check text-emerald"></i> Official Paystack Escrow</span>
+            <span>Official Paystack Escrow</span>
             <span>&bull;</span>
             <span>100% Direct Model</span>
             <span>&bull;</span>
@@ -424,16 +343,15 @@
     <!-- Bottom Meta / Coordinates -->
     <footer class="m-hero-footer">
       <div class="m-hero-socials">
-        <a href="https://instagram.com/slumartfoundation" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://twitter.com/slumart_org" target="_blank" rel="noopener noreferrer" title="X / Twitter" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://linkedin.com/company/slum-art-foundation" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://youtube.com/@slumartfoundation" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com/slumartfoundation" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://twitter.com/slumart_org" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://linkedin.com/company/slum-art-foundation" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://youtube.com/@slumartfoundation" target="_blank" rel="noopener noreferrer">YouTube</a>
       </div>
 
       <a href="#giving-stage" class="m-hero-scroll-pill">
         <span>Explore Giving Stage</span>
-        <i class="fas fa-chevron-down"></i>
-      </a>
+        </a>
 
       <div class="m-hero-coords">
         <span>Lagos, Nigeria</span>
@@ -532,8 +450,7 @@
           <div class="ui-ambient-glow glow--tr"></div>
           <div class="ui-card-inner">
             <div class="ui-icon-box box--blue">
-              <i class="fas fa-shield-halved"></i>
-            </div>
+              </div>
             <div class="ui-stat-row">
               <h4 class="ui-stat-huge">100%</h4>
               <p class="ui-stat-caption">Direct Educational Escrow</p>
@@ -548,8 +465,7 @@
         <div class="ui-bento-card card--feature-dark">
           <div class="ui-card-inner">
             <div class="ui-icon-box box--amber">
-              <i class="fas fa-award"></i>
-            </div>
+              </div>
             <div class="ui-feature-text">
               <h4 class="ui-feature-title">4&times; Guinness World Records</h4>
               <p class="ui-card-sub text-muted">
@@ -625,7 +541,6 @@
       <!-- Section Header & Provenance Proof Bar -->
       <div class="section-header shop-section-header">
         <div class="gallery-salon-tag">
-          <i class="fas fa-crown text-amber"></i>
           <span>The Permanent Collection &bull; Certified Masterpieces</span>
         </div>
         <h2 class="section-title">Buy a Collage Portrait and Send a Kid to School</h2>
@@ -638,8 +553,7 @@
       <div class="shop-provenance-strip">
         <div class="provenance-pillar">
           <div class="provenance-icon-seal">
-            <i class="fas fa-hand-holding-heart"></i>
-          </div>
+            </div>
           <div class="provenance-content">
             <span class="provenance-kicker">Direct Youth Impact</span>
             <span class="provenance-value">$20,450 USD</span>
@@ -649,8 +563,7 @@
 
         <div class="provenance-pillar">
           <div class="provenance-icon-seal">
-            <i class="fas fa-earth-africa"></i>
-          </div>
+            </div>
           <div class="provenance-content">
             <span class="provenance-kicker">Global Patrons</span>
             <span class="provenance-value">142 Canvases</span>
@@ -660,8 +573,7 @@
 
         <div class="provenance-pillar">
           <div class="provenance-icon-seal">
-            <i class="fas fa-award"></i>
-          </div>
+            </div>
           <div class="provenance-content">
             <span class="provenance-kicker">Archival Provenance</span>
             <span class="provenance-value">1-of-1 Originals</span>
@@ -671,8 +583,7 @@
 
         <div class="provenance-pillar">
           <div class="provenance-icon-seal">
-            <i class="fas fa-truck-fast"></i>
-          </div>
+            </div>
           <div class="provenance-content">
             <span class="provenance-kicker">Global Transit</span>
             <span class="provenance-value">DHL Express</span>
@@ -685,12 +596,11 @@
       <div class="shop-filter-bar shop-filter-bar--rail-top">
         <div class="shop-filter-top">
           <div class="search-box-wrap">
-            <i class="fas fa-magnifying-glass text-amber"></i>
             <input type="text" id="shopSearchInput" class="search-input" placeholder="Search archive by portrait title, young artist, or collage style (e.g. Kehinde, Collage, Portrait)...">
           </div>
 
           <div class="sort-select-wrap">
-            <label for="sortSelect"><i class="fas fa-arrow-down-wide-short text-amber"></i> Sort Archive:</label>
+            <label for="sortSelect">Sort Archive:</label>
             <select id="sortSelect" class="sort-select">
               <option value="default">Curator's Highlights</option>
               <option value="price-asc">Price: Low to High</option>
@@ -702,14 +612,14 @@
 
         <!-- Curated Collection Pills + Custom Commission Button -->
         <div class="category-pills">
-          <button class="cat-pill active" data-category="all"><i class="fas fa-layer-group"></i> All Collage Portraits (36)</button>
-          <button class="cat-pill" data-category="Paper Collage Portraits"><i class="fas fa-user-astronaut"></i> Paper Collage Portraits</button>
-          <button class="cat-pill" data-category="Scholar Portraits"><i class="fas fa-graduation-cap"></i> Scholar Portraits</button>
-          <button class="cat-pill" data-category="Heritage & Elder Portraits"><i class="fas fa-crown"></i> Heritage &amp; Elder Portraits</button>
-          <button class="cat-pill" data-category="Vibrant Paper Collage"><i class="fas fa-palette"></i> Vibrant Paper Collage</button>
-          <button class="cat-pill" data-category="Monochrome Newsprint"><i class="fas fa-newspaper"></i> Monochrome Newsprint</button>
+          <button class="cat-pill active" data-category="all">All Collage Portraits (36)</button>
+          <button class="cat-pill" data-category="Paper Collage Portraits">Paper Collage Portraits</button>
+          <button class="cat-pill" data-category="Scholar Portraits">Scholar Portraits</button>
+          <button class="cat-pill" data-category="Heritage & Elder Portraits">Heritage &amp; Elder Portraits</button>
+          <button class="cat-pill" data-category="Vibrant Paper Collage">Vibrant Paper Collage</button>
+          <button class="cat-pill" data-category="Monochrome Newsprint">Monochrome Newsprint</button>
           <button type="button" class="cat-pill cat-pill-custom-action" onclick="window.openCustomProductModal('artwork')">
-            <i class="fas fa-wand-magic-sparkles text-amber"></i> Commission Custom Collage Portrait <span class="custom-badge-spark">Custom</span>
+            Commission Custom Collage Portrait <span class="custom-badge-spark">Custom</span>
           </button>
         </div>
       </div>
@@ -742,8 +652,8 @@
           <!-- 5-Image Minimal Carousel (Left) -->
           <div class="cpc-carousel-container" id="cpcCarouselContainer">
             <div class="cpc-carousel-viewport" id="cpcCarouselViewport">
-              <button type="button" class="cpc-nav-btn prev" onclick="window.prevAtelierSlide()" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
-              <button type="button" class="cpc-nav-btn next" onclick="window.nextAtelierSlide()" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+              <button type="button" class="cpc-nav-btn prev" onclick="window.prevAtelierSlide()" aria-label="Previous image">&lsaquo;</button>
+              <button type="button" class="cpc-nav-btn next" onclick="window.nextAtelierSlide()" aria-label="Next image">&rsaquo;</button>
               
               <div class="cpc-carousel-slide active" data-index="0">
                 <img src="assets/images/cnn_collage_portrait_adetunwase.jpg" alt="CNN #MyFreedomDay 222 Collage Portraits by Adetunwase Adenle">
@@ -783,7 +693,6 @@
               4-time Guinness World Record holder Adetunwase Adenle and our young scholars transform your photo into an original fine-art portrait assembled entirely from hand-torn recycled magazines on archival museum board.
             </p>
             <div class="cpc-impact-highlight" id="cpcImpactBox">
-              <i class="fas fa-check-circle"></i>
               <span id="cpcImpactText">100% of your commission funds a child's accredited schooling, uniform, and daily meals in Lagos.</span>
             </div>
             <div class="cpc-actions-row">
@@ -792,7 +701,7 @@
               </button>
               <div class="cpc-price-tag" id="cpcPriceTag">From $150 USD</div>
               <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20would%20like%20to%20commission%20a%20custom%20Collage%20Portrait%20from%20my%20photo." target="_blank" rel="noopener noreferrer" class="cpc-wa-link" id="cpcWaLink">
-                <i class="fab fa-whatsapp"></i> WhatsApp Concierge
+                WhatsApp Concierge
               </a>
             </div>
           </div>
@@ -810,10 +719,9 @@
     <div class="container">
       <div class="art-impact-inner">
         <div class="art-impact-header">
-          <span class="art-impact-kicker"><i class="fas fa-heart text-amber"></i> CHANGING LIVES THROUGH ART</span>
+          <span class="art-impact-kicker">CHANGING LIVES THROUGH ART</span>
           <h3 class="art-impact-heading">Every Brushstroke Fuels a Child’s Future</h3>
           <div class="art-impact-assurance-badge">
-            <i class="fas fa-shield-halved text-amber"></i>
             <span>100% Direct Impact &bull; Certified Youth Tuition &amp; Nutrition</span>
           </div>
           <p class="art-impact-sub">
@@ -823,7 +731,7 @@
 
         <div class="art-impact-metrics-grid">
           <div class="impact-metric-card">
-            <div class="impact-metric-icon"><i class="fas fa-trophy"></i></div>
+            <div class="impact-metric-icon"></div>
             <div class="impact-metric-body">
               <span class="impact-metric-num count-up" data-target="4" data-suffix="x">4x</span>
               <span class="impact-metric-label">Guinness World Records</span>
@@ -832,7 +740,7 @@
           </div>
 
           <div class="impact-metric-card">
-            <div class="impact-metric-icon"><i class="fas fa-certificate"></i></div>
+            <div class="impact-metric-icon"></div>
             <div class="impact-metric-body">
               <span class="impact-metric-num count-up" data-target="36" data-suffix="+">36+</span>
               <span class="impact-metric-label">Certified Artworks</span>
@@ -841,7 +749,7 @@
           </div>
 
           <div class="impact-metric-card">
-            <div class="impact-metric-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="impact-metric-icon"></div>
             <div class="impact-metric-body">
               <span class="impact-metric-num count-up" data-target="1000" data-suffix="+">1,000+</span>
               <span class="impact-metric-label">Children Reached</span>
@@ -850,7 +758,7 @@
           </div>
 
           <div class="impact-metric-card">
-            <div class="impact-metric-icon"><i class="fas fa-globe"></i></div>
+            <div class="impact-metric-icon"></div>
             <div class="impact-metric-body">
               <span class="impact-metric-num count-up" data-target="18" data-suffix="+">18+</span>
               <span class="impact-metric-label">Countries Worldwide</span>
@@ -871,7 +779,7 @@
       <div class="partners-section-header">
         <div class="partners-header-left">
           <span class="partners-kicker">
-            <i class="fas fa-handshake-angle text-amber"></i> INSTITUTIONAL PATRONS &amp; ALLIES
+            INSTITUTIONAL PATRONS &amp; ALLIES
           </span>
           <h2 class="partners-title">Recognized &amp; Supported By</h2>
         </div>
@@ -1115,10 +1023,8 @@
           <div class="founder-action-wrap">
             <a href="about.html" class="founder-tactile-btn">
               <span>Read Full Foundation Story</span>
-              <i class="fas fa-arrow-right"></i>
-            </a>
+              </a>
             <button type="button" class="founder-ghost-btn" onclick="window.openGwrModal()">
-              <i class="fas fa-trophy"></i>
               <span>Guinness Project Details</span>
             </button>
           </div>
@@ -1167,11 +1073,10 @@
           <div class="gwr-patron-registry-card">
             <div class="gwr-registry-header">
               <div class="gwr-registry-title">
-                <i class="fas fa-feather-pointed text-amber"></i>
                 <span>Choose Your Inscribed Patron Tier</span>
               </div>
               <span class="gwr-allocation-tag">
-                <i class="fas fa-shield-heart text-emerald"></i> 100% Direct Non-Profit Allocation
+                100% Direct Non-Profit Allocation
               </span>
             </div>
 
@@ -1208,28 +1113,23 @@
             <!-- Primary Actions Row -->
             <div class="gwr-cta-actions">
               <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-gwr-pledge-action" id="gwrBackNowBtn">
-                <i class="fas fa-heart"></i>
                 <span id="gwrBackNowBtnText">Pledge $1 &amp; Inscribe Your Name</span>
-                <i class="fas fa-arrow-right gwr-arrow-icon"></i>
-              </a>
+                </a>
 
               <button type="button" class="btn btn-gwr-volunteer-action" onclick="window.openVolunteerModal()">
-                <i class="fas fa-hands-helping"></i> Volunteer With Us
+                Volunteer With Us
               </button>
             </div>
 
             <!-- Real Institutional Transparency -->
             <div class="gwr-institutional-footer">
               <div class="gwr-inst-item">
-                <i class="fas fa-building-columns"></i>
                 <span>Slum Art Foundation • RC: 139169</span>
               </div>
               <div class="gwr-inst-item">
-                <i class="fas fa-check-circle text-emerald"></i>
                 <span>100% Direct Allocation to Pet Bottle Schools</span>
               </div>
               <div class="gwr-inst-item">
-                <i class="fas fa-lock"></i>
                 <span>Secure Paystack Global Checkout</span>
               </div>
             </div>
@@ -1251,7 +1151,6 @@
                   <span>GUINNESS WORLD RECORDS™ ATTEMPT</span>
                 </div>
                 <div class="gwr-monograph-preview-pill">
-                  <i class="fas fa-book-open"></i>
                   <span>Look Inside</span>
                 </div>
               </div>
@@ -1268,7 +1167,7 @@
                 120-page full-color historical archive authored by 5,000 children across Nigeria. Chronicles the journey from discarded PET bottles to community art academies.
               </p>
               <div class="gwr-meta-row">
-                <span class="gwr-meta-note"><i class="fas fa-globe text-amber"></i> Printed &amp; Shipped Worldwide</span>
+                <span class="gwr-meta-note">Printed &amp; Shipped Worldwide</span>
               </div>
             </div>
 
@@ -1320,7 +1219,7 @@
       <!-- 3 Impact Pillars Connecting Directly to Comic Book Proceeds & Sympathy -->
       <div class="eco-3d-impact-grid">
         <div class="eco-impact-card">
-          <div class="eco-impact-icon"><i class="fas fa-recycle text-amber"></i></div>
+          <div class="eco-impact-icon"></div>
           <div class="eco-impact-body">
             <h4>From Trash to Floating Desks</h4>
             <p>50,000 plastic bottles recovered from polluted lagoons are compacted and mortared into disaster-resilient classroom walls, turning an environmental crisis into children's desks.</p>
@@ -1328,7 +1227,7 @@
         </div>
 
         <div class="eco-impact-card">
-          <div class="eco-impact-icon icon--emerald"><i class="fas fa-graduation-cap text-emerald"></i></div>
+          <div class="eco-impact-icon icon--emerald"></div>
           <div class="eco-impact-body">
             <h4>100% Free Education &amp; Hot Meals</h4>
             <p>Every child enrolled receives free accredited primary schooling, crested uniforms, schoolbooks, healthcare, and daily hot meals—taking them off the streets for good.</p>
@@ -1336,7 +1235,7 @@
         </div>
 
         <div class="eco-impact-card">
-          <div class="eco-impact-icon icon--gold"><i class="fas fa-award text-amber"></i></div>
+          <div class="eco-impact-icon icon--gold"></div>
           <div class="eco-impact-body">
             <h4>All Comic Proceeds Fund This ($1)</h4>
             <p>100% of proceeds from our Guinness World Record Comic Book fund this bottle school. A simple $1 pledge permanently inscripts your name into Guinness history and builds a child's future.</p>
@@ -1347,12 +1246,10 @@
       <!-- Urgent Sympathy Action Footer -->
       <div class="eco-3d-actions-row">
         <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-gwr-pledge-action">
-          <i class="fas fa-heart"></i>
           <span>Pledge $1 &amp; Build This Bottle School</span>
-          <i class="fas fa-arrow-right gwr-arrow-icon"></i>
-        </a>
+          </a>
         <a href="#art-shop" class="btn btn-gwr-volunteer-action">
-          <i class="fas fa-palette"></i> Browse Student Artworks
+          Browse Student Artworks
         </a>
       </div>
 
@@ -1373,21 +1270,13 @@
         <div class="split-card-scrim-vignette"></div>
         
         <div class="split-card-content">
-          <span class="split-badge badge--volunteer"><i class="fas fa-trophy text-amber"></i> Guinness World Records™</span>
+          <span class="split-badge badge--volunteer">Guinness World Records™</span>
           <h3 class="split-title">Volunteer to be a part of the Guinness world records</h3>
           <p class="split-desc">
             Are you looking for a way to make a real impact? Join our team of artists, mentors, and educators empowering 5,000 children to create the world's largest collaborative comic book and set new world records.
           </p>
           <button type="button" class="btn btn-split-primary" onclick="window.openVolunteerModal()">
-            Join as Volunteer <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Center Helping Heart Emblem -->
-      <div class="split-center-emblem" aria-hidden="true">
-        <div class="emblem-inner-circle">
-          <i class="fas fa-hand-holding-heart emblem-helping-icon"></i>
+            Join as Volunteer </button>
         </div>
       </div>
 
@@ -1398,14 +1287,13 @@
         <div class="split-card-scrim-vignette"></div>
         
         <div class="split-card-content">
-          <span class="split-badge badge--works"><i class="fas fa-palette"></i> 100% Student Fine Art</span>
+          <span class="split-badge badge--works">100% Student Fine Art</span>
           <h3 class="split-title">View Our Works</h3>
           <p class="split-desc">
             Discover museum-grade collage portraits and sustainable crafts created by talented children across Nigeria's floating lagoon communities.
           </p>
           <a href="#art-shop" class="btn btn-split-orange">
-            View Gallery &amp; Shop <i class="fas fa-arrow-right"></i>
-          </a>
+            View Gallery &amp; Shop </a>
         </div>
       </div>
 
@@ -1422,7 +1310,7 @@
       
       <!-- Section Header -->
       <div class="section-header text-center" style="margin-bottom: 2.25rem;">
-        <div class="section-tag"><i class="fas fa-heart text-amber"></i> Changing Lives Through Creative Education</div>
+        <div class="section-tag">Changing Lives Through Creative Education</div>
         <h2 class="section-title">Life in Nigeria &amp; The Pet Bottle School</h2>
         <p class="section-desc" style="max-width: 720px; margin: 0 auto;">
           Step into our living creative sanctuary in Lagos. Documenting daily community life, the Pet Bottle School, mentor-led masterclasses, and children transforming scrap materials into global art.
@@ -1432,19 +1320,19 @@
       <!-- Category Filter Pills -->
       <div class="cl-filter-bar">
         <button type="button" class="cl-filter-btn active" data-cat="all" onclick="window.filterChangingLives('all', this)">
-          <i class="fas fa-layer-group"></i> All Stories (8)
+          All Stories (8)
         </button>
         <button type="button" class="cl-filter-btn" data-cat="school" onclick="window.filterChangingLives('school', this)">
-          <i class="fas fa-school"></i> Pet Bottle School
+          Pet Bottle School
         </button>
         <button type="button" class="cl-filter-btn" data-cat="sanctuary" onclick="window.filterChangingLives('sanctuary', this)">
-          <i class="fas fa-palette"></i> Creative Sanctuary
+          Creative Sanctuary
         </button>
         <button type="button" class="cl-filter-btn" data-cat="upcycling" onclick="window.filterChangingLives('upcycling', this)">
-          <i class="fas fa-recycle"></i> Upcycled Waste-to-Art
+          Upcycled Waste-to-Art
         </button>
         <button type="button" class="cl-filter-btn" data-cat="prodigies" onclick="window.filterChangingLives('prodigies', this)">
-          <i class="fas fa-user-graduate"></i> Young Scholars
+          Young Scholars
         </button>
       </div>
 
@@ -1455,7 +1343,7 @@
         <div class="changing-lives-card" data-category="school">
           <div class="cl-card-media-wrap">
             <img src="assets/images/gallery/gallery_01.jpg" alt="The Pet Bottle Classroom in Ijora-Badia" class="cl-card-img" loading="lazy">
-            <span class="cl-card-tag"><i class="fas fa-leaf"></i> Eco-Architecture</span>
+            <span class="cl-card-tag">Eco-Architecture</span>
           </div>
           <div class="cl-card-content">
             <h3 class="cl-card-title">The Pet Bottle Classroom</h3>
@@ -1469,7 +1357,7 @@
         <div class="changing-lives-card" data-category="sanctuary">
           <div class="cl-card-media-wrap">
             <img src="assets/images/gallery/gallery_02.jpg" alt="Mentorship Sanctuary inside the Bottle School" class="cl-card-img" loading="lazy">
-            <span class="cl-card-tag"><i class="fas fa-shield-heart"></i> Creative Sanctuary</span>
+            <span class="cl-card-tag">Creative Sanctuary</span>
           </div>
           <div class="cl-card-content">
             <h3 class="cl-card-title">Safe Harbor &amp; Mentorship</h3>
@@ -1483,7 +1371,7 @@
         <div class="changing-lives-card" data-category="prodigies">
           <div class="cl-card-media-wrap">
             <img src="assets/images/gallery/gallery_03.jpg" alt="Slum Art youth scholar smiling in official shirt" class="cl-card-img" loading="lazy">
-            <span class="cl-card-tag"><i class="fas fa-palette"></i> Youth Scholar</span>
+            <span class="cl-card-tag">Youth Scholar</span>
           </div>
           <div class="cl-card-content">
             <h3 class="cl-card-title">&ldquo;This Collage Has a Future. So Do I.&rdquo;</h3>
@@ -1497,7 +1385,7 @@
         <div class="changing-lives-card" data-category="prodigies">
           <div class="cl-card-media-wrap">
             <img src="assets/images/gallery/gallery_04.jpg" alt="Founder presenting upcycled paper collage portrait" class="cl-card-img" loading="lazy">
-            <span class="cl-card-tag"><i class="fas fa-award"></i> Civic Leadership</span>
+            <span class="cl-card-tag">Civic Leadership</span>
           </div>
           <div class="cl-card-content">
             <h3 class="cl-card-title">Waste-to-Fine-Art Masterpieces</h3>
@@ -1511,7 +1399,7 @@
         <div class="changing-lives-card" data-category="prodigies">
           <div class="cl-card-media-wrap">
             <img src="assets/images/gallery/gallery_05.jpg" alt="Mentors and young scholars presenting framed artwork" class="cl-card-img" loading="lazy">
-            <span class="cl-card-tag"><i class="fas fa-paint-brush"></i> Fine Art Exhibition</span>
+            <span class="cl-card-tag">Fine Art Exhibition</span>
           </div>
           <div class="cl-card-content">
             <h3 class="cl-card-title">Student Fine Art Exhibition</h3>
@@ -1525,7 +1413,7 @@
         <div class="changing-lives-card" data-category="upcycling">
           <div class="cl-card-media-wrap">
             <img src="assets/images/gallery/gallery_06.jpg" alt="Founder in front of the Plastic Bottle School Construction Project" class="cl-card-img" loading="lazy">
-            <span class="cl-card-tag"><i class="fas fa-recycle"></i> Waste-to-Art</span>
+            <span class="cl-card-tag">Waste-to-Art</span>
           </div>
           <div class="cl-card-content">
             <h3 class="cl-card-title">Plastic Bottle Architecture</h3>
@@ -1539,7 +1427,7 @@
         <div class="changing-lives-card" data-category="sanctuary">
           <div class="cl-card-media-wrap">
             <img src="assets/images/gallery/gallery_07.jpg" alt="Female mentors and leadership team at the Bottle School" class="cl-card-img" loading="lazy">
-            <span class="cl-card-tag"><i class="fas fa-sparkles"></i> Female Leadership</span>
+            <span class="cl-card-tag">Female Leadership</span>
           </div>
           <div class="cl-card-content">
             <h3 class="cl-card-title">Empowered Community Mentors</h3>
@@ -1553,7 +1441,7 @@
         <div class="changing-lives-card" data-category="school">
           <div class="cl-card-media-wrap">
             <img src="assets/images/gallery/gallery_08.jpg" alt="Scholarship grant presentation to Slum Art Foundation" class="cl-card-img" loading="lazy">
-            <span class="cl-card-tag"><i class="fas fa-hand-holding-dollar"></i> Direct Impact</span>
+            <span class="cl-card-tag">Direct Impact</span>
           </div>
           <div class="cl-card-content">
             <h3 class="cl-card-title">Scholarships &amp; Direct Support</h3>
@@ -1572,7 +1460,7 @@
           <span>Acquiring an original collage portrait sponsors full annual tuition, books, and daily meals for a young artist.</span>
         </div>
         <a href="#art-shop" class="btn btn-primary btn-sm">
-          <i class="fas fa-shopping-bag"></i> Browse Art Shop
+          Browse Art Shop
         </a>
       </div>
 
@@ -1587,15 +1475,14 @@
     <div class="container">
       <div class="home-blogs-header">
         <div class="home-blogs-header-text">
-          <div class="section-tag"><i class="fas fa-newspaper text-amber"></i> Field Dispatch &amp; Media</div>
+          <div class="section-tag">Field Dispatch &amp; Media</div>
           <h2>Latest News &amp; Field Stories</h2>
           <p>Dispatches from our Lagos floating atelier, Guinness World Record milestones, and the young scholars transforming reclaimed waste into museum masterpieces.</p>
         </div>
         <div class="home-blogs-action">
           <a href="blog.html" class="btn-blog-all">
             <span>Explore All Stories</span>
-            <i class="fas fa-arrow-right"></i>
-          </a>
+            </a>
         </div>
       </div>
 
@@ -1619,8 +1506,7 @@
     <div class="services-content-wrap">
       <!-- Circular Video Play Trigger Button -->
       <button type="button" class="services-play-btn" onclick="window.openVideoModal('VNrDvOuh_-E')" aria-label="Watch Our Video Highlight">
-        <i class="fas fa-play"></i>
-      </button>
+        </button>
 
       <!-- Script Subtitle -->
       <span class="services-script-sub">Watch Our Video Highlight</span>
@@ -1672,15 +1558,13 @@
           <span>&copy; 2026 Slum Art Foundation • Lagos, Nigeria</span>
         </div>
         <div class="skiper-bottom-links">
-          <a href="index.html"><i class="fas fa-home"></i> Home</a>
-          <a href="about.html"><i class="fas fa-circle-info"></i> Founder &amp; Vision</a>
-          <a href="shop.html"><i class="fas fa-palette"></i> Art Gallery</a>
-          <a href="blog.html"><i class="fas fa-newspaper"></i> Field Stories</a>
-          <a href="register.html"><i class="fas fa-trophy"></i> Guinness Record</a>
-          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="footer-donate-pill"><i class="fas fa-heart text-amber"></i> Donate Paystack</a>
-          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
-            <i class="fas fa-arrow-up"></i> Top
-          </button>
+          <a href="index.html">Home</a>
+          <a href="about.html">Founder &amp; Vision</a>
+          <a href="shop.html">Art Gallery</a>
+          <a href="blog.html">Field Stories</a>
+          <a href="register.html">Guinness Record</a>
+          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="footer-donate-pill">Donate Paystack</a>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">Top ↑</button>
         </div>
       </div>
     </div>
@@ -1689,7 +1573,7 @@
   <!-- Quick View Artwork Modal -->
   <div class="modal-overlay" id="quickviewModal">
     <div class="modal-card" style="max-width: 860px;">
-      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
       <div class="quickview-grid">
         <!-- Injected via JS -->
       </div>
@@ -1699,7 +1583,7 @@
   <!-- Video Documentary Modal -->
   <div class="modal-overlay" id="videoModal">
     <div class="modal-card" style="max-width: 800px; padding: 0; background: #000; overflow: hidden;">
-      <button class="modal-close-btn" onclick="window.closeVideoModal()" style="color: #ffffff; background: rgba(255,255,255,0.2);"><i class="fas fa-times"></i></button>
+      <button class="modal-close-btn" onclick="window.closeVideoModal()" style="color: #ffffff; background: rgba(255,255,255,0.2);">&times;</button>
       <div style="aspect-ratio: 16/9; width: 100%;">
         <iframe id="videoFrame" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
@@ -1709,9 +1593,9 @@
   <!-- Guinness World Record Registration Modal -->
   <div class="modal-overlay" id="gwrModal">
     <div class="modal-card" style="max-width: 600px;">
-      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
       <div style="padding: 2.5rem 2rem;">
-        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-trophy"></i> Guinness World Records™ Registration</div>
+        <div class="section-tag" style="margin-bottom: 0.5rem;">Guinness World Records™ Registration</div>
         <h2 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Largest Collaborative Comic Book Project</h2>
         <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
           Register as an official participant or supporter. You will receive an official record code and verification certificate.
@@ -1755,7 +1639,7 @@
           </div>
 
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
-            <i class="fas fa-check-circle"></i> Confirm Official Registration
+            Confirm Official Registration
           </button>
         </form>
       </div>
@@ -1765,9 +1649,9 @@
   <!-- Volunteer Application Modal -->
   <div class="modal-overlay" id="volunteerModal">
     <div class="modal-card" style="max-width: 580px;">
-      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
       <div style="padding: 2.5rem 2rem;">
-        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-trophy text-amber"></i> Guinness World Records™ &bull; Get Involved</div>
+        <div class="section-tag" style="margin-bottom: 0.5rem;">Guinness World Records™ &bull; Get Involved</div>
         <h2 style="font-size: 1.65rem; margin-bottom: 0.5rem; line-height: 1.25; color: var(--text-main);">Volunteer to be a part of the Guinness world records</h2>
         <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.6;">
           Join our historic movement! Bring your skills, passion, and heart to Slum Art Foundation as we guide 5,000 children to author the world's largest collaborative comic book and set new Guinness World Records™.
@@ -1804,19 +1688,19 @@
           <div class="sketch-textarea-group">
             <label class="sketch-label" for="volunteerMessage">
               <span>Short Message / Background</span>
-              <span class="sketch-badge"><i class="fas fa-feather-pointed"></i> Artist Note</span>
+              <span class="sketch-badge">Artist Note</span>
             </label>
             <div class="sketch-textarea-wrap" data-max-chars="500">
               <svg class="sketch-textarea-svg" aria-hidden="true"></svg>
               <textarea id="volunteerMessage" name="message" rows="3" placeholder="Tell us a little bit about yourself and why you want to volunteer for the Guinness World Record project..." class="sketch-textarea"></textarea>
               <div class="sketch-textarea-footer">
-                <span class="sketch-hint"><i class="fas fa-trophy text-amber"></i> Help us empower 5,000 scholars</span>
+                <span class="sketch-hint">Help us empower 5,000 scholars</span>
                 <span class="sketch-char-count"><span class="sketch-current">0</span> / 500</span>
               </div>
             </div>
           </div>
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
-            <i class="fas fa-trophy text-amber"></i> Volunteer for Guinness World Records
+            Volunteer for Guinness World Records
           </button>
         </form>
       </div>
@@ -1828,10 +1712,9 @@
   <aside class="cart-drawer" id="cartDrawer">
     <div class="cart-drawer-header">
       <div style="display: flex; align-items: center; gap: 0.6rem;">
-        <i class="fas fa-bag-shopping text-amber" style="font-size: 1.25rem;"></i>
         <h3 style="font-size: 1.2rem;">Your Art Bag</h3>
       </div>
-      <button class="modal-close-btn" id="cartDrawerClose" style="position: static;"><i class="fas fa-times"></i></button>
+      <button class="modal-close-btn" id="cartDrawerClose" style="position: static;">&times;</button>
     </div>
 
     <div class="cart-drawer-items" id="cartDrawerItems">
@@ -1847,7 +1730,7 @@
         100% of your acquisition funds school fees, nutritious feeding, and materials for our young artists.
       </p>
       <a href="https://paystack.shop/pay/lk0hlrdlun" id="cartCheckoutBtn" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="width: 100%;">
-        <i class="fas fa-lock"></i> Proceed to Paystack Checkout
+        Proceed to Paystack Checkout
       </a>
     </div>
   </aside>
@@ -1855,9 +1738,9 @@
   <!-- Comic Ambassador Onboarding Modal -->
   <div class="modal-overlay" id="comicAmbassadorModal">
     <div class="modal-card" style="max-width: 620px;">
-      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
       <div style="padding: 2.75rem 2rem;">
-        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-bullhorn text-amber"></i> The Comic Project • Social Media Ambassador</div>
+        <div class="section-tag" style="margin-bottom: 0.5rem;">The Comic Project • Social Media Ambassador</div>
         <h2 style="font-size: 1.7rem; margin-bottom: 0.5rem;">Join the 5,000 Ambassador Movement</h2>
         <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.6;">
           Become an official ambassador! We will teach you how to edit videos, supply pre-edited CapCut templates, and coordinate your synchronized drops. Onboard 3 people and commit $1/month to support slum youth education while enjoying the daily web comic.
@@ -1888,13 +1771,13 @@
           <div class="sketch-textarea-group">
             <label class="sketch-label" for="ambassadorBio">
               <span>Why do you want to join? (Optional)</span>
-              <span class="sketch-badge"><i class="fas fa-bullhorn"></i> Ambassador Voice</span>
+              <span class="sketch-badge">Ambassador Voice</span>
             </label>
             <div class="sketch-textarea-wrap" data-max-chars="400">
               <svg class="sketch-textarea-svg" aria-hidden="true"></svg>
               <textarea id="ambassadorBio" name="ambassadorBio" rows="3" placeholder="Tell us how you plan to share the comic project or your audience reach..." class="sketch-textarea"></textarea>
               <div class="sketch-textarea-footer">
-                <span class="sketch-hint"><i class="fas fa-sparkles text-amber"></i> Help us empower 5,000 youth</span>
+                <span class="sketch-hint">Help us empower 5,000 youth</span>
                 <span class="sketch-char-count"><span class="sketch-current">0</span> / 400</span>
               </div>
             </div>
@@ -1908,7 +1791,7 @@
           </div>
 
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
-            <i class="fas fa-check-circle"></i> Onboard Me as Ambassador ($1/mo)
+            Onboard Me as Ambassador ($1/mo)
           </button>
         </form>
       </div>
@@ -1918,9 +1801,9 @@
   <!-- Custom Portrait & Collage Commission Request Modal -->
   <div class="modal-overlay" id="customPortraitModal">
     <div class="modal-card" style="max-width: 680px; max-height: calc(100vh - 5rem); overflow-y: auto;">
-      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
       <div class="custom-portrait-modal-body" style="padding: 2.2rem 2rem;">
-        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-wand-magic-sparkles text-amber"></i> Bespoke Recycled Media Commission</div>
+        <div class="section-tag" style="margin-bottom: 0.5rem;">Bespoke Recycled Media Commission</div>
         <h2 id="customProductModalTitle" style="font-size: 1.75rem; margin-bottom: 0.4rem; color: var(--text-main);">Order a Custom Collage Commission</h2>
         <p id="customProductModalDesc" style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.55;">
           Our master artist mentors and talented young scholars in Nigeria will handcraft an original museum-grade paper collage on museum board. Every commission directly funds full-year school tuition, uniform kits, and daily hot meals for a child in need.
@@ -2057,7 +1940,6 @@
             <div class="cpc-upload-dropzone" onclick="document.getElementById('portraitPhotoInput').click()">
               <input type="file" id="portraitPhotoInput" accept="image/*" style="display: none;" onchange="window.handlePortraitPhotoSelect(this)">
               <div id="cpcUploadPrompt">
-                <i class="fas fa-cloud-arrow-up text-amber" style="font-size: 1.8rem; margin-bottom: 0.5rem; display: block;"></i>
                 <div style="font-weight: 700; font-size: 0.92rem; color: var(--text-main);">Click to Select or Drop Your Reference Photo / Sketch</div>
                 <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">JPEG, PNG, or WEBP. High-resolution preferred.</div>
               </div>
@@ -2084,7 +1966,7 @@
           </div>
 
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 0.95rem;">
-            <i class="fas fa-paper-plane"></i> <span id="cpcSubmitBtnText">Submit Custom Commission Request</span>
+            <span id="cpcSubmitBtnText">Submit Custom Commission Request</span>
           </button>
         </form>
       </div>
@@ -2094,9 +1976,9 @@
   <!-- Corporate Partnership & CSR Inquiry Modal -->
   <div class="modal-overlay" id="partnershipModal">
     <div class="modal-card" style="max-width: 600px; max-height: calc(100vh - 5rem); overflow-y: auto;">
-      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
       <div style="padding: 2.25rem 2rem;">
-        <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-handshake text-blue"></i> Corporate &amp; Institutional Partnership</div>
+        <div class="section-tag" style="margin-bottom: 0.5rem;">Corporate &amp; Institutional Partnership</div>
         <h2 style="font-size: 1.65rem; margin-bottom: 0.4rem; color: var(--text-main);">Partner with Slum Art Foundation</h2>
         <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.55;">
           Collaborate with us to sponsor sustainable PET Bottle School classrooms, tech animation studios, exhibition showcases, or child scholarship cohorts in Nigeria.
@@ -2153,7 +2035,7 @@
   <!-- Blog Reader Modal -->
   <div class="modal-overlay" id="blogReaderModal">
     <div class="modal-card blog-reader-card">
-      <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+      <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
       <div id="blogReaderContainer" class="blog-reader-body"></div>
     </div>
   </div>

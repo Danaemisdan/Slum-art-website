@@ -168,11 +168,11 @@
   }
 
   // Toast System
-  function showToast(message, icon = 'fa-check-circle') {
+  function showToast(message) {
     if (!elements.toastContainer) return;
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.innerHTML = `<i class="fas ${icon} text-amber"></i> <span>${message}</span>`;
+    toast.innerHTML = `<span>${message}</span>`;
     elements.toastContainer.appendChild(toast);
     setTimeout(() => {
       toast.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
@@ -345,11 +345,11 @@
             <img src="${item.image}" alt="${item.title}" onerror="this.src='assets/images/resources/Art.png'">
           </div>
           <div class="museum-provenance-tag">
-            <i class="fas fa-certificate text-amber"></i> Official Slum Art Provenance Dossier
+            Official Slum Art Provenance Dossier
           </div>
         </div>
         <div class="quickview-details">
-          <div class="gallery-salon-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-crown text-amber"></i> Permanent Archive • REF: ${item.id.toUpperCase()}</div>
+          <div class="gallery-salon-tag" style="margin-bottom: 0.5rem;">Permanent Archive • REF: ${item.id.toUpperCase()}</div>
           <h2 class="luxury-modal-title">${item.title}</h2>
           <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
             <span style="font-size: 1.05rem; font-weight: 700; color: #0f172a;">Created by <strong>${item.artist}</strong></span>
@@ -377,7 +377,6 @@
           </div>
 
           <div class="artwork-impact-note" style="margin-bottom: 1.5rem; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 1rem; border-radius: 12px;">
-            <i class="fas fa-heart text-amber" style="font-size: 1.2rem;"></i>
             <div>
               <strong style="color: #065f46;">Direct Philanthropic Endowment:</strong><br>
               <span style="color: #047857; font-size: 0.88rem; line-height: 1.5;">${item.impact || '100% of your acquisition proceeds directly covers school fees, books, daily nutritious lunch, and professional fine art mentor materials.'}</span>
@@ -391,10 +390,9 @@
 
           <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
             <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="btn btn-luxury-acquire btn-lg" style="flex: 1; justify-content: center;">
-              Acquire Original via Paystack <i class="fas fa-lock" style="font-size: 0.85rem;"></i>
-            </a>
+              Acquire Original via Paystack </a>
             <button class="btn btn-bag-round btn-lg" onclick="window.addToArtBag('${item.id}')" style="border-radius: 12px; padding: 0 1.5rem;" title="Add to Art Bag">
-              <i class="fas fa-bag-shopping"></i> Add to Bag
+              Add to Bag
             </button>
           </div>
         </div>
@@ -414,9 +412,9 @@
       localStorage.setItem('slum_art_cart', JSON.stringify(state.cart));
       updateCartBadge();
       updateCartDrawer();
-      showToast(`"${item.title}" added to your Art Bag!`, 'fa-bag-shopping');
+      showToast(`"${item.title}" added to your Art Bag!`);
     } else {
-      showToast(`"${item.title}" is already in your Art Bag.`, 'fa-info-circle');
+      showToast(`"${item.title}" is already in your Art Bag.`);
     }
   };
 
@@ -441,7 +439,6 @@
     if (state.cart.length === 0) {
       elements.cartDrawerItems.innerHTML = `
         <div style="text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
-          <i class="fas fa-bag-shopping" style="font-size: 3rem; margin-bottom: 1rem; color: var(--border-light);"></i>
           <h4>Your Art Bag is empty</h4>
           <p style="font-size: 0.9rem; margin-top: 0.5rem;">Explore original pieces and sponsor a child's education today.</p>
         </div>
@@ -463,8 +460,7 @@
           <strong style="color: var(--color-primary);">${formatPrice(item)}</strong>
         </div>
         <button class="cart-item-remove" onclick="window.removeFromArtBag('${item.id}')" title="Remove">
-          <i class="fas fa-trash"></i>
-        </button>
+          </button>
       </div>
     `).join('');
 
@@ -608,11 +604,9 @@
     const body = elements.gwrModal.querySelector('.modal-card');
     if (body) {
       body.innerHTML = `
-        <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+        <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
         <div style="padding: 3rem 2rem; text-align: center;">
-          <div style="width: 72px; height: 72px; border-radius: 50%; background: #fef3c7; color: #d97706; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
-            <i class="fas fa-trophy"></i>
-          </div>
+          
           <div class="section-tag" style="margin-bottom: 0.75rem;">Guinness World Records™ Official Entry</div>
           <h2 style="font-size: 2rem; margin-bottom: 0.75rem;">You're in the Record Books!</h2>
           <p style="color: var(--text-muted); max-width: 520px; margin: 0 auto 1.5rem; line-height: 1.6;">
@@ -627,7 +621,7 @@
             A confirmation receipt has been scheduled to <strong>${email}</strong>. Keep your code handy for exhibition accreditation!
           </p>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <button class="btn btn-secondary" onclick="window.print()"><i class="fas fa-print"></i> Print Confirmation</button>
+            <button class="btn btn-secondary" onclick="window.print()">Print Confirmation</button>
             <button class="btn btn-primary" onclick="window.closeAllModals()">Continue Exploring</button>
           </div>
         </div>
@@ -656,12 +650,10 @@
     const body = elements.volunteerModal.querySelector('.modal-card');
     if (body) {
       body.innerHTML = `
-        <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+        <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
         <div style="padding: 2.25rem 1.5rem; text-align: center;">
-          <div style="width: 72px; height: 72px; border-radius: 50%; background: #fef3c7; color: #d97706; margin: 0.5rem auto 1.25rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 8px 24px rgba(217, 119, 6, 0.2);">
-            <i class="fas fa-trophy"></i>
-          </div>
-          <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-certificate text-amber"></i> Guinness World Records™ Official Entry</div>
+          
+          <div class="section-tag" style="margin-bottom: 0.5rem;">Guinness World Records™ Official Entry</div>
           <h2 style="font-size: 1.85rem; margin-bottom: 0.75rem;">Welcome to the Record-Breaking Team!</h2>
           <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 1.5rem; line-height: 1.6;">
             Thank you, <strong>${name}</strong>! You are officially registered to volunteer with Slum Art Foundation on our historic Guinness World Record comic book project empowering 5,000 children.
@@ -671,7 +663,7 @@
           </p>
           <div style="display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap;">
             <a href="${DATA.contact.whatsapp}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="background: #25D366; border-color: #25D366; color: #ffffff;">
-              <i class="fab fa-whatsapp"></i> Join Volunteer WhatsApp Group
+              Join Volunteer WhatsApp Group
             </a>
             <button class="btn btn-secondary btn-lg" onclick="window.closeAllModals()">Continue Exploring</button>
           </div>
@@ -697,7 +689,7 @@
     if (btnText && ctaText) {
       btnText.innerHTML = ctaText;
     } else if (btn) {
-      btn.innerHTML = `<i class="fas fa-heart"></i> <span>Pledge $${amount} &amp; Educate Children</span> <i class="fas fa-arrow-right gwr-arrow-icon"></i>`;
+      btn.innerHTML = `<span>Pledge $${amount} &amp; Educate Children</span> `;
     }
   };
 
@@ -721,11 +713,10 @@
       const card = modal.querySelector('.modal-card');
       if (card) {
         card.innerHTML = `
-          <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+          <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
           <div style="padding: 3rem 2rem; text-align: center;">
             <div style="width: 76px; height: 76px; border-radius: 50%; background: #fff2ea; color: var(--color-primary); margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2.2rem;">
-              <i class="fas fa-bullhorn"></i>
-            </div>
+              </div>
             <div class="section-tag" style="margin-bottom: 0.5rem;">Ambassador Onboarded</div>
             <h2 style="font-size: 2rem; margin-bottom: 0.75rem;">Welcome to the Movement, ${name}!</h2>
             <p style="color: var(--text-muted); max-width: 540px; margin: 0 auto 1.5rem; line-height: 1.6;">
@@ -733,7 +724,7 @@
             </p>
 
             <div style="background: var(--bg-subtle); border: 2px dashed var(--color-primary); border-radius: var(--radius-lg); padding: 1.5rem; max-width: 460px; margin: 0 auto 2rem; text-align: left;">
-              <div style="font-weight: 800; font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--text-main);"><i class="fas fa-list-check text-amber"></i> Next Steps for Your CapCut Drop:</div>
+              <div style="font-weight: 800; font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--text-main);">Next Steps for Your CapCut Drop:</div>
               <ul style="font-size: 0.85rem; color: #475569; padding-left: 1.25rem; line-height: 1.6;">
                 <li>Download your pre-edited CapCut template file sent to your email.</li>
                 <li>Record a quick 5-second selfie intro ("I am supporting Slum Art kids!") and splice into the file.</li>
@@ -748,7 +739,7 @@
 
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
               <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-primary btn-lg">
-                <i class="fas fa-lock"></i> Activate $1/mo Comic Access
+                Activate $1/mo Comic Access
               </a>
               <button class="btn btn-secondary" onclick="window.closeAllModals()">Done</button>
             </div>
@@ -1040,18 +1031,16 @@
       const card = modal.querySelector('.modal-card');
       if (card) {
         card.innerHTML = `
-          <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+          <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
           <div style="padding: 2.5rem 1.75rem; text-align: center;">
-            <div style="width: 72px; height: 72px; border-radius: 50%; background: rgba(59, 130, 246, 0.12); color: #3b82f6; margin: 0.5rem auto 1.25rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
-              <i class="fas fa-handshake"></i>
-            </div>
+            
             <h3 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-main);">Partnership Proposal Received</h3>
             <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; max-width: 440px; margin: 0 auto 1.5rem;">
               Thank you, <strong>${name}</strong> from <strong>${org}</strong>. Our executive leadership and founder Adetunwase Adenle will review your inquiry and follow up within 24 hours.
             </p>
             <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
               <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20just%20submitted%20a%20partnership%20proposal%20for%20${encodeURIComponent(org)}." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                <i class="fab fa-whatsapp"></i> Chat on WhatsApp Concierge
+                Chat on WhatsApp Concierge
               </a>
               <button type="button" class="btn btn-secondary btn-sm" onclick="window.closeAllModals()">Close</button>
             </div>
@@ -1208,12 +1197,11 @@
         const waLink = `https://wa.me/2348059994834?text=${waText}`;
 
         card.innerHTML = `
-          <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+          <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
           <div style="padding: 2.75rem 2rem; text-align: center;">
             <div style="width: 76px; height: 76px; border-radius: 50%; background: #ecfdf5; color: #059669; margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; box-shadow: 0 8px 24px rgba(5, 150, 105, 0.2);">
-              <i class="fas fa-check"></i>
-            </div>
-            <div class="section-tag" style="margin-bottom: 0.5rem;"><i class="fas fa-sparkles text-amber"></i> Commission Received &bull; 100% Impact</div>
+              </div>
+            <div class="section-tag" style="margin-bottom: 0.5rem;">Commission Received &bull; 100% Impact</div>
             <h2 style="font-size: 1.85rem; margin-bottom: 0.6rem; color: var(--text-main);">Your ${productType} Is in the Works!</h2>
             <p style="color: var(--text-muted); max-width: 520px; margin: 0 auto 1.5rem; line-height: 1.6; font-size: 0.95rem;">
               Thank you, <strong>${name}</strong>! Our master artist mentors and talented youth scholars in Nigeria are honored to create your 1-of-1 original ${productType.toLowerCase()} masterpiece.
@@ -1234,14 +1222,14 @@
             </div>
 
             <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 1rem 1.25rem; max-width: 480px; margin: 0 auto 1.75rem; text-align: left; font-size: 0.85rem; color: #92400e; line-height: 1.5;">
-              <i class="fas fa-camera text-amber" style="margin-right: 6px;"></i> <strong>Next Step (Important):</strong> Please connect with our master artist atelier on WhatsApp quoting ref <strong>${refId}</strong> to finalize sketches, references, and delivery details.
+              <strong>Next Step (Important):</strong> Please connect with our master artist atelier on WhatsApp quoting ref <strong>${refId}</strong> to finalize sketches, references, and delivery details.
             </div>
 
             <div style="display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap;">
               <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="background: #25D366; border-color: #25D366; color: #ffffff;">
-                <i class="fab fa-whatsapp"></i> Chat on WhatsApp (Ref ${refId})
+                Chat on WhatsApp (Ref ${refId})
               </a>
-              <button class="btn btn-secondary" onclick="window.print()"><i class="fas fa-print"></i> Print Receipt</button>
+              <button class="btn btn-secondary" onclick="window.print()">Print Receipt</button>
               <button class="btn btn-secondary" onclick="window.closeAllModals()">Done</button>
             </div>
           </div>
@@ -1278,19 +1266,18 @@
         <div class="home-blog-thumb">
           <img src="${blog.image}" alt="${blog.title}" loading="lazy" onerror="this.src='assets/images/resources/Art.png'">
           <span class="home-blog-tag">${blog.category || 'Field Note'}</span>
-          <span class="home-blog-readtime"><i class="far fa-clock"></i> ${blog.readTime || '4 min'}</span>
+          <span class="home-blog-readtime">${blog.readTime || '4 min'}</span>
         </div>
         <div class="home-blog-body">
           <div class="home-blog-meta">
-            <span class="home-blog-date"><i class="far fa-calendar-alt"></i> ${blog.date}</span>
-            <span class="home-blog-author"><i class="far fa-user"></i> ${blog.author}</span>
+            <span class="home-blog-date">${blog.date}</span>
+            <span class="home-blog-author">${blog.author}</span>
           </div>
           <h3 class="home-blog-title">${blog.title}</h3>
           <p class="home-blog-excerpt">${blog.excerpt || ''}</p>
           <div class="home-blog-footer">
             <span class="home-blog-read-link">
-              Read Story <i class="fas fa-arrow-right"></i>
-            </span>
+              Read Story </span>
           </div>
         </div>
       </article>
@@ -1330,13 +1317,13 @@
           <div class="blog-featured-card" onclick="window.openBlogModal('${featured.id}')">
             <div class="blog-featured-media">
               <img src="${featured.image}" alt="${featured.title}" onerror="this.src='assets/images/resources/Art.png'">
-              <span class="featured-badge"><i class="fas fa-star text-amber"></i> Featured Milestone</span>
+              <span class="featured-badge">Featured Milestone</span>
             </div>
             <div class="blog-featured-content">
               <div class="blog-meta-pills">
                 <span class="pill-category">${featured.category}</span>
-                <span class="pill-readtime"><i class="far fa-clock"></i> ${featured.readTime}</span>
-                <span class="pill-date"><i class="far fa-calendar-alt"></i> ${featured.date}</span>
+                <span class="pill-readtime">${featured.readTime}</span>
+                <span class="pill-date">${featured.date}</span>
               </div>
               <h2 class="blog-featured-title">${featured.title}</h2>
               <p class="blog-featured-desc">${featured.excerpt}</p>
@@ -1348,7 +1335,7 @@
                 </div>
               </div>
               <div class="blog-featured-btn-wrap">
-                <button class="btn btn-primary btn-md"><i class="fas fa-book-open"></i> Read Full Story</button>
+                <button class="btn btn-primary btn-md">Read Full Story</button>
               </div>
             </div>
           </div>
@@ -1364,7 +1351,6 @@
     if (list.length === 0) {
       gridEl.innerHTML = `
         <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
-          <i class="fas fa-newspaper" style="font-size: 3rem; margin-bottom: 1rem; color: var(--border-light);"></i>
           <h3>No articles match your search</h3>
           <p>Try selecting a different category or clearing your search keywords.</p>
           <button class="btn btn-secondary btn-sm" style="margin-top: 1rem;" onclick="window.resetBlogFilters()">Reset Filters</button>
@@ -1378,17 +1364,17 @@
         <div class="blog-card-media">
           <img src="${blog.image}" alt="${blog.title}" loading="lazy" onerror="this.src='assets/images/resources/Art.png'">
           <span class="blog-card-cat">${blog.category || 'Story'}</span>
-          <span class="blog-card-time"><i class="far fa-clock"></i> ${blog.readTime || '4 min'}</span>
+          <span class="blog-card-time">${blog.readTime || '4 min'}</span>
         </div>
         <div class="blog-card-content">
           <div class="blog-card-meta">
-            <span><i class="far fa-calendar"></i> ${blog.date}</span>
-            <span><i class="far fa-user"></i> ${blog.author}</span>
+            <span>${blog.date}</span>
+            <span>${blog.author}</span>
           </div>
           <h3 class="blog-card-title">${blog.title}</h3>
           <p class="blog-card-excerpt">${blog.excerpt || ''}</p>
           <div class="blog-card-foot">
-            <span class="read-more-accent">Read Full Article <i class="fas fa-arrow-right"></i></span>
+            <span class="read-more-accent">Read Full Article </span>
           </div>
         </div>
       </article>
@@ -1426,7 +1412,7 @@
       modal.id = 'blogReaderModal';
       modal.innerHTML = `
         <div class="modal-card blog-reader-card">
-          <button class="modal-close-btn" onclick="window.closeAllModals()"><i class="fas fa-times"></i></button>
+          <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
           <div id="blogReaderContainer" class="blog-reader-body"></div>
         </div>
       `;
@@ -1453,8 +1439,8 @@
               </div>
             </div>
             <div class="blog-reader-date-wrap">
-              <span><i class="far fa-calendar-alt"></i> ${blog.date}</span>
-              <span><i class="far fa-clock"></i> ${blog.readTime || '4 min read'}</span>
+              <span>${blog.date}</span>
+              <span>${blog.readTime || '4 min read'}</span>
             </div>
           </div>
           <h1 class="blog-reader-title">${blog.title}</h1>
@@ -1464,22 +1450,21 @@
             ${blog.content || ''}
           </div>
           <div class="blog-reader-impact-banner">
-            <i class="fas fa-hands-holding-child text-amber" style="font-size: 2rem;"></i>
             <div>
               <strong>Support the transformation of Makoko's creative youth</strong>
               <p>Every artwork acquired from our gallery directly finances tuition, meals, and medical care for the children authoring these stories.</p>
               <div style="margin-top: 0.75rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                <a href="shop.html" class="btn btn-primary btn-sm"><i class="fas fa-shopping-bag"></i> Browse Original Artworks</a>
-                <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm"><i class="fas fa-heart text-amber"></i> Donate Paystack</a>
+                <a href="shop.html" class="btn btn-primary btn-sm">Browse Original Artworks</a>
+                <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Donate Paystack</a>
               </div>
             </div>
           </div>
           <div class="blog-reader-share-bar">
             <span>Share this story:</span>
             <div class="share-btns-row">
-              <a href="https://wa.me/?text=${encodeURIComponent(blog.title + ' - ' + window.location.origin + '/blog.html')}" target="_blank" class="share-pill share-whatsapp" title="Share to WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-              <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(window.location.origin + '/blog.html')}" target="_blank" class="share-pill share-x" title="Share to X"><i class="fab fa-x-twitter"></i> X</a>
-              <button class="share-pill share-copy" onclick="navigator.clipboard.writeText(window.location.origin + '/blog.html'); alert('Article link copied to clipboard!');"><i class="fas fa-link"></i> Copy Link</button>
+              <a href="https://wa.me/?text=${encodeURIComponent(blog.title + ' - ' + window.location.origin + '/blog.html')}" target="_blank" class="share-pill share-whatsapp" title="Share to WhatsApp">WhatsApp</a>
+              <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(window.location.origin + '/blog.html')}" target="_blank" class="share-pill share-x" title="Share to X">X</a>
+              <button class="share-pill share-copy" onclick="navigator.clipboard.writeText(window.location.origin + '/blog.html'); alert('Article link copied to clipboard!');">Copy Link</button>
             </div>
           </div>
         </div>
@@ -1610,17 +1595,9 @@
         }
 
         // Structure Berlix motion components if not yet present
-        if (!link.querySelector('.berlix-arrow')) {
+        if (!link.querySelector('.berlix-label')) {
           const rawText = link.textContent.trim();
-          link.innerHTML = `
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
-            <span class="berlix-label">${rawText}</span>
-          `;
+          link.innerHTML = `<span class="berlix-label">${rawText}</span>`;
           link.classList.add('berlix-menu-link');
         }
 
@@ -1700,26 +1677,24 @@
             <div class="insp-meta">
               <span class="insp-num-badge">PILLAR ${prog.num}</span>
               <span class="insp-pill-badge" style="background: ${prog.color}15; color: ${prog.color};">
-                <i class="fas ${prog.icon}"></i> ${prog.category}
+                ${prog.category}
               </span>
             </div>
             <h3 class="insp-title">${prog.title}</h3>
           </div>
           <div class="insp-icon-wrap" style="color: ${prog.color}; background: ${prog.color}18;">
-            <i class="fas ${prog.icon}"></i>
-          </div>
+            </div>
         </div>
 
         <p class="insp-desc">${prog.desc}</p>
 
         <div class="insp-curriculum-wrap">
           <div class="insp-sec-label">
-            <i class="fas fa-graduation-cap text-amber"></i> Core Skills & Curriculum Modules
+            Core Skills & Curriculum Modules
           </div>
           <div class="insp-curriculum-grid">
             ${(prog.curriculum || []).map(m => `
               <div class="insp-curr-item">
-                <i class="fas fa-check-circle" style="color: ${prog.color};"></i>
                 <span>${m}</span>
               </div>
             `).join('')}
@@ -1727,24 +1702,23 @@
         </div>
 
         <div class="insp-outcome-box">
-          <strong style="display: block; margin-bottom: 0.35rem;"><i class="fas fa-seedling text-emerald"></i> Real-World Social Impact:</strong>
+          <strong style="display: block; margin-bottom: 0.35rem;">Real-World Social Impact:</strong>
           ${prog.outcome || 'Directly preparing youth with practical vocational and artistic capabilities.'}
         </div>
 
         <div class="insp-stats-line">
-          <i class="fas fa-chart-line text-amber"></i>
           <span>${prog.stats || 'Active across community studios in Nigeria'}</span>
         </div>
 
         <div class="insp-actions">
           <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-primary">
-            <i class="fas fa-heart"></i> Sponsor ${prog.title}
+            Sponsor ${prog.title}
           </a>
           <button class="btn btn-secondary" onclick="window.volunteerForProgram('${prog.title}')">
-            <i class="fas fa-user-plus"></i> Volunteer to Coach
+            Volunteer to Coach
           </button>
           <a href="#art-shop" class="btn btn-secondary" onclick="window.filterShopByProgram('${prog.category}')">
-            <i class="fas fa-palette"></i> View Works
+            View Works
           </a>
         </div>
       `;
@@ -1856,7 +1830,7 @@
 
     const renderRibbon = (progs) => progs.map(p => `
       <div class="prog-ribbon-tag ${p.id === activeProgramId ? 'active' : ''}" data-id="${p.id}" style="--tag-color: ${p.color}; --tag-bg: ${p.color}15;" onclick="window.selectProgramInspector('${p.id}')">
-        <span class="prog-ribbon-icon"><i class="fas ${p.icon}"></i></span>
+        <span class="prog-ribbon-icon"></span>
         <span class="prog-ribbon-title">${p.title}</span>
         <span class="prog-ribbon-cat">${p.category}</span>
       </div>
@@ -1874,7 +1848,6 @@
       rail.innerHTML = DATA.programs.map(p => `
         <div class="prog-rail-item ${p.id === activeProgramId ? 'active' : ''}" data-id="${p.id}" onclick="window.selectProgramInspector('${p.id}')">
           <span class="prog-rail-num">${p.num}</span>
-          <i class="fas ${p.icon}" style="color: ${p.color};"></i>
           <span>${p.title}</span>
         </div>
       `).join('');

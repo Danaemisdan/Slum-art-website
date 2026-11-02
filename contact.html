@@ -10,9 +10,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -20,13 +18,13 @@
   <div class="top-bar">
     <div class="container">
       <div class="top-bar-info">
-        <a href="tel:+2348059994834"><i class="fas fa-phone"></i> +234 805 999 4834</a>
-        <a href="mailto:info@slumart.org"><i class="fas fa-envelope"></i> info@slumart.org</a>
-        <span><i class="fas fa-map-marker-alt text-amber"></i> Lagos, Nigeria</span>
+        <a href="tel:+2348059994834">+234 805 999 4834</a>
+        <a href="mailto:info@slumart.org">info@slumart.org</a>
+        <span>Lagos, Nigeria</span>
       </div>
       <div class="top-bar-actions">
         <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" style="color: #4ade80; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600;">
-          <i class="fab fa-whatsapp"></i> Join WhatsApp
+          Join WhatsApp
         </a>
         <div class="currency-toggle" title="Switch Currency">
           <button class="currency-btn active" data-currency="NGN">₦ NGN</button>
@@ -58,10 +56,8 @@
         <!-- Direct Mission Navigator Dropdown -->
         <div class="quick-mission-dropdown" id="quickMissionDropdown">
           <button type="button" class="quick-mission-btn" id="quickMissionBtn" aria-expanded="false" aria-haspopup="true" aria-label="Quick Actions Navigator">
-            <span class="qm-pulse-dot"></span>
-            <i class="fas fa-compass"></i>
             <span class="qm-btn-text">Quick Actions</span>
-            <i class="fas fa-chevron-down qm-chevron"></i>
+            <span class="qm-caret">▾</span>
           </button>
           
           <div class="quick-mission-menu" id="quickMissionMenu" role="menu" aria-label="Direct Mission Navigator">
@@ -72,69 +68,56 @@
             
             <div class="qm-menu-items">
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('donation')" role="menuitem">
-                <div class="qm-item-icon icon-rose"><i class="fas fa-heart"></i></div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Make a Donation</strong>
                   <span class="qm-item-desc">Fund 100% direct child schooling &amp; daily hot meals</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
 
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('shop')" role="menuitem">
-                <div class="qm-item-icon icon-amber"><i class="fas fa-palette"></i></div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Purchase Original Art</strong>
                   <span class="qm-item-desc">Browse handcrafted recycled collages on salon picture rail</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
 
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('portrait')" role="menuitem">
-                <div class="qm-item-icon icon-gold"><i class="fas fa-wand-magic-sparkles"></i></div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Commission Collage Portrait</strong>
                   <span class="qm-item-desc">Transform your photo into an original mosaic (As seen on CNN)</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
 
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('volunteer')" role="menuitem">
-                <div class="qm-item-icon icon-emerald"><i class="fas fa-hands-helping"></i></div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Volunteer Sign Up</strong>
                   <span class="qm-item-desc">Join our mentor &amp; Guinness World Record team in Lagos</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
 
               <button type="button" class="qm-item" onclick="window.triggerQuickMission('partnership')" role="menuitem">
-                <div class="qm-item-icon icon-blue"><i class="fas fa-handshake"></i></div>
                 <div class="qm-item-text">
                   <strong class="qm-item-title">Partnership &amp; CSR</strong>
                   <span class="qm-item-desc">Sponsor bottle classrooms, studio tech &amp; exhibitions</span>
                 </div>
-                <i class="fas fa-arrow-right qm-item-arrow"></i>
               </button>
             </div>
 
             <div class="qm-menu-footer">
-              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20have%20a%20specific%20question%20or%20mission%20in%20mind." target="_blank" rel="noopener noreferrer" class="qm-footer-link">
-                <i class="fab fa-whatsapp"></i> Speak Directly with Atelier Concierge &rarr;
+              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20have%20a%20specific%20question%20or%20mission%20in%20mind." target="_blank" rel="noopener noreferrer" class="qm-footer-link"> Speak Directly with Atelier Concierge &rarr;
               </a>
             </div>
           </div>
         </div>
 
-        <button class="cart-trigger" title="View Art Bag" aria-label="Shopping Bag">
-          <i class="fas fa-bag-shopping"></i>
+        <button class="cart-trigger" id="cartTrigger" title="View Art Bag" aria-label="Shopping Bag">
+          <span class="cart-btn-label">Bag</span>
           <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
         </button>
         <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-primary btn-sm">
-          <i class="fas fa-heart"></i> Donate Now
+          Donate Now
         </a>
-        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">
-          <i class="fas fa-bars"></i>
-        </button>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">Menu</button>
       </div>
     </div>
   </header>
@@ -146,102 +129,49 @@
       <div class="brand-logo">
         <img src="assets/images/logo-light.png" alt="Slum Art" style="height: 42px;">
       </div>
-      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation">
-        <i class="fas fa-times"></i>
-      </button>
+      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation">&times;</button>
     </div>
 
     <!-- Quick Mission Direct Links in Mobile Drawer -->
     <div class="mobile-drawer-quick-mission">
-      <span class="md-qm-title"><i class="fas fa-compass text-amber"></i> Quick Actions</span>
+      <span class="md-qm-title">Quick Actions</span>
       <div class="md-qm-grid">
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('donation')">
-          <i class="fas fa-heart text-rose"></i>
-          <span>Donate</span>
-        </button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('shop')">
-          <i class="fas fa-palette text-amber"></i>
-          <span>Buy Art</span>
-        </button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('portrait')">
-          <i class="fas fa-wand-magic-sparkles text-gold"></i>
-          <span>Portrait</span>
-        </button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('volunteer')">
-          <i class="fas fa-hands-helping text-emerald"></i>
-          <span>Volunteer</span>
-        </button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('partnership')">
-          <i class="fas fa-handshake text-blue"></i>
-          <span>Partner</span>
-        </button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('donation')">Donate</button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('shop')">Buy Art</button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('portrait')">Portrait</button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('volunteer')">Volunteer</button>
+        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('partnership')">Partner</button>
       </div>
     </div>
     <nav class="berlix-menu-vertical" aria-label="Mobile Navigation">
       <ul class="berlix-menu-list">
         <li class="berlix-menu-item" style="--item-index: 0;">
           <a href="index.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Home</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 1;">
           <a href="about.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">About & Founder</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 2;">
           <a href="shop.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Art Shop & Gallery</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 3;">
           <a href="register.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Guinness Record</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 4;">
           <a href="blog.html" class="berlix-menu-link">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Stories &amp; Blog</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 5;">
           <a href="contact.html" class="berlix-menu-link active">
-            <span class="berlix-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
             <span class="berlix-label">Contact &amp; Volunteer</span>
           </a>
         </li>
@@ -249,10 +179,10 @@
     </nav>
     <div class="drawer-footer-actions">
       <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-        <i class="fas fa-heart"></i> Donate via Paystack
+        Donate via Paystack
       </a>
       <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
-        <i class="fab fa-whatsapp"></i> Join Community Group
+        Join Community Group
       </a>
     </div>
   </aside>
@@ -260,7 +190,7 @@
   <!-- Banner -->
   <section style="background: linear-gradient(135deg, #090d16 0%, #1e293b 100%); color: #ffffff; padding: 4.5rem 0 3.5rem; text-align: center;">
     <div class="container">
-      <div class="section-tag dark"><i class="fas fa-headset"></i> Connect With Us</div>
+      <div class="section-tag dark">Connect With Us</div>
       <h1 style="font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 1rem; color: #ffffff;">Let's Make a Lasting Difference</h1>
       <p style="font-size: 1.15rem; color: #cbd5e1; max-width: 680px; margin: 0 auto;">
         Have an inquiry, partnership proposal, or want to volunteer with our creative team in Lagos? We would love to hear from you.
@@ -275,7 +205,7 @@
         
         <!-- Contact Information Column -->
         <div>
-          <div class="section-tag"><i class="fas fa-id-card"></i> Direct Coordinates</div>
+          <div class="section-tag">Direct Coordinates</div>
           <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Reach Out to Our Team</h2>
           <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem;">
             We operate out of the Slum Art Studio & Pet Bottle School in Lagos, Nigeria, with active support networks across North America and Europe.
@@ -284,8 +214,7 @@
           <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2.5rem;">
             <div style="display: flex; align-items: flex-start; gap: 1rem; background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.25rem;">
               <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">
-                <i class="fas fa-map-pin"></i>
-              </div>
+                </div>
               <div>
                 <strong style="display: block; font-size: 0.95rem; margin-bottom: 0.2rem;">Physical Studio & Center</strong>
                 <span style="font-size: 0.88rem; color: #475569;">Slum Art Pet Bottle School, Lagos, Nigeria</span>
@@ -294,8 +223,7 @@
 
             <div style="display: flex; align-items: flex-start; gap: 1rem; background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.25rem;">
               <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--color-emerald-light); color: var(--color-emerald); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">
-                <i class="fas fa-phone-volume"></i>
-              </div>
+                </div>
               <div>
                 <strong style="display: block; font-size: 0.95rem; margin-bottom: 0.2rem;">Official Phone / WhatsApp</strong>
                 <a href="tel:+2348059994834" style="font-size: 0.88rem; color: var(--color-primary); font-weight: 600;">+234 805 999 4834</a>
@@ -304,8 +232,7 @@
 
             <div style="display: flex; align-items: flex-start; gap: 1rem; background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.25rem;">
               <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--color-indigo-light); color: var(--color-indigo); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">
-                <i class="fas fa-envelope"></i>
-              </div>
+                </div>
               <div>
                 <strong style="display: block; font-size: 0.95rem; margin-bottom: 0.2rem;">General Inquiries & Partnerships</strong>
                 <a href="mailto:info@slumart.org" style="font-size: 0.88rem; color: var(--color-primary); font-weight: 600;">info@slumart.org</a>
@@ -314,13 +241,13 @@
           </div>
 
           <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg" style="width: 100%; color: #15803d; border-color: #86efac;">
-            <i class="fab fa-whatsapp"></i> Join Official Community WhatsApp Group
+            Join Official Community WhatsApp Group
           </a>
         </div>
 
         <!-- Volunteer & Message Form -->
         <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 3rem 2.5rem; box-shadow: var(--shadow-md);">
-          <div class="section-tag"><i class="fas fa-hand-holding-hand"></i> Volunteer & Inquire</div>
+          <div class="section-tag">Volunteer & Inquire</div>
           <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Join Our Mission</h3>
           <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem;">
             Whether you want to volunteer your artistic talents, sponsor a child, or request exhibition collaborations, send us a note.
@@ -357,20 +284,20 @@
             <div class="sketch-textarea-group">
               <label class="sketch-label" for="contactMessage">
                 <span>Your Message / Proposal *</span>
-                <span class="sketch-badge"><i class="fas fa-pen-nib"></i> Doodle & Share</span>
+                <span class="sketch-badge">Doodle & Share</span>
               </label>
               <div class="sketch-textarea-wrap" data-max-chars="1000">
                 <svg class="sketch-textarea-svg" aria-hidden="true"></svg>
                 <textarea id="contactMessage" name="message" rows="4" required placeholder="Tell us how you would like to collaborate with Slum Art Foundation..." class="sketch-textarea"></textarea>
                 <div class="sketch-textarea-footer">
-                  <span class="sketch-hint"><i class="fas fa-paint-brush text-amber"></i> Hand-drawn note: your message connects a child with art</span>
+                  <span class="sketch-hint">Hand-drawn note: your message connects a child with art</span>
                   <span class="sketch-char-count"><span class="sketch-current">0</span> / 1000</span>
                 </div>
               </div>
             </div>
 
             <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
-              <i class="fas fa-paper-plane"></i> Send Message
+              Send Message
             </button>
           </form>
         </div>
@@ -407,13 +334,11 @@
           <span>&copy; 2026 Slum Art Foundation • Lagos, Nigeria</span>
         </div>
         <div class="skiper-bottom-links">
-          <a href="about.html"><i class="fas fa-circle-info"></i> Founder &amp; Vision</a>
-          <a href="shop.html"><i class="fas fa-palette"></i> Art Gallery</a>
-          <a href="register.html"><i class="fas fa-trophy"></i> Guinness Record</a>
-          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="footer-donate-pill"><i class="fas fa-heart text-amber"></i> Donate Paystack</a>
-          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
-            <i class="fas fa-arrow-up"></i> Top
-          </button>
+          <a href="about.html">Founder &amp; Vision</a>
+          <a href="shop.html">Art Gallery</a>
+          <a href="register.html">Guinness Record</a>
+          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="footer-donate-pill">Donate Paystack</a>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">Top ↑</button>
         </div>
       </div>
     </div>
