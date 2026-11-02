@@ -135,18 +135,6 @@ function renderGallery(mountEl, artworks, currency) {
           children: [
             M.jsxs("button", {
               type: "button",
-              className: "btn-rail-acquire",
-              onClick: () => {
-                const grid = document.getElementById("artworksGrid");
-                if (grid) grid.scrollIntoView({ behavior: "smooth" });
-              },
-              children: [
-                M.jsx("i", { className: "fas fa-grip mr-2" }),
-                "View as 3-Column Grid (" + artworks.length + " Works)"
-              ]
-            }),
-            M.jsxs("button", {
-              type: "button",
               className: "btn-rail-custom-action",
               onClick: () => {
                 if (typeof window.openCustomProductModal === "function") {

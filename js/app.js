@@ -163,10 +163,8 @@
     showToast(`Currency switched to ${newCurr === 'NGN' ? 'Nigerian Naira (₦)' : 'US Dollar ($)'}`);
   }
 
-  // Render Artworks Grid
+  // Render Artworks (Picture Rail Salon Wall Gallery)
   function renderArtworks() {
-    if (!elements.artworksGrid) return;
-
     let list = [...DATA.artworks];
 
     // Filter by Category
@@ -204,93 +202,9 @@
       });
     }
 
-    if (list.length === 0) {
-      elements.artworksGrid.innerHTML = `
-        <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
-          <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; color: var(--border-light);"></i>
-          <h3>No artworks matched your search</h3>
-          <p>Try selecting a different category or clearing your search keywords.</p>
-          <button class="btn btn-secondary btn-sm" style="margin-top: 1rem;" onclick="window.clearShopFilters()">Reset All Filters</button>
-        </div>
-      `;
-      const toggleWrap = document.getElementById('artworksToggleContainer');
-      if (toggleWrap) toggleWrap.innerHTML = '';
-      return;
-    }
-
-    const INITIAL_LIMIT = 3;
-    const totalCount = list.length;
-    const isExpanded = state.artworksExpanded;
-    const displayedList = isExpanded ? list : list.slice(0, INITIAL_LIMIT);
-
-    elements.artworksGrid.innerHTML = displayedList.map(item => `
-      <div class="artwork-card" data-id="${item.id}">
-        <div class="artwork-card-img-wrap" onclick="window.openQuickview('${item.id}')">
-          <div class="artwork-passepartout">
-            <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.src='assets/images/resources/Art.png'">
-          </div>
-          <div class="artwork-card-top-badges">
-            <span class="card-cat-badge">${item.category}</span>
-          </div>
-          <button class="card-quickview-btn" title="Private Viewing Lens">
-            <i class="fas fa-expand"></i> <span>Private View</span>
-          </button>
-        </div>
-        <div class="artwork-card-body">
-          <div class="artwork-provenance-meta">
-            <span class="artwork-atelier"><i class="fas fa-location-dot text-amber"></i> Nigeria Atelier</span>
-            <span class="artwork-curator-code">REF: ${item.id.toUpperCase()}</span>
-          </div>
-          <h4 class="artwork-title">${item.title}</h4>
-          <div class="artwork-artist-info">
-            <span class="artist-name">By <strong>${item.artist}</strong></span>
-            <span class="artist-age-badge">${item.age.toLowerCase().includes('age') ? item.age : 'Age ' + item.age}</span>
-          </div>
-          <div class="artwork-medium">
-            <i class="fas fa-paintbrush text-amber"></i> ${item.medium}
-          </div>
-          <div class="artwork-impact-note">
-            <i class="fas fa-graduation-cap text-emerald"></i> ${item.impact || '100% Funds direct school tuition & meals'}
-          </div>
-          <div class="artwork-card-foot">
-            <div class="artwork-price-wrap">
-              <span class="price-main">${formatPrice(item)}</span>
-              <span class="price-secondary">${formatSecondaryPrice(item)}</span>
-            </div>
-            <div class="artwork-actions-wrap">
-              <button class="btn btn-bag-round" onclick="window.addToArtBag('${item.id}')" title="Add to Collector's Cart">
-                <i class="fas fa-bag-shopping"></i>
-              </button>
-              <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="btn btn-luxury-acquire" title="Buy this certified original piece instantly via Paystack">
-                Buy Now <i class="fas fa-bolt text-amber"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    `).join('');
-
-    // Render Expand / Collapse Button Container
-    const toggleWrap = document.getElementById('artworksToggleContainer');
-    if (toggleWrap) {
-      if (totalCount > INITIAL_LIMIT) {
-        const remaining = totalCount - INITIAL_LIMIT;
-        toggleWrap.innerHTML = `
-          <div class="artworks-collapse-wrap">
-            <button type="button" class="btn-artworks-expand-toggle" onclick="window.toggleArtworksExpand()">
-              <span>${isExpanded ? 'Collapse to 3 Artworks' : `View All ${totalCount} Masterpieces (${remaining} More)`}</span>
-              <i class="fas ${isExpanded ? 'fa-chevron-up' : 'fa-chevron-down'}"></i>
-            </button>
-            <p class="artworks-collapse-subtext">
-              ${isExpanded 
-                ? `Showing all ${totalCount} certified works • 100% of proceeds fund youth education` 
-                : `Currently displaying 3 curator highlights • ${remaining} more certified works in vault`}
-            </p>
-          </div>
-        `;
-      } else {
-        toggleWrap.innerHTML = '';
-      }
+    // Clean up any legacy grid references if present
+    if (elements.artworksGrid) {
+      elements.artworksGrid.innerHTML = '';
     }
   }
 
