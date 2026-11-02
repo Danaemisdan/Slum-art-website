@@ -64,6 +64,13 @@ function HeroAnimatorApp() {
             }
           }}
         >
+          <img
+            src="assets/images/gwr-logo.svg"
+            alt="Guinness World Records"
+            className="hsc-gwr-logo"
+            width="24"
+            height="24"
+          />
           <span className="hsc-label">Be a Part of Guinness World Record</span>
         </button>
       </div>

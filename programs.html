@@ -349,7 +349,9 @@
         pGrid.innerHTML = window.SLUM_DATA.programs.map(p => `
           <div class="program-card" style="--card-color: ${p.color};">
             <div class="program-card-head">
-              <div class="program-icon-wrap"></div>
+              <div class="program-icon-wrap" style="display: flex; align-items: center; justify-content: center;">
+                ${window.getIconSvg ? window.getIconSvg(p.icon || p.id, 24) : ''}
+              </div>
               <span class="program-num">${p.num}</span>
             </div>
             <div class="program-cat">${p.category}</div>
@@ -364,7 +366,9 @@
         wGrid.innerHTML = window.SLUM_DATA.welfare.map(w => `
           <div class="welfare-card" style="--card-color: ${w.color};">
             <div class="welfare-card-top">
-              <div class="welfare-icon"></div>
+              <div class="welfare-icon" style="display: flex; align-items: center; justify-content: center; color: ${w.color};">
+                ${window.getIconSvg ? window.getIconSvg(w.icon || w.title, 26) : ''}
+              </div>
               <div>
                 <span class="welfare-badge-step">Pillar ${w.num}</span>
                 <h3 class="welfare-title">${w.title}</h3>
