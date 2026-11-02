@@ -53,58 +53,16 @@
       <div class="nav-actions">
         <!-- Direct Mission Navigator Dropdown -->
         <div class="quick-mission-dropdown" id="quickMissionDropdown">
-          <button type="button" class="quick-mission-btn" id="quickMissionBtn" aria-expanded="false" aria-haspopup="true" aria-label="Quick Actions Navigator">
-            <span class="qm-btn-text">Quick Actions</span>
+          <button type="button" class="quick-mission-btn" id="quickMissionBtn" aria-expanded="false" aria-haspopup="true">
+            <span>Quick Actions</span>
             <span class="qm-caret">▾</span>
           </button>
-          
-          <div class="quick-mission-menu" id="quickMissionMenu" role="menu" aria-label="Direct Mission Navigator">
-            <div class="qm-menu-header">
-              <span class="qm-menu-kicker">Direct Mission Navigator</span>
-              <span class="qm-menu-title">What would you like to accomplish?</span>
-            </div>
-            
-            <div class="qm-menu-items">
-              <button type="button" class="qm-item" onclick="window.triggerQuickMission('donation')" role="menuitem">
-                <div class="qm-item-text">
-                  <strong class="qm-item-title">Make a Donation</strong>
-                  <span class="qm-item-desc">Fund 100% direct child schooling &amp; daily hot meals</span>
-                </div>
-              </button>
-
-              <button type="button" class="qm-item" onclick="window.triggerQuickMission('shop')" role="menuitem">
-                <div class="qm-item-text">
-                  <strong class="qm-item-title">Purchase Original Art</strong>
-                  <span class="qm-item-desc">Browse handcrafted recycled collages on salon picture rail</span>
-                </div>
-              </button>
-
-              <button type="button" class="qm-item" onclick="window.triggerQuickMission('portrait')" role="menuitem">
-                <div class="qm-item-text">
-                  <strong class="qm-item-title">Commission Collage Portrait</strong>
-                  <span class="qm-item-desc">Transform your photo into an original mosaic (As seen on CNN)</span>
-                </div>
-              </button>
-
-              <button type="button" class="qm-item" onclick="window.triggerQuickMission('volunteer')" role="menuitem">
-                <div class="qm-item-text">
-                  <strong class="qm-item-title">Volunteer Sign Up</strong>
-                  <span class="qm-item-desc">Join our mentor &amp; Guinness World Record team in Lagos</span>
-                </div>
-              </button>
-
-              <button type="button" class="qm-item" onclick="window.triggerQuickMission('partnership')" role="menuitem">
-                <div class="qm-item-text">
-                  <strong class="qm-item-title">Partnership &amp; CSR</strong>
-                  <span class="qm-item-desc">Sponsor bottle classrooms, studio tech &amp; exhibitions</span>
-                </div>
-              </button>
-            </div>
-
-            <div class="qm-menu-footer">
-              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20have%20a%20specific%20question%20or%20mission%20in%20mind." target="_blank" rel="noopener noreferrer" class="qm-footer-link"> Speak Directly with Atelier Concierge &rarr;
-              </a>
-            </div>
+          <div class="quick-mission-menu" id="quickMissionMenu" role="menu">
+            <button type="button" class="qm-menu-link" onclick="window.triggerQuickMission('donation')" role="menuitem">Make a Donation</button>
+            <button type="button" class="qm-menu-link" onclick="window.triggerQuickMission('shop')" role="menuitem">Browse Art Gallery</button>
+            <button type="button" class="qm-menu-link" onclick="window.triggerQuickMission('portrait')" role="menuitem">Commission Portrait</button>
+            <button type="button" class="qm-menu-link" onclick="window.triggerQuickMission('volunteer')" role="menuitem">Volunteer Sign Up</button>
+            <button type="button" class="qm-menu-link" onclick="window.triggerQuickMission('partnership')" role="menuitem">Corporate Partnership</button>
           </div>
         </div>
 
@@ -126,18 +84,6 @@
     <div class="drawer-header">
       <div class="brand-logo"><span class="brand-wordmark">SLUM ART</span></div>
       <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation">&times;</button>
-    </div>
-
-    <!-- Quick Mission Direct Links in Mobile Drawer -->
-    <div class="mobile-drawer-quick-mission">
-      <span class="md-qm-title">Quick Actions</span>
-      <div class="md-qm-grid">
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('donation')">Donate</button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('shop')">Buy Art</button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('portrait')">Portrait</button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('volunteer')">Volunteer</button>
-        <button type="button" class="md-qm-btn" onclick="window.triggerQuickMission('partnership')">Partner</button>
-      </div>
     </div>
     <nav class="berlix-menu-vertical" aria-label="Mobile Navigation">
       <ul class="berlix-menu-list">
