@@ -6162,8 +6162,7 @@ body.modal-open {
 }
 
 /* Pulsing Live Beacon Indicator (Disabled / Removed) */
-.hsc-pulse-dot,
-.hsc-icon-bubble {
+.hsc-pulse-dot {
   display: none !important;
 }
 
