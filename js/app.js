@@ -1363,6 +1363,10 @@
     // Keyboard ESC to close modals
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') window.closeAllModals();
+      // Discreet Curatorial Staff Access: Ctrl+Shift+A / Cmd+Shift+A
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+        window.location.href = 'admin.html';
+      }
     });
   }
 
