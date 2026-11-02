@@ -394,34 +394,33 @@ body.scrolled-past-hero .navbar,
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
+  cursor: pointer;
 }
 
-.brand-logo img {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-}
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-title {
+.brand-wordmark {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 800;
+  letter-spacing: 0.08em;
   color: #ffffff;
-  letter-spacing: -0.02em;
+  text-transform: uppercase;
   line-height: 1;
+  transition: color var(--transition-fast);
 }
 
-.brand-sub {
-  font-size: 0.7rem;
-  font-weight: 600;
+.brand-logo:hover .brand-wordmark {
   color: var(--color-primary);
-  text-transform: uppercase;
+}
+
+.brand-wordmark-footer {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
   letter-spacing: 0.08em;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-right: 0.75rem;
 }
 
 .nav-links {
@@ -6642,44 +6641,7 @@ body.modal-open {
   color: #ffffff !important;
 }
 
-/* Center Helping Heart Emblem (Refined, Static, Luxury Art Medallion) */
-.split-center-emblem {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  pointer-events: none;
-  width: 68px;
-  height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.emblem-inner-circle {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 2px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.35), 0 8px 24px rgba(0, 0, 0, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.emblem-helping-icon {
-  font-size: 1.65rem;
-  color: #ea580c;
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: block;
-  line-height: 1;
-}
+/* Dual split CTA section clean */
 
 @media (max-width: 900px) {
   .split-cta-grid {
@@ -6688,21 +6650,6 @@ body.modal-open {
   .split-cta-card {
     padding: 3.5rem 1.75rem;
     min-height: 300px;
-  }
-  .split-center-emblem {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    width: 74px;
-    height: 74px;
-  }
-  .emblem-inner-circle {
-    width: 70px;
-    height: 70px;
-  }
-  .emblem-helping-icon {
-    font-size: 1.85rem;
   }
 }
 
@@ -10394,36 +10341,9 @@ html, body {
     padding: 2.75rem 1.5rem !important;
     min-height: 220px !important;
   }
-  .split-center-emblem {
-    display: flex !important;
-    width: 68px !important;
-    height: 68px !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    z-index: 10 !important;
-  }
-  .emblem-inner-circle {
-    width: 64px !important;
-    height: 64px !important;
-  }
-  .emblem-helping-icon {
-    font-size: 1.7rem !important;
-  }
 }
 
 @media (max-width: 640px) {
-  .split-center-emblem {
-    width: 58px !important;
-    height: 58px !important;
-  }
-  .emblem-inner-circle {
-    width: 54px !important;
-    height: 54px !important;
-  }
-  .emblem-helping-icon {
-    font-size: 1.45rem !important;
-  }
   .split-cta-card {
     padding: 2.25rem 1.15rem !important;
     min-height: 200px !important;
