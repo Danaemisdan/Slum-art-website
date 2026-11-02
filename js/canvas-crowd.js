@@ -159,19 +159,22 @@
     const floatingBadges = [];
     const splashRings = [];
 
-    let liquidFillPercent = 16;
-    let targetFillPercent = 16;
+    let liquidFillPercent = 0;
+    let targetFillPercent = 0;
     let totalDonationPot = 1420;
     let totalDonationCount = 142;
     let lastAutoDonationTime = performance.now();
-    let nextDonationDelay = 1800;
+    let nextDonationDelay = 1000;
     let isCelebration = false;
     let lastFrameTime = performance.now();
+    let hasReachedFooter = false;
+    let isFooterVisible = false;
 
     function updateLiquidDom(percent) {
       const goldEl = document.getElementById('skiperWatermarkGold');
       if (goldEl) {
         goldEl.style.setProperty('--liquid-fill', `${percent.toFixed(1)}%`);
+        goldEl.style.opacity = percent > 0.4 ? '1' : '0';
       }
       const meterEl = document.getElementById('footerMeterFill');
       if (meterEl) {
@@ -296,7 +299,7 @@
       if (goldEl) goldEl.classList.add('celebrating');
       const leadEl = document.getElementById('magicLeadText');
       if (leadEl) {
-        leadEl.innerHTML = '🎉 <strong>Community Goal Achieved! 100% Empowered — Thank You!</strong>';
+        leadEl.innerHTML = '<strong>Community Goal Achieved! 100% Empowered — Thank You!</strong>';
       }
 
       // Golden fireworks across letters
@@ -320,9 +323,9 @@
       setTimeout(() => {
         if (goldEl) goldEl.classList.remove('celebrating');
         if (leadEl) {
-          leadEl.textContent = 'Every donation helps us build a greater future together';
+          leadEl.innerHTML = 'Every donation helps us <span class="magic-kicker-gold">build a greater future together</span>';
         }
-        targetFillPercent = 16;
+        targetFillPercent = 0;
         isCelebration = false;
       }, 6500);
     }
@@ -397,10 +400,12 @@
     function updateAndRenderDonations(c, dt) {
       const now = performance.now();
 
-      // 1. Auto-trigger crowd donations one by one with a staggered delay
-      if (now - lastAutoDonationTime > nextDonationDelay && crowd.length > 0) {
+      // 1. Auto-trigger crowd donations one-by-one ONLY after the user scrolls to the bottom
+      if (!hasReachedFooter || !isFooterVisible) {
         lastAutoDonationTime = now;
-        nextDonationDelay = 1500 + Math.random() * 1100;
+      } else if (now - lastAutoDonationTime > nextDonationDelay && crowd.length > 0) {
+        lastAutoDonationTime = now;
+        nextDonationDelay = 1600 + Math.random() * 1100;
 
         const visiblePeeps = crowd.filter((p) => {
           const px = p.scaleX === 1 ? p.x : p.x - p.width;
@@ -614,13 +619,65 @@
       initCrowd();
     };
 
+    function setupScrollTrigger() {
+      const footer = document.getElementById('mainFooter') || document.querySelector('.skiper39-footer');
+      if (!footer) {
+        hasReachedFooter = true;
+        isFooterVisible = true;
+        return;
+      }
+
+      function onEnterBottom() {
+        if (!hasReachedFooter) {
+          hasReachedFooter = true;
+          lastAutoDonationTime = performance.now();
+          nextDonationDelay = 800; // brief natural pause before first donation
+        }
+        isFooterVisible = true;
+      }
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            isFooterVisible = entry.isIntersecting;
+            if (entry.isIntersecting) {
+              onEnterBottom();
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -30px 0px'
+        });
+        observer.observe(footer);
+      }
+
+      function onScrollCheck() {
+        const scrollBottom = window.innerHeight + (window.pageYOffset || document.documentElement.scrollTop || 0);
+        const docHeight = Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.offsetHeight
+        );
+        if (docHeight - scrollBottom < 450) {
+          onEnterBottom();
+        }
+      }
+      window.addEventListener('scroll', onScrollCheck, { passive: true });
+      onScrollCheck();
+    }
+
     const init = () => {
       createPeeps();
       resize();
+      updateLiquidDom(0);
+      setupScrollTrigger();
       gsap.ticker.add(render);
 
       // Interactive Crowd Click / Tap: closest peep throws gold donation burst
       canvas.addEventListener('click', (e) => {
+        hasReachedFooter = true;
+        isFooterVisible = true;
         const rect = canvas.getBoundingClientRect();
         const clickX = e.clientX - rect.left;
         const clickY = e.clientY - rect.top;

@@ -3258,74 +3258,38 @@ body.modal-open {
 /* Magic Community Inspiration Kicker (Above Slum Art Foundation) */
 .skiper-magic-kicker {
   position: absolute;
-  top: 1.25rem;
+  top: 1.35rem;
   left: 50%;
   transform: translateX(-50%);
   width: 92%;
-  max-width: 900px;
+  max-width: 860px;
   text-align: center;
   z-index: 4;
   pointer-events: auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
+  justify-content: center;
 }
 
 .magic-kicker-lead {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-family: var(--font-heading);
-  font-size: clamp(0.92rem, 1.8vw, 1.25rem);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: #ffffff;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
-}
-
-.magic-kicker-spark {
+  margin: 0;
   display: inline-block;
-  animation: magicSparkle 2.4s ease-in-out infinite;
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.6vw, 1.32rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.45;
+  color: #f1f5f9;
+  text-align: center;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
 }
 
-@keyframes magicSparkle {
-  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.85; }
-  50% { transform: scale(1.25) rotate(12deg); opacity: 1; filter: drop-shadow(0 0 8px #fbbf24); }
-}
-
-.magic-kicker-sub {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 0.8rem;
-  color: #94a3b8;
-  background: rgba(15, 23, 42, 0.75);
-  padding: 0.22rem 0.8rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(251, 191, 36, 0.25);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.magic-live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 8px #10b981;
-  animation: magicPulse 1.8s infinite;
-}
-
-@keyframes magicPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.5); opacity: 0.5; }
-}
-
-.magic-gold-amt {
-  color: #fbbf24;
-  font-weight: 700;
+.magic-kicker-lead .magic-kicker-gold {
+  font-weight: 600;
+  background: linear-gradient(180deg, #ffffff 0%, #fef08a 35%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.4));
 }
 
 .magic-meter-wrap {
@@ -3400,8 +3364,8 @@ body.modal-open {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px rgba(251, 191, 36, 0.4);
   filter: drop-shadow(0 0 22px rgba(245, 158, 11, 0.6)) drop-shadow(0 0 45px rgba(217, 119, 6, 0.35));
-  clip-path: inset(calc(100% - var(--liquid-fill, 16%)) 0 0 0);
-  transition: clip-path 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  clip-path: inset(calc(100% - var(--liquid-fill, 0%)) 0 0 0);
+  transition: clip-path 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease, opacity 0.3s ease;
 }
 
 .watermark--liquid.celebrating {
@@ -3527,26 +3491,18 @@ body.modal-open {
 
 @media (max-width: 768px) {
   .skiper-magic-kicker {
-    top: 0.75rem !important;
-    gap: 0.3rem !important;
-    width: 96% !important;
+    top: 0.85rem !important;
+    width: 92% !important;
   }
   .magic-kicker-lead {
-    font-size: 0.8rem !important;
-    line-height: 1.3 !important;
-  }
-  .magic-kicker-sub {
-    font-size: 0.68rem !important;
-    padding: 0.15rem 0.5rem !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 0.3rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.4 !important;
   }
   .skiper-liquid-stage {
-    top: 6.5rem !important;
+    top: 4.6rem !important;
   }
   .skiper-canvas-wrap {
-    height: 380px !important;
+    height: 390px !important;
   }
   .skiper-giant-watermark {
     font-size: clamp(1.8rem, 8.2vw, 3.2rem) !important;
