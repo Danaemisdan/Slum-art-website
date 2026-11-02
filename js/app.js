@@ -63,7 +63,15 @@
     try {
       const storedArtworks = localStorage.getItem('slum_art_artworks_db');
       if (storedArtworks) {
-        DATA.artworks = JSON.parse(storedArtworks);
+        const parsed = JSON.parse(storedArtworks);
+        // If cached localStorage data contains legacy medium descriptions like "Acrylic" or "Charcoal",
+        // or lacks the updated collage portrait metadata, invalidate cache and resync with authoritative DATA.artworks
+        if (Array.isArray(parsed) && parsed.some(a => a.medium && (a.medium.includes('Acrylic') || a.medium.includes('Charcoal')))) {
+          DATA.artworks = (window.SLUM_DATA && window.SLUM_DATA.artworks) ? window.SLUM_DATA.artworks : [];
+          localStorage.setItem('slum_art_artworks_db', JSON.stringify(DATA.artworks));
+        } else {
+          DATA.artworks = parsed;
+        }
       } else if (DATA.artworks && DATA.artworks.length > 0) {
         localStorage.setItem('slum_art_artworks_db', JSON.stringify(DATA.artworks));
       }
@@ -798,7 +806,7 @@
       if (cardPortrait) cardPortrait.classList.remove('active');
       if (radioArtwork) radioArtwork.checked = true;
       if (modalTitle) modalTitle.textContent = 'Commission Custom Collage Artwork';
-      if (modalDesc) modalDesc.textContent = 'Commission an original bespoke fine-art collage crafted by our young master scholars using upcycled paper, magazines, and sustainable materials on stretched canvas. Funds accredited tuition & meals for a child in need.';
+      if (modalDesc) modalDesc.textContent = 'Commission an original bespoke fine-art collage crafted by our young master scholars using upcycled paper, magazines, and sustainable materials on museum archival board. Funds accredited tuition & meals for a child in need.';
       if (groupArtwork) groupArtwork.style.display = 'block';
       if (groupPortrait) groupPortrait.style.display = 'none';
       if (uploadLabel) uploadLabel.textContent = 'Reference Image, Sketch, or Moodboard (Optional)';
@@ -808,7 +816,7 @@
       if (cardArtwork) cardArtwork.classList.remove('active');
       if (radioPortrait) radioPortrait.checked = true;
       if (modalTitle) modalTitle.textContent = 'Order a Custom Collage Portrait';
-      if (modalDesc) modalDesc.textContent = 'Send us a photo of yourself, a family member, child, pet, or memorial tribute. Guided by 4-time Guinness World Record holder Adetunwase Adenle, our scholars transform your photo into an astonishing hand-torn paper mosaic portrait on canvas.';
+      if (modalDesc) modalDesc.textContent = 'Send us a photo of yourself, a family member, child, pet, or memorial tribute. Guided by 4-time Guinness World Record holder Adetunwase Adenle, our scholars transform your photo into an astonishing hand-torn paper collage portrait on museum board.';
       if (groupArtwork) groupArtwork.style.display = 'none';
       if (groupPortrait) groupPortrait.style.display = 'block';
       if (uploadLabel) uploadLabel.textContent = 'Photo Reference *';
@@ -2056,7 +2064,7 @@
       bgImage: "assets/images/gallery/gallery_05.jpg",
       tagText: "Live Studio &bull; Floating Lagoon Studio, Nigeria",
       title: "From Shoreline Labor to Fine Art Mastery",
-      desc: "Before Slum Art, my days were spent fishing plastic from the water. Today my paintings pay my school tuition and I have a seat in a real classroom.",
+      desc: "Before Slum Art, my days were spent fishing plastic from the water. Today my collage portraits pay my school tuition and I have a seat in a real classroom.",
       outcomes: "<span>100% Tuition Escrow</span><span class=\"dot-sep\">&bull;</span><span>Crested Kit</span><span class=\"dot-sep\">&bull;</span><span>Daily Meals</span>"
     },
     {
@@ -2066,7 +2074,7 @@
       bgImage: "assets/images/gallery/gallery_07.jpg",
       tagText: "Secondary Scholar &bull; Floating Atelier",
       title: "Finding My Creative Voice on the Floating Easel",
-      desc: "Painting on the lagoon gave me confidence and hope. My artwork helped fund our solar-powered library, and now I am excelling in secondary school.",
+      desc: "Creating paper collage art on the lagoon gave me confidence and hope. My artwork helped fund our solar-powered library, and now I am excelling in secondary school.",
       outcomes: "<span>Secondary Scholarship</span><span class=\"dot-sep\">&bull;</span><span>Art Supplies</span><span class=\"dot-sep\">&bull;</span><span>Hot Lunch</span>"
     },
     {
@@ -2084,9 +2092,9 @@
       role: "Scholar #043 &bull; Bright Achievers Primary",
       avatar: "assets/images/gallery/gallery_02.jpg",
       bgImage: "assets/images/gallery/gallery_06.jpg",
-      tagText: "Charcoal & Pastels &bull; Under-Bridge Studio",
+      tagText: "Paper Collage Portraits &bull; Under-Bridge Studio",
       title: "From Informal Dumpsites to Gallery Showcases",
-      desc: "Drawing portraits with charcoal taught me that my hands can build something beautiful. Our art is breaking generations of poverty right here under the bridge.",
+      desc: "Assembling portraits from recycled paper taught me that my hands can build something beautiful. Our art is breaking generations of poverty right here under the bridge.",
       outcomes: "<span>Tuition Escrow</span><span class=\"dot-sep\">&bull;</span><span>Studio Easel Kit</span><span class=\"dot-sep\">&bull;</span><span>Academic Tutoring</span>"
     }
   ];

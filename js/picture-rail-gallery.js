@@ -74,8 +74,8 @@ function formatArtworkForRail(art, index, currency) {
     price_usd: art.price_usd,
     price_ngn: art.price_ngn,
     details: [
-      "Original 1-of-1 Certified Canvas",
-      art.medium || "Acrylic on Museum Canvas",
+      "Original 1-of-1 Paper Collage Portrait",
+      art.medium || "Handcrafted Recycled Paper Collage on Board",
       "Official Certificate of Authenticity",
       art.impact || "Funds 1 Full Term Tuition & Nutritious Meals"
     ],
@@ -128,7 +128,7 @@ function renderGallery(mountEl, artworks, currency) {
         items: items,
         eyebrow: "The Curatorial Picture Rail • 100% Direct Scholar Impact",
         heading: "A gallery wall you can rearrange, right on the page.",
-        caption: "Brush along the rail to light a canvas, drag to slide, lift to inspect provenance.",
+        caption: "Brush along the rail to illuminate a portrait, drag to slide, lift to inspect provenance.",
         autoplay: false,
         action: M.jsxs("div", {
           className: "flex flex-wrap items-center justify-center gap-3 pt-2",
@@ -143,7 +143,7 @@ function renderGallery(mountEl, artworks, currency) {
               },
               children: [
                 M.jsx("i", { className: "fas fa-wand-magic-sparkles text-amber-500 mr-2" }),
-                "Commission Custom Artwork / Portrait"
+                "Commission Custom Collage Portrait"
               ]
             })
           ]
