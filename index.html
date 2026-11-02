@@ -161,6 +161,555 @@
     </div>
   </aside>
 
+
+  <!-- ===================================================================
+       HERO: OFFICIAL 21ST.DEV ANIMATOR TITLE PRELOADER
+       Component by Kedhareswer Naidu (@kedhareswer)
+       Customized for: "The Comic Project • Nigeria"
+       =================================================================== -->
+  <section class="hero-section hero-atp-stage hero-light-stage" id="hero" style="background-color: #faf8f5 !important; color: #0f172a !important; padding: 0;">
+    <div class="container hero-atp-container" style="max-width: 100% !important; padding: 0 !important; margin: 0 !important;">
+      <!-- Full Edge-to-Edge 21st.dev Kedhareswer Animator Title Preloader (Light Studio Paper) -->
+      <div id="heroAnimatorPreloaderMount" style="width: 100%;"></div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       PARALLAX WAVE TRANSITION: LIGHT ATELIER (#faf8f5) → DARK MIDNIGHT (#060911)
+       Seamless animated fluid transition between the Light Hero & Dark Story
+       =================================================================== -->
+  <div class="hero-to-dark-wave" aria-hidden="true">
+    <svg class="hero-waves-animated" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="hero-fluid-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="hero-wave-parallax">
+        <use xlink:href="#hero-fluid-wave" x="48" y="0" fill="rgba(6, 9, 17, 0.3)" />
+        <use xlink:href="#hero-fluid-wave" x="48" y="2" fill="rgba(6, 9, 17, 0.55)" />
+        <use xlink:href="#hero-fluid-wave" x="48" y="4" fill="rgba(6, 9, 17, 0.8)" />
+        <use xlink:href="#hero-fluid-wave" x="48" y="6" fill="#060911" />
+      </g>
+    </svg>
+  </div>
+
+  <!-- ===================================================================
+       21ST.DEV MINIMALIST HERO (SECOND PAGE - EXACT 100VH VIEWPORT FIT)
+       Component Inspiration: @ravikatiyar162/components/minimalist-hero
+       Image: User Uploaded Student Scholar (Transparent Studio Cutout)
+       Overlapping Warm Golden Sun Disc + Monumental Typography
+       =================================================================== -->
+  <section class="minimalist-hero-section" id="who-we-are">
+    <!-- Main 3-Column Minimalist Stage -->
+    <div class="m-hero-stage">
+      <!-- Col 1: Direct Human Copy & Interactive Donation Thingy -->
+      <div class="m-hero-col m-hero-col--left">
+        <span class="m-hero-eyebrow">URGENT HUMANITARIAN NEED</span>
+        <p class="m-hero-text">
+          In Nigeria’s floating lagoon communities, over 100,000 children are forced into shoreline trash labor. 
+          A single gift of <strong id="mHeroLeadAmount">$35</strong> takes a child off the water and pays 100% of their primary school tuition, uniform kit, and daily hot meals.
+        </p>
+
+        <!-- 21st.dev Interactive Donation Thingy -->
+        <div class="m-hero-donation-box">
+          <div class="m-hero-donation-top">
+            <span class="m-hero-donation-label">CHOOSE SPONSORSHIP</span>
+            <div class="m-hero-curr-tray" role="group" aria-label="Select currency">
+              <button type="button" class="m-hero-curr-btn active" data-curr="USD" id="mHeroCurrUsd">$ USD</button>
+              <button type="button" class="m-hero-curr-btn" data-curr="NGN" id="mHeroCurrNgn">₦ NGN</button>
+            </div>
+          </div>
+
+          <!-- 4 Tactile Tiers -->
+          <div class="m-hero-tiers-grid" role="radiogroup" aria-label="Donation tiers">
+            <button type="button" class="m-hero-tier-btn" data-amount="10" data-label-usd="$10" data-label-ngn="₦12.5k" data-title-usd="Sponsor Meals &amp; Art • $10" data-title-ngn="Sponsor Meals &amp; Art • ₦12,500">
+              <span class="m-tier-val">$10</span>
+              <span class="m-tier-name">Meals</span>
+            </button>
+            <button type="button" class="m-hero-tier-btn active" data-amount="35" data-label-usd="$35" data-label-ngn="₦43.7k" data-title-usd="Sponsor 1 Child's Tuition • $35" data-title-ngn="Sponsor 1 Child's Tuition • ₦43,750">
+              <span class="m-tier-badge">Most Direct</span>
+              <span class="m-tier-val">$35</span>
+              <span class="m-tier-name">1 Term</span>
+            </button>
+            <button type="button" class="m-hero-tier-btn" data-amount="100" data-label-usd="$100" data-label-ngn="₦125k" data-title-usd="Sponsor Full Year • $100" data-title-ngn="Sponsor Full Year • ₦125,000">
+              <span class="m-tier-val">$100</span>
+              <span class="m-tier-name">Full Year</span>
+            </button>
+            <button type="button" class="m-hero-tier-btn" data-amount="250" data-label-usd="$250" data-label-ngn="₦312k" data-title-usd="Sponsor Fellowship • $250" data-title-ngn="Sponsor Fellowship • ₦312,500">
+              <span class="m-tier-val">$250</span>
+              <span class="m-tier-name">Fellowship</span>
+            </button>
+          </div>
+
+          <!-- Machined Paystack Giving Button -->
+          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="m-hero-primary-btn" id="mHeroDonateBtn">
+            <span id="mHeroDonateText">Sponsor 1 Child's Tuition • $35</span>
+            </a>
+
+          <div class="m-hero-trust-line">
+            <span>Official Paystack Escrow</span>
+            <span>&bull;</span>
+            <span>100% Direct Model</span>
+            <span>&bull;</span>
+            <span>RC: 139169</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 2: Golden Sun Disc + Transparent Student Cutout -->
+      <div class="m-hero-col m-hero-col--center">
+        <div class="m-hero-sun-disc" aria-hidden="true"></div>
+        <div class="m-hero-img-wrap">
+          <img 
+            src="assets/images/gallery/comic_student_cutout.png?v=20261031_v61" 
+            alt="Serious Boy in Patterned Outfit - Illustrated Nigerian Student Scholar" 
+            class="m-hero-cutout-img"
+            loading="eager"
+          >
+        </div>
+      </div>
+
+      <!-- Col 3: Monumental Stacked Headline -->
+      <div class="m-hero-col m-hero-col--right">
+        <h2 class="m-hero-headline">
+          <span class="m-hero-word">Mentorship</span>
+          <span class="m-hero-word m-hero-word--highlight">and support</span>
+        </h2>
+      </div>
+    </div>
+
+    <!-- Bottom Meta / Coordinates -->
+    <footer class="m-hero-footer">
+      <div class="m-hero-socials">
+        <a href="https://instagram.com/slumartfoundation" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://twitter.com/slumart_org" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://linkedin.com/company/slum-art-foundation" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://youtube.com/@slumartfoundation" target="_blank" rel="noopener noreferrer">YouTube</a>
+      </div>
+
+      <a href="#giving-stage" class="m-hero-scroll-pill">
+        <span>Explore Giving Stage</span>
+        </a>
+
+      <div class="m-hero-coords">
+        <span>Lagos, Nigeria</span>
+        <span class="m-hero-dot-sep">&bull;</span>
+        <span>5,000+ Enrolled Scholars</span>
+      </div>
+    </footer>
+  </section>
+
+  <!-- ===================================================================
+       DIRECT GIVING STAGE & TACTILE IMPACT LEDGER (SECTION 3 - EXACT 100VH)
+       - 100% fits within 1 page on desktop without requiring scrolling
+       - Pure positive impact: Kehinde verified enrolled scholar case study
+       - 21st.dev Tactile Giving Console
+       Official Paystack: https://paystack.shop/pay/lk0hlrdlun
+       =================================================================== -->
+  <!-- ===================================================================
+       UI LAYOUT FEATURE BENTO (SECTION 3)
+       Design Blueprint: @uilayout.contact/components/feature-bento on 21st.dev
+       - Asymmetric 6-card squircle bento grid with 24px rounded corners
+       - Edge-to-edge cinematic looping video & authentic documentary photography
+       - Spacious typography, ambient glowing gradients, live radar pulse
+       - Strict 1-Page Viewport Fit (calc(100vh - 72px))
+       =================================================================== -->
+  <section class="ui-bento-section" id="giving-stage">
+    <div class="ui-bento-container">
+      
+      <!-- Section Editorial Header -->
+      <div class="ui-bento-header">
+        <div class="ui-bento-pill">
+          <span class="ui-pulse-dot"></span>
+          <span>VERIFIED PHILANTHROPIC IMPACT</span>
+        </div>
+        <h2 class="ui-bento-title">Real Lives. Certified Impact.</h2>
+        <p class="ui-bento-sub">From shoreline scrap labor into accredited schooling, master fine-art mentorship, and solar-powered floating studios.</p>
+      </div>
+
+      <!-- 6-Card Feature Bento Grid -->
+      <div class="ui-bento-grid">
+
+        <!-- CARD 1: Large Hero Media Card (spans 2 cols, 2 rows) - Automatic Storytelling Loop -->
+        <div class="ui-bento-card card--hero" id="heroScholarStoryCard">
+          <!-- Background Crossfading Photos (Cycles automatically with each child) -->
+          <div class="ui-hero-bg-slider" id="heroBgSlider">
+            <div class="hero-bg-slide active" data-slide="0" style="background-image: url('assets/images/gallery/gallery_05.jpg');"></div>
+            <div class="hero-bg-slide" data-slide="1" style="background-image: url('assets/images/gallery/gallery_07.jpg');"></div>
+            <div class="hero-bg-slide" data-slide="2" style="background-image: url('assets/images/gallery/gallery_03.jpg');"></div>
+            <div class="hero-bg-slide" data-slide="3" style="background-image: url('assets/images/gallery/gallery_06.jpg');"></div>
+          </div>
+          <!-- Gradient Scrim for Contrast -->
+          <div class="ui-bento-scrim"></div>
+
+          <!-- Hero Content -->
+          <div class="ui-hero-content">
+            <div class="ui-hero-top-row">
+              <div class="ui-tag-pill" id="scholarStoryTag">
+                <span class="ui-pulse-dot pulse--green"></span>
+                <span>Live Studio &bull; Floating Lagoon Studio, Nigeria</span>
+              </div>
+            </div>
+
+            <!-- Bottom Content Group: Sits quietly at the bottom so photography shines -->
+            <div class="ui-hero-bottom-group">
+              <div class="scholar-story-body" id="scholarStoryBody">
+                <h3 class="ui-hero-title" id="scholarStoryTitle">
+                  From Shoreline Labor to Fine Art Mastery
+                </h3>
+
+                <p class="ui-hero-desc" id="scholarStoryDesc">
+                  &ldquo;Before Slum Art, my days were spent fishing plastic from the water. Today my collage portraits pay my school tuition and I have a seat in a real classroom.&rdquo;
+                </p>
+              </div>
+
+              <div class="ui-hero-footer" id="scholarStoryFooter">
+                <div class="ui-scholar-badge">
+                  <img src="assets/images/gallery/kehinde_portrait.jpg" alt="Scholar portrait" class="scholar-thumb" id="scholarStoryAvatar">
+                  <div class="scholar-info">
+                    <span class="scholar-name" id="scholarStoryName">Kehinde, Age 11</span>
+                    <span class="scholar-role" id="scholarStoryRole">Scholar #042 &bull; Bright Achievers Primary</span>
+                  </div>
+                </div>
+                <div class="ui-outcomes-pill" id="scholarStoryOutcomes">
+                  <span>100% Tuition Escrow</span>
+                  <span class="dot-sep">&bull;</span>
+                  <span>Crested Kit</span>
+                  <span class="dot-sep">&bull;</span>
+                  <span>Daily Meals</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: Top Right - 100% Escrow Stat Card (col 3, row 1) -->
+        <div class="ui-bento-card card--stat-blue">
+          <div class="ui-ambient-glow glow--tr"></div>
+          <div class="ui-card-inner">
+            <div class="ui-icon-box box--blue">
+              </div>
+            <div class="ui-stat-row">
+              <h4 class="ui-stat-huge">100%</h4>
+              <p class="ui-stat-caption">Direct Educational Escrow</p>
+            </div>
+            <p class="ui-card-sub text-white-90">
+              Zero admin overhead taken. Every gift is deployed directly into school fees, books, uniforms, and daily nutrition.
+            </p>
+          </div>
+        </div>
+
+        <!-- CARD 3: Middle Right - 4x Guinness Record Feature Card (col 3, row 2) -->
+        <div class="ui-bento-card card--feature-dark">
+          <div class="ui-card-inner">
+            <div class="ui-icon-box box--amber">
+              </div>
+            <div class="ui-feature-text">
+              <h4 class="ui-feature-title">4&times; Guinness World Records</h4>
+              <p class="ui-card-sub text-muted">
+                Trained daily by master artist Adetunwase Adenle, elevating shoreline labor into world-class exhibitions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4: Bottom Left - 50,000+ Bottles Upcycled (col 1, row 3) -->
+        <div class="ui-bento-card card--action-eco">
+          <div class="ui-card-bg-img" style="background-image: url('assets/images/donation/hue_4.png');"></div>
+          <div class="ui-card-img-scrim"></div>
+
+          <div class="ui-action-inner">
+            <div class="ui-action-top">
+              <span class="ui-tag-pill pill--translucent">50,000+ Bottles</span>
+              <a href="#art-shop" class="ui-arrow-btn" aria-label="View Art Gallery">↗</a>
+            </div>
+            <div class="ui-action-bottom">
+              <h4 class="ui-action-title">Upcycled Into<br>Classrooms</h4>
+              <p class="ui-card-sub text-white-85">Solar-powered floating academy built from lagoon waste.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 5: Bottom Center - 5,000+ Children Educated (col 2, row 3) -->
+        <div class="ui-bento-card card--stat-dark">
+          <div class="ui-ping-beacon">
+            <span class="ping-wave"></span>
+            <span class="ping-point"></span>
+          </div>
+          <div class="ui-card-inner ui-center-content">
+            <span class="ui-gradient-stat">5,000+</span>
+            <p class="ui-stat-label">CHILDREN ELEVATED</p>
+            <p class="ui-card-sub text-muted">Transitioned off shoreline scrap labor into accredited schools across Lagos.</p>
+          </div>
+        </div>
+
+        <!-- CARD 6: Bottom Right - 100% Students Get Educated (col 3, row 3) -->
+        <div class="ui-bento-card card--stat-accent">
+          <div class="ui-ambient-glow glow--br"></div>
+          <div class="ui-card-inner ui-center-content">
+            <div class="ui-stat-huge text-white">100%</div>
+            <p class="ui-stat-label text-blue-100">STUDENTS GET EDUCATED</p>
+            <p class="ui-card-sub text-blue-50">100% of enrolled students get educated with verified year-over-year graduation tracking.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Animated Parallax Water Wave Transition: Dark Bento (#07090e) -> Light Fine Art Atelier (#faf8f5) -->
+  <div class="shop-wave-divider" aria-hidden="true">
+    <svg class="shop-waves-animated" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="shop-fluid-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="shop-wave-parallax">
+        <use xlink:href="#shop-fluid-wave" x="48" y="0" fill="rgba(250, 248, 245, 0.3)" />
+        <use xlink:href="#shop-fluid-wave" x="48" y="2" fill="rgba(250, 248, 245, 0.55)" />
+        <use xlink:href="#shop-fluid-wave" x="48" y="4" fill="rgba(250, 248, 245, 0.8)" />
+        <use xlink:href="#shop-fluid-wave" x="48" y="6" fill="#faf8f5" />
+      </g>
+    </svg>
+  </div>
+
+  <!-- Official Fine Art Gallery & Curated Sales Atelier (Sales Priority #1) -->
+  <section class="shop-section" id="art-shop">
+    <div class="container">
+      <!-- Section Header & Provenance Proof Bar -->
+      <div class="section-header shop-section-header">
+        <div class="gallery-salon-tag">
+          <span>The Permanent Collection &bull; Certified Masterpieces</span>
+        </div>
+        <h2 class="section-title">Buy a Collage Portrait and Send a Kid to School</h2>
+        <p class="section-desc">
+          Browse certified original handcrafted recycled paper collage portraits crafted by children (ages 8–15) living in Lagos slum communities. Each acquisition includes an embossed Certificate of Provenance signed by founder Adetunwase Adenle. 100% of proceeds fund school fees, nutritional feeding, and fine art materials.
+        </p>
+      </div>
+
+      <!-- Curatorial Provenance & Philanthropic Trust Bar -->
+      <div class="shop-provenance-strip">
+        <div class="provenance-pillar">
+          <div class="provenance-icon-seal">
+            </div>
+          <div class="provenance-content">
+            <span class="provenance-kicker">Direct Youth Impact</span>
+            <span class="provenance-value">$20,450 USD</span>
+            <span class="provenance-caption">100% to Tuition &amp; Meals</span>
+          </div>
+        </div>
+
+        <div class="provenance-pillar">
+          <div class="provenance-icon-seal">
+            </div>
+          <div class="provenance-content">
+            <span class="provenance-kicker">Global Patrons</span>
+            <span class="provenance-value">142 Canvases</span>
+            <span class="provenance-caption">Collected in 18+ Countries</span>
+          </div>
+        </div>
+
+        <div class="provenance-pillar">
+          <div class="provenance-icon-seal">
+            </div>
+          <div class="provenance-content">
+            <span class="provenance-kicker">Archival Provenance</span>
+            <span class="provenance-value">1-of-1 Originals</span>
+            <span class="provenance-caption">Signed Certificate of Authenticity</span>
+          </div>
+        </div>
+
+        <div class="provenance-pillar">
+          <div class="provenance-icon-seal">
+            </div>
+          <div class="provenance-content">
+            <span class="provenance-kicker">Global Transit</span>
+            <span class="provenance-value">DHL Express</span>
+            <span class="provenance-caption">Free Insured Courier Delivery</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search, Categories & Custom Commission UP TOP -->
+      <div class="shop-filter-bar shop-filter-bar--rail-top">
+        <div class="shop-filter-top">
+          <div class="search-box-wrap">
+            <input type="text" id="shopSearchInput" class="search-input" placeholder="Search archive by portrait title, young artist, or collage style (e.g. Kehinde, Collage, Portrait)...">
+          </div>
+
+          <div class="sort-select-wrap">
+            <label for="sortSelect">Sort Archive:</label>
+            <select id="sortSelect" class="sort-select">
+              <option value="default">Curator's Highlights</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="title">Title: A to Z</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Curated Collection Pills + Custom Commission Button -->
+        <div class="category-pills">
+          <button class="cat-pill active" data-category="all">All Collage Portraits (36)</button>
+          <button class="cat-pill" data-category="Paper Collage Portraits">Paper Collage Portraits</button>
+          <button class="cat-pill" data-category="Scholar Portraits">Scholar Portraits</button>
+          <button class="cat-pill" data-category="Heritage & Elder Portraits">Heritage &amp; Elder Portraits</button>
+          <button class="cat-pill" data-category="Vibrant Paper Collage">Vibrant Paper Collage</button>
+          <button class="cat-pill" data-category="Monochrome Newsprint">Monochrome Newsprint</button>
+          <button type="button" class="cat-pill cat-pill-custom-action" onclick="window.openCustomProductModal('artwork')">
+            Commission Custom Collage Portrait <span class="custom-badge-spark">Custom</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Interactive Picture Rail Salon Wall (21st.dev Component with Full Catalog) -->
+      <div class="picture-rail-section" id="homePictureRailSection" style="margin: 1rem 0 2.5rem;">
+        <div id="homePictureRailMount"></div>
+      </div>
+
+      <!-- Custom Products: Bespoke Atelier (Collage Portrait & Collage Artwork) -->
+      <div class="custom-portrait-callout" id="customProductsSection">
+        
+        <!-- Header Bar -->
+        <div class="cpc-header-bar">
+          <div class="cpc-eyebrow" id="cpcEyebrow">
+            <span class="cpc-eyebrow-cnn">CNN</span> As Seen on CNN &bull; Private Atelier
+          </div>
+          <div class="cpc-product-tabs" role="tablist">
+            <button type="button" class="cpc-tab-btn active" id="cpcTabPortrait" onclick="window.switchCustomProduct('portrait')" role="tab" aria-selected="true">
+              Collage Portrait
+            </button>
+            <button type="button" class="cpc-tab-btn" id="cpcTabArtwork" onclick="window.switchCustomProduct('artwork')" role="tab" aria-selected="false">
+              Thematic Artwork
+            </button>
+          </div>
+        </div>
+
+        <!-- Main Compact Grid -->
+        <div class="cpc-inner">
+          <!-- 5-Image Minimal Carousel (Left) -->
+          <div class="cpc-carousel-container" id="cpcCarouselContainer">
+            <div class="cpc-carousel-viewport" id="cpcCarouselViewport">
+              <button type="button" class="cpc-nav-btn prev" onclick="window.prevAtelierSlide()" aria-label="Previous image">&lsaquo;</button>
+              <button type="button" class="cpc-nav-btn next" onclick="window.nextAtelierSlide()" aria-label="Next image">&rsaquo;</button>
+              
+              <div class="cpc-carousel-slide active" data-index="0">
+                <img src="assets/images/cnn_collage_portrait_adetunwase.jpg" alt="CNN #MyFreedomDay 222 Collage Portraits by Adetunwase Adenle">
+              </div>
+              <div class="cpc-carousel-slide" data-index="1">
+                <img src="assets/images/cnn_portraits_mosaic_panorama.jpg" alt="Monumental 222 Portraits CNN Red Emblem and Anchors Mosaic">
+              </div>
+              <div class="cpc-carousel-slide" data-index="2">
+                <img src="assets/images/cnn_collage_portrait_detail.jpg" alt="Christiane Amanpour, Clarissa Ward and Anderson Cooper Archival Mosaic">
+              </div>
+              <div class="cpc-carousel-slide" data-index="3">
+                <img src="assets/images/cnn_portraits_left_wing.jpg" alt="CNN Frontline Reporters Handcrafted Collage Mosaic in Lagos">
+              </div>
+              <div class="cpc-carousel-slide" data-index="4">
+                <img src="assets/images/cnn_portraits_anchors_closeup.jpg" alt="Bespoke Paper Mosaic Shading Detail of CNN Anchors">
+              </div>
+            </div>
+
+            <!-- Minimal Bottom Control Bar -->
+            <div class="cpc-carousel-bottom">
+              <span class="cpc-slide-caption" id="cpcSlideCaption">CNN #MyFreedomDay &bull; 222 Handcrafted Portraits by Adetunwase Adenle</span>
+              <div class="cpc-carousel-indicators" id="cpcIndicators">
+                <button type="button" class="cpc-indicator-bar active" onclick="window.setAtelierSlide(0)" aria-label="Slide 1"></button>
+                <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(1)" aria-label="Slide 2"></button>
+                <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(2)" aria-label="Slide 3"></button>
+                <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(3)" aria-label="Slide 4"></button>
+                <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(4)" aria-label="Slide 5"></button>
+              </div>
+              <span class="cpc-slide-counter" id="cpcSlideCounter"><strong>01</strong> / 05</span>
+            </div>
+          </div>
+
+          <!-- Content Column (Right) -->
+          <div class="cpc-content-col" id="cpcContentCol">
+            <h3 class="cpc-title" id="cpcTitle">Turn Any Photo into a Handcrafted Paper Collage Portrait</h3>
+            <p class="cpc-desc" id="cpcDesc">
+              4-time Guinness World Record holder Adetunwase Adenle and our young scholars transform your photo into an original fine-art portrait assembled entirely from hand-torn recycled magazines on archival museum board.
+            </p>
+            <div class="cpc-impact-highlight" id="cpcImpactBox">
+              <span id="cpcImpactText">100% of your commission funds a child's accredited schooling, uniform, and daily meals in Lagos.</span>
+            </div>
+            <div class="cpc-actions-row">
+              <button type="button" class="btn btn-primary btn-cpc-order" id="cpcBtnOrder" onclick="window.openCustomProductModal('portrait')">
+                Commission a Portrait &rarr;
+              </button>
+              <div class="cpc-price-tag" id="cpcPriceTag">From $150 USD</div>
+              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20would%20like%20to%20commission%20a%20custom%20Collage%20Portrait%20from%20my%20photo." target="_blank" rel="noopener noreferrer" class="cpc-wa-link" id="cpcWaLink">
+                WhatsApp Concierge
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       ART GALLERY IMPACT & PROVENANCE STRIP
+       Changing Lives Through Fine Art • 4 Core Foundation Verification Metrics
+       =================================================================== -->
+  <section class="art-impact-strip" id="provenance-impact">
+    <div class="container">
+      <div class="art-impact-inner">
+        <div class="art-impact-header">
+          <span class="art-impact-kicker">CHANGING LIVES THROUGH ART</span>
+          <h3 class="art-impact-heading">Every Brushstroke Fuels a Child’s Future</h3>
+          <div class="art-impact-assurance-badge">
+            <span>100% Direct Impact &bull; Certified Youth Tuition &amp; Nutrition</span>
+          </div>
+          <p class="art-impact-sub">
+            Every artwork acquisition directly empowers young talents in Nigeria — funding <strong>tuition, daily hot meals, and fine art supplies</strong> across our Pet Bottle Schools with complete philanthropic transparency.
+          </p>
+        </div>
+
+        <div class="art-impact-metrics-grid">
+          <div class="impact-metric-card">
+            <div class="impact-metric-icon"></div>
+            <div class="impact-metric-body">
+              <span class="impact-metric-num count-up" data-target="4" data-suffix="x">4x</span>
+              <span class="impact-metric-label">Guinness World Records</span>
+              <span class="impact-metric-hint">Official Global Laureate</span>
+            </div>
+          </div>
+
+          <div class="impact-metric-card">
+            <div class="impact-metric-icon"></div>
+            <div class="impact-metric-body">
+              <span class="impact-metric-num count-up" data-target="36" data-suffix="+">36+</span>
+              <span class="impact-metric-label">Certified Artworks</span>
+              <span class="impact-metric-hint">Museum-Grade Provenance</span>
+            </div>
+          </div>
+
+          <div class="impact-metric-card">
+            <div class="impact-metric-icon"></div>
+            <div class="impact-metric-body">
+              <span class="impact-metric-num count-up" data-target="1000" data-suffix="+">1,000+</span>
+              <span class="impact-metric-label">Children Reached</span>
+              <span class="impact-metric-hint">In Pet Bottle Schools</span>
+            </div>
+          </div>
+
+          <div class="impact-metric-card">
+            <div class="impact-metric-icon"></div>
+            <div class="impact-metric-body">
+              <span class="impact-metric-num count-up" data-target="18" data-suffix="+">18+</span>
+              <span class="impact-metric-label">Countries Worldwide</span>
+              <span class="impact-metric-hint">Global Art Collectors</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
   <!-- ===================================================================
        FOUNDER SPOTLIGHT: REFINED EDITORIAL PROFILE
        Adetunwase Adenle • 4-Time Guinness World Record Holder & Eco-Artist
@@ -705,7 +1254,8 @@
     <div class="services-content-wrap">
       <!-- Circular Video Play Trigger Button -->
       <button type="button" class="services-play-btn" onclick="window.openVideoModal('VNrDvOuh_-E')" aria-label="Watch Our Video Highlight">
-        </button>
+        <span style="display: block; margin-left: 3px; font-size: 1.3rem; color: #090d16;">&#9654;</span>
+      </button>
 
       <!-- Script Subtitle -->
       <span class="services-script-sub">Watch Our Video Highlight</span>
@@ -805,7 +1355,7 @@
             <input type="text" name="fullName" required placeholder="e.g. Oluwaseun Adeleke" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-row-2col" style="margin-bottom: 1rem;">
             <div>
               <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Email Address *</label>
               <input type="email" name="email" required placeholder="seun@example.com" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
@@ -860,7 +1410,7 @@
             <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Full Name *</label>
             <input type="text" name="fullName" required placeholder="Blessing Adeleke" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem;">
           </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-row-2col" style="margin-bottom: 1rem;">
             <div>
               <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Email Address *</label>
               <input type="email" name="email" required placeholder="blessing@example.com" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem;">
@@ -950,7 +1500,7 @@
             <input type="text" name="fullName" required placeholder="Blessing Adeleke" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-row-2col" style="margin-bottom: 1rem;">
             <div>
               <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Email Address *</label>
               <input type="email" name="email" required placeholder="blessing@example.com" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
@@ -1026,7 +1576,7 @@
 
         <form id="customPortraitForm" onsubmit="window.handleCustomPortraitSubmit(event)">
           <!-- Row 1: Contact Details -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-row-2col" style="margin-bottom: 1rem;">
             <div>
               <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Your Full Name *</label>
               <input type="text" name="fullName" required placeholder="e.g. David Adeleke" class="modal-form-input">
@@ -1037,7 +1587,7 @@
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-row-2col" style="margin-bottom: 1rem;">
             <div>
               <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">WhatsApp / Phone Number *</label>
               <input type="tel" name="phone" required placeholder="+234 or +1 ..." class="modal-form-input">
@@ -1051,7 +1601,7 @@
           </div>
 
           <!-- Dynamic Subject / Theme & Style Row -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-row-2col" style="margin-bottom: 1rem;">
             <!-- Shown when Collage Artwork is selected -->
             <div id="groupArtworkConcept" style="display: none;">
               <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Artwork Concept &amp; Theme *</label>
@@ -1183,7 +1733,7 @@
         </p>
 
         <form onsubmit="window.handlePartnershipSubmit(event)">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-row-2col" style="margin-bottom: 1rem;">
             <div>
               <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Contact Name *</label>
               <input type="text" name="partnerName" required placeholder="e.g. Sarah Jenkins" class="modal-form-input">
@@ -1194,7 +1744,7 @@
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-row-2col" style="margin-bottom: 1rem;">
             <div>
               <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem;">Official Work Email *</label>
               <input type="email" name="partnerEmail" required placeholder="sarah@organization.com" class="modal-form-input">

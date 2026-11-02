@@ -25021,18 +25021,7 @@
           }
         }
       },
-      /* @__PURE__ */ import_react.default.createElement(
-        "img",
-        {
-          src: "assets/images/gwr-logo.svg",
-          alt: "Guinness World Records",
-          className: "hsc-gwr-logo",
-          width: "24",
-          height: "24"
-        }
-      ),
-      /* @__PURE__ */ import_react.default.createElement("span", { className: "hsc-label" }, "Be a Part of Guinness World Record"),
-      /* @__PURE__ */ import_react.default.createElement("span", { className: "hsc-icon-bubble", "aria-hidden": "true" }, /* @__PURE__ */ import_react.default.createElement("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5", strokeLinecap: "round", strokeLinejoin: "round" }, /* @__PURE__ */ import_react.default.createElement("line", { x1: "12", y1: "5", x2: "12", y2: "19" }), /* @__PURE__ */ import_react.default.createElement("polyline", { points: "19 12 12 19 5 12" })))
+      /* @__PURE__ */ import_react.default.createElement("span", { className: "hsc-label" }, "Be a Part of Guinness World Record")
     )));
   }
   function init() {
