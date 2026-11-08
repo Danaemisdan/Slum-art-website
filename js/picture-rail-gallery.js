@@ -74,7 +74,7 @@ function formatArtworkForRail(art, index, currency) {
     price_usd: art.price_usd,
     price_ngn: art.price_ngn,
     details: [
-      "Original 1-of-1 Paper Collage Portrait",
+      art.edition || ((art.title && /portrait/i.test(art.title)) || (art.category && /portrait/i.test(art.category)) ? "Original 1-of-1 Paper Collage Portrait" : "Original 1-of-1 Paper Collage"),
       art.medium || "Handcrafted Recycled Paper Collage on Board",
       "Official Certificate of Authenticity",
       art.impact || "Funds 1 Full Term Tuition & Nutritious Meals"
