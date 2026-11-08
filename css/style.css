@@ -6202,7 +6202,7 @@ body.modal-open {
   display: block !important;
   color: #0f172a !important;
   overflow: visible !important;
-  white-space: normal !important;
+  white-space: nowrap !important;
 }
 .atp-sub-line2 {
   line-height: 1.32 !important;
@@ -6210,7 +6210,7 @@ body.modal-open {
   display: block !important;
   color: #ea580c !important;
   overflow: visible !important;
-  white-space: normal !important;
+  white-space: nowrap !important;
 }
 
 /* Pulsing Live Beacon Indicator (Disabled / Removed) */
@@ -10476,25 +10476,31 @@ html, body {
     overflow: visible !important;
   }
   .atp-sub-volume {
-    font-size: clamp(0.82rem, 3.6vw, 1.05rem) !important;
-    max-width: 320px !important;
-    width: 100% !important;
-    line-height: 1.35 !important;
-    text-wrap: balance !important;
+    font-size: clamp(0.68rem, 2.7vw, 0.84rem) !important;
+    max-width: min(340px, 94vw) !important;
+    width: max-content !important;
+    line-height: 1.28 !important;
+    letter-spacing: -0.015em !important;
     margin: 0 auto !important;
-    padding: 4px 8px !important;
+    padding: 2px 4px !important;
     overflow: visible !important;
+    text-align: center !important;
   }
   .atp-sub-line1 {
     display: block !important;
-    margin-bottom: 3px !important;
-    white-space: normal !important;
+    margin: 0 0 1px 0 !important;
+    white-space: nowrap !important;
     overflow: visible !important;
+    font-size: inherit !important;
+    line-height: 1.28 !important;
   }
   .atp-sub-line2 {
     display: block !important;
-    white-space: normal !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
     overflow: visible !important;
+    font-size: inherit !important;
+    line-height: 1.28 !important;
   }
 }
 

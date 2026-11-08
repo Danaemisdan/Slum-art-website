@@ -654,13 +654,13 @@ const ATP_CSS = `
   display: block;
   line-height: 1.32;
   margin: 0;
-  white-space: normal;
+  white-space: nowrap;
 }
 .atp-sub-line2 {
   display: block;
   line-height: 1.32;
   margin: 0;
-  white-space: normal;
+  white-space: nowrap;
 }
 .atp-sub-volume strong,
 .atp-sub-volume .atp-accent {
@@ -1186,10 +1186,10 @@ export default function AnimatorTitlePreloader({
       const sw = stage.clientWidth
       if (!ww || !sw) return
       const tall = stage.clientHeight > sw * 1.15
-      const room = sw * (tall ? 0.58 : sw > 720 ? 0.52 : 0.64)
+      const room = sw * (tall ? 0.44 : sw > 720 ? 0.52 : 0.64)
       const natural = ww / fitRef.current
       // A portrait screen has height to spare, so the word may grow past its base size there.
-      const fit = Math.min(tall ? 1.5 : 1, room / natural)
+      const fit = Math.min(tall ? 1.15 : 1, room / natural)
       if (Math.abs(fit - fitRef.current) > 0.005) {
         fitRef.current = fit
         setFit(fit)
@@ -1545,11 +1545,11 @@ export default function AnimatorTitlePreloader({
   // Hands hold the word at its ends, scaled to its size.
   const armDeg = metrics && metrics.tall ? ARM_DEG_TALL : ARM_DEG
   armRef.current = armDeg
-  const handScale = metrics ? metrics.size * (metrics.tall ? 0.0035 : 0.0030) : 0
-  const handY = metrics ? metrics.base - metrics.size * 0.28 : 0
+  const handScale = metrics ? metrics.size * (metrics.tall ? 0.0026 : 0.0030) : 0
+  const handY = metrics ? metrics.base - metrics.size * (metrics.tall ? 0.32 : 0.28) : 0
   const firstBox = metrics && metrics.boxes[0]
   const lastBox = metrics && metrics.boxes[metrics.boxes.length - 1]
-  const handOffset = metrics ? (metrics.tall ? Math.max(36, metrics.size * 0.32) : Math.max(56, metrics.size * 0.48)) : 0
+  const handOffset = metrics ? (metrics.tall ? Math.max(16, metrics.size * 0.34) : Math.max(56, metrics.size * 0.48)) : 0
   const handLX = firstBox && metrics ? firstBox.x - handOffset : 0
   const handRX = lastBox && metrics ? lastBox.x + lastBox.w + handOffset : 0
 
