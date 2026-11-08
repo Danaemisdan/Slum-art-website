@@ -7371,7 +7371,7 @@ body.modal-open {
   padding: clamp(1rem, 2.5vh, 2.5rem) clamp(1.2rem, 3vw, 3rem);
   box-sizing: border-box;
   z-index: 10;
-  scroll-margin-top: 72px;
+  scroll-margin-top: 85px;
 }
 
 .minimalist-hero-section::before {
@@ -7934,10 +7934,10 @@ body.modal-open {
     radial-gradient(circle at 100% 100%, rgba(2, 132, 199, 0.06) 0%, transparent 50%),
     linear-gradient(180deg, #07090e 0%, #0a0e17 50%, #06080d 100%);
   color: #f8fafc;
-  padding: 4.5rem clamp(1rem, 2.5vw, 2.5rem) 5.5rem;
+  padding: 2.75rem clamp(1rem, 2.5vw, 2.5rem) 4.5rem;
   box-sizing: border-box;
   display: block;
-  scroll-margin-top: 72px;
+  scroll-margin-top: 85px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -10514,7 +10514,7 @@ html, body {
 /* 4. Bento Grid / Giving Stage Mobile */
 @media (max-width: 900px) {
   .ui-bento-section {
-    padding: 4rem 0 4.5rem !important;
+    padding: 2.25rem 1rem 3.5rem !important;
   }
   .bento-card {
     padding: 1.5rem 1.25rem !important;
