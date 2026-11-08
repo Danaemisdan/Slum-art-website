@@ -635,30 +635,32 @@ const ATP_CSS = `
 .atp-sub-volume {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   font-weight: 800;
-  font-size: clamp(1.15rem, 2.5vw, 2.05rem);
-  letter-spacing: -0.015em;
+  font-size: clamp(0.92rem, 1.45vw, 1.35rem);
+  letter-spacing: -0.012em;
   text-transform: none;
   color: #ffffff;
-  max-width: min(960px, 92vw);
+  max-width: min(580px, 86vw);
   text-align: center;
-  line-height: 1.05;
-  margin: 0;
-  padding: 0;
+  line-height: 1.32;
+  margin: 0 auto;
+  padding: 0 10px;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.95);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0px;
+  gap: 2px;
 }
 .atp-sub-line1 {
   display: block;
-  line-height: 1.05;
-  margin: 0 0 1px 0;
+  line-height: 1.32;
+  margin: 0;
+  white-space: normal;
 }
 .atp-sub-line2 {
   display: block;
-  line-height: 1.05;
+  line-height: 1.32;
   margin: 0;
+  white-space: normal;
 }
 .atp-sub-volume strong,
 .atp-sub-volume .atp-accent {
@@ -773,8 +775,8 @@ const ATP_CSS = `
 .atp-ch[data-paint="1"] .atp-paint { clip-path: inset(-10% -10% -10% -10%); }
 .atp-ch[data-paint="1"] .atp-ink { opacity: 1; }
 .atp-rough { display: none; }
-.atp-handslot { position: absolute; z-index: 1; width: 0; height: 0; }
-.atp-hand { position: absolute; left: 0; top: 0; will-change: transform; }
+.atp-handslot { position: absolute; z-index: 2; width: 0; height: 0; pointer-events: none; }
+.atp-hand { position: absolute; left: 0; top: 0; will-change: transform; pointer-events: none; }
 .atp-hand svg { position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: visible; }
 .atp-thumb { transform-box: fill-box; transform-origin: 0% 100%; transition: transform 420ms cubic-bezier(.3,1.5,.5,1); }
 .atp-gate[data-phase="grip"] .atp-thumb, .atp-gate[data-phase="hold"] .atp-thumb { transform: rotate(5deg) translateY(4px); }
@@ -1184,7 +1186,7 @@ export default function AnimatorTitlePreloader({
       const sw = stage.clientWidth
       if (!ww || !sw) return
       const tall = stage.clientHeight > sw * 1.15
-      const room = sw * (tall ? 0.58 : sw > 720 ? 0.6 : 0.7)
+      const room = sw * (tall ? 0.58 : sw > 720 ? 0.52 : 0.64)
       const natural = ww / fitRef.current
       // A portrait screen has height to spare, so the word may grow past its base size there.
       const fit = Math.min(tall ? 1.5 : 1, room / natural)
@@ -1547,7 +1549,7 @@ export default function AnimatorTitlePreloader({
   const handY = metrics ? metrics.base - metrics.size * 0.28 : 0
   const firstBox = metrics && metrics.boxes[0]
   const lastBox = metrics && metrics.boxes[metrics.boxes.length - 1]
-  const handOffset = metrics ? (metrics.tall ? Math.max(22, metrics.size * 0.22) : Math.max(16, metrics.size * 0.12)) : 0
+  const handOffset = metrics ? (metrics.tall ? Math.max(36, metrics.size * 0.32) : Math.max(56, metrics.size * 0.48)) : 0
   const handLX = firstBox && metrics ? firstBox.x - handOffset : 0
   const handRX = lastBox && metrics ? lastBox.x + lastBox.w + handOffset : 0
 
