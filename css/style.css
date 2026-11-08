@@ -4832,6 +4832,17 @@ body.modal-open {
   -webkit-text-fill-color: transparent;
 }
 
+.gwr-editorial-lead {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(0.92rem, 1.15vw, 1.08rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #f59e0b;
+  text-transform: uppercase;
+  margin-bottom: clamp(0.35rem, 0.8vh, 0.55rem);
+  line-height: 1.35;
+}
+
 .gwr-editorial-subtitle {
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
   font-size: clamp(0.85rem, 1.05vw, 1rem);
@@ -5297,18 +5308,27 @@ body.modal-open {
     max-width: 580px !important;
   }
 
-  .gwr-editorial-subtitle {
+  .gwr-editorial-lead {
     order: 3 !important;
-    font-size: clamp(0.95rem, 3.8vw, 1.05rem) !important;
+    font-size: clamp(0.95rem, 3.8vw, 1.08rem) !important;
+    line-height: 1.35 !important;
+    margin-bottom: 0.65rem !important;
+    text-align: center !important;
+    max-width: 520px !important;
+  }
+
+  .gwr-editorial-subtitle {
+    order: 4 !important;
+    font-size: clamp(0.92rem, 3.6vw, 1.02rem) !important;
     line-height: 1.45 !important;
-    margin-bottom: 0.85rem !important;
+    margin-bottom: 0.75rem !important;
     text-align: center !important;
     color: #e2e8f0 !important;
     max-width: 520px !important;
   }
 
   .gwr-editorial-body {
-    order: 4 !important;
+    order: 5 !important;
     display: block !important;
     font-size: 0.88rem !important;
     line-height: 1.55 !important;
@@ -5319,7 +5339,7 @@ body.modal-open {
   }
 
   .gwr-book-column {
-    order: 5 !important;
+    order: 6 !important;
     display: flex !important;
     justify-content: center !important;
     width: 100% !important;
@@ -5387,7 +5407,7 @@ body.modal-open {
   }
 
   .gwr-patron-registry-card {
-    order: 6 !important;
+    order: 7 !important;
     width: 100% !important;
     max-width: 540px !important;
     padding: 1.5rem 1.25rem !important;
