@@ -749,38 +749,39 @@
     }
   };
 
-  // Atelier Showcase Minimal Carousel (21st.dev hero-10 inspired) - 100% EXCLUSIVE CNN IMAGES
+  // Atelier Showcase Minimal Carousel - 100% INDIVIDUAL PAPER COLLAGE PORTRAITS
   const ATELIER_CAROUSEL_DATA = [
     {
-      img: 'assets/images/cnn_collage_portrait_adetunwase.jpg',
-      alt: 'CNN #MyFreedomDay 222 Collage Portraits by Adetunwase Adenle',
-      caption: 'CNN #MyFreedomDay \u2022 222 Handcrafted Portraits by Adetunwase Adenle'
+      img: 'assets/images/custom_portrait_example.jpg',
+      alt: 'Original Handcrafted Paper Collage Portrait from Recycled Newsprint',
+      caption: 'Original Handcrafted Paper Collage Portrait \u2022 Recycled Newsprint on Board'
     },
     {
-      img: 'assets/images/cnn_portraits_mosaic_panorama.jpg',
-      alt: 'Monumental 222 Portraits CNN Red Emblem and Anchors Mosaic',
-      caption: 'Monumental Recycled Magazine Mosaic \u2022 CNN Red Emblem & Anchors'
+      img: 'assets/images/custom_portrait_example_2.jpg',
+      alt: 'Youth Scholar Paper Collage Portrait on Archival Museum Board',
+      caption: 'Youth Scholar Collage Portrait \u2022 Archival Museum Board'
     },
     {
-      img: 'assets/images/cnn_collage_portrait_detail.jpg',
-      alt: 'Christiane Amanpour, Clarissa Ward & Anderson Cooper Archival Mosaic',
-      caption: 'Christiane Amanpour, Clarissa Ward & Anderson Cooper \u2022 Archival Paper Mosaic'
+      img: 'assets/images/custom_portrait_example_3.jpg',
+      alt: 'Bespoke 1-of-1 Paper Mosaic Portrait with Hand-Torn Color Shading',
+      caption: 'Bespoke 1-of-1 Paper Mosaic Portrait \u2022 Precision Hand-Torn Color Shading'
     },
     {
-      img: 'assets/images/cnn_portraits_left_wing.jpg',
-      alt: 'CNN Frontline Reporters Handcrafted Collage Mosaic in Lagos',
-      caption: 'Investigative Reporters Wall \u2022 Reclaimed Newsprint on Archival Board'
+      img: 'assets/images/custom_portrait_example_4.jpg',
+      alt: 'Commissioned Atelier Portrait with Layered Reclaimed Typography',
+      caption: 'Commissioned Atelier Portrait \u2022 Layered Reclaimed Typography'
     },
     {
-      img: 'assets/images/cnn_portraits_anchors_closeup.jpg',
-      alt: 'Bespoke Paper Mosaic Shading Detail of CNN Anchors',
-      caption: 'Bespoke Paper Mosaic Craftsmanship \u2022 Hand-Torn Newsprint Shading'
+      img: 'assets/images/custom_portrait_example_5.jpg',
+      alt: 'Hope in the Slum - Fine-Art Scholar Paper Collage Portrait',
+      caption: 'Fine-Art Scholar Collage Portrait \u2022 Custom Archival UV Framing'
     }
   ];
 
   let currentAtelierSlide = 0;
   let atelierSlideTimer = null;
   let activeCustomProductType = 'portrait';
+  let activeAtelierMedia = 'portraits';
 
   function updateAtelierPrice(productType) {
     if (productType) activeCustomProductType = productType;
@@ -791,6 +792,78 @@
       ? (curr === 'USD' ? 'From $150 USD' : 'From ₦220,000 NGN')
       : (curr === 'USD' ? 'From $120 USD' : 'From ₦180,000 NGN');
     priceEls.forEach(el => { el.textContent = priceText; });
+  }
+
+  // Switch between Individual Portraits and CNN Documentary Video
+  window.switchAtelierMedia = function (mediaType, autoPlay = false) {
+    activeAtelierMedia = mediaType || 'portraits';
+    const isPortraits = activeAtelierMedia === 'portraits';
+
+    // Update switcher buttons
+    const portraitBtns = document.querySelectorAll('#cpcMediaBtnPortraits, .cpc-media-btn-portraits');
+    const videoBtns = document.querySelectorAll('#cpcMediaBtnVideo, .cpc-media-btn-video');
+
+    portraitBtns.forEach(b => {
+      b.classList.toggle('active', isPortraits);
+      b.setAttribute('aria-selected', isPortraits ? 'true' : 'false');
+    });
+    videoBtns.forEach(b => {
+      b.classList.toggle('active', !isPortraits);
+      b.setAttribute('aria-selected', !isPortraits ? 'true' : 'false');
+    });
+
+    // Toggle carousel vs video containers
+    const carouselContainers = document.querySelectorAll('#cpcCarouselContainer, .cpc-carousel-container');
+    const videoContainers = document.querySelectorAll('#cpcVideoContainer, .cpc-video-container');
+
+    carouselContainers.forEach(c => {
+      c.classList.toggle('active', isPortraits);
+      c.style.display = isPortraits ? 'flex' : 'none';
+    });
+    videoContainers.forEach(v => {
+      v.classList.toggle('active', !isPortraits);
+      v.style.display = !isPortraits ? 'flex' : 'none';
+    });
+
+    // Handle video and carousel autoplay
+    const videoEls = document.querySelectorAll('#cnnDocVideo, .cpc-video-player');
+    if (isPortraits) {
+      videoEls.forEach(v => {
+        try { v.pause(); } catch (e) {}
+      });
+      startAtelierAutoplay();
+    } else {
+      stopAtelierAutoplay();
+      if (autoPlay) {
+        window.playCnnDocVideo();
+      }
+    }
+  };
+
+  window.playCnnDocVideo = function () {
+    const video = document.getElementById('cnnDocVideo');
+    const overlay = document.getElementById('cnnDocOverlay');
+    if (video) {
+      if (overlay) overlay.style.display = 'none';
+      video.play().catch(err => {
+        console.warn('Autoplay prevented or video play error:', err);
+      });
+    }
+  };
+
+  function initCnnDocVideoEvents() {
+    const video = document.getElementById('cnnDocVideo');
+    const overlay = document.getElementById('cnnDocOverlay');
+    if (!video) return;
+
+    video.addEventListener('play', () => {
+      if (overlay) overlay.style.display = 'none';
+      stopAtelierAutoplay();
+    });
+
+    video.addEventListener('ended', () => {
+      if (overlay) overlay.style.display = 'flex';
+    });
   }
 
   window.setAtelierSlide = function (idx) {
@@ -922,7 +995,7 @@
     if (isPortrait) {
       window.setAtelierSlide(0);
     } else {
-      window.setAtelierSlide(1); // Shows monumental CNN red emblem mosaic
+      window.setAtelierSlide(1);
     }
   };
 
@@ -958,6 +1031,7 @@
     // Start autoplay
     startAtelierAutoplay();
     updateAtelierPrice('portrait');
+    initCnnDocVideoEvents();
   }
 
   // Quick Mission Navigator (Direct 1-Click Access to Key Tasks)
