@@ -17,6 +17,7 @@
 // rule in the scoped <style> is .atp- prefixed and nothing is fetched.
 
 import * as React from "react"
+import HeroSkyAtmosphere from "./hero-sky-atmosphere"
 
 export type AnimatorPreset = "ember" | "dusk" | "paper"
 
@@ -1186,10 +1187,10 @@ export default function AnimatorTitlePreloader({
       const sw = stage.clientWidth
       if (!ww || !sw) return
       const tall = stage.clientHeight > sw * 1.15
-      const room = sw * (tall ? 0.44 : sw > 720 ? 0.52 : 0.64)
+      const room = sw * (tall ? 0.50 : sw > 720 ? 0.52 : 0.64)
       const natural = ww / fitRef.current
       // A portrait screen has height to spare, so the word may grow past its base size there.
-      const fit = Math.min(tall ? 1.15 : 1, room / natural)
+      const fit = Math.min(tall ? 1.25 : 1, room / natural)
       if (Math.abs(fit - fitRef.current) > 0.005) {
         fitRef.current = fit
         setFit(fit)
@@ -1618,6 +1619,7 @@ export default function AnimatorTitlePreloader({
             data-final={final ? "1" : "0"}
           >
             {nigerianPatterns ? <NsibidiCulturalBackdrop uid={uid} /> : null}
+            <HeroSkyAtmosphere />
             <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true" focusable="false">
               <defs>
                 <filter id={uid + "-boil"} x="-10%" y="-30%" width="120%" height="160%">
