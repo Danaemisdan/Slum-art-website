@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate to Slum Art Projects • Slum Art Foundation</title>
+  <meta name="description" content="Support transformative creative education projects in Ijora Badia, Lagos: Child education sponsorships, 36 PET bottle schools, daily hot meals, and Guinness World Record book.">
+  
+  <link rel="icon" type="image/png" href="assets/images/slumart-logo.png">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Dedicated Donate Page Styles */
+    .donate-hero {
+      background: linear-gradient(135deg, #090d16 0%, #171b30 60%, #1e1b4b 100%);
+      color: #ffffff;
+      padding: 4.5rem 0 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .donate-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 20%, rgba(245, 158, 11, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .donate-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    .donate-project-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .donate-project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.09);
+    }
+    .project-card-media {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background: #0f172a;
+      overflow: hidden;
+    }
+    .project-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .donate-project-card:hover .project-card-media img {
+      transform: scale(1.04);
+    }
+    .project-card-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      color: #f8fafc;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .project-card-tag.highlight {
+      background: #ea580c;
+      color: #ffffff;
+      border-color: #f97316;
+    }
+    .project-card-body {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .project-card-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .project-card-desc {
+      color: #475569;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .project-tiers-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .tier-option-btn {
+      background: var(--bg-page);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 0.65rem 0.75rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .tier-option-btn:hover, .tier-option-btn.selected {
+      background: #fff7ed;
+      border-color: #ea580c;
+    }
+    .tier-option-btn.selected {
+      box-shadow: 0 0 0 2px #ea580c;
+    }
+    .tier-amount {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #ea580c;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .tier-label {
+      font-size: 0.72rem;
+      color: #64748b;
+      line-height: 1.2;
+      display: block;
+    }
+    .project-card-actions {
+      margin-top: auto;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .btn-donate-card {
+      width: 100%;
+      background: #ea580c;
+      color: #ffffff;
+      font-weight: 700;
+      border: none;
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    .btn-donate-card:hover {
+      background: #c2410c;
+      transform: translateY(-1px);
+    }
+    .trust-strip {
+      background: #f8fafc;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .trust-item h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 0.25rem;
+    }
+    .trust-item p {
+      font-size: 0.82rem;
+      color: #64748b;
+      line-height: 1.45;
+    }
+    /* Dedicated Custom Amount Modal */
+    .donate-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .donate-modal.active {
+      display: flex;
+    }
+    .donate-modal-content {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      max-width: 520px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      animation: modalFadeIn 0.25s ease-out;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-info">
+        <a href="tel:+2348059994834">+234 805 999 4834</a>
+        <a href="mailto:info@slumart.org">info@slumart.org</a>
+        <span>Ijora Badia • Lagos, Nigeria</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" style="color: #4ade80; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600;">
+          Join WhatsApp
+        </a>
+        <div class="currency-toggle" title="Switch Currency">
+          <button class="currency-btn active" data-currency="NGN">₦ NGN</button>
+          <button class="currency-btn" data-currency="USD">$ USD</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar: 3 links ontop (About, Collage, Donate) -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-logo"><span class="brand-wordmark">SLUM ART</span></a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="collage.html" class="nav-link">Collage</a></li>
+          <li><a href="donate.html" class="nav-link active">Donate</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="cart-trigger" id="cartTrigger" title="View Art Bag" aria-label="Shopping Bag">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+            <path d="M3 6h18"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+        </button>
+
+        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+          Donate Now
+        </a>
+
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer: Berlix UI Menu Vertical -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="brand-logo"><span class="brand-wordmark">SLUM ART</span></div>
+      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation">&times;</button>
+    </div>
+    <nav class="berlix-menu-vertical" aria-label="Mobile Navigation">
+      <ul class="berlix-menu-list">
+        <li class="berlix-menu-item" style="--item-index: 0;">
+          <a href="index.html" class="berlix-menu-link">
+            <span class="berlix-label">Home</span>
+          </a>
+        </li>
+        <li class="berlix-menu-item" style="--item-index: 1;">
+          <a href="about.html" class="berlix-menu-link">
+            <span class="berlix-label">About</span>
+          </a>
+        </li>
+        <li class="berlix-menu-item" style="--item-index: 2;">
+          <a href="collage.html" class="berlix-menu-link">
+            <span class="berlix-label">Collage</span>
+          </a>
+        </li>
+        <li class="berlix-menu-item" style="--item-index: 3;">
+          <a href="donate.html" class="berlix-menu-link active">
+            <span class="berlix-label">Donate</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="drawer-footer-actions">
+      <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        Donate via Paystack
+      </a>
+      <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+        Join Community Group
+      </a>
+    </div>
+  </aside>
+
+  <!-- Donate Hero Header -->
+  <section class="donate-hero">
+    <div class="container">
+      <div class="section-tag dark" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border-color: rgba(245, 158, 11, 0.4);">
+        Direct Educational & Community Impact
+      </div>
+      <h1 style="font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 1rem; color: #ffffff;">
+        Support Our Mission &amp; Projects
+      </h1>
+      <p style="font-size: 1.15rem; color: #cbd5e1; max-width: 740px; margin: 0 auto 1.5rem; line-height: 1.7;">
+        Every single donation directly funds accredited schooling, classroom construction, hot daily meals, and master art mentorship for underserved children in Nigeria. Choose a project below to make an immediate difference.
+      </p>
+
+      <!-- Currency Switcher Pill in Hero -->
+      <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.1); padding: 0.35rem 0.75rem; border-radius: 9999px; backdrop-filter: blur(8px);">
+        <span style="font-size: 0.85rem; color: #cbd5e1;">Currency:</span>
+        <button class="currency-btn active" data-currency="NGN" style="background: transparent; border: none; color: #ffffff; font-weight: 700; cursor: pointer; padding: 0.25rem 0.5rem; border-radius: 4px;">₦ NGN</button>
+        <span style="color: rgba(255, 255, 255, 0.4);">|</span>
+        <button class="currency-btn" data-currency="USD" style="background: transparent; border: none; color: #cbd5e1; font-weight: 700; cursor: pointer; padding: 0.25rem 0.5rem; border-radius: 4px;">$ USD</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects You Can Donate To -->
+  <section style="padding: 4.5rem 0 5rem; background: #ffffff;">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 680px; margin: 0 auto;">
+        <div class="section-tag">Active Impact Initiatives</div>
+        <h2 class="section-title">Select a Project to Support</h2>
+        <p class="section-desc">Choose the cause closest to your heart. 100% of your pledge is held in verified educational escrow.</p>
+      </div>
+
+      <div class="donate-projects-grid">
+
+        <!-- PROJECT 1: Sponsor a Child's Education (₦43,750 / $30 Scholarship) -->
+        <article class="donate-project-card" id="project-child-scholarship">
+          <div class="project-card-media">
+            <img src="Smiling in Geometric Colors.png" alt="Smiling student in geometric colors">
+            <span class="project-card-tag highlight">Most Direct Impact</span>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Sponsor a Child's Complete Education</h3>
+            <p class="project-card-desc">
+              In Ijora Badia, many children lack access to quality education. A gift of <strong>₦43,750</strong> supports a child’s education at Slum Art PET Bottle School, covering tuition, school uniforms, and daily hot meals.
+            </p>
+
+            <div class="project-tiers-list">
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦12,500', '$10', '100 Daily Hot Meals')">
+                <span class="tier-amount" data-ngn="₦12,500" data-usd="$10">₦12,500</span>
+                <span class="tier-label">100 Hot Meals</span>
+              </button>
+              <button type="button" class="tier-option-btn selected" onclick="selectTier(this, '₦43,750', '$30', '1 Full Term Education')">
+                <span class="tier-amount" data-ngn="₦43,750" data-usd="$30">₦43,750</span>
+                <span class="tier-label">1 Term Tuition &amp; Kit</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦125,000', '$85', '1 Full Year Academic Scholarship')">
+                <span class="tier-amount" data-ngn="₦125,000" data-usd="$85">₦125,000</span>
+                <span class="tier-label">Full School Year</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦312,500', '$215', 'Full Fellowship & Mentorship')">
+                <span class="tier-amount" data-ngn="₦312,500" data-usd="$215">₦312,500</span>
+                <span class="tier-label">Multi-Year Fellowship</span>
+              </button>
+            </div>
+
+            <div class="project-card-actions">
+              <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn-donate-card">
+                Donate to Child Scholarship &rarr;
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 2: Build 36 PET Bottle Schools Across Nigeria -->
+        <article class="donate-project-card" id="project-bottle-schools">
+          <div class="project-card-media">
+            <img src="assets/images/donation/hue_1.png" alt="Slum Art PET bottle school architecture" onerror="this.src='Smiling in Geometric Colors.png'">
+            <span class="project-card-tag">Eco-Architecture</span>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Build 36 PET Bottle Schools Across Nigeria</h3>
+            <p class="project-card-desc">
+              Upcycling over 500,000 discarded plastic bottles into durable, insulated, solar-powered community classrooms for 10,000+ vulnerable children across Nigeria's 36 states.
+            </p>
+
+            <div class="project-tiers-list">
+              <button type="button" class="tier-option-btn selected" onclick="selectTier(this, '₦1,500', '$1', 'Eco Bottle Brick (100 Bottles)')">
+                <span class="tier-amount" data-ngn="₦1,500" data-usd="$1">₦1,500</span>
+                <span class="tier-label">Eco Brick (100 Bottles)</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦15,000', '$10', 'Classroom Wall Section')">
+                <span class="tier-amount" data-ngn="₦15,000" data-usd="$10">₦15,000</span>
+                <span class="tier-label">Classroom Wall</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦75,000', '$50', 'Solar Roof & Ventilation Unit')">
+                <span class="tier-amount" data-ngn="₦75,000" data-usd="$50">₦75,000</span>
+                <span class="tier-label">Solar Roof Unit</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦250,000', '$175', 'Classroom Wing Founder')">
+                <span class="tier-amount" data-ngn="₦250,000" data-usd="$175">₦250,000</span>
+                <span class="tier-label">Classroom Wing</span>
+              </button>
+            </div>
+
+            <div class="project-card-actions">
+              <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn-donate-card">
+                Support Bottle School Construction &rarr;
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 3: Guinness World Record Collaborative Comic Book Fund -->
+        <article class="donate-project-card" id="project-comic-book">
+          <div class="project-card-media">
+            <img src="assets/images/comic_poster.jpg" alt="Collaborative Comic Book Project" onerror="this.src='Cool Comic Courtyard Portrait.png'">
+            <span class="project-card-tag highlight">Guinness Record</span>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Guinness Record Comic Book Registry</h3>
+            <p class="project-card-desc">
+              Created by children from Slum Art PET Bottle Schools under the artistic direction of 4× Guinness World Records holder Adetunwase Adenle. Every $1 (₦1,500) pledge inscribes your name in the official registry.
+            </p>
+
+            <div class="project-tiers-list">
+              <button type="button" class="tier-option-btn selected" onclick="selectTier(this, '₦1,500', '$1', 'Inscribed Patron Registry')">
+                <span class="tier-amount" data-ngn="₦1,500" data-usd="$1">₦1,500</span>
+                <span class="tier-label">Name in Guinness Record</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦7,500', '$5', '5 Student Sketchbooks & Pencils')">
+                <span class="tier-amount" data-ngn="₦7,500" data-usd="$5">₦7,500</span>
+                <span class="tier-label">Supplies 5 Sketchbooks</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦15,000', '$10', 'Classroom Atelier Archival Kit')">
+                <span class="tier-amount" data-ngn="₦15,000" data-usd="$10">₦15,000</span>
+                <span class="tier-label">Archival Paints &amp; Brushes</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦37,500', '$25', 'Collector Hardcover Graphic Novel')">
+                <span class="tier-amount" data-ngn="₦37,500" data-usd="$25">₦37,500</span>
+                <span class="tier-label">Hardcover Shipped</span>
+              </button>
+            </div>
+
+            <div class="project-card-actions">
+              <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn-donate-card">
+                Inscribe Your Name ($1 / ₦1,500) &rarr;
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 4: Community Food Clinic & Daily Hot Meals -->
+        <article class="donate-project-card" id="project-food-clinic">
+          <div class="project-card-media">
+            <img src="assets/images/donation/hue_2.png" alt="Community Food Clinic & Hot Meals" onerror="this.src='Smiling in Geometric Colors.png'">
+            <span class="project-card-tag">Zero Hunger</span>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Food Clinic &amp; Daily Hot Meals</h3>
+            <p class="project-card-desc">
+              Providing hot nutritious lunches, clean drinking water, and monthly community gatherings (Jollof Rice Party &amp; Garri Fiesta) for children living on the lagoon shoreline.
+            </p>
+
+            <div class="project-tiers-list">
+              <button type="button" class="tier-option-btn selected" onclick="selectTier(this, '₦5,000', '$3.50', 'Hot Lunch for 10 Children')">
+                <span class="tier-amount" data-ngn="₦5,000" data-usd="$3.50">₦5,000</span>
+                <span class="tier-label">Feed 10 Children</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦20,000', '$14', 'One Week Community Kitchen Supplies')">
+                <span class="tier-amount" data-ngn="₦20,000" data-usd="$14">₦20,000</span>
+                <span class="tier-label">1 Week Kitchen Supplies</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦50,000', '$35', 'Monthly Community Feast Sponsor')">
+                <span class="tier-amount" data-ngn="₦50,000" data-usd="$35">₦50,000</span>
+                <span class="tier-label">Community Feast</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦120,000', '$80', 'Clean Water Filtration Tank')">
+                <span class="tier-amount" data-ngn="₦120,000" data-usd="$80">₦120,000</span>
+                <span class="tier-label">Clean Water Tank</span>
+              </button>
+            </div>
+
+            <div class="project-card-actions">
+              <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn-donate-card">
+                Feed Children in Ijora Badia &rarr;
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 5: Creative Skills & Tech Studio (Slum Tech & Animation) -->
+        <article class="donate-project-card" id="project-slum-tech">
+          <div class="project-card-media">
+            <img src="assets/images/donation/hue_3.png" alt="Slum Tech and Digital Studio" onerror="this.src='Smiling in Geometric Colors.png'">
+            <span class="project-card-tag">Digital Skills &amp; AI</span>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Creative Tech, Animation &amp; AI Studio</h3>
+            <p class="project-card-desc">
+              Bridging the digital divide by equipping youth with coding laptops, digital drawing tablets, robotics toolkits, and animation software for global creative careers.
+            </p>
+
+            <div class="project-tiers-list">
+              <button type="button" class="tier-option-btn selected" onclick="selectTier(this, '₦15,000', '$10', 'Creative Drawing Tools Kit')">
+                <span class="tier-amount" data-ngn="₦15,000" data-usd="$10">₦15,000</span>
+                <span class="tier-label">Archival Art Kit</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦65,000', '$45', 'Digital Drawing Graphics Tablet')">
+                <span class="tier-amount" data-ngn="₦65,000" data-usd="$45">₦65,000</span>
+                <span class="tier-label">Digital Drawing Tablet</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦180,000', '$125', 'Coding & Animation Laptop')">
+                <span class="tier-amount" data-ngn="₦180,000" data-usd="$125">₦180,000</span>
+                <span class="tier-label">Animation Laptop</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦350,000', '$240', 'Complete AI & Robotics Hub')">
+                <span class="tier-amount" data-ngn="₦350,000" data-usd="$240">₦350,000</span>
+                <span class="tier-label">Robotics Hub</span>
+              </button>
+            </div>
+
+            <div class="project-card-actions">
+              <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn-donate-card">
+                Equip Tech &amp; Art Studio &rarr;
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 6: Hair-Port & Dignity Care Initiative -->
+        <article class="donate-project-card" id="project-hairport">
+          <div class="project-card-media">
+            <img src="assets/images/donation/hue_4.png" alt="Hair-Port Dignity Care Session" onerror="this.src='Smiling in Geometric Colors.png'">
+            <span class="project-card-tag">Dignity First</span>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Hair-Port Grooming &amp; Dignity Care</h3>
+            <p class="project-card-desc">
+              Providing free haircuts, hygiene supplies, grooming kits, and dignity-first care sessions for children and street youth living in vulnerable waterfront environments.
+            </p>
+
+            <div class="project-tiers-list">
+              <button type="button" class="tier-option-btn selected" onclick="selectTier(this, '₦3,500', '$2.50', 'Individual Dignity Care Pack')">
+                <span class="tier-amount" data-ngn="₦3,500" data-usd="$2.50">₦3,500</span>
+                <span class="tier-label">Dignity Care Pack</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦15,000', '$10', 'Full Haircut Session for 15 Youth')">
+                <span class="tier-amount" data-ngn="₦15,000" data-usd="$10">₦15,000</span>
+                <span class="tier-label">Groom 15 Children</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦45,000', '$30', 'Barber & Stylist Supplies Kit')">
+                <span class="tier-amount" data-ngn="₦45,000" data-usd="$30">₦45,000</span>
+                <span class="tier-label">Barber Equipment Kit</span>
+              </button>
+              <button type="button" class="tier-option-btn" onclick="selectTier(this, '₦90,000', '$60', 'Community Wellness Day Sponsor')">
+                <span class="tier-amount" data-ngn="₦90,000" data-usd="$60">₦90,000</span>
+                <span class="tier-label">Wellness Day Sponsor</span>
+              </button>
+            </div>
+
+            <div class="project-card-actions">
+              <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn-donate-card">
+                Support Dignity Care &rarr;
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Trust & Verification Strip -->
+      <div class="trust-strip">
+        <div class="trust-item">
+          <h4>100% Direct Escrow</h4>
+          <p>Zero administrative deductions. Every dollar goes directly to tuition, materials, and food.</p>
+        </div>
+        <div class="trust-item">
+          <h4>Global Press Verified</h4>
+          <p>Documented by CNN, BBC, Reuters, and official Guinness World Records™ registry.</p>
+        </div>
+        <div class="trust-item">
+          <h4>Audited &amp; Transparent</h4>
+          <p>Real-time progress reporting and direct scholar progress updates provided to all patrons.</p>
+        </div>
+        <div class="trust-item">
+          <h4>Secure Paystack &amp; Bank</h4>
+          <p>Bank-grade encrypted payments via card, USSD, bank transfer, Apple Pay, and international wires.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Slide-In Cart Drawer -->
+  <div class="drawer-backdrop" id="cartDrawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <h3 style="font-size: 1.2rem;">Your Art Bag</h3>
+      </div>
+      <button class="modal-close-btn" id="cartDrawerClose" style="position: static;">&times;</button>
+    </div>
+    <div class="cart-drawer-items" id="cartDrawerItems"></div>
+    <div class="cart-drawer-foot">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
+        <span style="font-weight: 700; color: var(--text-muted);">Total:</span>
+        <span style="font-size: 1.5rem; font-weight: 800; color: var(--color-primary);" id="cartTotalDisplay">₦0 NGN</span>
+      </div>
+      <a href="https://paystack.shop/pay/lk0hlrdlun" id="cartCheckoutBtn" target="_blank" class="btn btn-primary btn-lg" style="width: 100%;">
+        Checkout via Paystack
+      </a>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="skiper39-footer" id="mainFooter">
+    <div class="skiper-backdrop-grid"></div>
+    <div class="skiper-magic-kicker" id="skiperMagicKicker">
+      <p class="magic-kicker-lead" id="magicLeadText">
+        Every donation helps us <span class="magic-kicker-gold">build a greater future together</span>
+      </p>
+    </div>
+    <div class="container skiper-footer-content">
+      <div class="skiper-footer-top">
+        <div class="skiper-footer-brand">
+          <div class="brand-logo"><span class="brand-wordmark">SLUM ART</span></div>
+          <p class="skiper-brand-tagline">
+            Empowering children living in slums through mentorship, sustainable creative art, and educational opportunities.
+          </p>
+        </div>
+        <div class="skiper-footer-nav">
+          <div class="skiper-nav-col">
+            <h4 class="skiper-nav-title">Navigation</h4>
+            <ul class="skiper-nav-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="collage.html">Collage</a></li>
+              <li><a href="donate.html">Donate</a></li>
+            </ul>
+          </div>
+          <div class="skiper-nav-col">
+            <h4 class="skiper-nav-title">Connect</h4>
+            <ul class="skiper-nav-links">
+              <li><a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer">WhatsApp Group</a></li>
+              <li><a href="mailto:info@slumart.org">info@slumart.org</a></li>
+              <li><a href="tel:+2348059994834">+234 805 999 4834</a></li>
+              <li><span>Lagos, Nigeria</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="skiper-footer-bottom">
+        <p>&copy; 2026 Slum Art Foundation. Registered Non-Profit Organization. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/rough.min.js"></script>
+  <script src="js/sketch-textarea.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/canvas-crowd.js"></script>
+
+  <script>
+    function selectTier(btn, ngnAmount, usdAmount, tierName) {
+      const card = btn.closest('.donate-project-card');
+      card.querySelectorAll('.tier-option-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const actionBtn = card.querySelector('.btn-donate-card');
+      const isUSD = document.querySelector('.currency-btn.active')?.dataset?.currency === 'USD';
+      const amount = isUSD ? usdAmount : ngnAmount;
+      actionBtn.innerHTML = `Donate ${amount} (${tierName}) &rarr;`;
+    }
+
+    // React to currency switches on donate page
+    document.addEventListener('currencyChanged', (e) => {
+      const cur = e.detail?.currency || 'NGN';
+      document.querySelectorAll('.tier-amount').forEach(el => {
+        el.textContent = cur === 'USD' ? el.dataset.usd : el.dataset.ngn;
+      });
+      document.querySelectorAll('.donate-project-card').forEach(card => {
+        const selected = card.querySelector('.tier-option-btn.selected');
+        if (selected) {
+          const amount = cur === 'USD' ? selected.querySelector('.tier-amount').dataset.usd : selected.querySelector('.tier-amount').dataset.ngn;
+          const label = selected.querySelector('.tier-label').textContent;
+          const actionBtn = card.querySelector('.btn-donate-card');
+          actionBtn.innerHTML = `Donate ${amount} (${label}) &rarr;`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

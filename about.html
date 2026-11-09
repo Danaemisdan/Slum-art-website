@@ -3,14 +3,145 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us • Slum Art Foundation | Adetunwase Adenle & Pet Bottle School</title>
-  <meta name="description" content="Discover the story of Slum Art Foundation, founder Adetunwase Adenle (4-Time Guinness World Records holder), and the renowned Pet Bottle School in Lagos, Nigeria.">
+  <title>About Us • Slum Art Foundation | Story, Programs &amp; Leadership</title>
+  <meta name="description" content="Discover the complete story of Slum Art Foundation, founder Adetunwase Adenle (4× Guinness World Records holder), our 13 creative programs, community initiatives, and the renowned PET Bottle School in Lagos, Nigeria.">
   
   <link rel="icon" type="image/png" href="assets/images/slumart-logo.png">
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .about-hero {
+      background: linear-gradient(135deg, #070a12 0%, #151a30 55%, #1e1b4b 100%);
+      color: #ffffff;
+      padding: 5rem 0 4rem;
+      text-align: center;
+      position: relative;
+    }
+    .about-stat-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .about-stat-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1rem;
+      backdrop-filter: blur(8px);
+    }
+    .about-stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #f59e0b;
+      margin-bottom: 0.25rem;
+    }
+    .about-stat-lbl {
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .program-card {
+      background: #faf8f5;
+      border: 1px solid #f1ece4;
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .program-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+      border-color: #ea580c;
+    }
+    .program-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #ea580c;
+      background: rgba(234, 88, 12, 0.1);
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      margin-bottom: 0.75rem;
+      align-self: flex-start;
+    }
+    .program-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.5rem;
+    }
+    .program-desc {
+      font-size: 0.9rem;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+    .initiatives-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+    }
+    .initiative-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .initiative-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .initiative-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.5rem;
+    }
+    .initiative-desc {
+      font-size: 0.92rem;
+      color: #475569;
+      line-height: 1.65;
+    }
+    .cnn-spotlight {
+      background: #0b111e;
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      color: #ffffff;
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .cnn-spotlight {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        gap: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -20,7 +151,7 @@
       <div class="top-bar-info">
         <a href="tel:+2348059994834">+234 805 999 4834</a>
         <a href="mailto:info@slumart.org">info@slumart.org</a>
-        <span>Lagos, Nigeria</span>
+        <span>Ijora Badia • Lagos, Nigeria</span>
       </div>
       <div class="top-bar-actions">
         <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" style="color: #4ade80; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600;">
@@ -34,19 +165,16 @@
     </div>
   </div>
 
-  <!-- Navigation Bar -->
+  <!-- Main Navigation Bar: 3 links ontop (About, Collage, Donate) -->
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="brand-logo"><span class="brand-wordmark">SLUM ART</span></a>
 
       <nav>
         <ul class="nav-links">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="about.html" class="nav-link active">About & Founder</a></li>
-          <li><a href="shop.html" class="nav-link">Art Shop & Gallery</a></li>
-          <li><a href="blog.html" class="nav-link">Blog</a></li>
-          <li><a href="register.html" class="nav-link" style="color: var(--color-amber); font-weight: 600;">Guinness Record</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="about.html" class="nav-link active">About</a></li>
+          <li><a href="collage.html" class="nav-link">Collage</a></li>
+          <li><a href="donate.html" class="nav-link">Donate</a></li>
         </ul>
       </nav>
 
@@ -59,9 +187,11 @@
           </svg>
           <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
         </button>
-        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-primary btn-sm">
+
+        <a href="donate.html" class="btn btn-primary btn-sm">
           Donate Now
         </a>
+
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">Menu</button>
       </div>
     </div>
@@ -83,34 +213,24 @@
         </li>
         <li class="berlix-menu-item" style="--item-index: 1;">
           <a href="about.html" class="berlix-menu-link active">
-            <span class="berlix-label">About & Founder</span>
+            <span class="berlix-label">About</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 2;">
-          <a href="shop.html" class="berlix-menu-link">
-            <span class="berlix-label">Art Shop & Gallery</span>
+          <a href="collage.html" class="berlix-menu-link">
+            <span class="berlix-label">Collage</span>
           </a>
         </li>
         <li class="berlix-menu-item" style="--item-index: 3;">
-          <a href="register.html" class="berlix-menu-link">
-            <span class="berlix-label">Guinness Record</span>
-          </a>
-        </li>
-        <li class="berlix-menu-item" style="--item-index: 4;">
-          <a href="blog.html" class="berlix-menu-link">
-            <span class="berlix-label">Stories &amp; Blog</span>
-          </a>
-        </li>
-        <li class="berlix-menu-item" style="--item-index: 5;">
-          <a href="contact.html" class="berlix-menu-link">
-            <span class="berlix-label">Contact &amp; Volunteer</span>
+          <a href="donate.html" class="berlix-menu-link">
+            <span class="berlix-label">Donate</span>
           </a>
         </li>
       </ul>
     </nav>
     <div class="drawer-footer-actions">
-      <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-        Donate via Paystack
+      <a href="donate.html" class="btn btn-primary">
+        Donate to Projects
       </a>
       <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
         Join Community Group
@@ -118,36 +238,60 @@
     </div>
   </aside>
 
-  <!-- Page Banner -->
-  <section style="background: linear-gradient(135deg, #0b111e 0%, #1e1b4b 100%); color: #ffffff; padding: 4.5rem 0 3.5rem; text-align: center;">
+  <!-- About Hero -->
+  <section class="about-hero">
     <div class="container">
-      <div class="section-tag dark">Who We Are</div>
-      <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 1rem; color: #ffffff;">Our Story, Vision & Leadership</h1>
-      <p style="font-size: 1.15rem; color: #cbd5e1; max-width: 680px; margin: 0 auto;">
-        Transforming underserved communities across Africa through art, education, technology, and community development.
+      <div class="section-tag dark" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border-color: rgba(245, 158, 11, 0.4);">
+        Who We Are &bull; The Complete Story
+      </div>
+      <h1 style="font-size: clamp(2.2rem, 4.2vw, 3.6rem); margin-bottom: 1rem; color: #ffffff;">
+        Transforming Underserved Communities Through Creative Art &amp; Education
+      </h1>
+      <p style="font-size: 1.15rem; color: #cbd5e1; max-width: 760px; margin: 0 auto; line-height: 1.75;">
+        Slum Art Foundation is a registered non-profit organization dedicated to transforming underserved communities through art, education, technology, creativity, and grassroots action. We believe talent exists in every community, regardless of economic circumstances.
       </p>
+
+      <div class="about-stat-bar">
+        <div class="about-stat-box">
+          <div class="about-stat-num">4×</div>
+          <div class="about-stat-lbl">Guinness World Records</div>
+        </div>
+        <div class="about-stat-box">
+          <div class="about-stat-num">10,000+</div>
+          <div class="about-stat-lbl">Plastic Bottles Diverted</div>
+        </div>
+        <div class="about-stat-box">
+          <div class="about-stat-num">5,000+</div>
+          <div class="about-stat-lbl">Enrolled Scholars</div>
+        </div>
+        <div class="about-stat-box">
+          <div class="about-stat-num">100% Free</div>
+          <div class="about-stat-lbl">Tuition, Uniforms &amp; Meals</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Core Mission & Vision -->
+  <!-- Vision, Mission & Philosophy -->
   <section style="padding: 5rem 0; background: #ffffff;">
     <div class="container container-narrow">
+      
       <div class="about-cards-grid">
         <div style="background: var(--bg-page); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.5rem 2rem;">
-          <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+          <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
               <circle cx="12" cy="12" r="3"/>
             </svg>
           </div>
           <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Our Vision</h3>
-          <p style="color: #475569; line-height: 1.7; font-size: 0.95rem;">
+          <p style="color: #475569; line-height: 1.75; font-size: 0.95rem;">
             To build a world where every child and young person, regardless of where they come from or their socioeconomic circumstances, has the opportunity to discover their talent, develop their creative potential, and build a meaningful, self-reliant future.
           </p>
         </div>
 
         <div style="background: var(--bg-page); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2.5rem 2rem;">
-          <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--color-emerald-light); color: var(--color-emerald); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+          <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--color-emerald-light); color: var(--color-emerald); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="10"/>
               <circle cx="12" cy="12" r="6"/>
@@ -155,114 +299,333 @@
             </svg>
           </div>
           <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Our Mission</h3>
-          <p style="color: #475569; line-height: 1.7; font-size: 0.95rem;">
+          <p style="color: #475569; line-height: 1.75; font-size: 0.95rem;">
             To use art, creativity, education, technology, and community action to empower underserved communities, unlock human potential, create economic opportunities, and develop sustainable solutions to social challenges—starting in Africa and reaching communities around the world.
           </p>
         </div>
       </div>
 
       <!-- In-Depth Founder Biography -->
-      <div style="border-top: 1px solid var(--border-light); padding-top: 4rem;">
+      <div style="border-top: 1px solid var(--border-light); padding-top: 4.5rem; margin-top: 4.5rem;">
         <div class="about-founder-grid">
           <div style="border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-xl); background: #0b111e;">
             <img src="assets/images/team/founder_1.png" alt="Adetunwase Adenle" style="width: 100%;">
           </div>
           <div>
-            <div class="section-tag">Founder & Lead Visionary</div>
-            <h2 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Adetunwase Adenle</h2>
-            <div style="font-size: 1rem; color: var(--color-primary); font-weight: 700; margin-bottom: 1.25rem;">
-              Social Entrepreneur • Artist • Innovator • 4-Time Guinness World Records™ Holder
+            <div class="section-tag">Founder &amp; Lead Visionary</div>
+            <h2 style="font-size: 2.4rem; margin-bottom: 0.5rem; color: var(--text-heading);">Adetunwase Adenle</h2>
+            <div style="font-size: 1.05rem; color: var(--color-primary); font-weight: 700; margin-bottom: 1.25rem;">
+              Social Entrepreneur &bull; Master Artist &bull; Innovator &bull; 4× Guinness World Records™ Holder
             </div>
-            <p style="color: #475569; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem;">
-              Adetunwase Adenle is a passionate teacher and community advocate dedicated to bridging educational inequality in Nigeria. Born with an intense creative calling, he realized early that conventional schooling often leaves slum children behind due to poverty and lack of infrastructure.
+            <p style="color: #475569; line-height: 1.75; font-size: 0.98rem; margin-bottom: 1rem;">
+              Adetunwase Adenle is a social entrepreneur, artist, innovator, and community development advocate passionate about using art, education, technology, and creativity to transform underserved communities across Nigeria.
             </p>
-            <p style="color: #475569; line-height: 1.7; font-size: 0.95rem;">
-              He holds <strong>four official Guinness World Records</strong>—including orchestrating the largest painting in the world created by the greatest number of children. Through his visionary leadership, thousands of children have discovered their creative gifts and accessed education.
+            <p style="color: #475569; line-height: 1.75; font-size: 0.98rem; margin-bottom: 1rem;">
+              He is the Founder of Slum Art Foundation and the visionary behind initiatives such as the <strong>Slum Art PET Bottle School</strong>. As a four-time Guinness World Records holder—including orchestrating the largest painting in the world created by the greatest number of children—Adetunwase has dedicated his career to taking street youth off hazardous shoreline trash labor and placing them into accredited classrooms and fine-art studios.
+            </p>
+            <p style="color: #475569; line-height: 1.75; font-size: 0.98rem;">
+              His vision is to use creativity and sustainable innovation to create lasting social impact across Africa and underserved communities around the world.
             </p>
           </div>
         </div>
 
         <!-- The Pet Bottle School Story -->
-        <div style="background: var(--bg-subtle); border-radius: var(--radius-xl); padding: 3rem; margin-bottom: 4rem;">
+        <div style="background: var(--bg-subtle); border-radius: var(--radius-xl); padding: 3rem; margin-top: 4rem; border: 1px solid var(--border-light);">
           <div class="section-tag" style="background: #ffffff;">Eco-Architectural Innovation</div>
-          <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">The Slum Art Pet Bottle School</h3>
-          <p style="color: #334155; line-height: 1.8; font-size: 1rem; margin-bottom: 1.5rem;">
-            Located in the heart of Lagos, Nigeria, the <strong>Pet Bottle School</strong> is an internationally acclaimed structure built using thousands of recycled plastic bottles, discarded bottle caps, and sand. Instead of letting plastic trash pollute local lagoons and canals, Adenle and community youth upcycled the waste into durable, insulated walls for a bright learning hub.
+          <h3 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-heading);">The Slum Art PET Bottle School</h3>
+          <p style="color: #334155; line-height: 1.8; font-size: 1.02rem; margin-bottom: 1.5rem;">
+            Located in Ijora Badia, Lagos, Nigeria, the <strong>Slum Art PET Bottle School</strong> is an internationally acclaimed learning center constructed entirely from thousands of recycled plastic bottles, discarded bottle caps, compacted earth, and sand. Instead of allowing plastic waste to choke local lagoons and drainage canals, Adetunwase and community children converted shoreline trash into insulated, flood-resilient classrooms with solar power and natural airflow.
           </p>
           <div class="about-metrics-grid">
-            <div style="background: #ffffff; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-              <div style="font-size: 1.6rem; font-weight: 800; color: var(--color-primary);">10,000+</div>
-              <div style="font-size: 0.85rem; color: var(--text-muted);">Plastic bottles diverted from waterways</div>
+            <div style="background: #ffffff; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+              <div style="font-size: 1.8rem; font-weight: 800; color: var(--color-primary);">10,000+</div>
+              <div style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.4;">Bottles diverted from marine pollution</div>
             </div>
-            <div style="background: #ffffff; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-              <div style="font-size: 1.6rem; font-weight: 800; color: var(--color-emerald);">100% Free</div>
-              <div style="font-size: 0.85rem; color: var(--text-muted);">Art and skills tuition for local children</div>
+            <div style="background: #ffffff; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+              <div style="font-size: 1.8rem; font-weight: 800; color: var(--color-emerald);">100% Free</div>
+              <div style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.4;">Tuition, uniforms, meals &amp; creative gear</div>
             </div>
-            <div style="background: #ffffff; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-              <div style="font-size: 1.6rem; font-weight: 800; color: var(--color-amber);">Global Press</div>
-              <div style="font-size: 0.85rem; color: var(--text-muted);">Featured on international news and documentaries</div>
+            <div style="background: #ffffff; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+              <div style="font-size: 1.8rem; font-weight: 800; color: var(--color-amber);">36 States</div>
+              <div style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.4;">National expansion goal across Nigeria</div>
             </div>
           </div>
         </div>
 
-        <!-- Global Leadership Team -->
-        <div style="margin-top: 4rem;">
-          <div class="section-header">
-            <div class="section-tag">Global Leadership</div>
-            <h2 class="section-title">Meet Our Team</h2>
-            <p class="section-desc">Guiding operations, international partnerships, and grassroots empowerment.</p>
+        <!-- CNN International Spotlight & Video Feature -->
+        <div class="cnn-spotlight">
+          <div>
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: #dc2626; color: #ffffff; font-weight: 800; font-size: 0.78rem; padding: 0.25rem 0.65rem; border-radius: 4px; margin-bottom: 1rem; letter-spacing: 0.05em;">
+              CNN INTERNATIONAL
+            </div>
+            <h3 style="font-size: 1.85rem; font-weight: 800; margin-bottom: 0.75rem; color: #ffffff; line-height: 1.3;">
+              Global Media Validation &amp; Broadcast
+            </h3>
+            <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
+              Slum Art Foundation's work has been documented and broadcast internationally by <strong>CNN International</strong> on <em>#MyFreedomDay</em>, hosted by anchor Zain Asher. The broadcast highlighted our hand-torn paper mosaic portraits and the transformative impact of the PET bottle classroom on street children in Lagos.
+            </p>
+            <a href="https://edition.cnn.com/2026/04/15/world/video/myfreedomday-zain-tag-041411a-cnni-world-fast" target="_blank" rel="noopener noreferrer" class="btn btn-outline-white btn-md" style="border-color: rgba(255, 255, 255, 0.4);">
+              Watch on CNN.com &rarr;
+            </a>
           </div>
+          <div style="position: relative; border-radius: var(--radius-lg); overflow: hidden; background: #000000; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <video preload="metadata" poster="assets/images/cnn_doc_frame_15s.jpg" playsinline controls style="width: 100%; aspect-ratio: 16/9; display: block;">
+              <source src="assets/videos/cnn_myfreedomday_slumart.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem;">
-            <!-- Founder: Adetunwase Adenle -->
-            <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
-              <img src="assets/images/team/founder_1.png" alt="Adetunwase Adenle" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;">
-              <div style="padding: 1.5rem;">
-                <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Adetunwase Adenle</h4>
-                <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Founder & Lead Visionary</div>
-                <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Social entrepreneur, artist, educator, and 4-time Guinness World Records™ holder.</p>
-              </div>
-            </div>
+      </div>
+    </div>
+  </section>
 
-            <!-- Founder & Exec Director: Yana Good Nigen -->
-            <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
-              <img src="assets/images/team/founder_3.png" alt="Yana Good Nigen" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
-              <div style="padding: 1.5rem;">
-                <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Yana Good Nigen</h4>
-                <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Founder & Executive Director (Wrap)</div>
-                <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Founder and Executive Director of WRAP, leading global strategic partnerships and social impact initiatives.</p>
-              </div>
-            </div>
+  <!-- ===================================================================
+       THE 13 CREATIVE & SKILLS PROGRAMS
+       =================================================================== -->
+  <section style="padding: 5rem 0; background: #faf8f5; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="section-tag">Empowerment Ecosystem</div>
+        <h2 class="section-title">13 Creative &amp; Skills Programs</h2>
+        <p class="section-desc">
+          We use creativity as a multifaceted catalyst for personal discovery, technical skill acquisition, and community self-reliance.
+        </p>
+      </div>
 
-            <!-- Co-Founder: Monka Cilmi -->
-            <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
-              <img src="assets/images/team/founder_2.png" alt="Monka Cilmi" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
-              <div style="padding: 1.5rem;">
-                <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Monka Cilmi</h4>
-                <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Co-Founder</div>
-                <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Co-Founder of Slum Art Foundation, championing sustainable creative development, art education, and youth empowerment.</p>
-              </div>
-            </div>
+      <div class="programs-grid">
+        
+        <div class="program-card">
+          <span class="program-badge">Visual Arts</span>
+          <h4 class="program-title">Slum Art</h4>
+          <p class="program-desc">
+            Painting, drawing, sculpture, and recycling art. Teaches children to transform discarded plastics, glass, and papers into museum-grade art while fostering environmental conservation.
+          </p>
+        </div>
 
-            <!-- Natalie Gilbert -->
-            <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
-              <img src="assets/images/team/team_natalie_gilbert.jpeg" alt="Natalie Gilbert" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
-              <div style="padding: 1.5rem;">
-                <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Natalie Gilbert</h4>
-                <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Country Manager — USA</div>
-                <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Directing philanthropic relations, institutional outreach, and North American partnerships.</p>
-              </div>
-            </div>
+        <div class="program-card">
+          <span class="program-badge">Music &amp; Audio</span>
+          <h4 class="program-title">Slum Music</h4>
+          <p class="program-desc">
+            Discovering and nurturing musical talent in underserved communities. Participants explore singing, songwriting, instrument performance, audio production, and storytelling.
+          </p>
+        </div>
 
-            <!-- Oyindamola Sulaimon -->
-            <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
-              <img src="assets/images/team/team_oyindamola_sulaimon.jpeg" alt="Oyindamola Sulaimon" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
-              <div style="padding: 1.5rem;">
-                <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Oyindamola Sulaimon</h4>
-                <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Country Manager — United Kingdom</div>
-                <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Leading UK community partnerships, youth art exhibitions, and European donor development.</p>
-              </div>
-            </div>
+        <div class="program-card">
+          <span class="program-badge">Cinematography</span>
+          <h4 class="program-title">Slum Film</h4>
+          <p class="program-desc">
+            Teaching young people visual storytelling through film. Participants learn directing, scriptwriting, cinematography, acting, and editing while documenting authentic community stories.
+          </p>
+        </div>
+
+        <div class="program-card">
+          <span class="program-badge">Performance</span>
+          <h4 class="program-title">Slum Dance</h4>
+          <p class="program-desc">
+            Developing creativity, discipline, self-confidence, teamwork, and performance craft through contemporary and traditional African dance choreographies.
+          </p>
+        </div>
+
+        <div class="program-card">
+          <span class="program-badge">Visual Media</span>
+          <h4 class="program-title">Slum Photography</h4>
+          <p class="program-desc">
+            Equipping youth with cameras and phones to communicate stories through images. Teaches visual documentation, lighting, and composition from their own lived perspective.
+          </p>
+        </div>
+
+        <div class="program-card">
+          <span class="program-badge">Urban Sports</span>
+          <h4 class="program-title">Slum Skate</h4>
+          <p class="program-desc">
+            Engaging young people in positive urban recreation, balance, resilience, and discipline through skateboarding in a dedicated, safe community park.
+          </p>
+        </div>
+
+        <div class="program-card">
+          <span class="program-badge">Spoken Word</span>
+          <h4 class="program-title">Slum Poetry</h4>
+          <p class="program-desc">
+            Giving young people a powerful platform to express their dreams, struggles, and hopes. Enhances writing, public speaking, and literacy skills to advocate for social change.
+          </p>
+        </div>
+
+        <div class="program-card">
+          <span class="program-badge">Sustainable Fashion</span>
+          <h4 class="program-title">Slum Fashion</h4>
+          <p class="program-desc">
+            Introducing young people to fashion design, pattern cutting, tailoring, textiles, and waste upcycling, converting discarded fabrics into wearable art and viable livelihood.
+          </p>
+        </div>
+
+        <div class="program-card">
+          <span class="program-badge">Digital Storytelling</span>
+          <h4 class="program-title">Slum Animation</h4>
+          <p class="program-desc">
+            Teaching 2D/3D animation, character design, visual effects, and AI-assisted creative tools, connecting traditional African folklore with modern digital media production.
+          </p>
+        </div>
+
+        <div class="program-card">
+          <span class="program-badge">Dramatic Arts</span>
+          <h4 class="program-title">Slum Theatre</h4>
+          <p class="program-desc">
+            Acting, scriptwriting, stage production, and live theatre. Cultivates leadership, public presence, and empathy while staging original local plays.
+          </p>
+        </div>
+
+        <div class="program-card">
+          <span class="program-badge">Design &amp; Branding</span>
+          <h4 class="program-title">Slum Designs</h4>
+          <p class="program-desc">
+            Graphic design, product branding, illustration, and creative problem-solving, turning raw artistic concepts into commercial digital and physical products.
+          </p>
+        </div>
+
+        <div class="program-card">
+          <span class="program-badge">Technology &amp; STEM</span>
+          <h4 class="program-title">Slum Tech</h4>
+          <p class="program-desc">
+            Introducing young minds to coding, robotics, artificial intelligence, software design, and digital literacy to bridge the digital divide and prepare for high-tech careers.
+          </p>
+        </div>
+
+        <div class="program-card">
+          <span class="program-badge">Community Outreach</span>
+          <h4 class="program-title">Slum Evangelism</h4>
+          <p class="program-desc">
+            Spreading compassion, moral character, hope, and community service through uplifting gatherings, creative music, and neighborhood outreach programs.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       COMMUNITY & IMPACT INITIATIVES
+       =================================================================== -->
+  <section style="padding: 5rem 0; background: #ffffff;">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="section-tag">Grassroots Action</div>
+        <h2 class="section-title">Community &amp; Welfare Initiatives</h2>
+        <p class="section-desc">
+          Beyond classroom arts, our community initiatives deliver daily nourishment, health dignity, and joy directly into families' lives.
+        </p>
+      </div>
+
+      <div class="initiatives-grid">
+        
+        <div class="initiative-card">
+          <div class="initiative-icon">🍲</div>
+          <h4 class="initiative-title">Food Clinic</h4>
+          <p class="initiative-desc">
+            Providing hot nutritious meals, clean water, and nutritional support to children and families living on the waterfront who struggle with daily food security.
+          </p>
+        </div>
+
+        <div class="initiative-card">
+          <div class="initiative-icon">✂️</div>
+          <h4 class="initiative-title">Hair-Port</h4>
+          <p class="initiative-desc">
+            Community grooming initiative providing free haircuts, hairstyling, and hygiene care to street children, restoring dignity, self-worth, and self-confidence.
+          </p>
+        </div>
+
+        <div class="initiative-card">
+          <div class="initiative-icon">🎉</div>
+          <h4 class="initiative-title">Jollof Rice Party</h4>
+          <p class="initiative-desc">
+            A vibrant community celebration of food, games, live performances, and laughter, bringing local families, donors, and scholars together in pure joy.
+          </p>
+        </div>
+
+        <div class="initiative-card">
+          <div class="initiative-icon">🛡️</div>
+          <h4 class="initiative-title">Art-surance</h4>
+          <p class="initiative-desc">
+            A sustainable giving model connecting artwork acquisitions directly to medical checkups, health insurance, and emergency educational escrow for youth artists.
+          </p>
+        </div>
+
+        <div class="initiative-card">
+          <div class="initiative-icon">🤝</div>
+          <h4 class="initiative-title">Mentorship</h4>
+          <p class="initiative-desc">
+            One-on-one personal and professional guidance pairing youth scholars with experienced artists, tech mentors, educators, and leaders to shape their future.
+          </p>
+        </div>
+
+        <div class="initiative-card">
+          <div class="initiative-icon">🌾</div>
+          <h4 class="initiative-title">Garri Fiesta</h4>
+          <p class="initiative-desc">
+            A joyful cultural culinary festival celebrating Nigerian heritage through local foods, storytelling, traditional games, and intergenerational bonding.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Leadership Team -->
+  <section style="padding: 5rem 0; background: #faf8f5; border-top: 1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 680px; margin: 0 auto;">
+        <div class="section-tag">Global Leadership</div>
+        <h2 class="section-title">Meet Our Team</h2>
+        <p class="section-desc">Guiding operations, international partnerships, and grassroots empowerment.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2.5rem;">
+        <!-- Founder: Adetunwase Adenle -->
+        <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
+          <img src="assets/images/team/founder_1.png" alt="Adetunwase Adenle" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;">
+          <div style="padding: 1.5rem;">
+            <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Adetunwase Adenle</h4>
+            <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Founder &amp; Lead Visionary</div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Social entrepreneur, artist, educator, and 4-time Guinness World Records™ holder.</p>
+          </div>
+        </div>
+
+        <!-- Founder & Exec Director: Yana Good Nigen -->
+        <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
+          <img src="assets/images/team/founder_3.png" alt="Yana Good Nigen" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
+          <div style="padding: 1.5rem;">
+            <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Yana Good Nigen</h4>
+            <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Founder &amp; Executive Director (Wrap)</div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Founder and Executive Director of WRAP, leading global strategic partnerships and social impact initiatives.</p>
+          </div>
+        </div>
+
+        <!-- Co-Founder: Monka Cilmi -->
+        <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
+          <img src="assets/images/team/founder_2.png" alt="Monka Cilmi" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
+          <div style="padding: 1.5rem;">
+            <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Monka Cilmi</h4>
+            <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Co-Founder</div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Co-Founder of Slum Art Foundation, championing sustainable creative development, art education, and youth empowerment.</p>
+          </div>
+        </div>
+
+        <!-- Natalie Gilbert -->
+        <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
+          <img src="assets/images/team/team_natalie_gilbert.jpeg" alt="Natalie Gilbert" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
+          <div style="padding: 1.5rem;">
+            <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Natalie Gilbert</h4>
+            <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Country Manager — USA</div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Directing philanthropic relations, institutional outreach, and North American partnerships.</p>
+          </div>
+        </div>
+
+        <!-- Oyindamola Sulaimon -->
+        <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
+          <img src="assets/images/team/team_oyindamola_sulaimon.jpeg" alt="Oyindamola Sulaimon" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
+          <div style="padding: 1.5rem;">
+            <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Oyindamola Sulaimon</h4>
+            <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Country Manager — United Kingdom</div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Leading UK community partnerships, youth art exhibitions, and European donor development.</p>
           </div>
         </div>
       </div>
@@ -274,77 +637,14 @@
     <div class="container">
       <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 1rem;">Ready to Make a Direct Difference?</h2>
       <p style="color: #cbd5e1; max-width: 580px; margin: 0 auto 2rem; font-size: 1.05rem;">
-        Explore our original youth art collection or make a direct contribution via Paystack.
+        Explore our original handcrafted paper collages or support one of our verified educational impact projects.
       </p>
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="shop.html" class="btn btn-primary btn-lg">Browse Art Shop</a>
-        <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="btn btn-outline-white btn-lg">Donate Now</a>
+        <a href="collage.html" class="btn btn-primary btn-lg">Explore Collage Gallery</a>
+        <a href="donate.html" class="btn btn-outline-white btn-lg">Support Our Projects</a>
       </div>
     </div>
   </section>
-
-  <!-- Footer -->
-  <!-- ===================================================================
-       SKIPER39 CANVAS CROWD FOOTER (21ST.DEV COMPONENT)
-       =================================================================== -->
-  <!-- ===================================================================
-       SKIPER39 CANVAS CROWD FOOTER (21ST.DEV COMPONENT)
-       - People Walking Graphics IS the footer itself!
-       =================================================================== -->
-  <footer class="skiper39-footer" id="mainFooter">
-    <div class="skiper-backdrop-grid"></div>
-
-    <!-- Magic Community Inspiration Kicker (Above Slum Art Foundation) -->
-    <div class="skiper-magic-kicker" id="skiperMagicKicker">
-      <p class="magic-kicker-lead" id="magicLeadText">
-        Every donation helps us <span class="magic-kicker-gold">build a greater future together</span>
-      </p>
-    </div>
-
-    <!-- Giant Liquid Gold Typography Vessel (Behind the Crowd) -->
-    <div class="skiper-liquid-stage" id="skiperLiquidStage" aria-hidden="true">
-      <div class="skiper-giant-watermark watermark--empty">
-        SLUM ART FOUNDATION
-      </div>
-      <div class="skiper-giant-watermark watermark--liquid" id="skiperWatermarkGold" style="--liquid-fill: 0%; opacity: 0;">
-        SLUM ART FOUNDATION
-      </div>
-    </div>
-
-    <!-- Skiper39 Interactive Canvas Crowd Component (Full 440px height) -->
-    <div class="skiper-canvas-wrap">
-      <canvas id="skiperCrowdCanvas"></canvas>
-    </div>
-
-    <!-- Minimalist Glass Bottom Bar -->
-    <div class="skiper-footer-bottom">
-      <div class="container skiper-bottom-flex">
-        <div class="skiper-bottom-left">
-          <div class="skiper-bottom-brand"><span class="brand-wordmark-footer">SLUM ART</span>
-            <span>&copy; 2026 Slum Art Foundation • Lagos, Nigeria</span>
-          </div>
-          <div class="skiper-bottom-socials">
-            <a href="https://www.linkedin.com/company/slum-art/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn" title="LinkedIn">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.3a1.63 1.63 0 0 0-1.63 1.63c0 .9.73 1.63 1.63 1.63.9 0 1.63-.73 1.63-1.63 0-.9-.73-1.63-1.63-1.63Z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/slumartfoundation_org/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram" title="Instagram">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-            </a>
-            <a href="https://twitter.com/slumart_org" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="X (Twitter)" title="X (Twitter)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-          </div>
-        </div>
-        <div class="skiper-bottom-links">
-          <a href="about.html">Founder &amp; Vision</a>
-          <a href="shop.html">Art Gallery</a>
-          <a href="register.html">Guinness Record</a>
-          <a href="https://paystack.shop/pay/lk0hlrdlun" target="_blank" class="footer-donate-pill">Donate Paystack</a>
-          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">Top ↑</button>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <!-- Slide-In Cart Drawer -->
   <div class="drawer-backdrop" id="cartDrawerBackdrop"></div>
@@ -367,8 +667,52 @@
     </div>
   </aside>
 
+  <!-- Footer -->
+  <footer class="skiper39-footer" id="mainFooter">
+    <div class="skiper-backdrop-grid"></div>
+    <div class="skiper-magic-kicker" id="skiperMagicKicker">
+      <p class="magic-kicker-lead" id="magicLeadText">
+        Every donation helps us <span class="magic-kicker-gold">build a greater future together</span>
+      </p>
+    </div>
+    <div class="container skiper-footer-content">
+      <div class="skiper-footer-top">
+        <div class="skiper-footer-brand">
+          <div class="brand-logo"><span class="brand-wordmark">SLUM ART</span></div>
+          <p class="skiper-brand-tagline">
+            Empowering children living in slums through mentorship, sustainable creative art, and educational opportunities.
+          </p>
+        </div>
+        <div class="skiper-footer-nav">
+          <div class="skiper-nav-col">
+            <h4 class="skiper-nav-title">Navigation</h4>
+            <ul class="skiper-nav-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="collage.html">Collage</a></li>
+              <li><a href="donate.html">Donate</a></li>
+            </ul>
+          </div>
+          <div class="skiper-nav-col">
+            <h4 class="skiper-nav-title">Connect</h4>
+            <ul class="skiper-nav-links">
+              <li><a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer">WhatsApp Group</a></li>
+              <li><a href="mailto:info@slumart.org">info@slumart.org</a></li>
+              <li><a href="tel:+2348059994834">+234 805 999 4834</a></li>
+              <li><span>Lagos, Nigeria</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="skiper-footer-bottom">
+        <p>&copy; 2026 Slum Art Foundation. Registered Non-Profit Organization. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
   <div class="toast-container" id="toastContainer"></div>
-    <!-- GSAP 3.12.5 -->
+
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="js/rough.min.js"></script>
   <script src="js/sketch-textarea.js"></script>

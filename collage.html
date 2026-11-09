@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collage Gallery • Slum Art Foundation | Artwork &amp; Portrait Collages</title>
+  <meta name="description" content="Explore handcrafted paper collages by children from Slum Art PET Bottle Schools: Collage as an Artwork and Collage as a Portrait. 100% of proceeds fund child education.">
+  
+  <link rel="icon" type="image/png" href="assets/images/slumart-logo.png">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/picture-rail-gallery.css">
+  <style>
+    /* Dedicated Collage View Switcher */
+    .collage-hero {
+      background: linear-gradient(135deg, #070a12 0%, #151a30 50%, #1e1b4b 100%);
+      color: #ffffff;
+      padding: 4.5rem 0 3.5rem;
+      text-align: center;
+      position: relative;
+    }
+    .collage-mode-switch-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .collage-mode-switcher {
+      display: inline-flex;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+      padding: 0.4rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      gap: 0.35rem;
+    }
+    .collage-mode-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 9999px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #94a3b8;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+    }
+    .collage-mode-btn:hover {
+      color: #ffffff;
+    }
+    .collage-mode-btn.active {
+      background: #ea580c;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
+    }
+    .collage-mode-icon {
+      font-size: 1.15rem;
+    }
+    .collage-section-view {
+      display: none;
+    }
+    .collage-section-view.active {
+      display: block;
+      animation: viewFadeIn 0.3s ease-out;
+    }
+    @keyframes viewFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .collage-intro-banner {
+      background: #faf8f5;
+      border: 1px solid #f1ece4;
+      border-radius: var(--radius-xl);
+      padding: 2.2rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .collage-intro-content h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.5rem;
+    }
+    .collage-intro-content p {
+      color: #475569;
+      font-size: 0.95rem;
+      max-width: 650px;
+      line-height: 1.6;
+    }
+    .collage-intro-action {
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-info">
+        <a href="tel:+2348059994834">+234 805 999 4834</a>
+        <a href="mailto:info@slumart.org">info@slumart.org</a>
+        <span>Ijora Badia • Lagos, Nigeria</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" style="color: #4ade80; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600;">
+          Join WhatsApp
+        </a>
+        <div class="currency-toggle" title="Switch Currency">
+          <button class="currency-btn active" data-currency="NGN">₦ NGN</button>
+          <button class="currency-btn" data-currency="USD">$ USD</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar: 3 links ontop (About, Collage, Donate) -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-logo"><span class="brand-wordmark">SLUM ART</span></a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="collage.html" class="nav-link active">Collage</a></li>
+          <li><a href="donate.html" class="nav-link">Donate</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="cart-trigger" id="cartTrigger" title="View Art Bag" aria-label="Shopping Bag">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+            <path d="M3 6h18"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+        </button>
+
+        <a href="donate.html" class="btn btn-primary btn-sm">
+          Donate Now
+        </a>
+
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer: Berlix UI Menu Vertical -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="brand-logo"><span class="brand-wordmark">SLUM ART</span></div>
+      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation">&times;</button>
+    </div>
+    <nav class="berlix-menu-vertical" aria-label="Mobile Navigation">
+      <ul class="berlix-menu-list">
+        <li class="berlix-menu-item" style="--item-index: 0;">
+          <a href="index.html" class="berlix-menu-link">
+            <span class="berlix-label">Home</span>
+          </a>
+        </li>
+        <li class="berlix-menu-item" style="--item-index: 1;">
+          <a href="about.html" class="berlix-menu-link">
+            <span class="berlix-label">About</span>
+          </a>
+        </li>
+        <li class="berlix-menu-item" style="--item-index: 2;">
+          <a href="collage.html" class="berlix-menu-link active">
+            <span class="berlix-label">Collage</span>
+          </a>
+        </li>
+        <li class="berlix-menu-item" style="--item-index: 3;">
+          <a href="donate.html" class="berlix-menu-link">
+            <span class="berlix-label">Donate</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="drawer-footer-actions">
+      <a href="donate.html" class="btn btn-primary">
+        Donate to Projects
+      </a>
+      <a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+        Join Community Group
+      </a>
+    </div>
+  </aside>
+
+  <!-- Collage Page Hero -->
+  <section class="collage-hero">
+    <div class="container">
+      <div class="section-tag dark" style="background: rgba(234, 88, 12, 0.2); color: #fb923c; border-color: rgba(234, 88, 12, 0.4);">
+        Hand-Torn Paper Mosaic Mastery
+      </div>
+      <h1 style="font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 0.75rem; color: #ffffff;">
+        Slum Art Collage Collection
+      </h1>
+      <p style="font-size: 1.15rem; color: #cbd5e1; max-width: 720px; margin: 0 auto; line-height: 1.7;">
+        Created by children from Slum Art PET Bottle Schools under the artistic direction of 4× Guinness World Records holder Adetunwase Adenle. Handcrafted entirely from recycled paper, magazines, and newsprint on archival board.
+      </p>
+
+      <!-- Segmented Control: Collage as an Artwork vs Collage as Portrait -->
+      <div class="collage-mode-switch-wrap">
+        <div class="collage-mode-switcher" role="tablist" aria-label="Collage Presentation Mode">
+          <button type="button" class="collage-mode-btn active" id="modeBtnArtwork" onclick="switchCollageMode('artwork')" role="tab" aria-selected="true">
+            <span class="collage-mode-icon">🎨</span>
+            <span>Collage as an Artwork</span>
+          </button>
+          <button type="button" class="collage-mode-btn" id="modeBtnPortrait" onclick="switchCollageMode('portrait')" role="tab" aria-selected="false">
+            <span class="collage-mode-icon">👤</span>
+            <span>Collage as Portrait</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       VIEW 1: COLLAGE AS AN ARTWORK
+       =================================================================== -->
+  <section class="collage-section-view active" id="viewCollageArtwork" style="padding: 3.5rem 0 5rem; background: #ffffff;">
+    <div class="container">
+      
+      <div class="collage-intro-banner">
+        <div class="collage-intro-content">
+          <div class="section-tag">Curated Collections</div>
+          <h3>Fine-Art Paper Collage Creations</h3>
+          <p>
+            Explore expressive abstract compositions, cultural narratives, African heritage motifs, and vibrant Nigerian stories crafted by street youth. Every artwork acquired funds 1 full term of schooling, hot lunches, and creative supplies.
+          </p>
+        </div>
+        <div class="collage-intro-action">
+          <button type="button" class="btn btn-primary btn-md" onclick="window.openCustomProductModal('artwork')">
+            Commission Custom Artwork &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters & Sorting Bar -->
+      <div class="shop-filter-bar shop-filter-bar--rail-top">
+        <div class="shop-filter-top">
+          <div class="search-box-wrap">
+            <input type="text" id="shopSearchInput" class="search-input" placeholder="Search artworks by title, youth artist (e.g. Kehinde, Taiwo, Hope, Radiance)...">
+          </div>
+
+          <div class="sort-select-wrap">
+            <label for="sortSelect">Sort Artworks:</label>
+            <select id="sortSelect" class="sort-select">
+              <option value="default">Curator's Highlights</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="title">Title: A to Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="category-pills">
+          <button class="cat-pill active" data-category="all">All Artworks (36)</button>
+          <button class="cat-pill" data-category="Vibrant Paper Collage">Vibrant Paper Collage</button>
+          <button class="cat-pill" data-category="Monochrome Newsprint">Monochrome Newsprint</button>
+          <button class="cat-pill" data-category="Paper Collage Portraits">Cultural Compositions</button>
+          <button class="cat-pill" data-category="Heritage & Elder Portraits">Heritage Themes</button>
+        </div>
+      </div>
+
+      <!-- Picture Rail Mount -->
+      <div id="pictureRailMount"></div>
+
+      <!-- Main Artworks Grid -->
+      <div class="art-grid" id="artGrid" style="margin-top: 2rem;"></div>
+
+      <div class="no-results" id="noResults" style="display: none; text-align: center; padding: 4rem 1rem;">
+        <h3>No matching collages found</h3>
+        <p style="color: var(--text-muted);">Try a different search keyword or reset category filters.</p>
+        <button class="btn btn-outline btn-sm" id="resetFiltersBtn" style="margin-top: 1rem;">Reset Filters</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       VIEW 2: COLLAGE AS PORTRAIT
+       =================================================================== -->
+  <section class="collage-section-view" id="viewCollagePortrait" style="padding: 3.5rem 0 5rem; background: #ffffff;">
+    <div class="container">
+
+      <!-- Atelier & Custom Portrait Commission Feature -->
+      <div class="custom-portrait-callout" id="customProductsSection" style="margin-bottom: 3.5rem;">
+        
+        <div class="cpc-header-bar">
+          <div class="cpc-eyebrow" id="cpcEyebrow">
+            <span class="cpc-eyebrow-cnn">CNN</span> As Seen on CNN &bull; Private Portrait Atelier
+          </div>
+          <div class="cpc-header-controls">
+            <div class="cpc-media-switcher" role="tablist" aria-label="Media Showcase">
+              <button type="button" class="cpc-switch-btn active" id="cpcMediaBtnPortraits" onclick="window.switchAtelierMedia('portraits')" role="tab" aria-selected="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span class="cpc-btn-desktop-text">Individual Portraits</span>
+                <span class="cpc-btn-mobile-text">Portraits</span>
+              </button>
+              <button type="button" class="cpc-switch-btn" id="cpcMediaBtnVideo" onclick="window.switchAtelierMedia('video')" role="tab" aria-selected="false">
+                <span class="cpc-live-dot"></span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span class="cpc-btn-desktop-text">CNN Documentary Video</span>
+                <span class="cpc-btn-mobile-text">CNN Video</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cpc-inner">
+          <!-- Left Column Media -->
+          <div class="cpc-media-col" id="cpcMediaCol">
+            
+            <div class="cpc-carousel-container active" id="cpcCarouselContainer">
+              <div class="cpc-carousel-viewport" id="cpcCarouselViewport">
+                <button type="button" class="cpc-nav-btn prev" onclick="window.prevAtelierSlide()" aria-label="Previous image">&lsaquo;</button>
+                <button type="button" class="cpc-nav-btn next" onclick="window.nextAtelierSlide()" aria-label="Next image">&rsaquo;</button>
+                
+                <div class="cpc-carousel-slide active" data-index="0">
+                  <img src="assets/images/custom_portrait_example.jpg" alt="Handcrafted Paper Collage Portrait from Recycled Newsprint" loading="lazy">
+                </div>
+                <div class="cpc-carousel-slide" data-index="1">
+                  <img src="assets/images/custom_portrait_example_2.jpg" alt="Scholar Paper Collage Portrait on Archival Board" loading="lazy">
+                </div>
+                <div class="cpc-carousel-slide" data-index="2">
+                  <img src="assets/images/custom_portrait_example_3.jpg" alt="Bespoke Paper Mosaic Portrait with Hand-Torn Color Shading" loading="lazy">
+                </div>
+                <div class="cpc-carousel-slide" data-index="3">
+                  <img src="assets/images/custom_portrait_example_4.jpg" alt="Commissioned Atelier Portrait with Layered Typography" loading="lazy">
+                </div>
+                <div class="cpc-carousel-slide" data-index="4">
+                  <img src="assets/images/custom_portrait_example_5.jpg" alt="Fine-Art Scholar Paper Collage Portrait" loading="lazy">
+                </div>
+              </div>
+
+              <div class="cpc-carousel-bottom">
+                <span class="cpc-slide-caption" id="cpcSlideCaption">Original Handcrafted Paper Collage Portrait &bull; Recycled Newsprint on Board</span>
+                <div class="cpc-carousel-indicators" id="cpcIndicators">
+                  <button type="button" class="cpc-indicator-bar active" onclick="window.setAtelierSlide(0)" aria-label="Slide 1"></button>
+                  <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(1)" aria-label="Slide 2"></button>
+                  <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(2)" aria-label="Slide 3"></button>
+                  <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(3)" aria-label="Slide 4"></button>
+                  <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(4)" aria-label="Slide 5"></button>
+                </div>
+                <span class="cpc-slide-counter" id="cpcSlideCounter"><strong>01</strong> / 05</span>
+              </div>
+            </div>
+
+            <div class="cpc-video-container" id="cpcVideoContainer" style="display: none;">
+              <div class="cpc-video-viewport" id="cpcVideoViewport">
+                <video id="cnnDocVideo" preload="metadata" poster="assets/images/cnn_doc_frame_15s.jpg" playsinline controls>
+                  <source src="assets/videos/cnn_myfreedomday_slumart.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <div class="cpc-video-overlay" id="cnnDocOverlay" onclick="window.playCnnDocVideo()">
+                  <div class="cpc-video-play-btn" aria-label="Play CNN Documentary">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                  </div>
+                  <div class="cpc-video-overlay-badge">
+                    <span class="cpc-video-cnn-tag">CNN</span>
+                    <span>Watch CNN International Broadcast</span>
+                  </div>
+                </div>
+              </div>
+              <div class="cpc-video-bottom">
+                <div class="cpc-video-caption">
+                  <span class="cpc-video-badge">CNN International</span>
+                  <span class="cpc-video-text">Anchor Zain Asher presents Slum Art portraits &bull; #MyFreedomDay</span>
+                </div>
+                <a href="https://edition.cnn.com/2026/04/15/world/video/myfreedomday-zain-tag-041411a-cnni-world-fast" target="_blank" rel="noopener noreferrer" class="cpc-cnn-direct-link" title="Open CNN official broadcast page">
+                  <span>Watch on CNN.com</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column Content -->
+          <div class="cpc-content-col" id="cpcContentCol">
+            <h3 class="cpc-title" id="cpcTitle">Turn Any Photo into a Handcrafted Paper Collage Portrait</h3>
+            <p class="cpc-desc" id="cpcDesc">
+              4-time Guinness World Record holder Adetunwase Adenle and our young scholars transform your photo into an original fine-art portrait assembled entirely from hand-torn recycled magazines and newspapers on archival museum board.
+            </p>
+
+            <div class="cpc-specs-row">
+              <div class="cpc-spec-badge">
+                <span class="cpc-spec-label">Medium</span>
+                <span class="cpc-spec-val" id="cpcSpecMedium">Hand-Torn Paper on Board</span>
+              </div>
+              <div class="cpc-spec-badge">
+                <span class="cpc-spec-label">Artistic Lead</span>
+                <span class="cpc-spec-val">Adetunwase Adenle (4× GWR)</span>
+              </div>
+              <div class="cpc-spec-badge">
+                <span class="cpc-spec-label">Creation Time</span>
+                <span class="cpc-spec-val">10–14 Days Handcraft</span>
+              </div>
+            </div>
+
+            <div class="cpc-size-cards">
+              <div class="cpc-size-card active" onclick="window.selectCustomSize(this, 'solo')">
+                <div class="cpc-size-name">Solo Atelier</div>
+                <div class="cpc-size-dims">16 &times; 20 inches</div>
+                <div class="cpc-size-price" data-usd="$60" data-ngn="₦85,000">₦85,000</div>
+              </div>
+              <div class="cpc-size-card" onclick="window.selectCustomSize(this, 'duo')">
+                <div class="cpc-size-name">Collector Statement</div>
+                <div class="cpc-size-dims">24 &times; 30 inches</div>
+                <div class="cpc-size-price" data-usd="$110" data-ngn="₦150,000">₦150,000</div>
+              </div>
+              <div class="cpc-size-card" onclick="window.selectCustomSize(this, 'family')">
+                <div class="cpc-size-name">Grand Executive</div>
+                <div class="cpc-size-dims">36 &times; 48 inches</div>
+                <div class="cpc-size-price" data-usd="$200" data-ngn="₦280,000">₦280,000</div>
+              </div>
+            </div>
+
+            <div class="cpc-actions">
+              <button type="button" class="cpc-btn-primary" onclick="window.openCustomProductModal('portrait')">
+                Commission Your Collage Portrait &rarr;
+              </button>
+              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art,%20I%20would%20like%20to%20inquire%20about%20commissioning%20a%20handcrafted%20paper%20collage%20portrait." target="_blank" rel="noopener noreferrer" class="cpc-btn-chat">
+                WhatsApp Studio Concierge
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Ready-to-Acquire Scholar & Heritage Portraits Gallery -->
+      <div style="margin-top: 3.5rem;">
+        <div class="section-header" style="text-align: center; max-width: 680px; margin: 0 auto 2rem;">
+          <div class="section-tag">Archive Gallery</div>
+          <h2 class="section-title">Scholar &amp; Heritage Paper Portraits</h2>
+          <p class="section-desc">Original completed paper mosaic portraits ready to collect. 100% of proceeds fund full-term schooling.</p>
+        </div>
+
+        <div class="art-grid" id="portraitArtGrid"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Slide-In Cart Drawer -->
+  <div class="drawer-backdrop" id="cartDrawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <h3 style="font-size: 1.2rem;">Your Art Bag</h3>
+      </div>
+      <button class="modal-close-btn" id="cartDrawerClose" style="position: static;">&times;</button>
+    </div>
+    <div class="cart-drawer-items" id="cartDrawerItems"></div>
+    <div class="cart-drawer-foot">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
+        <span style="font-weight: 700; color: var(--text-muted);">Total:</span>
+        <span style="font-size: 1.5rem; font-weight: 800; color: var(--color-primary);" id="cartTotalDisplay">₦0 NGN</span>
+      </div>
+      <a href="https://paystack.shop/pay/lk0hlrdlun" id="cartCheckoutBtn" target="_blank" class="btn btn-primary btn-lg" style="width: 100%;">
+        Checkout via Paystack
+      </a>
+    </div>
+  </aside>
+
+  <!-- Custom Portrait & Collage Commission Request Modal -->
+  <div class="modal-overlay" id="customPortraitModal">
+    <div class="modal-card" style="max-width: 680px; max-height: calc(100vh - 5rem); overflow-y: auto;">
+      <button class="modal-close-btn" onclick="window.closeAllModals()">&times;</button>
+      <div class="custom-portrait-modal-body" style="padding: 2.2rem 2rem;">
+        <div class="section-tag" style="margin-bottom: 0.5rem;">Bespoke Recycled Media Commission</div>
+        <h2 id="customProductModalTitle" style="font-size: 1.75rem; margin-bottom: 0.4rem; color: var(--text-main);">Order a Custom Collage Commission</h2>
+        <p id="customProductModalDesc" style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.55;">
+          Our master artist mentors and talented young scholars in Nigeria will handcraft an original museum-grade paper collage on museum board. Every commission directly funds full-year school tuition, uniform kits, and daily hot meals for a child in need.
+        </p>
+
+        <!-- Product Selector: Collage Artwork vs Collage Portrait -->
+        <div style="margin-bottom: 1.25rem;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem;">Select Custom Product *</label>
+          <div class="modal-product-selector">
+            <button type="button" class="modal-product-btn active" id="modalBtnPortrait" onclick="window.setModalProductType('portrait')">
+              Collage Portrait (Faces / People)
+            </button>
+            <button type="button" class="modal-product-btn" id="modalBtnArtwork" onclick="window.setModalProductType('artwork')">
+              Collage Artwork (Scenes / Thematic)
+            </button>
+          </div>
+        </div>
+
+        <form id="customCommissionForm" onsubmit="window.handleCommissionSubmit(event)">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label for="commName" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Your Name *</label>
+              <input type="text" id="commName" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem;">
+            </div>
+            <div>
+              <label for="commEmail" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Email Address *</label>
+              <input type="email" id="commEmail" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem;">
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label for="commPhone" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">WhatsApp / Phone Number *</label>
+            <input type="tel" id="commPhone" required placeholder="+234 ... or +1 ..." style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem;">
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label for="commSize" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Canvas Size *</label>
+            <select id="commSize" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem; background: #ffffff;">
+              <option value="solo">Solo Atelier (16×20") — ₦85,000 / $60</option>
+              <option value="duo">Collector Statement (24×30") — ₦150,000 / $110</option>
+              <option value="family">Grand Executive (36×48") — ₦280,000 / $200</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label for="commNotes" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Special Notes or Reference Details</label>
+            <textarea id="commNotes" rows="3" placeholder="Tell us about the subject, mood, or background preferences..." style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem; font-family: inherit;"></textarea>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
+            <button type="button" class="btn btn-outline btn-md" onclick="window.closeAllModals()">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-md">Submit Commission Request &rarr;</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="skiper39-footer" id="mainFooter">
+    <div class="skiper-backdrop-grid"></div>
+    <div class="skiper-magic-kicker" id="skiperMagicKicker">
+      <p class="magic-kicker-lead" id="magicLeadText">
+        Every collage acquired helps us <span class="magic-kicker-gold">build a greater future together</span>
+      </p>
+    </div>
+    <div class="container skiper-footer-content">
+      <div class="skiper-footer-top">
+        <div class="skiper-footer-brand">
+          <div class="brand-logo"><span class="brand-wordmark">SLUM ART</span></div>
+          <p class="skiper-brand-tagline">
+            Empowering children living in slums through mentorship, sustainable creative art, and educational opportunities.
+          </p>
+        </div>
+        <div class="skiper-footer-nav">
+          <div class="skiper-nav-col">
+            <h4 class="skiper-nav-title">Navigation</h4>
+            <ul class="skiper-nav-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="collage.html">Collage</a></li>
+              <li><a href="donate.html">Donate</a></li>
+            </ul>
+          </div>
+          <div class="skiper-nav-col">
+            <h4 class="skiper-nav-title">Connect</h4>
+            <ul class="skiper-nav-links">
+              <li><a href="https://chat.whatsapp.com/ILSO33WGmwkJ4LILym3jPa?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer">WhatsApp Group</a></li>
+              <li><a href="mailto:info@slumart.org">info@slumart.org</a></li>
+              <li><a href="tel:+2348059994834">+234 805 999 4834</a></li>
+              <li><span>Lagos, Nigeria</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="skiper-footer-bottom">
+        <p>&copy; 2026 Slum Art Foundation. Registered Non-Profit Organization. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/rough.min.js"></script>
+  <script src="js/sketch-textarea.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/canvas-crowd.js"></script>
+  <script src="js/picture-rail-gallery.js"></script>
+
+  <script>
+    function switchCollageMode(mode) {
+      const isPortrait = mode === 'portrait';
+      document.getElementById('modeBtnArtwork').classList.toggle('active', !isPortrait);
+      document.getElementById('modeBtnPortrait').classList.toggle('active', isPortrait);
+      document.getElementById('modeBtnArtwork').setAttribute('aria-selected', !isPortrait);
+      document.getElementById('modeBtnPortrait').setAttribute('aria-selected', isPortrait);
+      
+      document.getElementById('viewCollageArtwork').classList.toggle('active', !isPortrait);
+      document.getElementById('viewCollagePortrait').classList.toggle('active', isPortrait);
+
+      window.location.hash = isPortrait ? 'portrait' : 'artwork';
+
+      if (isPortrait) {
+        renderPortraitGrid();
+      }
+    }
+
+    // Render Portraits into portraitArtGrid
+    function renderPortraitGrid() {
+      const container = document.getElementById('portraitArtGrid');
+      if (!container || container.children.length > 0) return;
+      const artworks = window.SLUM_DATA?.artworks || [];
+      if (!artworks.length) return;
+
+      const portraits = artworks.filter(a => 
+        (a.category && a.category.includes('Portrait')) || (a.title && a.title.toLowerCase().includes('portrait'))
+      );
+
+      const isUSD = document.querySelector('.currency-btn.active')?.dataset?.currency === 'USD';
+
+      container.innerHTML = portraits.map(art => {
+        const price = isUSD ? `$${art.price_usd}` : `₦${art.price_ngn.toLocaleString()}`;
+        return `
+          <div class="art-card" data-id="${art.id}">
+            <div class="art-card-img-wrap">
+              <img src="${art.image}" alt="${art.title}" loading="lazy">
+              <span class="art-category-badge">${art.category}</span>
+            </div>
+            <div class="art-card-body">
+              <div class="art-card-artist">${art.artist} &bull; ${art.age}</div>
+              <h3 class="art-card-title">${art.title}</h3>
+              <p class="art-card-medium">${art.medium}</p>
+              <div class="art-impact-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                ${art.impact || 'Funds 1 full term of school tuition & hot meals'}
+              </div>
+              <div class="art-card-footer">
+                <div class="art-card-price" data-usd="$${art.price_usd}" data-ngn="₦${art.price_ngn.toLocaleString()}">${price}</div>
+                <div class="art-card-btns">
+                  <button type="button" class="btn btn-outline btn-sm" onclick="window.addToCart('${art.id}')">Add to Bag</button>
+                  <a href="${art.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Acquire</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Hash navigation listener
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.includes('portrait')) {
+        switchCollageMode('portrait');
+      } else {
+        switchCollageMode('artwork');
+      }
+    });
+  </script>
+</body>
+</html>
