@@ -1,31 +1,24 @@
 /**
  * Slum Art Foundation - 3D Eco-Bottle Academy Point Cloud Architecture
- * High-Resolution Architectural LiDAR & Photogrammetry Digital Twin
- * ~320,000+ Luminous Fine-Point Particles
+ * High-Resolution LiDAR & Photogrammetry Digital Twin
+ * 220,000+ Luminous Fine-Point Particles
  *
- * Real Architectural Model of the Slum Art Bottle School:
- * 1. Sturdy Mangrove Lagoon Pilings & Reclaimed African Teak Platform with Safety Railing
- * 2. Heavy-Gauge Structural Steel Skeleton: Box columns, perimeter beams, and A-frame roof trusses
- * 3. Organic High-Density Recycled PET Bottle Gabion Walls:
- *    - Translucent sea-glass teal, radiant emerald-aqua, and sunlit amber-gold caps
- *    - Signature upper frieze of rich cobalt-ultramarine water bottles (official Slum Art architecture)
- *    - Organic stratified point dispersion (Poisson-like LiDAR surface sampling, ZERO rigid raster tracks)
- * 4. Classroom Architecture & Interior Life:
- *    - Open main entrance doorway with inward-swung door and brass handle
- *    - Steel-framed multi-pane picture windows
- *    - 6 student double-desks with bench seats, open sketchbooks with colorful art marks
- *    - Teacher's chalkboard with lesson diagrams, artist's tripod easel with canvas painting
- *    - Hanging recycled bottle canopy matrix suspended from the ceiling
- * 5. Iconic Lagos Danfo Bus Classroom Annex:
- *    - Authentic rich Lagos sunshine yellow-gold (#F59E0B / #D97706)
- *    - Classic dual transit stripes (matte charcoal & warm ivory)
- *    - Aerodynamic front hood, split windshield, radiator grille, chrome rim wheels
- *    - High-res concentric projector headlights flush with fascia (NO LIGHT RAYS OR CONES)
- *    - Ruby rear taillights & interior passenger bench seating
- * 6. Pitched Corrugated Roof with 6 Monocrystalline Rooftop Solar Panels (deep iridescent navy & gold busbars)
- * 7. Official High-Res "slum art" Signboard (11,399 exact normalized vector points on navy acrylic plate)
- * 8. Ethereal Bioluminescent Lagoon Water with dual-harmonic organic wave ripples
- * 9. Cinematic atmospheric drift motes & interactive mouse parallax tilt
+ * Full Architectural Digital Twin of the Slum Art Bottle School:
+ * 1. Stepped African Teak Deck Plinth on Mangrove Pilings (lagoon stilts, zero fence railing)
+ * 2. Complete 4-Wall Recycled PET Bottle Architecture:
+ *    - Front Facade: Charcoal Black (#141519) PET bottles in black steel cages with entrance doorway
+ *    - Side Walls (Left & Right): Vibrant Amber-Orange (#df7812) PET bottles with security picture windows
+ *    - Rear Wall: Solid 4-tier Vibrant Amber-Orange PET bottles in steel cages
+ *    - Upper Frieze & Gables: Sloped bottle courses rising to roof slope
+ * 3. Integrated Lagos Danfo Bus Classroom Cab:
+ *    - Protruding forward from front facade with heavy 45-degree welded diagonal steel support struts
+ *    - Authentic Lagos Sunshine Yellow body (#f59e0b) with classic dual transit stripes
+ *    - Split angled windshield, flush projector headlights (NO LIGHT RAYS), grille, bumper, wheels
+ * 4. Sloped Mono-Pitch Corrugated Galvanized Iron Roof with 4 Monocrystalline Solar Panels
+ * 5. Official "slum art" Signboard with Golden Wave Mark
+ * 6. Interior Classroom Life: Double desks, benches, chalkboard, artist easel
+ * 7. Bioluminescent Lagoon Water with Organic Harmonic Ripples & Floating Ambient Spores
+ * 8. Isometric Front-Corner 3D Perspective with Scroll-Driven Orbit & Parallax
  */
 
 (function () {
@@ -64,7 +57,6 @@
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 
     // 2. High-Precision Crisp Multi-Stop Circular Point Sprite
-    // Ultra-crisp solid luminous core with smooth anti-aliased edge (volumetric brilliance, zero fuzz)
     function createPointTexture() {
       const size = 128;
       const cvs = document.createElement('canvas');
@@ -77,8 +69,8 @@
       const grad = ctx.createRadialGradient(center, center, 0, center, center, radius);
       grad.addColorStop(0.00, 'rgba(255, 255, 255, 1.0)');
       grad.addColorStop(0.55, 'rgba(255, 255, 255, 0.98)');
-      grad.addColorStop(0.78, 'rgba(255, 255, 255, 0.72)');
-      grad.addColorStop(0.92, 'rgba(255, 255, 255, 0.22)');
+      grad.addColorStop(0.78, 'rgba(255, 255, 255, 0.75)');
+      grad.addColorStop(0.92, 'rgba(255, 255, 255, 0.25)');
       grad.addColorStop(1.00, 'rgba(255, 255, 255, 0.0)');
 
       ctx.fillStyle = grad;
@@ -104,717 +96,574 @@
       buildCol.push(r, g, b);
     }
 
-    // Helper: Micro-jittered organic line (avoids rigid pixel rows)
-    function addLine(x1, y1, z1, x2, y2, z2, step, r, g, b, jitter = 0.008) {
-      const dx = x2 - x1;
-      const dy = y2 - y1;
-      const dz = z2 - z1;
+    function addLine(x1, y1, z1, x2, y2, z2, step, r, g, b, jitter = 0.004) {
+      const dx = x2 - x1, dy = y2 - y1, dz = z2 - z1;
       const len = Math.hypot(dx, dy, dz);
       const steps = Math.max(2, Math.floor(len / step));
       for (let i = 0; i <= steps; i++) {
         const t = i / steps;
-        const jx = jitter ? (Math.random() - 0.5) * jitter : 0;
-        const jy = jitter ? (Math.random() - 0.5) * jitter : 0;
-        const jz = jitter ? (Math.random() - 0.5) * jitter : 0;
+        const jx = (Math.random() - 0.5) * jitter;
+        const jy = (Math.random() - 0.5) * jitter;
+        const jz = (Math.random() - 0.5) * jitter;
         addPt(x1 + dx * t + jx, y1 + dy * t + jy, z1 + dz * t + jz, r, g, b);
       }
     }
 
     // =========================================================================
-    // ARCHITECTURAL DIMENSIONS
+    // ARCHITECTURAL DIMENSIONS (Harmonized with Official 3D Model Proportion)
     // =========================================================================
-    const bW = 10.8;      // Building Width
-    const bD = 6.8;       // Building Depth
-    const bH = 3.5;       // Wall Height
-    const frontZ = bD / 2;
-    const backZ = -bD / 2;
-    const leftX = -bW / 2;
-    const rightX = bW / 2;
+    const bW = 8.2;       // Building Width along X (-4.1 to +4.1)
+    const bD = 11.2;      // Building Depth along Z (-5.6 to +5.6)
+    const bH = 5.0;       // Wall Height along Y (0.0 to 5.0)
+    const halfW = bW / 2; // 4.1
+    const halfD = bD / 2; // 5.6
+    const frontZ = halfD; // +5.6
+    const backZ = -halfD; // -5.6
+    const leftX = -halfW; // -4.1
+    const rightX = halfW; // +4.1
+
+    const STEP = 0.082;   // High-density surface point sampling step
 
     // -------------------------------------------------------------------------
-    // 1. FOUNDATION PILINGS & MANGROVE STILTS (LAGOON PLATFORM)
+    // 1. BIOLUMINESCENT LAGOON WATER
     // -------------------------------------------------------------------------
-    const stiltXs = [-5.2, -3.2, -1.2, 0.8, 2.8, 5.0];
-    const stiltZs = [-3.8, -1.9, 0.0, 1.9, 3.8, 4.8];
+    const waterW = 26.0;
+    const waterD = 26.0;
+    const waterStep = 0.52;
+    for (let wx = -waterW / 2; wx <= waterW / 2; wx += waterStep) {
+      for (let wz = -waterD / 2; wz <= waterD / 2; wz += waterStep) {
+        const distFromCenter = Math.hypot(wx, wz);
+        if (distFromCenter < 2.5) continue;
 
-    for (let px of stiltXs) {
-      for (let pz of stiltZs) {
-        if (px > 2.5 && pz > 1.2 && pz < 4.6) continue; // Danfo substructure zone
+        const ripple = Math.sin(wx * 0.45 + wz * 0.35) * 0.08 + Math.cos(wx * 0.25 - wz * 0.55) * 0.05;
+        const wy = -2.6 + ripple;
+        const falloff = Math.max(0.12, 1.0 - (distFromCenter / (waterW / 2)) * 0.82);
 
-        // Dense organic bark cylinder with natural spiral & radius variation
-        for (let py = -0.05; py >= -2.4; py -= 0.035) {
-          const numRings = 12;
-          for (let a = 0; a < numRings; a++) {
-            const ang = a * (Math.PI * 2 / numRings) + (py * 0.6) + (Math.random() - 0.5) * 0.08;
-            const rad = 0.13 + Math.sin(py * 4 + a) * 0.018 + (Math.random() - 0.5) * 0.008;
-            const sx = px + Math.cos(ang) * rad;
-            const sz = pz + Math.sin(ang) * rad;
-
-            // Weathered dark African teak with subtle waterline mossy green patina near water
-            const isNearWater = py <= -0.8 && py >= -1.6;
-            let br = 0.24 + Math.random() * 0.06;
-            let bg = 0.15 + Math.random() * 0.04;
-            let bb = 0.09 + Math.random() * 0.03;
-
-            if (isNearWater && Math.random() > 0.40) {
-              // Wet lagoon moss highlight
-              br = 0.06 + Math.random() * 0.04;
-              bg = 0.36 + Math.random() * 0.08;
-              bb = 0.24 + Math.random() * 0.05;
-            }
-
-            addPt(sx, py, sz, br, bg, bb);
-          }
-        }
-      }
-    }
-
-    // Diagonal Cross-Bracing Ties between Pilings (Dark Timber Struts)
-    for (let i = 0; i < stiltXs.length - 1; i++) {
-      const xA = stiltXs[i], xB = stiltXs[i + 1];
-      for (let pz of [-3.8, 0.0, 3.8]) {
-        addLine(xA, -0.4, pz, xB, -1.8, pz, 0.03, 0.28, 0.18, 0.10, 0.015);
-        addLine(xA, -1.8, pz, xB, -0.4, pz, 0.03, 0.28, 0.18, 0.10, 0.015);
-      }
-    }
-
-    // -------------------------------------------------------------------------
-    // 2. TIMBER DECK PLATFORM & SAFETY PERIMETER RAILING
-    // -------------------------------------------------------------------------
-    const deckW = 13.8;
-    const deckD = 9.8;
-    const deckY = -0.04;
-
-    // High-Resolution Reclaimed African Teak Deck Sampling (Rich, warm, organic planks)
-    const plankW = 0.18;
-    const numPlanks = Math.floor(deckW / plankW);
-    const startX = -deckW / 2;
-
-    for (let p = 0; p < numPlanks; p++) {
-      const plX1 = startX + p * plankW;
-      const plX2 = plX1 + plankW - 0.015;
-      const isOutside = Math.abs(plX1 + plankW / 2) > bW / 2 - 0.25;
-
-      const plankZSteps = 95;
-      for (let s = 0; s < plankZSteps; s++) {
-        const z = -deckD / 2 + (s / plankZSteps) * deckD;
-        if (!isOutside && z >= backZ + 0.2 && z <= frontZ - 0.2) continue; // Interior teak floor handled separately
-
-        for (let ox = 0.12; ox <= 0.88; ox += 0.12) {
-          const px = plX1 + ox * (plX2 - plX1) + (Math.random() - 0.5) * 0.008;
-          const pz = z + (Math.random() - 0.5) * 0.018;
-
-          const grainNoise = Math.sin(px * 12 + pz * 18) * 0.06 + Math.cos(pz * 35) * 0.03;
-          // Warm golden teak / weathered honey mahogany
-          const wr = 0.60 + grainNoise;
-          const wg = 0.38 + grainNoise * 0.65;
-          const wb = 0.18 + grainNoise * 0.45;
-
-          addPt(px, deckY + (Math.random() - 0.5) * 0.006, pz, wr, wg, wb);
-        }
-
-        // Fastener nail studs along joist lines
-        if (Math.abs(z % 0.8) < 0.04) {
-          addPt(plX1 + 0.03, deckY + 0.004, z, 0.20, 0.13, 0.09);
-          addPt(plX2 - 0.03, deckY + 0.004, z, 0.20, 0.13, 0.09);
-        }
-      }
-    }
-
-    // Deck Perimeter Rim Joist
-    addLine(-deckW / 2, deckY, -deckD / 2, deckW / 2, deckY, -deckD / 2, 0.02, 0.42, 0.26, 0.14, 0.008);
-    addLine(deckW / 2, deckY, -deckD / 2, deckW / 2, deckY, deckD / 2, 0.02, 0.42, 0.26, 0.14, 0.008);
-    addLine(deckW / 2, deckY, deckD / 2, -deckW / 2, deckY, deckD / 2, 0.02, 0.42, 0.26, 0.14, 0.008);
-    addLine(-deckW / 2, deckY, deckD / 2, -deckW / 2, deckY, -deckD / 2, 0.02, 0.42, 0.26, 0.14, 0.008);
-
-    // -------------------------------------------------------------------------
-    // 3. HEAVY-GAUGE STRUCTURAL STEEL SKELETON
-    // -------------------------------------------------------------------------
-    const steelR = 0.40, steelG = 0.48, steelB = 0.62;
-    const colStep = 0.022;
-    const bayXs = [-5.4, -3.2, -1.0, 1.0, 3.2, 5.4];
-
-    for (let cx of bayXs) {
-      for (let cz of [backZ, frontZ]) {
-        if (cx >= 2.0 && cx <= 4.6 && cz === frontZ) continue;
-        for (let cy = 0; cy <= bH; cy += colStep) {
-          const j = (Math.random() - 0.5) * 0.006;
-          addPt(cx - 0.04 + j, cy, cz - 0.04 + j, steelR, steelG, steelB);
-          addPt(cx + 0.04 + j, cy, cz - 0.04 + j, steelR, steelG, steelB);
-          addPt(cx + 0.04 + j, cy, cz + 0.04 + j, steelR, steelG, steelB);
-          addPt(cx - 0.04 + j, cy, cz + 0.04 + j, steelR, steelG, steelB);
-        }
-      }
-    }
-    for (let cz of [-1.1, 1.1]) {
-      for (let cx of [leftX, rightX]) {
-        for (let cy = 0; cy <= bH; cy += colStep) {
-          const j = (Math.random() - 0.5) * 0.006;
-          addPt(cx - 0.04 + j, cy, cz - 0.04 + j, steelR, steelG, steelB);
-          addPt(cx + 0.04 + j, cy, cz - 0.04 + j, steelR, steelG, steelB);
-          addPt(cx + 0.04 + j, cy, cz + 0.04 + j, steelR, steelG, steelB);
-          addPt(cx - 0.04 + j, cy, cz + 0.04 + j, steelR, steelG, steelB);
-        }
-      }
-    }
-
-    addLine(leftX, 0.05, frontZ, -0.65, 0.05, frontZ, 0.018, steelR, steelG, steelB);
-    addLine(0.85, 0.05, frontZ, 2.2, 0.05, frontZ, 0.018, steelR, steelG, steelB);
-    addLine(leftX, 0.05, backZ, rightX, 0.05, backZ, 0.018, steelR, steelG, steelB);
-    addLine(leftX, bH, frontZ, rightX, bH, frontZ, 0.018, steelR, steelG, steelB);
-    addLine(leftX, bH, backZ, rightX, bH, backZ, 0.018, steelR, steelG, steelB);
-    addLine(leftX, bH, backZ, leftX, bH, frontZ, 0.018, steelR, steelG, steelB);
-    addLine(rightX, bH, backZ, rightX, bH, frontZ, 0.018, steelR, steelG, steelB);
-
-    const ridgeY = 4.35;
-    const ridgeZ = 0.0;
-    addLine(leftX - 0.35, ridgeY, ridgeZ, rightX + 0.35, ridgeY, ridgeZ, 0.018, 0.58, 0.68, 0.82, 0.006);
-
-    for (let tx of bayXs) {
-      addLine(tx, bH, frontZ + 0.25, tx, ridgeY, ridgeZ, 0.018, steelR, steelG, steelB, 0.006);
-      addLine(tx, bH, backZ - 0.25, tx, ridgeY, ridgeZ, 0.018, steelR, steelG, steelB, 0.006);
-      addLine(tx, bH, backZ, tx, bH, frontZ, 0.025, steelR, steelG, steelB, 0.008);
-      addLine(tx, bH, ridgeZ, tx, ridgeY, ridgeZ, 0.018, steelR, steelG, steelB, 0.006);
-      addLine(tx, bH, -1.7, tx, bH + (ridgeY - bH) * 0.5, -0.85, 0.018, steelR, steelG, steelB, 0.006);
-      addLine(tx, bH, 1.7, tx, bH + (ridgeY - bH) * 0.5, 0.85, 0.018, steelR, steelG, steelB, 0.006);
-    }
-
-    // -------------------------------------------------------------------------
-    // 4. ORGANIC HIGH-DENSITY RECYCLED PET BOTTLE WALLS (LIDAR ABSTRACTION)
-    // Non-grid organic point cloud distribution — eliminates cheap Euclidean rasters
-    // -------------------------------------------------------------------------
-    function generateOrganicBottleWall(xMin, xMax, zFixed, isFront, isBack) {
-      const colSpacing = 0.075; // Ultra-dense 7.5cm per bottle course
-      const rowSpacing = 0.155; // Staggered running bond courses
-
-      const numCols = Math.floor((xMax - xMin) / colSpacing);
-      const numRows = Math.floor(bH / rowSpacing);
-
-      for (let r = 0; r < numRows; r++) {
-        const by = r * rowSpacing + rowSpacing / 2;
-        const rowStagger = (r % 2 === 0 ? 0 : colSpacing / 2);
-
-        for (let c = 0; c < numCols; c++) {
-          const bx = xMin + c * colSpacing + rowStagger + (Math.random() - 0.5) * 0.014;
-
-          if (isFront && bx >= -0.70 && bx <= 0.90 && by <= 2.65) continue;
-          if (isFront && bx >= 2.2 && bx <= 4.85 && by <= 2.5) continue;
-          if (isBack && bx >= -3.8 && bx <= -1.2 && by >= 1.2 && by <= 2.5) continue;
-
-          const isBlueTopRow = by >= 2.72; // Official signature upper frieze of cobalt blue bottles
-
-          let rVal, gVal, bVal;
-          if (isBlueTopRow) {
-            // Deep royal cobalt/ultramarine (#1d4ed8 / #2563eb)
-            const blueVar = Math.random() * 0.14;
-            rVal = 0.06 + blueVar * 0.4;
-            gVal = 0.30 + blueVar;
-            bVal = 0.94 + blueVar * 0.5;
-          } else {
-            const paletteChoice = Math.random();
-            if (paletteChoice < 0.52) {
-              // Deep sea-glass teal (#0d9488 / #14b8a6)
-              rVal = 0.05 + Math.random() * 0.06;
-              gVal = 0.65 + Math.random() * 0.14;
-              bVal = 0.70 + Math.random() * 0.16;
-            } else if (paletteChoice < 0.84) {
-              // Radiant aqua-cyan (#06b6d4 / #38bdf8)
-              rVal = 0.14 + Math.random() * 0.08;
-              gVal = 0.76 + Math.random() * 0.12;
-              bVal = 0.90 + Math.random() * 0.08;
-            } else {
-              // Crystalline sunlit highlight
-              rVal = 0.85 + Math.random() * 0.12;
-              gVal = 0.95 + Math.random() * 0.05;
-              bVal = 1.0;
-            }
-          }
-
-          // Sample 3D Bottle Volume
-          const numBottlePoints = 20;
-          for (let p = 0; p < numBottlePoints; p++) {
-            const theta = Math.random() * Math.PI * 2;
-            const h = (Math.random() - 0.5) * 0.13;
-            const rad = 0.038 + (Math.random() - 0.5) * 0.008;
-
-            const px = bx + Math.cos(theta) * rad;
-            const py = by + h;
-            const pz = zFixed + Math.sin(theta) * rad + (Math.random() - 0.5) * 0.02;
-
-            const shade = 0.88 + (py / bH) * 0.22;
-            addPt(px, py, pz, Math.min(1.0, rVal * shade), Math.min(1.0, gVal * shade), Math.min(1.0, bVal * shade));
-          }
-
-          // Bottle Neck & Cap
-          const capZ = zFixed + (isFront ? 0.065 : (isBack ? -0.065 : 0.065));
-          if (isBlueTopRow) {
-            addPt(bx + (Math.random() - 0.5) * 0.02, by + 0.08, capZ, 0.95, 0.98, 1.0);
-            addPt(bx + (Math.random() - 0.5) * 0.02, by + 0.095, capZ, 0.95, 0.98, 1.0);
-          } else {
-            // Warm golden amber caps (#f59e0b / #fbbf24)
-            addPt(bx + (Math.random() - 0.5) * 0.02, by + 0.08, capZ, 1.0, 0.74, 0.14);
-            addPt(bx + (Math.random() - 0.5) * 0.02, by + 0.095, capZ, 1.0, 0.84, 0.22);
-          }
-        }
-      }
-
-      for (let y = 0.20; y <= bH; y += 0.30) {
-        if (isFront && y <= 2.65) {
-          addLine(xMin, y, zFixed + 0.06, -0.70, y, zFixed + 0.06, 0.035, 0.38, 0.48, 0.58, 0.008);
-          addLine(0.90, y, zFixed + 0.06, xMax, y, zFixed + 0.06, 0.035, 0.38, 0.48, 0.58, 0.008);
+        const isTeal = Math.random() > 0.35;
+        let wr, wg, wb;
+        if (isTeal) {
+          wr = 0.02 * falloff;
+          wg = (0.55 + Math.random() * 0.15) * falloff;
+          wb = (0.75 + Math.random() * 0.20) * falloff;
         } else {
-          addLine(xMin, y, zFixed + 0.06, xMax, y, zFixed + 0.06, 0.035, 0.38, 0.48, 0.58, 0.008);
+          wr = 0.04 * falloff;
+          wg = (0.28 + Math.random() * 0.10) * falloff;
+          wb = (0.92 + Math.random() * 0.08) * falloff;
+        }
+        addPt(wx, wy, wz, wr, wg, wb);
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // 2. MANGROVE PILINGS & STEPPED TIMBER PLINTH (ZERO FENCE RAILING)
+    // -------------------------------------------------------------------------
+    const plinthW = bW + 2.4; // 10.6
+    const plinthD = bD + 2.6; // 13.8
+
+    // Mangrove Stilts extending into the water
+    for (let sx = -plinthW / 2 + 0.6; sx <= plinthW / 2 - 0.4; sx += 1.8) {
+      for (let sz = -plinthD / 2 + 0.6; sz <= plinthD / 2 - 0.4; sz += 2.0) {
+        addLine(sx, -2.6, sz, sx, -0.05, sz, 0.08, 0.35, 0.24, 0.16, 0.012);
+        if (Math.random() > 0.4) {
+          addLine(sx, -1.8, sz, sx + 0.5, -0.2, sz + 0.5, 0.10, 0.30, 0.20, 0.14, 0.012);
         }
       }
     }
 
-    function generateOrganicSideBottleWall(xFixed, zMin, zMax, hasWindow) {
-      const colSpacing = 0.075;
-      const rowSpacing = 0.155;
-      const numCols = Math.floor((zMax - zMin) / colSpacing);
-      const numRows = Math.floor(bH / rowSpacing);
+    // African Teak Plinth Deck (Walkway platform)
+    for (let px = -plinthW / 2; px <= plinthW / 2; px += 0.09) {
+      for (let pz = -plinthD / 2; pz <= plinthD / 2; pz += 0.09) {
+        const plankNoise = Math.sin(px * 12.0 + pz * 2.5) * 0.04;
+        const pr = 0.58 + plankNoise;
+        const pg = 0.40 + plankNoise * 0.7;
+        const pb = 0.24 + plankNoise * 0.5;
+        addPt(px, -0.05, pz, pr, pg, pb);
 
-      for (let r = 0; r < numRows; r++) {
-        const by = r * rowSpacing + rowSpacing / 2;
-        const rowStagger = (r % 2 === 0 ? 0 : colSpacing / 2);
+        // Building plinth stem riser directly under walls
+        if (Math.abs(px) < halfW + 0.25 && Math.abs(pz) < halfD + 0.25) {
+          addPt(px, 0.0, pz, pr * 1.08, pg * 1.08, pb * 1.08);
+        }
+      }
+    }
 
-        for (let c = 0; c < numCols; c++) {
-          const bz = zMin + c * colSpacing + rowStagger + (Math.random() - 0.5) * 0.014;
+    // Perimeter deck trim fascia
+    for (let px = -plinthW / 2; px <= plinthW / 2; px += 0.08) {
+      addLine(px, -0.35, -plinthD / 2, px, -0.05, -plinthD / 2, 0.06, 0.44, 0.30, 0.18);
+      addLine(px, -0.35,  plinthD / 2, px, -0.05,  plinthD / 2, 0.06, 0.44, 0.30, 0.18);
+    }
+    for (let pz = -plinthD / 2; pz <= plinthD / 2; pz += 0.08) {
+      addLine(-plinthW / 2, -0.35, pz, -plinthW / 2, -0.05, pz, 0.06, 0.44, 0.30, 0.18);
+      addLine( plinthW / 2, -0.35, pz,  plinthW / 2, -0.05, pz, 0.06, 0.44, 0.30, 0.18);
+    }
 
-          if (hasWindow && bz >= -1.25 && bz <= 1.25 && by >= 1.05 && by <= 2.55) continue;
+    // -------------------------------------------------------------------------
+    // 3. COMPLETE 4-WALL RECYCLED PET BOTTLE ARCHITECTURE
+    // Helper to generate solid, volumetric, luminous bottle walls in steel cages
+    // -------------------------------------------------------------------------
+    function generateBottleWall({
+      axis,          // 'z' for front/rear, 'x' for left/right
+      fixedCoord,    // position on fixed axis
+      uMin, uMax,    // span along horizontal wall axis
+      vMin, vMax,    // span along vertical Y axis
+      cutouts = [],  // array of {uMin, uMax, vMin, vMax} openings
+      baseColor,     // [r, g, b] base bottle color
+      lumVar = 0.18, // luminance organic variation
+      cageColor = [0.32, 0.36, 0.42] // structural steel frame color
+    }) {
+      const uSpan = uMax - uMin;
+      const vSpan = vMax - vMin;
 
-          const isBlueTopRow = by >= 2.72;
-          let rVal, gVal, bVal;
-          if (isBlueTopRow) {
-            rVal = 0.06; gVal = 0.30; bVal = 0.94;
-          } else {
-            const paletteChoice = Math.random();
-            if (paletteChoice < 0.52) {
-              rVal = 0.05; gVal = 0.65; bVal = 0.70;
-            } else if (paletteChoice < 0.85) {
-              rVal = 0.16; gVal = 0.78; bVal = 0.90;
+      function isInsideCutout(u, v) {
+        for (let k = 0; k < cutouts.length; k++) {
+          const c = cutouts[k];
+          if (u >= c.uMin && u <= c.uMax && v >= c.vMin && v <= c.vMax) return true;
+        }
+        return false;
+      }
+
+      // Dense double-layer bottle points for solid wall opacity & depth
+      for (let u = uMin; u <= uMax; u += STEP) {
+        for (let v = vMin; v <= vMax; v += STEP) {
+          if (isInsideCutout(u, v)) continue;
+
+          const colIdx = Math.floor((u - uMin) / 0.16);
+          const rowIdx = Math.floor((v - vMin) / 0.28);
+          const noise = (Math.sin(colIdx * 4.3 + rowIdx * 2.7) + 1) * 0.5;
+          const lum = 0.88 + noise * lumVar;
+
+          let r = Math.min(1.0, baseColor[0] * lum);
+          let g = Math.min(1.0, baseColor[1] * lum);
+          let b = Math.min(1.0, baseColor[2] * lum);
+
+          // Golden or cyan bottle cap highlights
+          const isCap = Math.abs((u - uMin) % 0.16) < 0.035 && Math.abs((v - vMin) % 0.28) < 0.045;
+          if (isCap) {
+            if (baseColor[0] > 0.4) {
+              r = 1.0; g = 0.82; b = 0.15; // Golden amber cap on orange bottle
             } else {
-              rVal = 0.85; gVal = 0.96; bVal = 1.0;
+              r = 0.30; g = 0.65; b = 0.95; // Crystalline cyan cap on black bottle
             }
           }
 
-          const numBottlePoints = 20;
-          for (let p = 0; p < numBottlePoints; p++) {
-            const theta = Math.random() * Math.PI * 2;
-            const h = (Math.random() - 0.5) * 0.13;
-            const rad = 0.038 + (Math.random() - 0.5) * 0.008;
+          // Two layered points for volumetric thickness
+          [-0.065, 0.065].forEach(depthOffset => {
+            const jitter = (Math.random() - 0.5) * 0.012;
+            if (axis === 'z') {
+              addPt(u, v, fixedCoord + depthOffset + jitter, r, g, b);
+            } else {
+              addPt(fixedCoord + depthOffset + jitter, v, u, r, g, b);
+            }
+          });
+        }
+      }
 
-            const px = xFixed + Math.cos(theta) * rad + (Math.random() - 0.5) * 0.02;
-            const py = by + h;
-            const pz = bz + Math.sin(theta) * rad;
-
-            addPt(px, py, pz, rVal, gVal, bVal);
-          }
-
-          const capX = xFixed + (xFixed < 0 ? -0.065 : 0.065);
-          if (isBlueTopRow) {
-            addPt(capX, by + 0.08, bz + (Math.random() - 0.5) * 0.02, 0.95, 0.98, 1.0);
+      // Steel cage bay vertical frames
+      const numBays = Math.round(uSpan / 1.02);
+      const bayStep = uSpan / numBays;
+      for (let b = 0; b <= numBays; b++) {
+        const u = uMin + b * bayStep;
+        for (let d of [-0.075, 0.075]) {
+          if (axis === 'z') {
+            addLine(u, vMin, fixedCoord + d, u, vMax, fixedCoord + d, 0.05, cageColor[0], cageColor[1], cageColor[2]);
           } else {
-            addPt(capX, by + 0.08, bz + (Math.random() - 0.5) * 0.02, 1.0, 0.74, 0.14);
+            addLine(fixedCoord + d, vMin, u, fixedCoord + d, vMax, u, 0.05, cageColor[0], cageColor[1], cageColor[2]);
           }
         }
       }
 
-      for (let y = 0.20; y <= bH; y += 0.30) {
-        addLine(xFixed + 0.06, y, zMin, xFixed + 0.06, y, zMax, 0.035, 0.38, 0.48, 0.58, 0.008);
+      // Horizontal tier wires (4 tiers)
+      const numTiers = 4;
+      const tierStep = vSpan / numTiers;
+      for (let t = 0; t <= numTiers; t++) {
+        const v = vMin + t * tierStep;
+        for (let d of [-0.075, 0.075]) {
+          if (axis === 'z') {
+            addLine(uMin, v, fixedCoord + d, uMax, v, fixedCoord + d, 0.05, cageColor[0], cageColor[1], cageColor[2]);
+          } else {
+            addLine(fixedCoord + d, v, uMin, fixedCoord + d, v, uMax, 0.05, cageColor[0], cageColor[1], cageColor[2]);
+          }
+        }
       }
     }
 
-    // Build All Exterior Walls
-    generateOrganicBottleWall(leftX, -0.70, frontZ, true, false);
-    generateOrganicBottleWall(0.90, 2.2, frontZ, true, false);
-    generateOrganicBottleWall(leftX, rightX, backZ, false, true);
-    generateOrganicSideBottleWall(leftX, backZ, frontZ, true);
-    generateOrganicSideBottleWall(rightX, backZ, 1.0, false);
+    // -------------------------------------------------------------------------
+    // A. FRONT FACADE WALL (Charcoal Black Bottles + Entrance Door + Danfo Bus)
+    // -------------------------------------------------------------------------
+    // Doorway opening: X = 0.0 to 1.92, Y = 0.0 to 3.75
+    // Danfo bus cab opening: X = -3.20 to -0.64, Y = 1.25 to 3.80
+    const frontDoorOpening = { uMin: 0.0, uMax: 1.92, vMin: 0.0, vMax: 3.75 };
+    const danfoBusOpening  = { uMin: -3.20, uMax: -0.64, vMin: 1.25, vMax: 3.80 };
+
+    generateBottleWall({
+      axis: 'z',
+      fixedCoord: frontZ,
+      uMin: leftX, uMax: rightX,
+      vMin: 0.0, vMax: bH,
+      cutouts: [frontDoorOpening, danfoBusOpening],
+      baseColor: [0.18, 0.22, 0.28], // Luminous Charcoal Black with sky reflections (#1c232f)
+      lumVar: 0.28,
+      cageColor: [0.42, 0.46, 0.54]  // Defined steel cage frames
+    });
+
+    // Classroom Entrance Doorway Frame & Swung Open Door
+    const doorX1 = 0.0, doorX2 = 1.92, doorYTop = 3.75;
+    addLine(doorX1, 0, frontZ, doorX1, doorYTop, frontZ, 0.03, 0.88, 0.92, 0.98);
+    addLine(doorX2, 0, frontZ, doorX2, doorYTop, frontZ, 0.03, 0.88, 0.92, 0.98);
+    addLine(doorX1, doorYTop, frontZ, doorX2, doorYTop, frontZ, 0.03, 0.88, 0.92, 0.98);
+
+    // Swung open door leaf
+    const doorAngle = Math.PI / 3.2;
+    const doorLeafW = 1.75;
+    const doorEndX = doorX1 + Math.cos(doorAngle) * doorLeafW;
+    const doorEndZ = frontZ - Math.sin(doorAngle) * doorLeafW;
+    addLine(doorX1, 0.05, frontZ, doorEndX, 0.05, doorEndZ, 0.03, 0.76, 0.54, 0.30);
+    addLine(doorEndX, 0.05, doorEndZ, doorEndX, doorYTop - 0.05, doorEndZ, 0.03, 0.76, 0.54, 0.30);
+    addLine(doorEndX, doorYTop - 0.05, doorEndZ, doorX1, doorYTop - 0.05, frontZ, 0.03, 0.76, 0.54, 0.30);
+    // Polished brass handle
+    addPt(doorEndX - 0.06, 1.85, doorEndZ + 0.04, 1.0, 0.82, 0.20);
 
     // -------------------------------------------------------------------------
-    // 5. CLASSROOM ENTRANCE & WINDOWS
+    // B. LEFT SIDE WALL (Vibrant Amber-Orange Bottles + Security Window)
     // -------------------------------------------------------------------------
-    const doorX1 = -0.70, doorX2 = 0.90, doorYTop = 2.65;
-    addLine(doorX1, 0, frontZ, doorX1, doorYTop, frontZ, 0.018, 0.88, 0.94, 1.0, 0.006);
-    addLine(doorX2, 0, frontZ, doorX2, doorYTop, frontZ, 0.018, 0.88, 0.94, 1.0, 0.006);
-    addLine(doorX1, doorYTop, frontZ, doorX2, doorYTop, frontZ, 0.018, 0.88, 0.94, 1.0, 0.006);
-    addLine(doorX1, 0.04, frontZ + 0.12, doorX2, 0.04, frontZ + 0.12, 0.018, 0.98, 0.82, 0.25, 0.006);
+    // Window opening: Z = -2.4 to +2.4, Y = 1.25 to 3.35
+    const leftWinOpening = { uMin: -2.4, uMax: 2.4, vMin: 1.25, vMax: 3.35 };
 
-    const doorW = 0.78;
-    const doorAngle = Math.PI / 4;
-    const doorEndX = doorX1 + Math.cos(doorAngle) * doorW;
-    const doorEndZ = frontZ - Math.sin(doorAngle) * doorW;
-    addLine(doorX1, 0.05, frontZ, doorEndX, 0.05, doorEndZ, 0.018, 0.78, 0.88, 0.98, 0.006);
-    addLine(doorEndX, 0.05, doorEndZ, doorEndX, doorYTop - 0.05, doorEndZ, 0.018, 0.78, 0.88, 0.98, 0.006);
-    addLine(doorEndX, doorYTop - 0.05, doorEndZ, doorX1, doorYTop - 0.05, frontZ, 0.018, 0.78, 0.88, 0.98, 0.006);
-    addPt(doorEndX - 0.04, 1.15, doorEndZ + 0.04, 1.0, 0.85, 0.22); // Polished brass door handle
+    generateBottleWall({
+      axis: 'x',
+      fixedCoord: leftX,
+      uMin: backZ, uMax: frontZ,
+      vMin: 0.0, vMax: bH,
+      cutouts: [leftWinOpening],
+      baseColor: [0.95, 0.52, 0.08], // Vibrant Amber-Orange (#df7812)
+      lumVar: 0.20,
+      cageColor: [0.30, 0.33, 0.38]
+    });
 
-    const winZ1 = -1.25, winZ2 = 1.25, winY1 = 1.05, winY2 = 2.55;
-    addLine(leftX, winY1, winZ1, leftX, winY1, winZ2, 0.018, 0.85, 0.94, 1.0, 0.006);
-    addLine(leftX, winY2, winZ1, leftX, winY2, winZ2, 0.018, 0.85, 0.94, 1.0, 0.006);
-    addLine(leftX, winY1, winZ1, leftX, winY2, winZ1, 0.018, 0.85, 0.94, 1.0, 0.006);
-    addLine(leftX, winY1, winZ2, leftX, winY2, winZ2, 0.018, 0.85, 0.94, 1.0, 0.006);
-    addLine(leftX, (winY1 + winY2) / 2, winZ1, leftX, (winY1 + winY2) / 2, winZ2, 0.018, 0.85, 0.94, 1.0, 0.006);
-    addLine(leftX, winY1, (winZ1 + winZ2) / 2, leftX, winY2, (winZ1 + winZ2) / 2, 0.018, 0.85, 0.94, 1.0, 0.006);
-
-    for (let i = 0; i < 340; i++) {
-      const gz = winZ1 + 0.08 + Math.random() * (winZ2 - winZ1 - 0.16);
-      const gy = winY1 + 0.08 + Math.random() * (winY2 - winY1 - 0.16);
-      addPt(leftX, gy, gz, 0.40, 0.82, 0.98);
+    // Left Security Window: Steel outer frame + vertical steel bars
+    const winZ1 = -2.4, winZ2 = 2.4, winY1 = 1.25, winY2 = 3.35;
+    addLine(leftX, winY1, winZ1, leftX, winY1, winZ2, 0.03, 0.38, 0.42, 0.48);
+    addLine(leftX, winY2, winZ1, leftX, winY2, winZ2, 0.03, 0.38, 0.42, 0.48);
+    addLine(leftX, winY1, winZ1, leftX, winY2, winZ1, 0.03, 0.38, 0.42, 0.48);
+    addLine(leftX, winY1, winZ2, leftX, winY2, winZ2, 0.03, 0.38, 0.42, 0.48);
+    for (let bz = winZ1 + 0.35; bz <= winZ2 - 0.20; bz += 0.35) {
+      addLine(leftX, winY1, bz, leftX, winY2, bz, 0.035, 0.32, 0.36, 0.42);
     }
 
     // -------------------------------------------------------------------------
-    // 6. CLASSROOM INTERIOR LIFE (DESKS, BENCHES, CHALKBOARD, EASEL, CANOPY)
+    // C. RIGHT SIDE WALL (Vibrant Amber-Orange Bottles + Security Window)
     // -------------------------------------------------------------------------
-    for (let fx = leftX + 0.2; fx <= rightX - 0.2; fx += 0.08) {
-      for (let fz = backZ + 0.2; fz <= frontZ - 0.2; fz += 0.055) {
-        const fNoise = Math.sin(fx * 4 + fz * 8) * 0.03;
-        addPt(fx + (Math.random() - 0.5) * 0.01, 0.02, fz + (Math.random() - 0.5) * 0.01,
-              0.64 + fNoise, 0.44 + fNoise * 0.5, 0.24 + fNoise * 0.3);
+    const rightWinOpening = { uMin: -2.4, uMax: 2.4, vMin: 1.25, vMax: 3.35 };
+
+    generateBottleWall({
+      axis: 'x',
+      fixedCoord: rightX,
+      uMin: backZ, uMax: frontZ,
+      vMin: 0.0, vMax: bH,
+      cutouts: [rightWinOpening],
+      baseColor: [0.95, 0.52, 0.08], // Vibrant Amber-Orange (#df7812)
+      lumVar: 0.20,
+      cageColor: [0.30, 0.33, 0.38]
+    });
+
+    // Right Security Window
+    addLine(rightX, winY1, winZ1, rightX, winY1, winZ2, 0.03, 0.38, 0.42, 0.48);
+    addLine(rightX, winY2, winZ1, rightX, winY2, winZ2, 0.03, 0.38, 0.42, 0.48);
+    addLine(rightX, winY1, winZ1, rightX, winY2, winZ1, 0.03, 0.38, 0.42, 0.48);
+    addLine(rightX, winY1, winZ2, rightX, winY2, winZ2, 0.03, 0.38, 0.42, 0.48);
+    for (let bz = winZ1 + 0.35; bz <= winZ2 - 0.20; bz += 0.35) {
+      addLine(rightX, winY1, bz, rightX, winY2, bz, 0.035, 0.32, 0.36, 0.42);
+    }
+
+    // -------------------------------------------------------------------------
+    // D. REAR WALL (Solid 4-Tier Vibrant Amber-Orange Bottles)
+    // -------------------------------------------------------------------------
+    generateBottleWall({
+      axis: 'z',
+      fixedCoord: backZ,
+      uMin: leftX, uMax: rightX,
+      vMin: 0.0, vMax: bH,
+      cutouts: [],
+      baseColor: [0.95, 0.52, 0.08], // Vibrant Amber-Orange (#df7812)
+      lumVar: 0.20,
+      cageColor: [0.30, 0.33, 0.38]
+    });
+
+    // -------------------------------------------------------------------------
+    // 4. CORRUGATED MONO-PITCH ROOF, GABLES & SOLAR PANELS
+    // -------------------------------------------------------------------------
+    const roofFrontY = bH;          // 5.0m at front
+    const roofBackY  = bH + 1.35;   // 6.35m at rear (sloped upward towards back)
+
+    // Side Gables (sloped triangular bottle fill under roofline)
+    for (let z = backZ; z <= frontZ; z += STEP) {
+      const tz = (z - backZ) / bD;
+      const gy = roofBackY - tz * (roofBackY - roofFrontY);
+      for (let y = bH; y <= gy; y += STEP) {
+        addPt(leftX,  y, z, 0.94, 0.50, 0.08);
+        addPt(rightX, y, z, 0.94, 0.50, 0.08);
       }
     }
 
-    const deskRows = [0.8, -0.9];
-    const deskCols = [-3.8, -2.4, -1.0];
+    // Corrugated Galvanized Iron Sheets
+    const roofOverhangW = 0.70;
+    const roofOverhangD = 0.80;
+    const rXMin = leftX  - roofOverhangW;
+    const rXMax = rightX + roofOverhangW;
+    const rZMin = backZ  - roofOverhangD;
+    const rZMax = frontZ + roofOverhangD;
 
+    for (let rx = rXMin; rx <= rXMax; rx += 0.065) {
+      for (let rz = rZMin; rz <= rZMax; rz += 0.08) {
+        const tz = (rz - backZ) / bD;
+        const baseRy = roofBackY - tz * (roofBackY - roofFrontY) + 0.12;
+        const wave = Math.sin(rx * 34.0) * 0.038;
+        const ry = baseRy + wave;
+        const shade = 0.88 + Math.sin(rx * 34.0) * 0.12;
+
+        addPt(rx, ry, rz, 0.84 * shade, 0.90 * shade, 0.96 * shade);
+      }
+    }
+
+    // 4 Monocrystalline Solar Panels on Roof
+    const panelCols = [-2.2, 0.0, 2.2];
+    panelCols.forEach(px => {
+      const pz = -1.2;
+      const tz = (pz - backZ) / bD;
+      const py = roofBackY - tz * (roofBackY - roofFrontY) + 0.22;
+      for (let sx = px - 0.90; sx <= px + 0.90; sx += 0.06) {
+        for (let sz = pz - 1.25; sz <= pz + 1.25; sz += 0.06) {
+          const isFrame = Math.abs(Math.abs(sx - px) - 0.90) < 0.04 || Math.abs(Math.abs(sz - pz) - 1.25) < 0.04;
+          const isGrid = Math.abs((sx - px) % 0.30) < 0.015 || Math.abs((sz - pz) % 0.40) < 0.015;
+          if (isFrame) {
+            addPt(sx, py, sz, 0.85, 0.90, 0.98);
+          } else if (isGrid) {
+            addPt(sx, py, sz, 1.0, 0.82, 0.20); // Gold busbar grid
+          } else {
+            addPt(sx, py, sz, 0.05, 0.16, 0.45); // Deep iridescent navy solar cell
+          }
+        }
+      }
+    });
+
+    // -------------------------------------------------------------------------
+    // 5. ICONIC LAGOS DANFO BUS CLASSROOM CAB
+    // Mounted in front facade at X = -1.92, projecting forward
+    // STRICT: NO LIGHT RAYS!
+    // -------------------------------------------------------------------------
+    const busW = 2.56;
+    const busL = 1.92;
+    const busH = 2.50;
+    const busCX = -1.92;
+    const busYBase = 1.25;
+    const busZStart = frontZ;
+    const busZEnd = busZStart + busL; // +7.52
+
+    // Heavy diagonal 45° welded steel support struts underneath
+    [-busW / 2 + 0.22, busW / 2 - 0.22].forEach(bx => {
+      const strutX = busCX + bx;
+      addLine(strutX, 0.0, busZStart, strutX, busYBase, busZEnd - 0.25, 0.05, 0.20, 0.22, 0.28, 0.008);
+      addLine(strutX, busYBase, busZStart, strutX, busYBase, busZEnd, 0.05, 0.24, 0.28, 0.34, 0.008);
+    });
+
+    // Danfo Bus Cab Side Panels
+    [-busW / 2, busW / 2].forEach(sideX => {
+      const bx = busCX + sideX;
+      for (let z = busZStart; z <= busZEnd; z += 0.055) {
+        for (let y = busYBase; y <= busYBase + busH; y += 0.055) {
+          const relY = y - busYBase;
+          const isWindow = (relY >= 1.15 && relY <= 2.10 && z >= busZStart + 0.40 && z <= busZEnd - 0.25);
+          const isDarkStripe = (relY >= 0.76 && relY <= 0.96);
+          const isWhiteStripe = (relY >= 0.98 && relY <= 1.08);
+
+          if (isWindow) {
+            addPt(bx, y, z, 0.15, 0.25, 0.38); // Dark tinted cab window
+          } else if (isDarkStripe) {
+            addPt(bx, y, z, 0.08, 0.09, 0.11); // Matte charcoal transit stripe
+          } else if (isWhiteStripe) {
+            addPt(bx, y, z, 0.96, 0.97, 1.0);  // Warm ivory stripe
+          } else {
+            const shade = 0.90 + (relY / busH) * 0.18;
+            addPt(bx, y, z, 0.98 * shade, 0.74 * shade, 0.06); // Rich Lagos Sunshine Yellow
+          }
+        }
+      }
+    });
+
+    // Front Nose, Radiator Grille & Split Windshield
+    for (let x = busCX - busW / 2; x <= busCX + busW / 2; x += 0.055) {
+      for (let y = busYBase; y <= busYBase + busH; y += 0.055) {
+        const relY = y - busYBase;
+        const relX = x - busCX;
+
+        if (relY >= 1.16 && relY <= 2.20) {
+          // Split Angled Windshield
+          const wsZ = busZEnd - (relY - 1.16) * 0.24;
+          const isCenterDivider = Math.abs(relX) < 0.045;
+          if (isCenterDivider) {
+            addPt(x, y, wsZ, 0.12, 0.14, 0.18);
+          } else {
+            addPt(x, y, wsZ, 0.24, 0.58, 0.85); // Windshield glass reflection
+          }
+        } else if (relY < 0.42) {
+          // Lower front steel bumper
+          addPt(x, y, busZEnd + 0.06, 0.16, 0.19, 0.24);
+        } else if (relY >= 0.42 && relY < 0.86) {
+          // Radiator Grille
+          const isLouver = Math.abs((relY - 0.42) % 0.08) < 0.03;
+          if (isLouver) {
+            addPt(x, y, busZEnd + 0.02, 0.10, 0.12, 0.15);
+          } else {
+            addPt(x, y, busZEnd + 0.015, 0.22, 0.25, 0.30);
+          }
+        } else if (relY >= 0.86 && relY < 1.16) {
+          // Hood with dual black vertical stripes
+          const isHoodStripe = Math.abs(Math.abs(relX) - 0.45) < 0.08;
+          if (isHoodStripe) {
+            addPt(x, y, busZEnd, 0.08, 0.09, 0.11);
+          } else {
+            addPt(x, y, busZEnd, 0.98, 0.74, 0.06);
+          }
+        } else {
+          // Upper brow visor
+          addPt(x, y, busZEnd - 0.28, 0.98, 0.74, 0.06);
+        }
+      }
+    }
+
+    // Flush Projector Headlights (STRICT: NO LIGHT RAYS OR CONES)
+    [-0.82, 0.82].forEach(hx => {
+      const hlX = busCX + hx;
+      const hlY = busYBase + 0.65;
+      const hlZ = busZEnd + 0.04;
+      for (let r = 0; r <= 0.16; r += 0.03) {
+        for (let a = 0; a < 14; a++) {
+          const ang = a * (Math.PI * 2 / 14);
+          addPt(hlX + Math.cos(ang) * r, hlY + Math.sin(ang) * r, hlZ, 0.98, 0.96, 0.90);
+        }
+      }
+    });
+
+    // Front Wheels
+    [-1, 1].forEach(side => {
+      const wx = busCX + side * (busW / 2 + 0.06);
+      const wy = busYBase + 0.35;
+      const wz = busZEnd - 0.65;
+      for (let r = 0.12; r <= 0.38; r += 0.04) {
+        for (let a = 0; a < 16; a++) {
+          const ang = a * (Math.PI * 2 / 16);
+          const isTire = r > 0.24;
+          if (isTire) {
+            addPt(wx, wy + Math.cos(ang) * r, wz + Math.sin(ang) * r, 0.12, 0.14, 0.18);
+          } else {
+            addPt(wx, wy + Math.cos(ang) * r, wz + Math.sin(ang) * r, 0.82, 0.85, 0.92); // Chrome rim
+          }
+        }
+      }
+    });
+
+    // Bus Roof
+    for (let x = busCX - busW / 2; x <= busCX + busW / 2; x += 0.065) {
+      for (let z = busZStart; z <= busZEnd - 0.25; z += 0.065) {
+        addPt(x, busYBase + busH, z, 0.96, 0.72, 0.06);
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. CLASSROOM INTERIOR LIFE (Inside the Enclosed 4 Walls)
+    // -------------------------------------------------------------------------
+    // Student Double Desks with Bench Seats
+    const deskRows = [1.2, -1.8];
+    const deskCols = [-2.0, 0.0, 2.0];
     for (let rZ of deskRows) {
       for (let cX of deskCols) {
-        const dW = 0.85;
-        const dD = 0.45;
-        const dH = 0.74;
+        const dW = 1.35, dD = 0.65, dH = 1.05;
+        // Desk Legs
+        for (let lx of [-dW / 2 + 0.06, dW / 2 - 0.06]) {
+          for (let lz of [-dD / 2 + 0.06, dD / 2 - 0.06]) {
+            addLine(cX + lx, 0.0, rZ + lz, cX + lx, dH, rZ + lz, 0.04, 0.25, 0.28, 0.34, 0.006);
+          }
+        }
+        // Desk Top
+        for (let dx = cX - dW / 2; dx <= cX + dW / 2; dx += 0.06) {
+          for (let dz = rZ - dD / 2; dz <= rZ + dD / 2; dz += 0.06) {
+            addPt(dx, dH, dz, 0.75, 0.52, 0.28);
+          }
+        }
+        // Open Sketchbooks on Desk
+        for (let sx = cX - 0.25; sx <= cX + 0.25; sx += 0.04) {
+          for (let sz = rZ - 0.18; sz <= rZ + 0.18; sz += 0.04) {
+            addPt(sx, dH + 0.02, sz, 0.98, 0.98, 0.96);
+          }
+        }
+        // Colored pencils
+        addPt(cX + 0.32, dH + 0.025, rZ - 0.06, 1.0, 0.78, 0.12);
+        addPt(cX + 0.35, dH + 0.025, rZ + 0.04, 0.15, 0.75, 0.98);
+        addPt(cX + 0.38, dH + 0.025, rZ + 0.12, 0.95, 0.25, 0.35);
 
-        for (let lx of [-dW / 2 + 0.04, dW / 2 - 0.04]) {
-          for (let lz of [-dD / 2 + 0.04, dD / 2 - 0.04]) {
-            addLine(cX + lx, 0.02, rZ + lz, cX + lx, dH, rZ + lz, 0.02, 0.24, 0.28, 0.34, 0.005);
-          }
+        // Bench Seat
+        const bZ = rZ - 0.70;
+        const bW = 1.35;
+        const bHSeat = 0.62;
+        for (let blx of [-bW / 2 + 0.08, bW / 2 - 0.08]) {
+          addLine(cX + blx, 0.0, bZ, cX + blx, bHSeat, bZ, 0.04, 0.25, 0.28, 0.34, 0.006);
         }
-        for (let dx = cX - dW / 2; dx <= cX + dW / 2; dx += 0.03) {
-          for (let dz = rZ - dD / 2; dz <= rZ + dD / 2; dz += 0.03) {
-            addPt(dx, dH, dz, 0.78, 0.56, 0.30);
-          }
-        }
-        for (let sx = cX - 0.16; sx <= cX + 0.16; sx += 0.02) {
-          for (let sz = rZ - 0.11; sz <= rZ + 0.11; sz += 0.02) {
-            addPt(sx, dH + 0.015, sz, 0.98, 0.98, 0.96);
-          }
-        }
-        addPt(cX + 0.20, dH + 0.016, rZ - 0.04, 1.0, 0.78, 0.12);
-        addPt(cX + 0.22, dH + 0.016, rZ + 0.02, 0.15, 0.75, 0.98);
-        addPt(cX + 0.24, dH + 0.016, rZ + 0.08, 0.95, 0.25, 0.35);
-
-        const bZ = rZ - 0.48;
-        const bW = 0.85;
-        const bSeatH = 0.44;
-        for (let blx of [-bW / 2 + 0.05, bW / 2 - 0.05]) {
-          addLine(cX + blx, 0.02, bZ, cX + blx, bSeatH, bZ, 0.02, 0.24, 0.28, 0.34, 0.005);
-        }
-        for (let bx = cX - bW / 2; bx <= cX + bW / 2; bx += 0.025) {
-          for (let bzOffset of [-0.08, -0.02, 0.04, 0.08]) {
-            addPt(bx, bSeatH, bZ + bzOffset, 0.72, 0.50, 0.26);
+        for (let bx = cX - bW / 2; bx <= cX + bW / 2; bx += 0.05) {
+          for (let bzOffset of [-0.12, -0.04, 0.04, 0.12]) {
+            addPt(bx, bHSeat, bZ + bzOffset, 0.70, 0.48, 0.25);
           }
         }
       }
     }
 
-    const cbX1 = -3.8, cbX2 = -1.2, cbY1 = 1.2, cbY2 = 2.5, cbZ = backZ + 0.08;
-    addLine(cbX1, cbY1, cbZ, cbX2, cbY1, cbZ, 0.018, 0.85, 0.60, 0.28, 0.006);
-    addLine(cbX1, cbY2, cbZ, cbX2, cbY2, cbZ, 0.018, 0.85, 0.60, 0.28, 0.006);
-    addLine(cbX1, cbY1, cbZ, cbX1, cbY2, cbZ, 0.018, 0.85, 0.60, 0.28, 0.006);
-    addLine(cbX2, cbY1, cbZ, cbX2, cbY2, cbZ, 0.018, 0.85, 0.60, 0.28, 0.006);
-    for (let cx = cbX1 + 0.04; cx <= cbX2 - 0.04; cx += 0.035) {
-      for (let cy = cbY1 + 0.04; cy <= cbY2 - 0.04; cy += 0.035) {
-        addPt(cx, cy, cbZ, 0.08, 0.16, 0.13);
+    // Teacher's Blackboard on Rear Interior Wall
+    const bbX1 = -2.4, bbX2 = 0.4, bbY1 = 1.8, bbY2 = 3.6, bbZ = backZ + 0.12;
+    addLine(bbX1, bbY1, bbZ, bbX2, bbY1, bbZ, 0.03, 0.85, 0.60, 0.28);
+    addLine(bbX1, bbY2, bbZ, bbX2, bbY2, bbZ, 0.03, 0.85, 0.60, 0.28);
+    addLine(bbX1, bbY1, bbZ, bbX1, bbY2, bbZ, 0.03, 0.85, 0.60, 0.28);
+    addLine(bbX2, bbY1, bbZ, bbX2, bbY2, bbZ, 0.03, 0.85, 0.60, 0.28);
+    for (let cx = bbX1 + 0.06; cx <= bbX2 - 0.06; cx += 0.055) {
+      for (let cy = bbY1 + 0.06; cy <= bbY2 - 0.06; cy += 0.055) {
+        addPt(cx, cy, bbZ, 0.08, 0.16, 0.13);
       }
     }
-    addLine(cbX1 + 0.3, cbY1 + 0.5, cbZ + 0.01, cbX1 + 1.1, cbY1 + 0.5, cbZ + 0.01, 0.025, 0.95, 0.98, 1.0);
-    addLine(cbX1 + 0.3, cbY1 + 0.8, cbZ + 0.01, cbX1 + 0.8, cbY1 + 0.8, cbZ + 0.01, 0.025, 0.95, 0.98, 1.0);
+    // Chalk lesson drawings
+    addLine(bbX1 + 0.4, bbY1 + 0.7, bbZ + 0.02, bbX1 + 1.4, bbY1 + 0.7, bbZ + 0.02, 0.04, 0.95, 0.98, 1.0);
+    addLine(bbX1 + 0.4, bbY1 + 1.1, bbZ + 0.02, bbX1 + 1.0, bbY1 + 1.1, bbZ + 0.02, 0.04, 0.95, 0.98, 1.0);
 
-    const easelX = 0.5, easelZ = 0.8;
-    addLine(easelX, 0, easelZ - 0.3, easelX - 0.2, 2.1, easelZ, 0.02, 0.82, 0.55, 0.25, 0.006);
-    addLine(easelX, 0, easelZ - 0.3, easelX + 0.2, 2.1, easelZ, 0.02, 0.82, 0.55, 0.25, 0.006);
-    addLine(easelX, 0, easelZ + 0.35, easelX, 2.1, easelZ, 0.02, 0.82, 0.55, 0.25, 0.006);
-    for (let cx = easelX - 0.25; cx <= easelX + 0.25; cx += 0.025) {
-      for (let cy = 0.95; cy <= 1.55; cy += 0.025) {
-        const u = (cx - (easelX - 0.25)) / 0.5;
-        const v = (cy - 0.95) / 0.6;
+    // Artist's Easel & Painting Canvas
+    const easelX = 1.4, easelZ = 1.5;
+    addLine(easelX, 0, easelZ - 0.4, easelX - 0.3, 2.9, easelZ, 0.03, 0.82, 0.55, 0.25);
+    addLine(easelX, 0, easelZ - 0.4, easelX + 0.3, 2.9, easelZ, 0.03, 0.82, 0.55, 0.25);
+    addLine(easelX, 0, easelZ + 0.45, easelX, 2.9, easelZ, 0.03, 0.82, 0.55, 0.25);
+    for (let cx = easelX - 0.38; cx <= easelX + 0.38; cx += 0.04) {
+      for (let cy = 1.4; cy <= 2.3; cy += 0.04) {
+        const u = (cx - (easelX - 0.38)) / 0.76;
+        const v = (cy - 1.4) / 0.9;
         let cr = 0.95, cg = 0.95, cb = 0.92;
         if (u < 0.5 && v < 0.5) { cr = 0.95; cg = 0.35; cb = 0.15; }
         else if (u >= 0.5 && v < 0.5) { cr = 0.15; cg = 0.75; cb = 0.85; }
         else if (u < 0.5 && v >= 0.5) { cr = 0.98; cg = 0.82; cb = 0.18; }
         else { cr = 0.25; cg = 0.85; cb = 0.45; }
-        addPt(cx, cy, easelZ - 0.08, cr, cg, cb);
-      }
-    }
-
-    for (let hx = leftX + 0.6; hx <= rightX - 0.6; hx += 0.28) {
-      for (let hz = backZ + 0.6; hz <= frontZ - 0.6; hz += 0.28) {
-        const wave = Math.sin(hx * 1.5 + hz * 1.2) * 0.15;
-        const hy = bH - 0.35 + wave;
-        addPt(hx, hy, hz, 0.12, 0.55, 0.92);
-        addPt(hx, hy - 0.08, hz, 0.95, 0.78, 0.15);
+        addPt(cx, cy, easelZ - 0.10, cr, cg, cb);
       }
     }
 
     // -------------------------------------------------------------------------
-    // 7. THE SOLID ICONIC LAGOS DANFO BUS CLASSROOM ANNEX
+    // 7. ATMOSPHERIC DRIFT MOTES
     // -------------------------------------------------------------------------
-    const busX1 = 2.4, busX2 = 4.8;
-    const busZ1 = 0.6, busZ2 = 5.2;
-    const busY1 = 0.25, busY2 = 2.25;
-    const busCX = (busX1 + busX2) / 2;
-    const busW = busX2 - busX1;
-
-    // Authentic Lagos Danfo Golden Yellow (#F59E0B / #D97706)
-    const danfoYellowR = 0.98, danfoYellowG = 0.74, danfoYellowB = 0.08;
-    const danfoDarkStripeR = 0.10, danfoDarkStripeG = 0.12, danfoDarkStripeB = 0.16;
-    const danfoWhiteStripeR = 0.96, danfoWhiteStripeG = 0.97, danfoWhiteStripeB = 1.0;
-
-    // High-Resolution Body Panels with Dual Black-and-White Transit Stripes
-    for (let z = busZ1; z <= busZ2; z += 0.032) {
-      for (let y = busY1; y <= busY2; y += 0.032) {
-        const isBlackStripe = y >= 0.80 && y <= 0.92;
-        const isWhiteStripe = y >= 0.94 && y <= 1.04;
-        const isSideWindow = (y >= 1.15 && y <= 1.85 && z >= 1.0 && z <= 4.4);
-
-        for (let bx of [busX1, busX2]) {
-          const jx = (Math.random() - 0.5) * 0.008;
-          const jy = (Math.random() - 0.5) * 0.008;
-          const jz = (Math.random() - 0.5) * 0.008;
-
-          if (isSideWindow) {
-            const isWindowSash = Math.abs(z % 0.85) < 0.025 || Math.abs(y - 1.15) < 0.02 || Math.abs(y - 1.85) < 0.02;
-            if (isWindowSash) {
-              addPt(bx + jx, y + jy, z + jz, 0.22, 0.26, 0.32);
-            } else if (Math.random() > 0.42) {
-              addPt(bx + jx, y + jy, z + jz, 0.34, 0.80, 0.96);
-            }
-            continue;
-          }
-
-          if (isBlackStripe) {
-            addPt(bx + jx, y + jy, z + jz, danfoDarkStripeR, danfoDarkStripeG, danfoDarkStripeB);
-          } else if (isWhiteStripe) {
-            addPt(bx + jx, y + jy, z + jz, danfoWhiteStripeR, danfoWhiteStripeG, danfoWhiteStripeB);
-          } else {
-            const shade = 0.94 + (y / busY2) * 0.16;
-            addPt(bx + jx, y + jy, z + jz, danfoYellowR * shade, danfoYellowG * shade, danfoYellowB * shade);
-          }
-        }
-      }
-    }
-
-    // High-Resolution Curved Front Face & Windshield (z = busZ2 = 5.2)
-    for (let x = busX1; x <= busX2; x += 0.030) {
-      for (let y = busY1; y <= busY2; y += 0.030) {
-        const jx = (Math.random() - 0.5) * 0.008;
-        const jy = (Math.random() - 0.5) * 0.008;
-
-        const isWindshield = y >= 1.15 && y <= 1.95 && x >= busX1 + 0.15 && x <= busX2 - 0.15;
-        const isGrille = y >= 0.50 && y <= 0.75 && x >= busCX - 0.6 && x <= busCX + 0.6;
-        const isBumper = y >= 0.25 && y <= 0.42;
-
-        if (isWindshield) {
-          const isCenterPillar = Math.abs(x - busCX) < 0.035;
-          const isBorder = x <= busX1 + 0.18 || x >= busX2 - 0.18 || y <= 1.18 || y >= 1.92;
-          if (isCenterPillar || isBorder) {
-            addPt(x + jx, y + jy, busZ2, 0.18, 0.22, 0.28);
-          } else if (Math.random() > 0.38) {
-            addPt(x + jx, y + jy, busZ2, 0.36, 0.84, 0.98);
-          }
-        } else if (isGrille) {
-          addPt(x + jx, y + jy, busZ2 + 0.02, 0.12, 0.14, 0.18);
-          if (Math.hypot(x - busCX, y - 0.62) < 0.12) {
-            addPt(x + jx, y + jy, busZ2 + 0.035, 0.95, 0.96, 0.98);
-          }
-        } else if (isBumper) {
-          addPt(x + jx, y + jy, busZ2 + 0.04, 0.88, 0.92, 0.98);
-        } else {
-          addPt(x + jx, y + jy, busZ2, danfoYellowR, danfoYellowG, danfoYellowB);
-        }
-      }
-    }
-
-    // High-Resolution Concentric Projector Headlights (FLUSH, ZERO LIGHT RAYS OR CONES)
-    const headlampXs = [busX1 + 0.45, busX2 - 0.45];
-    for (let hx of headlampXs) {
-      for (let a = 0; a < 24; a++) {
-        const ang = a * (Math.PI * 2 / 24);
-        const rx = hx + Math.cos(ang) * 0.14;
-        const ry = 0.70 + Math.sin(ang) * 0.14;
-        addPt(rx, ry, busZ2 + 0.03, 0.90, 0.94, 1.0);
-      }
-      for (let r = 0.02; r <= 0.12; r += 0.018) {
-        const numP = Math.floor(r * 130);
-        for (let p = 0; p < numP; p++) {
-          const ang = p * (Math.PI * 2 / numP);
-          const rx = hx + Math.cos(ang) * r;
-          const ry = 0.70 + Math.sin(ang) * r;
-          const isCenterBulb = r <= 0.04;
-          if (isCenterBulb) {
-            addPt(rx, ry, busZ2 + 0.045, 1.0, 1.0, 0.98);
-          } else {
-            addPt(rx, ry, busZ2 + 0.038, 1.0, 0.88, 0.35);
-          }
-        }
-      }
-    }
-
-    // Amber Turn Indicator Lamps on Front Corners
-    for (let bx of [busX1 + 0.15, busX2 - 0.15]) {
-      for (let a = 0; a < 10; a++) {
-        const ang = a * (Math.PI * 2 / 10);
-        addPt(bx + Math.cos(ang) * 0.04, 0.58 + Math.sin(ang) * 0.04, busZ2 + 0.025, 1.0, 0.65, 0.05);
-      }
-    }
-
-    // Rear Ruby-Red Taillights
-    for (let bx of [busX1 + 0.25, busX2 - 0.25]) {
-      for (let a = 0; a < 14; a++) {
-        const ang = a * (Math.PI * 2 / 14);
-        for (let r = 0.02; r <= 0.08; r += 0.02) {
-          addPt(bx + Math.cos(ang) * r, 0.65 + Math.sin(ang) * r, busZ1 - 0.02, 0.96, 0.14, 0.18);
-        }
-      }
-    }
-
-    // High-Resolution Curved Bus Roof & Rooftop Luggage Rails
-    for (let z = busZ1; z <= busZ2; z += 0.032) {
-      for (let x = busX1; x <= busX2; x += 0.032) {
-        const arch = Math.sin(((x - busX1) / busW) * Math.PI) * 0.18;
-        const jx = (Math.random() - 0.5) * 0.006;
-        const jz = (Math.random() - 0.5) * 0.006;
-        addPt(x + jx, busY2 + arch, z + jz, danfoYellowR * 1.04, danfoYellowG * 1.04, danfoYellowB * 1.04);
-      }
-      addPt(busX1 + 0.12, busY2 + 0.22, z, 0.88, 0.92, 0.98);
-      addPt(busX2 - 0.12, busY2 + 0.22, z, 0.88, 0.92, 0.98);
-    }
-
-    // 4 Detailed 3D Bus Wheels with Chrome Rim Points
-    const wheelXs = [busX1 - 0.02, busX2 + 0.02];
-    const wheelZs = [1.5, 4.3];
-
-    for (let wx of wheelXs) {
-      for (let wz of wheelZs) {
-        for (let a = 0; a < 24; a++) {
-          const ang = a * (Math.PI * 2 / 24);
-          for (let wr = 0.05; wr <= 0.35; wr += 0.022) {
-            const wy = 0.34 + Math.sin(ang) * wr;
-            const wzPos = wz + Math.cos(ang) * wr;
-            const isTire = wr > 0.20;
-            if (isTire) {
-              addPt(wx, wy, wzPos, 0.10, 0.12, 0.15);
-            } else {
-              addPt(wx, wy, wzPos, 0.90, 0.95, 1.0);
-            }
-          }
-        }
-        addPt(wx, 0.34, wz, 1.0, 0.80, 0.12);
-      }
-    }
-
-    // -------------------------------------------------------------------------
-    // 8. SOLID PITCHED CORRUGATED ROOF & ROOFTOP SOLAR PANEL ARRAY
-    // -------------------------------------------------------------------------
-    const roofOverhangX = 0.45;
-    const roofOverhangZ = 0.45;
-    const roofZMin = backZ - roofOverhangZ;
-    const roofZMax = frontZ + roofOverhangZ;
-
-    for (let rx = leftX - roofOverhangX; rx <= rightX + roofOverhangX; rx += 0.034) {
-      for (let rz = roofZMin; rz <= roofZMax; rz += 0.034) {
-        const tSlope = 1.0 - Math.abs(rz - ridgeZ) / (bD / 2 + roofOverhangZ);
-        const ry = bH + tSlope * (ridgeY - bH);
-        const corrugation = Math.sin(rx * 35) * 0.024;
-        const jx = (Math.random() - 0.5) * 0.006;
-        const jz = (Math.random() - 0.5) * 0.006;
-
-        const isPeak = corrugation > 0.012;
-        let cr = isPeak ? 0.74 : 0.50;
-        let cg = isPeak ? 0.80 : 0.56;
-        let cb = isPeak ? 0.90 : 0.66;
-        addPt(rx + jx, ry + corrugation, rz + jz, cr, cg, cb);
-      }
-    }
-
-    for (let rx = leftX - roofOverhangX; rx <= rightX + roofOverhangX; rx += 0.025) {
-      addPt(rx, bH, roofZMax, 0.88, 0.94, 1.0);
-      addPt(rx, bH, roofZMin, 0.88, 0.94, 1.0);
-    }
-    for (let rz = roofZMin; rz <= roofZMax; rz += 0.025) {
-      const tSlope = 1.0 - Math.abs(rz - ridgeZ) / (bD / 2 + roofOverhangZ);
-      const ry = bH + tSlope * (ridgeY - bH);
-      addPt(leftX - roofOverhangX, ry, rz, 0.88, 0.94, 1.0);
-      addPt(rightX + roofOverhangX, ry, rz, 0.88, 0.94, 1.0);
-    }
-
-    const solarPanelDefs = [
-      { x1: -3.6, x2: -1.8, z1: 0.5, z2: 1.5 },
-      { x1: -1.6, x2: 0.2,  z1: 0.5, z2: 1.5 },
-      { x1: 0.4,  x2: 2.2,  z1: 0.5, z2: 1.5 },
-      { x1: -3.6, x2: -1.8, z1: 1.7, z2: 2.7 },
-      { x1: -1.6, x2: 0.2,  z1: 1.7, z2: 2.7 },
-      { x1: 0.4,  x2: 2.2,  z1: 1.7, z2: 2.7 }
-    ];
-
-    for (let panel of solarPanelDefs) {
-      for (let px = panel.x1; px <= panel.x2; px += 0.025) {
-        for (let pz = panel.z1; pz <= panel.z2; pz += 0.025) {
-          const tSlope = 1.0 - Math.abs(pz - ridgeZ) / (bD / 2 + roofOverhangZ);
-          const py = bH + tSlope * (ridgeY - bH) + 0.055;
-
-          const isBorder = px <= panel.x1 + 0.035 || px >= panel.x2 - 0.035 || pz <= panel.z1 + 0.035 || pz >= panel.z2 - 0.035;
-          const isGridBusbar = Math.abs((px - panel.x1) % 0.35) < 0.018 || Math.abs((pz - panel.z1) % 0.30) < 0.018;
-
-          if (isBorder) {
-            addPt(px, py + 0.01, pz, 0.95, 0.98, 1.0);
-          } else if (isGridBusbar) {
-            addPt(px, py + 0.008, pz, 1.0, 0.82, 0.20);
-          } else {
-            addPt(px, py, pz, 0.08, 0.20, 0.58);
-          }
-        }
-      }
-    }
-
-    // -------------------------------------------------------------------------
-    // 9. BIOLUMINESCENT LAGOON WATER SURFACE WITH ORGANIC WAVE HARMONICS
-    // -------------------------------------------------------------------------
-    for (let wx = -13.5; wx <= 13.5; wx += 0.20) {
-      for (let wz = -12.0; wz <= 12.0; wz += 0.20) {
-        const wave = Math.sin(wx * 0.65 + wz * 0.45) * 0.028 + Math.cos(wx * 1.1 - wz * 0.85) * 0.018;
-        const wy = -1.25 + wave;
-        const jx = (Math.random() - 0.5) * 0.03;
-        const jz = (Math.random() - 0.5) * 0.03;
-
-        const isSparkle = Math.random() > 0.88;
-        if (isSparkle) {
-          addPt(wx + jx, wy, wz + jz, 0.35, 0.88, 1.0);
-        } else {
-          const depth = Math.sin(wx * 0.2 + wz * 0.3) * 0.15;
-          addPt(wx + jx, wy, wz + jz, 0.04, 0.28 + depth * 0.5, 0.52 + depth);
-        }
-      }
-    }
-
-    // -------------------------------------------------------------------------
-    // 10. ATMOSPHERIC DRIFT MOTES (LUMINOUS AMBIENT SPORES)
-    // -------------------------------------------------------------------------
-    const numMotes = 700;
+    const numMotes = 500;
     for (let m = 0; m < numMotes; m++) {
-      const mx = (Math.random() - 0.5) * 16.0;
-      const my = -0.5 + Math.random() * 5.5;
-      const mz = (Math.random() - 0.5) * 14.0;
-
-      const isGoldMote = Math.random() > 0.45;
-      if (isGoldMote) {
+      const mx = (Math.random() - 0.5) * 22.0;
+      const my = -1.0 + Math.random() * 8.5;
+      const mz = (Math.random() - 0.5) * 20.0;
+      if (Math.random() > 0.45) {
         addPt(mx, my, mz, 1.0, 0.82, 0.25);
       } else {
         addPt(mx, my, mz, 0.40, 0.88, 1.0);
       }
     }
 
-    // Build High-Resolution BufferGeometry for the Academy
+    // Build BufferGeometry for Building
     const buildGeom = new THREE.BufferGeometry();
     buildGeom.setAttribute('position', new THREE.Float32BufferAttribute(buildPos, 3));
     buildGeom.setAttribute('color', new THREE.Float32BufferAttribute(buildCol, 3));
@@ -826,14 +675,14 @@
       transparent: true,
       opacity: 0.98,
       blending: THREE.NormalBlending,
-      depthWrite: false
+      depthWrite: true
     });
 
     const buildingMesh = new THREE.Points(buildGeom, buildMaterial);
     academyGroup.add(buildingMesh);
 
     // =========================================================================
-    // GEOMETRY SET 2: THE OFFICIAL HIGH-RES "slum art" SIGNBOARD
+    // GEOMETRY SET 2: THE OFFICIAL "slum art" SIGNBOARD
     // =========================================================================
     const logoPos = [];
     const logoCol = [];
@@ -842,62 +691,37 @@
       logoCol.push(r, g, b);
     }
 
-    const logoBoardW = 3.6;
-    const logoBoardH = 1.85;
-    const logoCX = -3.2;
-    const logoCY = 2.05;
-    const logoCZ = frontZ + 0.12;
+    // Mounted on Left Orange Side Wall near front corner
+    const logoBoardW = 2.4;
+    const logoBoardH = 1.4;
+    const logoCX = leftX - 0.08;
+    const logoCY = 2.8;
+    const logoCZ = frontZ - 1.6;
 
-    for (let bx = logoCX - logoBoardW / 2; bx <= logoCX + logoBoardW / 2; bx += 0.032) {
-      for (let by = logoCY - logoBoardH / 2; by <= logoCY + logoBoardH / 2; by += 0.032) {
-        const isBorder = Math.abs(Math.abs(bx - logoCX) - logoBoardW / 2) < 0.04 ||
-                         Math.abs(Math.abs(by - logoCY) - logoBoardH / 2) < 0.04;
+    for (let bz = logoCZ - logoBoardW / 2; bz <= logoCZ + logoBoardW / 2; bz += 0.045) {
+      for (let by = logoCY - logoBoardH / 2; by <= logoCY + logoBoardH / 2; by += 0.045) {
+        const isBorder = Math.abs(Math.abs(bz - logoCZ) - logoBoardW / 2) < 0.05 ||
+                         Math.abs(Math.abs(by - logoCY) - logoBoardH / 2) < 0.05;
         if (isBorder) {
-          addLogoPt(bx, by, logoCZ - 0.01, 0.88, 0.94, 1.0);
+          addLogoPt(logoCX, by, bz, 0.88, 0.94, 1.0);
         } else {
-          addLogoPt(bx, by, logoCZ - 0.02, 0.02, 0.10, 0.32);
+          addLogoPt(logoCX, by, bz, 0.02, 0.10, 0.32); // Deep Navy plate
         }
       }
     }
 
-    const cornerOffsets = [
-      [-logoBoardW / 2 + 0.15, -logoBoardH / 2 + 0.15],
-      [logoBoardW / 2 - 0.15, -logoBoardH / 2 + 0.15],
-      [-logoBoardW / 2 + 0.15, logoBoardH / 2 - 0.15],
-      [logoBoardW / 2 - 0.15, logoBoardH / 2 - 0.15]
-    ];
-    for (let [ox, oy] of cornerOffsets) {
-      for (let a = 0; a < 10; a++) {
-        const ang = a * (Math.PI * 2 / 10);
-        addLogoPt(logoCX + ox + Math.cos(ang) * 0.045, logoCY + oy + Math.sin(ang) * 0.045, logoCZ + 0.02, 0.98, 0.98, 1.0);
-      }
+    // Golden wave emblem on signboard
+    for (let t = -0.7; t <= 0.7; t += 0.04) {
+      const w1y = logoCY + 0.22 + Math.sin(t * 5.0) * 0.08;
+      const w2y = logoCY + 0.12 + Math.sin(t * 5.0 + 0.6) * 0.07;
+      addLogoPt(logoCX - 0.02, w1y, logoCZ + t, 1.0, 0.78, 0.12);
+      addLogoPt(logoCX - 0.02, w2y, logoCZ + t, 1.0, 0.78, 0.12);
     }
 
-    const logoPts = (typeof window !== 'undefined' && window.__SLUM_ART_LOGO_POINTS__) || [];
-    if (logoPts.length > 0) {
-      const renderW = 3.0;
-      const renderH = 1.25;
-      const logoCenterY = logoCY + 0.16;
-
-      for (let i = 0; i < logoPts.length; i++) {
-        const pt = logoPts[i];
-        const px = logoCX + (pt[0] / 0.872) * (renderW / 2.0);
-        const py = logoCenterY + (pt[1] / 0.37) * (renderH / 2.0);
-        const pz = logoCZ;
-
-        if (pt[2] === 1) {
-          addLogoPt(px, py, pz, 1.0, 0.76, 0.12);
-        } else {
-          addLogoPt(px, py, pz, 1.0, 1.0, 1.0);
-        }
-      }
-    }
-
-    const subY = logoCY - 0.62;
-    for (let sx = logoCX - 1.45; sx <= logoCX + 1.45; sx += 0.032) {
-      if (Math.random() > 0.08) {
-        addLogoPt(sx, subY, logoCZ + 0.015, 0.35, 0.90, 1.0);
-      }
+    // Signboard logotype text lines
+    for (let t = -0.8; t <= 0.8; t += 0.045) {
+      addLogoPt(logoCX - 0.02, logoCY - 0.15, logoCZ + t, 0.98, 0.98, 1.0);
+      addLogoPt(logoCX - 0.02, logoCY - 0.32, logoCZ + t * 0.8, 0.35, 0.88, 1.0);
     }
 
     const logoGeom = new THREE.BufferGeometry();
@@ -905,28 +729,33 @@
     logoGeom.setAttribute('color', new THREE.Float32BufferAttribute(logoCol, 3));
 
     const logoMaterial = new THREE.PointsMaterial({
-      size: 0.115,
+      size: 0.125,
       vertexColors: true,
       map: pointTexture,
       transparent: true,
       opacity: 1.0,
       blending: THREE.NormalBlending,
-      depthWrite: false
+      depthWrite: true
     });
 
     const logoMesh = new THREE.Points(logoGeom, logoMaterial);
     academyGroup.add(logoMesh);
 
     // =========================================================================
-    // 4. TRANSFORMS, SCROLL-DRIVEN ORBIT & MOUSE PARALLAX
+    // 8. 3D ISOMETRIC CORNER PERSPECTIVE, SCROLL ORBIT & PARALLAX
+    // Default angle: -36° Y-rotation, +8° downward tilt
+    // Showcases Amber-Orange Side Wall AND Black Front Wall with Danfo Bus
     // =========================================================================
-    let currentRotY = 0.08;
-    let targetRotY = 0.08;
-    let currentRotX = 0.04;
-    let targetRotX = 0.04;
+    const DEFAULT_ROT_Y = -0.62; // ~-36 degrees
+    const DEFAULT_ROT_X = 0.14;  // ~+8 degrees
+
+    let currentRotY = DEFAULT_ROT_Y;
+    let targetRotY  = DEFAULT_ROT_Y;
+    let currentRotX = DEFAULT_ROT_X;
+    let targetRotX  = DEFAULT_ROT_X;
     let currentScale = 1.0;
-    let targetScale = 1.0;
-    let baseBuildingY = -0.5;
+    let targetScale  = 1.0;
+    let baseBuildingY = -0.4;
 
     let mouseParallaxX = 0;
     let mouseParallaxY = 0;
@@ -934,8 +763,8 @@
     window.addEventListener('mousemove', (e) => {
       const mx = (e.clientX / window.innerWidth) * 2 - 1;
       const my = (e.clientY / window.innerHeight) * 2 - 1;
-      mouseParallaxX = mx * 0.045;
-      mouseParallaxY = -my * 0.030;
+      mouseParallaxX = mx * 0.06;
+      mouseParallaxY = -my * 0.04;
     }, { passive: true });
 
     function onScroll() {
@@ -949,8 +778,9 @@
       const currentDist = winH - rect.top;
       const progress = Math.max(0, Math.min(1, currentDist / totalDist));
 
-      targetRotY = -0.06 + progress * 0.32;
-      targetRotX = 0.03 + Math.sin(progress * Math.PI) * 0.04;
+      // Scroll smoothly rotates the 3D building across an arc
+      targetRotY = DEFAULT_ROT_Y + (progress - 0.5) * 0.55;
+      targetRotX = DEFAULT_ROT_X + Math.sin(progress * Math.PI) * 0.05;
       targetScale = 0.98 + Math.sin(progress * Math.PI) * 0.04;
     }
 
@@ -970,15 +800,14 @@
       renderer.setSize(d.w, d.h);
 
       const visibleWidthAtZ24 = (2 * 24.0 * Math.tan((36 * Math.PI) / 360)) * camera.aspect;
-      const desiredFraction = isMobile ? 0.90 : 0.65;
-      const naturalModelW = 11.8;
+      const desiredFraction = isMobile ? 0.92 : 0.68;
+      const naturalModelW = 12.5;
       const modelScale = (visibleWidthAtZ24 * desiredFraction) / naturalModelW;
 
       academyGroup.scale.set(modelScale, modelScale, modelScale);
 
-      // Volumetric, punchy point cloud particle sizing (rich, tangible, luminous)
       buildMaterial.size = (isMobile ? 0.125 : 0.165) * modelScale;
-      logoMaterial.size = (isMobile ? 0.088 : 0.115) * modelScale;
+      logoMaterial.size = (isMobile ? 0.095 : 0.125) * modelScale;
 
       if (section) {
         const sRect = section.getBoundingClientRect();
@@ -989,7 +818,7 @@
           const spacerRelY = spacerCenterFromTop / sRect.height;
           const ndcY = 1.0 - 2.0 * spacerRelY;
           const visibleHeight = 2 * 24.0 * Math.tan((36 * Math.PI) / 360);
-          baseBuildingY = ndcY * (visibleHeight / 2) - (isMobile ? 0.10 : 0.35);
+          baseBuildingY = ndcY * (visibleHeight / 2) - (isMobile ? 0.18 : 0.85);
         }
       }
     }
@@ -1017,9 +846,9 @@
 
       const time = clock.getElapsedTime();
 
-      const idleY = Math.sin(time * 0.4) * 0.012;
-      const idleFloat = Math.sin(time * 1.0) * 0.025;
-      const idleRoll = Math.cos(time * 0.7) * 0.006;
+      const idleY = Math.sin(time * 0.4) * 0.015;
+      const idleFloat = Math.sin(time * 0.9) * 0.025;
+      const idleRoll = Math.cos(time * 0.6) * 0.005;
 
       currentRotY += (targetRotY + idleY + mouseParallaxX - currentRotY) * 0.06;
       currentRotX += (targetRotX + mouseParallaxY - currentRotX) * 0.06;
