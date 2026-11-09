@@ -64,9 +64,9 @@
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 
     // 2. High-Precision Crisp Multi-Stop Circular Point Sprite
-    // Ultra-crisp pinpoint core with soft exponential atmospheric halo (subpixel brilliance, ZERO boxiness)
+    // Ultra-crisp solid luminous core with smooth anti-aliased edge (volumetric brilliance, zero fuzz)
     function createPointTexture() {
-      const size = 64;
+      const size = 128;
       const cvs = document.createElement('canvas');
       cvs.width = size;
       cvs.height = size;
@@ -76,10 +76,9 @@
 
       const grad = ctx.createRadialGradient(center, center, 0, center, center, radius);
       grad.addColorStop(0.00, 'rgba(255, 255, 255, 1.0)');
-      grad.addColorStop(0.28, 'rgba(255, 255, 255, 0.96)');
-      grad.addColorStop(0.55, 'rgba(255, 255, 255, 0.60)');
-      grad.addColorStop(0.80, 'rgba(255, 255, 255, 0.18)');
-      grad.addColorStop(0.96, 'rgba(255, 255, 255, 0.02)');
+      grad.addColorStop(0.55, 'rgba(255, 255, 255, 0.98)');
+      grad.addColorStop(0.78, 'rgba(255, 255, 255, 0.72)');
+      grad.addColorStop(0.92, 'rgba(255, 255, 255, 0.22)');
       grad.addColorStop(1.00, 'rgba(255, 255, 255, 0.0)');
 
       ctx.fillStyle = grad;
@@ -227,35 +226,6 @@
     addLine(deckW / 2, deckY, -deckD / 2, deckW / 2, deckY, deckD / 2, 0.02, 0.42, 0.26, 0.14, 0.008);
     addLine(deckW / 2, deckY, deckD / 2, -deckW / 2, deckY, deckD / 2, 0.02, 0.42, 0.26, 0.14, 0.008);
     addLine(-deckW / 2, deckY, deckD / 2, -deckW / 2, deckY, -deckD / 2, 0.02, 0.42, 0.26, 0.14, 0.008);
-
-    // Perimeter Safety Railing (Posts and 2 Horizontal Guardrails)
-    const railH1 = 0.45;
-    const railH2 = 0.90;
-    const railR = 0.82, railG = 0.62, railB = 0.32;
-
-    const railPoints = [];
-    for (let rx = -deckW / 2 + 0.1; rx <= deckW / 2 - 0.1; rx += 0.95) {
-      railPoints.push([rx, -deckD / 2 + 0.1], [rx, deckD / 2 - 0.1]);
-    }
-    for (let rz = -deckD / 2 + 0.1; rz <= deckD / 2 - 0.1; rz += 0.95) {
-      railPoints.push([-deckW / 2 + 0.1, rz], [deckW / 2 - 0.1, rz]);
-    }
-
-    for (let pt of railPoints) {
-      if (Math.abs(pt[1] - (deckD / 2 - 0.1)) < 0.1 && pt[0] >= -0.7 && pt[0] <= 1.0) continue;
-      addLine(pt[0], deckY, pt[1], pt[0], deckY + railH2, pt[1], 0.018, railR, railG, railB, 0.006);
-    }
-
-    addLine(-deckW / 2 + 0.1, deckY + railH1, -deckD / 2 + 0.1, deckW / 2 - 0.1, deckY + railH1, -deckD / 2 + 0.1, 0.02, railR, railG, railB, 0.006);
-    addLine(-deckW / 2 + 0.1, deckY + railH2, -deckD / 2 + 0.1, deckW / 2 - 0.1, deckY + railH2, -deckD / 2 + 0.1, 0.02, railR, railG, railB, 0.006);
-    addLine(-deckW / 2 + 0.1, deckY + railH1, -deckD / 2 + 0.1, -deckW / 2 + 0.1, deckY + railH1, deckD / 2 - 0.1, 0.02, railR, railG, railB, 0.006);
-    addLine(-deckW / 2 + 0.1, deckY + railH2, -deckD / 2 + 0.1, -deckW / 2 + 0.1, deckY + railH2, deckD / 2 - 0.1, 0.02, railR, railG, railB, 0.006);
-    addLine(deckW / 2 - 0.1, deckY + railH1, -deckD / 2 + 0.1, deckW / 2 - 0.1, deckY + railH1, deckD / 2 - 0.1, 0.02, railR, railG, railB, 0.006);
-    addLine(deckW / 2 - 0.1, deckY + railH2, -deckD / 2 + 0.1, deckW / 2 - 0.1, deckY + railH2, deckD / 2 - 0.1, 0.02, railR, railG, railB, 0.006);
-    addLine(-deckW / 2 + 0.1, deckY + railH1, deckD / 2 - 0.1, -0.7, deckY + railH1, deckD / 2 - 0.1, 0.02, railR, railG, railB, 0.006);
-    addLine(-deckW / 2 + 0.1, deckY + railH2, deckD / 2 - 0.1, -0.7, deckY + railH2, deckD / 2 - 0.1, 0.02, railR, railG, railB, 0.006);
-    addLine(1.0, deckY + railH1, deckD / 2 - 0.1, deckW / 2 - 0.1, deckY + railH1, deckD / 2 - 0.1, 0.02, railR, railG, railB, 0.006);
-    addLine(1.0, deckY + railH2, deckD / 2 - 0.1, deckW / 2 - 0.1, deckY + railH2, deckD / 2 - 0.1, 0.02, railR, railG, railB, 0.006);
 
     // -------------------------------------------------------------------------
     // 3. HEAVY-GAUGE STRUCTURAL STEEL SKELETON
@@ -830,7 +800,7 @@
     // -------------------------------------------------------------------------
     // 10. ATMOSPHERIC DRIFT MOTES (LUMINOUS AMBIENT SPORES)
     // -------------------------------------------------------------------------
-    const numMotes = 1500;
+    const numMotes = 700;
     for (let m = 0; m < numMotes; m++) {
       const mx = (Math.random() - 0.5) * 16.0;
       const my = -0.5 + Math.random() * 5.5;
@@ -850,11 +820,11 @@
     buildGeom.setAttribute('color', new THREE.Float32BufferAttribute(buildCol, 3));
 
     const buildMaterial = new THREE.PointsMaterial({
-      size: 0.082,
+      size: 0.165,
       vertexColors: true,
       map: pointTexture,
       transparent: true,
-      opacity: 0.95,
+      opacity: 0.98,
       blending: THREE.NormalBlending,
       depthWrite: false
     });
@@ -935,7 +905,7 @@
     logoGeom.setAttribute('color', new THREE.Float32BufferAttribute(logoCol, 3));
 
     const logoMaterial = new THREE.PointsMaterial({
-      size: 0.062,
+      size: 0.115,
       vertexColors: true,
       map: pointTexture,
       transparent: true,
@@ -1006,9 +976,9 @@
 
       academyGroup.scale.set(modelScale, modelScale, modelScale);
 
-      // Calibrated Razor-Sharp Point Sizes
-      buildMaterial.size = (isMobile ? 0.072 : 0.088) * modelScale;
-      logoMaterial.size = (isMobile ? 0.052 : 0.062) * modelScale;
+      // Volumetric, punchy point cloud particle sizing (rich, tangible, luminous)
+      buildMaterial.size = (isMobile ? 0.125 : 0.165) * modelScale;
+      logoMaterial.size = (isMobile ? 0.088 : 0.115) * modelScale;
 
       if (section) {
         const sRect = section.getBoundingClientRect();
