@@ -569,65 +569,145 @@
     </div>
   </section>
 
-  <!-- Global Leadership Team -->
-  <section style="padding: 5rem 0; background: #faf8f5; border-top: 1px solid var(--border-light);">
+  <!-- Global Leadership Team Carousel -->
+  <section class="team-carousel-section" id="teamSection">
     <div class="container">
-      <div class="section-header" style="text-align: center; max-width: 680px; margin: 0 auto;">
-        <div class="section-tag">Global Leadership</div>
-        <h2 class="section-title">Meet Our Team</h2>
-        <p class="section-desc">Guiding operations, international partnerships, and grassroots empowerment.</p>
+      <div class="team-header-row">
+        <div class="section-header team-header-text">
+          <div class="section-tag">Global Leadership</div>
+          <h2 class="section-title">Meet Our Team</h2>
+          <p class="section-desc">Guiding operations, international partnerships, and grassroots empowerment.</p>
+        </div>
+        <div class="team-carousel-controls">
+          <button type="button" class="team-nav-btn prev" id="teamPrevBtn" aria-label="Previous team member">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button type="button" class="team-nav-btn next" id="teamNextBtn" aria-label="Next team member">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2.5rem;">
-        <!-- Founder: Adetunwase Adenle -->
-        <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
-          <img src="assets/images/team/founder_1.png" alt="Adetunwase Adenle" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;">
-          <div style="padding: 1.5rem;">
-            <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Adetunwase Adenle</h4>
-            <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Founder &amp; Lead Visionary</div>
-            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Social entrepreneur, artist, educator, and 4-time Guinness World Records™ holder.</p>
+      <div class="team-carousel-viewport" id="teamCarouselViewport">
+        <div class="team-carousel-track" id="teamCarouselTrack">
+          <!-- Founder: Adetunwase Adenle -->
+          <div class="team-carousel-card" data-team-index="0">
+            <div class="team-card-media">
+              <img src="assets/images/team/founder_1.png" alt="Adetunwase Adenle" loading="lazy">
+              <div class="team-card-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Lagos, Nigeria</span>
+              </div>
+            </div>
+            <div class="team-card-body">
+              <div class="team-card-role">Founder &amp; Lead Visionary</div>
+              <h3 class="team-card-name">Adetunwase Adenle</h3>
+              <p class="team-card-bio">Social entrepreneur, artist, educator, and 4-time Guinness World Records™ holder leading grassroots transformation in Lagos slums.</p>
+              <div class="team-card-footer">
+                <span class="team-card-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  4× GWR Holder • Arts Direction
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- Founder & Exec Director: Yana Good Nigen -->
-        <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
-          <img src="assets/images/team/founder_3.png" alt="Yana Good Nigen" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
-          <div style="padding: 1.5rem;">
-            <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Yana Good Nigen</h4>
-            <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Founder &amp; Executive Director (Wrap)</div>
-            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Founder and Executive Director of WRAP, leading global strategic partnerships and social impact initiatives.</p>
+          <!-- Founder & Exec Director: Yana Good Nigen -->
+          <div class="team-carousel-card" data-team-index="1">
+            <div class="team-card-media">
+              <img src="assets/images/team/founder_3.png" alt="Yana Good Nigen" loading="lazy" onerror="this.src='assets/images/resources/Art.png'">
+              <div class="team-card-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>New York, USA</span>
+              </div>
+            </div>
+            <div class="team-card-body">
+              <div class="team-card-role">Founder &amp; Executive Director (WRAP)</div>
+              <h3 class="team-card-name">Yana Good Nigen</h3>
+              <p class="team-card-bio">Founder and Executive Director of WRAP, leading global strategic partnerships, institutional grant development, and cross-border social impact.</p>
+              <div class="team-card-footer">
+                <span class="team-card-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  Global Strategy &amp; Philanthropy
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- Co-Founder: Monka Cilmi -->
-        <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
-          <img src="assets/images/team/founder_2.png" alt="Monka Cilmi" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
-          <div style="padding: 1.5rem;">
-            <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Monka Cilmi</h4>
-            <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Co-Founder</div>
-            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Co-Founder of Slum Art Foundation, championing sustainable creative development, art education, and youth empowerment.</p>
+          <!-- Co-Founder: Monka Cilmi -->
+          <div class="team-carousel-card" data-team-index="2">
+            <div class="team-card-media">
+              <img src="assets/images/team/founder_2.png" alt="Monka Cilmi" loading="lazy" onerror="this.src='assets/images/resources/Art.png'">
+              <div class="team-card-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Global Operations</span>
+              </div>
+            </div>
+            <div class="team-card-body">
+              <div class="team-card-role">Co-Founder &amp; Operations</div>
+              <h3 class="team-card-name">Monka Cilmi</h3>
+              <p class="team-card-bio">Co-Founder of Slum Art Foundation, championing sustainable creative development, art education, community logistics, and youth empowerment.</p>
+              <div class="team-card-footer">
+                <span class="team-card-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  Operations &amp; Sustainability
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- Natalie Gilbert -->
-        <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
-          <img src="assets/images/team/team_natalie_gilbert.jpeg" alt="Natalie Gilbert" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
-          <div style="padding: 1.5rem;">
-            <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Natalie Gilbert</h4>
-            <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Country Manager — USA</div>
-            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Directing philanthropic relations, institutional outreach, and North American partnerships.</p>
+          <!-- Natalie Gilbert -->
+          <div class="team-carousel-card" data-team-index="3">
+            <div class="team-card-media">
+              <img src="assets/images/team/team_natalie_gilbert.jpeg" alt="Natalie Gilbert" loading="lazy" onerror="this.src='assets/images/resources/Art.png'">
+              <div class="team-card-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>United States</span>
+              </div>
+            </div>
+            <div class="team-card-body">
+              <div class="team-card-role">Country Manager — USA</div>
+              <h3 class="team-card-name">Natalie Gilbert</h3>
+              <p class="team-card-bio">Directing philanthropic relations, institutional outreach, and North American gallery partnerships to elevate scholar-created collages.</p>
+              <div class="team-card-footer">
+                <span class="team-card-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  US Philanthropic Relations
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- Oyindamola Sulaimon -->
-        <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center;">
-          <img src="assets/images/team/team_oyindamola_sulaimon.jpeg" alt="Oyindamola Sulaimon" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" onerror="this.src='assets/images/resources/Art.png'">
-          <div style="padding: 1.5rem;">
-            <h4 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Oyindamola Sulaimon</h4>
-            <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem;">Country Manager — United Kingdom</div>
-            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">Leading UK community partnerships, youth art exhibitions, and European donor development.</p>
+          <!-- Oyindamola Sulaimon -->
+          <div class="team-carousel-card" data-team-index="4">
+            <div class="team-card-media">
+              <img src="assets/images/team/team_oyindamola_sulaimon.jpeg" alt="Oyindamola Sulaimon" loading="lazy" onerror="this.src='assets/images/resources/Art.png'">
+              <div class="team-card-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>London, UK</span>
+              </div>
+            </div>
+            <div class="team-card-body">
+              <div class="team-card-role">Country Manager — United Kingdom</div>
+              <h3 class="team-card-name">Oyindamola Sulaimon</h3>
+              <p class="team-card-bio">Leading UK community partnerships, youth art exhibitions, and European patron networks to scale accredited education and nutrition.</p>
+              <div class="team-card-footer">
+                <span class="team-card-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+                  UK &amp; European Alliances
+                </span>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div class="team-carousel-pagination" id="teamCarouselPagination" aria-label="Team carousel pagination">
+        <button type="button" class="team-pag-dot active" data-index="0" aria-label="Slide 1: Adetunwase Adenle"></button>
+        <button type="button" class="team-pag-dot" data-index="1" aria-label="Slide 2: Yana Good Nigen"></button>
+        <button type="button" class="team-pag-dot" data-index="2" aria-label="Slide 3: Monka Cilmi"></button>
+        <button type="button" class="team-pag-dot" data-index="3" aria-label="Slide 4: Natalie Gilbert"></button>
+        <button type="button" class="team-pag-dot" data-index="4" aria-label="Slide 5: Oyindamola Sulaimon"></button>
       </div>
     </div>
   </section>

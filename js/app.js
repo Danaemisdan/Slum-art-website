@@ -2357,6 +2357,7 @@
     initGeoCurrencyDetection();
     initAtelierCarousel();
     initQuickMission();
+    initTeamCarousel();
   }
 
   // Hero Scroll Choreography: Hero elements glide UPWARDS, next section (#who-we-are) comes to life
@@ -2649,6 +2650,246 @@
     window.selectScholarStory(0);
     if (storyAutoCycleTimer) clearInterval(storyAutoCycleTimer);
     storyAutoCycleTimer = setInterval(nextStory, STORY_CYCLE_DURATION);
+  }
+
+  // =========================================================================
+  // GLOBAL LEADERSHIP TEAM CAROUSEL (Infinite Loop & Touch/Swipe)
+  // =========================================================================
+  function initTeamCarousel() {
+    const track = document.getElementById('teamCarouselTrack');
+    const viewport = document.getElementById('teamCarouselViewport');
+    if (!track || !viewport) return;
+
+    const prevBtn = document.getElementById('teamPrevBtn');
+    const nextBtn = document.getElementById('teamNextBtn');
+    const dots = Array.from(document.querySelectorAll('#teamCarouselPagination .team-pag-dot'));
+    const originalCards = Array.from(track.children);
+    const N = originalCards.length;
+    if (N === 0) return;
+
+    // Buffer: Prepend and append cloned cards for continuous infinite sliding
+    const prefixClones = originalCards.map(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('is-clone');
+      clone.setAttribute('aria-hidden', 'true');
+      return clone;
+    });
+    const suffixClones = originalCards.map(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('is-clone');
+      clone.setAttribute('aria-hidden', 'true');
+      return clone;
+    });
+
+    // Insert prefix clones in reverse to preserve original order
+    for (let i = prefixClones.length - 1; i >= 0; i--) {
+      track.insertBefore(prefixClones[i], track.firstChild);
+    }
+    suffixClones.forEach(clone => track.appendChild(clone));
+
+    let currentIndex = N; // Start at first original card
+    let isTransitioning = false;
+    let autoplayTimer = null;
+    const AUTOPLAY_INTERVAL = 4500;
+
+    function getCardStep() {
+      const firstCard = track.children[0];
+      if (!firstCard) return 0;
+      const style = window.getComputedStyle(track);
+      const gap = parseFloat(style.gap) || 24;
+      return firstCard.getBoundingClientRect().width + gap;
+    }
+
+    function updateDots() {
+      const activeIdx = ((currentIndex - N) % N + N) % N;
+      dots.forEach((dot, idx) => {
+        const isActive = idx === activeIdx;
+        dot.classList.toggle('active', isActive);
+        dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+      });
+    }
+
+    function updatePosition(animate = true) {
+      const step = getCardStep();
+      if (animate) {
+        track.style.transition = 'transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1)';
+      } else {
+        track.style.transition = 'none';
+      }
+      track.style.transform = `translateX(-${currentIndex * step}px)`;
+      updateDots();
+    }
+
+    track.addEventListener('transitionend', () => {
+      isTransitioning = false;
+      if (currentIndex >= N * 2) {
+        currentIndex -= N;
+        updatePosition(false);
+      } else if (currentIndex < N) {
+        currentIndex += N;
+        updatePosition(false);
+      }
+    });
+
+    function nextSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex++;
+      updatePosition(true);
+    }
+
+    function prevSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex--;
+      updatePosition(true);
+    }
+
+    function jumpToSlide(dotIdx) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex = N + dotIdx;
+      updatePosition(true);
+    }
+
+    // Controls
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        stopAutoplay();
+        nextSlide();
+        startAutoplay();
+      });
+    }
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        stopAutoplay();
+        prevSlide();
+        startAutoplay();
+      });
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.dataset.index, 10);
+        if (!isNaN(idx)) {
+          stopAutoplay();
+          jumpToSlide(idx);
+          startAutoplay();
+        }
+      });
+    });
+
+    // Autoplay with viewport awareness & tab visibility
+    let isSectionInView = false;
+
+    function startAutoplay() {
+      stopAutoplay();
+      if (!isSectionInView || document.hidden) return;
+      autoplayTimer = setInterval(() => {
+        nextSlide();
+      }, AUTOPLAY_INTERVAL);
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    if ('IntersectionObserver' in window) {
+      const sectionEl = document.getElementById('teamSection');
+      if (sectionEl) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            isSectionInView = entry.isIntersecting;
+            if (isSectionInView) {
+              startAutoplay();
+            } else {
+              stopAutoplay();
+            }
+          });
+        }, { threshold: 0.15 });
+        observer.observe(sectionEl);
+      } else {
+        isSectionInView = true;
+      }
+    } else {
+      isSectionInView = true;
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else if (isSectionInView) {
+        startAutoplay();
+      }
+    });
+
+    viewport.addEventListener('mouseenter', stopAutoplay);
+    viewport.addEventListener('mouseleave', () => {
+      if (isSectionInView) startAutoplay();
+    });
+    viewport.addEventListener('focusin', stopAutoplay);
+    viewport.addEventListener('focusout', () => {
+      if (isSectionInView) startAutoplay();
+    });
+
+    // Touch & Swipe
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let isSwiping = false;
+
+    viewport.addEventListener('touchstart', (e) => {
+      stopAutoplay();
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      isSwiping = true;
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', (e) => {
+      if (!isSwiping) return;
+      isSwiping = false;
+      const deltaX = e.changedTouches[0].clientX - touchStartX;
+      const deltaY = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX < 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+      if (isSectionInView) startAutoplay();
+    }, { passive: true });
+
+    // Keyboard support
+    viewport.setAttribute('tabindex', '0');
+    viewport.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        stopAutoplay();
+        nextSlide();
+        if (isSectionInView) startAutoplay();
+      } else if (e.key === 'ArrowLeft') {
+        stopAutoplay();
+        prevSlide();
+        if (isSectionInView) startAutoplay();
+      }
+    });
+
+    // Resize recalculation
+    window.addEventListener('resize', () => {
+      updatePosition(false);
+    });
+
+    // Expose helpers globally
+    window.prevTeamSlide = prevSlide;
+    window.nextTeamSlide = nextSlide;
+    window.jumpTeamSlide = jumpToSlide;
+
+    // Initial positioning after DOM layout
+    requestAnimationFrame(() => {
+      updatePosition(false);
+    });
   }
 
   // Boot on DOM ready
