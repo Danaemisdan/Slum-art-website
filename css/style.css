@@ -395,6 +395,20 @@ body.scrolled-past-hero .navbar,
   gap: 0.75rem;
   text-decoration: none;
   cursor: pointer;
+  line-height: 1;
+}
+
+.brand-logo img {
+  height: 42px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.brand-logo:hover img {
+  transform: scale(1.03);
+  opacity: 0.95;
 }
 
 .brand-wordmark {
@@ -420,6 +434,15 @@ body.scrolled-past-hero .navbar,
   color: #ffffff;
   text-transform: uppercase;
   line-height: 1;
+  margin-right: 0.75rem;
+}
+
+.skiper-bottom-brand img {
+  height: 32px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;
   margin-right: 0.75rem;
 }
 
