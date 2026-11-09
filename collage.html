@@ -317,6 +317,15 @@
                 <span class="cpc-btn-mobile-text">CNN Video</span>
               </button>
             </div>
+            <!-- Product Type Tabs -->
+            <div class="cpc-product-tabs" role="tablist" aria-label="Commission Type">
+              <button type="button" class="cpc-tab-btn active" id="cpcTabPortrait" onclick="window.switchCustomProduct('portrait')" role="tab" aria-selected="true">
+                Collage Portrait
+              </button>
+              <button type="button" class="cpc-tab-btn" id="cpcTabArtwork" onclick="window.switchCustomProduct('artwork')" role="tab" aria-selected="false">
+                Thematic Artwork
+              </button>
+            </div>
           </div>
         </div>
 
@@ -344,6 +353,31 @@
                 <div class="cpc-carousel-slide" data-index="4">
                   <img src="assets/images/custom_portrait_example_5.jpg" alt="Fine-Art Scholar Paper Collage Portrait" loading="lazy">
                 </div>
+                <!-- CNN Broadcast & Exhibition Proof Slides -->
+                <div class="cpc-carousel-slide" data-index="5">
+                  <img src="assets/images/cnn_collage_wall_wide.jpg" alt="CNN International Feature - Hand-Torn Paper Mosaic Exhibition Wall" loading="lazy">
+                  <div class="cpc-cnn-slide-badge">
+                    <span class="cpc-eyebrow-cnn">CNN</span> Feature Wall
+                  </div>
+                </div>
+                <div class="cpc-carousel-slide" data-index="6">
+                  <img src="assets/images/cnn_collage_portrait_detail.jpg" alt="Master Fine-Art Craftsmanship - Hand-Torn Reclaimed Magazine Mosaic" loading="lazy">
+                  <div class="cpc-cnn-slide-badge">
+                    <span class="cpc-eyebrow-cnn">CNN</span> Mosaic Craft Detail
+                  </div>
+                </div>
+                <div class="cpc-carousel-slide" data-index="7">
+                  <img src="assets/images/cnn_portraits_anchors_closeup.jpg" alt="CNN Anchors Paper Mosaic Portraits for #MyFreedomDay Broadcast" loading="lazy">
+                  <div class="cpc-cnn-slide-badge">
+                    <span class="cpc-eyebrow-cnn">CNN</span> Anchor Portraits
+                  </div>
+                </div>
+                <div class="cpc-carousel-slide" data-index="8">
+                  <img src="assets/images/cnn_doc_frame_30s.jpg" alt="CNN International Broadcast - Anchor Zain Asher Presents Slum Art" loading="lazy">
+                  <div class="cpc-cnn-slide-badge">
+                    <span class="cpc-eyebrow-cnn">CNN</span> Live Broadcast
+                  </div>
+                </div>
               </div>
 
               <div class="cpc-carousel-bottom">
@@ -354,8 +388,12 @@
                   <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(2)" aria-label="Slide 3"></button>
                   <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(3)" aria-label="Slide 4"></button>
                   <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(4)" aria-label="Slide 5"></button>
+                  <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(5)" aria-label="Slide 6: CNN Wall"></button>
+                  <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(6)" aria-label="Slide 7: CNN Founder"></button>
+                  <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(7)" aria-label="Slide 8: CNN Anchors"></button>
+                  <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(8)" aria-label="Slide 9: CNN Broadcast"></button>
                 </div>
-                <span class="cpc-slide-counter" id="cpcSlideCounter"><strong>01</strong> / 05</span>
+                <span class="cpc-slide-counter" id="cpcSlideCounter"><strong>01</strong> / 09</span>
               </div>
             </div>
 
@@ -396,45 +434,62 @@
               4-time Guinness World Record holder Adetunwase Adenle and our young scholars transform your photo into an original fine-art portrait assembled entirely from hand-torn recycled magazines and newspapers on archival museum board.
             </p>
 
-            <div class="cpc-specs-row">
-              <div class="cpc-spec-badge">
-                <span class="cpc-spec-label">Medium</span>
-                <span class="cpc-spec-val" id="cpcSpecMedium">Hand-Torn Paper on Board</span>
+            <!-- CNN Credibility & Validation Card -->
+            <div class="cpc-cnn-validation-card">
+              <div class="cpc-cnn-val-header">
+                <div class="cpc-cnn-val-brand">
+                  <span class="cpc-eyebrow-cnn">CNN</span>
+                  <span class="cpc-cnn-val-title">Global Broadcast Validation</span>
+                </div>
+                <a href="https://edition.cnn.com/2026/04/15/world/video/myfreedomday-zain-tag-041411a-cnni-world-fast" target="_blank" rel="noopener noreferrer" class="cpc-cnn-val-link">
+                  edition.cnn.com &nearr;
+                </a>
               </div>
-              <div class="cpc-spec-badge">
-                <span class="cpc-spec-label">Artistic Lead</span>
-                <span class="cpc-spec-val">Adetunwase Adenle (4× GWR)</span>
+              <p class="cpc-cnn-val-quote">
+                &ldquo;CNN anchor Zain Asher features Slum Art Foundation&rsquo;s bespoke recycled paper collage portraits live on international television for #MyFreedomDay.&rdquo;
+              </p>
+
+              <!-- CNN Broadcast & Exhibition Proof Photo Strip -->
+              <div class="cpc-cnn-photos-strip" aria-label="CNN broadcast proof photos">
+                <button type="button" class="cpc-cnn-photo-thumb" data-slide-index="5" onclick="window.switchAtelierMedia('portraits'); window.setAtelierSlide(5);" title="Exhibition Wall of Paper Mosaic Portraits on CNN">
+                  <img src="assets/images/cnn_collage_wall_wide.jpg" alt="Exhibition Wall of Paper Mosaic Portraits on CNN" loading="lazy">
+                  <span class="cpc-cnn-thumb-label">Exhibition Wall</span>
+                </button>
+                <button type="button" class="cpc-cnn-photo-thumb" data-slide-index="6" onclick="window.switchAtelierMedia('portraits'); window.setAtelierSlide(6);" title="Master Fine-Art Craftsmanship - Paper Mosaic Detail">
+                  <img src="assets/images/cnn_collage_portrait_detail.jpg" alt="Master Fine-Art Craftsmanship - Hand-Torn Paper Mosaic" loading="lazy">
+                  <span class="cpc-cnn-thumb-label">Mosaic Detail</span>
+                </button>
+                <button type="button" class="cpc-cnn-photo-thumb" data-slide-index="7" onclick="window.switchAtelierMedia('portraits'); window.setAtelierSlide(7);" title="CNN Anchors Paper Mosaic Portraits">
+                  <img src="assets/images/cnn_portraits_anchors_closeup.jpg" alt="CNN Anchors Paper Mosaic Portraits" loading="lazy">
+                  <span class="cpc-cnn-thumb-label">CNN Anchors</span>
+                </button>
+                <button type="button" class="cpc-cnn-photo-thumb" data-slide-index="8" onclick="window.switchAtelierMedia('portraits'); window.setAtelierSlide(8);" title="Live CNN Broadcast with Zain Asher">
+                  <img src="assets/images/cnn_doc_frame_30s.jpg" alt="Live CNN Broadcast with Zain Asher" loading="lazy">
+                  <span class="cpc-cnn-thumb-label">Live Broadcast</span>
+                </button>
               </div>
-              <div class="cpc-spec-badge">
-                <span class="cpc-spec-label">Creation Time</span>
-                <span class="cpc-spec-val">10–14 Days Handcraft</span>
+
+              <div class="cpc-cnn-val-footer">
+                <button type="button" class="cpc-cnn-val-play-btn" onclick="window.switchAtelierMedia('video', true)">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  Play Video Documentary
+                </button>
+                <a href="https://edition.cnn.com/2026/04/15/world/video/myfreedomday-zain-tag-041411a-cnni-world-fast" target="_blank" rel="noopener noreferrer" class="cpc-cnn-val-read-btn">
+                  Watch on CNN.com &rarr;
+                </a>
               </div>
             </div>
 
-            <div class="cpc-size-cards">
-              <div class="cpc-size-card active" onclick="window.selectCustomSize(this, 'solo')">
-                <div class="cpc-size-name">Solo Atelier</div>
-                <div class="cpc-size-dims">16 &times; 20 inches</div>
-                <div class="cpc-size-price" data-usd="$60" data-ngn="₦85,000">₦85,000</div>
-              </div>
-              <div class="cpc-size-card" onclick="window.selectCustomSize(this, 'duo')">
-                <div class="cpc-size-name">Collector Statement</div>
-                <div class="cpc-size-dims">24 &times; 30 inches</div>
-                <div class="cpc-size-price" data-usd="$110" data-ngn="₦150,000">₦150,000</div>
-              </div>
-              <div class="cpc-size-card" onclick="window.selectCustomSize(this, 'family')">
-                <div class="cpc-size-name">Grand Executive</div>
-                <div class="cpc-size-dims">36 &times; 48 inches</div>
-                <div class="cpc-size-price" data-usd="$200" data-ngn="₦280,000">₦280,000</div>
-              </div>
+            <div class="cpc-impact-highlight" id="cpcImpactBox">
+              <span id="cpcImpactText">100% of your commission funds a child's accredited schooling, uniform, and daily meals in Lagos.</span>
             </div>
-
-            <div class="cpc-actions">
-              <button type="button" class="cpc-btn-primary" onclick="window.openCustomProductModal('portrait')">
-                Commission Your Collage Portrait &rarr;
+            <div class="cpc-actions-row">
+              <button type="button" class="btn btn-primary btn-cpc-order" id="cpcBtnOrder" onclick="window.openCustomProductModal('portrait')">
+                Commission a Portrait &rarr;
               </button>
-              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art,%20I%20would%20like%20to%20inquire%20about%20commissioning%20a%20handcrafted%20paper%20collage%20portrait." target="_blank" rel="noopener noreferrer" class="cpc-btn-chat">
-                WhatsApp Studio Concierge
+              <div class="cpc-price-tag" id="cpcPriceTag">From $150 USD</div>
+              <a href="https://wa.me/2348059994834?text=Hello%20Slum%20Art!%20I%20would%20like%20to%20commission%20a%20custom%20Collage%20Portrait%20from%20my%20photo." target="_blank" rel="noopener noreferrer" class="cpc-wa-link" id="cpcWaLink">
+                WhatsApp Concierge
               </a>
             </div>
           </div>

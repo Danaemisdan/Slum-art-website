@@ -749,7 +749,7 @@
     }
   };
 
-  // Atelier Showcase Minimal Carousel - 100% INDIVIDUAL PAPER COLLAGE PORTRAITS
+  // Atelier Showcase Minimal Carousel - 100% INDIVIDUAL PAPER COLLAGE PORTRAITS + CNN BROADCAST PROOF
   const ATELIER_CAROUSEL_DATA = [
     {
       img: 'assets/images/custom_portrait_example.jpg',
@@ -775,6 +775,26 @@
       img: 'assets/images/custom_portrait_example_5.jpg',
       alt: 'Hope in the Slum - Fine-Art Scholar Paper Collage Portrait',
       caption: 'Fine-Art Scholar Collage Portrait \u2022 Custom Archival UV Framing'
+    },
+    {
+      img: 'assets/images/cnn_collage_wall_wide.jpg',
+      alt: 'CNN International Feature - Hand-Torn Paper Mosaic Exhibition Wall',
+      caption: 'CNN International Feature \u2022 Hand-Torn Paper Mosaic Exhibition Wall'
+    },
+    {
+      img: 'assets/images/cnn_collage_portrait_detail.jpg',
+      alt: 'Master Fine-Art Craftsmanship - Hand-Torn Reclaimed Magazine Mosaic',
+      caption: 'Master Fine-Art Craftsmanship \u2022 Hand-Torn Reclaimed Magazine Mosaic'
+    },
+    {
+      img: 'assets/images/cnn_portraits_anchors_closeup.jpg',
+      alt: 'CNN Anchors Paper Mosaic Portraits for #MyFreedomDay Broadcast',
+      caption: 'CNN Anchors Paper Mosaic Portraits \u2022 #MyFreedomDay Broadcast'
+    },
+    {
+      img: 'assets/images/cnn_doc_frame_30s.jpg',
+      alt: 'CNN International Broadcast - Anchor Zain Asher Presents Slum Art',
+      caption: 'CNN International Broadcast \u2022 Anchor Zain Asher Presents Slum Art'
     }
   ];
 
@@ -889,14 +909,24 @@
     // Update captions
     const captions = document.querySelectorAll('#cpcSlideCaption, .cpc-slide-caption');
     captions.forEach(c => {
-      c.textContent = ATELIER_CAROUSEL_DATA[currentAtelierSlide].caption;
+      if (ATELIER_CAROUSEL_DATA[currentAtelierSlide]) {
+        c.textContent = ATELIER_CAROUSEL_DATA[currentAtelierSlide].caption;
+      }
     });
 
-    // Update slide counters
+    // Update slide counters dynamically
     const counters = document.querySelectorAll('#cpcSlideCounter, .cpc-slide-counter');
+    const totalStr = String(total).padStart(2, '0');
     counters.forEach(cnt => {
       const numStr = String(currentAtelierSlide + 1).padStart(2, '0');
-      cnt.innerHTML = `<strong>${numStr}</strong> / 05`;
+      cnt.innerHTML = `<strong>${numStr}</strong> / ${totalStr}`;
+    });
+
+    // Update CNN thumbnail strip active state if present
+    const thumbs = document.querySelectorAll('.cpc-cnn-photo-thumb');
+    thumbs.forEach(thumb => {
+      const thumbIdx = parseInt(thumb.getAttribute('data-slide-index'), 10);
+      thumb.classList.toggle('active', thumbIdx === currentAtelierSlide);
     });
   };
 
