@@ -357,7 +357,7 @@
       floatingBadges.push({
         x: startX,
         y: peep.y - 12,
-        text: Math.random() > 0.8 ? '💛' : `+$${amount}`,
+        text: `+$${amount}`,
         alpha: 1,
         vy: -1.2,
         life: 0,

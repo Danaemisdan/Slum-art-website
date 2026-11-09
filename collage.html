@@ -61,7 +61,19 @@
       box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
     }
     .collage-mode-icon {
-      font-size: 1.15rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .collage-mode-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      transition: transform 0.2s ease;
+    }
+    .collage-mode-btn:hover .collage-mode-icon svg {
+      transform: scale(1.08);
     }
     .collage-section-view {
       display: none;
@@ -215,11 +227,22 @@
       <div class="collage-mode-switch-wrap">
         <div class="collage-mode-switcher" role="tablist" aria-label="Collage Presentation Mode">
           <button type="button" class="collage-mode-btn active" id="modeBtnArtwork" onclick="switchCollageMode('artwork')" role="tab" aria-selected="true">
-            <span class="collage-mode-icon">🎨</span>
+            <span class="collage-mode-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+            </span>
             <span>Collage as an Artwork</span>
           </button>
           <button type="button" class="collage-mode-btn" id="modeBtnPortrait" onclick="switchCollageMode('portrait')" role="tab" aria-selected="false">
-            <span class="collage-mode-icon">👤</span>
+            <span class="collage-mode-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </span>
             <span>Collage as Portrait</span>
           </button>
         </div>
