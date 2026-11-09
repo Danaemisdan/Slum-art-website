@@ -310,10 +310,9 @@
                 <span class="cpc-btn-desktop-text">Individual Portraits</span>
                 <span class="cpc-btn-mobile-text">Portraits</span>
               </button>
-              <button type="button" class="cpc-switch-btn" id="cpcMediaBtnVideo" onclick="window.switchAtelierMedia('video')" role="tab" aria-selected="false">
-                <span class="cpc-live-dot"></span>
+              <button type="button" class="cpc-switch-btn" id="cpcMediaBtnVideo" onclick="window.switchAtelierMedia('video', true)" role="tab" aria-selected="false">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                <span class="cpc-btn-desktop-text">CNN Documentary Video</span>
+                <span class="cpc-btn-desktop-text">CNN Feature &amp; Interview</span>
                 <span class="cpc-btn-mobile-text">CNN Video</span>
               </button>
             </div>
@@ -372,10 +371,25 @@
                     <span class="cpc-eyebrow-cnn">CNN</span> Anchor Portraits
                   </div>
                 </div>
-                <div class="cpc-carousel-slide" data-index="8">
-                  <img src="assets/images/cnn_doc_frame_30s.jpg" alt="CNN International Broadcast - Anchor Zain Asher Presents Slum Art" loading="lazy">
+                <div class="cpc-carousel-slide cpc-carousel-slide-video" data-index="8">
+                  <div class="cpc-slide-video-wrap">
+                    <video id="cpcSlideVideo" preload="metadata" poster="assets/images/cnn_doc_frame_30s.jpg" playsinline controls>
+                      <source src="assets/videos/cnn_myfreedomday_slumart.mp4" type="video/mp4">
+                      Your browser does not support HTML5 video.
+                    </video>
+                    <div class="cpc-slide-video-overlay" id="cpcSlideVideoOverlay" onclick="window.playCpcSlideVideo(event)">
+                      <button type="button" class="cpc-video-play-btn" aria-label="Play CNN Video Feature with Ade">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                      </button>
+                      <div class="cpc-slide-video-pill">
+                        <span class="cpc-eyebrow-cnn">CNN</span>
+                        <span>Watch CNN Feature &amp; Interview</span>
+                      </div>
+                      <div class="cpc-slide-video-sub">Anchor Zain Asher presents Slum Art &bull; Honors Founder Ade</div>
+                    </div>
+                  </div>
                   <div class="cpc-cnn-slide-badge">
-                    <span class="cpc-eyebrow-cnn">CNN</span> Live Broadcast
+                    <span class="cpc-eyebrow-cnn">CNN</span> Video Feature &amp; Interview
                   </div>
                 </div>
               </div>
@@ -391,7 +405,7 @@
                   <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(5)" aria-label="Slide 6: CNN Wall"></button>
                   <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(6)" aria-label="Slide 7: CNN Founder"></button>
                   <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(7)" aria-label="Slide 8: CNN Anchors"></button>
-                  <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(8)" aria-label="Slide 9: CNN Broadcast"></button>
+                  <button type="button" class="cpc-indicator-bar" onclick="window.setAtelierSlide(8)" aria-label="Slide 9: CNN Video Feature &amp; Interview"></button>
                 </div>
                 <span class="cpc-slide-counter" id="cpcSlideCounter"><strong>01</strong> / 09</span>
               </div>
@@ -463,19 +477,22 @@
                   <img src="assets/images/cnn_portraits_anchors_closeup.jpg" alt="CNN Anchors Paper Mosaic Portraits" loading="lazy">
                   <span class="cpc-cnn-thumb-label">CNN Anchors</span>
                 </button>
-                <button type="button" class="cpc-cnn-photo-thumb" data-slide-index="8" onclick="window.switchAtelierMedia('portraits'); window.setAtelierSlide(8);" title="Live CNN Broadcast with Zain Asher">
-                  <img src="assets/images/cnn_doc_frame_30s.jpg" alt="Live CNN Broadcast with Zain Asher" loading="lazy">
-                  <span class="cpc-cnn-thumb-label">Live Broadcast</span>
+                <button type="button" class="cpc-cnn-photo-thumb" data-slide-index="8" onclick="window.switchAtelierMedia('portraits'); window.setAtelierSlide(8); window.playCpcSlideVideo();" title="Watch CNN Video Feature &amp; Interview with Founder Ade">
+                  <img src="assets/images/cnn_doc_frame_30s.jpg" alt="CNN Video Feature &amp; Interview" loading="lazy">
+                  <span class="cpc-cnn-thumb-label">CNN Video</span>
                 </button>
               </div>
 
               <div class="cpc-cnn-val-footer">
                 <button type="button" class="cpc-cnn-val-play-btn" onclick="window.switchAtelierMedia('video', true)">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                  Play Video Documentary
+                  Watch CNN Feature Video
                 </button>
-                <a href="https://edition.cnn.com/2026/04/15/world/video/myfreedomday-zain-tag-041411a-cnni-world-fast" target="_blank" rel="noopener noreferrer" class="cpc-cnn-val-read-btn">
+                <a href="https://edition.cnn.com/2026/04/15/world/video/myfreedomday-zain-tag-041411a-cnni-world-fast" target="_blank" rel="noopener noreferrer" class="cpc-cnn-val-read-btn" title="Open official CNN broadcast on CNN.com">
                   Watch on CNN.com &rarr;
+                </a>
+                <a href="https://www.youtube.com/watch?v=pWP4x86ouYc" target="_blank" rel="noopener noreferrer" class="cpc-cnn-val-read-btn" title="Watch in-depth documentary interview with Ade on YouTube">
+                  Ade Interview on YouTube &rarr;
                 </a>
               </div>
             </div>

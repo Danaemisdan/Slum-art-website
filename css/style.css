@@ -9525,6 +9525,85 @@ button[data-f="pause"],
   transform: scale(1);
 }
 
+.cpc-carousel-slide.cpc-carousel-slide-video {
+  padding: 0;
+  background: #000000;
+}
+
+.cpc-slide-video-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cpc-slide-video-wrap video {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  background: #000000;
+  display: block;
+}
+
+.cpc-slide-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  z-index: 4;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+  padding: 1rem;
+  text-align: center;
+}
+
+.cpc-slide-video-overlay.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cpc-slide-video-overlay:hover .cpc-video-play-btn {
+  transform: scale(1.12);
+  box-shadow: 0 0 36px rgba(220, 38, 38, 0.9);
+}
+
+.cpc-slide-video-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.38rem 0.9rem;
+  border-radius: 9999px;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.cpc-slide-video-sub {
+  color: #cbd5e1;
+  font-size: 0.74rem;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+  max-width: 90%;
+  line-height: 1.35;
+}
+
 .cpc-carousel-slide img {
   max-width: 100%;
   max-height: 100%;
@@ -9820,16 +9899,25 @@ button[data-f="pause"],
 }
 
 .cpc-cnn-val-read-btn {
-  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.74rem;
   font-weight: 600;
   color: #cbd5e1;
   text-decoration: none;
-  transition: color 0.2s ease;
+  padding: 0.35rem 0.72rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: all 0.2s ease;
 }
 
 .cpc-cnn-val-read-btn:hover {
   color: #ffffff;
-  text-decoration: underline;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
 }
 
 /* CNN Broadcast Proof Photos Strip */
@@ -9995,6 +10083,21 @@ button[data-f="pause"],
   .cpc-cnn-photos-strip {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.45rem;
+  }
+  .cpc-slide-video-overlay .cpc-video-play-btn {
+    width: 52px;
+    height: 52px;
+  }
+  .cpc-slide-video-overlay .cpc-video-play-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+  .cpc-slide-video-pill {
+    font-size: 0.72rem;
+    padding: 0.28rem 0.7rem;
+  }
+  .cpc-slide-video-sub {
+    font-size: 0.67rem;
   }
 }
 

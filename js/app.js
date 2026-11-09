@@ -793,8 +793,8 @@
     },
     {
       img: 'assets/images/cnn_doc_frame_30s.jpg',
-      alt: 'CNN International Broadcast - Anchor Zain Asher Presents Slum Art',
-      caption: 'CNN International Broadcast \u2022 Anchor Zain Asher Presents Slum Art'
+      alt: 'CNN International Feature & Interview \u2022 Anchor Zain Asher Presents Slum Art & Honors Founder Adetunwase Adenle',
+      caption: 'CNN International Feature \u2022 Anchor Zain Asher Presents Slum Art & Honors Founder Ade'
     }
   ];
 
@@ -814,81 +814,115 @@
     priceEls.forEach(el => { el.textContent = priceText; });
   }
 
-  // Switch between Individual Portraits and CNN Documentary Video
+  // Switch between Individual Portraits and CNN Feature Video
   window.switchAtelierMedia = function (mediaType, autoPlay = false) {
     activeAtelierMedia = mediaType || 'portraits';
-    const isPortraits = activeAtelierMedia === 'portraits';
+    const isVideo = activeAtelierMedia === 'video';
 
     // Update switcher buttons
     const portraitBtns = document.querySelectorAll('#cpcMediaBtnPortraits, .cpc-media-btn-portraits');
     const videoBtns = document.querySelectorAll('#cpcMediaBtnVideo, .cpc-media-btn-video');
 
     portraitBtns.forEach(b => {
-      b.classList.toggle('active', isPortraits);
-      b.setAttribute('aria-selected', isPortraits ? 'true' : 'false');
+      b.classList.toggle('active', !isVideo);
+      b.setAttribute('aria-selected', !isVideo ? 'true' : 'false');
     });
     videoBtns.forEach(b => {
-      b.classList.toggle('active', !isPortraits);
-      b.setAttribute('aria-selected', !isPortraits ? 'true' : 'false');
+      b.classList.toggle('active', isVideo);
+      b.setAttribute('aria-selected', isVideo ? 'true' : 'false');
     });
 
-    // Toggle carousel vs video containers
-    const carouselContainers = document.querySelectorAll('#cpcCarouselContainer, .cpc-carousel-container');
-    const videoContainers = document.querySelectorAll('#cpcVideoContainer, .cpc-video-container');
-
-    carouselContainers.forEach(c => {
-      c.classList.toggle('active', isPortraits);
-      c.style.display = isPortraits ? 'flex' : 'none';
-    });
-    videoContainers.forEach(v => {
-      v.classList.toggle('active', !isPortraits);
-      v.style.display = !isPortraits ? 'flex' : 'none';
-    });
-
-    // Handle video and carousel autoplay
-    const videoEls = document.querySelectorAll('#cnnDocVideo, .cpc-video-player');
-    if (isPortraits) {
-      videoEls.forEach(v => {
-        try { v.pause(); } catch (e) {}
-      });
-      startAtelierAutoplay();
-    } else {
-      stopAtelierAutoplay();
+    if (isVideo) {
+      window.setAtelierSlide(8);
       if (autoPlay) {
-        window.playCnnDocVideo();
+        window.playCpcSlideVideo();
+      }
+    } else {
+      if (currentAtelierSlide === 8) {
+        window.setAtelierSlide(0);
       }
     }
   };
 
-  window.playCnnDocVideo = function () {
-    const video = document.getElementById('cnnDocVideo');
-    const overlay = document.getElementById('cnnDocOverlay');
-    if (video) {
-      if (overlay) overlay.style.display = 'none';
-      video.play().catch(err => {
-        console.warn('Autoplay prevented or video play error:', err);
-      });
+  window.playCpcSlideVideo = function (e) {
+    if (e && typeof e.stopPropagation === 'function') {
+      e.stopPropagation();
     }
+    stopAtelierAutoplay();
+    if (currentAtelierSlide !== 8) {
+      window.setAtelierSlide(8);
+    }
+    const slideVideos = document.querySelectorAll('#cpcSlideVideo, .cpc-slide-video-wrap video');
+    const overlays = document.querySelectorAll('#cpcSlideVideoOverlay, .cpc-slide-video-overlay');
+    overlays.forEach(ov => ov.classList.add('is-hidden'));
+
+    slideVideos.forEach(v => {
+      v.play().catch(err => {
+        console.warn('Video playback prevented:', err);
+      });
+    });
   };
 
-  function initCnnDocVideoEvents() {
-    const video = document.getElementById('cnnDocVideo');
-    const overlay = document.getElementById('cnnDocOverlay');
-    if (!video) return;
-
-    video.addEventListener('play', () => {
-      if (overlay) overlay.style.display = 'none';
-      stopAtelierAutoplay();
+  window.pauseCpcSlideVideo = function () {
+    const slideVideos = document.querySelectorAll('#cpcSlideVideo, .cpc-slide-video-wrap video');
+    const overlays = document.querySelectorAll('#cpcSlideVideoOverlay, .cpc-slide-video-overlay');
+    slideVideos.forEach(v => {
+      try { v.pause(); } catch (e) {}
     });
+    overlays.forEach(ov => ov.classList.remove('is-hidden'));
+  };
 
-    video.addEventListener('ended', () => {
-      if (overlay) overlay.style.display = 'flex';
+  window.playCnnDocVideo = function () {
+    window.playCpcSlideVideo();
+  };
+
+  function initCpcSlideVideoEvents() {
+    const slideVideos = document.querySelectorAll('#cpcSlideVideo, .cpc-slide-video-wrap video');
+    slideVideos.forEach(video => {
+      video.addEventListener('play', () => {
+        const wrap = video.closest('.cpc-slide-video-wrap');
+        if (wrap) {
+          const ov = wrap.querySelector('.cpc-slide-video-overlay');
+          if (ov) ov.classList.add('is-hidden');
+        }
+        stopAtelierAutoplay();
+      });
+      video.addEventListener('ended', () => {
+        const wrap = video.closest('.cpc-slide-video-wrap');
+        if (wrap) {
+          const ov = wrap.querySelector('.cpc-slide-video-overlay');
+          if (ov) ov.classList.remove('is-hidden');
+        }
+      });
     });
   }
 
   window.setAtelierSlide = function (idx) {
     const total = ATELIER_CAROUSEL_DATA.length;
     currentAtelierSlide = (idx + total) % total;
+
+    // Pause slide video if leaving slide 8
+    if (currentAtelierSlide !== 8) {
+      const slideVideos = document.querySelectorAll('#cpcSlideVideo, .cpc-slide-video-wrap video');
+      slideVideos.forEach(v => {
+        try { v.pause(); } catch (e) {}
+      });
+      const overlays = document.querySelectorAll('#cpcSlideVideoOverlay, .cpc-slide-video-overlay');
+      overlays.forEach(ov => ov.classList.remove('is-hidden'));
+    }
+
+    // Sync media switcher buttons state
+    const portraitBtns = document.querySelectorAll('#cpcMediaBtnPortraits, .cpc-media-btn-portraits');
+    const videoBtns = document.querySelectorAll('#cpcMediaBtnVideo, .cpc-media-btn-video');
+    const isVideoSlide = (currentAtelierSlide === 8);
+    portraitBtns.forEach(b => {
+      b.classList.toggle('active', !isVideoSlide);
+      b.setAttribute('aria-selected', !isVideoSlide ? 'true' : 'false');
+    });
+    videoBtns.forEach(b => {
+      b.classList.toggle('active', isVideoSlide);
+      b.setAttribute('aria-selected', isVideoSlide ? 'true' : 'false');
+    });
 
     // Update slides in any active carousel viewport
     const viewports = document.querySelectorAll('.cpc-carousel-viewport');
@@ -941,6 +975,13 @@
   function startAtelierAutoplay() {
     if (atelierSlideTimer) clearInterval(atelierSlideTimer);
     atelierSlideTimer = setInterval(() => {
+      const slideVideo = document.getElementById('cpcSlideVideo');
+      if (slideVideo && !slideVideo.paused) {
+        return; // Don't interrupt playing video
+      }
+      if (currentAtelierSlide === 8) {
+        return; // Stay on video slide so user can inspect / play
+      }
       window.nextAtelierSlide();
     }, 5000);
   }
@@ -1045,6 +1086,11 @@
         touchStartX = e.changedTouches[0].screenX;
       }, { passive: true });
       vp.addEventListener('touchend', (e) => {
+        // If touching active playing video controls, do not advance slide
+        const activeVid = vp.querySelector('.cpc-slide-video-wrap video');
+        if (activeVid && !activeVid.paused && e.target && e.target.closest('.cpc-slide-video-wrap')) {
+          return;
+        }
         touchEndX = e.changedTouches[0].screenX;
         if (touchEndX < touchStartX - 40) {
           window.nextAtelierSlide();
@@ -1058,10 +1104,10 @@
     window.addEventListener('currencyChanged', () => updateAtelierPrice());
     window.addEventListener('slum_currency_updated', () => updateAtelierPrice());
 
-    // Start autoplay
+    // Start autoplay & video listeners
     startAtelierAutoplay();
     updateAtelierPrice('portrait');
-    initCnnDocVideoEvents();
+    initCpcSlideVideoEvents();
   }
 
   // Quick Mission Navigator (Direct 1-Click Access to Key Tasks)
