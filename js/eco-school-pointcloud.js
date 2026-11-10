@@ -232,6 +232,7 @@
 
     // -------------------------------------------------------------------------
     // 3. COMPLETE 4-WALL RECYCLED PET BOTTLE ARCHITECTURE
+    // Multi-stop optical depth: Smoked Obsidian for front, Honey Amber for sides/rear
     // -------------------------------------------------------------------------
     function generateBottleWall({
       axis,
@@ -239,9 +240,8 @@
       uMin, uMax,
       vMin, vMax,
       cutouts = [],
-      baseColor,
-      lumVar = 0.18,
-      cageColor = [0.32, 0.36, 0.42]
+      isAmber = false,
+      cageColor = [0.28, 0.32, 0.38]
     }) {
       const uSpan = uMax - uMin;
       const vSpan = vMax - vMin;
@@ -260,19 +260,50 @@
 
           const colIdx = Math.floor((u - uMin) / 0.16);
           const rowIdx = Math.floor((v - vMin) / 0.28);
+          const courseProgress = ((v - vMin) % 0.28) / 0.28;
+          const bottleXProgress = ((u - uMin) % 0.16) / 0.16;
           const noise = (Math.sin(colIdx * 4.3 + rowIdx * 2.7) + 1) * 0.5;
-          const lum = 0.88 + noise * lumVar;
 
-          let r = Math.min(1.0, baseColor[0] * lum);
-          let g = Math.min(1.0, baseColor[1] * lum);
-          let b = Math.min(1.0, baseColor[2] * lum);
+          let r, g, b;
+          if (isAmber) {
+            // Luminous warm amber honey bottles with realistic glass depth:
+            const isShoulder = courseProgress > 0.65 && courseProgress < 0.88;
+            const isBase = courseProgress < 0.20;
+            const isCap = Math.abs((u - uMin) % 0.16) < 0.035 && Math.abs((v - vMin) % 0.28) < 0.045;
 
-          const isCap = Math.abs((u - uMin) % 0.16) < 0.035 && Math.abs((v - vMin) % 0.28) < 0.045;
-          if (isCap) {
-            if (baseColor[0] > 0.4) {
-              r = 1.0; g = 0.82; b = 0.15;
+            if (isCap) {
+              r = 1.0; g = 0.88; b = 0.26; // Brass/gold cap
+            } else if (isShoulder) {
+              r = 1.0; g = 0.82; b = 0.35; // Sunlit champagne reflection
+            } else if (isBase) {
+              r = 0.76; g = 0.38; b = 0.08; // Warm cognac shadow
             } else {
-              r = 0.30; g = 0.65; b = 0.95;
+              const bodyLum = 0.92 + noise * 0.16;
+              r = Math.min(1.0, 0.96 * bodyLum);
+              g = Math.min(1.0, 0.62 * bodyLum);
+              b = Math.min(1.0, 0.14 * bodyLum);
+            }
+          } else {
+            // Front facade: Smoked obsidian glass bottles with oceanic cyan & silver glints:
+            const isBehindLogo = (axis === 'z' && fixedCoord > 0 && u >= 1.95 && u <= 4.05 && v >= 1.35 && v <= 3.35);
+            const isCap = Math.abs((u - uMin) % 0.16) < 0.035 && Math.abs((v - vMin) % 0.28) < 0.045;
+            const isRibGlint = (courseProgress > 0.45 && courseProgress < 0.58) && (bottleXProgress > 0.35 && bottleXProgress < 0.65);
+            const isEdgeReflect = (bottleXProgress < 0.15 || bottleXProgress > 0.85);
+
+            if (isBehindLogo) {
+              // Deep dark obsidian background to provide maximum contrast for floating logo
+              r = 0.06; g = 0.08; b = 0.12;
+            } else if (isCap) {
+              r = 0.32; g = 0.72; b = 0.90; // Metallic ice cyan cap
+            } else if (isRibGlint) {
+              r = 0.62; g = 0.84; b = 0.96; // Specular silver-cyan glass reflection
+            } else if (isEdgeReflect) {
+              r = 0.26; g = 0.52; b = 0.70; // Oceanic glass caustics
+            } else {
+              const darkLum = 0.85 + noise * 0.30;
+              r = 0.12 * darkLum;
+              g = 0.17 * darkLum;
+              b = 0.25 * darkLum;
             }
           }
 
@@ -287,7 +318,7 @@
         }
       }
 
-      // Steel cage frames
+      // Structural steel columns & cage frames
       const numBays = Math.round(uSpan / 1.02);
       const bayStep = uSpan / numBays;
       for (let b = 0; b <= numBays; b++) {
@@ -307,17 +338,18 @@
       for (let t = 0; t <= numTiers; t++) {
         const v = vMin + t * tierStep;
         for (let d of [-0.075, 0.075]) {
+          const wireColor = isAmber ? [0.45, 0.42, 0.38] : [0.42, 0.48, 0.56];
           if (axis === 'z') {
-            addLine(uMin, v, fixedCoord + d, uMax, v, fixedCoord + d, 0.05, cageColor[0], cageColor[1], cageColor[2]);
+            addLine(uMin, v, fixedCoord + d, uMax, v, fixedCoord + d, 0.05, wireColor[0], wireColor[1], wireColor[2]);
           } else {
-            addLine(fixedCoord + d, v, uMin, fixedCoord + d, v, uMax, 0.05, cageColor[0], cageColor[1], cageColor[2]);
+            addLine(fixedCoord + d, v, uMin, fixedCoord + d, v, uMax, 0.05, wireColor[0], wireColor[1], wireColor[2]);
           }
         }
       }
     }
 
     // -------------------------------------------------------------------------
-    // A. FRONT FACADE WALL (Charcoal Black Bottles + Entrance Door + Danfo Bus)
+    // A. FRONT FACADE WALL (Smoked Obsidian Bottles + Entrance Door + Danfo Bus)
     // -------------------------------------------------------------------------
     const frontDoorOpening = { uMin: 0.0, uMax: 1.92, vMin: 0.0, vMax: 3.75 };
     const danfoBusOpening  = { uMin: -3.20, uMax: -0.64, vMin: 1.25, vMax: 3.80 };
@@ -328,9 +360,8 @@
       uMin: leftX, uMax: rightX,
       vMin: 0.0, vMax: bH,
       cutouts: [frontDoorOpening, danfoBusOpening],
-      baseColor: [0.18, 0.22, 0.28], // Luminous Charcoal Black with sky reflections (#1c232f)
-      lumVar: 0.28,
-      cageColor: [0.42, 0.46, 0.54]
+      isAmber: false,
+      cageColor: [0.34, 0.38, 0.46]
     });
 
     // Classroom Entrance Doorway Frame & Swung Open Door
@@ -349,7 +380,7 @@
     addPt(doorEndX - 0.06, 1.85, doorEndZ + 0.04, 1.0, 0.82, 0.20); // Brass handle
 
     // -------------------------------------------------------------------------
-    // B. LEFT SIDE WALL (Vibrant Amber-Orange Bottles + Security Window)
+    // B. LEFT SIDE WALL (Luminous Warm Amber-Honey Bottles + Security Window)
     // -------------------------------------------------------------------------
     const leftWinOpening = { uMin: -2.4, uMax: 2.4, vMin: 1.25, vMax: 3.35 };
     generateBottleWall({
@@ -358,9 +389,8 @@
       uMin: backZ, uMax: frontZ,
       vMin: 0.0, vMax: bH,
       cutouts: [leftWinOpening],
-      baseColor: [0.95, 0.52, 0.08],
-      lumVar: 0.20,
-      cageColor: [0.30, 0.33, 0.38]
+      isAmber: true,
+      cageColor: [0.24, 0.26, 0.30]
     });
 
     const winZ1 = -2.4, winZ2 = 2.4, winY1 = 1.25, winY2 = 3.35;
@@ -373,7 +403,7 @@
     }
 
     // -------------------------------------------------------------------------
-    // C. RIGHT SIDE WALL (Vibrant Amber-Orange Bottles + Security Window)
+    // C. RIGHT SIDE WALL (Luminous Warm Amber-Honey Bottles + Security Window)
     // -------------------------------------------------------------------------
     const rightWinOpening = { uMin: -2.4, uMax: 2.4, vMin: 1.25, vMax: 3.35 };
     generateBottleWall({
@@ -382,9 +412,8 @@
       uMin: backZ, uMax: frontZ,
       vMin: 0.0, vMax: bH,
       cutouts: [rightWinOpening],
-      baseColor: [0.95, 0.52, 0.08],
-      lumVar: 0.20,
-      cageColor: [0.30, 0.33, 0.38]
+      isAmber: true,
+      cageColor: [0.24, 0.26, 0.30]
     });
 
     addLine(rightX, winY1, winZ1, rightX, winY1, winZ2, 0.03, 0.38, 0.42, 0.48);
@@ -396,7 +425,7 @@
     }
 
     // -------------------------------------------------------------------------
-    // D. REAR WALL (Solid 4-Tier Vibrant Amber-Orange Bottles)
+    // D. REAR WALL (Solid 4-Tier Luminous Warm Amber-Honey Bottles)
     // -------------------------------------------------------------------------
     generateBottleWall({
       axis: 'z',
@@ -404,9 +433,8 @@
       uMin: leftX, uMax: rightX,
       vMin: 0.0, vMax: bH,
       cutouts: [],
-      baseColor: [0.95, 0.52, 0.08],
-      lumVar: 0.20,
-      cageColor: [0.30, 0.33, 0.38]
+      isAmber: true,
+      cageColor: [0.24, 0.26, 0.30]
     });
 
     // -------------------------------------------------------------------------
@@ -420,8 +448,8 @@
       const tz = (z - backZ) / bD;
       const gy = roofBackY - tz * (roofBackY - roofFrontY);
       for (let y = bH; y <= gy; y += STEP) {
-        addPt(leftX,  y, z, 0.94, 0.50, 0.08);
-        addPt(rightX, y, z, 0.94, 0.50, 0.08);
+        addPt(leftX,  y, z, 0.96, 0.62, 0.14);
+        addPt(rightX, y, z, 0.96, 0.62, 0.14);
       }
     }
 
@@ -482,8 +510,8 @@
     // Heavy diagonal 45° welded steel support struts underneath
     [-busW / 2 + 0.22, busW / 2 - 0.22].forEach(bx => {
       const strutX = busCX + bx;
-      addLine(strutX, 0.0, busZStart, strutX, busYBase, busZEnd - 0.25, 0.05, 0.20, 0.22, 0.28, 0.008);
-      addLine(strutX, busYBase, busZStart, strutX, busYBase, busZEnd, 0.05, 0.24, 0.28, 0.34, 0.008);
+      addLine(strutX, 0.0, busZStart, strutX, busYBase, busZEnd - 0.25, 0.05, 0.28, 0.32, 0.38, 0.006);
+      addLine(strutX, busYBase, busZStart, strutX, busYBase, busZEnd, 0.05, 0.32, 0.36, 0.44, 0.006);
     });
 
     // Cab Side Panels
@@ -497,14 +525,14 @@
           const isWhiteStripe = (relY >= 0.98 && relY <= 1.08);
 
           if (isWindow) {
-            addPt(bx, y, z, 0.15, 0.25, 0.38);
+            addPt(bx, y, z, 0.18, 0.38, 0.56); // Luminous twilight glass
           } else if (isDarkStripe) {
-            addPt(bx, y, z, 0.08, 0.09, 0.11);
+            addPt(bx, y, z, 0.06, 0.07, 0.09); // Deep obsidian black stripe
           } else if (isWhiteStripe) {
-            addPt(bx, y, z, 0.96, 0.97, 1.0);
+            addPt(bx, y, z, 0.98, 0.99, 1.0);  // Pure titanium white stripe
           } else {
-            const shade = 0.90 + (relY / busH) * 0.18;
-            addPt(bx, y, z, 0.98 * shade, 0.74 * shade, 0.06);
+            const shade = 0.88 + (relY / busH) * 0.24;
+            addPt(bx, y, z, Math.min(1.0, 0.98 * shade), Math.min(1.0, 0.76 * shade), 0.12 * shade);
           }
         }
       }
@@ -520,28 +548,28 @@
           const wsZ = busZEnd - (relY - 1.16) * 0.24;
           const isCenterDivider = Math.abs(relX) < 0.045;
           if (isCenterDivider) {
-            addPt(x, y, wsZ, 0.12, 0.14, 0.18);
+            addPt(x, y, wsZ, 0.14, 0.16, 0.20);
           } else {
-            addPt(x, y, wsZ, 0.24, 0.58, 0.85);
+            addPt(x, y, wsZ, 0.20, 0.44, 0.65); // Atmospheric sky-tinted windshield
           }
         } else if (relY < 0.42) {
-          addPt(x, y, busZEnd + 0.06, 0.16, 0.19, 0.24);
+          addPt(x, y, busZEnd + 0.06, 0.24, 0.26, 0.30); // Heavy steel bumper
         } else if (relY >= 0.42 && relY < 0.86) {
           const isLouver = Math.abs((relY - 0.42) % 0.08) < 0.03;
           if (isLouver) {
-            addPt(x, y, busZEnd + 0.02, 0.10, 0.12, 0.15);
+            addPt(x, y, busZEnd + 0.02, 0.76, 0.82, 0.90); // Metallic chrome slats
           } else {
-            addPt(x, y, busZEnd + 0.015, 0.22, 0.25, 0.30);
+            addPt(x, y, busZEnd + 0.015, 0.10, 0.12, 0.15); // Dark intake mesh
           }
         } else if (relY >= 0.86 && relY < 1.16) {
           const isHoodStripe = Math.abs(Math.abs(relX) - 0.45) < 0.08;
           if (isHoodStripe) {
-            addPt(x, y, busZEnd, 0.08, 0.09, 0.11);
+            addPt(x, y, busZEnd, 0.06, 0.07, 0.09);
           } else {
-            addPt(x, y, busZEnd, 0.98, 0.74, 0.06);
+            addPt(x, y, busZEnd, 0.98, 0.76, 0.12);
           }
         } else {
-          addPt(x, y, busZEnd - 0.28, 0.98, 0.74, 0.06);
+          addPt(x, y, busZEnd - 0.28, 1.0, 0.82, 0.18); // Sunlit hood
         }
       }
     }
@@ -554,7 +582,12 @@
       for (let r = 0; r <= 0.16; r += 0.03) {
         for (let a = 0; a < 14; a++) {
           const ang = a * (Math.PI * 2 / 14);
-          addPt(hlX + Math.cos(ang) * r, hlY + Math.sin(ang) * r, hlZ, 0.98, 0.96, 0.90);
+          const isRing = r > 0.12;
+          if (isRing) {
+            addPt(hlX + Math.cos(ang) * r, hlY + Math.sin(ang) * r, hlZ, 1.0, 0.68, 0.12); // Amber indicator ring
+          } else {
+            addPt(hlX + Math.cos(ang) * r, hlY + Math.sin(ang) * r, hlZ, 1.0, 0.98, 0.92); // Halogen white projector
+          }
         }
       }
     });
@@ -569,9 +602,9 @@
           const ang = a * (Math.PI * 2 / 16);
           const isTire = r > 0.24;
           if (isTire) {
-            addPt(wx, wy + Math.cos(ang) * r, wz + Math.sin(ang) * r, 0.12, 0.14, 0.18);
+            addPt(wx, wy + Math.cos(ang) * r, wz + Math.sin(ang) * r, 0.14, 0.16, 0.19); // Textured rubber tire
           } else {
-            addPt(wx, wy + Math.cos(ang) * r, wz + Math.sin(ang) * r, 0.82, 0.85, 0.92);
+            addPt(wx, wy + Math.cos(ang) * r, wz + Math.sin(ang) * r, 0.85, 0.90, 0.96); // Silver alloy rim
           }
         }
       }
@@ -580,7 +613,7 @@
     // Bus Roof
     for (let x = busCX - busW / 2; x <= busCX + busW / 2; x += 0.065) {
       for (let z = busZStart; z <= busZEnd - 0.25; z += 0.065) {
-        addPt(x, busYBase + busH, z, 0.96, 0.72, 0.06);
+        addPt(x, busYBase + busH, z, 1.0, 0.82, 0.18);
       }
     }
 
@@ -669,41 +702,14 @@
     }
 
     // =========================================================================
-    // 7. OFFICIAL HIGH-DEFINITION 3D "SLUM ART" SIGNBOARD ON FRONT FACADE
-    // Mounted prominently beside the doorway with architectural standoff brackets
-    // Rendered with dedicated micro-point resolution for razor-sharp typography
+    // 7. OFFICIAL 3D "SLUM ART" LOGO ON FRONT FACADE
+    // Pure 3D floating vector points directly on the architecture:
+    // NO PLAQUE, NO BACKGROUND BOX, NO STANDOFF BRACKETS
+    // Perfectly centered on the solid front wall section between door and corner
     // =========================================================================
-    const logoBoardW = 2.40;
-    const logoBoardH = 1.60;
-    const logoCX = 2.70;
+    const logoCX = 3.02;
     const logoCY = 2.30;
-    const logoCZ = frontZ + 0.16; // Projecting forward off the front wall
-
-    // 4 Heavy Standoff steel wall brackets
-    const standoffCorners = [
-      [logoCX - logoBoardW / 2 + 0.14, logoCY - logoBoardH / 2 + 0.14],
-      [logoCX + logoBoardW / 2 - 0.14, logoCY - logoBoardH / 2 + 0.14],
-      [logoCX - logoBoardW / 2 + 0.14, logoCY + logoBoardH / 2 - 0.14],
-      [logoCX + logoBoardW / 2 - 0.14, logoCY + logoBoardH / 2 - 0.14]
-    ];
-    standoffCorners.forEach(([sx, sy]) => {
-      addLine(sx, sy, frontZ, sx, sy, logoCZ, 0.025, 0.25, 0.28, 0.35);
-      // Metallic standoff collar
-      addPt(sx, sy, logoCZ + 0.01, 0.95, 0.95, 0.98);
-    });
-
-    // Deep Navy Architectural Backing Plate with Metallic Bezel
-    for (let bx = logoCX - logoBoardW / 2; bx <= logoCX + logoBoardW / 2; bx += 0.038) {
-      for (let by = logoCY - logoBoardH / 2; by <= logoCY + logoBoardH / 2; by += 0.038) {
-        const isBorder = Math.abs(Math.abs(bx - logoCX) - logoBoardW / 2) < 0.04 ||
-                         Math.abs(Math.abs(by - logoCY) - logoBoardH / 2) < 0.04;
-        if (isBorder) {
-          addPt(bx, by, logoCZ, 0.88, 0.92, 0.98); // Brushed aluminum bezel
-        } else {
-          addPt(bx, by, logoCZ - 0.005, 0.02, 0.07, 0.22); // Deep Navy plate
-        }
-      }
-    }
+    const logoCZ = frontZ + 0.08; // Floating cleanly in front of front wall
 
     // Logo Coordinate, Color, and Dispersion Buffers (Dedicated High-Res Points)
     const logoMeshPos = [];
@@ -718,29 +724,27 @@
     }
 
     // Render Exact Official 11,399 Slum Art Logo Vector Points
+    // Sampled with high-definition crisp spacing for razor-sharp typography
     const logoPts = (typeof window !== 'undefined' && window.__SLUM_ART_LOGO_POINTS__) || [];
     if (logoPts.length > 0) {
-      const renderW = 2.15;
-      const renderH = 1.35;
+      const renderW = 2.05;
+      const renderH = 1.30;
       const logoCenterY = logoCY + 0.04;
 
-      for (let i = 0; i < logoPts.length; i++) {
+      for (let i = 0; i < logoPts.length; i += 2) {
         const pt = logoPts[i];
         const px = logoCX + (pt[0] / 0.872) * (renderW / 2.0);
         const py = logoCenterY + (pt[1] / 0.37) * (renderH / 2.0);
 
         if (pt[2] === 1) {
-          // Official Golden Waves Ribbon (3D extrusion depth)
-          addLogoPt(px, py, logoCZ + 0.018, 1.0, 0.76, 0.12);
-          addLogoPt(px, py, logoCZ + 0.032, 1.0, 0.86, 0.25);
+          // Official Golden Waves Ribbon
+          addLogoPt(px, py, logoCZ, 1.0, 0.80, 0.16);
         } else if (pt[1] >= -0.22) {
-          // Pure Luminous White "slum art" Wordmark (3D extrusion depth)
-          addLogoPt(px, py, logoCZ + 0.018, 1.0, 1.0, 1.0);
-          addLogoPt(px, py, logoCZ + 0.032, 0.98, 0.98, 1.0);
+          // Pure Luminous White "slum art" Wordmark
+          addLogoPt(px, py, logoCZ, 1.0, 1.0, 1.0);
         } else {
           // Luminous Radiant Cyan "MENTORSHIP & SUPPORT"
-          addLogoPt(px, py, logoCZ + 0.020, 0.35, 0.88, 1.0);
-          addLogoPt(px, py, logoCZ + 0.032, 0.45, 0.94, 1.0);
+          addLogoPt(px, py, logoCZ, 0.38, 0.88, 1.0);
         }
       }
     }
@@ -776,6 +780,7 @@
         '#include <begin_vertex>',
         `
         #include <begin_vertex>
+        // 1. Interactive Scroll-Driven Point Cloud Dispersion & Assembly
         if (u_disperse > 0.0001) {
           vec3 d = a_disperse;
           d.x += sin(u_time * 1.5 + position.y * 1.4) * 0.22 * u_disperse;
@@ -783,6 +788,25 @@
           d.z += sin(u_time * 1.3 + position.z * 1.4) * 0.22 * u_disperse;
           transformed += d * u_disperse;
         }
+
+        // 2. Constant subtle organic micro-vibrations & breathing even when fully assembled
+        float t = u_time * 4.6;
+        vec3 microVib = vec3(
+          sin(t + position.y * 8.2 + position.z * 5.4),
+          cos(t * 1.14 + position.x * 7.1 + position.z * 4.8),
+          sin(t * 0.92 + position.x * 5.6 + position.y * 6.5)
+        ) * 0.016;
+
+        float breath = sin(u_time * 1.6 + position.y * 0.8 + position.x * 0.4) * 0.009;
+        transformed += microVib + vec3(0.0, breath, 0.0);
+        `
+      );
+      shader.vertexShader = shader.vertexShader.replace(
+        '#include <project_vertex>',
+        `
+        #include <project_vertex>
+        // Subtle shimmering sparkle in point size
+        gl_PointSize *= (0.94 + 0.12 * sin(u_time * 3.5 + position.x * 8.0 + position.y * 8.0));
         `
       );
     };
@@ -801,7 +825,7 @@
       logoGeom.setAttribute('a_disperse', new THREE.Float32BufferAttribute(logoMeshDisp, 3));
 
       const logoMaterial = new THREE.PointsMaterial({
-        size: 0.042,
+        size: 0.040,
         vertexColors: true,
         map: pointTexture,
         transparent: true,
