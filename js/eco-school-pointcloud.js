@@ -10,15 +10,24 @@
  *    - Side Walls (Left & Right): Vibrant Amber-Orange (#df7812) PET bottles with security picture windows
  *    - Rear Wall: Solid 4-tier Vibrant Amber-Orange PET bottles in steel cages
  *    - Upper Frieze & Gables: Sloped bottle courses rising to roof slope
- * 3. Integrated Lagos Danfo Bus Classroom Cab:
+ * 3. Official High-Resolution 3D "slum art" Signboard:
+ *    - Prominently mounted on the front facade beside the doorway
+ *    - 11,399 exact normalized vector points:
+ *      * Glowing amber-gold ribbon waves
+ *      * Pure luminous white "slum art" wordmark
+ *      * Radiant cyan-white "MENTORSHIP & SUPPORT" subtitle
+ *      * Navy blue backing plate with standoff brackets & metallic rivets
+ * 4. Integrated Lagos Danfo Bus Classroom Cab:
  *    - Protruding forward from front facade with heavy 45-degree welded diagonal steel support struts
  *    - Authentic Lagos Sunshine Yellow body (#f59e0b) with classic dual transit stripes
  *    - Split angled windshield, flush projector headlights (NO LIGHT RAYS), grille, bumper, wheels
- * 4. Sloped Mono-Pitch Corrugated Galvanized Iron Roof with 4 Monocrystalline Solar Panels
- * 5. Official "slum art" Signboard with Golden Wave Mark
+ * 5. Sloped Mono-Pitch Corrugated Galvanized Iron Roof with 4 Monocrystalline Solar Panels
  * 6. Interior Classroom Life: Double desks, benches, chalkboard, artist easel
  * 7. Bioluminescent Lagoon Water with Organic Harmonic Ripples & Floating Ambient Spores
- * 8. Isometric Front-Corner 3D Perspective with Scroll-Driven Orbit & Parallax
+ * 8. Scroll-Driven Point Cloud Assembly & Dispersion:
+ *    - GPU-accelerated vertex shader dispersion: particles float in an organic luminous cloud and
+ *      smoothly assemble together into the solid architectural school as the user scrolls into view
+ * 9. Isometric Front-Corner 3D Perspective with Scroll-Driven Orbit & Parallax
  */
 
 (function () {
@@ -56,7 +65,7 @@
     renderer.setSize(dims.w, dims.h);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 
-    // 2. High-Precision Crisp Multi-Stop Circular Point Sprite
+    // 2. High-Precision Crisp Circular Point Sprite
     function createPointTexture() {
       const size = 128;
       const cvs = document.createElement('canvas');
@@ -87,13 +96,39 @@
     const academyGroup = new THREE.Group();
     scene.add(academyGroup);
 
-    // Coordinate & Color Buffers
+    // Coordinate, Color, and Dispersion Buffers
     const buildPos = [];
     const buildCol = [];
+    const buildDisp = [];
 
-    function addPt(x, y, z, r, g, b) {
+    // Helper: calculate organic dispersion vector from building center
+    function calcDispersion(x, y, z) {
+      const cX = 0.0, cY = 2.5, cZ = 0.0;
+      const dx = x - cX;
+      const dy = y - cY;
+      const dz = z - cZ;
+      const dist = Math.hypot(dx, dy, dz) || 1.0;
+
+      const angle = Math.atan2(dz, dx);
+      const spiral = angle + (y * 0.45);
+      const radiusDisp = 2.6 + (Math.sin(x * 1.5 + z * 1.5) + 1.0) * 1.6;
+
+      const dispX = Math.cos(spiral) * radiusDisp + (Math.random() - 0.5) * 1.8;
+      const dispY = (dy / dist) * 2.2 + (Math.sin(spiral * 2.0) + Math.random() - 0.5) * 2.2;
+      const dispZ = Math.sin(spiral) * radiusDisp + (Math.random() - 0.5) * 1.8;
+
+      return [dispX, dispY, dispZ];
+    }
+
+    function addPt(x, y, z, r, g, b, customDisp = null) {
       buildPos.push(x, y, z);
       buildCol.push(r, g, b);
+      if (customDisp) {
+        buildDisp.push(customDisp[0], customDisp[1], customDisp[2]);
+      } else {
+        const d = calcDispersion(x, y, z);
+        buildDisp.push(d[0], d[1], d[2]);
+      }
     }
 
     function addLine(x1, y1, z1, x2, y2, z2, step, r, g, b, jitter = 0.004) {
@@ -110,7 +145,7 @@
     }
 
     // =========================================================================
-    // ARCHITECTURAL DIMENSIONS (Harmonized with Official 3D Model Proportion)
+    // ARCHITECTURAL DIMENSIONS
     // =========================================================================
     const bW = 8.2;       // Building Width along X (-4.1 to +4.1)
     const bD = 11.2;      // Building Depth along Z (-5.6 to +5.6)
@@ -179,7 +214,6 @@
         const pb = 0.24 + plankNoise * 0.5;
         addPt(px, -0.05, pz, pr, pg, pb);
 
-        // Building plinth stem riser directly under walls
         if (Math.abs(px) < halfW + 0.25 && Math.abs(pz) < halfD + 0.25) {
           addPt(px, 0.0, pz, pr * 1.08, pg * 1.08, pb * 1.08);
         }
@@ -198,17 +232,16 @@
 
     // -------------------------------------------------------------------------
     // 3. COMPLETE 4-WALL RECYCLED PET BOTTLE ARCHITECTURE
-    // Helper to generate solid, volumetric, luminous bottle walls in steel cages
     // -------------------------------------------------------------------------
     function generateBottleWall({
-      axis,          // 'z' for front/rear, 'x' for left/right
-      fixedCoord,    // position on fixed axis
-      uMin, uMax,    // span along horizontal wall axis
-      vMin, vMax,    // span along vertical Y axis
-      cutouts = [],  // array of {uMin, uMax, vMin, vMax} openings
-      baseColor,     // [r, g, b] base bottle color
-      lumVar = 0.18, // luminance organic variation
-      cageColor = [0.32, 0.36, 0.42] // structural steel frame color
+      axis,
+      fixedCoord,
+      uMin, uMax,
+      vMin, vMax,
+      cutouts = [],
+      baseColor,
+      lumVar = 0.18,
+      cageColor = [0.32, 0.36, 0.42]
     }) {
       const uSpan = uMax - uMin;
       const vSpan = vMax - vMin;
@@ -221,7 +254,6 @@
         return false;
       }
 
-      // Dense double-layer bottle points for solid wall opacity & depth
       for (let u = uMin; u <= uMax; u += STEP) {
         for (let v = vMin; v <= vMax; v += STEP) {
           if (isInsideCutout(u, v)) continue;
@@ -235,17 +267,15 @@
           let g = Math.min(1.0, baseColor[1] * lum);
           let b = Math.min(1.0, baseColor[2] * lum);
 
-          // Golden or cyan bottle cap highlights
           const isCap = Math.abs((u - uMin) % 0.16) < 0.035 && Math.abs((v - vMin) % 0.28) < 0.045;
           if (isCap) {
             if (baseColor[0] > 0.4) {
-              r = 1.0; g = 0.82; b = 0.15; // Golden amber cap on orange bottle
+              r = 1.0; g = 0.82; b = 0.15;
             } else {
-              r = 0.30; g = 0.65; b = 0.95; // Crystalline cyan cap on black bottle
+              r = 0.30; g = 0.65; b = 0.95;
             }
           }
 
-          // Two layered points for volumetric thickness
           [-0.065, 0.065].forEach(depthOffset => {
             const jitter = (Math.random() - 0.5) * 0.012;
             if (axis === 'z') {
@@ -257,7 +287,7 @@
         }
       }
 
-      // Steel cage bay vertical frames
+      // Steel cage frames
       const numBays = Math.round(uSpan / 1.02);
       const bayStep = uSpan / numBays;
       for (let b = 0; b <= numBays; b++) {
@@ -271,7 +301,7 @@
         }
       }
 
-      // Horizontal tier wires (4 tiers)
+      // Horizontal tier wires
       const numTiers = 4;
       const tierStep = vSpan / numTiers;
       for (let t = 0; t <= numTiers; t++) {
@@ -289,8 +319,6 @@
     // -------------------------------------------------------------------------
     // A. FRONT FACADE WALL (Charcoal Black Bottles + Entrance Door + Danfo Bus)
     // -------------------------------------------------------------------------
-    // Doorway opening: X = 0.0 to 1.92, Y = 0.0 to 3.75
-    // Danfo bus cab opening: X = -3.20 to -0.64, Y = 1.25 to 3.80
     const frontDoorOpening = { uMin: 0.0, uMax: 1.92, vMin: 0.0, vMax: 3.75 };
     const danfoBusOpening  = { uMin: -3.20, uMax: -0.64, vMin: 1.25, vMax: 3.80 };
 
@@ -302,7 +330,7 @@
       cutouts: [frontDoorOpening, danfoBusOpening],
       baseColor: [0.18, 0.22, 0.28], // Luminous Charcoal Black with sky reflections (#1c232f)
       lumVar: 0.28,
-      cageColor: [0.42, 0.46, 0.54]  // Defined steel cage frames
+      cageColor: [0.42, 0.46, 0.54]
     });
 
     // Classroom Entrance Doorway Frame & Swung Open Door
@@ -311,7 +339,6 @@
     addLine(doorX2, 0, frontZ, doorX2, doorYTop, frontZ, 0.03, 0.88, 0.92, 0.98);
     addLine(doorX1, doorYTop, frontZ, doorX2, doorYTop, frontZ, 0.03, 0.88, 0.92, 0.98);
 
-    // Swung open door leaf
     const doorAngle = Math.PI / 3.2;
     const doorLeafW = 1.75;
     const doorEndX = doorX1 + Math.cos(doorAngle) * doorLeafW;
@@ -319,27 +346,23 @@
     addLine(doorX1, 0.05, frontZ, doorEndX, 0.05, doorEndZ, 0.03, 0.76, 0.54, 0.30);
     addLine(doorEndX, 0.05, doorEndZ, doorEndX, doorYTop - 0.05, doorEndZ, 0.03, 0.76, 0.54, 0.30);
     addLine(doorEndX, doorYTop - 0.05, doorEndZ, doorX1, doorYTop - 0.05, frontZ, 0.03, 0.76, 0.54, 0.30);
-    // Polished brass handle
-    addPt(doorEndX - 0.06, 1.85, doorEndZ + 0.04, 1.0, 0.82, 0.20);
+    addPt(doorEndX - 0.06, 1.85, doorEndZ + 0.04, 1.0, 0.82, 0.20); // Brass handle
 
     // -------------------------------------------------------------------------
     // B. LEFT SIDE WALL (Vibrant Amber-Orange Bottles + Security Window)
     // -------------------------------------------------------------------------
-    // Window opening: Z = -2.4 to +2.4, Y = 1.25 to 3.35
     const leftWinOpening = { uMin: -2.4, uMax: 2.4, vMin: 1.25, vMax: 3.35 };
-
     generateBottleWall({
       axis: 'x',
       fixedCoord: leftX,
       uMin: backZ, uMax: frontZ,
       vMin: 0.0, vMax: bH,
       cutouts: [leftWinOpening],
-      baseColor: [0.95, 0.52, 0.08], // Vibrant Amber-Orange (#df7812)
+      baseColor: [0.95, 0.52, 0.08],
       lumVar: 0.20,
       cageColor: [0.30, 0.33, 0.38]
     });
 
-    // Left Security Window: Steel outer frame + vertical steel bars
     const winZ1 = -2.4, winZ2 = 2.4, winY1 = 1.25, winY2 = 3.35;
     addLine(leftX, winY1, winZ1, leftX, winY1, winZ2, 0.03, 0.38, 0.42, 0.48);
     addLine(leftX, winY2, winZ1, leftX, winY2, winZ2, 0.03, 0.38, 0.42, 0.48);
@@ -353,19 +376,17 @@
     // C. RIGHT SIDE WALL (Vibrant Amber-Orange Bottles + Security Window)
     // -------------------------------------------------------------------------
     const rightWinOpening = { uMin: -2.4, uMax: 2.4, vMin: 1.25, vMax: 3.35 };
-
     generateBottleWall({
       axis: 'x',
       fixedCoord: rightX,
       uMin: backZ, uMax: frontZ,
       vMin: 0.0, vMax: bH,
       cutouts: [rightWinOpening],
-      baseColor: [0.95, 0.52, 0.08], // Vibrant Amber-Orange (#df7812)
+      baseColor: [0.95, 0.52, 0.08],
       lumVar: 0.20,
       cageColor: [0.30, 0.33, 0.38]
     });
 
-    // Right Security Window
     addLine(rightX, winY1, winZ1, rightX, winY1, winZ2, 0.03, 0.38, 0.42, 0.48);
     addLine(rightX, winY2, winZ1, rightX, winY2, winZ2, 0.03, 0.38, 0.42, 0.48);
     addLine(rightX, winY1, winZ1, rightX, winY2, winZ1, 0.03, 0.38, 0.42, 0.48);
@@ -383,7 +404,7 @@
       uMin: leftX, uMax: rightX,
       vMin: 0.0, vMax: bH,
       cutouts: [],
-      baseColor: [0.95, 0.52, 0.08], // Vibrant Amber-Orange (#df7812)
+      baseColor: [0.95, 0.52, 0.08],
       lumVar: 0.20,
       cageColor: [0.30, 0.33, 0.38]
     });
@@ -392,9 +413,9 @@
     // 4. CORRUGATED MONO-PITCH ROOF, GABLES & SOLAR PANELS
     // -------------------------------------------------------------------------
     const roofFrontY = bH;          // 5.0m at front
-    const roofBackY  = bH + 1.35;   // 6.35m at rear (sloped upward towards back)
+    const roofBackY  = bH + 1.35;   // 6.35m at rear
 
-    // Side Gables (sloped triangular bottle fill under roofline)
+    // Side Gables
     for (let z = backZ; z <= frontZ; z += STEP) {
       const tz = (z - backZ) / bD;
       const gy = roofBackY - tz * (roofBackY - roofFrontY);
@@ -437,9 +458,9 @@
           if (isFrame) {
             addPt(sx, py, sz, 0.85, 0.90, 0.98);
           } else if (isGrid) {
-            addPt(sx, py, sz, 1.0, 0.82, 0.20); // Gold busbar grid
+            addPt(sx, py, sz, 1.0, 0.82, 0.20);
           } else {
-            addPt(sx, py, sz, 0.05, 0.16, 0.45); // Deep iridescent navy solar cell
+            addPt(sx, py, sz, 0.05, 0.16, 0.45);
           }
         }
       }
@@ -456,7 +477,7 @@
     const busCX = -1.92;
     const busYBase = 1.25;
     const busZStart = frontZ;
-    const busZEnd = busZStart + busL; // +7.52
+    const busZEnd = busZStart + busL;
 
     // Heavy diagonal 45° welded steel support struts underneath
     [-busW / 2 + 0.22, busW / 2 - 0.22].forEach(bx => {
@@ -465,7 +486,7 @@
       addLine(strutX, busYBase, busZStart, strutX, busYBase, busZEnd, 0.05, 0.24, 0.28, 0.34, 0.008);
     });
 
-    // Danfo Bus Cab Side Panels
+    // Cab Side Panels
     [-busW / 2, busW / 2].forEach(sideX => {
       const bx = busCX + sideX;
       for (let z = busZStart; z <= busZEnd; z += 0.055) {
@@ -476,14 +497,14 @@
           const isWhiteStripe = (relY >= 0.98 && relY <= 1.08);
 
           if (isWindow) {
-            addPt(bx, y, z, 0.15, 0.25, 0.38); // Dark tinted cab window
+            addPt(bx, y, z, 0.15, 0.25, 0.38);
           } else if (isDarkStripe) {
-            addPt(bx, y, z, 0.08, 0.09, 0.11); // Matte charcoal transit stripe
+            addPt(bx, y, z, 0.08, 0.09, 0.11);
           } else if (isWhiteStripe) {
-            addPt(bx, y, z, 0.96, 0.97, 1.0);  // Warm ivory stripe
+            addPt(bx, y, z, 0.96, 0.97, 1.0);
           } else {
             const shade = 0.90 + (relY / busH) * 0.18;
-            addPt(bx, y, z, 0.98 * shade, 0.74 * shade, 0.06); // Rich Lagos Sunshine Yellow
+            addPt(bx, y, z, 0.98 * shade, 0.74 * shade, 0.06);
           }
         }
       }
@@ -496,19 +517,16 @@
         const relX = x - busCX;
 
         if (relY >= 1.16 && relY <= 2.20) {
-          // Split Angled Windshield
           const wsZ = busZEnd - (relY - 1.16) * 0.24;
           const isCenterDivider = Math.abs(relX) < 0.045;
           if (isCenterDivider) {
             addPt(x, y, wsZ, 0.12, 0.14, 0.18);
           } else {
-            addPt(x, y, wsZ, 0.24, 0.58, 0.85); // Windshield glass reflection
+            addPt(x, y, wsZ, 0.24, 0.58, 0.85);
           }
         } else if (relY < 0.42) {
-          // Lower front steel bumper
           addPt(x, y, busZEnd + 0.06, 0.16, 0.19, 0.24);
         } else if (relY >= 0.42 && relY < 0.86) {
-          // Radiator Grille
           const isLouver = Math.abs((relY - 0.42) % 0.08) < 0.03;
           if (isLouver) {
             addPt(x, y, busZEnd + 0.02, 0.10, 0.12, 0.15);
@@ -516,7 +534,6 @@
             addPt(x, y, busZEnd + 0.015, 0.22, 0.25, 0.30);
           }
         } else if (relY >= 0.86 && relY < 1.16) {
-          // Hood with dual black vertical stripes
           const isHoodStripe = Math.abs(Math.abs(relX) - 0.45) < 0.08;
           if (isHoodStripe) {
             addPt(x, y, busZEnd, 0.08, 0.09, 0.11);
@@ -524,13 +541,12 @@
             addPt(x, y, busZEnd, 0.98, 0.74, 0.06);
           }
         } else {
-          // Upper brow visor
           addPt(x, y, busZEnd - 0.28, 0.98, 0.74, 0.06);
         }
       }
     }
 
-    // Flush Projector Headlights (STRICT: NO LIGHT RAYS OR CONES)
+    // Flush Projector Headlights (NO LIGHT RAYS!)
     [-0.82, 0.82].forEach(hx => {
       const hlX = busCX + hx;
       const hlY = busYBase + 0.65;
@@ -543,7 +559,7 @@
       }
     });
 
-    // Front Wheels
+    // Wheels
     [-1, 1].forEach(side => {
       const wx = busCX + side * (busW / 2 + 0.06);
       const wy = busYBase + 0.35;
@@ -555,7 +571,7 @@
           if (isTire) {
             addPt(wx, wy + Math.cos(ang) * r, wz + Math.sin(ang) * r, 0.12, 0.14, 0.18);
           } else {
-            addPt(wx, wy + Math.cos(ang) * r, wz + Math.sin(ang) * r, 0.82, 0.85, 0.92); // Chrome rim
+            addPt(wx, wy + Math.cos(ang) * r, wz + Math.sin(ang) * r, 0.82, 0.85, 0.92);
           }
         }
       }
@@ -569,38 +585,32 @@
     }
 
     // -------------------------------------------------------------------------
-    // 6. CLASSROOM INTERIOR LIFE (Inside the Enclosed 4 Walls)
+    // 6. CLASSROOM INTERIOR LIFE (Inside the Enclosed Walls)
     // -------------------------------------------------------------------------
-    // Student Double Desks with Bench Seats
     const deskRows = [1.2, -1.8];
     const deskCols = [-2.0, 0.0, 2.0];
     for (let rZ of deskRows) {
       for (let cX of deskCols) {
         const dW = 1.35, dD = 0.65, dH = 1.05;
-        // Desk Legs
         for (let lx of [-dW / 2 + 0.06, dW / 2 - 0.06]) {
           for (let lz of [-dD / 2 + 0.06, dD / 2 - 0.06]) {
             addLine(cX + lx, 0.0, rZ + lz, cX + lx, dH, rZ + lz, 0.04, 0.25, 0.28, 0.34, 0.006);
           }
         }
-        // Desk Top
         for (let dx = cX - dW / 2; dx <= cX + dW / 2; dx += 0.06) {
           for (let dz = rZ - dD / 2; dz <= rZ + dD / 2; dz += 0.06) {
             addPt(dx, dH, dz, 0.75, 0.52, 0.28);
           }
         }
-        // Open Sketchbooks on Desk
         for (let sx = cX - 0.25; sx <= cX + 0.25; sx += 0.04) {
           for (let sz = rZ - 0.18; sz <= rZ + 0.18; sz += 0.04) {
             addPt(sx, dH + 0.02, sz, 0.98, 0.98, 0.96);
           }
         }
-        // Colored pencils
         addPt(cX + 0.32, dH + 0.025, rZ - 0.06, 1.0, 0.78, 0.12);
         addPt(cX + 0.35, dH + 0.025, rZ + 0.04, 0.15, 0.75, 0.98);
         addPt(cX + 0.38, dH + 0.025, rZ + 0.12, 0.95, 0.25, 0.35);
 
-        // Bench Seat
         const bZ = rZ - 0.70;
         const bW = 1.35;
         const bHSeat = 0.62;
@@ -615,7 +625,7 @@
       }
     }
 
-    // Teacher's Blackboard on Rear Interior Wall
+    // Teacher's Blackboard
     const bbX1 = -2.4, bbX2 = 0.4, bbY1 = 1.8, bbY2 = 3.6, bbZ = backZ + 0.12;
     addLine(bbX1, bbY1, bbZ, bbX2, bbY1, bbZ, 0.03, 0.85, 0.60, 0.28);
     addLine(bbX1, bbY2, bbZ, bbX2, bbY2, bbZ, 0.03, 0.85, 0.60, 0.28);
@@ -626,11 +636,8 @@
         addPt(cx, cy, bbZ, 0.08, 0.16, 0.13);
       }
     }
-    // Chalk lesson drawings
-    addLine(bbX1 + 0.4, bbY1 + 0.7, bbZ + 0.02, bbX1 + 1.4, bbY1 + 0.7, bbZ + 0.02, 0.04, 0.95, 0.98, 1.0);
-    addLine(bbX1 + 0.4, bbY1 + 1.1, bbZ + 0.02, bbX1 + 1.0, bbY1 + 1.1, bbZ + 0.02, 0.04, 0.95, 0.98, 1.0);
 
-    // Artist's Easel & Painting Canvas
+    // Artist's Easel & Canvas
     const easelX = 1.4, easelZ = 1.5;
     addLine(easelX, 0, easelZ - 0.4, easelX - 0.3, 2.9, easelZ, 0.03, 0.82, 0.55, 0.25);
     addLine(easelX, 0, easelZ - 0.4, easelX + 0.3, 2.9, easelZ, 0.03, 0.82, 0.55, 0.25);
@@ -648,9 +655,7 @@
       }
     }
 
-    // -------------------------------------------------------------------------
-    // 7. ATMOSPHERIC DRIFT MOTES
-    // -------------------------------------------------------------------------
+    // Atmospheric Drift Motes
     const numMotes = 500;
     for (let m = 0; m < numMotes; m++) {
       const mx = (Math.random() - 0.5) * 22.0;
@@ -663,10 +668,95 @@
       }
     }
 
-    // Build BufferGeometry for Building
+    // =========================================================================
+    // 7. OFFICIAL HIGH-DEFINITION 3D "SLUM ART" SIGNBOARD ON FRONT FACADE
+    // Mounted prominently beside the doorway with architectural standoff brackets
+    // Rendered with dedicated micro-point resolution for razor-sharp typography
+    // =========================================================================
+    const logoBoardW = 2.40;
+    const logoBoardH = 1.60;
+    const logoCX = 2.70;
+    const logoCY = 2.30;
+    const logoCZ = frontZ + 0.16; // Projecting forward off the front wall
+
+    // 4 Heavy Standoff steel wall brackets
+    const standoffCorners = [
+      [logoCX - logoBoardW / 2 + 0.14, logoCY - logoBoardH / 2 + 0.14],
+      [logoCX + logoBoardW / 2 - 0.14, logoCY - logoBoardH / 2 + 0.14],
+      [logoCX - logoBoardW / 2 + 0.14, logoCY + logoBoardH / 2 - 0.14],
+      [logoCX + logoBoardW / 2 - 0.14, logoCY + logoBoardH / 2 - 0.14]
+    ];
+    standoffCorners.forEach(([sx, sy]) => {
+      addLine(sx, sy, frontZ, sx, sy, logoCZ, 0.025, 0.25, 0.28, 0.35);
+      // Metallic standoff collar
+      addPt(sx, sy, logoCZ + 0.01, 0.95, 0.95, 0.98);
+    });
+
+    // Deep Navy Architectural Backing Plate with Metallic Bezel
+    for (let bx = logoCX - logoBoardW / 2; bx <= logoCX + logoBoardW / 2; bx += 0.038) {
+      for (let by = logoCY - logoBoardH / 2; by <= logoCY + logoBoardH / 2; by += 0.038) {
+        const isBorder = Math.abs(Math.abs(bx - logoCX) - logoBoardW / 2) < 0.04 ||
+                         Math.abs(Math.abs(by - logoCY) - logoBoardH / 2) < 0.04;
+        if (isBorder) {
+          addPt(bx, by, logoCZ, 0.88, 0.92, 0.98); // Brushed aluminum bezel
+        } else {
+          addPt(bx, by, logoCZ - 0.005, 0.02, 0.07, 0.22); // Deep Navy plate
+        }
+      }
+    }
+
+    // Logo Coordinate, Color, and Dispersion Buffers (Dedicated High-Res Points)
+    const logoMeshPos = [];
+    const logoMeshCol = [];
+    const logoMeshDisp = [];
+
+    function addLogoPt(x, y, z, r, g, b) {
+      logoMeshPos.push(x, y, z);
+      logoMeshCol.push(r, g, b);
+      const d = calcDispersion(x, y, z);
+      logoMeshDisp.push(d[0], d[1], d[2]);
+    }
+
+    // Render Exact Official 11,399 Slum Art Logo Vector Points
+    const logoPts = (typeof window !== 'undefined' && window.__SLUM_ART_LOGO_POINTS__) || [];
+    if (logoPts.length > 0) {
+      const renderW = 2.15;
+      const renderH = 1.35;
+      const logoCenterY = logoCY + 0.04;
+
+      for (let i = 0; i < logoPts.length; i++) {
+        const pt = logoPts[i];
+        const px = logoCX + (pt[0] / 0.872) * (renderW / 2.0);
+        const py = logoCenterY + (pt[1] / 0.37) * (renderH / 2.0);
+
+        if (pt[2] === 1) {
+          // Official Golden Waves Ribbon (3D extrusion depth)
+          addLogoPt(px, py, logoCZ + 0.018, 1.0, 0.76, 0.12);
+          addLogoPt(px, py, logoCZ + 0.032, 1.0, 0.86, 0.25);
+        } else if (pt[1] >= -0.22) {
+          // Pure Luminous White "slum art" Wordmark (3D extrusion depth)
+          addLogoPt(px, py, logoCZ + 0.018, 1.0, 1.0, 1.0);
+          addLogoPt(px, py, logoCZ + 0.032, 0.98, 0.98, 1.0);
+        } else {
+          // Luminous Radiant Cyan "MENTORSHIP & SUPPORT"
+          addLogoPt(px, py, logoCZ + 0.020, 0.35, 0.88, 1.0);
+          addLogoPt(px, py, logoCZ + 0.032, 0.45, 0.94, 1.0);
+        }
+      }
+    }
+
+    // =========================================================================
+    // 8. GPU-ACCELERATED SHADER DISPERSION & ASSEMBLY SETUP
+    // =========================================================================
+    const uniforms = {
+      u_disperse: { value: 0.0 },
+      u_time:     { value: 0.0 }
+    };
+
     const buildGeom = new THREE.BufferGeometry();
-    buildGeom.setAttribute('position', new THREE.Float32BufferAttribute(buildPos, 3));
-    buildGeom.setAttribute('color', new THREE.Float32BufferAttribute(buildCol, 3));
+    buildGeom.setAttribute('position',   new THREE.Float32BufferAttribute(buildPos, 3));
+    buildGeom.setAttribute('color',      new THREE.Float32BufferAttribute(buildCol, 3));
+    buildGeom.setAttribute('a_disperse', new THREE.Float32BufferAttribute(buildDisp, 3));
 
     const buildMaterial = new THREE.PointsMaterial({
       size: 0.165,
@@ -678,76 +768,61 @@
       depthWrite: true
     });
 
+    const disperseShaderHook = (shader) => {
+      shader.uniforms.u_disperse = uniforms.u_disperse;
+      shader.uniforms.u_time     = uniforms.u_time;
+      shader.vertexShader = 'attribute vec3 a_disperse;\nuniform float u_disperse;\nuniform float u_time;\n' + shader.vertexShader;
+      shader.vertexShader = shader.vertexShader.replace(
+        '#include <begin_vertex>',
+        `
+        #include <begin_vertex>
+        if (u_disperse > 0.0001) {
+          vec3 d = a_disperse;
+          d.x += sin(u_time * 1.5 + position.y * 1.4) * 0.22 * u_disperse;
+          d.y += cos(u_time * 1.2 + position.x * 1.4) * 0.22 * u_disperse;
+          d.z += sin(u_time * 1.3 + position.z * 1.4) * 0.22 * u_disperse;
+          transformed += d * u_disperse;
+        }
+        `
+      );
+    };
+
+    buildMaterial.customProgramCacheKey = () => 'slum_art_disperse_shader';
+    buildMaterial.onBeforeCompile = disperseShaderHook;
+
     const buildingMesh = new THREE.Points(buildGeom, buildMaterial);
     academyGroup.add(buildingMesh);
 
-    // =========================================================================
-    // GEOMETRY SET 2: THE OFFICIAL "slum art" SIGNBOARD
-    // =========================================================================
-    const logoPos = [];
-    const logoCol = [];
-    function addLogoPt(x, y, z, r, g, b) {
-      logoPos.push(x, y, z);
-      logoCol.push(r, g, b);
+    // Dedicated High-Resolution Micro-Point Mesh for 3D Logo (Crisp Typography)
+    if (logoMeshPos.length > 0) {
+      const logoGeom = new THREE.BufferGeometry();
+      logoGeom.setAttribute('position',   new THREE.Float32BufferAttribute(logoMeshPos, 3));
+      logoGeom.setAttribute('color',      new THREE.Float32BufferAttribute(logoMeshCol, 3));
+      logoGeom.setAttribute('a_disperse', new THREE.Float32BufferAttribute(logoMeshDisp, 3));
+
+      const logoMaterial = new THREE.PointsMaterial({
+        size: 0.042,
+        vertexColors: true,
+        map: pointTexture,
+        transparent: true,
+        opacity: 1.0,
+        blending: THREE.NormalBlending,
+        depthWrite: false
+      });
+      logoMaterial.customProgramCacheKey = () => 'slum_art_logo_disperse_shader';
+      logoMaterial.onBeforeCompile = disperseShaderHook;
+
+      const logoMesh = new THREE.Points(logoGeom, logoMaterial);
+      academyGroup.add(logoMesh);
     }
-
-    // Mounted on Left Orange Side Wall near front corner
-    const logoBoardW = 2.4;
-    const logoBoardH = 1.4;
-    const logoCX = leftX - 0.08;
-    const logoCY = 2.8;
-    const logoCZ = frontZ - 1.6;
-
-    for (let bz = logoCZ - logoBoardW / 2; bz <= logoCZ + logoBoardW / 2; bz += 0.045) {
-      for (let by = logoCY - logoBoardH / 2; by <= logoCY + logoBoardH / 2; by += 0.045) {
-        const isBorder = Math.abs(Math.abs(bz - logoCZ) - logoBoardW / 2) < 0.05 ||
-                         Math.abs(Math.abs(by - logoCY) - logoBoardH / 2) < 0.05;
-        if (isBorder) {
-          addLogoPt(logoCX, by, bz, 0.88, 0.94, 1.0);
-        } else {
-          addLogoPt(logoCX, by, bz, 0.02, 0.10, 0.32); // Deep Navy plate
-        }
-      }
-    }
-
-    // Golden wave emblem on signboard
-    for (let t = -0.7; t <= 0.7; t += 0.04) {
-      const w1y = logoCY + 0.22 + Math.sin(t * 5.0) * 0.08;
-      const w2y = logoCY + 0.12 + Math.sin(t * 5.0 + 0.6) * 0.07;
-      addLogoPt(logoCX - 0.02, w1y, logoCZ + t, 1.0, 0.78, 0.12);
-      addLogoPt(logoCX - 0.02, w2y, logoCZ + t, 1.0, 0.78, 0.12);
-    }
-
-    // Signboard logotype text lines
-    for (let t = -0.8; t <= 0.8; t += 0.045) {
-      addLogoPt(logoCX - 0.02, logoCY - 0.15, logoCZ + t, 0.98, 0.98, 1.0);
-      addLogoPt(logoCX - 0.02, logoCY - 0.32, logoCZ + t * 0.8, 0.35, 0.88, 1.0);
-    }
-
-    const logoGeom = new THREE.BufferGeometry();
-    logoGeom.setAttribute('position', new THREE.Float32BufferAttribute(logoPos, 3));
-    logoGeom.setAttribute('color', new THREE.Float32BufferAttribute(logoCol, 3));
-
-    const logoMaterial = new THREE.PointsMaterial({
-      size: 0.125,
-      vertexColors: true,
-      map: pointTexture,
-      transparent: true,
-      opacity: 1.0,
-      blending: THREE.NormalBlending,
-      depthWrite: true
-    });
-
-    const logoMesh = new THREE.Points(logoGeom, logoMaterial);
-    academyGroup.add(logoMesh);
 
     // =========================================================================
-    // 8. 3D ISOMETRIC CORNER PERSPECTIVE, SCROLL ORBIT & PARALLAX
+    // 9. 3D ISOMETRIC CORNER PERSPECTIVE, SCROLL ORBIT & DISPERSION
     // Default angle: -36° Y-rotation, +8° downward tilt
-    // Showcases Amber-Orange Side Wall AND Black Front Wall with Danfo Bus
+    // Showcases Amber-Orange Side Wall AND Black Front Facade with Danfo Bus
     // =========================================================================
-    const DEFAULT_ROT_Y = -0.62; // ~-36 degrees
-    const DEFAULT_ROT_X = 0.14;  // ~+8 degrees
+    const DEFAULT_ROT_Y = -0.62;
+    const DEFAULT_ROT_X = 0.14;
 
     let currentRotY = DEFAULT_ROT_Y;
     let targetRotY  = DEFAULT_ROT_Y;
@@ -756,6 +831,10 @@
     let currentScale = 1.0;
     let targetScale  = 1.0;
     let baseBuildingY = -0.4;
+
+    // Dispersion variables
+    let currentDisperse = 0.0;
+    let targetDisperse  = 0.0;
 
     let mouseParallaxX = 0;
     let mouseParallaxY = 0;
@@ -778,7 +857,20 @@
       const currentDist = winH - rect.top;
       const progress = Math.max(0, Math.min(1, currentDist / totalDist));
 
-      // Scroll smoothly rotates the 3D building across an arc
+      // Scroll-Driven Point Cloud Assembly & Dispersion:
+      // When approaching the section (progress < 0.22): dispersed into a loose floating galaxy
+      // As you scroll into view (progress 0.22 -> 0.48): particles come together into solid school!
+      // When centered in view (progress 0.48 -> 0.78): 100% assembled, crisp solid 3D architecture
+      // When scrolling past (progress > 0.80): gentle dispersion out
+      if (progress < 0.48) {
+        targetDisperse = Math.max(0.0, Math.min(1.0, (0.48 - progress) / 0.28));
+      } else if (progress > 0.82) {
+        targetDisperse = Math.max(0.0, Math.min(0.85, (progress - 0.82) / 0.18));
+      } else {
+        targetDisperse = 0.0;
+      }
+
+      // Smooth continuous 3D orbit
       targetRotY = DEFAULT_ROT_Y + (progress - 0.5) * 0.55;
       targetRotX = DEFAULT_ROT_X + Math.sin(progress * Math.PI) * 0.05;
       targetScale = 0.98 + Math.sin(progress * Math.PI) * 0.04;
@@ -807,7 +899,6 @@
       academyGroup.scale.set(modelScale, modelScale, modelScale);
 
       buildMaterial.size = (isMobile ? 0.125 : 0.165) * modelScale;
-      logoMaterial.size = (isMobile ? 0.095 : 0.125) * modelScale;
 
       if (section) {
         const sRect = section.getBoundingClientRect();
@@ -845,6 +936,11 @@
       if (!isVisible) return;
 
       const time = clock.getElapsedTime();
+
+      // Fluid elastic dispersion convergence
+      currentDisperse += (targetDisperse - currentDisperse) * 0.075;
+      uniforms.u_disperse.value = currentDisperse;
+      uniforms.u_time.value = time;
 
       const idleY = Math.sin(time * 0.4) * 0.015;
       const idleFloat = Math.sin(time * 0.9) * 0.025;
