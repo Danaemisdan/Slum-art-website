@@ -264,46 +264,45 @@
           const bottleXProgress = ((u - uMin) % 0.16) / 0.16;
           const noise = (Math.sin(colIdx * 4.3 + rowIdx * 2.7) + 1) * 0.5;
 
+          const heightGrad = (v - vMin) / (vSpan || 1.0);
           let r, g, b;
           if (isAmber) {
-            // Luminous warm amber honey bottles with realistic glass depth:
+            // Refined Warm Amber-Gold with natural atmospheric height gradient:
             const isShoulder = courseProgress > 0.65 && courseProgress < 0.88;
             const isBase = courseProgress < 0.20;
             const isCap = Math.abs((u - uMin) % 0.16) < 0.035 && Math.abs((v - vMin) % 0.28) < 0.045;
 
+            const heightFactor = 0.82 + heightGrad * 0.32; // Natural skylight falloff
             if (isCap) {
-              r = 1.0; g = 0.88; b = 0.26; // Brass/gold cap
+              r = 0.98; g = 0.82; b = 0.22; // Warm brass cap
             } else if (isShoulder) {
-              r = 1.0; g = 0.82; b = 0.35; // Sunlit champagne reflection
+              r = 0.96 * heightFactor; g = 0.76 * heightFactor; b = 0.30; // Sunlit champagne reflection
             } else if (isBase) {
-              r = 0.76; g = 0.38; b = 0.08; // Warm cognac shadow
+              r = 0.58; g = 0.28; b = 0.08; // Warm cognac base
             } else {
-              const bodyLum = 0.92 + noise * 0.16;
-              r = Math.min(1.0, 0.96 * bodyLum);
-              g = Math.min(1.0, 0.62 * bodyLum);
-              b = Math.min(1.0, 0.14 * bodyLum);
+              const bodyLum = (0.85 + noise * 0.18) * heightFactor;
+              r = Math.min(1.0, 0.84 * bodyLum);
+              g = Math.min(1.0, 0.50 * bodyLum);
+              b = Math.min(1.0, 0.12 * bodyLum);
             }
           } else {
-            // Front facade: Smoked obsidian glass bottles with oceanic cyan & silver glints:
-            const isBehindLogo = (axis === 'z' && fixedCoord > 0 && u >= 1.95 && u <= 4.05 && v >= 1.35 && v <= 3.35);
+            // Front facade: Sleek Translucent Smoked Cobalt / Lagoon Glass:
+            // Continuous, smooth & organic across the entire facade (NO DARK BOX PATCH)
             const isCap = Math.abs((u - uMin) % 0.16) < 0.035 && Math.abs((v - vMin) % 0.28) < 0.045;
             const isRibGlint = (courseProgress > 0.45 && courseProgress < 0.58) && (bottleXProgress > 0.35 && bottleXProgress < 0.65);
             const isEdgeReflect = (bottleXProgress < 0.15 || bottleXProgress > 0.85);
 
-            if (isBehindLogo) {
-              // Deep dark obsidian background to provide maximum contrast for floating logo
-              r = 0.06; g = 0.08; b = 0.12;
-            } else if (isCap) {
-              r = 0.32; g = 0.72; b = 0.90; // Metallic ice cyan cap
+            if (isCap) {
+              r = 0.35; g = 0.75; b = 0.92; // Metallic ice cyan cap
             } else if (isRibGlint) {
-              r = 0.62; g = 0.84; b = 0.96; // Specular silver-cyan glass reflection
+              r = 0.55; g = 0.78; b = 0.92; // Specular silver-cyan glass reflection
             } else if (isEdgeReflect) {
-              r = 0.26; g = 0.52; b = 0.70; // Oceanic glass caustics
+              r = 0.24; g = 0.48; b = 0.66; // Oceanic glass caustics
             } else {
-              const darkLum = 0.85 + noise * 0.30;
+              const darkLum = 0.80 + noise * 0.25;
               r = 0.12 * darkLum;
-              g = 0.17 * darkLum;
-              b = 0.25 * darkLum;
+              g = 0.18 * darkLum;
+              b = 0.26 * darkLum;
             }
           }
 
@@ -448,8 +447,8 @@
       const tz = (z - backZ) / bD;
       const gy = roofBackY - tz * (roofBackY - roofFrontY);
       for (let y = bH; y <= gy; y += STEP) {
-        addPt(leftX,  y, z, 0.96, 0.62, 0.14);
-        addPt(rightX, y, z, 0.96, 0.62, 0.14);
+        addPt(leftX,  y, z, 0.84, 0.52, 0.14);
+        addPt(rightX, y, z, 0.84, 0.52, 0.14);
       }
     }
 
@@ -532,7 +531,7 @@
             addPt(bx, y, z, 0.98, 0.99, 1.0);  // Pure titanium white stripe
           } else {
             const shade = 0.88 + (relY / busH) * 0.24;
-            addPt(bx, y, z, Math.min(1.0, 0.98 * shade), Math.min(1.0, 0.76 * shade), 0.12 * shade);
+            addPt(bx, y, z, Math.min(1.0, 0.94 * shade), Math.min(1.0, 0.70 * shade), 0.14 * shade);
           }
         }
       }
@@ -566,10 +565,10 @@
           if (isHoodStripe) {
             addPt(x, y, busZEnd, 0.06, 0.07, 0.09);
           } else {
-            addPt(x, y, busZEnd, 0.98, 0.76, 0.12);
+            addPt(x, y, busZEnd, 0.94, 0.70, 0.14);
           }
         } else {
-          addPt(x, y, busZEnd - 0.28, 1.0, 0.82, 0.18); // Sunlit hood
+          addPt(x, y, busZEnd - 0.28, 0.96, 0.74, 0.16); // Sunlit hood
         }
       }
     }
@@ -613,7 +612,7 @@
     // Bus Roof
     for (let x = busCX - busW / 2; x <= busCX + busW / 2; x += 0.065) {
       for (let z = busZStart; z <= busZEnd - 0.25; z += 0.065) {
-        addPt(x, busYBase + busH, z, 1.0, 0.82, 0.18);
+        addPt(x, busYBase + busH, z, 0.94, 0.70, 0.14);
       }
     }
 
@@ -707,9 +706,9 @@
     // NO PLAQUE, NO BACKGROUND BOX, NO STANDOFF BRACKETS
     // Perfectly centered on the solid front wall section between door and corner
     // =========================================================================
-    const logoCX = 3.02;
+    const logoCX = 3.12;
     const logoCY = 2.30;
-    const logoCZ = frontZ + 0.08; // Floating cleanly in front of front wall
+    const logoCZ = frontZ + 0.09; // Floating cleanly in front of front wall
 
     // Logo Coordinate, Color, and Dispersion Buffers (Dedicated High-Res Points)
     const logoMeshPos = [];
@@ -789,24 +788,23 @@
           transformed += d * u_disperse;
         }
 
-        // 2. Constant subtle organic micro-vibrations & breathing even when fully assembled
-        float t = u_time * 4.6;
+        // 2. Microscopic quantum particle jitter (ZERO STRUCTURAL DISTORTION - lines remain 100% straight)
+        float h = sin(dot(position.xyz, vec3(12.9898, 78.233, 45.164))) * 43758.5453;
         vec3 microVib = vec3(
-          sin(t + position.y * 8.2 + position.z * 5.4),
-          cos(t * 1.14 + position.x * 7.1 + position.z * 4.8),
-          sin(t * 0.92 + position.x * 5.6 + position.y * 6.5)
-        ) * 0.016;
-
-        float breath = sin(u_time * 1.6 + position.y * 0.8 + position.x * 0.4) * 0.009;
-        transformed += microVib + vec3(0.0, breath, 0.0);
+          sin(u_time * 9.0 + h),
+          cos(u_time * 8.5 + h * 1.3),
+          sin(u_time * 9.5 + h * 0.7)
+        ) * 0.0022; // Microscopic 2.2mm jitter: crisp straight architecture with electric life
+        transformed += microVib;
         `
       );
       shader.vertexShader = shader.vertexShader.replace(
         '#include <project_vertex>',
         `
         #include <project_vertex>
-        // Subtle shimmering sparkle in point size
-        gl_PointSize *= (0.94 + 0.12 * sin(u_time * 3.5 + position.x * 8.0 + position.y * 8.0));
+        // Subtle shimmering sparkle in point size (per-particle independent twinkle)
+        float hSize = sin(dot(position.xy, vec2(37.19, 91.73))) * 43758.5453;
+        gl_PointSize *= (0.95 + 0.10 * sin(u_time * 3.8 + hSize * 2.0));
         `
       );
     };
