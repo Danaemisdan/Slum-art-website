@@ -792,9 +792,9 @@
       caption: 'CNN Anchors Paper Mosaic Portraits \u2022 #MyFreedomDay Broadcast'
     },
     {
-      img: 'assets/images/cnn_doc_frame_30s.jpg',
-      alt: 'CNN International Feature & Interview \u2022 Anchor Zain Asher Presents Slum Art & Honors Founder Adetunwase Adenle',
-      caption: 'CNN International Feature \u2022 Anchor Zain Asher Presents Slum Art & Honors Founder Ade'
+      img: 'assets/images/cnn_mfd_lagos_art_poster.jpg',
+      alt: 'CNN International Broadcast Feature \u2022 Nigerian Children Honor CNN with Over 200 Portraits for #MyFreedomDay',
+      caption: 'CNN Broadcast Feature \u2022 Over 200 Portraits for #MyFreedomDay'
     }
   ];
 
